@@ -1,0 +1,11 @@
+# Ignore target folder
+target/
+
+# Ignore all .class files
+*.class
+
+# Ignore all .iml files
+*.iml
+
+# Ignore all .idea files
+*.idea

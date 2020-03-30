@@ -6,6 +6,14 @@ public class Worker {
     private Level currentLevel;
     private Level previousLevel;
 
+    public Worker(Player owner, Cell currentPosition, Cell previousPosition, Level currentLevel, Level previousLevel) {
+        this.owner = owner;
+        this.currentPosition = currentPosition;
+        this.previousPosition = previousPosition;
+        this.currentLevel = currentLevel;
+        this.previousLevel = previousLevel;
+    }
+
     public void setOwner(Player owner) {
         this.owner = owner;
     }

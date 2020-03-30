@@ -6,7 +6,9 @@ public class Player {
     private Worker firstWorker;
     private Worker secondWorker;
     private Match currentMatch;
-
+    //stringa playerName e net
+    //enumerazioni vedere teproa
+    //modificare uml first,second e choose
     public void setName(char[] playerName) {
         this.playerName = playerName;
     }
@@ -15,16 +17,17 @@ public class Player {
         this.networkAddress = networkAddress;
     }
 
-    public void setPlayerGod(GodCard playerGod) {
+    public void choosePlayerGod(char[] godName) {
+        GodCard playerGod= new GodCard(godName,this);
         this.playerGod = playerGod;
     }
 
-    public void setFirstWorker(int x, int y) {
+    public void initFirstWorker(int x, int y) {
         Worker firstWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), GROUND, GROUND);
         this.firstWorker = firstWorker;
     }
 
-    public void setSecondWorker(int x, int y) {
+    public void initSecondWorker(int x, int y) {
         Worker secondWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), GROUND, GROUND);
         this.secondWorker = secondWorker;
     }

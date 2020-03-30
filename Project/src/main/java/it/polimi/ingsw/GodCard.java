@@ -1,13 +1,19 @@
 package it.polimi.ingsw;
 public class GodCard {
-    private char[] godName;
-    private char[] description;
-    private char[] specialRules;
+    private String godName;
+    private String description;
+    private String specialRules;
     private Effect effect;
+    private Player owner;
+    //mettere stringhe e finire costruttore
 
 
+    public GodCard(char[] godName,Player owner){
+        this.godName=godName;
+        this.owner=owner;
+    }
 
-    public char[] getGodName() {
+    public String getGodName() {
         return godName;
     }
     public char[] getDescription() {
@@ -16,7 +22,15 @@ public class GodCard {
     public char[] getSpecialRules() {
         return specialRules;
     }
-    public void createEffect(){}
-    public Effect getEffect(){}
+    public void createEffect(){
+        Effect effect = new Effect(this);
+        this.effect=effect;
+    }
+    public Effect getEffect(){
+        return this.effect;
+    }
 
+    public Player getOwner() {
+        return owner;
+    }
 }

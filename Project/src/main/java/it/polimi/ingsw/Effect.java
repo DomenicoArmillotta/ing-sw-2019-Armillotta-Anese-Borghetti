@@ -7,7 +7,34 @@ public class Effect {
     private MoveWorkerStrategy moveWorker;
     private WinCheckStrategy winCheck;
     private BuildBlockStrategy buildBlock;
+    private PossibleMoveStrategy possibleMove;
     private boolean isActive;
+
+
+    public GodCard getPrevPlayerGod(){
+        return this.getAssociatedCard().getOwner().getMatch().getCurrentTurn().getPrevPlayer().getPlayerGod();
+    }
+    public GodCard getNextPlayerGod(){
+        return this.getAssociatedCard().getOwner().getMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
+    }
+
+    public Effect(GodCard associatedCard){
+        this.associatedCard=associatedCard;
+        //fare switch
+        String apollo = "APOLLO";
+        String atena="ATENA";
+
+        if (!(string1.compareTo(associatedCard.getGodName()))){
+            SelectOptionsStrategy selectOptions=new BasicSelectOptionsConcrete() ;
+            this.selectOptions=selectOptions;
+            if(this.getNextPlayerGod().getGodName().compareTo(string2))
+            MoveOptionsStrategy moveOptionsStrategy= new
+
+
+        }
+        //....
+
+    }
 
     publc void setEffectStrategies() {
         /* Apply Strategy Method */

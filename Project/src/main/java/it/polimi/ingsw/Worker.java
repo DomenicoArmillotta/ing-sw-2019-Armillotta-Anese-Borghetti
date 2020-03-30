@@ -18,11 +18,21 @@ public class Worker {
         this.owner = owner;
     }
     public void setCurrentPosition(Cell currentPosition) {
+
+        this.currentPosition = currentPosition;
+    }
+    public void setCurrentPosition(int x,int y ) {
+        currentPosition=(((this.owner).getMatch()).getMap()).getCell(x,y);
         this.currentPosition = currentPosition;
     }
 
+
     public void setPreviousLevel(Level previousLevel) {
         this.previousLevel = previousLevel;
+    }
+
+    public void setCurrentLevel(Level currentLevel) {
+        this.currentLevel = currentLevel;
     }
 
     public Player getOwner() {
@@ -31,7 +41,8 @@ public class Worker {
 
 
 
-    public Cell getCurrentPosition() {
+    public Cell getCurrentPosition()
+    {
         return currentPosition;
     }
 

@@ -23,11 +23,11 @@ public class Match {
         return currentTurn;
     }
 
-    public void createMap(void) {
+    public void createMap() {
         this.matchMap = new Map();
     }
 
-    public getMap(void) {
+    public Map getMap() {
         return this.matchMap;
     }
 

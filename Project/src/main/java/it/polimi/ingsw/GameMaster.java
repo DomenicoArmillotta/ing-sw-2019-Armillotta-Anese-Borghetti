@@ -4,16 +4,15 @@ import java.util.*;
 
 public class GameMaster {
     private Match match;
-    private List<Player> playerQueue = new LinkedList(); //da controllora sinstassi
+    private ArrayList<Player> playerQueue = new ArrayList(); //da controllora sinstassi
     private int numOfPlayer;
 
 //ma c'è bisogno di una sala di attesa?
+//sento gli altri
 
-    public void createMatch(){
-        if(numOfPlayer==2)
-            match = new Match(player1,player2);
-        else
-            match = new Match(player1,player2,player3);
+    public void createMatch() {
+        this.match = new Match();
+        this.match.setPlayersOrder(playerQueue);
     }
 
     public void setPlayerQueue(Player[] loginPlayerList){

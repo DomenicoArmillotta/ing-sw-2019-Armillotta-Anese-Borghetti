@@ -1,34 +1,17 @@
 package it.polimi.ingsw;
-/*
-private char[] playerName;
-private char[] networkAddress;
-private GodCard playerGod;
-private Worker[2] playerWorkers;
-private Match currentMatch;
-public void setPlayerName(char[] );
-public void setNetworkAddress(char[] );
-public void setPlayerGod(GodCard );
-public void setMatch(Match );
-public void setPlayerWorkers (int ,int ,int ,int  );
-public Worker getPlayerWorkers ();
-public char[] getPlayerName();
-public char[] getNetworkAddress();
-public GodCard getPlayerGod();
-public Match getMatch();
- */
-
 public class Player {
     private char[] playerName;
     private char[] networkAddress;
     private GodCard playerGod;
-    private Worker[2] playerWorkers;
+    private Worker firstWorker;
+    private Worker secondWorker;
     private Match currentMatch;
 
-    public void setPlayerName(char[] playerName) {
+    public void setName(char[] playerName) {
         this.playerName = playerName;
     }
 
-    public void setNetworkAddress(char[] networkAddress) {
+    public void setNetAddress(char[] networkAddress) {
         this.networkAddress = networkAddress;
     }
 
@@ -36,23 +19,27 @@ public class Player {
         this.playerGod = playerGod;
     }
 
-    public void setMatch(Match currentMatch) {
-        this.currentMatch = currentMatch;
+    public void setFirstWorker(Worker firstWorker) {
+        this.firstWorker = firstWorker;
     }
 
-    public void setPlayerWorkers(int firstWorkerX, int firstWorkerY, int secondWorkerX, int secondWorkerY) {
-
+    public void setSecondWorker(Worker secondWorker) {
+        this.secondWorker = secondWorker;
     }
 
-    public Worker getPlayerWorkers() {
-        return null;
+    public Worker getFirstWorker() {
+        return firstWorker;
     }
 
-    public char[] getPlayerName() {
+    public Worker getSecondWorker() {
+        return secondWorker;
+    }
+
+    public char[] getName() {
         return playerName;
     }
 
-    public char[] getNetworkAddress() {
+    public char[] getNetAddress() {
         return networkAddress;
     }
 

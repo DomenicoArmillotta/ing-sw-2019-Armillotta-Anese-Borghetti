@@ -1,6 +1,4 @@
 package it.polimi.ingsw;
-
-
 public class Worker {
     private Player owner;
     private Cell currentPosition;

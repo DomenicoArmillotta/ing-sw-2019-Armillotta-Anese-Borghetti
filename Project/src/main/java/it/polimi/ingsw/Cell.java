@@ -20,5 +20,4 @@ public class Cell {
 
     public int getBuildinLevel() {
         return buildingLevel;
-    }
-}
+    }}

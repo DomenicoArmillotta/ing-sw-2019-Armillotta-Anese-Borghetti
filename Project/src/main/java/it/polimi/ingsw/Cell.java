@@ -1,7 +1,7 @@
 package it.polimi.ingsw;
 
 public class Cell {
-    private int buildingLevel;
+    private Level buildingLevel;
     private Worker workerOnCell;
 
     public Cell(){}
@@ -10,7 +10,7 @@ public class Cell {
         this.workerOnCell = workerOnCell;
     }
 
-    public void setBuildinLevel(int buildinLevel) {
+    public void setBuildinLevel(Level buildinLevel) {
         this.buildingLevel = buildinLevel;
     }
 

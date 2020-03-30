@@ -19,13 +19,9 @@ public class Player {
         this.playerGod = playerGod;
     }
 
-    public void setFirstWorker(int x, int y) {
-        Worker firstWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), GROUND, GROUND);
-        this.firstWorker = firstWorker;
-    }
+    public void setFirstWorker(Worker firstWorker) { this.firstWorker = firstWorker; }
 
-    public void setSecondWorker(int x, int y) {
-        Worker secondWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), GROUND, GROUND);
+    public void setSecondWorker(Worker secondWorker) {
         this.secondWorker = secondWorker;
     }
 

@@ -1,44 +1,41 @@
 package it.polimi.ingsw;
-/*
-    private Cell cell;
-    private Player owner;
-    private Cell[][] feasibleCells;
-    private boolean isSelectable;
-    private Level currLevel;
-    private Level prevLevel;
 
-    public Cell getCell()
-    public Player getOwner()
-    public void lookAround()
-    public void removeWorker()
-
-
-
-
- */
 
 public class Worker {
-    private Cell cell;
     private Player owner;
-    private Cell[][] feasibleCells;
-    private boolean isSelectable;
-    private Level currLevel;
-    private Level prevLevel;
+    private Cell currentPosition;
+    private Cell previousPosition;
+    private Level currentLevel;
+    private Level previousLevel;
 
-    public Cell getCell() {
-        return cell;
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+    public void setCurrentPosition(Cell currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
+    public void setPreviousLevel(Level previousLevel) {
+        this.previousLevel = previousLevel;
     }
 
     public Player getOwner() {
         return owner;
     }
 
-    public void lookAround(){
 
+
+    public Cell getCurrentPosition() {
+        return currentPosition;
     }
 
-    public void removeWorker(){
-
+    public Level getPreviousLevel() {
+        return previousLevel;
     }
+
+
+
+    private void removeWorker(void){}
+
 
 }

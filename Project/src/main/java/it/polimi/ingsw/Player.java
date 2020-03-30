@@ -1,14 +1,30 @@
 package it.polimi.ingsw;
+/*
+private char[] playerName;
+private char[] networkAddress;
+private GodCard playerGod;
+private Worker[2] playerWorkers;
+private Match currentMatch;
+public void setPlayerName(char[] );
+public void setNetworkAddress(char[] );
+public void setPlayerGod(GodCard );
+public void setMatch(Match );
+public void setPlayerWorkers (int ,int ,int ,int  );
+public Worker getPlayerWorkers ();
+public char[] getPlayerName();
+public char[] getNetworkAddress();
+public GodCard getPlayerGod();
+public Match getMatch();
+ */
 
 public class Player {
     private char[] playerName;
     private char[] networkAddress;
     private GodCard playerGod;
-    private Worker firstWorker;
-    private Worker secondWorker;
+    private Worker[2] playerWorkers;
     private Match currentMatch;
 
-    public void setName(char[] playerName) {
+    public void setPlayerName(char[] playerName) {
         this.playerName = playerName;
     }
 
@@ -24,23 +40,15 @@ public class Player {
         this.currentMatch = currentMatch;
     }
 
-    //setto le cordinate iniziali
-    public void setFirstWorkers(int firstWorkerX, int firstWorkerY) {
-        Worker worker1=new Worker();
-        Cell workerCell = getCell(firstWorkerX,firstWorkerY);
-        worker1.setCurrentPosition(workerCell);
-        worker1.setOwner(this);
-        
-
+    public void setPlayerWorkers(int firstWorkerX, int firstWorkerY, int secondWorkerX, int secondWorkerY) {
 
     }
 
-
-    public void setSecondWorkers( int secondWorkerX, int secondWorkerY) {
-
+    public Worker getPlayerWorkers() {
+        return null;
     }
 
-    public char[] getName() {
+    public char[] getPlayerName() {
         return playerName;
     }
 
@@ -55,12 +63,4 @@ public class Player {
     public Match getMatch() {
         return currentMatch;
     }
-
-    public Worker getFirstWorkers() {
-            return null;
-        }
-
-    public Worker getSecondWorkers() {
-            return null;
-        }
 }

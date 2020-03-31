@@ -13,7 +13,7 @@ public class Turn {
         if((this.getMatch().getGameMaster().getNumOfPlayers())==2) {
             this.currentPlayer = playersQueue.get(0);
             this.nextPlayer = playersQueue.get(1);
-            this.prevPlayer = playersQueue.get(0);
+            this.prevPlayer = playersQueue.get(1);
         } else if((this.getMatch().getGameMaster().getNumOfPlayers())==3) {
             this.currentPlayer = playersQueue.get(0);
             this.nextPlayer = playersQueue.get(1);

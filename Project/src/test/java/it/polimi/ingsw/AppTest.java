@@ -24,6 +24,7 @@ public class AppTest
 
     @Test
     public void LoginTest() {
+        System.out.println("TEST 2: Verifico che se stanno giocando 2 giocatori, gli attributi nextPlayer e prevPlayer di Turn sono uguali.");
         Player player1 = new Player();
         Player player2 = new Player();
         player1.setName("Marco");
@@ -33,7 +34,7 @@ public class AppTest
         ArrayList<Player> playersList = new ArrayList<>(Arrays.asList(player1, player2));
         GameMaster gameMaster = new GameMaster(2, playersList);
         gameMaster.createMatch();
-        assertEquals("Marco", gameMaster.getMatch().getCurrentTurn().getCurrentPlayer().getName());
+        assertEquals(gameMaster.getMatch().getCurrentTurn().getNextPlayer().getName(), gameMaster.getMatch().getCurrentTurn().getPrevPlayer().getName());
     }
 
 }

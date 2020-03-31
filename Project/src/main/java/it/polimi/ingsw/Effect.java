@@ -7,7 +7,7 @@ public class Effect {
     private MoveWorkerStrategy moveWorker;
     private WinCheckStrategy winCheck;
     private BuildBlockStrategy buildBlock;
-    private PossibleSecondMoveStrategy possibleMove;
+    private PossibleSecondMoveStrategy possibleSecondMove;
     private boolean isActive;
 
     public GodCard getAssociatedCard() {
@@ -24,23 +24,68 @@ public class Effect {
         this.associatedCard=associatedCard;
 
         if(this.associatedCard.getGodName().equals("Apollo")){
-            /* Scelta delle strategy per Apollo */
-        }else if(this.associatedCard.getGodName().equals("Artemide")){
-            /* Scelta delle strategy per Artemide */
-        }else if(this.associatedCard.getGodName().equals("Atena")){
-            /* Scelta delle strategy per Atena */
-        }else if(this.associatedCard.getGodName().equals("Atlante")){
-            /* Scelta delle strategy per Atlante */
-        }else if(this.associatedCard.getGodName().equals("Demetra")){
-            /* Scelta delle strategy per Demetra */
-        }else if(this.associatedCard.getGodName().equals("Efesto")){
-            /* Scelta delle strategy per Efesto */
-        }else if(this.associatedCard.getGodName().equals("Minotauro")){
-            /* Scelta delle strategy per Minotauro */
-        }else if(this.associatedCard.getGodName().equals("Pan")){
-            /* Scelta delle strategy per Pan */
-        }else if(this.associatedCard.getGodName().equals("Prometeo")){
-            /* Scelta delle strategy per Prometeo */
+            /* this.selectOptions = new BasicSelectOptionsConcrete();
+               this.moveOptions = new BasicMoveOptionsConcrete();
+               this.moveWorker = new MoveSwitchingWorkersConcrete();
+               this.winCheck = new BasicWinCheckConcrete();
+               this.possibleSecondMove = new NoSecondMoveConcrete();
+               this.buildBlock = new BasicBuildConcrete(); */
+        } else if(this.associatedCard.getGodName().equals("Artemide")){
+            /* this.selectOptions = new BasicSelectOptionsConcrete();
+               this.moveOptions = new BasicMoveOptionsConcrete();
+               this.moveWorker = new MoveFirstTimeForwardConcrete();
+               this.winCheck = new BasicWinCheckConcrete();
+               this.possibleSecondMove = new MoveSecondTimeForwardConcrete();
+               this.buildBlock = new BasicBuildConcrete(); */
+        } else if(this.associatedCard.getGodName().equals("Atena")){
+            /* this.selectOptions = new BasicSelectOptionsConcrete();
+               this.moveOptions = new BasicMoveOptionsConcrete();
+               this.moveWorker = new MoveCheckingLevelConcrete();
+               this.winCheck = new BasicWinCheckConcrete();
+               this.possibleSecondMove = new NoSecondMoveConcrete();
+               this.buildBlock = new BasicBuildConcrete(); */
+        } else if(this.associatedCard.getGodName().equals("Atlante")){
+            /* this.selectOptions = new BasicSelectOptionsConcrete();
+               this.moveOptions = new BasicMoveOptionsConcrete();
+               this.moveWorker = new BasicMoveConcrete();
+               this.winCheck = new BasicWinCheckConcrete();
+               this.possibleSecondMove = new NoSecondMoveConcrete();
+               this.buildBlock = new InstantBuildDomeConcrete(); */
+        } else if(this.associatedCard.getGodName().equals("Demetra")){
+            /* this.selectOptions = new BasicSelectOptionsConcrete();
+               this.moveOptions = new BasicMoveOptionsConcrete();
+               this.moveWorker = new BasicMoveConcrete();
+               this.winCheck = new BasicWinCheckConcrete();
+               this.possibleSecondMove = new NoSecondMoveConcrete();
+               this.buildBlock = new BuildTwiceDifferentCellConcrete(); */
+        } else if(this.associatedCard.getGodName().equals("Efesto")){
+            /* this.selectOptions = new BasicSelectOptionsConcrete();
+               this.moveOptions = new BasicMoveOptionsConcrete();
+               this.moveWorker = new BasicMoveConcrete();
+               this.winCheck = new BasicWinCheckConcrete();
+               this.possibleSecondMove = new NoSecondMoveConcrete();
+               this.buildBlock = new BuildTwiceSameCellConcrete(); */
+        } else if(this.associatedCard.getGodName().equals("Minotauro")){
+            /* this.selectOptions = new BasicSelectOptionsConcrete();
+               this.moveOptions = new BasicMoveOptionsConcrete();
+               this.moveWorker = new MovePushingWorkerConcrete();
+               this.winCheck = new BasicWinCheckConcrete();
+               this.possibleSecondMove = new NoSecondMoveConcrete();
+               this.buildBlock = new BasicBuildConcrete(); */
+        } else if(this.associatedCard.getGodName().equals("Pan")){
+            /* this.selectOptions = new BasicSelectOptionsConcrete();
+               this.moveOptions = new BasicMoveOptionsConcrete();
+               this.moveWorker = new BasicMoveConcrete();
+               this.winCheck = new WinIfTwoLevelsDownConcrete();
+               this.possibleSecondMove = new NoSecondMoveConcrete();
+               this.buildBlock = new BasicBuildConcrete(); */
+        } else if(this.associatedCard.getGodName().equals("Prometeo")){
+            /* this.selectOptions = new SelectBuildOrMoveConcrete();
+               this.moveOptions = new BasicMoveOptionsConcrete();
+               this.moveWorker = new BasicMoveConcrete();
+               this.winCheck = new BasicWinCheckConcrete();
+               this.possibleSecondMove = new NoSecondMoveConcrete();
+               this.buildBlock = new BuildBeforeAndAfterMoveConcrete(); */
         }
 
     }
@@ -50,29 +95,27 @@ public class Effect {
     }
 
     public Worker doSelectOptions(int x, int y) {
-        /* return selectOptions.select(x, y); */
-        return associatedCard.getOwner().getFirstWorker();
+        return selectOptions.select(x, y);
     }
     public Cell doMoveOptions(Worker selectedWorker) {
-        /* return moveOptions.moveOptions(selectedWorker); */
-        return associatedCard.getOwner().getFirstWorker().getCurrentPosition();
+        return moveOptions.moveOptions(selectedWorker);
     }
-    public void doMoveWorker(Cell selectedCell) {
-        /* moveWorker.moveWorker(selectedCell); */
+    public void doMoveWorker(Worker selectedWorker, Cell selectedCell) {
+        moveWorker.moveWorker(selectedWorker, selectedCell);
     }
     public boolean doWinCheck() {
-        /* return winCheck.winCheck(); */
-        return false;
+        return winCheck.winCheck();
+    }
+    public void doPossibleSecondMove(Worker selectedWorker, Cell selectedCell) {
+        possibleSecondMove.possibleSecondMove(selectedWorker, selectedCell);
     }
     public void doBuildBlock(int x, int y) {
-        /* buildBlock.buildBlock(x, y); */
+        buildBlock.buildBlock(x, y);
     }
     public boolean getStatus() {
-        /* return this.isActive; */
         return isActive;
     }
     public Map getMap() {
-        /* return ((associatedCard.getOwner()).getMatch()).getMap(); */
         return associatedCard.getOwner().getMatch().getMap();
     }
 }

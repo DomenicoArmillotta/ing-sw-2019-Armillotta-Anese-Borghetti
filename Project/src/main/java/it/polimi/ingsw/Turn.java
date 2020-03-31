@@ -18,15 +18,16 @@ public class Turn {
     }
 
     public void executeTurn() {
-        int x = 5, y = 5; /* Esempio */
-        int z = 10, w = 10; /* Esempio */
-        Worker activeWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions(x, y);
-        Cell focusCell = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(activeWorker);
-        ((currentPlayer.getPlayerGod()).getEffect()).doMoveWorker(focusCell);
+        int cellX = 5, cellY = 5;
+        int blockX = 10, blockY = 10;
+        Worker selectedWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions(cellX, cellY);
+        Cell selectedCell = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(selectedWorker);
+        ((currentPlayer.getPlayerGod()).getEffect()).doMoveWorker(selectedWorker, selectedCell);
         if(((currentPlayer.getPlayerGod()).getEffect()).doWinCheck()) {
-            /* Vittoria */
+            /* Codice eseguito in caso di vittoria */
         }
-        ((currentPlayer.getPlayerGod()).getEffect()).doBuildBlock(z, w);
+        ((currentPlayer.getPlayerGod()).getEffect()).doPossibleSecondMove(selectedWorker, selectedCell);
+        ((currentPlayer.getPlayerGod()).getEffect()).doBuildBlock(blockX, blockY);
     }
 
     public void nextTurn() {

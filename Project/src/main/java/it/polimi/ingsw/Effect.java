@@ -7,10 +7,12 @@ public class Effect {
     private MoveWorkerStrategy moveWorker;
     private WinCheckStrategy winCheck;
     private BuildBlockStrategy buildBlock;
-    private PossibleMoveStrategy possibleMove;
+    private PossibleSecondMoveStrategy possibleMove;
     private boolean isActive;
 
-
+    public GodCard getAssociatedCard() {
+        return associatedCard;
+    }
     public GodCard getPrevPlayerGod(){
         return this.getAssociatedCard().getOwner().getMatch().getCurrentTurn().getPrevPlayer().getPlayerGod();
     }
@@ -20,24 +22,27 @@ public class Effect {
 
     public Effect(GodCard associatedCard){
         this.associatedCard=associatedCard;
-        //fare switch
-        String apollo = "APOLLO";
-        String atena="ATENA";
 
-        if (!(string1.compareTo(associatedCard.getGodName()))){
-            SelectOptionsStrategy selectOptions=new BasicSelectOptionsConcrete() ;
-            this.selectOptions=selectOptions;
-            if(this.getNextPlayerGod().getGodName().compareTo(string2))
-            MoveOptionsStrategy moveOptionsStrategy= new
-
-
+        if(this.associatedCard.getGodName().equals("Apollo")){
+            /* Scelta delle strategy per Apollo */
+        }else if(this.associatedCard.getGodName().equals("Artemide")){
+            /* Scelta delle strategy per Artemide */
+        }else if(this.associatedCard.getGodName().equals("Atena")){
+            /* Scelta delle strategy per Atena */
+        }else if(this.associatedCard.getGodName().equals("Atlante")){
+            /* Scelta delle strategy per Atlante */
+        }else if(this.associatedCard.getGodName().equals("Demetra")){
+            /* Scelta delle strategy per Demetra */
+        }else if(this.associatedCard.getGodName().equals("Efesto"){
+            /* Scelta delle strategy per Efesto */
+        }else if(this.associatedCard.getGodName().equals("Minotauro")){
+            /* Scelta delle strategy per Minotauro */
+        }else if(this.associatedCard.getGodName().equals("Pan")){
+            /* Scelta delle strategy per Pan */
+        }else if(this.associatedCard.getGodName().equals("Prometeo")){
+            /* Scelta delle strategy per Prometeo */
         }
-        //....
 
-    }
-
-    publc void setEffectStrategies() {
-        /* Apply Strategy Method */
     }
 
     public changeMoveStrategy(MoveOptionsStrategy newMoveOptions) {

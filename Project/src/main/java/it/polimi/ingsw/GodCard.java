@@ -5,21 +5,55 @@ public class GodCard {
     private String specialRules;
     private Effect effect;
     private Player owner;
-    //mettere stringhe e finire costruttore
-
 
     public GodCard(char[] godName,Player owner){
         this.godName=godName;
         this.owner=owner;
+        if(this.godName.equals("Apollo")){
+            this.description=("");
+            this.specialRules=("");
+        }else if(this.godName.equals("Artemide")){
+            this.description=("");
+            this.specialRules=("");
+
+        }else if(this.godName.equals("Atena")){
+            this.description=("");
+            this.specialRules=("");
+
+        }else if(this.godName.equals("Atlante")){
+            this.description=("");
+            this.specialRules=("");
+
+        }else if(this.godName.equals("Demetra")){
+            this.description=("");
+            this.specialRules=("");
+
+        }else if(this.godName.equals("Efesto")){
+            this.description=("");
+            this.specialRules=("");
+
+        }else if(this.godName.equals("Minotauro")){
+            this.description=("");
+            this.specialRules=("");
+
+        }else if(this.godName.equals("Pan")){
+            this.description=("");
+            this.specialRules=("");
+
+        }else if(this.godName.equals("Prometeo")){
+            this.description=("");
+            this.specialRules=("");
+
+        }
     }
 
     public String getGodName() {
         return godName;
     }
-    public char[] getDescription() {
+    public String getDescription() {
         return description;
     }
-    public char[] getSpecialRules() {
+    public String getSpecialRules() {
         return specialRules;
     }
     public void createEffect(){

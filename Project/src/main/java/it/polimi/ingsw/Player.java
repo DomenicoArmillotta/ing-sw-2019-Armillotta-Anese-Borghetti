@@ -1,23 +1,23 @@
 package it.polimi.ingsw;
 public class Player {
-    private char[] playerName;
-    private char[] networkAddress;
+    private String playerName;
+    private String networkAddress;
     private GodCard playerGod;
     private Worker firstWorker;
     private Worker secondWorker;
     private Match currentMatch;
-    //stringa playerName e net
+
     //enumerazioni vedere teproa
-    //modificare uml first,second e choose
-    public void setName(char[] playerName) {
+    //modificare l'uml di first,second e choose
+    public void setName(String playerName) {
         this.playerName = playerName;
     }
 
-    public void setNetAddress(char[] networkAddress) {
+    public void setNetAddress(String networkAddress) {
         this.networkAddress = networkAddress;
     }
 
-    public void choosePlayerGod(char[] godName) {
+    public void choosePlayerGod(String godName) {
         GodCard playerGod= new GodCard(godName,this);
         this.playerGod = playerGod;
     }
@@ -40,11 +40,11 @@ public class Player {
         return secondWorker;
     }
 
-    public char[] getName() {
+    public String getName() {
         return playerName;
     }
 
-    public char[] getNetAddress() {
+    public String getNetAddress() {
         return networkAddress;
     }
 

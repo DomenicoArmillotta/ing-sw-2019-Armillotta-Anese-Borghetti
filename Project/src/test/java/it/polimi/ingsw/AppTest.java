@@ -1,6 +1,7 @@
 package it.polimi.ingsw;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
@@ -17,4 +18,12 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    @Test
+    public void LoginTest() {
+        /* System.out.println("testing");
+        assertEquals(true, someTurn.getNextPlayer());
+        assertEquals(false, someTurn.getPrevPlayer()); */
+    }
+
 }

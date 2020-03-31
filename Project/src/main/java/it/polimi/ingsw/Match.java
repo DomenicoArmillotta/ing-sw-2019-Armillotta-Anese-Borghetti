@@ -6,6 +6,15 @@ public class Match {
     private ArrayList<Player> playersOrder;
     private Turn currentTurn;
     private Map matchMap;
+    private GameMaster gameMaster;
+
+    public Match(GameMaster gameMaster) {
+        this.gameMaster = gameMaster;
+    }
+
+    public GameMaster getGameMaster() {
+        return gameMaster;
+    }
 
     public void setPlayersOrder(ArrayList<Player> playersQueue) {
         this.playersOrder = playersQueue;
@@ -16,7 +25,7 @@ public class Match {
     }
 
     public void startFirstTurn(ArrayList<Player> playersOrder) {
-        this.currentTurn = new Turn();
+        this.currentTurn = new Turn(this, playersOrder);
     }
 
     public Turn getCurrentTurn() {

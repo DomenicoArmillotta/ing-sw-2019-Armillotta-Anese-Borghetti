@@ -5,14 +5,14 @@ import java.util.*;
 public class GameMaster {
     private Match match;
     private ArrayList<Player> playerQueue = new ArrayList(); //da controllora sinstassi
-    private int numOfPlayer;
+    private int numOfPlayers;
 
 //ma c'è bisogno di una sala di attesa?
 //sento gli altri
 
 
-    public GameMaster(int numOfPlayer, ArrayList<Player> playerQueue){
-        this.numOfPlayer = numOfPlayer;
+    public GameMaster(int numOfPlayers, ArrayList<Player> playerQueue){
+        this.numOfPlayers = numOfPlayers;
         this.playerQueue = playerQueue;
     }
 
@@ -39,7 +39,7 @@ public class GameMaster {
         //per la pulizia ci penserà il garbage-collector
     }
 
-    public int getNumOfPlayer(){
-        return this.numOfPlayer;
+    public int getNumOfPlayers(){
+        return this.numOfPlayers;
     }
 }

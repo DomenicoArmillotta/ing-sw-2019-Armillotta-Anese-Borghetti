@@ -1,9 +1,29 @@
 package it.polimi.ingsw;
 
+import java.util.ArrayList;
+
 public class Turn {
     private Player currentPlayer;
     private Player nextPlayer;
     private Player prevPlayer;
+    private Match match;
+
+    public Turn(Match match, ArrayList<Player> playersQueue) {
+        this.match = match;
+        if((this.getMatch().getGameMaster().getNumOfPlayers())==2) {
+            this.currentPlayer = playersQueue.get(0);
+            this.nextPlayer = playersQueue.get(1);
+            this.prevPlayer = playersQueue.get(0);
+        } else if((this.getMatch().getGameMaster().getNumOfPlayers())==3) {
+            this.currentPlayer = playersQueue.get(0);
+            this.nextPlayer = playersQueue.get(1);
+            this.prevPlayer = playersQueue.get(2);
+        }
+    }
+
+    public Match getMatch() {
+        return match;
+    }
 
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;

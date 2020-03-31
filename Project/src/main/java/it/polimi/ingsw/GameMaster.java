@@ -18,8 +18,7 @@ public class GameMaster {
 
     public void createMatch() {
 
-        this.match = new Match(this);
-        this.match.setPlayersOrder(playerQueue);
+        this.match = new Match(this, playerQueue);
     }
 
     public void setPlayerQueue(Player[] loginPlayerList){

@@ -11,7 +11,6 @@ public class Main {
         player1.choosePlayerGod("Atlante");
         player2.choosePlayerGod("Demetra");
         ArrayList<Player> playersList = new ArrayList<>(Arrays.asList(player1, player2));
-        System.out.println(player1.getName());
         GameMaster gameMaster = new GameMaster(2, playersList);
         gameMaster.createMatch();
     }

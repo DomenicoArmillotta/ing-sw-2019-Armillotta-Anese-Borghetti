@@ -8,8 +8,9 @@ public class Match {
     private Map matchMap;
     private GameMaster gameMaster;
 
-    public Match(GameMaster gameMaster) {
+    public Match(GameMaster gameMaster, ArrayList<Player> playersQueue) {
         this.gameMaster = gameMaster;
+        this.playersOrder = playersQueue;
         startFirstTurn(playersOrder);
     }
 

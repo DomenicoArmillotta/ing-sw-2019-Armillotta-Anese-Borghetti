@@ -26,11 +26,11 @@ public class AppTest
     public void LoginTest() {
         Player player1 = new Player();
         Player player2 = new Player();
+        player1.setName("Marco");
+        player2.setName("Matteo");
+        player1.choosePlayerGod("Atlante");
+        player2.choosePlayerGod("Demetra");
         ArrayList<Player> playersList = new ArrayList<>(Arrays.asList(player1, player2));
-        playersList.get(0).setName("Marco");
-        playersList.get(0).choosePlayerGod("Atlante");
-        playersList.get(1).setName("Matteo");
-        playersList.get(1).choosePlayerGod("Demetra");
         GameMaster gameMaster = new GameMaster(2, playersList);
         gameMaster.createMatch();
         assertEquals("Marco", gameMaster.getMatch().getCurrentTurn().getCurrentPlayer().getName());

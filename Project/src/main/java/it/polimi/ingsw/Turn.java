@@ -29,6 +29,10 @@ public class Turn {
         this.currentPlayer = currentPlayer;
     }
 
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
     public Player getNextPlayer() {
         return nextPlayer;
     }

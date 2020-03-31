@@ -10,6 +10,7 @@ public class Match {
 
     public Match(GameMaster gameMaster) {
         this.gameMaster = gameMaster;
+        startFirstTurn(playersOrder);
     }
 
     public GameMaster getGameMaster() {

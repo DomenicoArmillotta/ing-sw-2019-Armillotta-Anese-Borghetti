@@ -56,7 +56,6 @@ public class AppTest
         assertTrue("Error, X coordinate is too low",  player1FirstChoiceX  >= 0);
         assertTrue("Error, Y coordinate is too high", player1FirstChoiceY <= 25);
         assertTrue("Error, Y coordinate is too low",  player1FirstChoiceY  >= 0);
-        player1.initFirstWorker(player1FirstChoiceX, player1FirstChoiceY);
     }
 
 }

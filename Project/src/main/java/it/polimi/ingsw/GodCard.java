@@ -12,35 +12,35 @@ public class GodCard {
         if(this.godName.equals("Apollo")){
             this.description=("");
             this.specialRules=("");
-        }else if(this.godName.equals("Artemide")){
+        } else if(this.godName.equals("Artemide")){
             this.description=("");
             this.specialRules=("");
 
-        }else if(this.godName.equals("Atena")){
+        } else if(this.godName.equals("Atena")){
             this.description=("");
             this.specialRules=("");
 
-        }else if(this.godName.equals("Atlante")){
+        } else if(this.godName.equals("Atlante")){
             this.description=("");
             this.specialRules=("");
 
-        }else if(this.godName.equals("Demetra")){
+        } else if(this.godName.equals("Demetra")){
             this.description=("");
             this.specialRules=("");
 
-        }else if(this.godName.equals("Efesto")){
+        } else if(this.godName.equals("Efesto")){
             this.description=("");
             this.specialRules=("");
 
-        }else if(this.godName.equals("Minotauro")){
+        } else if(this.godName.equals("Minotauro")){
             this.description=("");
             this.specialRules=("");
 
-        }else if(this.godName.equals("Pan")){
+        } else if(this.godName.equals("Pan")){
             this.description=("");
             this.specialRules=("");
 
-        }else if(this.godName.equals("Prometeo")){
+        } else if(this.godName.equals("Prometeo")){
             this.description=("");
             this.specialRules=("");
 

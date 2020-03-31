@@ -10,8 +10,15 @@ public class GameMaster {
 //ma c'è bisogno di una sala di attesa?
 //sento gli altri
 
+
+    public GameMaster(int numOfPlayer, ArrayList<Player> playerQueue){
+        this.numOfPlayer = numOfPlayer;
+        this.playerQueue = playerQueue;
+    }
+
     public void createMatch() {
-        this.match = new Match();
+
+        this.match = new Match(this);
         this.match.setPlayersOrder(playerQueue);
     }
 
@@ -30,5 +37,9 @@ public class GameMaster {
     public void freeQueue(){
         this.playerQueue.clear();
         //per la pulizia ci penserà il garbage-collector
+    }
+
+    public int getNumOfPlayer(){
+        return this.numOfPlayer;
     }
 }

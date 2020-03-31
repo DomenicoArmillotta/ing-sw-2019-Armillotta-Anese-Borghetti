@@ -52,7 +52,7 @@ public class Worker {
 
 
 
-    private void removeWorker(void){}
+    private void removeWorker(){}
 
 
 }

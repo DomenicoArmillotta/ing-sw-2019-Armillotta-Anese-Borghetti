@@ -1,5 +1,5 @@
 package it.polimi.ingsw;
 
 public interface MoveOptionsStrategy {
-    public Cell moveOptions(Worker);
+    public Cell moveOptions(Worker selectedWorker);
 }

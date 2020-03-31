@@ -1,5 +1,5 @@
 package it.polimi.ingsw;
 
 public interface BuildBlockStrategy {
-    public void buildBlock(int, int);
+    public void buildBlock(int x, int y);
 }

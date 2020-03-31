@@ -33,7 +33,7 @@ public class Effect {
             /* Scelta delle strategy per Atlante */
         }else if(this.associatedCard.getGodName().equals("Demetra")){
             /* Scelta delle strategy per Demetra */
-        }else if(this.associatedCard.getGodName().equals("Efesto"){
+        }else if(this.associatedCard.getGodName().equals("Efesto")){
             /* Scelta delle strategy per Efesto */
         }else if(this.associatedCard.getGodName().equals("Minotauro")){
             /* Scelta delle strategy per Minotauro */
@@ -45,29 +45,34 @@ public class Effect {
 
     }
 
-    public changeMoveStrategy(MoveOptionsStrategy newMoveOptions) {
+    public void changeMoveStrategy(MoveOptionsStrategy newMoveOptions) {
         this.moveOptions = newMoveOptions;
     }
 
     public Worker doSelectOptions(int x, int y) {
         /* return selectOptions.select(x, y); */
+        return associatedCard.getOwner().getFirstWorker();
     }
     public Cell doMoveOptions(Worker selectedWorker) {
         /* return moveOptions.moveOptions(selectedWorker); */
+        return associatedCard.getOwner().getFirstWorker().getCurrentPosition();
     }
     public void doMoveWorker(Cell selectedCell) {
         /* moveWorker.moveWorker(selectedCell); */
     }
     public boolean doWinCheck() {
         /* return winCheck.winCheck(); */
+        return false;
     }
     public void doBuildBlock(int x, int y) {
         /* buildBlock.buildBlock(x, y); */
     }
     public boolean getStatus() {
         /* return this.isActive; */
+        return isActive;
     }
     public Map getMap() {
         /* return ((associatedCard.getOwner()).getMatch()).getMap(); */
+        return associatedCard.getOwner().getMatch().getMap();
     }
 }

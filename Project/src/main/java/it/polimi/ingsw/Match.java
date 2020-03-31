@@ -15,7 +15,7 @@ public class Match {
         return playersOrder;
     }
 
-    public Turn startFirstTurn(ArrayList<Player> playersOrder) {
+    public void startFirstTurn(ArrayList<Player> playersOrder) {
         this.currentTurn = new Turn();
     }
 

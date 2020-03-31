@@ -6,7 +6,7 @@ public class GodCard {
     private Effect effect;
     private Player owner;
 
-    public GodCard(char[] godName,Player owner){
+    public GodCard(String godName, Player owner){
         this.godName=godName;
         this.owner=owner;
         if(this.godName.equals("Apollo")){

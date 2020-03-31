@@ -23,12 +23,12 @@ public class Player {
     }
 
     public void initFirstWorker(int x, int y) {
-        Worker firstWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), GROUND, GROUND);
+        Worker firstWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), Level.GROUND, Level.GROUND);
         this.firstWorker = firstWorker;
     }
 
     public void initSecondWorker(int x, int y) {
-        Worker secondWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), GROUND, GROUND);
+        Worker secondWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), Level.GROUND, Level.GROUND);
         this.secondWorker = secondWorker;
     }
 

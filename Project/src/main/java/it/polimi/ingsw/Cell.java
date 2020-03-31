@@ -10,14 +10,14 @@ public class Cell {
         this.workerOnCell = workerOnCell;
     }
 
-    public void setBuildinLevel(Level buildinLevel) {
-        this.buildingLevel = buildinLevel;
+    public void setBuildingLevel(Level buildingLevel) {
+        this.buildingLevel = buildingLevel;
     }
 
     public Worker getWorkerOnCell() {
         return workerOnCell;
     }
 
-    public int getBuildinLevel() {
+    public Level getBuildingLevel() {
         return buildingLevel;
     }}

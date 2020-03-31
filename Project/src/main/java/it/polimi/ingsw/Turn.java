@@ -20,10 +20,8 @@ public class Turn {
     public void executeTurn() {
         int x = 5, y = 5; /* Esempio */
         int z = 10, w = 10; /* Esempio */
-        Worker activeWorker = new Worker();
-        Cell focusCell = new Cell();
-        activeWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions(x, y);
-        focusCell = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(activeWorker);
+        Worker activeWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions(x, y);
+        Cell focusCell = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(activeWorker);
         ((currentPlayer.getPlayerGod()).getEffect()).doMoveWorker(focusCell);
         if(((currentPlayer.getPlayerGod()).getEffect()).doWinCheck()) {
             /* Vittoria */

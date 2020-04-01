@@ -1,5 +1,13 @@
 package it.polimi.ingsw;
 
+/*
+
+ /\_/\
+( o.o )
+ > ^ <
+
+ */
+
 public class Effect {
     private GodCard associatedCard;
     private SelectOptionsStrategy selectOptions;

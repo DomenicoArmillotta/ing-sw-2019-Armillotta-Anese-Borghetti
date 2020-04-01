@@ -28,6 +28,17 @@ public class Effect {
         return this.getAssociatedCard().getOwner().getMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
     }
 
+    public void setEffectStrategies(SelectOptionsStrategy selectOptions, MoveOptionsStrategy moveOptions,
+                                    MoveWorkerStrategy moveWorker, WinCheckStrategy winCheck,
+                                    PossibleSecondMoveStrategy possibleSecondMove, BuildBlockStrategy buildBlock) {
+        this.selectOptions = selectOptions;
+        this.moveOptions = moveOptions;
+        this.moveWorker = moveWorker;
+        this.winCheck = winCheck;
+        this.possibleSecondMove = possibleSecondMove;
+        this.buildBlock = buildBlock;
+    }
+
     public Effect(){
         if(this.associatedCard.getGodName().equals("Apollo")){
             /* this.selectOptions = new BasicSelectOptionsConcrete();

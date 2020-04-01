@@ -21,9 +21,15 @@ public class Match {
     public void createGodList(){
         GodCard apollo = new GodCard("Apollo");
         Effect effectApollo = new Effect();
-        effectApollo.setEffectStrategies;
+        effectApollo.setEffectStrategies(new BasicSelectOptionsConcrete, new BasicMoveOptionsConcrete, new MoveSwitchingWorkerConcrete,
+                new BasicWinCheckConcrete, new NoSecondMoveConcrete, new BasicBuildBlockConcrete);
         godList.add(apollo);
 
+        GodCard artemide = new GodCard("Artemide");
+        Effect effectArtemide = new Effect();
+        effectArtemide.setEffectStrategies(new BasicSelectOptionsConcrete, new BasicMoveOptionsConcrete, new MoveSwitchingWorkerConcrete,
+                new BasicWinCheckConcrete, new NoSecondMoveConcrete, new BasicBuildBlockConcrete);
+        godList.add(artemide);
     }
 
 

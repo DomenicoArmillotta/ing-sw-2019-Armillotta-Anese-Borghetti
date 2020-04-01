@@ -3,18 +3,18 @@ package it.polimi.ingsw;
 import java.util.*;
 
 public class GameMaster {
-    private Match match;
-    private ArrayList<Player> playerQueue = new ArrayList(); //da controllora sinstassi
-    private int numOfPlayers;
+        private Match match;
+        private List<Player> playerQueue = new ArrayList(); //da controllora sinstassi
+        private int numOfPlayers;
 
 //ma c'è bisogno di una sala di attesa?
 //sento gli altri
 
 
-    public GameMaster(int numOfPlayers, ArrayList<Player> playerQueue){
-        this.numOfPlayers = numOfPlayers;
-        this.playerQueue = playerQueue;
-    }
+        public GameMaster(int numOfPlayers, List<Player> playerQueue){
+            this.numOfPlayers = numOfPlayers;
+            this.playerQueue = playerQueue;
+        }
 
     public void createMatch() {
 

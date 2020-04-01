@@ -1,14 +1,14 @@
 package it.polimi.ingsw;
+import java.util.*;
 
-import java.util.ArrayList;
 
 public class Match {
-    private ArrayList<Player> playersOrder;
+    private List<Player> playersOrder;
     private Turn currentTurn;
     private Map matchMap;
     private GameMaster gameMaster;
 
-    public Match(GameMaster gameMaster, ArrayList<Player> playersQueue) {
+    public Match(GameMaster gameMaster, List<Player> playersQueue) {
         this.gameMaster = gameMaster;
         this.playersOrder = playersQueue;
         startFirstTurn(playersOrder);
@@ -22,11 +22,11 @@ public class Match {
         this.playersOrder = playersQueue;
     }
 
-    public ArrayList<Player> getPlayersOrder() {
+    public List<Player> getPlayersOrder() {
         return playersOrder;
     }
 
-    public void startFirstTurn(ArrayList<Player> playersOrder) {
+    public void startFirstTurn(List<Player> playersOrder) {
         this.currentTurn = new Turn(this, playersOrder);
     }
 

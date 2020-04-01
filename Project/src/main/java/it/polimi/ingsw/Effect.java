@@ -28,9 +28,7 @@ public class Effect {
         return this.getAssociatedCard().getOwner().getMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
     }
 
-    public Effect(GodCard associatedCard){
-        this.associatedCard=associatedCard;
-
+    public Effect(){
         if(this.associatedCard.getGodName().equals("Apollo")){
             /* this.selectOptions = new BasicSelectOptionsConcrete();
                this.moveOptions = new BasicMoveOptionsConcrete();

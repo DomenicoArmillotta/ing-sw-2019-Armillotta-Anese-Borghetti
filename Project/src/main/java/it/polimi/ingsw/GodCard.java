@@ -6,44 +6,44 @@ public class GodCard {
     private Effect effect;
     private Player owner;
 
-    public GodCard(String godName, Player owner){
+    public GodCard(String godName){
         this.godName=godName;
         this.owner=owner;
-        if(this.godName.equals("Apollo")){
-            this.description=("");
-            this.specialRules=("");
-        } else if(this.godName.equals("Artemide")){
-            this.description=("");
-            this.specialRules=("");
+            if (this.godName.equals("Apollo")) {
+                this.description = ("");
+                this.specialRules = ("");
+            } else if (this.godName.equals("Artemide")) {
+                this.description = ("");
+                this.specialRules = ("");
 
-        } else if(this.godName.equals("Atena")){
-            this.description=("");
-            this.specialRules=("");
+            } else if (this.godName.equals("Atena")) {
+                this.description = ("");
+                this.specialRules = ("");
 
-        } else if(this.godName.equals("Atlante")){
-            this.description=("");
-            this.specialRules=("");
+            } else if (this.godName.equals("Atlante")) {
+                this.description = ("");
+                this.specialRules = ("");
 
-        } else if(this.godName.equals("Demetra")){
-            this.description=("");
-            this.specialRules=("");
+            } else if (this.godName.equals("Demetra")) {
+                this.description = ("");
+                this.specialRules = ("");
 
-        } else if(this.godName.equals("Efesto")){
-            this.description=("");
-            this.specialRules=("");
+            } else if (this.godName.equals("Efesto")) {
+                this.description = ("");
+                this.specialRules = ("");
 
-        } else if(this.godName.equals("Minotauro")){
-            this.description=("");
-            this.specialRules=("");
+            } else if (this.godName.equals("Minotauro")) {
+                this.description = ("");
+                this.specialRules = ("");
 
-        } else if(this.godName.equals("Pan")){
-            this.description=("");
-            this.specialRules=("");
+            } else if (this.godName.equals("Pan")) {
+                this.description = ("");
+                this.specialRules = ("");
 
-        } else if(this.godName.equals("Prometeo")){
-            this.description=("");
-            this.specialRules=("");
-
+            } else if (this.godName.equals("Prometeo")) {
+                this.description = ("");
+                this.specialRules = ("");
+            }
         }
     }
 
@@ -68,3 +68,4 @@ public class GodCard {
         return owner;
     }
 }
+

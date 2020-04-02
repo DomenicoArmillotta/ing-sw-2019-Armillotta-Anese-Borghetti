@@ -39,6 +39,10 @@ public class Effect {
         this.buildBlock = buildBlock;
     }
 
+    public void changeMoveStrategy(MoveWorkerStrategy moveWorker) {
+        this.moveWorker = moveWorker;
+    }
+
     public Effect(){
         if(this.associatedCard.getGodName().equals("Apollo")){
             /* this.selectOptions = new BasicSelectOptionsConcrete();

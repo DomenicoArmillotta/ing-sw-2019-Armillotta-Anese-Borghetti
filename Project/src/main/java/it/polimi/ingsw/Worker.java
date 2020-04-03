@@ -22,7 +22,7 @@ public class Worker {
         this.currentPosition = currentPosition;
     }
     public void setCurrentPosition(int x,int y ) {
-        currentPosition=(((this.owner).getMatch()).getMap()).getCell(x,y);
+        currentPosition=(((this.owner).getMatch()).getCell(x,y));
         this.currentPosition = currentPosition;
     }
 

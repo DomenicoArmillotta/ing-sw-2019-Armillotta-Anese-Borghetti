@@ -7,9 +7,6 @@ public class GameMaster {
         private List<Player> playerQueue = new ArrayList(); //da controllora sinstassi
         private int numOfPlayers;
 
-//ma c'è bisogno di una sala di attesa?
-//sento gli altri
-
 
         public GameMaster(int numOfPlayers, List<Player> playerQueue){
             this.numOfPlayers = numOfPlayers;
@@ -40,5 +37,9 @@ public class GameMaster {
 
     public int getNumOfPlayers(){
         return this.numOfPlayers;
+    }
+
+    public List<Player> getPlayerQueue() {
+        return playerQueue;
     }
 }

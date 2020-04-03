@@ -4,7 +4,9 @@ public class Cell {
     private Level buildingLevel;
     private Worker workerOnCell;
 
-    public Cell(){}
+    public Cell() {
+        this.buildingLevel = Level.GROUND;
+    }
 
     public void setWorkerOnCell(Worker workerOnCell) {
         this.workerOnCell = workerOnCell;

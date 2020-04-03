@@ -6,7 +6,7 @@ import java.util.List;
 public class Match {
     private List<Player> playersOrder;
     private Turn currentTurn;
-    private Map matchMap;
+    private Cell[][] map;
     private GameMaster gameMaster;
     private List<GodCard> godList = new ArrayList<GodCard>();
 
@@ -14,6 +14,10 @@ public class Match {
         this.gameMaster = gameMaster;
         this.playersOrder = playersQueue;
         startFirstTurn(playersOrder);
+    }
+
+    public Cell getCell(int x, int y)  {
+        return map[x][y];
     }
 
     /*creatore di godList*/
@@ -96,11 +100,8 @@ public class Match {
     }
 
     public void createMap() {
-        this.matchMap = new Map();
-    }
-
-    public Map getMap() {
-        return this.matchMap;
+        Cell[][] map = new Cell[5][5];
+        this.map = map;
     }
 
 }

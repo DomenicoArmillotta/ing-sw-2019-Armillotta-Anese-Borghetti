@@ -7,7 +7,7 @@ public class GodCard {
     private Player owner;
 
     public GodCard(String godName){
-        this.godName=godName;
+        /* this.godName=godName;
         this.owner=owner;
             if (this.godName.equals("Apollo")) {
                 this.description = ("");
@@ -44,7 +44,7 @@ public class GodCard {
                 this.description = ("");
                 this.specialRules = ("");
             }
-        }
+        } */
     }
 
     public String getGodName() {
@@ -57,8 +57,8 @@ public class GodCard {
         return specialRules;
     }
     public void createEffect(){
-        Effect effect = new Effect(this);
-        this.effect=effect;
+        /* Effect effect = new Effect(this);
+        this.effect=effect; */
     }
     public Effect getEffect(){
         return this.effect;

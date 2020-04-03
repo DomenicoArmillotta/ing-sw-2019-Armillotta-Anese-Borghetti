@@ -18,17 +18,17 @@ public class Player {
     }
 
     public void choosePlayerGod(String godName) {
-        GodCard playerGod= new GodCard(godName,this);
-        this.playerGod = playerGod;
+        /* GodCard playerGod= new GodCard(godName,this);
+        this.playerGod = playerGod; */
     }
 
     public void initFirstWorker(int x, int y) {
-        Worker firstWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), Level.GROUND, Level.GROUND);
+        Worker firstWorker = new Worker(this, (((this.getMatch()).getCell(x,y))),  (((this.getMatch()).getCell(x,y))), Level.GROUND, Level.GROUND);
         this.firstWorker = firstWorker;
     }
 
     public void initSecondWorker(int x, int y) {
-        Worker secondWorker = new Worker(this, (((this.getMatch()).getMap()).getCell(x,y)), (((this.getMatch()).getMap()).getCell(x,y)), Level.GROUND, Level.GROUND);
+        Worker secondWorker = new Worker(this,  (((this.getMatch()).getCell(x,y))),  (((this.getMatch()).getCell(x,y))), Level.GROUND, Level.GROUND);
         this.secondWorker = secondWorker;
     }
 

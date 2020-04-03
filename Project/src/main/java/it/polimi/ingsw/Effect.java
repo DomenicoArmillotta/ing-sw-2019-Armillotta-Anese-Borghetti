@@ -136,7 +136,7 @@ public class Effect {
     public boolean getStatus() {
         return isActive;
     }
-    public Map getMap() {
-        return associatedCard.getOwner().getMatch().getMap();
+    public Match getMap() {
+        return associatedCard.getOwner().getMatch();
     }
 }

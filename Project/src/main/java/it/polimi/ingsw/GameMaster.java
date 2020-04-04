@@ -14,7 +14,6 @@ public class GameMaster {
         }
 
     public void createMatch() {
-
         this.match = new Match(this, playerQueue);
     }
 

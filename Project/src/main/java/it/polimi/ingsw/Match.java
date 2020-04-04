@@ -47,7 +47,7 @@ public class Match {
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new InstantBuildDomeConcrete());
         godList.add(atlante);
 
-        GodCard demetra = new GodCard("demetra");
+        GodCard demetra = new GodCard("Demetra");
         Effect effectDemetra = new Effect();
         effectDemetra.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BuildTwiceDifferentCellConcrete());
@@ -101,7 +101,15 @@ public class Match {
 
     public void createMap() {
         Cell[][] map = new Cell[5][5];
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                map[i][j] = new Cell();
+            }
+        }
         this.map = map;
     }
 
+    public Cell[][] getMap() {
+        return map;
+    }
 }

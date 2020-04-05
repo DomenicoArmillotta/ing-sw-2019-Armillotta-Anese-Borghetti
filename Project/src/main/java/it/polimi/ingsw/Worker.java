@@ -6,14 +6,14 @@ public class Worker {
     private Level currentLevel;
     private Level previousLevel;
 
-    public Worker(Player owner, Cell currentPosition, Cell previousPosition, Level currentLevel, Level previousLevel) {
+    public Worker(Player owner, Cell currentPosition, Level currentLevel) {
         this.owner = owner;
         this.currentPosition = currentPosition;
-        this.previousPosition = previousPosition;
+        this.previousPosition = currentPosition;
         this.currentLevel = currentLevel;
-        this.previousLevel = previousLevel;
+        this.previousLevel = currentLevel;
+        currentPosition.setWorkerOnCell(this);
     }
-
     public void setOwner(Player owner) {
         this.owner = owner;
     }
@@ -52,7 +52,9 @@ public class Worker {
 
 
 
-    private void removeWorker(){}
+    private void removeWorker(){
+        this.currentPosition=null;
+    }
 
 
 }

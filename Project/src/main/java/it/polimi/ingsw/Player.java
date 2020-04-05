@@ -1,4 +1,6 @@
 package it.polimi.ingsw;
+import java.util.*;
+
 public class Player {
     private String playerName;
     private String networkAddress;
@@ -7,30 +9,32 @@ public class Player {
     private Worker secondWorker;
     private Match currentMatch;
 
-    //enumerazioni vedere teproa
-    //modificare l'uml di first,second e choose
-    public void setName(String playerName) {
-        this.playerName = playerName;
+    public Player(String playerName)
+    {
+        this.playerName=playerName;
     }
 
     public void setNetAddress(String networkAddress) {
         this.networkAddress = networkAddress;
     }
 
-    public void choosePlayerGod(String godName) {
-        /* GodCard playerGod= new GodCard(godName,this);
-        this.playerGod = playerGod; */
-    }
-
     public void initFirstWorker(int x, int y) {
-        Worker firstWorker = new Worker(this, (((this.getMatch()).getCell(x,y))),  (((this.getMatch()).getCell(x,y))), Level.GROUND, Level.GROUND);
+        Worker firstWorker = new Worker(this, (((this.getMatch()).getCell(x,y))),   Level.GROUND);
         this.firstWorker = firstWorker;
     }
-
     public void initSecondWorker(int x, int y) {
-        Worker secondWorker = new Worker(this,  (((this.getMatch()).getCell(x,y))),  (((this.getMatch()).getCell(x,y))), Level.GROUND, Level.GROUND);
+        Worker secondWorker = new Worker(this,  (((this.getMatch()).getCell(x,y))),  Level.GROUND);
         this.secondWorker = secondWorker;
     }
+    public void setPlayerGod(GodCard playerGod) {
+        this.playerGod = playerGod;
+    }
+
+    public void setCurrentMatch(Match currentMatch) {
+        this.currentMatch = currentMatch;
+    }
+
+
 
     public Worker getFirstWorker() {
         return firstWorker;

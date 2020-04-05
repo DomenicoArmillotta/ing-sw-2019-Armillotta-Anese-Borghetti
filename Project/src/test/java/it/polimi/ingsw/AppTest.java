@@ -1,4 +1,4 @@
-package it.polimi.ingsw;
+/*package it.polimi.ingsw;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,14 +8,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * Unit test for simple App.
- */
+
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
+
     @Test
     public void shouldAnswerWithTrue()
     {
@@ -40,7 +36,7 @@ public class AppTest
     @Test
     public void OutOfMapTest() {
         System.out.println("TEST 3: Verifico che un Worker non venga posizionato fuori dalla mappa all'inizio del gioco.");
-        /* 25 x 25 */
+
         int player1FirstChoiceX = 5;
         int player1FirstChoiceY = 2;
         Player player1 = new Player();
@@ -59,3 +55,4 @@ public class AppTest
     }
 
 }
+*/

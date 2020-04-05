@@ -55,8 +55,7 @@ public class Turn {
     }
 
     public void nextTurn() {
-        Player tempPlayer = new Player();
-        tempPlayer = currentPlayer;
+        Player tempPlayer = currentPlayer;
         currentPlayer = nextPlayer;
         nextPlayer = prevPlayer;
         prevPlayer = tempPlayer;

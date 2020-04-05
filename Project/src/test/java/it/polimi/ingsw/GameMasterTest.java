@@ -11,13 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GameMasterTest {
     @Test
     public void createPlayerQueueInGameMasterTest(){
-        Player n1 = new Player();
-        Player n2 = new Player();
-        Player n3 = new Player();
+        Player n1 = new Player("Marco");
+        Player n2 = new Player("Pietro");
+        Player n3 = new Player("Domenico");
         List<Player> playerQueue = new ArrayList<>();
-        n1.setName("Marco");
-        n2.setName("Pietro");
-        n3.setName("Domenico");
         playerQueue.add(n1);
         playerQueue.add(n2);
         playerQueue.add(n3);
@@ -27,13 +24,11 @@ public class GameMasterTest {
 
     @Test
     public void CreatedMatchTest(){
-        Player n1 = new Player();
-        Player n2 = new Player();
-        Player n3 = new Player();
+        Player n1 = new Player("Marco");
+        Player n2 = new Player("Pietro");
+        Player n3 = new Player("Domenico");
         List<Player> playerQueue = new ArrayList<>();
-        n1.setName("Marco");
-        n2.setName("Pietro");
-        n3.setName("Domenico");
+
         playerQueue.add(n1);
         playerQueue.add(n2);
         playerQueue.add(n3);
@@ -43,11 +38,10 @@ public class GameMasterTest {
     }
     @Test
     public void createMatchWithTwoPlayersTest(){
-        Player n1 = new Player();
-        Player n2 = new Player();
+        Player n1 = new Player("Marco");
+        Player n2 = new Player("Pietro");
         List<Player> playerQueue = new ArrayList<>();
-        n1.setName("Marco");
-        n2.setName("Pietro");
+
         playerQueue.add(n1);
         playerQueue.add(n2);
         GameMaster  gameMaster1 = new GameMaster(2,playerQueue);

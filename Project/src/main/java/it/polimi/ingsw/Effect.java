@@ -22,10 +22,10 @@ public class Effect {
         return associatedCard;
     }
     public GodCard getPrevPlayerGod(){
-        return this.getAssociatedCard().getOwner().getMatch().getCurrentTurn().getPrevPlayer().getPlayerGod();
+        return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getPrevPlayer().getPlayerGod();
     }
     public GodCard getNextPlayerGod(){
-        return this.getAssociatedCard().getOwner().getMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
+        return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
     }
 
     public void setEffectStrategies(SelectOptionsStrategy selectOptions, MoveOptionsStrategy moveOptions,
@@ -73,6 +73,6 @@ public class Effect {
         return isActive;
     }
     public Match getMap() {
-        return associatedCard.getOwner().getMatch();
+        return associatedCard.getOwner().getCurrentMatch();
     }
 }

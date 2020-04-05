@@ -19,29 +19,25 @@ public class Player {
     }
 
     public void initFirstWorker(int x, int y) {
-        Worker firstWorker = new Worker(this, (((this.getMatch()).getCell(x,y))),   Level.GROUND);
+        Worker firstWorker = new Worker(this, (((this.getCurrentMatch()).getCell(x,y))),   Level.GROUND);
         this.firstWorker = firstWorker;
     }
     public void initSecondWorker(int x, int y) {
-        Worker secondWorker = new Worker(this,  (((this.getMatch()).getCell(x,y))),  Level.GROUND);
+        Worker secondWorker = new Worker(this,  (((this.getCurrentMatch()).getCell(x,y))),  Level.GROUND);
         this.secondWorker = secondWorker;
     }
     public void setPlayerGod(GodCard playerGod) {
         this.playerGod = playerGod;
     }
+    public GodCard getPlayerGod() {
+        return playerGod;
+    }
 
     public void setCurrentMatch(Match currentMatch) {
         this.currentMatch = currentMatch;
     }
-
-
-
-    public Worker getFirstWorker() {
-        return firstWorker;
-    }
-
-    public Worker getSecondWorker() {
-        return secondWorker;
+    public Match getCurrentMatch() {
+        return currentMatch;
     }
 
     public String getName() {
@@ -52,11 +48,17 @@ public class Player {
         return networkAddress;
     }
 
-    public GodCard getPlayerGod() {
-        return playerGod;
+    public Worker getFirstWorker() {
+        return firstWorker;
     }
 
-    public Match getMatch() {
-        return currentMatch;
+    public Worker getSecondWorker() {
+        return secondWorker;
     }
+
+
+
+
+
+
 }

@@ -27,5 +27,15 @@ public class GodCardTest  {
             apollo.setEffect(effectApollo);
             assertEquals(apollo.getEffect(),effectApollo);
         }
+    @Test
+    public void OwnerTest(){
+        Player n1 = new Player("Marco");
+        GodCard apollo = new GodCard("Apollo","bla bla");
+        apollo.setOwner(n1);
+        assertEquals(apollo.getOwner(),n1);
+
+    }
+
+
 
 }

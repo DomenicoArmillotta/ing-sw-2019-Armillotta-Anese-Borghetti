@@ -5,6 +5,7 @@ public class Worker {
     private Cell previousPosition;
     private Level currentLevel;
     private Level previousLevel;
+    //aggiunto GET PREVIOUSPOSITION
 
     public Worker(Player owner, Cell currentPosition, Level currentLevel) {
         this.owner = owner;
@@ -44,6 +45,10 @@ public class Worker {
     public Cell getCurrentPosition()
     {
         return currentPosition;
+    }
+    public Cell getPreviousPosition()
+    {
+        return previousPosition;
     }
 
     public Level getPreviousLevel() {

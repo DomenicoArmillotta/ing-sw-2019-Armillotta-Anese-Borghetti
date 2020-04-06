@@ -8,7 +8,7 @@ public class Match {
     private Turn currentTurn;
     private Cell[][] map;
     private GameMaster gameMaster;
-    private List<GodCard> godList = new ArrayList<GodCard>();
+    private List<GodCard> godList = new ArrayList();
 
     public Match(GameMaster gameMaster, List<Player> playersQueue) {
         this.gameMaster = gameMaster;

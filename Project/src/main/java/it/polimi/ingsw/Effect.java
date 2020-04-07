@@ -43,7 +43,7 @@ public class Effect {
         this.moveWorker = moveWorker;
     }
 
-    public Effect(){
+    public Effect() {
 
     }
 
@@ -51,28 +51,39 @@ public class Effect {
         this.moveOptions = newMoveOptions;
     }
 
-    public Worker doSelectOptions(int x, int y) {
-        return selectOptions.select(x, y);
+    public Worker doSelectOptions() {
+        return selectOptions.select();
     }
+
     public Cell doMoveOptions(Worker selectedWorker) {
         return moveOptions.moveOptions(selectedWorker);
     }
+
     public void doMoveWorker(Worker selectedWorker, Cell selectedCell) {
         moveWorker.moveWorker(selectedWorker, selectedCell);
     }
+
     public boolean doWinCheck() {
         return winCheck.winCheck();
     }
+
     public void doPossibleSecondMove(Worker selectedWorker, Cell selectedCell) {
         possibleSecondMove.possibleSecondMove(selectedWorker, selectedCell);
     }
-    public void doBuildBlock(int x, int y) {
-        buildBlock.buildBlock(x, y);
+
+    public void doBuildBlock() {
+        buildBlock.buildBlock();
     }
+
     public boolean getStatus() {
         return isActive;
     }
+
     public Match getMap() {
         return associatedCard.getOwner().getCurrentMatch();
+    }
+
+    public void setIsActive(boolean active) {
+        isActive = active;
     }
 }

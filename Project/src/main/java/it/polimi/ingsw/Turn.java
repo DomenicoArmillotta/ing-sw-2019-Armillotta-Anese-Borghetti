@@ -44,7 +44,7 @@ public class Turn {
     public void executeTurn() {
         /* OUTPUT display mappa */
         /* int cellX = 5, cellY = 5; */
-        int blockX = 10, blockY = 10;
+        /* int blockX = 10, blockY = 10; */
 
         Worker selectedWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions();
         Cell selectedCell = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(selectedWorker);
@@ -54,7 +54,7 @@ public class Turn {
             /* Codice eseguito in caso di vittoria */
         }
         ((currentPlayer.getPlayerGod()).getEffect()).doPossibleSecondMove(selectedWorker, selectedCell);
-        ((currentPlayer.getPlayerGod()).getEffect()).doBuildBlock(blockX, blockY);
+        ((currentPlayer.getPlayerGod()).getEffect()).doBuildBlock();
     }
 
     public void nextTurn() {

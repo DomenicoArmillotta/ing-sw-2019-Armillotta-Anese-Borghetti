@@ -49,10 +49,6 @@ public class Turn {
         Worker selectedWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions(this);
         Cell[] selectedCells = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(selectedWorker, this);
         ((currentPlayer.getPlayerGod()).getEffect()).doMoveWorker(selectedWorker, selectedCells, this);
-
-        if (((currentPlayer.getPlayerGod()).getEffect()).doWinCheck(this)) {
-            /* Codice eseguito in caso di vittoria */
-        }
         ((currentPlayer.getPlayerGod()).getEffect()).doPossibleSecondMove(selectedWorker, selectedCells, this);
         ((currentPlayer.getPlayerGod()).getEffect()).doBuildBlock(this);
     }

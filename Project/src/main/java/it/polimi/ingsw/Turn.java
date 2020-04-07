@@ -42,11 +42,14 @@ public class Turn {
     }
 
     public void executeTurn() {
-        int cellX = 5, cellY = 5;
+        /* OUTPUT display mappa */
+        /* int cellX = 5, cellY = 5; */
         int blockX = 10, blockY = 10;
-        Worker selectedWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions(cellX, cellY);
+
+        Worker selectedWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions();
         Cell selectedCell = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(selectedWorker);
         ((currentPlayer.getPlayerGod()).getEffect()).doMoveWorker(selectedWorker, selectedCell);
+
         if(((currentPlayer.getPlayerGod()).getEffect()).doWinCheck()) {
             /* Codice eseguito in caso di vittoria */
         }

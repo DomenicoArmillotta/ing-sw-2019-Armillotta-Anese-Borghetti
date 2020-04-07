@@ -2,7 +2,12 @@ package it.polimi.ingsw;
 
 public class BasicMoveConcrete implements MoveWorkerStrategy{
     @Override
-    public void moveWorker(Worker selectedWorker, Cell[] selectedCells, Turn turn) {
-
+    //devo spostare il worker delegando il controllo al controller(che deve coontrollare altezza edificio e se ci sono altri worker)
+    public void moveWorker(Worker selectedWorker, Cell selectedCells, Turn turn) {
+            selectedWorker.setPreviousLevel(selectedWorker.getCurrentLevel());
+            selectedWorker.setPreviousPosition(selectedWorker.getCurrentPosition());
+            selectedCells.setWorkerOnCell(selectedWorker);
+            selectedWorker.setCurrentPosition(selectedCells);
+            selectedWorker.setCurrentLevel(selectedCells.getBuildingLevel());
     }
 }

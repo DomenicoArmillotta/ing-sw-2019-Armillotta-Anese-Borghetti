@@ -1,8 +1,18 @@
 package it.polimi.ingsw;
-
+//da sistemare x e Y ATTENZIONE
 public class Cell {
     private Level buildingLevel;
     private Worker workerOnCell;
+    private int X;
+    private int Y;
+
+    public int getX() {
+        return X;
+    }
+
+    public int getY() {
+        return Y;
+    }
 
     public Cell() {
         this.buildingLevel = Level.GROUND;
@@ -22,4 +32,13 @@ public class Cell {
 
     public Level getBuildingLevel() {
         return buildingLevel;
-    }}
+    }
+
+    public void setX(int x) {
+        X = x;
+    }
+
+    public void setY(int y) {
+        Y = y;
+    }
+}

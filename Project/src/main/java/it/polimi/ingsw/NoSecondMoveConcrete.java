@@ -2,7 +2,7 @@ package it.polimi.ingsw;
 
 public class NoSecondMoveConcrete implements PossibleSecondMoveStrategy{
     @Override
-    public void possibleSecondMove(Worker selectedWorker, Cell[] selectedCells, Turn turn) {
+    public void possibleSecondMove(Worker selectedWorker, Cell selectedCells, Turn turn) {
 
     }
 }

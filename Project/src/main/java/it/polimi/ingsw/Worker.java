@@ -27,6 +27,13 @@ public class Worker {
         this.currentPosition = currentPosition;
     }
 
+    public void setPreviousPosition(Cell previousPosition) {
+        this.previousPosition = previousPosition;
+    }
+
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
 
     public void setPreviousLevel(Level previousLevel) {
         this.previousLevel = previousLevel;

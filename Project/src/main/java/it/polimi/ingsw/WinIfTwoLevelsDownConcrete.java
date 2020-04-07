@@ -2,7 +2,7 @@ package it.polimi.ingsw;
 
 public class WinIfTwoLevelsDownConcrete implements WinCheckStrategy {
     @Override
-    public boolean winCheck() {
+    public boolean winCheck(Turn turn) {
         return false;
     }
 }

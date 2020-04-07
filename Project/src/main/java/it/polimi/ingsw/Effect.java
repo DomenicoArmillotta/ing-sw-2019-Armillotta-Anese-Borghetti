@@ -11,7 +11,7 @@ package it.polimi.ingsw;
 public class Effect {
     private GodCard associatedCard;
     private SelectOptionsStrategy selectOptions;
-    private MoveOptionsStrategy moveOptions;
+    private RestraintsCellsStrategy restraintsCells;
     private MoveWorkerStrategy moveWorker;
     private WinCheckStrategy winCheck;
     private BuildBlockStrategy buildBlock;
@@ -28,11 +28,11 @@ public class Effect {
         return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
     }
 
-    public void setEffectStrategies(SelectOptionsStrategy selectOptions, MoveOptionsStrategy moveOptions,
+    public void setEffectStrategies(SelectOptionsStrategy selectOptions, RestraintsCellsStrategy restraintsCells,
                                     MoveWorkerStrategy moveWorker, WinCheckStrategy winCheck,
                                     PossibleSecondMoveStrategy possibleSecondMove, BuildBlockStrategy buildBlock) {
         this.selectOptions = selectOptions;
-        this.moveOptions = moveOptions;
+        this.restraintsCells = restraintsCells;
         this.moveWorker = moveWorker;
         this.winCheck = winCheck;
         this.possibleSecondMove = possibleSecondMove;
@@ -47,32 +47,32 @@ public class Effect {
 
     }
 
-    public void changeMoveStrategy(MoveOptionsStrategy newMoveOptions) {
-        this.moveOptions = newMoveOptions;
+    public void changeMoveStrategy(RestraintsCellsStrategy restraintsCells) {
+        this.restraintsCells = restraintsCells;
     }
 
-    public Worker doSelectOptions() {
-        return selectOptions.select();
+    public Worker doSelectOptions(Turn turn) {
+        return selectOptions.select(turn);
     }
 
-    public Cell doMoveOptions(Worker selectedWorker) {
-        return moveOptions.moveOptions(selectedWorker);
+    public Cell[] doMoveOptions(Worker selectedWorker, Turn turn) {
+        return restraintsCells.restraintsCells(selectedWorker, turn);
     }
 
-    public void doMoveWorker(Worker selectedWorker, Cell selectedCell) {
-        moveWorker.moveWorker(selectedWorker, selectedCell);
+    public void doMoveWorker(Worker selectedWorker, Cell[] selectedCells, Turn turn) {
+        moveWorker.moveWorker(selectedWorker, selectedCells, turn);
     }
 
-    public boolean doWinCheck() {
-        return winCheck.winCheck();
+    public boolean doWinCheck(Turn turn) {
+        return winCheck.winCheck(turn);
     }
 
-    public void doPossibleSecondMove(Worker selectedWorker, Cell selectedCell) {
-        possibleSecondMove.possibleSecondMove(selectedWorker, selectedCell);
+    public void doPossibleSecondMove(Worker selectedWorker, Cell[] selectedCells, Turn turn) {
+        possibleSecondMove.possibleSecondMove(selectedWorker, selectedCells, turn);
     }
 
-    public void doBuildBlock() {
-        buildBlock.buildBlock();
+    public void doBuildBlock(Turn turn) {
+        buildBlock.buildBlock(turn);
     }
 
     public boolean getStatus() {

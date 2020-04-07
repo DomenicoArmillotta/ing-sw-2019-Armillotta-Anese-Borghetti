@@ -46,15 +46,15 @@ public class Turn {
         /* int cellX = 5, cellY = 5; */
         /* int blockX = 10, blockY = 10; */
 
-        Worker selectedWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions();
-        Cell selectedCell = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(selectedWorker);
-        ((currentPlayer.getPlayerGod()).getEffect()).doMoveWorker(selectedWorker, selectedCell);
+        Worker selectedWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions(this);
+        Cell[] selectedCells = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(selectedWorker, this);
+        ((currentPlayer.getPlayerGod()).getEffect()).doMoveWorker(selectedWorker, selectedCells, this);
 
-        if(((currentPlayer.getPlayerGod()).getEffect()).doWinCheck()) {
+        if (((currentPlayer.getPlayerGod()).getEffect()).doWinCheck(this)) {
             /* Codice eseguito in caso di vittoria */
         }
-        ((currentPlayer.getPlayerGod()).getEffect()).doPossibleSecondMove(selectedWorker, selectedCell);
-        ((currentPlayer.getPlayerGod()).getEffect()).doBuildBlock();
+        ((currentPlayer.getPlayerGod()).getEffect()).doPossibleSecondMove(selectedWorker, selectedCells, this);
+        ((currentPlayer.getPlayerGod()).getEffect()).doBuildBlock(this);
     }
 
     public void nextTurn() {

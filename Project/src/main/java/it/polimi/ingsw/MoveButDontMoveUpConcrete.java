@@ -1,8 +1,8 @@
 package it.polimi.ingsw;
 
-public class MoveButDontMoveUpConcrete implements MoveOptionsStrategy{
+public class MoveButDontMoveUpConcrete implements RestraintsCellsStrategy {
     @Override
-    public Cell moveOptions(Worker selectedWorker) {
+    public Cell[] restraintsCells(Worker selectedWorker, Turn turn) {
         return null;
     }
 }

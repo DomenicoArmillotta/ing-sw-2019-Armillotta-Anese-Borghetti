@@ -1,5 +1,5 @@
 package it.polimi.ingsw;
 
 public interface SelectOptionsStrategy {
-    public Worker select();
+    public Worker select(Turn turn);
 }

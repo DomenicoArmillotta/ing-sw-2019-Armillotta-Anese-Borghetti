@@ -18,7 +18,7 @@ public class MoveSwitchingWorkersConcrete implements MoveWorkerStrategy {
         selectedWorker.getPreviousPosition().setWorkerOnCell(temporaryCell.getWorkerOnCell());
 
         selectedWorker.setCurrentPosition(selectedCells);
-        selectedWorker.getPreviousPosition().getWorkerOnCell().setCurrentPosition(selectedWorker.getPreviousPosition());
+        workerDaSpostare.setCurrentPosition(selectedWorker.getPreviousPosition());
 
 
     }

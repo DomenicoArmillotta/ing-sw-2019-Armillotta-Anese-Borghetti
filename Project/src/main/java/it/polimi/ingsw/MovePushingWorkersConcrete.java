@@ -43,6 +43,6 @@ public class MovePushingWorkersConcrete implements MoveWorkerStrategy {
 
         selectedWorker.setCurrentPosition(selectedCells);
         workerDaSpostare.setCurrentPosition(newCellWithPush);
-        
+
     }
 }

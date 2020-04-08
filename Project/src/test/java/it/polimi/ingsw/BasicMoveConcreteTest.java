@@ -28,7 +28,21 @@ public class BasicMoveConcreteTest {
         Cell selectedCell=new Cell();
         selectedCell.setY(4);
         selectedCell.setX(4);
-        worker1.getOwner().getPlayerGod().getEffect().setEffectStrategies(BasicSelectOptionsConcrete,BasicMoveOptionsConcrete,BasicMoveConcrete,BasicWinCheckConcrete,NoSecondMoveConcrete,BasicBuildConcrete);
+        //creo oggetti delle strategy
+        BasicSelectOptionsConcrete basicSelectOptionsConcrete=new BasicSelectOptionsConcrete();
+        BasicMoveOptionsConcrete basicMoveOptionsConcrete=new BasicMoveOptionsConcrete();
+
+        //
+        MovePushingWorkersConcrete movePushingWorkersConcrete=new MovePushingWorkersConcrete();
+        MoveSwitchingWorkersConcrete moveSwitchingWorkersConcrete=new MoveSwitchingWorkersConcrete();
+        MoveCheckingLevelConcrete moveCheckingLevelConcrete=new MoveCheckingLevelConcrete();
+        BasicMoveConcrete basicMoveConcrete=new BasicMoveConcrete();
+        //
+        BasicWinCheckConcrete basicWinCheckConcrete=new BasicWinCheckConcrete();
+        NoSecondMoveConcrete noSecondMoveConcrete=new NoSecondMoveConcrete();
+        BasicBuildConcrete basicBuildConcrete=new BasicBuildConcrete();
+        //fine creazione
+        worker1.getOwner().getPlayerGod().getEffect().setEffectStrategies(basicSelectOptionsConcrete,basicMoveOptionsConcrete,basicMoveConcrete,basicWinCheckConcrete,noSecondMoveConcrete,basicBuildConcrete);
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
         worker1.getOwner().getPlayerGod().getEffect().doMoveWorker(worker1,selectedCell,match.getCurrentTurn());
         assertEquals(worker1.getCurrentPosition(),selectedCell);

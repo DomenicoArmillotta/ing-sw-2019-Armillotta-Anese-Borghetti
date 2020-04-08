@@ -2,14 +2,17 @@ package it.polimi.ingsw;
 
 public class MovePushingWorkersConcrete implements MoveWorkerStrategy {
 
-    public Worker WorkerSpostato( Cell selectedCells){
+    /* aggiungere controllo che la cella adiacente sia libera */
+
+    public Worker WorkerSpostato(Cell selectedCells) {
         return selectedCells.getWorkerOnCell();
     }
+
     //calcola spostamento indicando cosa somare alle cordinate x,y ritorna un array
-    public int calcolaSpostamentoX(Worker selectedWorker,Cell selectedCell){
-        Cell cellaWorkerCheSposta=selectedWorker.getCurrentPosition();
-        Cell cellaWorkerDaSpostare=selectedCell;
-        int differenceX=cellaWorkerCheSposta.getX()-cellaWorkerDaSpostare.getX();
+    public int calcolaSpostamentoX(Worker selectedWorker, Cell selectedCell) {
+        Cell cellaWorkerCheSposta = selectedWorker.getCurrentPosition();
+        Cell cellaWorkerDaSpostare = selectedCell;
+        int differenceX = cellaWorkerCheSposta.getX() - cellaWorkerDaSpostare.getX();
         return differenceX;
     }
     public int calcolaSpostamentoY(Worker selectedWorker,Cell selectedCell){

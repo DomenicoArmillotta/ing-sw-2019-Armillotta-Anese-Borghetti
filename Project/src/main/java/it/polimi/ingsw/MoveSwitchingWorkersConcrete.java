@@ -3,7 +3,7 @@ package it.polimi.ingsw;
 public class MoveSwitchingWorkersConcrete implements MoveWorkerStrategy {
     @Override
     //scambia i personaggi
-    public void moveWorker(Worker selectedWorker, Cell selectedCells, Turn turn) {
+    public void moveWorker(Worker selectedWorker, Cell selectedCells) {
         Cell temporaryCell = new Cell();
         Worker workerDaSpostare=selectedCells.getWorkerOnCell();
         selectedWorker.setPreviousLevel(selectedWorker.getCurrentLevel());

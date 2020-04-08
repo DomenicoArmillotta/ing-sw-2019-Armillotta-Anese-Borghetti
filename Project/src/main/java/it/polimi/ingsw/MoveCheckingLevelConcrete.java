@@ -1,8 +1,8 @@
 package it.polimi.ingsw;
-
+//se la differenza dei livelli è maggiore di uno attiva is active
 public class MoveCheckingLevelConcrete implements MoveWorkerStrategy {
     @Override
-    public void moveWorker(Worker selectedWorker, Cell selectedCells, Turn turn) {
+    public void moveWorker(Worker selectedWorker, Cell selectedCells) {
         selectedWorker.setPreviousLevel(selectedWorker.getCurrentLevel());
         selectedWorker.setPreviousPosition(selectedWorker.getCurrentPosition());
         selectedCells.setWorkerOnCell(selectedWorker);

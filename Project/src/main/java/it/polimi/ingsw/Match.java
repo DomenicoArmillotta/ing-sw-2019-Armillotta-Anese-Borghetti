@@ -79,7 +79,7 @@ public class Match {
                 new WinIfTwoLevelsDownConcrete(), new NoSecondMoveConcrete(), new BasicBuildConcrete());
         godList.add(pan);
 
-        GodCard prometeo = new GodCard("Prometeo","bla bla");
+        GodCard prometeo = new GodCard("Prometeo", "bla bla");
         Effect effectPrometeo = new Effect();
         apollo.setEffect(effectPrometeo);
         effectPrometeo.setEffectStrategies(new SelectBuildOrMoveConcrete(), new MoveButDontMoveUpConcrete(), new BasicMoveConcrete(),
@@ -87,6 +87,9 @@ public class Match {
         godList.add(prometeo);
     }
 
+    public List<GodCard> getGodList() {
+        return godList;
+    }
 
     public GameMaster getGameMaster() {
         return gameMaster;

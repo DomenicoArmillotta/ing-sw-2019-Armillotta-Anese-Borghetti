@@ -47,10 +47,10 @@ public class Turn {
         /* int blockX = 10, blockY = 10; */
 
         Worker selectedWorker = ((currentPlayer.getPlayerGod()).getEffect()).doSelectOptions(this);
-        Cell[] selectedCells = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(selectedWorker, this);
+        /*  Cell[] selectedCells = ((currentPlayer.getPlayerGod()).getEffect()).doMoveOptions(selectedWorker, this);
         ((currentPlayer.getPlayerGod()).getEffect()).doMoveWorker(selectedWorker, selectedCells, this);
         ((currentPlayer.getPlayerGod()).getEffect()).doPossibleSecondMove(selectedWorker, selectedCells, this);
-        ((currentPlayer.getPlayerGod()).getEffect()).doBuildBlock(this);
+        ((currentPlayer.getPlayerGod()).getEffect()).doBuildBlock(this); */
     }
 
     public void nextTurn() {

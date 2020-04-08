@@ -113,6 +113,6 @@ public class TurnTest {
         assertEquals(myTurn.getCurrentPlayer(), player1);
         assertEquals(myTurn.getPrevPlayer(), player3);
         assertEquals(myTurn.getNextPlayer(), player2);
-            
+
     }
 }

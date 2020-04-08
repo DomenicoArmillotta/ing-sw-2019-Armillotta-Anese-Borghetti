@@ -1,13 +1,5 @@
 package it.polimi.ingsw;
 
-/*
-
- /\_/\
-( o.o )
- > ^ <
-
- */
-
 public class Effect {
     private GodCard associatedCard;
     private SelectOptionsStrategy selectOptions;
@@ -59,7 +51,7 @@ public class Effect {
         return restraintsCells.restraintsCells(selectedWorker, turn);
     }
 
-    public void doMoveWorker(Worker selectedWorker, Cell[] selectedCells, Turn turn) {
+    public void doMoveWorker(Worker selectedWorker, Cell selectedCells, Turn turn) {
         moveWorker.moveWorker(selectedWorker, selectedCells, turn);
     }
 
@@ -67,7 +59,7 @@ public class Effect {
         return winCheck.winCheck(turn);
     }
 
-    public void doPossibleSecondMove(Worker selectedWorker, Cell[] selectedCells, Turn turn) {
+    public void doPossibleSecondMove(Worker selectedWorker, Cell selectedCells, Turn turn) {
         possibleSecondMove.possibleSecondMove(selectedWorker, selectedCells, turn);
     }
 

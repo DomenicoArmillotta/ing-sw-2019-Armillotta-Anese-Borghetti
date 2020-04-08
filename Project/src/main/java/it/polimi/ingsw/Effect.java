@@ -63,8 +63,8 @@ public class Effect {
         possibleSecondMove.possibleSecondMove(selectedWorker, selectedCells, turn);
     }
 
-    public void doBuildBlock(Turn turn) {
-        buildBlock.buildBlock(turn);
+    public void doBuildBlock(int blockX, int blockY, Turn turn) {
+        buildBlock.buildBlock(blockX, blockY, turn);
     }
 
     public boolean getStatus() {

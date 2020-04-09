@@ -19,8 +19,9 @@ public class Player {
     }
 
     public void initFirstWorker(int x, int y) {
-        Worker firstWorker = new Worker(this, (((this.getCurrentMatch()).getCell(x,y))),   Level.GROUND);
+        Worker firstWorker = new Worker(this, (((this.getCurrentMatch()).getMap()[x][y])),   Level.GROUND);
         this.firstWorker = firstWorker;
+
     }
     public void initSecondWorker(int x, int y) {
         Worker secondWorker = new Worker(this,  (((this.getCurrentMatch()).getCell(x,y))),  Level.GROUND);

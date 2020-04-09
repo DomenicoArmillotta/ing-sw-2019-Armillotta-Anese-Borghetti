@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-class MovePushingWorkersConcreteTest {
+public class MovePushingWorkersConcreteTest {
     @Test
     public void PushingWorkerTest() {
         //inizializzazzione caso dritto creo cella che deve controllare per fare spostamento
@@ -56,7 +56,7 @@ class MovePushingWorkersConcreteTest {
         //fine creazione
         worker11.getOwner().getPlayerGod().getEffect().setEffectStrategies(basicSelectOptionsConcrete,basicMoveOptionsConcrete,movePushingWorkersConcrete,basicWinCheckConcrete,noSecondMoveConcrete,basicBuildConcrete);
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
-        worker11.getOwner().getPlayerGod().getEffect().doMoveWorker(worker11,selectedCell,match.getCurrentTurn());
+        worker11.getOwner().getPlayerGod().getEffect().doMoveWorker(worker11,selectedCell);
         assertEquals(worker11.getCurrentPosition(),worker21.getPreviousPosition());
         assertEquals(worker21.getPreviousPosition(),cella21);
         assertEquals(worker21.getCurrentPosition(),cellaDietro);

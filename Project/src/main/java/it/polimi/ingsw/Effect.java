@@ -43,8 +43,8 @@ public class Effect {
         this.restraintsCells = restraintsCells;
     }
 
-    public Worker doSelectOptions(Turn turn) {
-        return selectOptions.select(turn);
+    public Worker doSelectOptions(Turn turn,int inputX,int inputY) {
+        return selectOptions.select(turn,inputX,inputY);
     }
 
     public Cell[] doMoveOptions(Worker selectedWorker, Turn turn) {

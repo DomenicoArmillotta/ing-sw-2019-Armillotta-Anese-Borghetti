@@ -44,7 +44,7 @@ public class BasicMoveConcreteTest {
         //fine creazione
         worker1.getOwner().getPlayerGod().getEffect().setEffectStrategies(basicSelectOptionsConcrete,basicMoveOptionsConcrete,basicMoveConcrete,basicWinCheckConcrete,noSecondMoveConcrete,basicBuildConcrete);
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
-        worker1.getOwner().getPlayerGod().getEffect().doMoveWorker(worker1,selectedCell,match.getCurrentTurn());
+        worker1.getOwner().getPlayerGod().getEffect().doMoveWorker(worker1,selectedCell);
         assertEquals(worker1.getCurrentPosition(),selectedCell);
     }
 

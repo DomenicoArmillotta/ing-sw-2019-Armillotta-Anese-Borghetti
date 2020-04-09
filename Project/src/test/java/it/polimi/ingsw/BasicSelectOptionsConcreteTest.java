@@ -30,9 +30,11 @@ public class BasicSelectOptionsConcreteTest {
         player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
         //creo un dummy worker in 0,0 di player1
         player1.initFirstWorker(0,0);
+        Worker w1 = player1.getFirstWorker();
         //creo un turno dummy
         myMatch.startFirstTurn(playerQueue);
-        assertEquals(player1.getFirstWorker(),myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doSelectOptions(myMatch.getCurrentTurn()));
+        assertEquals(w1,player1.getFirstWorker());
+        assertEquals(myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doSelectOptions(myMatch.getCurrentTurn(),0,0),player1.getFirstWorker());
     }
 
 }

@@ -21,5 +21,4 @@ public class WorkerTest {
         assertEquals(worker1.getPreviousPosition(),cell1);
         assertEquals(worker1.getPreviousLevel(),Level.GROUND);
     }
-
 }

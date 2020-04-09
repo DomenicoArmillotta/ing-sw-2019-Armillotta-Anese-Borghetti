@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MoveSwitchingWorkersConcreteTest {
+public class MoveSwitchingWorkersConcreteTest {
     @Test
     public void switchWorkerTest() {
         Player n1 = new Player("Marco");
@@ -43,9 +43,9 @@ class MoveSwitchingWorkersConcreteTest {
         NoSecondMoveConcrete noSecondMoveConcrete=new NoSecondMoveConcrete();
         BasicBuildConcrete basicBuildConcrete=new BasicBuildConcrete();
         //fine creazione
-        worker11.getOwner().getPlayerGod().getEffect().setEffectStrategies(basicSelectOptionsConcrete,moveSwitchingWorkersConcrete,basicMoveConcrete,basicWinCheckConcrete,noSecondMoveConcrete,basicBuildConcrete);
+        worker11.getOwner().getPlayerGod().getEffect().setEffectStrategies(basicSelectOptionsConcrete,basicMoveOptionsConcrete,basicMoveConcrete,basicWinCheckConcrete,noSecondMoveConcrete,basicBuildConcrete);
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
-        worker11.getOwner().getPlayerGod().getEffect().doMoveWorker(worker11,selectedCell,match.getCurrentTurn());
+        worker11.getOwner().getPlayerGod().getEffect().doMoveWorker(worker11,selectedCell);
         assertEquals(n1.getFirstWorker().getCurrentPosition(),n2.getFirstWorker().getPreviousPosition());
         assertEquals(n2.getFirstWorker().getCurrentPosition(),n1.getFirstWorker().getPreviousPosition());
     }

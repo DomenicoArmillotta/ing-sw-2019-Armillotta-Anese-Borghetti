@@ -4,11 +4,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MoveCheckingLevelConcreteTest {
+public class MoveCheckingLevelConcreteTest {
     @Test
     public void moveCheckingLevelWorkerTest() {
         Player n1 = new Player("Marco");
@@ -44,8 +44,8 @@ class MoveCheckingLevelConcreteTest {
         //fine creazione
         worker1.getOwner().getPlayerGod().getEffect().setEffectStrategies(basicSelectOptionsConcrete, basicMoveOptionsConcrete, moveCheckingLevelConcrete, basicWinCheckConcrete, noSecondMoveConcrete, basicBuildConcrete);
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
-        worker1.getOwner().getPlayerGod().getEffect().doMoveWorker(worker1,selectedCell,match.getCurrentTurn());
+        worker1.getOwner().getPlayerGod().getEffect().doMoveWorker(worker1,selectedCell);
         //fa la mossa
-        assertTrue(worker1.getOwner().getPlayerGod().getEffect().getStatus());
+        assertEquals(worker1.getOwner().getPlayerGod().getEffect().getStatus(),true);
     }
 }

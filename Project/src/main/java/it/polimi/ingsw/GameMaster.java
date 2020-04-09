@@ -7,11 +7,10 @@ public class GameMaster {
     private List<Player> playerQueue = new ArrayList(); //da controllora sinstassi
     private int numOfPlayers;
 
-
     public GameMaster(int numOfPlayers, List<Player> playerQueue){
         this.numOfPlayers = numOfPlayers;
         this.playerQueue = playerQueue;
-        }
+    }
 
     public void createMatch() {
         this.match = new Match(this, playerQueue);

@@ -21,6 +21,7 @@ public class CellTest {
         GameMaster  gameMaster1 = new GameMaster(3,playerQueue);
         gameMaster1.createMatch();
         gameMaster1.getMatch().createMap();
+
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 assertEquals((gameMaster1.getMatch()).getMap()[i][j].getBuildingLevel(),Level.GROUND);

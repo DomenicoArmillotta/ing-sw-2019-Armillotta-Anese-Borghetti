@@ -26,6 +26,7 @@ public class BasicSelectOptionsConcreteTest {
         myMatch.createMap();
         myMatch.createGodList();
 
+
         player1.setCurrentMatch(myMatch);
         player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
         //creo un dummy worker in 0,0 di player1

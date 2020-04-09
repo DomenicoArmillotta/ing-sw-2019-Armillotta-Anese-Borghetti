@@ -7,11 +7,11 @@ public class Cell {
     private int Y;
 
     public void setX(int x) {
-        X = x;
+        this.X = x;
     }
 
     public void setY(int y) {
-        Y = y;
+        this.Y = y;
     }
 
     public int getX() {

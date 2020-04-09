@@ -28,7 +28,7 @@ public class Match {
         apollo.setEffect(effectApollo);
         effectApollo.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveSwitchingWorkersConcrete(),
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BasicBuildConcrete());
-        godList.add(apollo);
+        this.godList.add(apollo);
 
         GodCard artemide = new GodCard("Artemide","bla bla");
         Effect effectArtemide = new Effect();
@@ -116,6 +116,8 @@ public class Match {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 map[i][j] = new Cell();
+                map[i][j].setX(j);
+                map[i][j].setY(i);
             }
         }
         this.map = map;

@@ -21,33 +21,19 @@ public class MoveSwitchingWorkersConcreteTest {
         GameMaster gameMaster1 = new GameMaster(3, playerQueue);
         Match match = new Match(gameMaster1, playerQueue);
         n1.setCurrentMatch(match);
+        n2.setCurrentMatch(match);
         match.createMap();
         n1.initFirstWorker(3, 4);
-        n2.initFirstWorker(4,4);
+        n2.initFirstWorker(4, 4);
         Worker worker11 = n1.getFirstWorker();
         Worker worker21 = n2.getFirstWorker();
-        Cell selectedCell=new Cell();
-        selectedCell.setY(4);
-        selectedCell.setX(4);
-        //creo oggetti delle strategy
-        BasicSelectOptionsConcrete basicSelectOptionsConcrete=new BasicSelectOptionsConcrete();
-        BasicMoveOptionsConcrete basicMoveOptionsConcrete=new BasicMoveOptionsConcrete();
-
-        //tutte le move
-        MovePushingWorkersConcrete movePushingWorkersConcrete=new MovePushingWorkersConcrete();
-        MoveSwitchingWorkersConcrete moveSwitchingWorkersConcrete=new MoveSwitchingWorkersConcrete();
-        MoveCheckingLevelConcrete moveCheckingLevelConcrete=new MoveCheckingLevelConcrete();
-        BasicMoveConcrete basicMoveConcrete=new BasicMoveConcrete();
-        //
-        BasicWinCheckConcrete basicWinCheckConcrete=new BasicWinCheckConcrete();
-        NoSecondMoveConcrete noSecondMoveConcrete=new NoSecondMoveConcrete();
-        BasicBuildConcrete basicBuildConcrete=new BasicBuildConcrete();
-        //fine creazione
-        worker11.getOwner().getPlayerGod().getEffect().setEffectStrategies(basicSelectOptionsConcrete,basicMoveOptionsConcrete,basicMoveConcrete,basicWinCheckConcrete,noSecondMoveConcrete,basicBuildConcrete);
+        Cell selectedCell = match.getMap()[4][4];
+        match.createGodList();
+        worker11.getOwner().setPlayerGod(match.getGodList().get(0));
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
-        worker11.getOwner().getPlayerGod().getEffect().doMoveWorker(worker11,selectedCell);
-        assertEquals(n1.getFirstWorker().getCurrentPosition(),n2.getFirstWorker().getPreviousPosition());
-        assertEquals(n2.getFirstWorker().getCurrentPosition(),n1.getFirstWorker().getPreviousPosition());
+        worker11.getOwner().getPlayerGod().getEffect().doMoveWorker(worker11, selectedCell);
+        assertEquals(n1.getFirstWorker().getCurrentPosition(), n2.getFirstWorker().getPreviousPosition());
+        assertEquals(n2.getFirstWorker().getCurrentPosition(), n1.getFirstWorker().getPreviousPosition());
     }
 
 }

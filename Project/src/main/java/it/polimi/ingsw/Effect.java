@@ -51,8 +51,8 @@ public class Effect {
         return restraintsCells.restraintsCells(selectedWorker, turn);
     }
 
-    public void doMoveWorker(Worker selectedWorker, Cell selectedCells, Turn turn) {
-        moveWorker.moveWorker(selectedWorker, selectedCells, turn);
+    public void doMoveWorker(Worker selectedWorker, Cell selectedCells) {
+        moveWorker.moveWorker(selectedWorker, selectedCells);
     }
 
     public boolean doWinCheck(Turn turn) {

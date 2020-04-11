@@ -29,7 +29,8 @@ public class MoveCheckingLevelConcreteTest {
         selectedCell.setY(4);
         selectedCell.setX(4);
         //creo oggetti delle strategy
-        BasicSelectOptionsConcrete basicSelectOptionsConcrete=new BasicSelectOptionsConcrete();
+        ShowSelectOptionsStrategy showSelectOptionsConcrete = new ShowSelectOptionsBasicConcrete();
+        BasicSelectOptionsConcrete basicSelectOptionsConcrete = new BasicSelectOptionsConcrete();
         BasicMoveOptionsConcrete basicMoveOptionsConcrete=new BasicMoveOptionsConcrete();
 
         //
@@ -39,10 +40,11 @@ public class MoveCheckingLevelConcreteTest {
         BasicMoveConcrete basicMoveConcrete=new BasicMoveConcrete();
         //
         BasicWinCheckConcrete basicWinCheckConcrete=new BasicWinCheckConcrete();
-        NoSecondMoveConcrete noSecondMoveConcrete=new NoSecondMoveConcrete();
-        BasicBuildConcrete basicBuildConcrete=new BasicBuildConcrete();
+        NoSecondMoveConcrete noSecondMoveConcrete = new NoSecondMoveConcrete();
+        ShowBuildOptionsStrategy showBuildOptions = new BasicShowBuildOptionsConcrete();
+        BasicBuildConcrete basicBuildConcrete = new BasicBuildConcrete();
         //fine creazione
-        worker1.getOwner().getPlayerGod().getEffect().setEffectStrategies(basicSelectOptionsConcrete, basicMoveOptionsConcrete, moveCheckingLevelConcrete, basicWinCheckConcrete, noSecondMoveConcrete, basicBuildConcrete);
+        worker1.getOwner().getPlayerGod().getEffect().setEffectStrategies(showSelectOptionsConcrete, basicSelectOptionsConcrete, basicMoveOptionsConcrete, moveCheckingLevelConcrete, basicWinCheckConcrete, noSecondMoveConcrete, showBuildOptions, basicBuildConcrete);
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
         worker1.getOwner().getPlayerGod().getEffect().doMoveWorker(worker1,selectedCell);
         //fa la mossa

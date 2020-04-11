@@ -29,6 +29,7 @@ public class Effect {
     private RestraintsCellsStrategy restraintsCells;
     private MoveWorkerStrategy moveWorker;
     private WinCheckStrategy winCheck;
+    private ShowBuildOptionsStrategy showBuildOptions;
     private BuildBlockStrategy buildBlock;
     private PossibleSecondMoveStrategy possibleSecondMove;
     private boolean isActive;
@@ -45,13 +46,14 @@ public class Effect {
 
     public void setEffectStrategies(ShowSelectOptionsStrategy showSelectOptions, SelectOptionsStrategy selectOptions, RestraintsCellsStrategy restraintsCells,
                                     MoveWorkerStrategy moveWorker, WinCheckStrategy winCheck,
-                                    PossibleSecondMoveStrategy possibleSecondMove, BuildBlockStrategy buildBlock) {
+                                    PossibleSecondMoveStrategy possibleSecondMove, ShowBuildOptionsStrategy showBuildOptions, BuildBlockStrategy buildBlock) {
         this.showSelectOptions = showSelectOptions;
         this.selectOptions = selectOptions;
         this.restraintsCells = restraintsCells;
         this.moveWorker = moveWorker;
         this.winCheck = winCheck;
         this.possibleSecondMove = possibleSecondMove;
+        this.showBuildOptions = showBuildOptions;
         this.buildBlock = buildBlock;
     }
 
@@ -89,6 +91,10 @@ public class Effect {
 
     public void doPossibleSecondMove(Worker selectedWorker, Cell selectedCells, Turn turn) {
         possibleSecondMove.possibleSecondMove(selectedWorker, selectedCells, turn);
+    }
+
+    public List<Cell> doShowBuildOptions(Worker worker) {
+        return showBuildOptions.showBuildOptions(worker);
     }
 
     public void doBuildBlock(int blockX, int blockY, Turn turn) {

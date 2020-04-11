@@ -26,8 +26,8 @@ public class EffectTest {
         GodCard apollo = new GodCard("Apollo", "bla bla");
         Effect effectApollo = new Effect();
         apollo.setEffect(effectApollo);
-        effectApollo.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveSwitchingWorkersConcrete(),
-                new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BasicBuildConcrete());
+        effectApollo.setEffectStrategies(new ShowSelectOptionsBasicConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveSwitchingWorkersConcrete(),
+                new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BasicShowBuildOptionsConcrete(), new BasicBuildConcrete());
         myMatch.getGodList().add(apollo);
 
         assertEquals(apollo.getEffect(), effectApollo);

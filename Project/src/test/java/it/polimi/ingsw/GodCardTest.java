@@ -22,7 +22,7 @@ public class GodCardTest  {
         public void EffectTest(){
 
             Effect effectApollo = new Effect();
-            effectApollo.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveSwitchingWorkersConcrete(), new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BasicBuildConcrete());
+            effectApollo.setEffectStrategies(new ShowSelectOptionsBasicConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveSwitchingWorkersConcrete(), new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BasicShowBuildOptionsConcrete(), new BasicBuildConcrete());
             GodCard apollo = new GodCard("Apollo","bla bla");
             apollo.setEffect(effectApollo);
             assertEquals(apollo.getEffect(),effectApollo);

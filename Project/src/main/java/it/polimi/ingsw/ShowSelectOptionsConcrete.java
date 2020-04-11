@@ -6,6 +6,6 @@ public class ShowSelectOptionsConcrete implements ShowSelectOptionsStrategy {
     @Override
     public List<Cell> showSelect(Match match) {
         //faccio il controllo per i giocatori murati
-
+    return null;
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ShowSelectOptionsConcreteTest {
+public class ShowSelectOptionsBasicConcreteTest {
     @Test
     public void selectTwoWorkersTest(){
         //voglio che i due worker istanziati sia == a quelli ritornati dalla show

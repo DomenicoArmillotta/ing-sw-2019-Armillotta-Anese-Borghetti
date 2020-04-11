@@ -1,5 +1,21 @@
 package it.polimi.ingsw;
 
+/*
+               / _\ #
+               \c /  #
+               / \___ #
+               \`----`#==>
+               |  \  #
+    ,%.-"""---'`--'\#_
+   %%/             |__`\
+  .%'\     |   \   /  //
+  ,%' >   .'----\ |  [/
+     < <<`       ||
+      `\\\       ||
+        )\\      )\
+^^^jgs^^"""^^^^^^""^^^^^^^^^^
+ */
+
 public class BasicBuildConcrete implements BuildBlockStrategy {
     @Override
     public void buildBlock(int blockX, int blockY, Turn turn) {

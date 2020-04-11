@@ -41,63 +41,63 @@ public class Match {
         GodCard apollo = new GodCard("Apollo", "bla bla");
         Effect effectApollo = new Effect();
         apollo.setEffect(effectApollo);
-        effectApollo.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveSwitchingWorkersConcrete(),
+        effectApollo.setEffectStrategies(new ShowSelectOptionsConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveSwitchingWorkersConcrete(),
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BasicBuildConcrete());
         this.godList.add(apollo);
 
         GodCard artemide = new GodCard("Artemide","bla bla");
         Effect effectArtemide = new Effect();
         artemide.setEffect(effectArtemide);
-        effectArtemide.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
+        effectArtemide.setEffectStrategies(new ShowSelectOptionsConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
                 new BasicWinCheckConcrete(), new MoveSecondTimeForwardConcrete(), new BasicBuildConcrete());
         godList.add(artemide);
 
         GodCard athena = new GodCard("Athena","bla bla");
         Effect effectAthena = new Effect();
         athena.setEffect(effectAthena);
-        effectAthena.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveCheckingLevelConcrete(),
+        effectAthena.setEffectStrategies(new ShowSelectOptionsConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveCheckingLevelConcrete(),
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BasicBuildConcrete());
         godList.add(athena);
 
         GodCard atlante = new GodCard("Atlante","bla bla");
         Effect effectAtlante = new Effect();
         atlante.setEffect(effectAtlante);
-        effectAtlante.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
+        effectAtlante.setEffectStrategies(new ShowSelectOptionsConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new InstantBuildDomeConcrete());
         godList.add(atlante);
 
         GodCard demetra = new GodCard("Demetra","bla bla");
         Effect effectDemetra = new Effect();
         demetra.setEffect(effectDemetra);
-        effectDemetra.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
+        effectDemetra.setEffectStrategies(new ShowSelectOptionsConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BuildTwiceDifferentCellConcrete());
         godList.add(demetra);
 
         GodCard efesto = new GodCard("Efesto","bla bla");
         Effect effectEfesto = new Effect();
         efesto.setEffect(effectEfesto);
-        effectEfesto.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
+        effectEfesto.setEffectStrategies(new ShowSelectOptionsConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BuildTwiceSameCellConcrete());
         godList.add(efesto);
 
         GodCard minotauro = new GodCard("Minotauro","bla bla");
         Effect effectMinotauro = new Effect();
         minotauro.setEffect(effectMinotauro);
-        effectMinotauro.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MovePushingWorkersConcrete(),
+        effectMinotauro.setEffectStrategies(new ShowSelectOptionsConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MovePushingWorkersConcrete(),
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BasicBuildConcrete());
         godList.add(minotauro);
 
         GodCard pan = new GodCard("Pan","bla bla");
         Effect effectPan = new Effect();
         pan.setEffect(effectPan);
-        effectPan.setEffectStrategies(new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
+        effectPan.setEffectStrategies(new ShowSelectOptionsConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new BasicMoveConcrete(),
                 new WinIfTwoLevelsDownConcrete(), new NoSecondMoveConcrete(), new BasicBuildConcrete());
         godList.add(pan);
 
         GodCard prometeo = new GodCard("Prometeo", "bla bla");
         Effect effectPrometeo = new Effect();
         prometeo.setEffect(effectPrometeo);
-        effectPrometeo.setEffectStrategies(new SelectBuildOrMoveConcrete(), new MoveButDontMoveUpConcrete(), new BasicMoveConcrete(),
+        effectPrometeo.setEffectStrategies(new ShowSelectOptionsConcrete(), new SelectBuildOrMoveConcrete(), new MoveButDontMoveUpConcrete(), new BasicMoveConcrete(),
                 new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BuildBeforeAndAfterMoveConcrete());
         godList.add(prometeo);
     }

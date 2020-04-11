@@ -1,7 +1,30 @@
 package it.polimi.ingsw;
 
+import java.util.*;
+
+/*
+TO DO LIST
+
+Interfaccia 1. Cell[2] doShowSelectOptions(Match); Matteo
+Interfaccia 2. Worker doSelectWorker(Cell); Matteo
+3. Cell[*] doShowBuildOptions(Worker); Marco
+4. Void doPossibleBuildBeforeMove(Cell); Marco
+Interfaccia 5. Cell[*] doShowMoveOptions(Worker); Matteo
+Interfaccia 6. Cell[*] doSubstractRestraints(Worker, Cell[*]); Matteo
+Interfaccia 7. Void doMoveWorker(Worker, Cell); Domenico
+8. Cell[*] doShowMoveOptions(Worker); Matteo
+9. Cell[*] doSubstractRestraints(Worker, Cell[*]); Matteo
+10. Void doPossibleSecondMove(Worker, Cell); Domenico
+Interfaccia 11. Cell[*] doShowBuildOptions(Worker); Marco
+Interfaccia 12. Void doBuildBlock(Cell); Marco
+13. Cell[*] doShowBuildOptions(Worker); Marco
+14. Void doPossibleSecondBuildBlock(Cell); Marco
+
+ */
+
 public class Effect {
     private GodCard associatedCard;
+    private ShowSelectOptionsStrategy showSelectOptions;
     private SelectOptionsStrategy selectOptions;
     private RestraintsCellsStrategy restraintsCells;
     private MoveWorkerStrategy moveWorker;
@@ -20,9 +43,10 @@ public class Effect {
         return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
     }
 
-    public void setEffectStrategies(SelectOptionsStrategy selectOptions, RestraintsCellsStrategy restraintsCells,
+    public void setEffectStrategies(ShowSelectOptionsStrategy showSelectOptions, SelectOptionsStrategy selectOptions, RestraintsCellsStrategy restraintsCells,
                                     MoveWorkerStrategy moveWorker, WinCheckStrategy winCheck,
                                     PossibleSecondMoveStrategy possibleSecondMove, BuildBlockStrategy buildBlock) {
+        this.showSelectOptions = showSelectOptions;
         this.selectOptions = selectOptions;
         this.restraintsCells = restraintsCells;
         this.moveWorker = moveWorker;
@@ -43,8 +67,12 @@ public class Effect {
         this.restraintsCells = restraintsCells;
     }
 
-    public Worker doSelectOptions(Turn turn,int inputX,int inputY) {
-        return selectOptions.select(turn,inputX,inputY);
+    public List<Cell> doShowSelectOptions(Match match) {
+        return showSelectOptions.showSelect(match);
+    }
+
+    public Worker doSelectOptions(Turn turn, int inputX, int inputY) {
+        return selectOptions.select(turn, inputX, inputY);
     }
 
     public Cell[] doMoveOptions(Worker selectedWorker, Turn turn) {

@@ -43,8 +43,8 @@ public class Match {
         apollo.setEffect(effectApollo);
         effectApollo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(apollo);
 
@@ -53,8 +53,8 @@ public class Match {
         artemide.setEffect(effectArtemide);
         effectArtemide.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(artemide);
 
@@ -63,8 +63,8 @@ public class Match {
         athena.setEffect(effectAthena);
         effectAthena.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(athena);
 
@@ -73,8 +73,8 @@ public class Match {
         atlante.setEffect(effectAtlante);
         effectAtlante.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(atlante);
 
@@ -83,8 +83,8 @@ public class Match {
         demetra.setEffect(effectDemetra);
         effectDemetra.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(demetra);
 
@@ -93,8 +93,8 @@ public class Match {
         efesto.setEffect(effectEfesto);
         effectEfesto.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(efesto);
 
@@ -103,8 +103,8 @@ public class Match {
         minotauro.setEffect(effectMinotauro);
         effectMinotauro.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new MovePushingWorkersConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractRestraintsConcrete(), new MovePushingWorkersConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(minotauro);
 
@@ -113,8 +113,8 @@ public class Match {
         pan.setEffect(effectPan);
         effectPan.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(pan);
 
@@ -123,8 +123,8 @@ public class Match {
         prometeo.setEffect(effectPrometeo);
         effectPrometeo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(prometeo);
     }

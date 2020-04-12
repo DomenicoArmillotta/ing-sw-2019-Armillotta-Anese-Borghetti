@@ -28,26 +28,15 @@ public class MoveCheckingLevelConcreteTest {
         selectedCell.setBuildingLevel(Level.BASE);
         selectedCell.setY(4);
         selectedCell.setX(4);
-        //creo oggetti delle strategy
-        ShowSelectOptionsStrategy showSelectOptionsConcrete = new ShowSelectOptionsBasicConcrete();
-        BasicSelectOptionsConcrete basicSelectOptionsConcrete = new BasicSelectOptionsConcrete();
-        BasicMoveOptionsConcrete basicMoveOptionsConcrete=new BasicMoveOptionsConcrete();
-
-        //
-        MovePushingWorkersConcrete movePushingWorkersConcrete=new MovePushingWorkersConcrete();
-        MoveSwitchingWorkersConcrete moveSwitchingWorkersConcrete=new MoveSwitchingWorkersConcrete();
-        MoveCheckingLevelConcrete moveCheckingLevelConcrete=new MoveCheckingLevelConcrete();
-        BasicMoveConcrete basicMoveConcrete=new BasicMoveConcrete();
-        //
-        BasicWinCheckConcrete basicWinCheckConcrete=new BasicWinCheckConcrete();
-        NoSecondMoveConcrete noSecondMoveConcrete = new NoSecondMoveConcrete();
-        ShowBuildOptionsStrategy showBuildOptions = new BasicShowBuildOptionsConcrete();
-        BasicBuildConcrete basicBuildConcrete = new BasicBuildConcrete();
         //fine creazione
-        worker1.getOwner().getPlayerGod().getEffect().setEffectStrategies(showSelectOptionsConcrete, basicSelectOptionsConcrete, basicMoveOptionsConcrete, moveCheckingLevelConcrete, basicWinCheckConcrete, noSecondMoveConcrete, showBuildOptions, basicBuildConcrete);
+        worker1.getOwner().getPlayerGod().getEffect().setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+                new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
+                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
-        worker1.getOwner().getPlayerGod().getEffect().doMoveWorker(worker1,selectedCell);
+        worker1.getOwner().getPlayerGod().getEffect().doMoveWorkerFirstTime(worker1, selectedCell);
         //fa la mossa
-        assertEquals(worker1.getOwner().getPlayerGod().getEffect().getStatus(),true);
+        assertEquals(worker1.getOwner().getPlayerGod().getEffect().getStatus(), true);
     }
 }

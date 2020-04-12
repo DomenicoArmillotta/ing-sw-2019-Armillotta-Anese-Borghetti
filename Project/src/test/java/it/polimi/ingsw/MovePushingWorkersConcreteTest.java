@@ -34,7 +34,7 @@ public class MovePushingWorkersConcreteTest {
         match.createGodList();
         worker11.getOwner().setPlayerGod(match.getGodList().get(0));
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
-        worker11.getOwner().getPlayerGod().getEffect().doMoveWorker(worker11, cella21);
+        worker11.getOwner().getPlayerGod().getEffect().doMoveWorkerFirstTime(worker11, cella21);
         assertEquals(worker11.getCurrentPosition(), worker21.getPreviousPosition());
         assertEquals(worker21.getPreviousPosition(), cella21);
         assertEquals(worker21.getCurrentPosition(), cellaDietro);

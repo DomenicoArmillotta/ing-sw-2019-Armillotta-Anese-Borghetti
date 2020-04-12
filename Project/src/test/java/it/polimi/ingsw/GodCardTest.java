@@ -21,12 +21,16 @@ public class GodCardTest  {
     @Test
         public void EffectTest(){
 
-            Effect effectApollo = new Effect();
-            effectApollo.setEffectStrategies(new ShowSelectOptionsBasicConcrete(), new BasicSelectOptionsConcrete(), new BasicMoveOptionsConcrete(), new MoveSwitchingWorkersConcrete(), new BasicWinCheckConcrete(), new NoSecondMoveConcrete(), new BasicShowBuildOptionsConcrete(), new BasicBuildConcrete());
-            GodCard apollo = new GodCard("Apollo","bla bla");
-            apollo.setEffect(effectApollo);
-            assertEquals(apollo.getEffect(),effectApollo);
-        }
+        Effect effectApollo = new Effect();
+        effectApollo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+                new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
+                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
+        GodCard apollo = new GodCard("Apollo", "bla bla");
+        apollo.setEffect(effectApollo);
+        assertEquals(apollo.getEffect(), effectApollo);
+    }
     @Test
     public void OwnerTest(){
         Player n1 = new Player("Marco");

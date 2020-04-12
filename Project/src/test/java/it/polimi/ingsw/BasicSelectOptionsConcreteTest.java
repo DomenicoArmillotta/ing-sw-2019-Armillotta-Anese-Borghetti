@@ -34,8 +34,8 @@ public class BasicSelectOptionsConcreteTest {
         Worker w1 = player1.getFirstWorker();
         //creo un turno dummy
         myMatch.startFirstTurn(playerQueue);
-        assertEquals(w1,player1.getFirstWorker());
-        assertEquals(myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doSelectOptions(myMatch.getCurrentTurn(),0,0),player1.getFirstWorker());
+        assertEquals(w1, player1.getFirstWorker());
+        assertEquals(myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doSelectWorker(new Cell()), player1.getFirstWorker());
     }
 
 }

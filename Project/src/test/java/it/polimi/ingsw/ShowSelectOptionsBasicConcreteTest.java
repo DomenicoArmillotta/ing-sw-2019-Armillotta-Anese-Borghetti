@@ -36,8 +36,8 @@ public class ShowSelectOptionsBasicConcreteTest {
         //creo un turno dummy
         myMatch.startFirstTurn(playerQueue);
 
-        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doShowSelectOptions(myMatch);
-        assertEquals(player1.getFirstWorker().getCurrentPosition(),workersCellsQueue.get(0));
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
+        assertEquals(player1.getFirstWorker().getCurrentPosition(), workersCellsQueue.get(0));
         assertEquals(player1.getSecondWorker().getCurrentPosition(),workersCellsQueue.get(1));
     }
     @Test
@@ -74,8 +74,8 @@ public class ShowSelectOptionsBasicConcreteTest {
         myMatch.getMap()[4][3].setBuildingLevel(Level.DOME);
 
 
-        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doShowSelectOptions(myMatch);
-        assertEquals(0,workersCellsQueue.size());
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
+        assertEquals(0, workersCellsQueue.size());
     }
     @Test
     public void onlyOneWorkerIsStuckedByDomes(){
@@ -107,7 +107,7 @@ public class ShowSelectOptionsBasicConcreteTest {
         myMatch.getMap()[1][1].setBuildingLevel(Level.DOME);
         myMatch.getMap()[1][0].setBuildingLevel(Level.DOME);
         myMatch.getMap()[3][3].setBuildingLevel(Level.DOME);
-        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doShowSelectOptions(myMatch);
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
 
         assertEquals(1,workersCellsQueue.size());
         assertEquals(workersCellsQueue.get(0).getWorkerOnCell(),player1.getSecondWorker());
@@ -148,8 +148,8 @@ public class ShowSelectOptionsBasicConcreteTest {
         myMatch.getMap()[3][3].setBuildingLevel(Level.DOME);
         myMatch.getMap()[3][4].setBuildingLevel(Level.DOME);
 
-        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doShowSelectOptions(myMatch);
-        assertEquals(0,workersCellsQueue.size());
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
+        assertEquals(0, workersCellsQueue.size());
     }
     @Test
     public void slostGameForWorkersDomesAndDeltaHeights(){
@@ -187,8 +187,8 @@ public class ShowSelectOptionsBasicConcreteTest {
         myMatch.getMap()[3][3].setBuildingLevel(Level.DOME);
         myMatch.getMap()[3][4].setBuildingLevel(Level.TOP);
 
-        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doShowSelectOptions(myMatch);
-        assertEquals(0,workersCellsQueue.size());
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
+        assertEquals(0, workersCellsQueue.size());
     }
     @Test
     public void oneWorkerIsStuckedByHisTeamMateButHeIsFree(){
@@ -226,8 +226,8 @@ public class ShowSelectOptionsBasicConcreteTest {
         myMatch.getMap()[3][3].setBuildingLevel(Level.DOME);
         myMatch.getMap()[3][4].setBuildingLevel(Level.DOME);
 
-        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doShowSelectOptions(myMatch);
-        assertEquals(1,workersCellsQueue.size());
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
+        assertEquals(1, workersCellsQueue.size());
     }
     @Test
     public void selectTwoWorkersBecauseDeltaHeightsIsNotVerified(){
@@ -265,7 +265,7 @@ public class ShowSelectOptionsBasicConcreteTest {
         myMatch.getMap()[3][3].setBuildingLevel(Level.DOME);
         myMatch.getMap()[3][4].setBuildingLevel(Level.BASE);
 
-        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doShowSelectOptions(myMatch);
-        assertEquals(2,workersCellsQueue.size());
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
+        assertEquals(2, workersCellsQueue.size());
     }
 }

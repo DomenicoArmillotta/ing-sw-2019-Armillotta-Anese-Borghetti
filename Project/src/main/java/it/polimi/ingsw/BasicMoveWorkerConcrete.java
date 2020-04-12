@@ -1,17 +1,13 @@
 package it.polimi.ingsw;
-//se la differenza dei livelli è maggiore di uno attiva is active
-public class MoveCheckingLevelConcrete implements MoveWorkerStrategy {
+
+public class BasicMoveWorkerConcrete implements MoveWorkerStrategy {
     @Override
+    //devo spostare il worker delegando il controllo al controller(che deve coontrollare altezza edificio e se ci sono altri worker)
     public void doMoveWorker(Worker selectedWorker, Cell selectedCell) {
         selectedWorker.setPreviousLevel(selectedWorker.getCurrentLevel());
         selectedWorker.setPreviousPosition(selectedWorker.getCurrentPosition());
         selectedCell.setWorkerOnCell(selectedWorker);
         selectedWorker.setCurrentPosition(selectedCell);
         selectedWorker.setCurrentLevel(selectedCell.getBuildingLevel());
-        if (selectedWorker.getPreviousLevel().ordinal() - selectedWorker.getCurrentLevel().ordinal() > 0) {
-            selectedWorker.getOwner().getPlayerGod().getEffect().setStatus(true);
-        }
-
     }
-
 }

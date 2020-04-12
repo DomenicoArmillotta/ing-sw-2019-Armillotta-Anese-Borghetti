@@ -2,114 +2,125 @@ package it.polimi.ingsw;
 
 import java.util.*;
 
-/*
-TO DO LIST
-
-Interfaccia 1. Cell[2] doShowSelectOptions(Match); Matteo
-Interfaccia 2. Worker doSelectWorker(Cell); Matteo
-3. Cell[*] doShowBuildOptions(Worker); Marco
-4. Void doPossibleBuildBeforeMove(Cell); Marco
-Interfaccia 5. Cell[*] doShowMoveOptions(Worker); Matteo
-Interfaccia 6. Cell[*] doSubstractRestraints(Worker, Cell[*]); Matteo
-Interfaccia 7. Void doMoveWorker(Worker, Cell); Domenico
-8. Cell[*] doShowMoveOptions(Worker); Matteo
-9. Cell[*] doSubstractRestraints(Worker, Cell[*]); Matteo
-10. Void doPossibleSecondMove(Worker, Cell); Domenico
-Interfaccia 11. Cell[*] doShowBuildOptions(Worker); Marco
-Interfaccia 12. Void doBuildBlock(Cell); Marco
-13. Cell[*] doShowBuildOptions(Worker); Marco
-14. Void doPossibleSecondBuildBlock(Cell); Marco
-
- */
-
 public class Effect {
     private GodCard associatedCard;
-    private ShowSelectOptionsStrategy showSelectOptions;
-    private SelectOptionsStrategy selectOptions;
-    private RestraintsCellsStrategy restraintsCells;
-    private MoveWorkerStrategy moveWorker;
-    private WinCheckStrategy winCheck;
-    private ShowBuildOptionsStrategy showBuildOptions;
-    private BuildBlockStrategy buildBlock;
-    private PossibleSecondMoveStrategy possibleSecondMove;
     private boolean isActive;
+    private ReturnSelectOptionsStrategy returnSelectOptions;
+    private SelectWorkerStrategy selectWorker;
+    private ReturnBuildOptionsStrategy returnBuildOptionsBeforeMove;
+    private BuildBlockStrategy buildBlockBeforeMove;
+    private ReturnMoveOptionsStrategy returnFirstMoveOptions;
+    private SubtractRestraintsStrategy subtractFirstRestraints;
+    private MoveWorkerStrategy moveWorkerFirstTime;
+    private ReturnMoveOptionsStrategy returnSecondMoveOptions;
+    private SubtractRestraintsStrategy subtractSecondRestraints;
+    private MoveWorkerStrategy moveWorkerSecondTime;
+    private ReturnBuildOptionsStrategy returnFirstBuildOptionsAfterMove;
+    private BuildBlockStrategy buildFirstBlockAfterMove;
+    private ReturnBuildOptionsStrategy returnSecondBuildOptionsAfterMove;
+    private BuildBlockStrategy buildSecondBlockAfterMove;
 
-    public GodCard getAssociatedCard() {
-        return associatedCard;
-    }
-    public GodCard getPrevPlayerGod(){
-        return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getPrevPlayer().getPlayerGod();
-    }
-    public GodCard getNextPlayerGod(){
-        return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
-    }
-
-    public void setEffectStrategies(ShowSelectOptionsStrategy showSelectOptions, SelectOptionsStrategy selectOptions, RestraintsCellsStrategy restraintsCells,
-                                    MoveWorkerStrategy moveWorker, WinCheckStrategy winCheck,
-                                    PossibleSecondMoveStrategy possibleSecondMove, ShowBuildOptionsStrategy showBuildOptions, BuildBlockStrategy buildBlock) {
-        this.showSelectOptions = showSelectOptions;
-        this.selectOptions = selectOptions;
-        this.restraintsCells = restraintsCells;
-        this.moveWorker = moveWorker;
-        this.winCheck = winCheck;
-        this.possibleSecondMove = possibleSecondMove;
-        this.showBuildOptions = showBuildOptions;
-        this.buildBlock = buildBlock;
-    }
-
-    public void changeMoveStrategy(MoveWorkerStrategy moveWorker) {
-        this.moveWorker = moveWorker;
-    }
-
-    public Effect() {
-
-    }
-
-    public void changeMoveStrategy(RestraintsCellsStrategy restraintsCells) {
-        this.restraintsCells = restraintsCells;
-    }
-
-    public List<Cell> doShowSelectOptions(Match match) {
-        return showSelectOptions.showSelect(match);
-    }
-
-    public Worker doSelectOptions(Turn turn, int inputX, int inputY) {
-        return selectOptions.select(turn, inputX, inputY);
-    }
-
-    public Cell[] doMoveOptions(Worker selectedWorker, Turn turn) {
-        return restraintsCells.restraintsCells(selectedWorker, turn);
-    }
-
-    public void doMoveWorker(Worker selectedWorker, Cell selectedCells) {
-        moveWorker.moveWorker(selectedWorker, selectedCells);
-    }
-
-    public boolean doWinCheck(Turn turn) {
-        return winCheck.winCheck(turn);
-    }
-
-    public void doPossibleSecondMove(Worker selectedWorker, Cell selectedCells, Turn turn) {
-        possibleSecondMove.possibleSecondMove(selectedWorker, selectedCells, turn);
-    }
-
-    public List<Cell> doShowBuildOptions(Worker worker) {
-        return showBuildOptions.showBuildOptions(worker);
-    }
-
-    public void doBuildBlock(int blockX, int blockY, Turn turn) {
-        buildBlock.buildBlock(blockX, blockY, turn);
+    public void setStatus(boolean newStatus) {
+        this.isActive = newStatus;
     }
 
     public boolean getStatus() {
         return isActive;
     }
 
-    public Match getMap() {
-        return associatedCard.getOwner().getCurrentMatch();
+    public Cell[][] getMap() {
+        return associatedCard.getOwner().getCurrentMatch().getMap();
     }
 
-    public void setIsActive(boolean active) {
-        isActive = active;
+    public List<Cell> doReturnSelectOptions(Match currentMatch) {
+        return this.returnSelectOptions.doReturnSelectOptions(currentMatch);
     }
+
+    public Worker doSelectWorker(Cell selectedCell) {
+        return this.selectWorker.doSelectWorker(selectedCell);
+    }
+
+    public List<Cell> doReturnBuildOptionsBeforeMove(Worker selectedWorker) {
+        return this.returnBuildOptionsBeforeMove.doReturnBuildOptions(selectedWorker);
+    }
+
+    public void doBuildBlockBeforeMove(Cell selectedCell) {
+        this.buildBlockBeforeMove.doBuildBlock(selectedCell);
+    }
+
+    public List<Cell> doReturnFirstMoveOptions(Worker selectedWorker) {
+        return this.returnFirstMoveOptions.doReturnMoveOptions(selectedWorker);
+    }
+
+    public List<Cell> doSubtractFirstRestraints(List<Cell> moveOptionsCells) {
+        return this.subtractFirstRestraints.doSubtractRestraints(moveOptionsCells);
+    }
+
+    public void doMoveWorkerFirstTime(Worker selectedWorker, Cell selectedCell) {
+        this.moveWorkerFirstTime.doMoveWorker(selectedWorker, selectedCell);
+    }
+
+    public List<Cell> doReturnSecondMoveOptions(Worker selectedWorker) {
+        return this.returnSecondMoveOptions.doReturnMoveOptions(selectedWorker);
+    }
+
+    public List<Cell> doSubtractSecondRestraints(List<Cell> moveOptionsCells) {
+        return this.subtractSecondRestraints.doSubtractRestraints(moveOptionsCells);
+    }
+
+    public void doMoveWorkerSecondTime(Worker selectedWorker, Cell selectedCell) {
+        this.moveWorkerSecondTime.doMoveWorker(selectedWorker, selectedCell);
+    }
+
+    public List<Cell> doReturnFirstBuildOptionsAfterMove(Worker selectedWorker) {
+        return this.returnFirstBuildOptionsAfterMove.doReturnBuildOptions(selectedWorker);
+    }
+
+    public void doBuildFirstBlockAfterMove(Cell selectedCell) {
+        this.buildFirstBlockAfterMove.doBuildBlock(selectedCell);
+    }
+
+    public List<Cell> doReturnSecondBuildOptionsAfterMove(Worker selectedWorker) {
+        return this.returnSecondBuildOptionsAfterMove.doReturnBuildOptions(selectedWorker);
+    }
+
+    public void doBuildSecondBlockAfterMove(Cell selectedCell) {
+        this.buildSecondBlockAfterMove.doBuildBlock(selectedCell);
+    }
+
+    public GodCard getAssociatedCard() {
+        return associatedCard;
+    }
+
+    public GodCard getPrevPlayerGod() {
+        return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getPrevPlayer().getPlayerGod();
+    }
+
+    public GodCard getNextPlayerGod() {
+        return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
+    }
+
+    public void setEffectStrategies(ReturnSelectOptionsStrategy returnSelectOptions, SelectWorkerStrategy selectWorker,
+                                    ReturnBuildOptionsStrategy returnBuildOptionsBeforeMove, BuildBlockStrategy buildBlockBeforeMove,
+                                    ReturnMoveOptionsStrategy returnFirstMoveOptions, SubtractRestraintsStrategy subtractFirstRestraints,
+                                    MoveWorkerStrategy moveWorkerFirstTime, ReturnMoveOptionsStrategy returnSecondMoveOptions,
+                                    SubtractRestraintsStrategy subtractSecondRestraints, MoveWorkerStrategy moveWorkerSecondTime,
+                                    ReturnBuildOptionsStrategy returnFirstBuildOptionsAfterMove, BuildBlockStrategy buildFirstBlockAfterMove,
+                                    ReturnBuildOptionsStrategy returnSecondBuildOptionsAfterMove, BuildBlockStrategy buildSecondBlockAfterMove) {
+        this.returnSelectOptions = returnSelectOptions;
+        this.selectWorker = selectWorker;
+        this.returnBuildOptionsBeforeMove = returnBuildOptionsBeforeMove;
+        this.buildBlockBeforeMove = buildBlockBeforeMove;
+        this.returnFirstMoveOptions = returnFirstMoveOptions;
+        this.subtractFirstRestraints = subtractFirstRestraints;
+        this.moveWorkerFirstTime = moveWorkerFirstTime;
+        this.returnSecondMoveOptions = returnSecondMoveOptions;
+        this.subtractSecondRestraints = subtractSecondRestraints;
+        this.moveWorkerSecondTime = moveWorkerSecondTime;
+        this.returnFirstBuildOptionsAfterMove = returnFirstBuildOptionsAfterMove;
+        this.buildFirstBlockAfterMove = buildFirstBlockAfterMove;
+        this.returnSecondBuildOptionsAfterMove = returnSecondBuildOptionsAfterMove;
+        this.buildSecondBlockAfterMove = buildSecondBlockAfterMove;
+    }
+
 }

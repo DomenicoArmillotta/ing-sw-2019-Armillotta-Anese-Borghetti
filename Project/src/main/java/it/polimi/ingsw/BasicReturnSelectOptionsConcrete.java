@@ -3,9 +3,9 @@ package it.polimi.ingsw;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowSelectOptionsBasicConcrete implements ShowSelectOptionsStrategy {
+public class BasicReturnSelectOptionsConcrete implements ReturnSelectOptionsStrategy {
 
-    private boolean lookAround(Worker worker,Match match) {
+    private boolean lookAround(Worker worker, Match match) {
         Cell workersCell = worker.getCurrentPosition();
         int i, j;
         boolean canSelectWorker = false;
@@ -29,15 +29,16 @@ public class ShowSelectOptionsBasicConcrete implements ShowSelectOptionsStrategy
         }
         return false;
     }
+
     @Override
-    public List<Cell> showSelect(Match match) {
+    public List<Cell> doReturnSelectOptions(Match match) {
         Player currPlayer = match.getCurrentTurn().getCurrentPlayer();
         List<Cell> tempCells = new ArrayList();
-        int i,j;
-        for(i=0;i<5;i++){
-            for(j=0;j<5;j++){
-                if(match.getMap()[i][j].getWorkerOnCell()!=null&&match.getMap()[i][j].getWorkerOnCell().getOwner()==currPlayer){
-                    if(lookAround(match.getMap()[i][j].getWorkerOnCell(), match)){
+        int i, j;
+        for (i = 0; i < 5; i++) {
+            for (j = 0; j < 5; j++) {
+                if (match.getMap()[i][j].getWorkerOnCell() != null && match.getMap()[i][j].getWorkerOnCell().getOwner() == currPlayer) {
+                    if (lookAround(match.getMap()[i][j].getWorkerOnCell(), match)) {
                         tempCells.add(match.getMap()[i][j]);
                     }
                 }

@@ -27,7 +27,8 @@ public class BasicShowBuildOptionsConcreteTest {
         GodCard chosenGod = player1.getPlayerGod();
         player1.initFirstWorker(3, 4);
         Worker worker1 = player1.getFirstWorker();
-        List<Cell> buildableCells = chosenGod.getEffect().doShowBuildOptions(worker1);
-        System.out.println(buildableCells);
+        List<Cell> buildableCells = chosenGod.getEffect().doReturnFirstBuildOptionsAfterMove(worker1);
+        System.out.println(buildableCells.get(0).getX());
+        System.out.println(buildableCells.get(0).getY());
     }
 }

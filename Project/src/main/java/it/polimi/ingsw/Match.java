@@ -41,7 +41,7 @@ public class Match {
         GodCard apollo = new GodCard("Apollo", "bla bla");
         Effect effectApollo = new Effect();
         apollo.setEffect(effectApollo);
-        effectApollo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+        effectApollo.setEffectStrategies(new ReturnSelectOptionsWithWorkersConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),

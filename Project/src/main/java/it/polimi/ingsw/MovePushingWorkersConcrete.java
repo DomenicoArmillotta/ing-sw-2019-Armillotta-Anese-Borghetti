@@ -20,12 +20,12 @@ public class MovePushingWorkersConcrete implements MoveWorkerStrategy {
         int differenceY=cellaWorkerCheSposta.getY()-cellaWorkerDaSpostare.getY();
         return differenceY;
     }
-
-    public Cell sposta(Cell cellaDaSpostare, int X, int Y) {
+/*
+    public Cell sposta(Worker workerDaSpostare, int X, int Y) {
         cellaDaSpostare.setX(cellaDaSpostare.getX() + X);
         cellaDaSpostare.setY(cellaDaSpostare.getY() + Y);
         return cellaDaSpostare;
-    }
+    }*/
 
     @Override
     public void doMoveWorker(Worker selectedWorker, Cell selectedCell) {
@@ -38,25 +38,20 @@ public class MovePushingWorkersConcrete implements MoveWorkerStrategy {
             selectedWorker.setCurrentLevel(selectedCell.getBuildingLevel());
 
         } else {
-            Cell temporaryCell = new Cell();
             Worker workerDaSpostare = selectedCell.getWorkerOnCell();
             selectedWorker.setPreviousLevel(selectedWorker.getCurrentLevel());
             selectedWorker.setPreviousPosition(selectedWorker.getCurrentPosition());
             workerDaSpostare.setPreviousLevel(workerDaSpostare.getCurrentLevel());
             workerDaSpostare.setPreviousPosition(workerDaSpostare.getCurrentPosition());
 
-            //creo cella metto quello che viene spostato in questa cella di standby e poi lo sposto
-            temporaryCell.setWorkerOnCell(workerDaSpostare);
-            selectedCell.setWorkerOnCell(selectedWorker);
-            //rimetto worker spostato a terra
-            Cell newCellWithPush;
-            newCellWithPush = sposta(selectedWorker.getPreviousPosition(), calcolaSpostamentoX(selectedWorker, selectedCell), calcolaSpostamentoY(selectedWorker, selectedCell));
-            //controllo che non ci sia nessuno
-            if(newCellWithPush.getWorkerOnCell()==null)
-                newCellWithPush.setWorkerOnCell(temporaryCell.getWorkerOnCell());
-
+            int shiftX=calcolaSpostamentoX(selectedWorker,selectedCell);
+            int shiftY=calcolaSpostamentoY(selectedWorker,selectedCell);
+            selectedWorker.getOwner().getCurrentMatch().getMap()[workerDaSpostare.getCurrentPosition().getX()-shiftX][workerDaSpostare.getCurrentPosition().getY()-shiftY].setWorkerOnCell(workerDaSpostare);
+            workerDaSpostare.getCurrentPosition().setWorkerOnCell(null);
+            workerDaSpostare.setCurrentPosition(selectedWorker.getOwner().getCurrentMatch().getMap()[workerDaSpostare.getCurrentPosition().getX()-shiftX][workerDaSpostare.getCurrentPosition().getY()-shiftY]);
             selectedWorker.setCurrentPosition(selectedCell);
-            workerDaSpostare.setCurrentPosition(newCellWithPush);
+
+
         }
 
 

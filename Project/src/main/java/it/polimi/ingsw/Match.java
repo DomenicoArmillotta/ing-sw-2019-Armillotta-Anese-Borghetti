@@ -20,8 +20,8 @@ public class Match {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 map[i][j] = new Cell();
-                map[i][j].setX(j);
-                map[i][j].setY(i);
+                map[i][j].setX(i);
+                map[i][j].setY(j);
             }
         }
         this.map = map;
@@ -103,7 +103,7 @@ public class Match {
         minotauro.setEffect(effectMinotauro);
         effectMinotauro.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new SubtractRestraintsDontMoveUpConcrete(), new MovePushingWorkersConcrete(), new BasicReturnMoveOptions(),
                 new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(minotauro);

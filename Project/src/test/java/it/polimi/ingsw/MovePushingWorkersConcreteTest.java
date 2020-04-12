@@ -23,16 +23,16 @@ public class MovePushingWorkersConcreteTest {
         n1.setCurrentMatch(match);
         n2.setCurrentMatch(match);
         match.createMap();
-        Cell cella11 = match.getMap()[2][4];
-        Cell cella21 = match.getMap()[3][4];
+        Cell cella11 = match.getMap()[4][2];
+        Cell cella21 = match.getMap()[4][3];
         Cell cellaDietro = match.getMap()[4][4];
-        n1.initFirstWorker(2, 4);
-        n2.initFirstWorker(3, 4);
+        n1.initFirstWorker(4, 2);
+        n2.initFirstWorker(4, 3);
         Worker worker11 = n1.getFirstWorker();
         Worker worker21 = n2.getFirstWorker();
 
         match.createGodList();
-        worker11.getOwner().setPlayerGod(match.getGodList().get(0));
+        worker11.getOwner().setPlayerGod(match.getGodList().get(6));
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
         worker11.getOwner().getPlayerGod().getEffect().doMoveWorkerFirstTime(worker11, cella21);
         assertEquals(worker11.getCurrentPosition(), worker21.getPreviousPosition());

@@ -101,7 +101,7 @@ public class Match {
         GodCard minotauro = new GodCard("Minotauro", "bla bla");
         Effect effectMinotauro = new Effect();
         minotauro.setEffect(effectMinotauro);
-        effectMinotauro.setEffectStrategies(new ReturnSelectOptionsPushingWorkersConcrete(), new BasicSelectWorkerConcrete(),
+        effectMinotauro.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new MovePushingWorkersConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),

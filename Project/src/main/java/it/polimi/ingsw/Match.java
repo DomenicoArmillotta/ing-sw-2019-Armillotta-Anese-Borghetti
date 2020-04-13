@@ -41,7 +41,7 @@ public class Match {
         GodCard apollo = new GodCard("Apollo", "bla bla");
         Effect effectApollo = new Effect();
         apollo.setEffect(effectApollo);
-        effectApollo.setEffectStrategies(new ReturnSelectOptionsWithWorkersConcrete(), new BasicSelectWorkerConcrete(),
+        effectApollo.setEffectStrategies(new ReturnSelectOptionsWithWorkersConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
@@ -51,7 +51,7 @@ public class Match {
         GodCard artemide = new GodCard("Artemide", "bla bla");
         Effect effectArtemide = new Effect();
         artemide.setEffect(effectArtemide);
-        effectArtemide.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+        effectArtemide.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
@@ -61,7 +61,7 @@ public class Match {
         GodCard athena = new GodCard("Athena", "bla bla");
         Effect effectAthena = new Effect();
         athena.setEffect(effectAthena);
-        effectAthena.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+        effectAthena.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
@@ -71,7 +71,7 @@ public class Match {
         GodCard atlante = new GodCard("Atlante", "bla bla");
         Effect effectAtlante = new Effect();
         atlante.setEffect(effectAtlante);
-        effectAtlante.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+        effectAtlante.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
@@ -81,7 +81,7 @@ public class Match {
         GodCard demetra = new GodCard("Demetra", "bla bla");
         Effect effectDemetra = new Effect();
         demetra.setEffect(effectDemetra);
-        effectDemetra.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+        effectDemetra.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
@@ -91,7 +91,7 @@ public class Match {
         GodCard efesto = new GodCard("Efesto", "bla bla");
         Effect effectEfesto = new Effect();
         efesto.setEffect(effectEfesto);
-        effectEfesto.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+        effectEfesto.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
@@ -111,7 +111,7 @@ public class Match {
         GodCard pan = new GodCard("Pan", "bla bla");
         Effect effectPan = new Effect();
         pan.setEffect(effectPan);
-        effectPan.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+        effectPan.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
@@ -121,7 +121,7 @@ public class Match {
         GodCard prometeo = new GodCard("Prometeo", "bla bla");
         Effect effectPrometeo = new Effect();
         prometeo.setEffect(effectPrometeo);
-        effectPrometeo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new BasicSelectWorkerConcrete(),
+        effectPrometeo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),

@@ -6,6 +6,7 @@ public class Effect {
     private GodCard associatedCard;
     private boolean isActive;
     private ReturnSelectOptionsStrategy returnSelectOptions;
+    private SubtractRestraintsStrategy subtractSelectRestraints;
     private SelectWorkerStrategy selectWorker;
     private ReturnBuildOptionsStrategy returnBuildOptionsBeforeMove;
     private BuildBlockStrategy buildBlockBeforeMove;
@@ -34,6 +35,10 @@ public class Effect {
 
     public List<Cell> doReturnSelectOptions(Match currentMatch) {
         return this.returnSelectOptions.doReturnSelectOptions(currentMatch);
+    }
+
+    public List<Cell> doSubtractSelectRestraints(List<Cell> selectOptionsCells) {
+        return this.subtractSecondRestraints.doSubtractRestraints(selectOptionsCells);
     }
 
     public Worker doSelectWorker(Cell selectedCell) {
@@ -100,7 +105,7 @@ public class Effect {
         return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
     }
 
-    public void setEffectStrategies(ReturnSelectOptionsStrategy returnSelectOptions, SelectWorkerStrategy selectWorker,
+    public void setEffectStrategies(ReturnSelectOptionsStrategy returnSelectOptions, SubtractRestraintsStrategy subtractSelectRestraints, SelectWorkerStrategy selectWorker,
                                     ReturnBuildOptionsStrategy returnBuildOptionsBeforeMove, BuildBlockStrategy buildBlockBeforeMove,
                                     ReturnMoveOptionsStrategy returnFirstMoveOptions, SubtractRestraintsStrategy subtractFirstRestraints,
                                     MoveWorkerStrategy moveWorkerFirstTime, ReturnMoveOptionsStrategy returnSecondMoveOptions,
@@ -108,6 +113,7 @@ public class Effect {
                                     ReturnBuildOptionsStrategy returnFirstBuildOptionsAfterMove, BuildBlockStrategy buildFirstBlockAfterMove,
                                     ReturnBuildOptionsStrategy returnSecondBuildOptionsAfterMove, BuildBlockStrategy buildSecondBlockAfterMove) {
         this.returnSelectOptions = returnSelectOptions;
+        this.subtractSelectRestraints = subtractSelectRestraints;
         this.selectWorker = selectWorker;
         this.returnBuildOptionsBeforeMove = returnBuildOptionsBeforeMove;
         this.buildBlockBeforeMove = buildBlockBeforeMove;

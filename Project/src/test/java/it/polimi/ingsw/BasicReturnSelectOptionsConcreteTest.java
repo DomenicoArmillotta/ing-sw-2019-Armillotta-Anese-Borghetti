@@ -29,7 +29,7 @@ public class BasicReturnSelectOptionsConcreteTest {
         myMatch.createGodList();
 
         player1.setCurrentMatch(myMatch);
-        player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
+        player1.setPlayerGod(myMatch.getGodList().get(1)); // apollo
         //creo un dummy worker in 0,0 di player1
         player1.initFirstWorker(0,0);
         player1.initSecondWorker(4,4);
@@ -60,7 +60,7 @@ public class BasicReturnSelectOptionsConcreteTest {
         myMatch.createGodList();
 
         player1.setCurrentMatch(myMatch);
-        player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
+        player1.setPlayerGod(myMatch.getGodList().get(1)); // apollo
         //creo un dummy worker in 0,0 di player1
         player1.initFirstWorker(0,0);
         player1.initSecondWorker(4,4);
@@ -96,7 +96,7 @@ public class BasicReturnSelectOptionsConcreteTest {
         myMatch.createGodList();
 
         player1.setCurrentMatch(myMatch);
-        player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
+        player1.setPlayerGod(myMatch.getGodList().get(1)); // apollo
         //creo un dummy worker in 0,0 di player1
         player1.initFirstWorker(0,0);
         player1.initSecondWorker(4,4);
@@ -131,7 +131,7 @@ public class BasicReturnSelectOptionsConcreteTest {
         myMatch.createGodList();
 
         player1.setCurrentMatch(myMatch);
-        player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
+        player1.setPlayerGod(myMatch.getGodList().get(1)); // apollo
         //creo un dummy worker in 0,0 di player1 e worker2 in 4,4
         player1.initFirstWorker(0,0);
         player1.initSecondWorker(4,4);
@@ -152,7 +152,7 @@ public class BasicReturnSelectOptionsConcreteTest {
         assertEquals(0, workersCellsQueue.size());
     }
     @Test
-    public void slostGameForWorkersDomesAndDeltaHeights(){
+    public void lostGameForWorkersDomesAndDeltaHeights(){
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
@@ -170,7 +170,7 @@ public class BasicReturnSelectOptionsConcreteTest {
         myMatch.createGodList();
 
         player1.setCurrentMatch(myMatch);
-        player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
+        player1.setPlayerGod(myMatch.getGodList().get(1)); // apollo
         //creo un dummy worker in 0,0 di player1 e worker2 in 4,4
         player1.initFirstWorker(0,0);
         player1.initSecondWorker(4,4);
@@ -209,7 +209,7 @@ public class BasicReturnSelectOptionsConcreteTest {
         myMatch.createGodList();
 
         player1.setCurrentMatch(myMatch);
-        player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
+        player1.setPlayerGod(myMatch.getGodList().get(1)); // apollo
         //creo un dummy worker in 0,0 di player1 e worker2 in 4,4
         player1.initFirstWorker(0,0);
         player1.initSecondWorker(1,0);
@@ -248,7 +248,7 @@ public class BasicReturnSelectOptionsConcreteTest {
         myMatch.createGodList();
 
         player1.setCurrentMatch(myMatch);
-        player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
+        player1.setPlayerGod(myMatch.getGodList().get(1)); // apollo
         //creo un dummy worker in 0,0 di player1 e worker2 in 4,4
         player1.initFirstWorker(0,0);
         player1.initSecondWorker(4,4);
@@ -287,7 +287,7 @@ public class BasicReturnSelectOptionsConcreteTest {
         myMatch.createGodList();
 
         player1.setCurrentMatch(myMatch);
-        player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
+        player1.setPlayerGod(myMatch.getGodList().get(1)); // apollo
         //creo un dummy worker in 0,0 di player1 e worker2 in 4,4
         player1.initFirstWorker(0,0);
 
@@ -303,6 +303,6 @@ public class BasicReturnSelectOptionsConcreteTest {
         myMatch.getMap()[1][0].setBuildingLevel(Level.MID);
 
         workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
-        assertEquals(1, workersCellsQueue.size());
+        assertEquals(0, workersCellsQueue.size());
     }
 }

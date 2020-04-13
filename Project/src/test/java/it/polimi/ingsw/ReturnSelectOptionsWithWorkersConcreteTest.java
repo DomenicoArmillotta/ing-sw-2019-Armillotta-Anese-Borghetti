@@ -74,11 +74,12 @@ public class ReturnSelectOptionsWithWorkersConcreteTest {
         player2.setPlayerGod(myMatch.getGodList().get(2));//passo athena(brr)
         myMatch.getMap()[1][0].setBuildingLevel(Level.BASE);//il worker è rialzato di 1
         player2.initFirstWorker(1,0);//switcha solo con questo qui <-
+        player2.getFirstWorker().setCurrentLevel(Level.BASE); //<- ne parlo con i miei fra
         player2.initSecondWorker(4,3);
         //creo un turno dummy
         myMatch.startFirstTurn(playerQueue);
         //costruisco gli ostacoli
-
+        assertEquals(player2.getFirstWorker().getCurrentLevel(),Level.BASE);
         myMatch.getMap()[0][1].setBuildingLevel(Level.DOME);
         myMatch.getMap()[1][1].setBuildingLevel(Level.DOME);
         myMatch.getMap()[3][3].setBuildingLevel(Level.DOME);

@@ -12,12 +12,13 @@ public class ReturnSelectOptionsWithWorkersConcrete implements ReturnSelectOptio
         int tempX = worker.getCurrentPosition().getX();
         int tempY = worker.getCurrentPosition().getY();
         int deltaLevel;
-
-        //note to-self
         /*
+
+        note to-self
+
         (match.getMap()[i][j].getWorkerOnCell() == null || worker.getOwner()!=match.getMap()[i][j].getWorkerOnCell().getOwner()
-        server per evitare segfault in pratica se c'è un worker allora guardo il suo owner
-        viceversa se NON c'è un worker NON faccio questo Controllo
+        serve per evitare segfault ,in pratica se c'è un worker allora guardo il suo owner
+        viceversa se NON c'è un worker NON faccio questo Controllo.
          */
 
         for (i = tempX - 1; i < tempX + 2; i++) {

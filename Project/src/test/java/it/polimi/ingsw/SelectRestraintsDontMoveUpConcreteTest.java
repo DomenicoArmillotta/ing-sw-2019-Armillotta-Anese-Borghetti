@@ -214,7 +214,141 @@ public class SelectRestraintsDontMoveUpConcreteTest {
         List<Cell> workersCells2;
         //assertEquals(workersCellsQueue.size(),2);
         workersCells2 = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doSubtractSelectRestraints(workersCellsQueue);
-        assertEquals(null,workersCells2);
+        assertEquals(0,workersCells2.size());
+        assertEquals(player1.getFirstWorker().getCurrentPosition().getBuildingLevel(),myMatch.getMap()[0][0].getBuildingLevel());
+    }
+    @Test
+    public void canSelectOneWokersOnSameLevelWithIsActiveAndApolloLikeGods(){
+        Player player1 = new Player("Marco");
+        Player player2 = new Player("Pietro");
+        Player player3 = new Player("Domenico");
+        List<Player> playerQueue = new ArrayList<>();
+        List<Cell> workersCellsQueue = new ArrayList<>();
+
+        playerQueue.add(player1);
+        playerQueue.add(player2);
+        playerQueue.add(player3);
+
+        GameMaster myGameMaster = new GameMaster(3, playerQueue);
+        myGameMaster.createMatch();
+        Match myMatch = myGameMaster.getMatch();
+        myMatch.createMap();
+        myMatch.createGodList();
+
+        player1.setCurrentMatch(myMatch);
+        player1.setPlayerGod(myMatch.getGodList().get(0)); // apollo
+        player2.setCurrentMatch(myMatch);
+        player2.setPlayerGod(myMatch.getGodList().get(1));
+        //creo un dummy worker in 0,0 di player1
+        player1.initFirstWorker(0,0);
+        myMatch.getMap()[0][0].setBuildingLevel(Level.BASE);
+        player1.getFirstWorker().setCurrentLevel(Level.BASE);
+        //creo worker2 dummy
+        player2.initFirstWorker(1,1);
+        player2.getFirstWorker().setCurrentLevel(Level.BASE);
+        myMatch.getMap()[1][1].setBuildingLevel(Level.BASE);
+        player2.getFirstWorker().setCurrentLevel(Level.BASE);
+        //creo un turno dummy
+        myMatch.startFirstTurn(playerQueue);
+        //costruisco gli ostacoli
+        myMatch.getMap()[0][1].setBuildingLevel(Level.DOME);
+        myMatch.getMap()[1][0].setBuildingLevel(Level.MID);
+
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
+        List<Cell> workersCells2;
+        //assertEquals(workersCellsQueue.size(),2);
+        workersCells2 = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doSubtractSelectRestraints(workersCellsQueue);
+        assertEquals(player1.getFirstWorker(),workersCells2.get(0).getWorkerOnCell());
+        assertEquals(workersCells2.size(),1);
+        assertEquals(player1.getFirstWorker().getCurrentPosition().getBuildingLevel(),myMatch.getMap()[0][0].getBuildingLevel());
+    }
+    @Test
+    public void lostBecauseRestrainIsActiveWithMinotauroLikeGods(){
+        Player player1 = new Player("Marco");
+        Player player2 = new Player("Pietro");
+        Player player3 = new Player("Domenico");
+        List<Player> playerQueue = new ArrayList<>();
+        List<Cell> workersCellsQueue = new ArrayList<>();
+
+        playerQueue.add(player1);
+        playerQueue.add(player2);
+        playerQueue.add(player3);
+
+        GameMaster myGameMaster = new GameMaster(3, playerQueue);
+        myGameMaster.createMatch();
+        Match myMatch = myGameMaster.getMatch();
+        myMatch.createMap();
+        myMatch.createGodList();
+
+        player1.setCurrentMatch(myMatch);
+        player1.setPlayerGod(myMatch.getGodList().get(6)); // apollo
+        player2.setCurrentMatch(myMatch);
+        player2.setPlayerGod(myMatch.getGodList().get(1));
+        //creo un dummy worker in 0,0 di player1
+        player1.initFirstWorker(0,0);
+
+        //creo worker2 dummy
+        player2.initFirstWorker(1,1);
+        player2.getFirstWorker().setCurrentLevel(Level.BASE);
+        myMatch.getMap()[1][1].setBuildingLevel(Level.BASE);
+        player2.getFirstWorker().setCurrentLevel(Level.BASE);
+        //creo un turno dummy
+        myMatch.startFirstTurn(playerQueue);
+        //costruisco gli ostacoli
+        myMatch.getMap()[0][1].setBuildingLevel(Level.DOME);
+        myMatch.getMap()[1][0].setBuildingLevel(Level.BASE);
+
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
+        List<Cell> workersCells2;
+        //assertEquals(workersCellsQueue.size(),2);
+        workersCells2 = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doSubtractSelectRestraints(workersCellsQueue);
+        assertEquals(workersCells2.size(),0);
+        assertEquals(player1.getFirstWorker().getCurrentPosition().getBuildingLevel(),myMatch.getMap()[0][0].getBuildingLevel());
+    }
+    @Test
+    public void canSelectOneWorkerWithIsActiveAndMinotauroLikeGods(){
+        Player player1 = new Player("Marco");
+        Player player2 = new Player("Pietro");
+        Player player3 = new Player("Domenico");
+        List<Player> playerQueue = new ArrayList<>();
+        List<Cell> workersCellsQueue = new ArrayList<>();
+
+        playerQueue.add(player1);
+        playerQueue.add(player2);
+        playerQueue.add(player3);
+
+        GameMaster myGameMaster = new GameMaster(3, playerQueue);
+        myGameMaster.createMatch();
+        Match myMatch = myGameMaster.getMatch();
+        myMatch.createMap();
+        myMatch.createGodList();
+
+        player1.setCurrentMatch(myMatch);
+        player1.setPlayerGod(myMatch.getGodList().get(6)); // apollo
+        player2.setCurrentMatch(myMatch);
+        player2.setPlayerGod(myMatch.getGodList().get(1));
+        //creo un dummy worker in 0,0 di player1
+        player1.initFirstWorker(0,0);
+        player1.getFirstWorker().setCurrentLevel(Level.BASE);
+        myMatch.getMap()[0][0].setBuildingLevel(Level.BASE);
+
+        //creo worker2 dummy
+        player2.initFirstWorker(1,1);
+        player2.getFirstWorker().setCurrentLevel(Level.BASE);
+        myMatch.getMap()[1][1].setBuildingLevel(Level.BASE);
+        player2.getFirstWorker().setCurrentLevel(Level.BASE);
+        //creo un turno dummy
+        myMatch.startFirstTurn(playerQueue);
+        //costruisco gli ostacoli
+        myMatch.getMap()[0][1].setBuildingLevel(Level.DOME);
+        myMatch.getMap()[1][0].setBuildingLevel(Level.BASE);
+
+        workersCellsQueue = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doReturnSelectOptions(myMatch);
+        List<Cell> workersCells2;
+        //assertEquals(workersCellsQueue.size(),2);
+        workersCells2 = myMatch.getCurrentTurn().getCurrentPlayer().getPlayerGod().getEffect().doSubtractSelectRestraints(workersCellsQueue);
+        //assertEquals(workersCells2.get(0).getWorkerOnCell(),player1.getFirstWorker());
+        assertEquals(workersCells2.size(),1);
         assertEquals(player1.getFirstWorker().getCurrentPosition().getBuildingLevel(),myMatch.getMap()[0][0].getBuildingLevel());
     }
 }

@@ -18,7 +18,6 @@ public class SelectRestraintsDontMoveUpConcrete implements SubtractRestraintsStr
         int deltaLevel;
         Cell[][] tempMap = selectOptionsCells.get(0).getWorkerOnCell().getOwner().getCurrentMatch().getMap();
         boolean selectable=false;
-
         while (h<selectOptionsCells.size()) {
             tempLevel = selectOptionsCells.get(h).getBuildingLevel(); //prendo il livello del primo worker
             tempX = selectOptionsCells.get(h).getX();
@@ -30,7 +29,6 @@ public class SelectRestraintsDontMoveUpConcrete implements SubtractRestraintsStr
                         if (tempMap[i][j].getBuildingLevel().ordinal() <= selectOptionsCells.get(h).getBuildingLevel().ordinal()&& !selectable) {
                             if(tempMap[i][j].getWorkerOnCell()==null || tempMap[i][j].getWorkerOnCell().getOwner()!=selectOptionsCells.get(h).getWorkerOnCell().getOwner()) {
                                 selectable=true;
-                                System.out.println("diocane");
                             }
                         }
                     }

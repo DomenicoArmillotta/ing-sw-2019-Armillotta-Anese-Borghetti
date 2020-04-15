@@ -21,29 +21,34 @@ public class BasicReturnMoveOptionsTest {
         n1.setCurrentMatch(match);
         n2.setCurrentMatch(match);
         match.createMap();
-        Cell cella11 = match.getMap()[4][2];
-        n1.initFirstWorker(4, 2);
+        Cell cella11 = match.getMap()[2][2];
+        n1.initFirstWorker(2, 2);
         Worker worker11 = n1.getFirstWorker();
         match.createGodList();
         worker11.getOwner().setPlayerGod(match.getGodList().get(2));
         //chiamo funzione
-        List<Cell> MoveCells=new ArrayList<>();
+        List<Cell> MoveCells=new ArrayList();
         MoveCells=worker11.getOwner().getPlayerGod().getEffect().doReturnFirstMoveOptions(worker11);
-
 
         //creo lista con celle giuste per la assert
         int i,j,x,y;
-        List<Cell> MoveCellsGiuste=new ArrayList<>();
+        List<Cell> MoveCellsGiuste=new ArrayList();
         x=worker11.getCurrentPosition().getX();
         y=worker11.getCurrentPosition().getY();
+        //assertEquals(x,2);
+        //assertEquals(y,2);
+
         Match currentMatch=worker11.getOwner().getCurrentMatch();
-        for(i=worker11.getCurrentPosition().getX()-1;i<x+1 && i<6;i++) {
-            for (j = worker11.getCurrentPosition().getY() - 1; j < y + 2 && j < 6; j++) {
-                MoveCellsGiuste.add(currentMatch.getMap()[i][j]);
+        for(i=x-1;i<x+2 && i<5 && i>0 ;i++) {
+            for (j =y-1; j <y+2 && i<5 && i>0; j++) {
+                if(!currentMatch.getMap()[i][j].equals(cella11))
+                    MoveCellsGiuste.add(currentMatch.getMap()[i][j]);
             }
         }
 
         assertEquals(MoveCellsGiuste,MoveCells);
+        assertEquals(MoveCellsGiuste.size(),8);
+
 
 
     }

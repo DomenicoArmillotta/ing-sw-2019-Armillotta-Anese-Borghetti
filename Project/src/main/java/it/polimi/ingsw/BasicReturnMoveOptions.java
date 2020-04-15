@@ -11,17 +11,25 @@ public class BasicReturnMoveOptions implements ReturnMoveOptionsStrategy {
     public List<Cell> doReturnMoveOptions(Worker selectedWorker) {
         //ciclo
         int i,j,x,y,check;
-        check=1;
+
         List <Cell> MoveCells=new ArrayList();
         x=selectedWorker.getCurrentPosition().getX();
         y=selectedWorker.getCurrentPosition().getY();
         Match currentMatch=selectedWorker.getOwner().getCurrentMatch();
-        for(i=selectedWorker.getCurrentPosition().getX()-1;i<x+1 && i<6;i++)
+        //aggiungere condizione del bordo inferiore
+        i=x-1;
+        j=y-1;
+        if(i<0)
+            i=0;
+        if(j<0)
+            j=0;
+        for(i=i;i<x+2 && i<5 ;i++)
         {
-            for(j=selectedWorker.getCurrentPosition().getY()-1;j<y+2 && j<6;j++)
+            for(j=j;j<y+2 && j<5;j++)
             {
+                check=1;
                 //se  c'è un operatore sopra non  aggiungo nella lista
-                if(currentMatch.getMap()[i][j].getWorkerOnCell()==null)
+                if(currentMatch.getMap()[i][j].getWorkerOnCell()!=null)
                 {
                     check=0;
                 }
@@ -31,7 +39,7 @@ public class BasicReturnMoveOptions implements ReturnMoveOptionsStrategy {
 
                 }
                 //se la differenza è maggiore di 1 non aggiungo nella lista
-                if((currentMatch.getMap()[i][j].getBuildingLevel().ordinal()-selectedWorker.getCurrentLevel().ordinal())<1 && check==1 ){
+                if((currentMatch.getMap()[i][j].getBuildingLevel().ordinal()-selectedWorker.getCurrentLevel().ordinal())>1 && check==1 ){
 
                     check=0;
 

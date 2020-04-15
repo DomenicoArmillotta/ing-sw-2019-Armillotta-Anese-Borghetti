@@ -28,13 +28,8 @@ public class MoveCheckingLevelConcreteTest {
         selectedCell.setBuildingLevel(Level.BASE);
         selectedCell.setY(4);
         selectedCell.setX(4);
-        //fine creazione
-        worker1.getOwner().getPlayerGod().getEffect().setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
-                new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
-                new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
-        //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
+        match.createGodList();
+        worker1.getOwner().setPlayerGod(match.getGodList().get(3));
         worker1.getOwner().getPlayerGod().getEffect().doMoveWorkerFirstTime(worker1, selectedCell);
         //fa la mossa
         assertEquals(worker1.getOwner().getPlayerGod().getEffect().getStatus(), true);

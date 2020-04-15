@@ -2,11 +2,8 @@ package it.polimi.ingsw;
 
 import java.util.ArrayList;
 import java.util.List;
-//devo fare qualcosa di diverso per minotauro e apollo e artemide per controllare la penultima
-//la funzione deve ritorare la lista di celle su cui posso spostarmi quindi controllare altezza palazzi ma posso saltare giu,sec'è avversario
-//i bordi,cupola,worker mio
-//aggiornale nelle godcards i match le strategy
-public class BasicReturnMoveOptions implements ReturnMoveOptionsStrategy {
+
+public class ReturnMoveOptionNotPreviousPosition implements ReturnMoveOptionsStrategy {
     @Override
     public List<Cell> doReturnMoveOptions(Worker selectedWorker) {
         //ciclo
@@ -22,6 +19,11 @@ public class BasicReturnMoveOptions implements ReturnMoveOptionsStrategy {
             {
                 //se  c'è un operatore sopra non  aggiungo nella lista
                 if(currentMatch.getMap()[i][j].getWorkerOnCell()==null)
+                {
+                    check=0;
+                }
+                //se è la mia vecchia posizione non aggiungo
+                if(selectedWorker.getPreviousPosition().equals(currentMatch.getMap()[i][j].getWorkerOnCell()))
                 {
                     check=0;
                 }

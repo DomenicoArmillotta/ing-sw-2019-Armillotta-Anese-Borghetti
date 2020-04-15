@@ -29,7 +29,7 @@ public class BasicMoveConcreteTest {
         Cell selectedCell = match.getMap()[4][4];
 
         match.createGodList();
-        worker1.getOwner().setPlayerGod(match.getGodList().get(3));
+        worker1.getOwner().setPlayerGod(match.getGodList().get(6));
         //inizializzato tutto con worker con la basicMove e la cella in cui si vuole spostare
         worker1.getOwner().getPlayerGod().getEffect().doMoveWorkerFirstTime(worker1, selectedCell);
         assertEquals(worker1.getCurrentPosition(), selectedCell);

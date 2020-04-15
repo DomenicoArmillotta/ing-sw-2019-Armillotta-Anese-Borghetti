@@ -20,12 +20,7 @@ public class MovePushingWorkersConcrete implements MoveWorkerStrategy {
         int differenceY=cellaWorkerCheSposta.getY()-cellaWorkerDaSpostare.getY();
         return differenceY;
     }
-/*
-    public Cell sposta(Worker workerDaSpostare, int X, int Y) {
-        cellaDaSpostare.setX(cellaDaSpostare.getX() + X);
-        cellaDaSpostare.setY(cellaDaSpostare.getY() + Y);
-        return cellaDaSpostare;
-    }*/
+
 
     @Override
     public void doMoveWorker(Worker selectedWorker, Cell selectedCell) {

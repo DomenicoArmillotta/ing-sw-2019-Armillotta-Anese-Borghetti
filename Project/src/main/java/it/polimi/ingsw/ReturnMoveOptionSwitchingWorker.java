@@ -2,11 +2,8 @@ package it.polimi.ingsw;
 
 import java.util.ArrayList;
 import java.util.List;
-//devo fare qualcosa di diverso per minotauro e apollo e artemide per controllare la penultima
-//la funzione deve ritorare la lista di celle su cui posso spostarmi quindi controllare altezza palazzi ma posso saltare giu,sec'è avversario
-//i bordi,cupola,worker mio
-//aggiornale nelle godcards i match le strategy
-public class BasicReturnMoveOptions implements ReturnMoveOptionsStrategy {
+
+public class ReturnMoveOptionSwitchingWorker implements ReturnMoveOptionsStrategy {
     @Override
     public List<Cell> doReturnMoveOptions(Worker selectedWorker) {
         //ciclo
@@ -20,10 +17,12 @@ public class BasicReturnMoveOptions implements ReturnMoveOptionsStrategy {
         {
             for(j=selectedWorker.getCurrentPosition().getY()-1;j<y+2 && j<6;j++)
             {
-                //se  c'è un operatore sopra non  aggiungo nella lista
-                if(currentMatch.getMap()[i][j].getWorkerOnCell()==null)
+                //se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo
+                if(currentMatch.getMap()[i][j].getWorkerOnCell()!=null && currentMatch.getMap()[i][j].getWorkerOnCell().getOwner()==selectedWorker.getOwner() )
                 {
                     check=0;
+                }else{
+                    check=1;
                 }
                 //se  c'è una cupola non  aggiungo nella lista
                 if(currentMatch.getMap()[i][j].getBuildingLevel()==Level.DOME && check==1){
@@ -43,5 +42,6 @@ public class BasicReturnMoveOptions implements ReturnMoveOptionsStrategy {
             }
         }
         return MoveCells;
+
     }
 }

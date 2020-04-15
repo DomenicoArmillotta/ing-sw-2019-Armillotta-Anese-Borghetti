@@ -38,7 +38,7 @@ public class Effect {
     }
 
     public List<Cell> doSubtractSelectRestraints(List<Cell> selectOptionsCells) {
-        return this.subtractSecondRestraints.doSubtractRestraints(selectOptionsCells);
+        return this.subtractSelectRestraints.doSubtractRestraints(selectOptionsCells);
     }
 
     public Worker doSelectWorker(Cell selectedCell) {

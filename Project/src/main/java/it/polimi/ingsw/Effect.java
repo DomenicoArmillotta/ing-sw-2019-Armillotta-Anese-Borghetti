@@ -33,6 +33,12 @@ public class Effect {
         return associatedCard.getOwner().getCurrentMatch().getMap();
     }
 
+    public void changeSubtractRestraintsStrategy(SubtractRestraintsStrategy newSubtractRestraintsSelectConcrete, SubtractRestraintsStrategy newSubtractRestraintsMoveConcrete) {
+        this.subtractSelectRestraints = newSubtractRestraintsSelectConcrete;
+        this.subtractFirstRestraints = newSubtractRestraintsMoveConcrete;
+        this.subtractSecondRestraints = newSubtractRestraintsMoveConcrete;
+    }
+
     public List<Cell> doReturnSelectOptions(Match currentMatch) {
         return this.returnSelectOptions.doReturnSelectOptions(currentMatch);
     }

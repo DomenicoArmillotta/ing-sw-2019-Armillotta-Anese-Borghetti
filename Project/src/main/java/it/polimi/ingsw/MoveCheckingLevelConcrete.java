@@ -10,6 +10,8 @@ public class MoveCheckingLevelConcrete implements MoveWorkerStrategy {
         selectedWorker.setCurrentLevel(selectedCell.getBuildingLevel());
         if (selectedWorker.getPreviousLevel().ordinal() - selectedWorker.getCurrentLevel().ordinal() > 0) {
             selectedWorker.getOwner().getPlayerGod().getEffect().setStatus(true);
+            selectedWorker.getOwner().getCurrentMatch().getCurrentTurn().getNextPlayer().getPlayerGod().getEffect().changeSubtractRestraintsStrategy(new SelectRestraintsDontMoveUpConcrete(), new SelectRestraintsDontMoveUpConcrete());
+            selectedWorker.getOwner().getCurrentMatch().getCurrentTurn().getPrevPlayer().getPlayerGod().getEffect().changeSubtractRestraintsStrategy(new SelectRestraintsDontMoveUpConcrete(), new SelectRestraintsDontMoveUpConcrete());
         }
 
     }

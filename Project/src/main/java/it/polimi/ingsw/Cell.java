@@ -2,6 +2,7 @@ package it.polimi.ingsw;
 //da sistemare x e Y ATTENZIONE
 public class Cell {
     private Level buildingLevel;
+    private Level previousLevel;
     private Worker workerOnCell;
     private int X;
     private int Y;
@@ -34,6 +35,10 @@ public class Cell {
         this.buildingLevel = buildingLevel;
     }
 
+    public void setPreviousLevel(Level previousLevel) {
+        this.previousLevel = previousLevel;
+    }
+
     public Worker getWorkerOnCell() {
         return workerOnCell;
     }
@@ -41,5 +46,10 @@ public class Cell {
     public Level getBuildingLevel() {
         return buildingLevel;
     }
+
+    public Level getPreviousLevel() {
+        return previousLevel;
+    }
+
 
 }

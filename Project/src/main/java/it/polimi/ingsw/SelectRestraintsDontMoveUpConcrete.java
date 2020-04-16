@@ -3,16 +3,16 @@ package it.polimi.ingsw;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SelectRestraintsDontMoveUpConcrete implements SubtractRestraintsStrategy {
+public class SelectRestraintsDontMoveUpConcrete implements SubtractSelectRestraintsStrategy {
     @Override
-    public List<Cell> doSubtractRestraints(List<Cell> selectOptionsCells) {
+    public List<Cell> doSubtractSelectRestraints(List<Cell> selectOptionsCells) {
         /*
         riceve in ingresso al più due celle e deve controllora che QUALSIASI CELLA NON SI
         > DEL CURR LEVEL DEL WORKER SELEZIONATO
          */
         List<Cell> tempCells = new ArrayList<>();
         int h = 0;
-        int i,j;
+        int i, j;
         Level tempLevel;
         int tempX, tempY;
         int deltaLevel;

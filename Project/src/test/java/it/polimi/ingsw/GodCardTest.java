@@ -22,10 +22,10 @@ public class GodCardTest  {
         public void EffectTest(){
 
         Effect effectApollo = new Effect();
-        effectApollo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
+        effectApollo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractSelectRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         GodCard apollo = new GodCard("Apollo", "bla bla");
         apollo.setEffect(effectApollo);

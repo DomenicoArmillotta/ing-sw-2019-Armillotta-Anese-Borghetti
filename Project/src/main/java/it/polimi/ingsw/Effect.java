@@ -6,15 +6,15 @@ public class Effect {
     private GodCard associatedCard;
     private boolean isActive;
     private ReturnSelectOptionsStrategy returnSelectOptions;
-    private SubtractRestraintsStrategy subtractSelectRestraints;
+    private SubtractSelectRestraintsStrategy subtractSelectRestraints;
     private SelectWorkerStrategy selectWorker;
     private ReturnBuildOptionsStrategy returnBuildOptionsBeforeMove;
     private BuildBlockStrategy buildBlockBeforeMove;
     private ReturnMoveOptionsStrategy returnFirstMoveOptions;
-    private SubtractRestraintsStrategy subtractFirstRestraints;
+    private SubtractMoveRestraintsStrategy subtractFirstRestraints;
     private MoveWorkerStrategy moveWorkerFirstTime;
     private ReturnMoveOptionsStrategy returnSecondMoveOptions;
-    private SubtractRestraintsStrategy subtractSecondRestraints;
+    private SubtractMoveRestraintsStrategy subtractSecondRestraints;
     private MoveWorkerStrategy moveWorkerSecondTime;
     private ReturnBuildOptionsStrategy returnFirstBuildOptionsAfterMove;
     private BuildBlockStrategy buildFirstBlockAfterMove;
@@ -33,7 +33,7 @@ public class Effect {
         return associatedCard.getOwner().getCurrentMatch().getMap();
     }
 
-    public void changeSubtractRestraintsStrategy(SubtractRestraintsStrategy newSubtractRestraintsSelectConcrete, SubtractRestraintsStrategy newSubtractRestraintsMoveConcrete) {
+    public void changeSubtractMoveRestraintsStrategy(SubtractSelectRestraintsStrategy newSubtractRestraintsSelectConcrete, SubtractMoveRestraintsStrategy newSubtractRestraintsMoveConcrete) {
         this.subtractSelectRestraints = newSubtractRestraintsSelectConcrete;
         this.subtractFirstRestraints = newSubtractRestraintsMoveConcrete;
         this.subtractSecondRestraints = newSubtractRestraintsMoveConcrete;
@@ -44,7 +44,7 @@ public class Effect {
     }
 
     public List<Cell> doSubtractSelectRestraints(List<Cell> selectOptionsCells) {
-        return this.subtractSelectRestraints.doSubtractRestraints(selectOptionsCells);
+        return this.subtractSelectRestraints.doSubtractSelectRestraints(selectOptionsCells);
     }
 
     public Worker doSelectWorker(Cell selectedCell) {
@@ -63,8 +63,8 @@ public class Effect {
         return this.returnFirstMoveOptions.doReturnMoveOptions(selectedWorker);
     }
 
-    public List<Cell> doSubtractFirstRestraints(List<Cell> moveOptionsCells) {
-        return this.subtractFirstRestraints.doSubtractRestraints(moveOptionsCells);
+    public List<Cell> doSubtractFirstRestraints(List<Cell> moveOptionsCells, Worker selectedWorker) {
+        return this.subtractFirstRestraints.doSubtractMoveRestraints(moveOptionsCells, selectedWorker);
     }
 
     public void doMoveWorkerFirstTime(Worker selectedWorker, Cell selectedCell) {
@@ -75,8 +75,8 @@ public class Effect {
         return this.returnSecondMoveOptions.doReturnMoveOptions(selectedWorker);
     }
 
-    public List<Cell> doSubtractSecondRestraints(List<Cell> moveOptionsCells) {
-        return this.subtractSecondRestraints.doSubtractRestraints(moveOptionsCells);
+    public List<Cell> doSubtractSecondRestraints(List<Cell> moveOptionsCells, Worker selectedWorker) {
+        return this.subtractSecondRestraints.doSubtractMoveRestraints(moveOptionsCells, selectedWorker);
     }
 
     public void doMoveWorkerSecondTime(Worker selectedWorker, Cell selectedCell) {
@@ -111,11 +111,11 @@ public class Effect {
         return this.getAssociatedCard().getOwner().getCurrentMatch().getCurrentTurn().getNextPlayer().getPlayerGod();
     }
 
-    public void setEffectStrategies(ReturnSelectOptionsStrategy returnSelectOptions, SubtractRestraintsStrategy subtractSelectRestraints, SelectWorkerStrategy selectWorker,
+    public void setEffectStrategies(ReturnSelectOptionsStrategy returnSelectOptions, SubtractSelectRestraintsStrategy subtractSelectRestraints, SelectWorkerStrategy selectWorker,
                                     ReturnBuildOptionsStrategy returnBuildOptionsBeforeMove, BuildBlockStrategy buildBlockBeforeMove,
-                                    ReturnMoveOptionsStrategy returnFirstMoveOptions, SubtractRestraintsStrategy subtractFirstRestraints,
+                                    ReturnMoveOptionsStrategy returnFirstMoveOptions, SubtractMoveRestraintsStrategy subtractFirstRestraints,
                                     MoveWorkerStrategy moveWorkerFirstTime, ReturnMoveOptionsStrategy returnSecondMoveOptions,
-                                    SubtractRestraintsStrategy subtractSecondRestraints, MoveWorkerStrategy moveWorkerSecondTime,
+                                    SubtractMoveRestraintsStrategy subtractSecondRestraints, MoveWorkerStrategy moveWorkerSecondTime,
                                     ReturnBuildOptionsStrategy returnFirstBuildOptionsAfterMove, BuildBlockStrategy buildFirstBlockAfterMove,
                                     ReturnBuildOptionsStrategy returnSecondBuildOptionsAfterMove, BuildBlockStrategy buildSecondBlockAfterMove) {
         this.returnSelectOptions = returnSelectOptions;

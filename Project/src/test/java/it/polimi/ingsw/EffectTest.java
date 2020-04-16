@@ -26,10 +26,10 @@ public class EffectTest {
         GodCard apollo = new GodCard("Apollo", "bla bla");
         Effect effectApollo = new Effect();
         apollo.setEffect(effectApollo);
-        effectApollo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
+        effectApollo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractSelectRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         myMatch.getGodList().add(apollo);
 

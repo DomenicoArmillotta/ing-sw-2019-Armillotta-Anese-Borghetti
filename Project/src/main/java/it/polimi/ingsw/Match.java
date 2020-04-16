@@ -43,28 +43,28 @@ public class Match {
         apollo.setEffect(effectApollo);
         effectApollo.setEffectStrategies(new ReturnSelectOptionsWithWorkersConcrete(), new SelectRestraintsDontMoveUpConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(apollo);
 
         GodCard artemide = new GodCard("Artemide", "bla bla");
         Effect effectArtemide = new Effect();
         artemide.setEffect(effectArtemide);
-        effectArtemide.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
+        effectArtemide.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractSelectRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(artemide);
 
         GodCard athena = new GodCard("Athena", "bla bla");
         Effect effectAthena = new Effect();
         athena.setEffect(effectAthena);
-        effectAthena.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
+        effectAthena.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractSelectRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(athena);
 
@@ -73,28 +73,28 @@ public class Match {
         atlante.setEffect(effectAtlante);
         effectAtlante.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new SelectRestraintsDontMoveUpConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(atlante);
 
         GodCard demetra = new GodCard("Demetra", "bla bla");
         Effect effectDemetra = new Effect();
         demetra.setEffect(effectDemetra);
-        effectDemetra.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
+        effectDemetra.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractSelectRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(demetra);
 
         GodCard efesto = new GodCard("Efesto", "bla bla");
         Effect effectEfesto = new Effect();
         efesto.setEffect(effectEfesto);
-        effectEfesto.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
+        effectEfesto.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractSelectRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(efesto);
 
@@ -103,28 +103,28 @@ public class Match {
         minotauro.setEffect(effectMinotauro);
         effectMinotauro.setEffectStrategies(new ReturnSelectOptionsPushingWorkersConcrete(), new SelectRestraintsDontMoveUpConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new MovePushingWorkersConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new MovePushingWorkersConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(minotauro);
 
         GodCard pan = new GodCard("Pan", "bla bla");
         Effect effectPan = new Effect();
         pan.setEffect(effectPan);
-        effectPan.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
+        effectPan.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractSelectRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(pan);
 
         GodCard prometeo = new GodCard("Prometeo", "bla bla");
         Effect effectPrometeo = new Effect();
         prometeo.setEffect(effectPrometeo);
-        effectPrometeo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractRestraintsConcrete(), new BasicSelectWorkerConcrete(),
+        effectPrometeo.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractSelectRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(prometeo);
     }

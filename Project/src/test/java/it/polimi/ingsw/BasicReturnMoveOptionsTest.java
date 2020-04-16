@@ -67,11 +67,11 @@ public class BasicReturnMoveOptionsTest {
         n1.setCurrentMatch(match);
         n2.setCurrentMatch(match);
         match.createMap();
-        Cell cella11 = match.getMap()[4][2];
-        Cell cella21 = match.getMap()[4][3];
+        Cell cella11 = match.getMap()[2][2];
+        Cell cella21 = match.getMap()[2][3];
         //Cell cellaDietro = match.getMap()[4][4];
-        n1.initFirstWorker(4, 2);
-        n2.initFirstWorker(4, 3);
+        n1.initFirstWorker(2, 2);
+        n2.initFirstWorker(2, 3);
         Worker worker11 = n1.getFirstWorker();
         Worker worker21 = n2.getFirstWorker();
 
@@ -88,9 +88,10 @@ public class BasicReturnMoveOptionsTest {
         x=worker11.getCurrentPosition().getX();
         y=worker11.getCurrentPosition().getY();
         Match currentMatch=worker11.getOwner().getCurrentMatch();
-        for(i=worker11.getCurrentPosition().getX()-1;i<x+1 && i<6;i++) {
-            for (j = worker11.getCurrentPosition().getY() - 1; j < y + 2 && j < 6; j++) {
-                if(currentMatch.getMap()[i][j]!=cella21){
+
+        for(i = x - 1; i < x + 2 && i < 5 && i >= 0; i++) {
+            for (j = y - 1; j < y + 2 && j < 5 && j >= 0; j++) {
+                if(currentMatch.getMap()[i][j]!=cella21 && !currentMatch.getMap()[i][j].equals(cella11)){
                     MoveCellsGiuste.add(currentMatch.getMap()[i][j]);
                 }
 
@@ -116,12 +117,12 @@ public class BasicReturnMoveOptionsTest {
         n1.setCurrentMatch(match);
         n2.setCurrentMatch(match);
         match.createMap();
-        Cell cella11 = match.getMap()[4][2];
-        Cell cella21 = match.getMap()[4][3];
+        Cell cella11 = match.getMap()[2][2];
+        Cell cella21 = match.getMap()[2][3];
         cella21.setBuildingLevel(Level.TOP);
         //Cell cellaDietro = match.getMap()[4][4];
-        n1.initFirstWorker(4, 2);
-        n2.initFirstWorker(4, 3);
+        n1.initFirstWorker(2, 2);
+        n2.initFirstWorker(2, 3);
         Worker worker11 = n1.getFirstWorker();
         Worker worker21 = n2.getFirstWorker();
 
@@ -138,9 +139,10 @@ public class BasicReturnMoveOptionsTest {
         x=worker11.getCurrentPosition().getX();
         y=worker11.getCurrentPosition().getY();
         Match currentMatch=worker11.getOwner().getCurrentMatch();
-        for(i=worker11.getCurrentPosition().getX()-1;i<x+1 && i<6;i++) {
-            for (j = worker11.getCurrentPosition().getY() - 1; j < y + 2 && j < 6; j++) {
-                if(currentMatch.getMap()[i][j]!=cella21){
+
+        for(i = x - 1; i < x + 2 && i < 5 && i >= 0; i++) {
+            for (j = y - 1; j < y + 2 && j < 5 && j >= 0; j++) {
+                if(currentMatch.getMap()[i][j]!=cella21 && !currentMatch.getMap()[i][j].equals(cella11)){
                     MoveCellsGiuste.add(currentMatch.getMap()[i][j]);
                 }
 
@@ -166,15 +168,13 @@ public class BasicReturnMoveOptionsTest {
         n1.setCurrentMatch(match);
         n2.setCurrentMatch(match);
         match.createMap();
-        Cell cella11 = match.getMap()[4][2];
+        Cell cella11 = match.getMap()[2][2];
         cella11.setBuildingLevel(Level.TOP);
-        Cell cella21 = match.getMap()[4][3];
+        Cell cella21 = match.getMap()[2][3];
         cella21.setBuildingLevel(Level.GROUND);
         //Cell cellaDietro = match.getMap()[4][4];
-        n1.initFirstWorker(4, 2);
-        n2.initFirstWorker(4, 3);
+        n1.initFirstWorker(2, 2);
         Worker worker11 = n1.getFirstWorker();
-        Worker worker21 = n2.getFirstWorker();
         worker11.setCurrentLevel(Level.TOP);
 
         match.createGodList();
@@ -190,11 +190,11 @@ public class BasicReturnMoveOptionsTest {
         x=worker11.getCurrentPosition().getX();
         y=worker11.getCurrentPosition().getY();
         Match currentMatch=worker11.getOwner().getCurrentMatch();
-        for(i=worker11.getCurrentPosition().getX()-1;i<x+1 && i<6;i++) {
-            for (j = worker11.getCurrentPosition().getY() - 1; j < y + 2 && j < 6; j++) {
-
+        for(i = x - 1; i < x + 2 && i < 5 && i >= 0; i++) {
+            for (j = y - 1; j < y + 2 && j < 5 && j >= 0; j++) {
+                if( !currentMatch.getMap()[i][j].equals(cella11)){
                     MoveCellsGiuste.add(currentMatch.getMap()[i][j]);
-
+                }
 
             }
         }

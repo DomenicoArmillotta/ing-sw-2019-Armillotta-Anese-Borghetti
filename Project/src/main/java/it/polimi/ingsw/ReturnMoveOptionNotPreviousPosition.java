@@ -25,8 +25,9 @@ public class ReturnMoveOptionNotPreviousPosition implements ReturnMoveOptionsStr
                     check=0;
                 }
                 //se è la mia vecchia posizione non aggiungo
-                if(selectedWorker.getPreviousPosition().equals(currentMatch.getMap()[i][j].getWorkerOnCell()) && check == 1)
+                if(currentMatch.getMap()[i][j].equals(selectedWorker.getPreviousPosition()) && check == 1)
                 {
+                    System.out.println("ehi");
                     check=0;
                 }
                 //se  c'è una cupola non  aggiungo nella lista

@@ -8,22 +8,24 @@ public class ReturnMoveOptionNotPreviousPosition implements ReturnMoveOptionsStr
     public List<Cell> doReturnMoveOptions(Worker selectedWorker) {
         //ciclo
         int i,j,x,y,check;
-        check=1;
         List <Cell> MoveCells=new ArrayList();
         x=selectedWorker.getCurrentPosition().getX();
         y=selectedWorker.getCurrentPosition().getY();
         Match currentMatch=selectedWorker.getOwner().getCurrentMatch();
-        for(i=selectedWorker.getCurrentPosition().getX()-1;i<x+1 && i<6;i++)
+        for(i = x - 1; i < x + 2 && i < 5; i++)
         {
-            for(j=selectedWorker.getCurrentPosition().getY()-1;j<y+2 && j<6;j++)
+            for(j = y - 1; j < y + 2 && j < 5; j++)
             {
+                check=1;
+                if (i < 0) check = 0;
+                if (j < 0) check = 0;
                 //se  c'è un operatore sopra non  aggiungo nella lista
-                if(currentMatch.getMap()[i][j].getWorkerOnCell()==null)
+                if(currentMatch.getMap()[i][j].getWorkerOnCell()==null && check == 1)
                 {
                     check=0;
                 }
                 //se è la mia vecchia posizione non aggiungo
-                if(selectedWorker.getPreviousPosition().equals(currentMatch.getMap()[i][j].getWorkerOnCell()))
+                if(selectedWorker.getPreviousPosition().equals(currentMatch.getMap()[i][j].getWorkerOnCell()) && check == 1)
                 {
                     check=0;
                 }

@@ -25,17 +25,19 @@ public class ReturnMoveOptionPushingWorker implements ReturnMoveOptionsStrategy 
         int i,j,x,y,check;
         int shiftX;
         int shiftY;
-        check=1;
         List <Cell> MoveCells=new ArrayList();
         x=selectedWorker.getCurrentPosition().getX();
         y=selectedWorker.getCurrentPosition().getY();
         Match currentMatch=selectedWorker.getOwner().getCurrentMatch();
-        for(i=selectedWorker.getCurrentPosition().getX()-1;i<x+1 && i<6;i++)
+        for(i = x - 1; i < x + 2 && i < 5; i++)
         {
-            for(j=selectedWorker.getCurrentPosition().getY()-1;j<y+2 && j<6;j++)
+            for(j = y - 1; j < y + 2 && j < 5; j++)
             {
+                check=1;
+                if (i < 0) check = 0;
+                if (j < 0) check = 0;
                 //se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo e controllo che nella cella in direzione c'e una cella libera
-                if(currentMatch.getMap()[i][j].getWorkerOnCell()!=null && currentMatch.getMap()[i][j].getWorkerOnCell().getOwner()==selectedWorker.getOwner() )
+                if(currentMatch.getMap()[i][j].getWorkerOnCell()!=null && currentMatch.getMap()[i][j].getWorkerOnCell().getOwner()==selectedWorker.getOwner() && check == 1 )
                 {
                     check=0;
                 }else{

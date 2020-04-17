@@ -23,8 +23,6 @@ public class ReturnMoveOptionSwitchingWorker implements ReturnMoveOptionsStrateg
                 if(currentMatch.getMap()[i][j].getWorkerOnCell()!=null && currentMatch.getMap()[i][j].getWorkerOnCell().getOwner()==selectedWorker.getOwner() && check == 1 )
                 {
                     check=0;
-                }else{
-                    check=1;
                 }
                 //se  c'è una cupola non  aggiungo nella lista
                 if(currentMatch.getMap()[i][j].getBuildingLevel()==Level.DOME && check==1){

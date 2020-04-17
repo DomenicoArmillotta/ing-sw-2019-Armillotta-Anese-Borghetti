@@ -24,7 +24,7 @@ public class MovePushingWorkersConcrete implements MoveWorkerStrategy {
 
     @Override
     public void doMoveWorker(Worker selectedWorker, Cell selectedCell) {
-
+        selectedWorker.getCurrentPosition().setWorkerOnCell(null);
         if (selectedCell.getWorkerOnCell() == null) {
             selectedWorker.setPreviousLevel(selectedWorker.getCurrentLevel());
             selectedWorker.setPreviousPosition(selectedWorker.getCurrentPosition());

@@ -15,12 +15,11 @@ public class ReturnMoveOptionSwitchingWorker implements ReturnMoveOptionsStrateg
         for (i = x - 1; i < x + 2 && i < 5; i++) {
             for (j = y - 1; j < y + 2 && j < 5; j++) {
                 check = 1;
-                if (i < 0) check = 0;
-                if (j < 0) check = 0;
+                if (i < 0) i = 0;
+                if (j < 0) j = 0;
                 //se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo
-                if(currentMatch.getMap()[i][j].getWorkerOnCell()!=null && currentMatch.getMap()[i][j].getWorkerOnCell().getOwner()==selectedWorker.getOwner() && check == 1 )
-                {
-                    check=0;
+                if (currentMatch.getMap()[i][j].getWorkerOnCell() != null && currentMatch.getMap()[i][j].getWorkerOnCell().getOwner() == selectedWorker.getOwner() && check == 1) {
+                    check = 0;
                 }
                 //se  c'è una cupola non  aggiungo nella lista
                 if (currentMatch.getMap()[i][j].getBuildingLevel() == Level.DOME && check == 1) {

@@ -21,8 +21,8 @@ public class BasicReturnMoveOptions implements ReturnMoveOptionsStrategy {
         for (i = x - 1; i < x + 2 && i < 5; i++) {
             for (j = y - 1; j < y + 2 && j < 5; j++) {
                 check = 1;
-                if (i < 0) check = 0;
-                if (j < 0) check = 0;
+                if (i < 0) i = 0;
+                if (j < 0) j = 0;
                 //se  c'è un operatore sopra non  aggiungo nella lista
                 if (currentMatch.getMap()[i][j].getWorkerOnCell() != null && check == 1) {
                     check = 0;

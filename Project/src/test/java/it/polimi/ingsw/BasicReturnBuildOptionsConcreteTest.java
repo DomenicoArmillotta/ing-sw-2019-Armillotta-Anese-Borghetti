@@ -25,14 +25,15 @@ public class BasicReturnBuildOptionsConcreteTest {
         player1.setCurrentMatch(match);
         match.createMap();
         Cell[][] map = match.getMap();
-        player1.initFirstWorker(2, 4);
+        player1.initFirstWorker(2, 2);
         Worker worker1 = player1.getFirstWorker();
-        Cell selectedCell = match.getMap()[4][4];
+        Cell selectedCell = match.getMap()[2][3];
         match.createGodList();
-        worker1.getOwner().setPlayerGod(match.getGodList().get(God.APOLLO.ordinal()));
+        worker1.getOwner().setPlayerGod(match.getGodList().get(God.ATLANTE.ordinal()));
         List<Cell> buildOptionsCells = new ArrayList<>();
+        worker1.getOwner().getPlayerGod().getEffect().doBuildFirstBlockAfterMove(selectedCell);
         buildOptionsCells = worker1.getOwner().getPlayerGod().getEffect().doReturnFirstBuildOptionsAfterMove(worker1);
-        assertEquals(buildOptionsCells.size(), 5);
+        assertEquals(buildOptionsCells.size(), 7);
         //assertEquals(worker1.getCurrentPosition(), selectedCell);
     }
 

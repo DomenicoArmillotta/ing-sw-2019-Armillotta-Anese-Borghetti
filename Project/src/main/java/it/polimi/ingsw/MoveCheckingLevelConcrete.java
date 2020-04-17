@@ -3,6 +3,7 @@ package it.polimi.ingsw;
 public class MoveCheckingLevelConcrete implements MoveWorkerStrategy {
     @Override
     public void doMoveWorker(Worker selectedWorker, Cell selectedCell) {
+        selectedWorker.getCurrentPosition().setWorkerOnCell(null);
         selectedWorker.setPreviousLevel(selectedWorker.getCurrentLevel());
         selectedWorker.setPreviousPosition(selectedWorker.getCurrentPosition());
         selectedCell.setWorkerOnCell(selectedWorker);

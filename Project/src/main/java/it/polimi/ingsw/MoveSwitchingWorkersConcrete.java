@@ -4,6 +4,7 @@ public class MoveSwitchingWorkersConcrete implements MoveWorkerStrategy {
     @Override
     //scambia i personaggi
     public void doMoveWorker(Worker selectedWorker, Cell selectedCells) {
+        selectedWorker.getCurrentPosition().setWorkerOnCell(null);
         Cell temporaryCell = new Cell();
         Worker workerDaSpostare = selectedCells.getWorkerOnCell();
         selectedWorker.setPreviousLevel(selectedWorker.getCurrentLevel());

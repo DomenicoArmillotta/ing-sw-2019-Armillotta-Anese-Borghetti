@@ -75,7 +75,7 @@ public class Match {
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
-                new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
+                new InstantBuildDomeConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(atlante);
 
         GodCard demetra = new GodCard("Demetra", "bla bla");

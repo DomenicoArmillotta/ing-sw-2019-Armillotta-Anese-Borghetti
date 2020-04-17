@@ -26,11 +26,11 @@ public class ReturnMoveOptionNotPreviousPositionTest {
         Cell cellaPrecedente = match.getMap()[2][3];
         Worker worker11 = n1.getFirstWorker();
         match.createGodList();
-        worker11.getOwner().setPlayerGod(match.getGodList().get(2));
+        worker11.getOwner().setPlayerGod(match.getGodList().get(God.ARTEMIDE.ordinal()));
         worker11.setPreviousPosition(cellaPrecedente);
         //chiamo funzione
         List<Cell> MoveCells = new ArrayList();
-        MoveCells = worker11.getOwner().getPlayerGod().getEffect().doReturnFirstMoveOptions(worker11);
+        MoveCells = worker11.getOwner().getPlayerGod().getEffect().doReturnSecondMoveOptions(worker11);
 
         //creo lista con celle giuste per la assert
         int i, j, x, y;

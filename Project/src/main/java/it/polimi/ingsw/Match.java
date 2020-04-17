@@ -42,7 +42,7 @@ public class Match {
         Effect effectApollo = new Effect();
         apollo.setEffect(effectApollo);
         effectApollo.setEffectStrategies(new ReturnSelectOptionsWithWorkersConcrete(), new SelectRestraintsDontMoveUpConcrete(), new BasicSelectWorkerConcrete(),
-                new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
+                new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new ReturnMoveOptionSwitchingWorker(),
                 new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
                 new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
@@ -53,7 +53,7 @@ public class Match {
         artemide.setEffect(effectArtemide);
         effectArtemide.setEffectStrategies(new BasicReturnSelectOptionsConcrete(), new NoSubtractSelectRestraintsConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
-                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new ReturnMoveOptionNotPreviousPosition(),
                 new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(artemide);
@@ -102,7 +102,7 @@ public class Match {
         Effect effectMinotauro = new Effect();
         minotauro.setEffect(effectMinotauro);
         effectMinotauro.setEffectStrategies(new ReturnSelectOptionsPushingWorkersConcrete(), new SelectRestraintsDontMoveUpConcrete(), new BasicSelectWorkerConcrete(),
-                new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new BasicReturnMoveOptions(),
+                new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new ReturnMoveOptionPushingWorker(),
                 new NoSubtractMoveRestraintsConcrete(), new MovePushingWorkersConcrete(), new BasicReturnMoveOptions(),
                 new NoSubtractMoveRestraintsConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());

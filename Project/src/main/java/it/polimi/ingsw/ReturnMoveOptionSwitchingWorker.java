@@ -12,11 +12,9 @@ public class ReturnMoveOptionSwitchingWorker implements ReturnMoveOptionsStrateg
         x=selectedWorker.getCurrentPosition().getX();
         y=selectedWorker.getCurrentPosition().getY();
         Match currentMatch=selectedWorker.getOwner().getCurrentMatch();
-        for(i = x - 1; i < x + 2 && i < 5; i++)
-        {
-            for(j = y - 1; j < y + 2 && j < 5; j++)
-            {
-                check=1;
+        for (i = x - 1; i < x + 2 && i < 5; i++) {
+            for (j = y - 1; j < y + 2 && j < 5; j++) {
+                check = 1;
                 if (i < 0) check = 0;
                 if (j < 0) check = 0;
                 //se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo
@@ -25,12 +23,12 @@ public class ReturnMoveOptionSwitchingWorker implements ReturnMoveOptionsStrateg
                     check=0;
                 }
                 //se  c'è una cupola non  aggiungo nella lista
-                if(currentMatch.getMap()[i][j].getBuildingLevel()==Level.DOME && check==1){
-                    check=0;
+                if (currentMatch.getMap()[i][j].getBuildingLevel() == Level.DOME && check == 1) {
+                    check = 0;
 
                 }
                 //se la differenza è maggiore di 1 non aggiungo nella lista
-                if((currentMatch.getMap()[i][j].getBuildingLevel().ordinal()-selectedWorker.getCurrentLevel().ordinal())<1 && check==1 ){
+                if((currentMatch.getMap()[i][j].getBuildingLevel().ordinal()-selectedWorker.getCurrentLevel().ordinal())>1 && check==1 ){
 
                     check=0;
 

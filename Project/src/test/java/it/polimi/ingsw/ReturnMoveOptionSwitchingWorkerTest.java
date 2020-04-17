@@ -32,7 +32,7 @@ public class ReturnMoveOptionSwitchingWorkerTest {
         Worker worker21 = n2.getFirstWorker();
 
         match.createGodList();
-        worker11.getOwner().setPlayerGod(match.getGodList().get(2));
+        worker11.getOwner().setPlayerGod(match.getGodList().get(God.APOLLO.ordinal()));
         //chiamo funzione
         List<Cell> MoveCells=new ArrayList<>();
         MoveCells=worker11.getOwner().getPlayerGod().getEffect().doReturnFirstMoveOptions(worker11);

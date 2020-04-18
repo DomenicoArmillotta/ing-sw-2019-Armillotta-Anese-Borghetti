@@ -45,6 +45,7 @@ public class MovePushingWorkersConcrete implements MoveWorkerStrategy {
             workerDaSpostare.getCurrentPosition().setWorkerOnCell(null);
             workerDaSpostare.setCurrentPosition(selectedWorker.getOwner().getCurrentMatch().getMap()[workerDaSpostare.getCurrentPosition().getX()-shiftX][workerDaSpostare.getCurrentPosition().getY()-shiftY]);
             selectedWorker.setCurrentPosition(selectedCell);
+            selectedCell.setWorkerOnCell(selectedWorker);
 
 
         }

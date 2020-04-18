@@ -32,18 +32,17 @@ public class ReturnMoveOptionPushingWorker implements ReturnMoveOptionsStrategy 
         for (i = x - 1; i < x + 2 && i < 5; i++) {
             for (j = y - 1; j < y + 2 && j < 5; j++) {
                 check = 1;
-                if (i < 0) check = 0;
-                if (j < 0) check = 0;
+                if (i < 0) i = 0;
+                if (j < 0) j = 0;
                 //se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo e controllo che nella cella in direzione c'e una cella libera
-                if(currentMatch.getMap()[i][j].getWorkerOnCell()!=null && currentMatch.getMap()[i][j].getWorkerOnCell().getOwner()==selectedWorker.getOwner() && check == 1 )
-                {
-                    check=0;
-                }else if(currentMatch.getMap()[i][j].getWorkerOnCell()!=null && check==1 ){
-                    shiftX=calcolaSpostamentoX(selectedWorker,currentMatch.getMap()[i][j]);
-                    shiftY=calcolaSpostamentoY(selectedWorker,currentMatch.getMap()[i][j]);
+                if (currentMatch.getMap()[i][j].getWorkerOnCell() != null && currentMatch.getMap()[i][j].getWorkerOnCell().getOwner() == selectedWorker.getOwner() && check == 1) {
+                    check = 0;
+                } else if (currentMatch.getMap()[i][j].getWorkerOnCell() != null && check == 1) {
+                    shiftX = calcolaSpostamentoX(selectedWorker, currentMatch.getMap()[i][j]);
+                    shiftY = calcolaSpostamentoY(selectedWorker, currentMatch.getMap()[i][j]);
                     //se la cella dove si dovrebbe spostare il worker pushato è occupata da un altro worler non aggiungo alla lista delle celle
-                    if(currentMatch.getMap()[i-shiftX][j-shiftY].getWorkerOnCell()!=null){
-                        check=0;
+                    if (currentMatch.getMap()[i - shiftX][j - shiftY].getWorkerOnCell() != null) {
+                        check = 0;
                     }
                 }
                 //se  c'è una cupola non  aggiungo nella lista

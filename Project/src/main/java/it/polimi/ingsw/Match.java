@@ -43,7 +43,7 @@ public class Match {
         apollo.setEffect(effectApollo);
         effectApollo.setEffectStrategies(new ReturnSelectOptionsWithWorkersConcrete(), new SelectRestraintsDontMoveUpConcrete(), new BasicSelectWorkerConcrete(),
                 new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete(), new ReturnMoveOptionSwitchingWorker(),
-                new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnMoveOptions(),
+                new SubtractRestraintsDontMoveUpConcrete(), new MoveSwitchingWorkersConcrete(), new BasicReturnMoveOptions(),
                 new SubtractRestraintsDontMoveUpConcrete(), new BasicMoveWorkerConcrete(), new BasicReturnBuildOptionsConcrete(),
                 new BasicBuildBlockConcrete(), new BasicReturnBuildOptionsConcrete(), new BasicBuildBlockConcrete());
         this.godList.add(apollo);

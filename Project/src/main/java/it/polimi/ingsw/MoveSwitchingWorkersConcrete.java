@@ -9,17 +9,17 @@ public class MoveSwitchingWorkersConcrete implements MoveWorkerStrategy {
         Worker workerDaSpostare = selectedCells.getWorkerOnCell();
         selectedWorker.setPreviousLevel(selectedWorker.getCurrentLevel());
         selectedWorker.setPreviousPosition(selectedWorker.getCurrentPosition());
-        workerDaSpostare.setPreviousLevel(workerDaSpostare.getCurrentLevel());
-        workerDaSpostare.setPreviousPosition(workerDaSpostare.getCurrentPosition());
+        selectedCells.getWorkerOnCell().setPreviousLevel(workerDaSpostare.getCurrentLevel());
+        selectedCells.getWorkerOnCell().setPreviousPosition(workerDaSpostare.getCurrentPosition());
 
         //creo cella metto quello che viene spostato in questa cella di standby e poi lo sposto
-        temporaryCell.setWorkerOnCell(workerDaSpostare);
+        //temporaryCell.setWorkerOnCell(workerDaSpostare);
         selectedCells.setWorkerOnCell(selectedWorker);
         //rimetto worker spostato a terra
-        selectedWorker.getPreviousPosition().setWorkerOnCell(temporaryCell.getWorkerOnCell());
+        selectedWorker.getPreviousPosition().setWorkerOnCell(workerDaSpostare);
 
-        selectedWorker.setCurrentPosition(selectedCells);
         workerDaSpostare.setCurrentPosition(selectedWorker.getPreviousPosition());
+        selectedWorker.setCurrentPosition(selectedCells);
 
 
     }

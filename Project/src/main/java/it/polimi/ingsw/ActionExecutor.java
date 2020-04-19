@@ -67,6 +67,12 @@ public class ActionExecutor {
         this.map = map;
     }
 
+    public void setup(int firstWorkerX, int firstWorkerY, int secondWorkerX, int secondWorkerY) {
+        createMap();
+        initFirstWorker(firstWorkerX, firstWorkerY);
+        initSecondWorker(secondWorkerX, secondWorkerY);
+    }
+
     public Cell[][] getMap() {
         return map;
     }

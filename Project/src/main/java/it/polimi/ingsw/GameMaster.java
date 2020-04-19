@@ -13,7 +13,7 @@ public class GameMaster {
         this.playerQueue = playerQueue;
     }
 
-    public void createActionExecutor(String playerQueue) {
+    public void createActionExecutor(List<Player> playerQueue) {
        this.actionExecutor = new ActionExecutor(playerQueue);
     }
 
@@ -32,7 +32,5 @@ public class GameMaster {
     public void createGodList(){
         //la riempio
     }
-    public void startActionExecutor(String playerQueue){
-        this.actionExecutor.setup(playerQueue);
-    }
+
 }

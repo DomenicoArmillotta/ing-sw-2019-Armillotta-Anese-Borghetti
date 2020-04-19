@@ -51,5 +51,4 @@ public class Cell {
         return previousLevel;
     }
 
-
 }

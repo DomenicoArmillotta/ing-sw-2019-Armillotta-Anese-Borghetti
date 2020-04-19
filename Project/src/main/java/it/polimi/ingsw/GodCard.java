@@ -1,10 +1,12 @@
 package it.polimi.ingsw;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class GodCard {
     private String godName;
     private String description;
-    private Effect effect;
-    private Player owner;
-
+    private List<Power> powerList=new ArrayList<>();
     public GodCard(String godName,String description){
         this.godName=godName;
         this.description=description;
@@ -17,16 +19,5 @@ public class GodCard {
         return description;
     }
 
-    public void setEffect(Effect effect){
-        this.effect=effect;
-    }
-    public Effect getEffect(){
-        return this.effect;
-    }
 
-    public Player getOwner() {
-        return owner;
-    }
-    public void setOwner(Player owner){this.owner=owner;}
-    }
 

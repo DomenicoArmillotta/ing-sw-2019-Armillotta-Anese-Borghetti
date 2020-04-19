@@ -12,6 +12,21 @@ public class ActionExecutor {
     private Power listPointer;
     private Cell[][] map;
 
+    /*
+    listPointer -> myLimits (Power DifferentCell)
+    myLimits.doAction(listPointer) {
+        super.doAction();
+        codice DifferentCell
+        (listPointer -> next) -> myMove
+        myMove.removeFeasableCell
+    }
+        myLimits.doAction(listPointer) {
+        super.doAction();
+        codice DifferentCell
+        (listPointer -> next) -> myMove
+        myMove.removeFeasableCell
+    } */
+
     public ActionExecutor(List<Player> playersQueue) {
         if (playersQueue.size() == 2) {
             this.currentPlayer = playersQueue.get(0);
@@ -48,7 +63,7 @@ public class ActionExecutor {
     }
 
     public Power getNextPower() {
-
+        return null;
     }
 
     public void appendPower(Power nextPower) {

@@ -47,12 +47,11 @@ public class Worker {
         return owner;
     }
 
-
-
     public Cell getCurrentPosition()
     {
         return currentPosition;
     }
+
     public Cell getPreviousPosition()
     {
         return previousPosition;

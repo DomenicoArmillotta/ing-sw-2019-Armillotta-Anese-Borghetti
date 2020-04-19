@@ -19,5 +19,13 @@ public class GodCard {
         return description;
     }
 
+    public void setPowerList(List<Power> powerList) {
+        this.powerList = powerList;
+    }
+
+    public List<Power> getPowerList() {
+        return powerList;
+    }
+
 
 

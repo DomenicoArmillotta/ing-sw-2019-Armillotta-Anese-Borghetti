@@ -23,6 +23,14 @@ public class Player {
         return playerGod;
     }
 
+    public void setFirstWorker(Worker firstWorker) {
+        this.firstWorker = firstWorker;
+    }
+
+    public void setSecondWorker(Worker secondWorker) {
+        this.secondWorker = secondWorker;
+    }
+
     public String getName() {
         return playerName;
     }

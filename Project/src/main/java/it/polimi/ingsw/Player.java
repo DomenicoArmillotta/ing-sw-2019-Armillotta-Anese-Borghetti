@@ -7,7 +7,6 @@ public class Player {
     private GodCard playerGod;
     private Worker firstWorker;
     private Worker secondWorker;
-    private Match currentMatch;
 
     public Player(String playerName)
     {
@@ -17,16 +16,6 @@ public class Player {
     public void setNetAddress(String networkAddress) {
         this.networkAddress = networkAddress;
     }
-
-    public void initFirstWorker(int x, int y) {
-        Worker firstWorker = new Worker(this, (((this.getCurrentMatch()).getMap()[x][y])),   Level.GROUND);
-        this.firstWorker = firstWorker;
-
-    }
-    public void initSecondWorker(int x, int y) {
-        Worker secondWorker = new Worker(this,  (((this.getCurrentMatch()).getCell(x,y))),  Level.GROUND);
-        this.secondWorker = secondWorker;
-    }
     public void setPlayerGod(GodCard playerGod) {
         this.playerGod = playerGod;
     }
@@ -34,11 +23,12 @@ public class Player {
         return playerGod;
     }
 
-    public void setCurrentMatch(Match currentMatch) {
-        this.currentMatch = currentMatch;
+    public void setFirstWorker(Worker firstWorker) {
+        this.firstWorker = firstWorker;
     }
-    public Match getCurrentMatch() {
-        return currentMatch;
+
+    public void setSecondWorker(Worker secondWorker) {
+        this.secondWorker = secondWorker;
     }
 
     public String getName() {

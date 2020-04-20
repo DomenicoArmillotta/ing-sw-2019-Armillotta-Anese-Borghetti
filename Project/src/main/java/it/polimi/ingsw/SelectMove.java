@@ -1,6 +1,6 @@
 package it.polimi.ingsw;
 
-public class Select extends Power {
+public class SelectMove extends Power {
     @Override
     public void doAction() {
         ;

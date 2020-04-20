@@ -1,6 +1,6 @@
 package it.polimi.ingsw;
 
-public class Move extends Power {
+public class WinCheck extends Power {
     @Override
     public void doAction() {
         ;

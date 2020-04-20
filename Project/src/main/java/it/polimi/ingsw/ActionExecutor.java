@@ -12,21 +12,6 @@ public class ActionExecutor {
     private Power listPointer;
     private Cell[][] map;
 
-    /*
-    listPointer -> myLimits (Power DifferentCell)
-    myLimits.doAction(listPointer) {
-        super.doAction();
-        codice DifferentCell
-        (listPointer -> next) -> myMove
-        myMove.removeFeasableCell
-    }
-        myLimits.doAction(listPointer) {
-        super.doAction();
-        codice DifferentCell
-        (listPointer -> next) -> myMove
-        myMove.removeFeasableCell
-    } */
-
     public ActionExecutor(List<Player> playersQueue) {
         if (playersQueue.size() == 2) {
             this.currentPlayer = playersQueue.get(0);
@@ -37,6 +22,14 @@ public class ActionExecutor {
             this.nextPlayer = playersQueue.get(1);
             this.prevPlayer = playersQueue.get(2);
         }
+    }
+
+    public List<Power> getPowerList() {
+        return powerList;
+    }
+
+    public Power getListPointer() {
+        return listPointer;
     }
 
     public void setCurrentPlayer(Player currentPlayer) {

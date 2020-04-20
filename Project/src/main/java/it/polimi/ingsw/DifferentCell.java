@@ -6,4 +6,5 @@ public class DifferentCell extends CellLimitations {
         super.doAction(); /* baseCode */
         /* myCode */
     }
+
 }

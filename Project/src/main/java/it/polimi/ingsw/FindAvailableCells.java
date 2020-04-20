@@ -37,7 +37,7 @@ public class FindAvailableCells extends Power {
     }
 
     public int doAction(int[] userInput) {
-        Player currentPlayer = super.executorPointer.getCurrentPlayer();
+        Player currentPlayer = super.executorPointer.getCurrentActualTurn().getPlayer();
         Cell[][] map = super.executorPointer.getMap();
         List<Cell> tempCells = new ArrayList();
         int i, j;
@@ -51,7 +51,7 @@ public class FindAvailableCells extends Power {
             }
         }
 
-        super.executorPointer.getNextLimitedAction().setAvailableCells(tempCells);
+        super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(tempCells);
         return 0;
     }
 }

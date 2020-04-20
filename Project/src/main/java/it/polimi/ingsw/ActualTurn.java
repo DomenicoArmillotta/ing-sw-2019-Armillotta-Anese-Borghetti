@@ -10,12 +10,12 @@ public class ActualTurn {
     private List<FindAvailableCells> findAvailableCellsList;
     private List<WinCheck> winCheckList;
 
-    public ActualTurn(Player player, List<Build> buildList, List<SelectMove> selectMoveList, List<FindAvailableCells> findAvailableCellsList, List<WinCheck> winCheckList) {
+    public ActualTurn(Player player) {
         this.player = player;
-        this.buildList = buildList;
-        this.selectMoveList = selectMoveList;
-        this.findAvailableCellsList = findAvailableCellsList;
-        this.winCheckList = winCheckList;
+        this.buildList = player.getPlayerGod().getBuildList();
+        this.selectMoveList = player.getPlayerGod().getSelectMoveList();
+        this.findAvailableCellsList = player.getPlayerGod().getFindAvailableCellsList();
+        this.winCheckList = player.getPlayerGod().getWinCheckList();
     }
 
     public Player getPlayer() {

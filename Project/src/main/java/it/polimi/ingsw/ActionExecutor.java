@@ -1,83 +1,69 @@
 package it.polimi.ingsw;
 
-import jdk.nashorn.internal.runtime.doubleconv.CachedPowers;
-
+import javax.swing.*;
 import java.util.*;
 
 public class ActionExecutor {
-    private Player currentPlayer;
-    private Player nextPlayer;
-    private Player prevPlayer;
-    private List<Power> powerList;
-    
+    private ActualTurn currentActualTurn;
+    private ActualTurn nextActualTurn;
+    private ActualTurn prevActualTurn;
+    private List<Build> buildList;
+    private List<SelectMove> selectMoveList;
+    private List<FindAvailableCells> findAvailableCellsList;
+    private List<WinCheck> winChecksList;
     private Power listPointer;
     private Cell[][] map;
 
-    public ActionExecutor(List<Player> playersQueue) {
-        if (playersQueue.size() == 2) {
-            this.currentPlayer = playersQueue.get(0);
-            this.nextPlayer = playersQueue.get(1);
-            this.prevPlayer = playersQueue.get(1);
-        } else if (playersQueue.size() == 3) {
-            this.currentPlayer = playersQueue.get(0);
-            this.nextPlayer = playersQueue.get(1);
-            this.prevPlayer = playersQueue.get(2);
-        }
+    private static ActionExecutor instance;
+
+    private ActionExecutor() {
     }
 
-    public List<Power> getPowerList() {
-        return powerList;
+    public static ActionExecutor instance() {
+        if (instance == null) {
+            instance = new ActionExecutor();
+        }
+        return instance;
     }
 
     public Power getListPointer() {
         return listPointer;
     }
 
-    public void setCurrentPlayer(Player currentPlayer) {
-        this.currentPlayer = currentPlayer;
+    public ActualTurn getCurrentActualTurn() {
+        return currentActualTurn;
     }
 
-    public Player getCurrentPlayer() {
-        return currentPlayer;
+    public ActualTurn getNextActualTurn() {
+        return nextActualTurn;
     }
 
-    public Player getNextPlayer() {
-        return nextPlayer;
+    public ActualTurn getPrevActualTurn() {
+        return prevActualTurn;
     }
 
-    public Player getPrevPlayer() {
-        return prevPlayer;
+    public void setCurrentActualTurn(ActualTurn currentActualTurn) {
+        this.currentActualTurn = currentActualTurn;
+    }
+
+    public void setNextActualTurn(ActualTurn nextActualTurn) {
+        this.nextActualTurn = nextActualTurn;
+    }
+
+    public void setPrevActualTurn(ActualTurn prevActualTurn) {
+        this.prevActualTurn = prevActualTurn;
     }
 
     public void nextTurn() {
-        Player tempPlayer = currentPlayer;
-        currentPlayer = nextPlayer;
-        prevPlayer = tempPlayer;
-        nextPlayer = prevPlayer;
-    }
-
-    public Power getNextPower() {
-        return limitedActionList.get(0);
+        ActualTurn tempActualTurn = currentActualTurn;
+        currentActualTurn = nextActualTurn;
+        prevActualTurn = tempActualTurn;
+        nextActualTurn = prevActualTurn;
     }
 
     public void appendPower(Power nextPower) {
 
     }
-
-    public LimitedAction getNextLimitedAction() {
-        if (limitedActionList.get(0).getClass().toString().equals("LimitedAction")) {
-            return limitedActionList.get(0);
-        }
-        return null;
-    }
-
-    public FindAvailableCells getNextFindAvailableCells() {
-        if (limitedActionList.get(0).getClass().toString().equals("LimitedAction")) {
-            return findAvailableCellsList.get(0);
-        }
-        return null;
-    }
-
 
     public void createMap() {
         Cell[][] map = new Cell[5][5];
@@ -103,12 +89,12 @@ public class ActionExecutor {
 
     public void initFirstWorker(int x, int y) {
         Worker firstWorker = new Worker(map[x][y]);
-        currentPlayer.setFirstWorker(firstWorker);
+        currentActualTurn.getPlayer().setFirstWorker(firstWorker);
     }
 
     public void initSecondWorker(int x, int y) {
         Worker secondWorker = new Worker(map[x][y]);
-        currentPlayer.setSecondWorker(secondWorker);
+        currentActualTurn.getPlayer().setSecondWorker(secondWorker);
     }
 
 }

@@ -12,6 +12,15 @@ public class GodCard {
     private List<WinCheck> winCheckList;
     private List<FindAvailableCells> findAvailableCellsList;
 
+    public List<Power> getPowerList() {
+        return powerList;
+    }
+
+    public void setPowerList(List<Power> powerList) {
+        this.powerList = powerList;
+    }
+
+
     public GodCard(String godName, String description) {
         this.godName = godName;
         this.description = description;
@@ -19,7 +28,7 @@ public class GodCard {
         moveList.add(myMove);
         moveList.get(0).getOrderNumber();
         powerPointer = moveList.get(0); */
-        powerList.add(new FindAvailableCells());
+        //powerList.add(new FindAvailableCells());
         //powerList.get(0).doAction();
 
     }

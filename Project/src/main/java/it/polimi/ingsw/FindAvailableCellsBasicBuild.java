@@ -1,9 +1,9 @@
 package it.polimi.ingsw;
 
-public class DoTwice extends Power {
+public class FindAvailableCellsBasicBuild extends FindAvailableCells {
     @Override
     public int doAction(int[] userInput) {
         return 0;
     }
-
 }
+

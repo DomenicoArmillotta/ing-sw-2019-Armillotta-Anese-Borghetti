@@ -2,7 +2,7 @@ package it.polimi.ingsw;
 
 import java.util.List;
 
-public class Select extends LimitedAction {
+public class Select extends SelectMove {
     List<Cell> AvailableCells;
 
     @Override

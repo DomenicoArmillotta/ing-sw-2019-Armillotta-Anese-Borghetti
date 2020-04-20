@@ -26,7 +26,7 @@ public abstract class Power {
     public void setOrderNumber() {
     }*/
 
-    ActionExecutor executorPointer = new ActionExecutor(null);
+    ActionExecutor executorPointer = ActionExecutor.instance();
 }
 
 /* public class ListElement {

@@ -30,6 +30,7 @@ public class GameMaster {
     }
 
     public void createGodList(){
+
         //la riempio
     }
 

@@ -6,6 +6,7 @@ import java.util.List;
 public class GodCard {
     private String godName;
     private String description;
+    private List<Power> powerList;
     private List<SelectMove> selectMoveList;
     private List<Build> buildList;
     private List<WinCheck> winCheckList;
@@ -18,6 +19,8 @@ public class GodCard {
         moveList.add(myMove);
         moveList.get(0).getOrderNumber();
         powerPointer = moveList.get(0); */
+        powerList.add(new FindAvailableCells());
+        //powerList.get(0).doAction();
 
     }
 

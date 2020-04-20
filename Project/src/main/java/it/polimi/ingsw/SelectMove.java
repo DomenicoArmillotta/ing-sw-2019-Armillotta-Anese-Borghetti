@@ -1,8 +1,12 @@
 package it.polimi.ingsw;
 
-public class SelectMove extends Power {
+import java.util.List;
+
+public class SelectMove extends LimitedAction {
     @Override
-    public void doAction() {
-        ;
+    public int doAction(int[] userInput) {
+        List<Cell> availableCells = super.getAvailableCells();
+
+        return 0;
     }
 }

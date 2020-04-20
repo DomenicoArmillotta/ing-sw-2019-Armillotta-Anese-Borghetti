@@ -9,6 +9,8 @@ public class ActionExecutor {
     private Player nextPlayer;
     private Player prevPlayer;
     private List<Power> powerList;
+    private List<LimitedAction> limitedActionList;
+    private List<FindAvailableCells> findAvailableCellsList;
     private Power listPointer;
     private Cell[][] map;
 
@@ -56,12 +58,27 @@ public class ActionExecutor {
     }
 
     public Power getNextPower() {
-        return null;
+        return limitedActionList.get(0);
     }
 
     public void appendPower(Power nextPower) {
 
     }
+
+    public LimitedAction getNextLimitedAction() {
+        if (limitedActionList.get(0).getClass().toString().equals("LimitedAction")) {
+            return limitedActionList.get(0);
+        }
+        return null;
+    }
+
+    public FindAvailableCells getNextFindAvailableCells() {
+        if (limitedActionList.get(0).getClass().toString().equals("LimitedAction")) {
+            return findAvailableCellsList.get(0);
+        }
+        return null;
+    }
+
 
     public void createMap() {
         Cell[][] map = new Cell[5][5];

@@ -3,6 +3,9 @@ package it.polimi.ingsw;
 import java.util.List;
 
 public class LimitedAction extends Power {
+    List<Cell> availableCells;
+    List<Cell> removableCells;
+
     public void setAvailableCells(List<Cell> cellList) {
         ;
     }

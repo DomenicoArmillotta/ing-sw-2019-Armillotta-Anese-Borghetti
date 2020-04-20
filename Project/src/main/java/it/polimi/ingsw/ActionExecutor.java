@@ -9,8 +9,7 @@ public class ActionExecutor {
     private Player nextPlayer;
     private Player prevPlayer;
     private List<Power> powerList;
-    private List<LimitedAction> limitedActionList;
-    private List<FindAvailableCells> findAvailableCellsList;
+    
     private Power listPointer;
     private Cell[][] map;
 

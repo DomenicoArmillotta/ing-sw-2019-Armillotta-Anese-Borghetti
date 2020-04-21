@@ -2,60 +2,57 @@ package it.polimi.ingsw;
 import java.util.ArrayList;
 import java.util.List;
 public class FindAvailableCellsPushSelect extends FindAvailableCellsSelect {
-    //calcola spostamento indicando cosa somare alle cordinate x,y ritorna un array
-    public int calcolaSpostamentoX(Worker selectedWorker, Cell selectedCell) {
-        Cell cellaWorkerCheSposta = selectedWorker.getCurrentPosition();
-        Cell cellaWorkerDaSpostare = selectedCell;
-        int differenceX = cellaWorkerCheSposta.getX() - cellaWorkerDaSpostare.getX();
-        return differenceX;
-    }
-
-    public int calcolaSpostamentoY(Worker selectedWorker, Cell selectedCell) {
-        Cell cellaWorkerCheSposta=selectedWorker.getCurrentPosition();
-        Cell cellaWorkerDaSpostare=selectedCell;
-        int differenceY=cellaWorkerCheSposta.getY()-cellaWorkerDaSpostare.getY();
-        return differenceY;
-    }
-    int num;
-
     public int doAction(int[] userInput) {
-        if (super.doAction(userInput) == 0) return 0;
-        else return -1;
-/*
-        List<Cell> availableCells;
-        int check,i,j,x,y;
-        int shiftX;
-        int shiftY;
-        come
-        x=selectedWorker.getCurrentPosition().getX();
-        y=selectedWorker.getCurrentPosition().getY();
         super.doAction(userInput);
-        mi vegnono passate le celle con sopra i worker da controllare
-        availableCells = super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
-        for (i = x - 1; i < x + 2 && i < 5; i++) {
-            for (j = y - 1; j < y + 2 && j < 5; j++) {
-                check = 1;
-                if (i < 0) i = 0;
-                if (j < 0) j = 0;
+        List<Cell> tempCells = super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
+        int i, j;
+        boolean addable = false;
+        int tempX = 0;
+        int tempY = 0;
+        int h = 0;
+        int deltaLevel = 0;
+        return 0;
+    }
+}
+        /*
 
-                se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo e controllo che nella cella in direzione c'e una cella libera
-                if (super.executorPointer.getMap()[i][j].getWorkerOnCell() != null && super.executorPointer.getMap()[i][j].getWorkerOnCell().getOwner() == selectedWorker.getOwner() && check == 1) {
-                    check = 0;
-                } else if (super.executorPointer.getMap()[i][j].getWorkerOnCell() != null && check == 1) {
-                    shiftX = calcolaSpostamentoX(selectedWorker, super.executorPointer.getMap()[i][j]);
-                    shiftY = calcolaSpostamentoY(selectedWorker, super.executorPointer.getMap()[i][j]);
-                    se la cella dove si dovrebbe spostare il worker pushato è occupata da un altro worler non aggiungo alla lista delle celle
-                    if (super.executorPointer.getMap()[i - shiftX][j - shiftY].getWorkerOnCell() != null) {
-                        check = 0;
+        note to-self
+
+        (match.getMap()[i][j].getWorkerOnCell() == null || worker.getOwner()!=match.getMap()[i][j].getWorkerOnCell().getOwner()
+        serve per evitare segfault ,in pratica se c'è un worker allora guardo il suo owner
+        viceversa se NON c'è un worker NON faccio questo Controllo.
+
+
+        //posso dividere il controllo in 2 parti, la prima controlla i dome s e deltaheights
+        //la seconda se la prima risulta falsa controlla che ci siano workers e siano pushabili;
+        while (tempCells.size() < h) {
+            for (i = tempX - 1; i < tempX + 2 && addable==false; i++) {
+                for (j = tempY + 1; j > tempY - 2 && addable == false; j--) {
+                    if ((i >= 0 && i < 5) && (j >= 0 && j < 5)) {
+                        if (super.getExecutorPointer().getMap()[i][j].getWorkerOnCell() == null || !tempCells.contains(super.getExecutorPointer().getMap()[i][j].getWorkerOnCell())) {
+                                deltaLevel = (super.getExecutorPointer().getMap()[i][j].getBuildingLevel().ordinal()) - (tempCells.get(h).getBuildingLevel().ordinal());
+                                if (deltaLevel < 2) {
+                                    addable=true;
+                                }
+                            } else {//allora c'è un worker
+                                deltaLevel = (super.getExecutorPointer().getMap()[i][j].getBuildingLevel().ordinal()) - (tempCells.get(h).getBuildingLevel().ordinal());
+                                if (deltaLevel < 2) {
+                                    tempX = super.getExecutorPointer().getMap()[i][j].getX() - tempCells.get(h).getX();
+                                    tempY = super.getExecutorPointer().getMap()[i][j].getY() - tempCells.get(h).getY();
+
+                                    tempX = super.getExecutorPointer().getMap()[i][j].getX() + tempX;
+                                    tempY = super.getExecutorPointer().getMap()[i][j].getY() + tempY;
+                                    if (((tempX >= 0 && tempX < 5) && (tempY >= 0 && tempY < 5)) && super.getExecutorPointer().getMap()[tempX][tempY].getWorkerOnCell() == null)
+                                        return true;
+                                }
+                            }
+                        }
                     }
                 }
 
-                if(check==1){
-                    inserisce nella lista
-                    super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells().add(super.executorPointer.getMap()[i][j]);
-                }
             }
+            return false;
         }
-    */
     }
 }
+*/

@@ -7,26 +7,31 @@ public class FindAvailableCellsSwitchSelect extends FindAvailableCellsSelect {
     int num;
 
     public int doAction(int[] userInput) {
-
-        List<Cell> availableCells;
+        /*la base fa la base e la switch adda le celle*/
 
         super.doAction(userInput);
 
-        availableCells = super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
+        List<Cell> availableCells = super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
+
         int i, j;
         int tempX = 0;
         int tempY = 0;
         int h = 0;
         boolean addable = false;
-        while (availableCells.size() <h) {
-            tempX = availableCells.get(h).getX();
-            tempY = availableCells.get(h).getY();
+        List<Worker> switchingWorkers = new ArrayList<>();
+        List<Cell> tempCells = new ArrayList<>();
+        switchingWorkers.add(super.getExecutorPointer().getCurrentActualTurn().getPlayer().getFirstWorker());
+        switchingWorkers.add(super.getExecutorPointer().getCurrentActualTurn().getPlayer().getSecondWorker());
 
+
+        while (h<switchingWorkers.size()) {
+            tempX = switchingWorkers.get(h).getCurrentPosition().getX();
+            tempY = switchingWorkers.get(h).getCurrentPosition().getY();
             for (i = tempX - 1; i < tempX + 2 && !addable; i++) {
                 for (j = tempY + 1; j > tempY - 2 && !addable; j--) {
                     if ((i >= 0 && i < 5) && (j >= 0 && j < 5)) {
-                        if (super.executorPointer.getMap()[i][j].getWorkerOnCell() == null || !availableCells.contains(super.executorPointer.getMap()[i][j].getWorkerOnCell())) {
-                            if (super.executorPointer.getMap()[i][j].getBuildingLevel().ordinal() - availableCells.get(h).getBuildingLevel().ordinal() <= 1) {
+                        if (super.getExecutorPointer().getMap()[i][j]!=null && !switchingWorkers.contains(super.getExecutorPointer().getMap()[i][j].getWorkerOnCell())) {
+                            if (super.executorPointer.getMap()[i][j].getBuildingLevel().ordinal() - switchingWorkers.get(h).getCurrentPosition().getBuildingLevel().ordinal() <= 1) {
                                 addable = true;
                             }
                         }
@@ -34,14 +39,15 @@ public class FindAvailableCellsSwitchSelect extends FindAvailableCellsSelect {
                 }
             }
             if (addable) {
-                super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells().add(availableCells.get(h));
+                tempCells.add(switchingWorkers.get(h).getCurrentPosition());
                 addable = false;
             }
             h++;
         }
-        if(super.loseCheck(super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells())){
+        super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(tempCells);
+        if (super.loseCheck(super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells())) {
             return -1;
-        }else
+        } else
             return 0;
     }
 }

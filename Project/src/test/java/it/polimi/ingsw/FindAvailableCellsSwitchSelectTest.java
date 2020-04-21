@@ -69,7 +69,7 @@ public class FindAvailableCellsSwitchSelectTest {
         userInput[0] = 3;
         userInput[1] = 2;
         assertEquals(player1.getPlayerGod().getFindAvailableCellsList().get(0).doAction(userInput),0);
-        assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).getAvailableCells().get(0),player1.getSecondWorker().getCurrentPosition());
-        assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).getAvailableCells().size(),1);
+        assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).getAvailableCells().get(0),player1.getFirstWorker().getCurrentPosition());
+        assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).getAvailableCells().size(),2);
     }
 }

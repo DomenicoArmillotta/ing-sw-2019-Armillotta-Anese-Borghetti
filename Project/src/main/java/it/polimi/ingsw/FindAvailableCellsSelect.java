@@ -37,6 +37,7 @@ public class FindAvailableCellsSelect extends FindAvailableCells {
     }
 
     public int doAction(int[] userInput) {
+
         Player currentPlayer = super.executorPointer.getCurrentActualTurn().getPlayer();
         Cell[][] map = super.executorPointer.getMap();
         List<Cell> tempCells = new ArrayList();
@@ -51,7 +52,9 @@ public class FindAvailableCellsSelect extends FindAvailableCells {
             }
         }
 
-        super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(tempCells);
+        //if(loseCheck(tempCells) == false) return -1;
+
+        super.executorPointer.getCurrentActualTurn().getNextSelectMove().setAvailableCells(tempCells);
         return 0;
     }
 }

@@ -16,9 +16,6 @@ public class ActionExecutor {
 
     private static ActionExecutor instance;
 
-    private ActionExecutor() {
-    }
-
     public static ActionExecutor instance() {
         if (instance == null) {
             instance = new ActionExecutor();

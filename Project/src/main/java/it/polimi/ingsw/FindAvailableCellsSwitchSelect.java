@@ -11,6 +11,7 @@ public class FindAvailableCellsSwitchSelect extends FindAvailableCellsSelect {
         List<Cell> availableCells;
 
         super.doAction(userInput);
+
         availableCells = super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
         int i, j;
         int tempX = 0;

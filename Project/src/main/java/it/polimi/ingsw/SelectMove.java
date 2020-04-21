@@ -10,6 +10,11 @@ public class SelectMove extends LimitedAction {
     }
 
     @Override
+    public Worker getSelectedWorker() {
+        return super.getSelectedWorker();
+    }
+
+    @Override
     public void setAvailableCells(List<Cell> availableCells) {
 
         super.setAvailableCells(availableCells);

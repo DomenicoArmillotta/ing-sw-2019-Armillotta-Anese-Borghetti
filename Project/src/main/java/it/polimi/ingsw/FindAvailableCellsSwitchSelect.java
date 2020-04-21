@@ -11,7 +11,6 @@ public class FindAvailableCellsSwitchSelect extends FindAvailableCellsSelect {
         List<Cell> availableCells;
 
         super.doAction(userInput);
-        /* mi vegnono passate le celle con sopra i worker da controllare*/
         availableCells = super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
         int i, j;
         int tempX = 0;

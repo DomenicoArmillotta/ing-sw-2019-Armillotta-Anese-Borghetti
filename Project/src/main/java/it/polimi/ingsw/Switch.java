@@ -6,8 +6,9 @@ public class Switch extends BasicMove {
     @Override
     public int doAction(int[] userInput) {
         List<Cell> availableCells = super.getAvailableCells();
-        if (super.doAction(userInput) == 0) return 0;
-        else return -1;
+        if (super.doAction(userInput) == 0) {
+            return 0;
+        } else return -1;
 
 
     }

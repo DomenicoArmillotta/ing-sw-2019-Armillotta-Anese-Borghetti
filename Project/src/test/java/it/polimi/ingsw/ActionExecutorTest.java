@@ -224,10 +224,10 @@ public class ActionExecutorTest {
         userInput[0] = 3;
         userInput[1] = 2;
         assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).doAction(userInput), 0);
-        userInput[0] = 4;
+        userInput[0] = 3;
         userInput[1] = 2;
         userInput[2] = 2;
         userInput[3] = 2;
-        assertEquals(player1.getPlayerGod().getSelectMoveList().get(1).doAction(userInput), 0);
+        assertEquals(player1.getPlayerGod().getSelectMoveList().get(1).doAction(userInput), -1);
     }
 }

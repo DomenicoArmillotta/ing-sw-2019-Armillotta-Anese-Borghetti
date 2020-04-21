@@ -8,10 +8,11 @@ public class LimitedAction extends Power {
     Worker selectedWorker;
 
     public void setSelectedWorker(Worker selectedWorker) {
+        this.selectedWorker = selectedWorker;
     }
 
     public Worker getSelectedWorker() {
-        return null;
+        return selectedWorker;
     }
 
     public void setAvailableCells(List<Cell> availableCells) {

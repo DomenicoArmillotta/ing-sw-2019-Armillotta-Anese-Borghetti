@@ -20,16 +20,14 @@ public class Select extends SelectMove {
 
     @Override
     public int doAction(int[] userInput) {
-        int x = 0;
-        int y = 0;
+        int x;
+        int y;
         if (userInput != null) {
             x = userInput[0];
             y = userInput[1];
         } else {
-            /* throws exception */
+            return -1;
         }
-
-        System.out.println(this.getAvailableCells().size());
 
         if (getAvailableCells().contains(super.getExecutorPointer().getMap()[x][y])) {
             super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(1).setSelectedWorker(super.executorPointer.getMap()[x][y].getWorkerOnCell());

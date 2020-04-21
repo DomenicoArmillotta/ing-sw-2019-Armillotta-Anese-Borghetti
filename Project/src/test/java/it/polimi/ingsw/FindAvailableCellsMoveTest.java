@@ -1,5 +1,4 @@
 package it.polimi.ingsw;
-
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -8,10 +7,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ActionExecutorTest {
+class FindAvailableCellsMoveTest {
     @Test
-    public void singletonActionExecutorTest() {
+    public void ReturnTestAll() {
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
@@ -28,6 +28,11 @@ public class ActionExecutorTest {
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
-        Cell cella11 = match.getMap()[3][4];
+        Cell[][] map=gameMaster.getActionExecutor().getMap();
+        Cell cella11 = map[2][2];
+        player1.initFirstWorker(2,2);
+        
+
     }
+
 }

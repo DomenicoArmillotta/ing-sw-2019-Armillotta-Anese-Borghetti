@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-class FindAvailableCellsMoveSwitchTest {
+public class FindAvailableCellsMoveSwitchTest {
     @Test
-    public void TestWorkerNonMio() {
+     public void TestWorkerNonMio() {
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
@@ -70,7 +70,7 @@ class FindAvailableCellsMoveSwitchTest {
     }
 
     @Test
-    public void TestWorkerMio() {
+     public void TestWorkerMio() {
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");

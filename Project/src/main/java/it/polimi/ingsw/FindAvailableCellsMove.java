@@ -8,7 +8,7 @@ public class FindAvailableCellsMove extends FindAvailableCells {
     public int doAction(int[] userInput) {
     List<Cell> moveCells=new ArrayList<>();
     Cell[][] map= super.getExecutorPointer().getMap();
-    Worker selectedWorker=getSelectedWorker();
+    Worker selectedWorker=super.getSelectedWorker();
 
         int i, j, x, y, check;
 

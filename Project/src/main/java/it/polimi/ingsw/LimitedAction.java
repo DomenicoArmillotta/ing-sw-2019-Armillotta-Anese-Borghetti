@@ -28,7 +28,6 @@ public class LimitedAction extends Power {
         return super.getExecutorPointer();
     }
 
-
     ;
 
     public List<Cell> addAvailableCell() {

@@ -34,12 +34,12 @@ public class FindAvailableCellsSwitchSelect extends FindAvailableCellsSelect {
                 }
             }
             if (addable) {
-                super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).availableCells.add(availableCells.get(h));
+                super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells().add(availableCells.get(h));
                 addable = false;
             }
             h++;
         }
-        if(super.loseCheck(super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).availableCells)){
+        if(super.loseCheck(super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells())){
             return -1;
         }else
             return 0;

@@ -5,16 +5,28 @@ import java.util.List;
 public class LimitedAction extends Power {
     List<Cell> availableCells;
     List<Cell> removableCells;
+    Worker selectedWorker;
 
-    public void setAvailableCells(List<Cell> cellList) {
-        ;
+    public void setSelectedWorker(Worker selectedWorker) {
     }
 
-    ;
-
-    public List<Cell> getAvailableCells() {
+    public Worker getSelectedWorker() {
         return null;
     }
+
+    public void setAvailableCells(List<Cell> availableCells) {
+        this.availableCells = availableCells;
+    }
+
+    public List<Cell> getAvailableCells() {
+        return availableCells;
+    }
+
+    @Override
+    public ActionExecutor getExecutorPointer() {
+        return super.getExecutorPointer();
+    }
+
 
     ;
 

@@ -2,8 +2,17 @@ package it.polimi.ingsw;
 public class Worker {
     private Cell currentPosition;
     private Cell previousPosition;
+    private Player owner;
 
-    public Worker( Cell currentPosition) {
+    public Player getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
+    }
+
+    public Worker(Cell currentPosition) {
         this.currentPosition = currentPosition;
         this.previousPosition = currentPosition;
         currentPosition.setWorkerOnCell(this);

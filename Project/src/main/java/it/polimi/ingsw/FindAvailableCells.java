@@ -3,6 +3,15 @@ package it.polimi.ingsw;
 import java.util.List;
 
 public class FindAvailableCells extends Power {
+    Worker selectedWorker;
+
+    public void setSelectedWorker(Worker selectedWorker) {
+        this.selectedWorker = selectedWorker;
+    }
+
+    public Worker getSelectedWorker() {
+        return selectedWorker;
+    }
     @Override
     public int doAction(int[] userInput) {
         return 0;

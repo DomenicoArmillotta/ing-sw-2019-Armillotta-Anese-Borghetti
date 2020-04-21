@@ -28,6 +28,8 @@ public class ActionExecutorTest {
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
-        Cell cella11 = match.getMap()[3][4];
+        assertEquals(gameMaster.getActionExecutor(), godCard1.getSelectMoveList().get(0).executorPointer);
+        assertEquals(gameMaster.getActionExecutor(), godCard2.getBuildList().get(0).executorPointer);
+        assertEquals(gameMaster.getActionExecutor(), godCard3.getFindAvailableCellsList().get(0).executorPointer);
     }
 }

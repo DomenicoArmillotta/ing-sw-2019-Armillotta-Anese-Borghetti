@@ -43,7 +43,7 @@ public class FindAvailableCells extends Power {
         int i, j;
         for (i = 0; i < 5; i++) {
             for (j = 0; j < 5; j++) {
-                if (map[i][j].getWorkerOnCell() != null && (currentPlayer.getFirstWorker() == map[i][j].getWorkerOnCell()) || (currentPlayer.getSecondWorker() == map[i][j].getWorkerOnCell())) {
+                if (map[i][j].getWorkerOnCell() != null && ((currentPlayer.getFirstWorker() == map[i][j].getWorkerOnCell()) || (currentPlayer.getSecondWorker() == map[i][j].getWorkerOnCell()))) {
                     if (lookAround(map[i][j].getWorkerOnCell(), map)) {
                         tempCells.add(map[i][j]);
                     }

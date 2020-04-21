@@ -47,9 +47,38 @@ public class Player {
         return secondWorker;
     }
 
+    public void workersSetup(int firstX, int firstY, int secondX, int secondY) {
+        initFirstWorker(firstX, firstY);
+        initSecondWorker(secondX, secondY);
+    }
 
+    public void initFirstWorker(int x, int y) {
+        ActionExecutor actionExecutor = this.getPlayerGod().getSelectMoveList().get(0).executorPointer;
+        Cell[][] map = actionExecutor.getMap();
+        if (map[x][y].getWorkerOnCell() == null) {
+            Worker firstWorker = new Worker(map[x][y]);
+            this.setFirstWorker(firstWorker);
+            map[x][y].setWorkerOnCell(firstWorker);
+        } else {
+            /* throws exception */
+            System.out.println("Cannot place " + this.playerName + "'s first Worker on cell " + x + " " + y);
+            System.out.println("Cell " + x + " " + y + " is already occupied by " + map[x][y].getWorkerOnCell());
+        }
+    }
 
-
+    public void initSecondWorker(int x, int y) {
+        ActionExecutor actionExecutor = this.getPlayerGod().getSelectMoveList().get(0).executorPointer;
+        Cell[][] map = actionExecutor.getMap();
+        if (map[x][y].getWorkerOnCell() == null) {
+            Worker secondWorker = new Worker(map[x][y]);
+            this.setSecondWorker(secondWorker);
+            map[x][y].setWorkerOnCell(secondWorker);
+        } else {
+            /* throws exception */
+            System.out.println("Cannot place " + this.playerName + "'s second Worker on cell " + x + " " + y);
+            System.out.println("Cell " + x + " " + y + " is already occupied by " + map[x][y].getWorkerOnCell());
+        }
+    }
 
 
 }

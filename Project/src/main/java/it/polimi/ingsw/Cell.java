@@ -28,6 +28,7 @@ public class Cell {
 
     public void setWorkerOnCell(Worker workerOnCell) {
         this.workerOnCell = workerOnCell;
+        workerOnCell.setCurrentPosition(this);
     }
 
     public void setBuildingLevel(Level buildingLevel) {

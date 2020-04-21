@@ -17,8 +17,14 @@ public class Select extends SelectMove {
 
     @Override
     public int doAction(int[] userInput) {
-        int x = userInput[0];
-        int y = userInput[1];
+        int x = 0;
+        int y = 0;
+        if (userInput != null) {
+            x = userInput[0];
+            y = userInput[1];
+        } else {
+            /* throws exception */
+        }
         if (getAvailableCells().contains(super.executorPointer.getMap()[x][y])) {
             //super.executorPointer.getNextPower().setSelectedWorker(super.executorPointer.getMap()[x][y].getWorkerOnCell(););
             return 0;

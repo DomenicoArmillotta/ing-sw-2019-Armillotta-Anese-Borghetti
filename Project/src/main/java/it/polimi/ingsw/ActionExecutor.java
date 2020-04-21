@@ -77,24 +77,12 @@ public class ActionExecutor {
         this.map = map;
     }
 
-    public void setup(int firstWorkerX, int firstWorkerY, int secondWorkerX, int secondWorkerY) {
+    /* public void setup(int firstWorkerX, int firstWorkerY, int secondWorkerX, int secondWorkerY) {
         createMap();
-        initFirstWorker(firstWorkerX, firstWorkerY);
-        initSecondWorker(secondWorkerX, secondWorkerY);
-    }
+    } */
 
     public Cell[][] getMap() {
         return map;
-    }
-
-    public void initFirstWorker(int x, int y) {
-        Worker firstWorker = new Worker(map[x][y]);
-        currentActualTurn.getPlayer().setFirstWorker(firstWorker);
-    }
-
-    public void initSecondWorker(int x, int y) {
-        Worker secondWorker = new Worker(map[x][y]);
-        currentActualTurn.getPlayer().setSecondWorker(secondWorker);
     }
 
 }

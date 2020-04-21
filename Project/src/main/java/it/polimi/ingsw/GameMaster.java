@@ -3,10 +3,10 @@ package it.polimi.ingsw;
 import java.util.*;
 
 public class GameMaster {
-    private List<Player> playerQueue = new ArrayList(); //da controllora sinstassi
+    private List<Player> playerQueue; //da controllora sinstassi
     private int numOfPlayers;
     private ActionExecutor actionExecutor;
-    private List<GodCard> godList = new ArrayList<GodCard>();
+    private List<GodCard> godList;
 
     public GameMaster(int numOfPlayers, List<Player> playerQueue) {
         this.numOfPlayers = numOfPlayers;
@@ -43,6 +43,7 @@ public class GameMaster {
     }
 
     public void createGodList() {
+        List<GodCard> godList = new ArrayList<>();
         GodCard apollo = new GodCard("Apollo", "Dio della Musica");
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
         findAvailableCellsList.add(new FindAvailableCellsSwitchSelect());
@@ -66,12 +67,14 @@ public class GameMaster {
         powerList.add(findAvailableCellsList.get(2));
         powerList.add(buildList.get(0));
         apollo.setPowerList(powerList);
+        godList.add(apollo);
+        this.godList = godList;
 
-        int[] input = new int[10];
+        /*int[] input = new int[10];
 
         if (powerList.get(0) == selectMoveList.get(0)) {
             powerList.get(0).doAction(input);
-        }
+        }*/
 
         /* GodCard apollo = new GodCard("Apollo", "Dio della Musica");
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();

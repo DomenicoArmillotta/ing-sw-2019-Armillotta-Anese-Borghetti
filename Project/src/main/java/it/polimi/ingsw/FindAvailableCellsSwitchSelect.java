@@ -9,10 +9,8 @@ public class FindAvailableCellsSwitchSelect extends FindAvailableCells {
     public int doAction(int[] userInput) {
 
         List<Cell> availableCells;
-
         super.doAction(userInput);
         availableCells = super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
-        System.out.println("FindAvailableCellsSwitchSelect");
         if (super.loseCheck(availableCells) == true) {
         }
         super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(availableCells);

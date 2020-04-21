@@ -3,7 +3,7 @@ package it.polimi.ingsw;
 import java.util.List;
 
 public class LimitedAction extends Power {
-    List<Cell> availableCells;
+    private List<Cell> availableCells;
     List<Cell> removableCells;
     Worker selectedWorker;
 
@@ -15,11 +15,12 @@ public class LimitedAction extends Power {
     }
 
     public void setAvailableCells(List<Cell> availableCells) {
+
         this.availableCells = availableCells;
     }
 
     public List<Cell> getAvailableCells() {
-        return availableCells;
+        return this.availableCells;
     }
 
     @Override

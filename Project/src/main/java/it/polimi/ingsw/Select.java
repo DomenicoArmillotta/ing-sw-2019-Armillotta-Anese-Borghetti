@@ -7,13 +7,14 @@ public class Select extends SelectMove {
 
     @Override
     public void setAvailableCells(List<Cell> availableCells) {
+
         super.setAvailableCells(availableCells);
     }
 
     @Override
     public List<Cell> getAvailableCells() {
-        System.out.println("Here");
-        System.out.println(super.getClass().toString());
+        //System.out.println("Here");
+        //System.out.println(super.getClass().toString());
         return super.getAvailableCells();
     }
 
@@ -27,7 +28,9 @@ public class Select extends SelectMove {
         } else {
             /* throws exception */
         }
-        System.out.println(getAvailableCells().size());
+
+        System.out.println(this.getAvailableCells().size());
+
         if (getAvailableCells().contains(super.getExecutorPointer().getMap()[x][y])) {
             super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(1).setSelectedWorker(super.executorPointer.getMap()[x][y].getWorkerOnCell());
             return 0;

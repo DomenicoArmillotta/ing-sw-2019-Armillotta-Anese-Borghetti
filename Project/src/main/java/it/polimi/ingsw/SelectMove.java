@@ -11,11 +11,13 @@ public class SelectMove extends LimitedAction {
 
     @Override
     public void setAvailableCells(List<Cell> availableCells) {
+
         super.setAvailableCells(availableCells);
     }
 
     @Override
     public List<Cell> getAvailableCells() {
+        //System.out.println("There");
         return super.getAvailableCells();
     }
 

@@ -1,17 +1,15 @@
 package it.polimi.ingsw;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class ActionExecutorTest {
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+public class CannotPlaceWorkerTest {
     @Test
-    public void singletonActionExecutorTest() {
+    public void cannotPlaceWorkerTest() {
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
@@ -28,8 +26,12 @@ public class ActionExecutorTest {
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
-        assertEquals(gameMaster.getActionExecutor(), godCard1.getSelectMoveList().get(0).executorPointer);
-        assertEquals(gameMaster.getActionExecutor(), godCard2.getBuildList().get(0).executorPointer);
-        assertEquals(gameMaster.getActionExecutor(), godCard3.getFindAvailableCellsList().get(0).executorPointer);
+        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+        actionExecutor.createMap();
+        Cell[][] map = actionExecutor.getMap();
+        player1.workersSetup(3, 2, 1, 2);
+        player2.workersSetup(0, 2, 1, 2);
+        player3.workersSetup(4, 0, 2, 3);
+        assertNotEquals(map[4][0].getWorkerOnCell(), player2.getSecondWorker());
     }
 }

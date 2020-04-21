@@ -3,7 +3,7 @@ package it.polimi.ingsw;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindAvailableCellsSwitchSelect extends FindAvailableCells {
+public class FindAvailableCellsSwitchSelect extends FindAvailableCellsSelect {
     int num;
 
     public int doAction(int[] userInput) {

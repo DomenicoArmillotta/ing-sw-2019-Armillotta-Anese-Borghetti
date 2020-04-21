@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FindAvailableCellsMoveNoUpTest {
+public class FindAvailableCellsMoveNoUpTest {
     @Test
     public void TestWorkerCellaMid() {
         Player player1 = new Player("Marco");

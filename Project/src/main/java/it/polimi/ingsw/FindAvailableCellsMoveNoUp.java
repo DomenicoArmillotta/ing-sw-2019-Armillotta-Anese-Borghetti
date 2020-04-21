@@ -22,7 +22,6 @@ public class FindAvailableCellsMoveNoUp extends FindAvailableCellsMove {
                 //se il livello è piu alto di quello corrente elimino
                 if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())!=0 && check == 1)
                 {
-
                     moveCells.remove(map[i][j]);
                 }
 

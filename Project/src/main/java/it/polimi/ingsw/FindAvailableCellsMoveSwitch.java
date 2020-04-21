@@ -8,7 +8,7 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
     public int doAction(int[] userInput) {
         Cell[][] map= super.getExecutorPointer().getMap();
         List<Cell> moveCells= super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
-        Worker worker=super.getSelectedWorker();
+        Worker selectedWorker=super.getSelectedWorker();
 
         int i, j, x, y;
 

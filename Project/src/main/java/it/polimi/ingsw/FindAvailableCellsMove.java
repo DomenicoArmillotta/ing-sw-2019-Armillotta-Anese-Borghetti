@@ -8,13 +8,14 @@ public class FindAvailableCellsMove extends FindAvailableCells {
     public int doAction(int[] userInput) {
     List<Cell> moveCells=new ArrayList<>();
     Cell[][] map= super.getExecutorPointer().getMap();
-    Worker worker=super.getSelectedWorker();
+    Worker selectedWorker=getSelectedWorker();
 
         int i, j, x, y, check;
 
         x = selectedWorker.getCurrentPosition().getX();
         y = selectedWorker.getCurrentPosition().getY();
         //aggiungere condizione del bordo inferiore
+        System.out.print("Celle calcolate == ");
 
         for (i = x - 1; i < x + 2 && i < 5; i++) {
             for (j = y - 1; j < y + 2 && j < 5; j++) {
@@ -39,6 +40,9 @@ public class FindAvailableCellsMove extends FindAvailableCells {
                 if(check==1){
                     //inserisce nella lista
                     moveCells.add(map[i][j]);
+                    System.out.print(map[i][j].getX());
+                    System.out.print(map[i][j].getY());
+
                 }
             }
         }

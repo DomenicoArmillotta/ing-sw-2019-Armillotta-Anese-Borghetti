@@ -4,6 +4,8 @@ public class Worker {
     private Cell previousPosition;
     private Player owner;
 
+
+
     public Player getOwner() {
         return owner;
     }

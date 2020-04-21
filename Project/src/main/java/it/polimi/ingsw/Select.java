@@ -28,9 +28,11 @@ public class Select extends SelectMove {
         } else {
             return -1;
         }
+        System.out.println("selectif");
 
         if (getAvailableCells().contains(super.getExecutorPointer().getMap()[x][y])) {
-            super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(1).setSelectedWorker(super.executorPointer.getMap()[x][y].getWorkerOnCell());
+            System.out.println("select");
+            super.executorPointer.getCurrentActualTurn().getFindAvailableCellsList().get(1).setSelectedWorker(super.executorPointer.getMap()[x][y].getWorkerOnCell());
             return 0;
         }
         return -1;

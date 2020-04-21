@@ -47,7 +47,7 @@ public class GameMaster {
         GodCard apollo = new GodCard("Apollo", "Dio della Musica");
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
         findAvailableCellsList.add(new FindAvailableCellsSwitchSelect());
-        findAvailableCellsList.add(new FindAvailableCellsSwitchMove());
+        findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBasicBuild());
         apollo.setFindAvailableCellsList(findAvailableCellsList);
         List<SelectMove> selectMoveList = new ArrayList<>();

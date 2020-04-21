@@ -8,7 +8,7 @@ public class FindAvailableCellsMoveNoUp extends FindAvailableCellsMove {
     public int doAction(int[] userInput) {
         Cell[][] map= super.getExecutorPointer().getMap();
         List<Cell> moveCells= super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
-        Worker worker=super.getSelectedWorker();
+        Worker selectedWorker=super.getSelectedWorker();
 
         int i, j, x, y, check;
 
@@ -19,9 +19,10 @@ public class FindAvailableCellsMoveNoUp extends FindAvailableCellsMove {
                 check = 1;
                 if (i < 0) i = 0;
                 if (j < 0) j = 0;
-                if(map[i][j].equals(selectedWorker.getPreviousPosition()) && check == 1)
+                //se il livello è piu alto di quello corrente elimino
+                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())!=0 && check == 1)
                 {
-                    //elimina
+
                     moveCells.remove(map[i][j]);
                 }
 

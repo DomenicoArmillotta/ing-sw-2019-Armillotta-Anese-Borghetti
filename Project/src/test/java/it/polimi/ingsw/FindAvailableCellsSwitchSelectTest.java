@@ -1,6 +1,6 @@
 package it.polimi.ingsw;
-/*
-import it.polimi.ingsw.old.*;
+
+import it.polimi.ingsw.model.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class FindAvailableCellsSwitchSelectTest {
         playerQueue.add(player1);
         playerQueue.add(player2);
         playerQueue.add(player3);
-        GameMaster gameMaster = new GameMaster(3, playerQueue);
+        GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
         player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
         player2.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
@@ -27,18 +27,25 @@ public class FindAvailableCellsSwitchSelectTest {
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
-        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+        ActionExecutor actionExecutor = new ActionExecutor();
+        actionExecutor = gameMaster.getActionExecutor();
         actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
         player1.workersSetup(0, 0, 1, 1);
         player2.workersSetup(0, 1, 2, 1);
-        player3.workersSetup(1, 4, 4, 4);
+        player3.workersSetup(1, 0, 4, 4);
 
         int[] userInput = new int[2];
         userInput[0] = 3;
         userInput[1] = 2;
-        assertEquals(player1.getPlayerGod().getFindAvailableCellsList().get(0).doAction(userInput),0);
-        assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).getAvailableCells().size(),2);
+        actionExecutor.cleanActionExecutor();
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        assertEquals(actionExecutor.getNextSelect().getAvailableCells().size(),1);
+
+    }
+    @Test
+    public void assertTruee(){
+        assertEquals(true,true);
     }
 
     @Test
@@ -50,7 +57,7 @@ public class FindAvailableCellsSwitchSelectTest {
         playerQueue.add(player1);
         playerQueue.add(player2);
         playerQueue.add(player3);
-        GameMaster gameMaster = new GameMaster(3, playerQueue);
+        GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
         player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
         player2.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
@@ -69,8 +76,9 @@ public class FindAvailableCellsSwitchSelectTest {
         int[] userInput = new int[2];
         userInput[0] = 3;
         userInput[1] = 2;
-        assertEquals(player1.getPlayerGod().getFindAvailableCellsList().get(0).doAction(userInput),0);
-        assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).getAvailableCells().get(0),player1.getFirstWorker().getCurrentPosition());
-        assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).getAvailableCells().size(),2);
+        actionExecutor.cleanActionExecutor();
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        assertEquals(actionExecutor.getNextSelect().getAvailableCells().size(),1);
+        assertEquals(actionExecutor.getNextSelect().getAvailableCells().get(0).getWorkerOnCell(),player1.getSecondWorker());
     }
-}*/
+}

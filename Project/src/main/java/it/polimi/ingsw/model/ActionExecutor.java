@@ -19,6 +19,10 @@ public class ActionExecutor {
         return instance;
     }
 
+    public void cleanActionExecutor() {
+        this.powerPtr = null;
+    }
+
     public Power getNextPower() {
         if (this.powerPtr != null) {
             Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
@@ -167,6 +171,7 @@ public class ActionExecutor {
     }
 
     public void nextTurn() {
+        this.powerPtr = null;
         Player tempPlayer = currentPlayer;
         currentPlayer = nextPlayer;
         prevPlayer = tempPlayer;

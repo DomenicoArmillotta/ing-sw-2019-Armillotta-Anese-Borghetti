@@ -8,23 +8,23 @@ import java.util.List;
 
 public class FindAvailableCellsMove extends FindAvailableCells {
     public int doAction(int[] userInput) {
-       /* List<Cell> moveCells=new ArrayList<>();
+       List<Cell> moveCells=new ArrayList<>();
         Cell[][] map= super.getExecutorPointer().getMap();
-        Worker selectedWorker=super.getSelectedWorker();
+        Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker();
 
         int i, j, x, y, check;
 
         x = selectedWorker.getCurrentPosition().getX();
-        y = selectedWorker.getCurrentPosition().getY(); */
+        y = selectedWorker.getCurrentPosition().getY();
         //aggiungere condizione del bordo inferiore
-      /*  System.out.print("Celle calcolate == ");
+        //System.out.print("Celle calcolate == ");
 
         for (i = x - 1; i < x + 2 && i < 5; i++) {
             for (j = y - 1; j < y + 2 && j < 5; j++) {
                 check = 1;
                 if (i < 0) i = 0;
                 if (j < 0) j = 0;
-                //se  c'è un operatore sopra non  aggiungo nella lista
+                //se  c'è un worker sopra non  aggiungo nella lista
                 if (map[i][j].getWorkerOnCell() != null && check == 1) {
                     check = 0;
                 }
@@ -34,7 +34,7 @@ public class FindAvailableCellsMove extends FindAvailableCells {
 
                 }
                 //se la differenza è maggiore di 1 non aggiungo nella lista
-                if((map[i][j].getBuildingLevel().ordinal()-selectedWorker.getCurrentPosition().getBuildingLevel().ordinal())>1 && check==1 ){
+                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal())<=-1 && check==1 ){
 
                     check=0;
 
@@ -48,7 +48,7 @@ public class FindAvailableCellsMove extends FindAvailableCells {
                 }
             }
         }
-        super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(moveCells);*/
+        super.getExecutorPointer().getNextMove().setAvailableCells(moveCells);
         return 0;
 
     }

@@ -55,7 +55,7 @@ public class FindAvailableCellsSelect extends FindAvailableCells {
         }
 
         if (loseCheck(tempCells)) return -1;
-
+        //knowHow
         super.getExecutorPointer().getNextSelect().setAvailableCells(tempCells);
 
         return 0;

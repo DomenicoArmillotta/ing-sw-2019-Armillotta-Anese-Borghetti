@@ -3,16 +3,20 @@ package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
 /* DA VERIFICARE! */
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove {
     public int doAction(int[] userInput) {
-       /* Cell[][] map= super.getExecutorPointer().getMap();
-        //List<Cell> moveCells= super.getExecutorPointer().getCurrentPlayer().get().get(0).getAvailableCells();
-        Worker selectedWorker=super.getSelectedWorker();
-
+        Cell[][] map= super.getExecutorPointer().getMap();
+        List<Cell> possibleMovableCells= super.getExecutorPointer().getNextMove().getAvailableCells();
+        Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker();
+        List<Cell> toRemoveCells=new ArrayList<>();
         int i, j, x, y, check;
 
+        //non devo aggiungere i workers
+
+        super.doAction(userInput);
         x = selectedWorker.getCurrentPosition().getX();
         y = selectedWorker.getCurrentPosition().getY();
         for (i = x - 1; i < x + 2 && i < 5; i++) {
@@ -21,16 +25,15 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
                 if (i < 0) i = 0;
                 if (j < 0) j = 0;
                 //se il livello è piu alto di quello corrente elimino
-                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())!=0 && check == 1)
+                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())<0 && check == 1)
                 {
-                    // moveCells.remove(map[i][j]);
+                    //devo aggiungere a removablecells le celle che hanno dh
+                    toRemoveCells.add(map[i][j]);
                 }
 
             }
         }
-        // super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(moveCells);
-       */
+        super.getExecutorPointer().getNextMove().removeCells(toRemoveCells);
         return 0;
-
     }
 }

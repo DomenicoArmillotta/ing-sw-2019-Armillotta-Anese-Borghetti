@@ -21,9 +21,10 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
     }
 
     public int doAction(int[] userInput) {
-       /* Cell[][] map= super.getExecutorPointer().getMap();
-        List<Cell> moveCells= super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
-        Worker selectedWorker=super.getSelectedWorker();
+        super.doAction(userInput);
+        Cell[][] map= super.getExecutorPointer().getMap();
+        List<Cell> moveCells= super.getExecutorPointer().getNextMove().getAvailableCells();
+        Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker();
 
         int i, j, x, y, check;
         int shiftX;
@@ -39,20 +40,19 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
                 //se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo e controllo che nella cella in direzione c'e una cella libera
                 if (map[i][j].getWorkerOnCell() != null && map[i][j].getWorkerOnCell().getOwner() == selectedWorker.getOwner() && check == 1) {
                     check = 0;
-                } else if (map[i][j].getWorkerOnCell() != null && check == 1) {
+                } else if (map[i][j].getWorkerOnCell() != null && check == 1 && (selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())>=-1) {
                     shiftX = calcolaSpostamentoX(selectedWorker, map[i][j]);
                     shiftY = calcolaSpostamentoY(selectedWorker, map[i][j]);
                     //se la cella dove si dovrebbe spostare il worker pushato è libera  aggiungo alla lista delle celle
                     if (map[i - shiftX][j - shiftY].getWorkerOnCell() == null) {
-                        moveCells.add(map[i][j]);
+                        if(!moveCells.contains(map[i - shiftX][j - shiftY]))
+                            moveCells.add(map[i][j]);
                     }
                 }
 
             }
         }
-        super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(moveCells);
-       */
+        super.getExecutorPointer().getNextMove().setAvailableCells(moveCells);
         return 0;
-
     }
 }

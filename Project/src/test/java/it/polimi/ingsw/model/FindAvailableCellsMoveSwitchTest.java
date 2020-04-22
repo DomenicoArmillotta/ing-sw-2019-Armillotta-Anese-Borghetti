@@ -32,6 +32,7 @@ public class FindAvailableCellsMoveSwitchTest {
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
         ActionExecutor actionExecutor=gameMaster.getActionExecutor();
+        actionExecutor.cleanActionExecutor();
         player1.workersSetup(2, 2, 4, 4);
         player2.workersSetup(2, 3, 4, 1);
         player3.workersSetup(4, 3, 0, 0);
@@ -69,7 +70,7 @@ public class FindAvailableCellsMoveSwitchTest {
 
     }
 /*
-    TEST FUNZIONANTE MA COMMENTATA
+    FUNZIONA E GIUSTA
     @Test
      public void TestWorkerMio() {
         List<Player> playersQueue = new ArrayList<>();
@@ -90,6 +91,8 @@ public class FindAvailableCellsMoveSwitchTest {
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
         ActionExecutor actionExecutor=gameMaster.getActionExecutor();
+        actionExecutor.cleanActionExecutor();
+
 
         player1.workersSetup(2, 2, 2, 3);
         player2.workersSetup(4, 2, 4, 1);

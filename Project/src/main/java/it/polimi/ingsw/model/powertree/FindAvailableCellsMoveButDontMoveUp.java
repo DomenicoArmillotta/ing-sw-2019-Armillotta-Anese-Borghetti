@@ -25,7 +25,7 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
                 if (i < 0) i = 0;
                 if (j < 0) j = 0;
                 //se il livello è piu alto di quello corrente elimino
-                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())<0 && check == 1)
+                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())>0 && check == 1)
                 {
                     //devo aggiungere a removablecells le celle che hanno dh
                     toRemoveCells.add(map[i][j]);

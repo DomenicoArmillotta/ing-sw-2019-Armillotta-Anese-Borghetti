@@ -165,7 +165,7 @@ public class GameMaster {
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
         findAvailableCellsList.add(new FindAvailableCellsSelect());
-        findAvailableCellsList.add(new FindAvailableCellsMove());
+        findAvailableCellsList.add(new FindAvailableCellsMoveButDontMoveUp());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         athenaCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();
@@ -289,7 +289,7 @@ public class GameMaster {
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
         findAvailableCellsList.add(new FindAvailableCellsSelect());
-        findAvailableCellsList.add(new FindAvailableCellsMove());
+        findAvailableCellsList.add(new FindAvailableCellsMovePush());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         minotaurCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();

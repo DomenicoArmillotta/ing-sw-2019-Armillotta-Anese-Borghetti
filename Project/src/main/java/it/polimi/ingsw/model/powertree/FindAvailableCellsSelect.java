@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindAvailableCellsSelect extends FindAvailableCells {
-    int num;
 
     private boolean lookAround(Worker worker, Cell[][] map) {
         Cell workersCell = worker.getCurrentPosition();

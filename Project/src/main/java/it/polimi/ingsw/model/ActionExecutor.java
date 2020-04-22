@@ -66,6 +66,38 @@ public class ActionExecutor {
         }
     }
 
+    public Select getPrevSelect() {
+        if (this.powerPtr != null) {
+            Select selectPtr = currentPlayer.getPlayerGod().getSelectList().get(0);
+            Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+            int index;
+            for (index = 1; indexPtr != powerPtr; index++) {
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+            }
+            for (; index > 0; index--) {
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+                for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && selectPtr != indexPtr; j++) {
+                    selectPtr = currentPlayer.getPlayerGod().getSelectList().get(j);
+                }
+                if (indexPtr == selectPtr)
+                    return selectPtr;
+            }
+            return null;
+        } else {
+            /* Select selectPtr = currentPlayer.getPlayerGod().getSelectList().get(0);
+            Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+            for (int index = 0; index < currentPlayer.getPlayerGod().getPowerList().size(); index++) {
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+                for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && selectPtr != indexPtr; j++) {
+                    selectPtr = currentPlayer.getPlayerGod().getSelectList().get(j);
+                }
+                if (indexPtr == selectPtr)
+                    return selectPtr;
+            } */
+            return null;
+        }
+    }
+
     public Move getNextMove() {
         if (this.powerPtr != null) {
             Move movePtr = currentPlayer.getPlayerGod().getMoveList().get(0);

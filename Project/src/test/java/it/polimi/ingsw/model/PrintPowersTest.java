@@ -28,6 +28,7 @@ public class PrintPowersTest {
 
         int[] userInput = new int[10];
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+
         System.out.println(actionExecutor.getNextPower());
         System.out.println(actionExecutor.getNextPower());
         System.out.println(actionExecutor.getNextPower());

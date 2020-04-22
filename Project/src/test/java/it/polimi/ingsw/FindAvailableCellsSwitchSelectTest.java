@@ -38,7 +38,8 @@ public class FindAvailableCellsSwitchSelectTest {
         int[] userInput = new int[2];
         userInput[0] = 3;
         userInput[1] = 2;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);
+        actionExecutor.cleanActionExecutor();
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         assertEquals(actionExecutor.getNextSelect().getAvailableCells().size(),1);
 
     }
@@ -75,7 +76,8 @@ public class FindAvailableCellsSwitchSelectTest {
         int[] userInput = new int[2];
         userInput[0] = 3;
         userInput[1] = 2;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);
+        actionExecutor.cleanActionExecutor();
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         assertEquals(actionExecutor.getNextSelect().getAvailableCells().size(),1);
         assertEquals(actionExecutor.getNextSelect().getAvailableCells().get(0).getWorkerOnCell(),player1.getSecondWorker());
     }

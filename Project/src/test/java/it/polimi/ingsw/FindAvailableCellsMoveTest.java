@@ -1,10 +1,9 @@
 package it.polimi.ingsw;
-/*
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import it.polimi.ingsw.old.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.List;
 
 public class FindAvailableCellsMoveTest {
     @Test
-    public void ReturnTestAll() {
+    public void ReturnTestAll() {/*
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
@@ -63,7 +62,7 @@ public class FindAvailableCellsMoveTest {
                 }
             }
         }
-
+*/
     }
 
-}*/
+}

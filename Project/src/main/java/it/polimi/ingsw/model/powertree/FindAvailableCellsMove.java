@@ -43,7 +43,7 @@ public class FindAvailableCellsMove extends FindAvailableCells {
                     //inserisce nella lista
                     moveCells.add(map[i][j]);
                     System.out.print(map[i][j].getX());
-                    System.out.print(map[i][j].getY());
+                    System.out.println(map[i][j].getY());
 
                 }
             }

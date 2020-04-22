@@ -103,7 +103,7 @@ public class GameMaster {
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
         findAvailableCellsList.add(new FindAvailableCellsSelect());
-        findAvailableCellsList.add(new FindAvailableCellsMove());
+        findAvailableCellsList.add(new FindAvailableCellsMoveSwitch());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         apolloCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();

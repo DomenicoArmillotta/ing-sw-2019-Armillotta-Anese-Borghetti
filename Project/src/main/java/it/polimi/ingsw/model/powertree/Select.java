@@ -20,18 +20,27 @@ public class Select extends LimitedPower {
         selectedWorker = null;
     }
 
+    public void setSelectedWorker(Worker selectedWorker) {
+        this.selectedWorker = selectedWorker;
+    }
+
     @Override
     public int doAction(int[] userInput) { /* userInput contains the integer coordinates of the Worker to be selected */
         if (userInput == null) {
             return -1; /* Action failed: userInput missing */
         } else {
+
             int selectedWorkerX = userInput[0];
             int selectedWorkerY = userInput[1];
             Player currentPlayer = getExecutorPointer().getCurrentPlayer();
             Cell[][] map = getExecutorPointer().getMap();
             if (getAvailableCells().contains(map[selectedWorkerX][selectedWorkerY])) {
+
+
                 if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell().getOwner().equals(currentPlayer)) {
-                    this.selectedWorker = map[selectedWorkerX][selectedWorkerY].getWorkerOnCell();
+
+                    System.out.print(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
+                    setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
                     return 0;
                 } else {
                     return -1; /*Action failed: currentPlayer is not the Worker's owner */

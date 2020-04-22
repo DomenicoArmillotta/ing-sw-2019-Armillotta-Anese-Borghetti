@@ -63,6 +63,7 @@ public class Player {
             System.out.println("Cannot place " + this.playerName + "'s first Worker on cell " + x + " " + y);
             System.out.println("Cell " + x + " " + y + " is already occupied by " + map[x][y].getWorkerOnCell());
         }
+        firstWorker.setOwner(this);
     }
 
     public void initSecondWorker(int x, int y) {
@@ -77,6 +78,7 @@ public class Player {
             System.out.println("Cannot place " + this.playerName + "'s second Worker on cell " + x + " " + y);
             System.out.println("Cell " + x + " " + y + " is already occupied by " + map[x][y].getWorkerOnCell());
         }
+        secondWorker.setOwner(this);
     }
 
 }

@@ -1,5 +1,6 @@
 package it.polimi.ingsw;
-
+/*
+import it.polimi.ingsw.old.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -72,4 +73,4 @@ public class FindAvailableCellsSwitchSelectTest {
         assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).getAvailableCells().get(0),player1.getFirstWorker().getCurrentPosition());
         assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).getAvailableCells().size(),2);
     }
-}
+}*/

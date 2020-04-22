@@ -1,5 +1,6 @@
 package it.polimi.ingsw;
-
+/*
+import it.polimi.ingsw.old.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -42,4 +43,4 @@ public class ActionBasicSelectTest {
         userInput[1] = 2;
         assertEquals(player1.getPlayerGod().getSelectMoveList().get(0).doAction(userInput), 0);
     }
-}
+}*/

@@ -1,5 +1,6 @@
 package it.polimi.ingsw;
-
+/*
+import it.polimi.ingsw.old.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -70,3 +71,4 @@ public class MapInitTest {
         assertNotEquals(actionExecutor.getMap()[2][3].getWorkerOnCell(), null);
     }
 }
+*/

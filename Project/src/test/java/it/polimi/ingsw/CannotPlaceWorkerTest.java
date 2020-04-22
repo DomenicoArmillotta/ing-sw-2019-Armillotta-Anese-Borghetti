@@ -1,5 +1,6 @@
 package it.polimi.ingsw;
-
+/*
+import it.polimi.ingsw.old.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -35,3 +36,4 @@ public class CannotPlaceWorkerTest {
         assertNotEquals(map[4][0].getWorkerOnCell(), player2.getSecondWorker());
     }
 }
+*/

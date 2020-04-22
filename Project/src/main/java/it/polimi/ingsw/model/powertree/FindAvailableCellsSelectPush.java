@@ -1,10 +1,13 @@
-package it.polimi.ingsw;
-import java.util.ArrayList;
+package it.polimi.ingsw.model.powertree;
+
+import it.polimi.ingsw.model.*;
+
 import java.util.List;
-public class FindAvailableCellsPushSelect extends FindAvailableCellsSelect {
+
+public class FindAvailableCellsSelectPush extends FindAvailableCellsSelect {
     public int doAction(int[] userInput) {
         super.doAction(userInput);
-        List<Cell> tempCells = super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
+        //List<Cell> tempCells = super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
         int i, j;
         boolean addable = false;
         int tempX = 0;

@@ -1,13 +1,14 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.model.powertree;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import it.polimi.ingsw.model.*;
+/* DA VERIFICARE! */
+
 import java.util.List;
 
-public class FindAvailableCellsMoveNoUp extends FindAvailableCellsMove {
+public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove {
     public int doAction(int[] userInput) {
-        Cell[][] map= super.getExecutorPointer().getMap();
-        List<Cell> moveCells= super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
+       /* Cell[][] map= super.getExecutorPointer().getMap();
+        //List<Cell> moveCells= super.getExecutorPointer().getCurrentPlayer().get().get(0).getAvailableCells();
         Worker selectedWorker=super.getSelectedWorker();
 
         int i, j, x, y, check;
@@ -22,12 +23,13 @@ public class FindAvailableCellsMoveNoUp extends FindAvailableCellsMove {
                 //se il livello è piu alto di quello corrente elimino
                 if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())!=0 && check == 1)
                 {
-                    moveCells.remove(map[i][j]);
+                    // moveCells.remove(map[i][j]);
                 }
 
             }
         }
-        super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(moveCells);
+        // super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(moveCells);
+       */
         return 0;
 
     }

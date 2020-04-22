@@ -1,10 +1,9 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.model;
+
 public class Worker {
     private Cell currentPosition;
     private Cell previousPosition;
     private Player owner;
-
-
 
     public Player getOwner() {
         return owner;

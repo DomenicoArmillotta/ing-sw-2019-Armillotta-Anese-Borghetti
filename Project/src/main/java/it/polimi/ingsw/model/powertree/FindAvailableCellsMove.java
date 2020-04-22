@@ -1,21 +1,23 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.model.powertree;
 
-import java.lang.reflect.Array;
+import it.polimi.ingsw.model.*;
+/* DA VERIFICARE! */
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class FindAvailableCellsMove extends FindAvailableCells {
     public int doAction(int[] userInput) {
-    List<Cell> moveCells=new ArrayList<>();
-    Cell[][] map= super.getExecutorPointer().getMap();
-    Worker selectedWorker=super.getSelectedWorker();
+       /* List<Cell> moveCells=new ArrayList<>();
+        Cell[][] map= super.getExecutorPointer().getMap();
+        Worker selectedWorker=super.getSelectedWorker();
 
         int i, j, x, y, check;
 
         x = selectedWorker.getCurrentPosition().getX();
-        y = selectedWorker.getCurrentPosition().getY();
+        y = selectedWorker.getCurrentPosition().getY(); */
         //aggiungere condizione del bordo inferiore
-        System.out.print("Celle calcolate == ");
+      /*  System.out.print("Celle calcolate == ");
 
         for (i = x - 1; i < x + 2 && i < 5; i++) {
             for (j = y - 1; j < y + 2 && j < 5; j++) {
@@ -46,7 +48,7 @@ public class FindAvailableCellsMove extends FindAvailableCells {
                 }
             }
         }
-        super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(moveCells);
+        super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(moveCells);*/
         return 0;
 
     }

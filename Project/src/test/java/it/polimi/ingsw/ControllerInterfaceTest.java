@@ -1,13 +1,13 @@
 package it.polimi.ingsw;
-
+/*
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import it.polimi.ingsw.old.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ControllerInterfaceTest {
@@ -36,11 +36,11 @@ public class ControllerInterfaceTest {
         player2.workersSetup(1, 1, 1, 0);
         player3.workersSetup(0, 2, 1, 2);
         int[] userInput = new int[10];
-        assertEquals(actionExecutor.getCurrentActualTurn().getPowerList().get(0).doAction(null), 0);
+        assertEquals(actionExecutor.getFirstPower().doAction(null), 0);
         userInput[0] = 4;
         userInput[1] = 0;
-        assertEquals(actionExecutor.getCurrentActualTurn().getNextPower().doAction(userInput), 0);
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         userInput[3] = 0;
 
     }
-}
+}*/

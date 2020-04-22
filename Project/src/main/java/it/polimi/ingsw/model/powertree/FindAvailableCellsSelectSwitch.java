@@ -1,16 +1,18 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.model.powertree;
+
+import it.polimi.ingsw.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindAvailableCellsSwitchSelect extends FindAvailableCellsSelect {
+public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
     int num;
 
     public int doAction(int[] userInput) {
         /*la base fa la base e la switch adda le celle*/
 
         super.doAction(userInput);
-
+/*
         List<Cell> availableCells = super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
 
         int i, j;
@@ -48,7 +50,8 @@ public class FindAvailableCellsSwitchSelect extends FindAvailableCellsSelect {
         if (super.loseCheck(super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells())) {
             return -1;
         } else
-            return 0;
+           */
+        return 0;
     }
 }
 

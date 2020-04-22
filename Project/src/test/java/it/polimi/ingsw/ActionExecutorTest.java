@@ -1,12 +1,12 @@
 package it.polimi.ingsw;
-
+/*
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class ActionExecutorTest {
@@ -32,4 +32,4 @@ public class ActionExecutorTest {
         assertEquals(gameMaster.getActionExecutor(), godCard2.getBuildList().get(0).executorPointer);
         assertEquals(gameMaster.getActionExecutor(), godCard3.getFindAvailableCellsList().get(0).executorPointer);
     }
-}
+}*/

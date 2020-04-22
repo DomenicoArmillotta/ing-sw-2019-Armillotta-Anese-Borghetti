@@ -1,4 +1,5 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.model;
+
 //da sistemare x e Y ATTENZIONE
 public class Cell {
     private Level buildingLevel;

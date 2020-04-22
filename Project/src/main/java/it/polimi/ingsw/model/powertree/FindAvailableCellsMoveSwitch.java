@@ -1,17 +1,17 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.model.powertree;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import it.polimi.ingsw.model.*;
+
 import java.util.List;
 
 public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
     public int doAction(int[] userInput) {
-        Cell[][] map= super.getExecutorPointer().getMap();
-        List<Cell> moveCells= super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
-        Worker selectedWorker=super.getSelectedWorker();
+        Cell[][] map = super.getExecutorPointer().getMap();
+        // List<Cell> moveCells= super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
+        //  Worker selectedWorker=super.getSelectedWorker();
 
         int i, j, x, y;
-
+/*
         x = selectedWorker.getCurrentPosition().getX();
         y = selectedWorker.getCurrentPosition().getY();
         for (i = x - 1; i < x + 2 && i < 5; i++) {
@@ -25,6 +25,7 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
             }
         }
         super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(moveCells);
+       */
         return 0;
 
     }

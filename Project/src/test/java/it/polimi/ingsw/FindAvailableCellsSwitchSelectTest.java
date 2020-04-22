@@ -69,6 +69,7 @@ public class FindAvailableCellsSwitchSelectTest {
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
+        
         player1.workersSetup(0, 0, 1, 1);
         player2.workersSetup(0, 1, 2, 1);
         player3.workersSetup(1, 0, 4, 4);

@@ -21,7 +21,7 @@ public class LimitedPower extends Power {
 
     public List<Cell> getAvailableCells() {
         List<Cell> availableCells = addableCells;
-        availableCells.removeAll(removableCells);
+        //availableCells.removeAll(removableCells);
         return availableCells;
     }
 

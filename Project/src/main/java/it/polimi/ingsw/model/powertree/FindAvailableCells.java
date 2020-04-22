@@ -6,6 +6,7 @@ import java.util.List;
 
 public class FindAvailableCells extends Power {
 
+
     public boolean loseCheck(List<Cell> availableCells) {
         if (availableCells == null)
             return true;

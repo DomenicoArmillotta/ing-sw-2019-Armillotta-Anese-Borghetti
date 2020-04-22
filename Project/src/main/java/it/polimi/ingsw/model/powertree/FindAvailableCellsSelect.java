@@ -1,4 +1,6 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.model.powertree;
+
+import it.polimi.ingsw.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +40,8 @@ public class FindAvailableCellsSelect extends FindAvailableCells {
 
     public int doAction(int[] userInput) {
 
-        Player currentPlayer = super.executorPointer.getCurrentActualTurn().getPlayer();
-        Cell[][] map = super.executorPointer.getMap();
+        Player currentPlayer = super.getExecutorPointer().getCurrentPlayer();
+        Cell[][] map = super.getExecutorPointer().getMap();
         List<Cell> tempCells = new ArrayList();
         int i, j;
         for (i = 0; i < 5; i++) {
@@ -52,9 +54,10 @@ public class FindAvailableCellsSelect extends FindAvailableCells {
             }
         }
 
-        //if(loseCheck(tempCells) == false) return -1;
+        if (loseCheck(tempCells)) return -1;
 
-        super.executorPointer.getCurrentActualTurn().getNextSelectMove().setAvailableCells(tempCells);
+        super.getExecutorPointer().getNextSelect().setAvailableCells(tempCells);
+
         return 0;
     }
 }

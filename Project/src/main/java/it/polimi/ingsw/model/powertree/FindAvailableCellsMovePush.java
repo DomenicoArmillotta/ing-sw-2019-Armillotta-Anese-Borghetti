@@ -1,7 +1,7 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.model.powertree;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import it.polimi.ingsw.model.*;
+
 import java.util.List;
 
 public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
@@ -21,7 +21,7 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
     }
 
     public int doAction(int[] userInput) {
-        Cell[][] map= super.getExecutorPointer().getMap();
+       /* Cell[][] map= super.getExecutorPointer().getMap();
         List<Cell> moveCells= super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
         Worker selectedWorker=super.getSelectedWorker();
 
@@ -51,6 +51,7 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
             }
         }
         super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(moveCells);
+       */
         return 0;
 
     }

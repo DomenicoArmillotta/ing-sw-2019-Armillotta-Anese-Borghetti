@@ -12,8 +12,8 @@ public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
         /*la base fa la base e la switch adda le celle*/
 
         super.doAction(userInput);
-/*
-        List<Cell> availableCells = super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells();
+
+        List<Cell> availableCells = super.getExecutorPointer().getNextSelect().getAvailableCells();
 
         int i, j;
         int tempX = 0;
@@ -22,17 +22,17 @@ public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
         boolean addable = false;
         List<Worker> switchingWorkers = new ArrayList<>();
         List<Cell> tempCells = new ArrayList<>();
-        switchingWorkers.add(super.getExecutorPointer().getCurrentActualTurn().getPlayer().getFirstWorker());
-        switchingWorkers.add(super.getExecutorPointer().getCurrentActualTurn().getPlayer().getSecondWorker());
+        switchingWorkers.add(super.getExecutorPointer().getCurrentPlayer().getFirstWorker());
+        switchingWorkers.add(super.getExecutorPointer().getCurrentPlayer().getSecondWorker());
 
 
-        while (h<switchingWorkers.size()) {
+        while (h < switchingWorkers.size()) {
             tempX = switchingWorkers.get(h).getCurrentPosition().getX();
             tempY = switchingWorkers.get(h).getCurrentPosition().getY();
             for (i = tempX - 1; i < tempX + 2 && !addable; i++) {
                 for (j = tempY + 1; j > tempY - 2 && !addable; j--) {
                     if ((i >= 0 && i < 5) && (j >= 0 && j < 5)) {
-                        if (super.getExecutorPointer().getMap()[i][j]!=null && !switchingWorkers.contains(super.getExecutorPointer().getMap()[i][j].getWorkerOnCell())) {
+                        if (super.getExecutorPointer().getMap()[i][j] != null && !switchingWorkers.contains(super.getExecutorPointer().getMap()[i][j].getWorkerOnCell())) {
                             if (super.executorPointer.getMap()[i][j].getBuildingLevel().ordinal() - switchingWorkers.get(h).getCurrentPosition().getBuildingLevel().ordinal() <= 1) {
                                 addable = true;
                             }
@@ -46,12 +46,11 @@ public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
             }
             h++;
         }
-        super.getExecutorPointer().getCurrentActualTurn().getSelectMoveList().get(0).setAvailableCells(tempCells);
-        if (super.loseCheck(super.executorPointer.getCurrentActualTurn().getSelectMoveList().get(0).getAvailableCells())) {
+        super.getExecutorPointer().getNextMove().setAvailableCells(tempCells);
+        if (super.loseCheck(super.getExecutorPointer().getNextMove().getAvailableCells())) {
             return -1;
         } else
-           */
-        return 0;
+            return 0;
     }
 }
 

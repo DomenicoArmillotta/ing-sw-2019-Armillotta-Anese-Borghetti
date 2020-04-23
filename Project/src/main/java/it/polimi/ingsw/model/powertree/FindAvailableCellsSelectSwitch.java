@@ -47,8 +47,6 @@ public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
                 addable = false;
             }
             h++;
-            System.out.println("d");
-
         }
         super.getExecutorPointer().getNextSelect().setAvailableCells(tempCells);
         if (super.loseCheck(super.getExecutorPointer().getNextSelect().getAvailableCells())) {

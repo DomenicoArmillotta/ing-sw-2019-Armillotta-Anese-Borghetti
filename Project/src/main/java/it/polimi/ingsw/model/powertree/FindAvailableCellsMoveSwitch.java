@@ -22,8 +22,6 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
                 //se  c'è un operatore non mio    aggiungo nella lista
                 if (map[i][j].getWorkerOnCell() != null && map[i][j].getWorkerOnCell().getOwner() != selectedWorker.getOwner()) {
                     moveCells.add(map[i][j]); /* usare funzione addCells di LimitedAction */
-                    System.out.print(map[i][j].getX());
-                    System.out.println(map[i][j].getY());
                 }
             }
         }

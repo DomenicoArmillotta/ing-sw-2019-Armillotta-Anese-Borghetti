@@ -38,8 +38,6 @@ public class Select extends LimitedPower {
             if (getAvailableCells().contains(map[selectedWorkerX][selectedWorkerY])) {
 
                 if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell().getOwner().equals(currentPlayer)) {
-
-                    System.out.print(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
                     setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
                     return 0;
                 } else {

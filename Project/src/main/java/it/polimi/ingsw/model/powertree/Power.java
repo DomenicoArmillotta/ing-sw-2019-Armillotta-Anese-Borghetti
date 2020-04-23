@@ -12,7 +12,6 @@ public abstract class Power {
     }
 
     public int doAction(int[] userInput) { /* Overridden in subclasses */
-        getExecutorPointer().setPowerPtr(this);
         /* No action */
         return -1; /* Action failed: this method should be called from Power subclasses */
     }

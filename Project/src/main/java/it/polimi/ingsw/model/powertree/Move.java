@@ -13,7 +13,6 @@ public class Move extends LimitedPower {
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         Cell previousPosition=selectedWorker.getCurrentPosition();
         if (availableCells == null) {
-            System.out.println("chiama routine di perdita");
             return 0;
         } else {
             if (!availableCells.contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {

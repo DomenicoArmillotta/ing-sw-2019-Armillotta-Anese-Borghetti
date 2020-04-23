@@ -44,8 +44,6 @@ public class FindAvailableCellsMove extends FindAvailableCells {
                 if(check==1){
                     //inserisce nella lista
                     moveCells.add(map[i][j]);
-                    System.out.print(map[i][j].getX());
-                    System.out.println(map[i][j].getY());
 
                 }
             }

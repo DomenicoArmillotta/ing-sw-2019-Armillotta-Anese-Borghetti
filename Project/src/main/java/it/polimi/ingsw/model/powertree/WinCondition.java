@@ -7,7 +7,11 @@ import it.polimi.ingsw.model.Worker;
 public class WinCondition extends Power {
     @Override
     public int doAction(int[] userInput) {
+
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
+        System.out.println("in win condition== ");
+        System.out.println(selectedWorker.getCurrentPosition().getBuildingLevel());
+        System.out.println(selectedWorker.getPreviousPosition().getBuildingLevel());
         if((selectedWorker.getPreviousPosition().getBuildingLevel().ordinal()-selectedWorker.getCurrentPosition().getBuildingLevel().ordinal())==-1 && selectedWorker.getCurrentPosition().getBuildingLevel()== Level.TOP ){
             return 0;
         }else

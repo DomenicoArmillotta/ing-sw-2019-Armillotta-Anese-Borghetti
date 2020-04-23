@@ -36,7 +36,7 @@ public class FindAvailableCellsMove extends FindAvailableCells {
 
                 }
                 //se la differenza è maggiore di 1 non aggiungo nella lista
-                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal())<=-1 && check==1 ){
+                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal())<-1 && check==1 ){
 
                     check=0;
 

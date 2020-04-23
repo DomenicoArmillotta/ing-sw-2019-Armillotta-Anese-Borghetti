@@ -6,16 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
-    int num;
 
     public int doAction(int[] userInput) {
         /*la base fa la base e la switch adda le celle*/
-
-
         super.doAction(userInput);
-
         List<Cell> availableCells = super.getExecutorPointer().getNextSelect().getAvailableCells();
-
 
         int i, j;
         int tempX = 0;
@@ -47,6 +42,7 @@ public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
                 addable = false;
             }
             h++;
+
         }
         super.getExecutorPointer().getNextSelect().setAvailableCells(tempCells);
         if (super.loseCheck(super.getExecutorPointer().getNextSelect().getAvailableCells())) {

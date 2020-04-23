@@ -289,7 +289,7 @@ public class GameMaster {
         GodCard minotaurCard = new GodCard("Minotaur", "Bull-headed Monster");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
+        findAvailableCellsList.add(new FindAvailableCellsSelectPush());
         findAvailableCellsList.add(new FindAvailableCellsMovePush());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         minotaurCard.setFindAvailableCellsList(findAvailableCellsList);
@@ -297,7 +297,7 @@ public class GameMaster {
         selectList.add(new Select());
         minotaurCard.setSelectList(selectList);
         List<Move> moveList = new ArrayList<>();
-        moveList.add(new Move());
+        moveList.add(new MovePush());
         minotaurCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
         buildList.add(new Build());

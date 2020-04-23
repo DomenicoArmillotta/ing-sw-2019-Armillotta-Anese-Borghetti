@@ -12,16 +12,16 @@ public class LimitedPower extends Power {
     /* LimitedPower can use its superclass' methods doAction() and getExecutorPointer() */
 
     public void addCells(List<Cell> addableCells) {
-        this.addableCells = addableCells;
+        this.addableCells.addAll(addableCells);
     }
 
     public void removeCells(List<Cell> removableCells) {
-        this.removableCells = removableCells;
+        this.removableCells.removeAll(removableCells);
     }
 
     public List<Cell> getAvailableCells() {
         List<Cell> availableCells = addableCells;
-        //availableCells.removeAll(removableCells);
+        availableCells.removeAll(removableCells);
         return availableCells;
     }
 

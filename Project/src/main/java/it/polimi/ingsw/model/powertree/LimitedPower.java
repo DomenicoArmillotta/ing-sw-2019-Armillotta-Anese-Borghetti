@@ -19,6 +19,7 @@ public class LimitedPower extends Power {
         this.removableCells.removeAll(removableCells);
     }
 
+    //la get fa gia la sottrazione algebrica delle classi;
     public List<Cell> getAvailableCells() {
         List<Cell> availableCells = addableCells;
         if (removableCells != null) availableCells.removeAll(removableCells);

@@ -102,7 +102,7 @@ public class GameMaster {
         GodCard apolloCard = new GodCard("Apollo", "God of Music");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
+        findAvailableCellsList.add(new FindAvailableCellsSelectSwitch());
         findAvailableCellsList.add(new FindAvailableCellsMoveSwitch());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         apolloCard.setFindAvailableCellsList(findAvailableCellsList);
@@ -110,7 +110,7 @@ public class GameMaster {
         selectList.add(new Select());
         apolloCard.setSelectList(selectList);
         List<Move> moveList = new ArrayList<>();
-        moveList.add(new Move());
+        moveList.add(new MoveSwitch());
         apolloCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
         buildList.add(new Build());

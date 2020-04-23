@@ -15,11 +15,13 @@ public class Move extends LimitedPower {
             System.out.println("chiama routine di perdita");
             return 0;
         } else {
-            if (availableCells.contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
+            if (!availableCells.contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
                 return -1; /* deve rifare la move*/
             } else {
                 selectedWorker.setPreviousPosition(selectedWorker.getCurrentPosition());
+                selectedWorker.getPreviousPosition().setWorkerOnCell(null);
                 selectedWorker.setCurrentPosition(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]]);
+                selectedWorker.getCurrentPosition().setWorkerOnCell(selectedWorker);
                 return 0;
             }
         }

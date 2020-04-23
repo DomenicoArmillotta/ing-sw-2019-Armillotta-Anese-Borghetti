@@ -14,6 +14,8 @@ public class FindAvailableCellsMove extends FindAvailableCells {
 
         int i, j, x, y, check;
 
+        if(selectedWorker==null)
+            return -1;
         x = selectedWorker.getCurrentPosition().getX();
         y = selectedWorker.getCurrentPosition().getY();
         //aggiungere condizione del bordo inferiore

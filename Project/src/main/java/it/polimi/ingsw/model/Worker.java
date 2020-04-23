@@ -19,7 +19,6 @@ public class Worker {
         currentPosition.setWorkerOnCell(this);
     }
     public void setCurrentPosition(Cell currentPosition) {
-
         this.currentPosition = currentPosition;
     }
     public void setPreviousPosition(Cell previousPosition) {

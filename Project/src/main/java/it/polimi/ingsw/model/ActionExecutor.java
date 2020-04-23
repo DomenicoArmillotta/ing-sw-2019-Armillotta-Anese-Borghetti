@@ -21,6 +21,12 @@ public class ActionExecutor {
 
     public void cleanActionExecutor() {
         this.powerPtr = null;
+        this.map = null;
+        createMap();
+    }
+
+    public void setPowerPtr(Power powerPtr) {
+        this.powerPtr = powerPtr;
     }
 
     public Power getNextPower() {

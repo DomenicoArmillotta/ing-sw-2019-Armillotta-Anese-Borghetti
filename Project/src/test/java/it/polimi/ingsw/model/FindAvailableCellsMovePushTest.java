@@ -14,8 +14,7 @@ import java.util.List;
 public class FindAvailableCellsMovePushTest {
     @Test
     public void TestWorkerNonMio() {
-        /*
-        TEST FUNZIONANTE MA COMMENTATO
+
         List<Player> playersQueue = new ArrayList<>();
         Player player1 = new Player("Matteo");
         Player player2 = new Player("Domenico");
@@ -28,12 +27,13 @@ public class FindAvailableCellsMovePushTest {
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
+        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+        //actionExecutor.cleanActionExecutor();
         Cell[][] map = gameMaster.getActionExecutor().getMap();
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
         Cell cellaPush = map[2][4];
-        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        actionExecutor.cleanActionExecutor();
+
         player1.workersSetup(2, 2, 4, 4);
         player2.workersSetup(2, 3, 4, 1);
         player3.workersSetup(4, 3, 0, 0);
@@ -68,7 +68,7 @@ public class FindAvailableCellsMovePushTest {
         }
         MoveCellsGiuste.add(cella21);
         assertEquals(MoveCellsGiuste, MoveCelleCalcolate);
-*/
+
 
     }
     @Test
@@ -85,12 +85,13 @@ public class FindAvailableCellsMovePushTest {
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
+        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+        //actionExecutor.cleanActionExecutor();
         Cell[][] map = gameMaster.getActionExecutor().getMap();
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
         Cell cellaPush = map[2][4];
-        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        actionExecutor.cleanActionExecutor();
+
         player1.workersSetup(2, 2, 2, 3);
         player2.workersSetup(4, 2, 4, 1);
         player3.workersSetup(4, 3, 0, 0);

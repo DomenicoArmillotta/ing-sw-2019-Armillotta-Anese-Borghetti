@@ -17,6 +17,7 @@ public class GameMaster {
         this.playerQueue = playerQueue;
         createGodList();
         createActionExecutor();
+        getActionExecutor().cleanActionExecutor();
     }
 
     public void createActionExecutor() {

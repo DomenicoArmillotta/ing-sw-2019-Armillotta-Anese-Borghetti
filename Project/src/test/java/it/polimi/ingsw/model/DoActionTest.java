@@ -31,12 +31,18 @@ public class DoActionTest {
         int[] userInput = new int[10];
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
+        userInput[0] = 0;
+        userInput[1] = 0;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
+        userInput[0] = 0;
+        userInput[1] = 1;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         assertEquals(actionExecutor.getNextPower().doAction(null), -1);
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        assertEquals(actionExecutor.getNextPower().doAction(null), -1);
-        assertEquals(actionExecutor.getNextPower().doAction(null), -1);
-        assertEquals(actionExecutor.getNextPower().doAction(null), -1);
+        userInput[0] = 0;
+        userInput[2] = 0;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
     }
 
 }

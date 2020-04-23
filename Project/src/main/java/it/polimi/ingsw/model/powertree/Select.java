@@ -26,6 +26,7 @@ public class Select extends LimitedPower {
 
     @Override
     public int doAction(int[] userInput) { /* userInput contains the integer coordinates of the Worker to be selected */
+
         if (userInput == null) {
             return -1; /* Action failed: userInput missing */
         } else {
@@ -35,7 +36,6 @@ public class Select extends LimitedPower {
             Player currentPlayer = getExecutorPointer().getCurrentPlayer();
             Cell[][] map = getExecutorPointer().getMap();
             if (getAvailableCells().contains(map[selectedWorkerX][selectedWorkerY])) {
-
 
                 if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell().getOwner().equals(currentPlayer)) {
 

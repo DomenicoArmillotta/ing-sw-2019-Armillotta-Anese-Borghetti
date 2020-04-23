@@ -38,6 +38,7 @@ public class FindAvailableCellsSelect extends FindAvailableCells {
     }
 
     public int doAction(int[] userInput) {
+        System.out.println("Una cosa tipo qua");
 
         Player currentPlayer = super.getExecutorPointer().getCurrentPlayer();
         Cell[][] map = super.getExecutorPointer().getMap();

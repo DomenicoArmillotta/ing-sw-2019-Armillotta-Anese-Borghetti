@@ -50,8 +50,7 @@ public class DontBuildDomeTest {
 
         assertEquals( actionExecutor.getNextPower().doAction(a),-1);
     }
-    /*
-    //TEST GIUSTO MA COMMENTATO
+
     @Test
     public void BuildTestDontDomeBuild() {
         List<Player> playersQueue = new ArrayList<>();
@@ -89,5 +88,5 @@ public class DontBuildDomeTest {
         actionExecutor.getNextPower().doAction(a);
         assertEquals( map[2][3].getBuildingLevel(),Level.BASE);
     }
-*/
+
 }

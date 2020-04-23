@@ -206,7 +206,7 @@ public class GameMaster {
         moveList.add(new Move());
         atlasCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
-        buildList.add(new Build());
+        buildList.add(new InstantBuildDome());
         atlasCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();
         winConditionList.add(new WinCondition());
@@ -268,7 +268,7 @@ public class GameMaster {
         moveList.add(new Move());
         hephaestusCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
-        buildList.add(new Build());
+        buildList.add(new DontBuildDome());
         hephaestusCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();
         winConditionList.add(new WinCondition());

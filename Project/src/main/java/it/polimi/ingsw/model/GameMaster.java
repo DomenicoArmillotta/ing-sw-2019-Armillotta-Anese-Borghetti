@@ -334,7 +334,7 @@ public class GameMaster {
         buildList.add(new Build());
         panCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();
-        winConditionList.add(new WinCondition());
+        winConditionList.add(new WinIfTwoLevelsDown());
         panCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));

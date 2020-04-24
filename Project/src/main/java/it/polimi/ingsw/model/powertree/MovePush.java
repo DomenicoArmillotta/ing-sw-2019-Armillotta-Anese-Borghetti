@@ -9,15 +9,17 @@ public class MovePush extends Move {
         Worker targetWorker = super.getExecutorPointer().getMap()[userInput[0]][userInput[1]].getWorkerOnCell();
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         int tempX=0,tempY=0;
+        int oldX = selectedWorker.getCurrentPosition().getX();
+        int oldY = selectedWorker.getCurrentPosition().getY();
         super.doAction(userInput);
         if(targetWorker==null){
             return 0;
         }else {
             if(super.getAvailableCells().contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
-                tempX = targetWorker.getCurrentPosition().getX() - selectedWorker.getCurrentPosition().getX();
-                tempY = targetWorker.getCurrentPosition().getY() - selectedWorker.getCurrentPosition().getY();
-                tempX = targetWorker.getCurrentPosition().getX() + tempX+userInput[0];
-                tempY = targetWorker.getCurrentPosition().getY()+tempY+userInput[1];
+                tempX = targetWorker.getCurrentPosition().getX() - oldX;
+                tempY = targetWorker.getCurrentPosition().getY() - oldY;
+                tempX = targetWorker.getCurrentPosition().getX() +tempX;
+                tempY = targetWorker.getCurrentPosition().getY()+tempY;
                 targetWorker.setPreviousPosition(targetWorker.getCurrentPosition());
                 targetWorker.getPreviousPosition().setWorkerOnCell(selectedWorker);
                 targetWorker.setCurrentPosition(super.getExecutorPointer().getMap()[tempX][tempY]);

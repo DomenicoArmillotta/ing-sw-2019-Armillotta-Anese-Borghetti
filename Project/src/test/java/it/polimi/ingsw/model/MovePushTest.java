@@ -38,7 +38,6 @@ public class MovePushTest {
         int[] userInput = new int[2];
         userInput[0] = 0;
         userInput[1] = 0;
-        System.out.println(player1.getPlayerGod().getGodName());
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
@@ -122,11 +121,12 @@ public class MovePushTest {
         userInput[1] = 1;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
+        assertEquals(actionExecutor.getPrevSelect().getSelectedWorker(),player1.getSecondWorker());
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
         userInput[0]=2;
         userInput[1]=2;
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);
-        assertEquals(map[2][2].getWorkerOnCell().getOwner(),player2);
+        assertEquals(map[3][3].getWorkerOnCell().getOwner(),player2);
 
     }
 }

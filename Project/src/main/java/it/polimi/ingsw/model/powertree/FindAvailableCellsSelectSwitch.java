@@ -47,7 +47,7 @@ public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
             h++;
 
         }
-        if (super.loseCheck(super.getExecutorPointer().getNextSelect().getAvailableCells())) {
+        if (super.getExecutorPointer().getNextSelect().getAvailableCells().isEmpty()) {
             return -1;
         } else
             return 0;

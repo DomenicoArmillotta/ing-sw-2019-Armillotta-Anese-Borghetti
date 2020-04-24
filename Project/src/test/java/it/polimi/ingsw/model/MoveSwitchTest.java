@@ -39,7 +39,7 @@ public class MoveSwitchTest {
         int[] userInput = new int[2];
         userInput[0] = 0;
         userInput[1] = 0;
-        actionExecutor.cleanActionExecutor();
+
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move

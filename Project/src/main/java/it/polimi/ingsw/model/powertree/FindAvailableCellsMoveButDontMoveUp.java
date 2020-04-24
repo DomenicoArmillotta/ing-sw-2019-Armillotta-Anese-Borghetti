@@ -34,6 +34,9 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
             }
         }
         super.getExecutorPointer().getNextMove().removeCells(toRemoveCells);
+        if(super.getExecutorPointer().getNextMove().getAvailableCells().isEmpty()){
+            return -1;
+        }
         return 0;
     }
 }

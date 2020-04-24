@@ -33,6 +33,8 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
 
         x = selectedWorker.getCurrentPosition().getX();
         y = selectedWorker.getCurrentPosition().getY();
+        System.out.println("calcolate==");
+
         for (i = x - 1; i < x + 2 && i < 5; i++) {
             for (j = y - 1; j < y + 2 && j < 5; j++) {
                 check = 1;
@@ -46,9 +48,11 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
                     shiftX = calcolaSpostamentoX(selectedWorker, map[i][j]);
                     shiftY = calcolaSpostamentoY(selectedWorker, map[i][j]);
                     //se la cella dove si dovrebbe spostare il worker pushato è libera  aggiungo alla lista delle celle
-                    if (map[i - shiftX][j - shiftY].getWorkerOnCell() == null) {
+                    if ( (i - shiftX>=0) && (j - shiftY>=0) && map[i - shiftX][j - shiftY].getWorkerOnCell() == null ) {
                         if(!moveCells.contains(map[i - shiftX][j - shiftY]))
                             moveCells.add(map[i][j]);
+                        System.out.print(map[i][j].getX());
+                        System.out.println(map[i][j].getY());
                     }
                 }
 

@@ -39,12 +39,14 @@ public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
             }
             if (addable) {
                 tempCells.add(switchingWorkers.get(h).getCurrentPosition());
+                if(!super.getExecutorPointer().getNextSelect().getAvailableCells().contains(switchingWorkers.get(h))){
+                    super.getExecutorPointer().getNextSelect().getAvailableCells().add(switchingWorkers.get(h).getCurrentPosition());
+                }
                 addable = false;
             }
             h++;
 
         }
-        super.getExecutorPointer().getNextSelect().setAvailableCells(tempCells);
         if (super.loseCheck(super.getExecutorPointer().getNextSelect().getAvailableCells())) {
             return -1;
         } else

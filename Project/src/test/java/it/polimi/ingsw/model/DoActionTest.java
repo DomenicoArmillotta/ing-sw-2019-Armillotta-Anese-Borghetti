@@ -20,9 +20,9 @@ public class DoActionTest {
         playersQueue.add(player2);
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
-        player2.setPlayerGod(gameMaster.getGodList().get(God.DEMETER.ordinal()));
+        player2.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
         assertEquals(player1.getPlayerGod().getGodName(), "Mortal");
-        assertEquals(player2.getPlayerGod().getGodName(), "Demeter");
+        assertEquals(player2.getPlayerGod().getGodName(), "Apollo");
 
         player1.workersSetup(1, 1, 4, 0);
         player2.workersSetup(2, 1, 3, 2);
@@ -37,7 +37,6 @@ public class DoActionTest {
         map[0][1].setBuildingLevel(Level.BASE);
         map[0][2].setBuildingLevel(Level.BASE);
         map[1][2].setBuildingLevel(Level.BASE);
-        map[2][2].setBuildingLevel(Level.GROUND);
         map[2][1].setBuildingLevel(Level.BASE);
         map[0][1].setBuildingLevel(Level.BASE);
 
@@ -53,32 +52,24 @@ public class DoActionTest {
         userInput[0] = 2;
         userInput[1] = 3;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-
-        actionExecutor.nextTurn();
-       /* userInput[0] = 1;
-        userInput[1] = 0;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-        assertEquals(actionExecutor.getNextPower().doAction(null), -1);
-        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        userInput[0] = 0;
-        userInput[1] = 0;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+/*      player1.workersSetup(1, 1, 4, 0);
+        player2.workersSetup(2, 1, 3, 2);
+        player3.workersSetup(1, 3, 4, 3); */
         actionExecutor.nextTurn();
 
-        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        userInput[0] = 1;
-        userInput[1] = 4;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-        //assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        userInput[0] = 2;
-        userInput[1] = 4;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-        assertEquals(actionExecutor.getNextPower().doAction(null), -1);
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 3;
-        userInput[1] = 4;
+        userInput[1] = 2;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-*/
+        userInput[0] = 2;
+        userInput[1] = 2;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        assertEquals(actionExecutor.getNextPower().doAction(null), -1);
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        userInput[0] = 3;
+        userInput[1] = 3;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+
     }
 
 }

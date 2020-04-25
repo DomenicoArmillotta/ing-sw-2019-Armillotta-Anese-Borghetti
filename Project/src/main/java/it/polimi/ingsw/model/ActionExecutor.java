@@ -178,10 +178,14 @@ public class ActionExecutor {
 
     public void nextTurn() {
         this.powerPtr = null;
-        Player tempPlayer = currentPlayer;
+
+        Player tempPlayer = null;
+        tempPlayer = this.currentPlayer;
+
+
         currentPlayer = nextPlayer;
-        prevPlayer = tempPlayer;
         nextPlayer = prevPlayer;
+        prevPlayer = tempPlayer;
     }
 
     public Player getCurrentPlayer() {

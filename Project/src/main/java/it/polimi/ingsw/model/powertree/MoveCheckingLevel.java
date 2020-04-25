@@ -5,6 +5,8 @@ import it.polimi.ingsw.model.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//dummyFindAvailableCellsDentMoveUp.equals(player.getPlayerGod().getFindAvailableCellsList().getClass().toString())
+
 public class MoveCheckingLevel extends Move{
     /*voglio fare una copia della powerList e scorrerla fin che non trovo la move e quindi tornare indietro
     di un passo*/
@@ -19,16 +21,40 @@ public class MoveCheckingLevel extends Move{
             ;
         }
         player.getPlayerGod().getFindAvailableCellsList().add(i, new FindAvailableCellsMoveButDontMoveUp());
-
         cachedPowerList.add(i, player.getPlayerGod().getFindAvailableCellsList().get(i));
         //ho aggiornato la list power ma non la FindAvailableCells list;
         player.getPlayerGod().setPowerList(cachedPowerList);
 
     }
 
+    private void removeMalusMoveUpEffects(){
+        List<Player> playerList = new ArrayList<>();
+        playerList.add(super.getExecutorPointer().getPrevPlayer());
+        playerList.add(super.getExecutorPointer().getNextPlayer());
+        boolean flaggable;
+        int h;
+        for (int i = 0; i < playerList.size(); i++) {
+            h = 0;
+            flaggable=false;
+            while (playerList.get(i).getPlayerGod().getFindAvailableCellsList().size() > h && !flaggable) {
+                if (playerList.get(i).getPlayerGod().getFindAvailableCellsList().get(h).getClass().equals(FindAvailableCellsMoveButDontMoveUp.class)) {
+                    playerList.get(i).getPlayerGod().getFindAvailableCellsList().remove(h);
+                    playerList.get(i).getPlayerGod().getPowerList().remove(h);
+                    flaggable=true;
+                }
+                h++;
+            }
+        }
+    }
+
     @Override
     public int doAction(int[] userInput) {
-        super.doAction(userInput);
+
+        removeMalusMoveUpEffects();
+
+        if(super.doAction(userInput)==-1)
+            return -1;
+
         /*
         devo computare il changing di startegy
          */

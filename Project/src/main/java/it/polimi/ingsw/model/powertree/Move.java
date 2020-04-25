@@ -9,7 +9,7 @@ public class Move extends LimitedPower {
     //Worker selectedWorker;
     @Override
     public int doAction(int[] userInput) {
-        List<Cell> availableCells = super.getAvailableCells();
+        List<Cell> availableCells = super.getAvailableCells(0);
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         Cell previousPosition=selectedWorker.getCurrentPosition();
         if (availableCells == null) {

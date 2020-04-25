@@ -8,9 +8,9 @@ import java.util.List;
 
 public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove {
     public int doAction(int[] userInput) {
-        Cell[][] map= super.getExecutorPointer().getMap();
-        List<Cell> possibleMovableCells= super.getExecutorPointer().getNextMove().getAvailableCells();
-        Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker();
+        Cell[][] map = super.getExecutorPointer().getMap();
+        List<Cell> possibleMovableCells = super.getExecutorPointer().getNextMove().getAvailableCells(0);
+        Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         List<Cell> toRemoveCells=new ArrayList<>();
         int i, j, x, y, check;
 
@@ -25,16 +25,15 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
                 if (i < 0) i = 0;
                 if (j < 0) j = 0;
                 //se il livello è piu alto di quello corrente elimino
-                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())>0 && check == 1)
-                {
+                if ((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal()) > 0 && check == 1) {
                     //devo aggiungere a removablecells le celle che hanno dh
                     toRemoveCells.add(map[i][j]);
                 }
 
             }
         }
-        super.getExecutorPointer().getNextMove().removeCells(toRemoveCells);
-        if(super.getExecutorPointer().getNextMove().getAvailableCells().isEmpty()){
+        super.getExecutorPointer().getNextMove().removeCells(toRemoveCells, 0);
+        if (super.getExecutorPointer().getNextMove().getAvailableCells(0).isEmpty()) {
             return -1;
         }
         return 0;

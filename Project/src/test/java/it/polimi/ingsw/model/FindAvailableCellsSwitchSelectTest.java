@@ -40,7 +40,7 @@ public class FindAvailableCellsSwitchSelectTest {
         userInput[1] = 2;
         actionExecutor.cleanActionExecutor();
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-        assertEquals(actionExecutor.getNextSelect().getAvailableCells().size(),1);
+        assertEquals(actionExecutor.getNextSelect().getAvailableCells(0).size(), 1);
 
     }
     @Test
@@ -69,7 +69,7 @@ public class FindAvailableCellsSwitchSelectTest {
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
-        
+
         player1.workersSetup(0, 0, 1, 1);
         player2.workersSetup(0, 1, 2, 1);
         player3.workersSetup(1, 0, 4, 4);
@@ -79,7 +79,7 @@ public class FindAvailableCellsSwitchSelectTest {
         userInput[1] = 2;
         actionExecutor.cleanActionExecutor();
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-        assertEquals(actionExecutor.getNextSelect().getAvailableCells().size(),1);
-        assertEquals(actionExecutor.getNextSelect().getAvailableCells().get(0).getWorkerOnCell(),player1.getSecondWorker());
+        assertEquals(actionExecutor.getNextSelect().getAvailableCells(0).size(), 1);
+        assertEquals(actionExecutor.getNextSelect().getAvailableCells(0).get(0).getWorkerOnCell(), player1.getSecondWorker());
     }
 }

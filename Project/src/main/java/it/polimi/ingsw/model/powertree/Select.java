@@ -30,21 +30,20 @@ public class Select extends LimitedPower {
         if (userInput == null) {
             return -1; /* Action failed: userInput missing */
         } else {
-
+            int index;
             int selectedWorkerX = userInput[0];
             int selectedWorkerY = userInput[1];
-            Player currentPlayer = getExecutorPointer().getCurrentPlayer();
             Cell[][] map = getExecutorPointer().getMap();
-            if (getAvailableCells().contains(map[selectedWorkerX][selectedWorkerY])) {
-
-                if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell().getOwner().equals(currentPlayer)) {
-                    setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
-                    return 0;
-                } else {
-                    return -1; /*Action failed: currentPlayer is not the Worker's owner */
-                }
+            if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getFirstWorker())
+                index = 0;
+            else if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getSecondWorker())
+                index = 1;
+            else return -1;
+            if (getExecutorPointer().getNextMove().getAvailableCells(index) != null) {
+                setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
+                return 0;
             } else {
-                return -1; /*Action failed: chosen Cell is not available for selection */
+                return -1; /*Action failed: chosen Worker cannot move after selection */
             }
         }
     }

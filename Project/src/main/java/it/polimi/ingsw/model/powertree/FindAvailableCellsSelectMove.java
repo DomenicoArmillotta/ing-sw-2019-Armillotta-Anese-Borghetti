@@ -1,21 +1,25 @@
 package it.polimi.ingsw.model.powertree;
 
 import it.polimi.ingsw.model.*;
-/* DA VERIFICARE! */
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindAvailableCellsMove extends FindAvailableCells {
-    public int doAction(int[] userInput) {
-       List<Cell> moveCells=new ArrayList<>();
-        Cell[][] map= super.getExecutorPointer().getMap();
-        Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker();
+public class FindAvailableCellsSelectMove extends FindAvailableCells {
+
+    public List<Cell> findMoveOptions(Worker selectedWorker) {
+        List<Cell> moveCells = new ArrayList<>();
+        Cell[][] map = super.getExecutorPointer().getMap();
+        int index;
+        if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker())
+            index = 0;
+        else
+            index = 1;
 
         int i, j, x, y, check;
 
-        if(selectedWorker==null)
-            return -1;
+        if (selectedWorker == null)
+            return null;
         x = selectedWorker.getCurrentPosition().getX();
         y = selectedWorker.getCurrentPosition().getY();
         //aggiungere condizione del bordo inferiore
@@ -36,26 +40,31 @@ public class FindAvailableCellsMove extends FindAvailableCells {
 
                 }
                 //se la differenza è maggiore di 1 non aggiungo nella lista
-                if((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal())<-1 && check==1 ){
+                if ((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal()) < -1 && check == 1) {
 
-                    check=0;
+                    check = 0;
 
                 }
-                if(check==1){
+                if (check == 1) {
                     //inserisce nella lista
                     moveCells.add(map[i][j]);
 
                 }
             }
         }
-        super.getExecutorPointer().getNextMove().setAvailableCells(moveCells, 0);
-        return 0;
+        //System.out.println(moveCells);
+        getExecutorPointer().getNextMove().setAvailableCells(moveCells, index);
+
+        return moveCells;
 
     }
 
+    @Override
+    public int doAction(int[] userInput) {
+        Worker firstWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();
+        Worker secondWorker = getExecutorPointer().getCurrentPlayer().getSecondWorker();
+        findMoveOptions(firstWorker);
+        findMoveOptions(secondWorker);
+        return 0;
+    }
 }
-
-
-
-
-

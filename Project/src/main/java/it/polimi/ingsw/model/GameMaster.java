@@ -72,8 +72,8 @@ public class GameMaster {
         GodCard mortalCard = new GodCard("Mortal", "Human being");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
-        findAvailableCellsList.add(new FindAvailableCellsMove());
+        findAvailableCellsList.add(new FindAvailableCellsSelectMove());
+        //findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         mortalCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();
@@ -90,10 +90,10 @@ public class GameMaster {
         mortalCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        powerList.add(findAvailableCellsList.get(1));
+        //powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
-        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(findAvailableCellsList.get(1));
         powerList.add(buildList.get(0));
         mortalCard.setPowerList(powerList);
         return mortalCard;
@@ -227,8 +227,8 @@ public class GameMaster {
         GodCard demeterCard = new GodCard("Demeter", "Goddess of the Harvest");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
-        findAvailableCellsList.add(new FindAvailableCellsMove());
+        findAvailableCellsList.add(new FindAvailableCellsSelectMove());
+        //findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         demeterCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();
@@ -245,10 +245,10 @@ public class GameMaster {
         demeterCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        powerList.add(findAvailableCellsList.get(1));
+        //powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
-        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(findAvailableCellsList.get(1));
         powerList.add(buildList.get(0));
         demeterCard.setPowerList(powerList);
         return demeterCard;

@@ -8,7 +8,7 @@ public class Build extends LimitedPower {
 
     @Override
     public int doAction(int[] userInput) {
-        List<Cell> availableCells = getAvailableCells();
+        List<Cell> availableCells = getAvailableCells(0);
         Cell[][] map = getExecutorPointer().getMap();
         //cella su cui voglio costruire
         int blockX = userInput[0];

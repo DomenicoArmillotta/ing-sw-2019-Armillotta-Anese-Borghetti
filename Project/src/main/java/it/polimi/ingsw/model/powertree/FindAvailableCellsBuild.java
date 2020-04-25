@@ -21,7 +21,7 @@ public class FindAvailableCellsBuild extends FindAvailableCells {
                 }
             }
 
-            this.getExecutorPointer().getNextBuild().setAvailableCells(buildableCells);
+            this.getExecutorPointer().getNextBuild().setAvailableCells(buildableCells, 0);
         }
         return 0;
     }

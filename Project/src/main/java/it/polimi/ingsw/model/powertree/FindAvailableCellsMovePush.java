@@ -23,9 +23,9 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
     public int doAction(int[] userInput) {
         super.doAction(userInput);
 
-        Cell[][] map= super.getExecutorPointer().getMap();
-        List<Cell> moveCells= super.getExecutorPointer().getNextMove().getAvailableCells();
-        Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker();
+        Cell[][] map = super.getExecutorPointer().getMap();
+        List<Cell> moveCells = super.getExecutorPointer().getNextMove().getAvailableCells(0);
+        Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
 
         int i, j, x, y, check;
         int shiftX;
@@ -58,7 +58,7 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
 
             }
         }
-        super.getExecutorPointer().getNextMove().setAvailableCells(moveCells);
+        super.getExecutorPointer().getNextMove().setAvailableCells(moveCells, 0);
         return 0;
     }
 }

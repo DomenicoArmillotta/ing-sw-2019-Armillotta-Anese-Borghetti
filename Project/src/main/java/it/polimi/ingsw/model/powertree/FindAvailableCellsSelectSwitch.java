@@ -10,7 +10,7 @@ public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
     public int doAction(int[] userInput) {
         /*la base fa la base e la switch adda le celle*/
         super.doAction(userInput);
-        List<Cell> availableCells = super.getExecutorPointer().getNextSelect().getAvailableCells();
+        List<Cell> availableCells = super.getExecutorPointer().getNextSelect().getAvailableCells(0);
 
         int i, j;
         int tempX = 0;
@@ -39,15 +39,15 @@ public class FindAvailableCellsSelectSwitch extends FindAvailableCellsSelect {
             }
             if (addable) {
                 tempCells.add(switchingWorkers.get(h).getCurrentPosition());
-                if(!super.getExecutorPointer().getNextSelect().getAvailableCells().contains(switchingWorkers.get(h))){
-                    super.getExecutorPointer().getNextSelect().getAvailableCells().add(switchingWorkers.get(h).getCurrentPosition());
+                if (!super.getExecutorPointer().getNextSelect().getAvailableCells(0).contains(switchingWorkers.get(h))) {
+                    super.getExecutorPointer().getNextSelect().getAvailableCells(0).add(switchingWorkers.get(h).getCurrentPosition());
                 }
                 addable = false;
             }
             h++;
 
         }
-        if (super.getExecutorPointer().getNextSelect().getAvailableCells().isEmpty()) {
+        if (super.getExecutorPointer().getNextSelect().getAvailableCells(0).isEmpty()) {
             return -1;
         } else
             return 0;

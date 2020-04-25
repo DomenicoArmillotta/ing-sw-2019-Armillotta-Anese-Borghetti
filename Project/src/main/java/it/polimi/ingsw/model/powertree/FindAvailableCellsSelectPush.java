@@ -8,7 +8,7 @@ import java.util.List;
 public class FindAvailableCellsSelectPush extends FindAvailableCellsSelect {
     public int doAction(int[] userInput) {
         super.doAction(userInput);
-        List<Cell> availableCells = super.getExecutorPointer().getNextSelect().getAvailableCells();
+        List<Cell> availableCells = super.getExecutorPointer().getNextSelect().getAvailableCells(0);
         List<Worker> pushableWorker = new ArrayList<>();
         List<Cell> tempcells = new ArrayList<>();
 
@@ -47,18 +47,18 @@ public class FindAvailableCellsSelectPush extends FindAvailableCellsSelect {
             }
             if (addable) {
                 tempcells.add(pushableWorker.get(h).getCurrentPosition());
-                if(!super.getExecutorPointer().getNextSelect().getAvailableCells().contains(pushableWorker.get(h))){
+                if (!super.getExecutorPointer().getNextSelect().getAvailableCells(0).contains(pushableWorker.get(h))) {
                     //se non contiene la cella allora deve essere aggiunta manualmente
-                    super.getExecutorPointer().getNextSelect().getAvailableCells().add(pushableWorker.get(h).getCurrentPosition());
+                    super.getExecutorPointer().getNextSelect().getAvailableCells(0).add(pushableWorker.get(h).getCurrentPosition());
                 }
                 addable = false;
             }
             h++;
         }
-        if(super.getExecutorPointer().getNextSelect().getAvailableCells().isEmpty()) {
-            System.out.println("routine di perdita" );
+        if (super.getExecutorPointer().getNextSelect().getAvailableCells(0).isEmpty()) {
+            System.out.println("routine di perdita");
             return 0;
-        }else
+        } else
             return 0;
     }
 }

@@ -15,17 +15,17 @@ public class MovePush extends Move {
         if(targetWorker==null){
             return 0;
         }else {
-            if(super.getAvailableCells().contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
+            if (super.getAvailableCells(0).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
                 tempX = targetWorker.getCurrentPosition().getX() - oldX;
                 tempY = targetWorker.getCurrentPosition().getY() - oldY;
-                tempX = targetWorker.getCurrentPosition().getX() +tempX;
-                tempY = targetWorker.getCurrentPosition().getY()+tempY;
+                tempX = targetWorker.getCurrentPosition().getX() + tempX;
+                tempY = targetWorker.getCurrentPosition().getY() + tempY;
                 targetWorker.setPreviousPosition(targetWorker.getCurrentPosition());
                 targetWorker.getPreviousPosition().setWorkerOnCell(selectedWorker);
                 targetWorker.setCurrentPosition(super.getExecutorPointer().getMap()[tempX][tempY]);
                 targetWorker.getCurrentPosition().setWorkerOnCell(targetWorker);
                 return 0;
-            }else
+            } else
                 return -1;
         }
     }

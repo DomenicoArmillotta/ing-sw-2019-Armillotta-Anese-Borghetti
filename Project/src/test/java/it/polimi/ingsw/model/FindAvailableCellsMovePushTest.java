@@ -45,7 +45,7 @@ public class FindAvailableCellsMovePushTest {
         actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
         actionExecutor.getNextPower().doAction(null);
-        List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells();
+        List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(0);
 
 
         //creo lista con celle giuste per la assert cioe con anche il worker21
@@ -103,7 +103,7 @@ public class FindAvailableCellsMovePushTest {
         actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
         actionExecutor.getNextPower().doAction(null);
-        List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells();
+        List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(0);
 
 
         //creo lista con celle giuste per la assert cioe con anche il worker21
@@ -168,7 +168,7 @@ public class FindAvailableCellsMovePushTest {
         actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
         actionExecutor.getNextPower().doAction(null);
-        List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells();
+        List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(0);
 
 
         //creo lista con celle giuste per la assert cioe con anche il worker21

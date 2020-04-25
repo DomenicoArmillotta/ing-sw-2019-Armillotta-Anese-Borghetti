@@ -9,7 +9,7 @@ public class MoveSwitch extends Move {
         super.doAction(userInput);
         if (floatingWorker == null) {
             return 0;
-        } else if (super.getAvailableCells().contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
+        } else if (super.getAvailableCells(0).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
             floatingWorker.setPreviousPosition(floatingWorker.getCurrentPosition());
             floatingWorker.getPreviousPosition().setWorkerOnCell(super.getExecutorPointer().getPrevSelect().getSelectedWorker());
             floatingWorker.setCurrentPosition(floatingCell);

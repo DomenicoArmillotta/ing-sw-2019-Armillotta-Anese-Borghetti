@@ -72,7 +72,8 @@ public class GameMaster {
         GodCard mortalCard = new GodCard("Mortal", "Human being");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelectMove());
+        findAvailableCellsList.add(new FindAvailableCellsMove());
+        //findAvailableCellsList.add(new FindAvailableCellsMoveButDontMoveUp());
         //findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         mortalCard.setFindAvailableCellsList(findAvailableCellsList);
@@ -89,8 +90,8 @@ public class GameMaster {
         winConditionList.add(new WinCondition());
         mortalCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
-        powerList.add(selectList.get(0));
         //powerList.add(findAvailableCellsList.get(1));
+        powerList.add(selectList.get(0));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
         powerList.add(findAvailableCellsList.get(1));

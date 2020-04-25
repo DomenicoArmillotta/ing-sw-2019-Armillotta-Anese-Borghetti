@@ -32,16 +32,16 @@ public class MoveTest {
         Cell[][] map = actionExecutor.getMap();
 
         player1.workersSetup(0, 0, 1, 1);
-        player2.workersSetup(0, 1, 2, 1);
+        player2.workersSetup(0, 4, 2, 1);
         player3.workersSetup(1, 2, 4, 4);
 
         int[] userInput = new int[2];
         userInput[0] = 0;
         userInput[1] = 0;
-        actionExecutor.cleanActionExecutor();
+
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
+        //assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
         userInput[0] = 1;
         userInput[1] = 0;
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//move basic
@@ -76,7 +76,7 @@ public class MoveTest {
         int[] userInput = new int[2];
         userInput[0] = 0;
         userInput[1] = 0;
-        actionExecutor.cleanActionExecutor();
+
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
@@ -113,7 +113,7 @@ public class MoveTest {
         int[] userInput = new int[2];
         userInput[0] = 0;
         userInput[1] = 0;
-        actionExecutor.cleanActionExecutor();
+
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),-1);//select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),-1);//find cell move

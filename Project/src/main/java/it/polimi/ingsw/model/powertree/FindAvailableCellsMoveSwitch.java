@@ -8,24 +8,28 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
     public int doAction(int[] userInput) {
         super.doAction(userInput);
         Cell[][] map = super.getExecutorPointer().getMap();
-        List<Cell> moveCells = super.getExecutorPointer().getNextMove().getAvailableCells(0);
-        Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
+        Worker selectedWorker;
+        for (int index = 0; index < 2; index++) {
+            if (index == 0) selectedWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();
+            else selectedWorker = getExecutorPointer().getCurrentPlayer().getSecondWorker();
+            List<Cell> moveCells = super.getExecutorPointer().getNextMove().getAvailableCells(index);
 
-        int i, j, x, y;
+            int i, j, x, y;
 
-        x = selectedWorker.getCurrentPosition().getX();
-        y = selectedWorker.getCurrentPosition().getY();
-        for (i = x - 1; i < x + 2 && i < 5; i++) {
-            for (j = y - 1; j < y + 2 && j < 5; j++) {
-                if (i < 0) i = 0;
-                if (j < 0) j = 0;
-                //se  c'è un operatore non mio    aggiungo nella lista
-                if (map[i][j].getWorkerOnCell() != null && map[i][j].getWorkerOnCell().getOwner() != selectedWorker.getOwner()) {
-                    moveCells.add(map[i][j]); /* usare funzione addCells di LimitedAction */
+            x = selectedWorker.getCurrentPosition().getX();
+            y = selectedWorker.getCurrentPosition().getY();
+            for (i = x - 1; i < x + 2 && i < 5; i++) {
+                for (j = y - 1; j < y + 2 && j < 5; j++) {
+                    if (i < 0) i = 0;
+                    if (j < 0) j = 0;
+                    //se  c'è un operatore non mio    aggiungo nella lista
+                    if (map[i][j].getWorkerOnCell() != null && map[i][j].getWorkerOnCell().getOwner() != selectedWorker.getOwner()) {
+                        moveCells.add(map[i][j]); /* usare funzione addCells di LimitedAction */
+                    }
                 }
             }
+            super.getExecutorPointer().getNextMove().setAvailableCells(moveCells, index);
         }
-        super.getExecutorPointer().getNextMove().setAvailableCells(moveCells, 0);
 
         return 0;
 

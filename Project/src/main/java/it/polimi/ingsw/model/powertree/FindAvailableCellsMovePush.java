@@ -24,41 +24,45 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
         super.doAction(userInput);
 
         Cell[][] map = super.getExecutorPointer().getMap();
-        List<Cell> moveCells = super.getExecutorPointer().getNextMove().getAvailableCells(0);
-        Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
 
-        int i, j, x, y, check;
-        int shiftX;
-        int shiftY;
+        Worker selectedWorker;
+        for (int index = 0; index < 2; index++) {
+            if (index == 0) selectedWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();
+            else selectedWorker = getExecutorPointer().getCurrentPlayer().getSecondWorker();
+            List<Cell> moveCells = super.getExecutorPointer().getNextMove().getAvailableCells(index);
 
-        x = selectedWorker.getCurrentPosition().getX();
-        y = selectedWorker.getCurrentPosition().getY();
-        System.out.println("calcolate==");
+            int i, j, x, y, check;
+            int shiftX;
+            int shiftY;
 
-        for (i = x - 1; i < x + 2 && i < 5; i++) {
-            for (j = y - 1; j < y + 2 && j < 5; j++) {
-                check = 1;
-                if (i < 0) i = 0;
-                if (j < 0) j = 0;
+            x = selectedWorker.getCurrentPosition().getX();
+            y = selectedWorker.getCurrentPosition().getY();
 
-                //se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo e controllo che nella cella in direzione c'e una cella libera
-                if (map[i][j].getWorkerOnCell() != null && map[i][j].getWorkerOnCell().getOwner() == selectedWorker.getOwner() && check == 1) {
-                    check = 0;
-                } else if (map[i][j].getWorkerOnCell() != null && check == 1 && (selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()-map[i][j].getBuildingLevel().ordinal())>=-1) {
-                    shiftX = calcolaSpostamentoX(selectedWorker, map[i][j]);
-                    shiftY = calcolaSpostamentoY(selectedWorker, map[i][j]);
-                    //se la cella dove si dovrebbe spostare il worker pushato è libera  aggiungo alla lista delle celle
-                    if ( (i - shiftX>=0) && (j - shiftY>=0) && map[i - shiftX][j - shiftY].getWorkerOnCell() == null ) {
-                        if(!moveCells.contains(map[i - shiftX][j - shiftY]))
-                            moveCells.add(map[i][j]);
-                        System.out.print(map[i][j].getX());
-                        System.out.println(map[i][j].getY());
+            for (i = x - 1; i < x + 2 && i < 5; i++) {
+                for (j = y - 1; j < y + 2 && j < 5; j++) {
+                    check = 1;
+                    if (i < 0) i = 0;
+                    if (j < 0) j = 0;
+
+                    //se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo e controllo che nella cella in direzione c'e una cella libera
+                    if (map[i][j].getWorkerOnCell() != null && map[i][j].getWorkerOnCell().getOwner() == selectedWorker.getOwner() && check == 1) {
+                        check = 0;
+                    } else if (map[i][j].getWorkerOnCell() != null && check == 1 && (selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal()) >= -1) {
+                        shiftX = calcolaSpostamentoX(selectedWorker, map[i][j]);
+                        shiftY = calcolaSpostamentoY(selectedWorker, map[i][j]);
+                        //se la cella dove si dovrebbe spostare il worker pushato è libera  aggiungo alla lista delle celle
+                        if ((i - shiftX >= 0) && (j - shiftY >= 0) && map[i - shiftX][j - shiftY].getWorkerOnCell() == null) {
+                            if (!moveCells.contains(map[i - shiftX][j - shiftY]))
+                                moveCells.add(map[i][j]);
+                            System.out.print(map[i][j].getX());
+                            System.out.println(map[i][j].getY());
+                        }
                     }
-                }
 
+                }
             }
+            super.getExecutorPointer().getNextMove().addCells(moveCells, index);
         }
-        super.getExecutorPointer().getNextMove().setAvailableCells(moveCells, 0);
         return 0;
     }
 }

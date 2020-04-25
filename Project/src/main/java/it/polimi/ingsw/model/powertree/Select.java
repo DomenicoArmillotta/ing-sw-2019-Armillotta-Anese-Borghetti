@@ -41,6 +41,7 @@ public class Select extends LimitedPower {
             else return -1;
             if (getExecutorPointer().getNextMove().getAvailableCells(index) != null) {
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
+                System.out.println("dbg" + selectedWorkerX + selectedWorkerY);
                 return 0;
             } else {
                 return -1; /*Action failed: chosen Worker cannot move after selection */

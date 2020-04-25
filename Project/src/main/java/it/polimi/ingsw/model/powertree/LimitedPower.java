@@ -13,6 +13,10 @@ public class LimitedPower extends Power {
 
     /* LimitedPower can use its superclass' methods doAction() and getExecutorPointer() */
 
+    public LimitedPower() {
+        clearPower();
+    }
+
     public void addCells(List<Cell> addableCells, int index) {
         if (index == 0)
             this.addableCells1.addAll(addableCells);
@@ -21,17 +25,22 @@ public class LimitedPower extends Power {
     }
 
     public void removeCells(List<Cell> removableCells, int index) {
-        if (index == 0)
-            this.removableCells1.removeAll(removableCells);
-        else
-            this.removableCells2.removeAll(removableCells);
+        if (index == 0) {
+            removableCells1 = removableCells;
+            //this.removableCells1.removeAll(removableCells);
+        } else {
+            removableCells1 = removableCells;
+            //this.removableCells2.removeAll(removableCells);
+        }
     }
 
     //la get fa gia la sottrazione algebrica delle classi;
     public List<Cell> getAvailableCells(int index) {
         if (index == 0) {
             List<Cell> availableCells1 = addableCells1;
+            System.out.println("size 1: " + availableCells1.size());
             if (removableCells1 != null) availableCells1.removeAll(removableCells1);
+            System.out.println("size 2: " + availableCells1.size());
             return availableCells1;
         } else {
             List<Cell> availableCells2 = addableCells2;

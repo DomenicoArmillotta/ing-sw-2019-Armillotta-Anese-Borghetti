@@ -1,9 +1,6 @@
 package it.polimi.ingsw.model.powertree;
 
-import it.polimi.ingsw.model.ActionExecutor;
-import it.polimi.ingsw.model.GameMaster;
-import it.polimi.ingsw.model.God;
-import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -47,8 +44,9 @@ public class HephaestusTest {
         userInput[1] = 1;
         actionExecutor.getNextPower().doAction(userInput);
         actionExecutor.getNextPower().doAction(null);
+        actionExecutor.getMap()[1][1].setBuildingLevel(Level.MID); /* try with TOP */
         userInput[0] = 1;
-        userInput[1] = 2;
+        userInput[1] = 1;
         result = actionExecutor.getNextPower().doAction(userInput);
         System.out.println(result);
 

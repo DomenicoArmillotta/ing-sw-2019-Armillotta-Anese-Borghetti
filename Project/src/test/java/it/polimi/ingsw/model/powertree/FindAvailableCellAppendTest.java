@@ -22,28 +22,34 @@ public class FindAvailableCellAppendTest {
         gameMaster.createGodList();
         player1.setPlayerGod(gameMaster.getGodList().get(God.ATHENA.ordinal()));
         player2.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
+        player3.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
-        map[1][0].setBuildingLevel(Level.BASE);
+
         player1.workersSetup(0, 0, 1, 1);
         player2.workersSetup(0, 4, 2, 1);
         player3.workersSetup(1, 2, 4, 4);
+        map[1][0].setBuildingLevel(Level.BASE);
+       /* map[0][1].setBuildingLevel(Level.BASE);
+        map[0][2].setBuildingLevel(Level.BASE);
+        map[1][2].setBuildingLevel(Level.BASE);
+        map[2][1].setBuildingLevel(Level.BASE);
+        map[0][1].setBuildingLevel(Level.BASE);*/
 
         int[] userInput = new int[2];
         userInput[0] = 0;
         userInput[1] = 0;
-
-
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//select
         userInput[0] = 1;
         userInput[1] = 0;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell move
+        assertEquals(actionExecutor.getNextPlayer().getPlayerGod().getFindAvailableCellsList().size(), 3);
+        assertEquals(actionExecutor.getPrevPlayer().getPlayerGod().getFindAvailableCellsList().size(), 3);
         assertEquals(true, true);
     }
 

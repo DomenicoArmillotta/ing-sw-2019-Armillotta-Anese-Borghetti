@@ -15,11 +15,12 @@ public class MoveCheckingLevel extends Move{
         injectionPtr = player.getPlayerGod().getFindAvailableCellsList().get(0);
         int i;
 
-        for(i=0 ; cachedPowerList.get(i)!= selectListPtr; i++){
+        for (i = 0; cachedPowerList.get(i) != selectListPtr; i++) {
             ;
         }
-        player.getPlayerGod().getFindAvailableCellsList().add(i,new FindAvailableCellsMoveButDontMoveUp());
-        cachedPowerList.add(i,new FindAvailableCellsMoveButDontMoveUp());
+        player.getPlayerGod().getFindAvailableCellsList().add(i, new FindAvailableCellsMoveButDontMoveUp());
+
+        cachedPowerList.add(i, player.getPlayerGod().getFindAvailableCellsList().get(i));
         //ho aggiornato la list power ma non la FindAvailableCells list;
         player.getPlayerGod().setPowerList(cachedPowerList);
 

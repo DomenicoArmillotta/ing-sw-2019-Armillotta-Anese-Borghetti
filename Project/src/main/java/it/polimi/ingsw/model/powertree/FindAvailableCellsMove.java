@@ -18,12 +18,14 @@ import java.util.List;
 
 public class FindAvailableCellsMove extends FindAvailableCells {
     public int doAction(int[] userInput) {
-        List<Cell> moveCells = new ArrayList<>();
+
         Cell[][] map = super.getExecutorPointer().getMap();
         Worker selectedWorker;
         for (int index = 0; index < 2; index++) {
             if (index == 0) selectedWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();
             else selectedWorker = getExecutorPointer().getCurrentPlayer().getSecondWorker();
+
+            List<Cell> moveCells = new ArrayList<>();
 
             //Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker();
 
@@ -64,6 +66,7 @@ public class FindAvailableCellsMove extends FindAvailableCells {
                 }
             }
             super.getExecutorPointer().getNextMove().setAvailableCells(moveCells, index);
+
         }
         return 0;
 

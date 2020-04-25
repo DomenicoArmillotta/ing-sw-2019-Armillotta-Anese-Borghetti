@@ -118,7 +118,7 @@ public class ActionExecutor {
             }
             for (; index < currentPlayer.getPlayerGod().getPowerList().size(); index++) {
                 indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
-                for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && movePtr != indexPtr; j++) {
+                for (int j = 0; j < currentPlayer.getPlayerGod().getMoveList().size() && movePtr != indexPtr; j++) {
                     movePtr = currentPlayer.getPlayerGod().getMoveList().get(j);
                 }
                 if (indexPtr == movePtr)

@@ -6,6 +6,7 @@ import java.util.List;
 
 public class FindAvailableCellsBuild extends FindAvailableCells {
     public int doAction(int[] userInput) {
+
         Worker selectedWorker = this.getExecutorPointer().getPrevSelect().getSelectedWorker();
         Cell[][] map = this.getExecutorPointer().getMap();
         int workerX = selectedWorker.getCurrentPosition().getX();

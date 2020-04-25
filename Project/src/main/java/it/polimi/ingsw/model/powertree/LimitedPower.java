@@ -29,7 +29,7 @@ public class LimitedPower extends Power {
             removableCells1 = removableCells;
             //this.removableCells1.removeAll(removableCells);
         } else {
-            removableCells1 = removableCells;
+            removableCells2 = removableCells;
             //this.removableCells2.removeAll(removableCells);
         }
     }

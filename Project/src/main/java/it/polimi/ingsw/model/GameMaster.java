@@ -235,7 +235,7 @@ public class GameMaster {
         demeterCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
         buildList.add(new Build());
-        buildList.add(new Build());
+        buildList.add(new BuildOnDifferentCell());
         demeterCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();
         winConditionList.add(new WinCondition());
@@ -268,7 +268,7 @@ public class GameMaster {
         hephaestusCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
         buildList.add(new Build());
-        buildList.add(new DontBuildDome());
+        buildList.add(new BuildOnSameCell());
         hephaestusCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();
         winConditionList.add(new WinCondition());

@@ -6,26 +6,27 @@ import java.util.List;
 
 public class Move extends LimitedPower {
 
-    private Cell cellAfterMove;
+    private Cell cellBeforeMove;
 
-    public Cell getCellAfterMove() {
-        return this.cellAfterMove;
+    public Cell getCellBeforeMove() {
+        return this.cellBeforeMove;
     }
 
     @Override
     public void clearPower() {
         super.clearPower();
-        cellAfterMove = null;
+        cellBeforeMove = null;
     }
 
-    public void setCellAfterMove(Cell cellAfterMove) {
-        this.cellAfterMove = cellAfterMove;
+    public void setCellBeforeMove(Cell cellBeforeMove) {
+        this.cellBeforeMove = cellBeforeMove;
     }
 
     //Worker selectedWorker;
     @Override
     public int doAction(int[] userInput) {
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
+        setCellBeforeMove(selectedWorker.getCurrentPosition());
 
         int index;
         if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) {
@@ -44,7 +45,6 @@ public class Move extends LimitedPower {
                 selectedWorker.getPreviousPosition().setWorkerOnCell(null);
                 selectedWorker.setCurrentPosition(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]]);
                 selectedWorker.getCurrentPosition().setWorkerOnCell(selectedWorker);
-                this.setCellAfterMove(selectedWorker.getCurrentPosition());
                 return 0;
             }
         }

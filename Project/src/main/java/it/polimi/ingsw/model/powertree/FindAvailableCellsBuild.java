@@ -12,6 +12,9 @@ public class FindAvailableCellsBuild extends FindAvailableCells {
         int workerX = selectedWorker.getCurrentPosition().getX();
         int workerY = selectedWorker.getCurrentPosition().getY();
         List<Cell> buildableCells = new ArrayList<>();
+        int index;
+        if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) index = 0;
+        else index = 1;
 
         for (int i = workerX - 1; i < workerX + 2 && i < 5; i++) {
             for (int j = workerY - 1; j < workerY + 2 && j < 5; j++) {
@@ -22,8 +25,9 @@ public class FindAvailableCellsBuild extends FindAvailableCells {
                 }
             }
 
-            this.getExecutorPointer().getNextBuild().setAvailableCells(buildableCells, 0);
+            this.getExecutorPointer().getNextBuild().setAvailableCells(buildableCells, index);
         }
+
         return 0;
     }
 }

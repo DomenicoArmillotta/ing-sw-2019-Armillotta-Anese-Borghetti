@@ -49,8 +49,8 @@ public class DoActionTest {
         userInput[1] = 2;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         assertEquals(actionExecutor.getNextPower().doAction(null), -1);
-        userInput[0] = 3;
-        userInput[1] = 3;
+        userInput[0] = 1;
+        userInput[1] = 2;
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         assertEquals(actionExecutor.getNextPower().doAction(null), -1);

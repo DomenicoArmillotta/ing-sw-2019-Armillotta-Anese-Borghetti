@@ -140,6 +140,38 @@ public class ActionExecutor {
         }
     }
 
+    public Move getPrevMove() {
+        if (this.powerPtr != null) {
+            Move movePtr = currentPlayer.getPlayerGod().getMoveList().get(0);
+            Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+            int index;
+            for (index = 1; indexPtr != powerPtr; index++) {
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+            }
+            for (index -= 2; index > 0; index--) {
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+                for (int j = 0; j < currentPlayer.getPlayerGod().getMoveList().size() && movePtr != indexPtr; j++) {
+                    movePtr = currentPlayer.getPlayerGod().getMoveList().get(j);
+                }
+                if (indexPtr == movePtr)
+                    return movePtr;
+            }
+            return null;
+        } else {
+            Move movePtr = currentPlayer.getPlayerGod().getMoveList().get(0);
+            Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+            for (int index = 0; index < currentPlayer.getPlayerGod().getPowerList().size(); index++) {
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+                for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && movePtr != indexPtr; j++) {
+                    movePtr = currentPlayer.getPlayerGod().getMoveList().get(j);
+                }
+                if (indexPtr == movePtr)
+                    return movePtr;
+            }
+            return null;
+        }
+    }
+
     public Build getNextBuild() {
         if (this.powerPtr != null) {
             Build buildPtr = currentPlayer.getPlayerGod().getBuildList().get(0);
@@ -150,7 +182,39 @@ public class ActionExecutor {
             }
             for (; index < currentPlayer.getPlayerGod().getPowerList().size(); index++) {
                 indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+                for (int j = 0; j < currentPlayer.getPlayerGod().getBuildList().size() && buildPtr != indexPtr; j++) {
+                    buildPtr = currentPlayer.getPlayerGod().getBuildList().get(j);
+                }
+                if (indexPtr == buildPtr)
+                    return buildPtr;
+            }
+            return null;
+        } else {
+            Build buildPtr = currentPlayer.getPlayerGod().getBuildList().get(0);
+            Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+            for (int index = 0; index < currentPlayer.getPlayerGod().getPowerList().size(); index++) {
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
                 for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && buildPtr != indexPtr; j++) {
+                    buildPtr = currentPlayer.getPlayerGod().getBuildList().get(j);
+                }
+                if (indexPtr == buildPtr)
+                    return buildPtr;
+            }
+            return null;
+        }
+    }
+
+    public Build getPrevBuild() {
+        if (this.powerPtr != null) {
+            Build buildPtr = currentPlayer.getPlayerGod().getBuildList().get(0);
+            Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+            int index;
+            for (index = 1; indexPtr != powerPtr; index++) {
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+            }
+            for (index -= 2; index > 0; index--) { /* CONTROLLA!!! -=2 o -=1? Per Artemide serve prevMove??? */
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+                for (int j = 0; j < currentPlayer.getPlayerGod().getBuildList().size() && buildPtr != indexPtr; j++) {
                     buildPtr = currentPlayer.getPlayerGod().getBuildList().get(j);
                 }
                 if (indexPtr == buildPtr)

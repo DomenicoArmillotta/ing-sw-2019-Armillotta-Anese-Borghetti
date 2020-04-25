@@ -5,8 +5,10 @@ import it.polimi.ingsw.model.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindAvailableCellsSelect extends FindAvailableCells {
+/* Non serve */
 
+public class FindAvailableCellsSelect extends FindAvailableCells {
+/*
     private boolean lookAround(Worker worker, Cell[][] map) {
         Cell workersCell = worker.getCurrentPosition();
         int i, j;
@@ -58,4 +60,5 @@ public class FindAvailableCellsSelect extends FindAvailableCells {
 
         return 0;
     }
+*/
 }

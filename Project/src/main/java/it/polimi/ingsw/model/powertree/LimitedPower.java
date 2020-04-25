@@ -38,9 +38,7 @@ public class LimitedPower extends Power {
     public List<Cell> getAvailableCells(int index) {
         if (index == 0) {
             List<Cell> availableCells1 = addableCells1;
-            System.out.println("size 1: " + availableCells1.size());
             if (removableCells1 != null) availableCells1.removeAll(removableCells1);
-            System.out.println("size 2: " + availableCells1.size());
             return availableCells1;
         } else {
             List<Cell> availableCells2 = addableCells2;

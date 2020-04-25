@@ -73,8 +73,6 @@ public class GameMaster {
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
         findAvailableCellsList.add(new FindAvailableCellsMove());
-        //findAvailableCellsList.add(new FindAvailableCellsMoveButDontMoveUp());
-        //findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         mortalCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();
@@ -90,7 +88,6 @@ public class GameMaster {
         winConditionList.add(new WinCondition());
         mortalCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
-        //powerList.add(findAvailableCellsList.get(1));
         powerList.add(selectList.get(0));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
@@ -104,7 +101,6 @@ public class GameMaster {
         GodCard apolloCard = new GodCard("Apollo", "God of Music");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelectSwitch());
         findAvailableCellsList.add(new FindAvailableCellsMoveSwitch());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         apolloCard.setFindAvailableCellsList(findAvailableCellsList);
@@ -122,10 +118,9 @@ public class GameMaster {
         apolloCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
-        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(findAvailableCellsList.get(1));
         powerList.add(buildList.get(0));
         apolloCard.setPowerList(powerList);
         return apolloCard;
@@ -135,7 +130,7 @@ public class GameMaster {
         GodCard artemisCard = new GodCard("Artemis", "Goddess of the Hunt");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
+        findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         artemisCard.setFindAvailableCellsList(findAvailableCellsList);
@@ -143,6 +138,7 @@ public class GameMaster {
         selectList.add(new Select());
         artemisCard.setSelectList(selectList);
         List<Move> moveList = new ArrayList<>();
+        moveList.add(new Move());
         moveList.add(new Move());
         artemisCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
@@ -153,8 +149,9 @@ public class GameMaster {
         artemisCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
+        powerList.add(findAvailableCellsList.get(1));
+        powerList.add(moveList.get(1));
         powerList.add(winConditionList.get(0));
         powerList.add(findAvailableCellsList.get(2));
         powerList.add(buildList.get(0));
@@ -166,15 +163,14 @@ public class GameMaster {
         GodCard athenaCard = new GodCard("Athena", "Goddess of Wisdom");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
-        findAvailableCellsList.add(new FindAvailableCellsMoveButDontMoveUp());
+        findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         athenaCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();
         selectList.add(new Select());
         athenaCard.setSelectList(selectList);
         List<Move> moveList = new ArrayList<>();
-        moveList.add(new Move());
+        moveList.add(new MoveCheckingLevel());
         athenaCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
         buildList.add(new Build());
@@ -184,10 +180,9 @@ public class GameMaster {
         athenaCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
-        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(findAvailableCellsList.get(1));
         powerList.add(buildList.get(0));
         athenaCard.setPowerList(powerList);
         return athenaCard;
@@ -197,7 +192,6 @@ public class GameMaster {
         GodCard atlasCard = new GodCard("Atlas", "Titan Shouldering the Heavens");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
         findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         atlasCard.setFindAvailableCellsList(findAvailableCellsList);
@@ -215,10 +209,9 @@ public class GameMaster {
         atlasCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
-        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(findAvailableCellsList.get(1));
         powerList.add(buildList.get(0));
         atlasCard.setPowerList(powerList);
         return atlasCard;
@@ -228,8 +221,8 @@ public class GameMaster {
         GodCard demeterCard = new GodCard("Demeter", "Goddess of the Harvest");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelectMove());
-        //findAvailableCellsList.add(new FindAvailableCellsMove());
+        findAvailableCellsList.add(new FindAvailableCellsMove());
+        findAvailableCellsList.add(new FindAvailableCellsBuild());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         demeterCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();
@@ -240,17 +233,19 @@ public class GameMaster {
         demeterCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
         buildList.add(new Build());
+        buildList.add(new Build());
         demeterCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();
         winConditionList.add(new WinCondition());
         demeterCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        //powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
         powerList.add(findAvailableCellsList.get(1));
         powerList.add(buildList.get(0));
+        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(buildList.get(1));
         demeterCard.setPowerList(powerList);
         return demeterCard;
     }
@@ -259,8 +254,8 @@ public class GameMaster {
         GodCard hephaestusCard = new GodCard("Hephaestus", "God of Blacksmiths");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
         findAvailableCellsList.add(new FindAvailableCellsMove());
+        findAvailableCellsList.add(new FindAvailableCellsBuild());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         hephaestusCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();
@@ -270,6 +265,7 @@ public class GameMaster {
         moveList.add(new Move());
         hephaestusCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
+        buildList.add(new Build());
         buildList.add(new DontBuildDome());
         hephaestusCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();
@@ -277,11 +273,12 @@ public class GameMaster {
         hephaestusCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
-        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(findAvailableCellsList.get(1));
         powerList.add(buildList.get(0));
+        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(buildList.get(1));
         hephaestusCard.setPowerList(powerList);
         return hephaestusCard;
     }
@@ -290,7 +287,6 @@ public class GameMaster {
         GodCard minotaurCard = new GodCard("Minotaur", "Bull-headed Monster");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelectPush());
         findAvailableCellsList.add(new FindAvailableCellsMovePush());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         minotaurCard.setFindAvailableCellsList(findAvailableCellsList);
@@ -308,10 +304,9 @@ public class GameMaster {
         minotaurCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
-        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(findAvailableCellsList.get(1));
         powerList.add(buildList.get(0));
         minotaurCard.setPowerList(powerList);
         return minotaurCard;
@@ -321,7 +316,6 @@ public class GameMaster {
         GodCard panCard = new GodCard("Pan", "God of the Wild");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
         findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         panCard.setFindAvailableCellsList(findAvailableCellsList);
@@ -339,10 +333,9 @@ public class GameMaster {
         panCard.setWinConditionList(winConditionList);
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
-        powerList.add(findAvailableCellsList.get(1));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
-        powerList.add(findAvailableCellsList.get(2));
+        powerList.add(findAvailableCellsList.get(1));
         powerList.add(buildList.get(0));
         panCard.setPowerList(powerList);
         return panCard;
@@ -352,7 +345,7 @@ public class GameMaster {
         GodCard prometheusCard = new GodCard("Prometheus", "Titan Benefactor of Mankind");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsSelect());
+        findAvailableCellsList.add(new FindAvailableCellsBuild());
         findAvailableCellsList.add(new FindAvailableCellsMove());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         prometheusCard.setFindAvailableCellsList(findAvailableCellsList);
@@ -364,6 +357,7 @@ public class GameMaster {
         prometheusCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
         buildList.add(new Build());
+        buildList.add(new Build());
         prometheusCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();
         winConditionList.add(new WinCondition());
@@ -371,10 +365,11 @@ public class GameMaster {
         powerList.add(findAvailableCellsList.get(0));
         powerList.add(selectList.get(0));
         powerList.add(findAvailableCellsList.get(1));
+        powerList.add(buildList.get(0));
         powerList.add(moveList.get(0));
         powerList.add(winConditionList.get(0));
         powerList.add(findAvailableCellsList.get(2));
-        powerList.add(buildList.get(0));
+        powerList.add(buildList.get(1));
         prometheusCard.setPowerList(powerList);
         return prometheusCard;
     }

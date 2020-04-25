@@ -42,11 +42,19 @@ public class DoActionTest {
         map[0][1].setBuildingLevel(Level.BASE);
 
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
+        userInput[0] = 1;
+        userInput[1] = 1;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         userInput[0] = 2;
         userInput[1] = 2;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-        //assertEquals(actionExecutor.getNextPower().doAction(null), 0);
+        assertEquals(actionExecutor.getNextPower().doAction(null), -1);
+        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
+        userInput[0] = 2;
+        userInput[1] = 3;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+
+        actionExecutor.nextTurn();
        /* userInput[0] = 1;
         userInput[1] = 0;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);

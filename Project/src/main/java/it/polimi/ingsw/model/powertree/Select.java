@@ -35,13 +35,16 @@ public class Select extends LimitedPower {
             int selectedWorkerY = userInput[1];
             Cell[][] map = getExecutorPointer().getMap();
             if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getFirstWorker())
+            {
                 index = 0;
-            else if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getSecondWorker())
+            }
+            else if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getSecondWorker()) {
                 index = 1;
-            else return -1;
+            } else {
+                return -1;
+            }
             if (getExecutorPointer().getNextMove().getAvailableCells(index) != null) {
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
-                System.out.println("dbg" + selectedWorkerX + selectedWorkerY);
                 return 0;
             } else {
                 return -1; /*Action failed: chosen Worker cannot move after selection */

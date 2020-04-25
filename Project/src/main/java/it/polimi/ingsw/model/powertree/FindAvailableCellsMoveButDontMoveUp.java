@@ -34,7 +34,6 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
                     if ((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal()) < 0 && check == 1) {
                         //devo aggiungere a removablecells le celle che hanno dh
                         toRemoveCells.add(map[i][j]);
-                        if (index == 0) System.out.println("Remove(x: " + i + ", y: " + j + ");");
                     }
 
                 }

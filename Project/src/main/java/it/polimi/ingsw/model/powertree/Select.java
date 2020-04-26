@@ -44,6 +44,11 @@ public class Select extends LimitedPower {
                 return -1;
             }
             if (getExecutorPointer().getNextMove().getAvailableCells(index) != null) {
+                /*
+                questo è un controllo agguntivo
+                */
+                if(super.getExecutorPointer().getNextMove().getAvailableCells(index).isEmpty())
+                    return -1;
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
                 return 0;
             } else {

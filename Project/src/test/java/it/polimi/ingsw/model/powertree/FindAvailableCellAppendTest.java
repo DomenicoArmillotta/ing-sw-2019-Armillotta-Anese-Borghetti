@@ -291,5 +291,4 @@ public class FindAvailableCellAppendTest {
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);
         assertEquals(actionExecutor.getCurrentPlayer().getPlayerGod().getPowerList().size(),6);
     }
-
 }

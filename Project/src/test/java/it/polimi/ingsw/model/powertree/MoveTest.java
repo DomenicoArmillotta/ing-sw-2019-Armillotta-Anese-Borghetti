@@ -78,11 +78,10 @@ public class MoveTest {
         userInput[1] = 0;
 
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
         userInput[0] = 4;
         userInput[1] = 4;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),-1);//move basic
+        assertEquals(actionExecutor.getNextPower().doAction(userInput),-1);//select
+
     }
     @Test
     public void lostBecuaseCantMove(){
@@ -116,9 +115,7 @@ public class MoveTest {
 
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),-1);//select
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),-1);//find cell move
         userInput[0] = 1;
         userInput[1] = 0;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//move basic
     }
 }

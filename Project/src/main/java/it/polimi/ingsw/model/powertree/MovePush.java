@@ -12,10 +12,15 @@ public class MovePush extends Move {
         int oldX = selectedWorker.getCurrentPosition().getX();
         int oldY = selectedWorker.getCurrentPosition().getY();
         super.doAction(userInput);
+        int index;
+        if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) {
+            index = 0;
+        } else index = 1;
+
         if(targetWorker==null){
             return 0;
         }else {
-            if (super.getAvailableCells(0).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
+            if (super.getAvailableCells(index).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
                 tempX = targetWorker.getCurrentPosition().getX() - oldX;
                 tempY = targetWorker.getCurrentPosition().getY() - oldY;
                 tempX = targetWorker.getCurrentPosition().getX() + tempX;

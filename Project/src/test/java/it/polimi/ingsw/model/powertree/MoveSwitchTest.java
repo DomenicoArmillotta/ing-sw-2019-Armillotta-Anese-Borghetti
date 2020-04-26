@@ -23,8 +23,8 @@ public class MoveSwitchTest {
 
         gameMaster.createActionExecutor();
         player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player2.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
+        player2.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
+        player3.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
@@ -42,10 +42,10 @@ public class MoveSwitchTest {
 
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell select
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
         userInput[0] = 1;
         userInput[1] = 0;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//move switching workers
+        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
+
         assertEquals(actionExecutor.getMap()[0][0].getWorkerOnCell().getOwner(),player3);
         assertEquals(actionExecutor.getMap()[1][0].getWorkerOnCell().getOwner(),player1);
     }

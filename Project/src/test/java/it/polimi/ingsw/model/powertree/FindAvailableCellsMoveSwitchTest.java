@@ -23,27 +23,27 @@ public class FindAvailableCellsMoveSwitchTest {
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
         player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-
+        player2.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
+        player3.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
-        ActionExecutor actionExecutor=gameMaster.getActionExecutor();
         Cell[][] map=gameMaster.getActionExecutor().getMap();
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
-
+        ActionExecutor actionExecutor=gameMaster.getActionExecutor();
         player1.workersSetup(2, 2, 4, 4);
         player2.workersSetup(2, 3, 4, 1);
         player3.workersSetup(4, 3, 0, 0);
 
 
-        int[] a=new int[2];
+        int[] a=new int[5];
         a[0]=2;
         a[1]=2;
-        //FindAvailableCellsMove
         actionExecutor.getNextPower().doAction(null);
-        //select
         actionExecutor.getNextPower().doAction(a);
+
+
         List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(0);
 
 
@@ -81,14 +81,15 @@ public class FindAvailableCellsMoveSwitchTest {
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
         player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-
+        player2.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
+        player3.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
-        ActionExecutor actionExecutor=gameMaster.getActionExecutor();
         Cell[][] map=gameMaster.getActionExecutor().getMap();
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
+        ActionExecutor actionExecutor=gameMaster.getActionExecutor();
 
 
 
@@ -97,7 +98,7 @@ public class FindAvailableCellsMoveSwitchTest {
         player3.workersSetup(4, 3, 0, 0);
 
 
-        int[] a=new int[2];
+        int[] a=new int[5];
         a[0]=2;
         a[1]=2;
         actionExecutor.getNextPower().doAction(null);
@@ -114,14 +115,10 @@ public class FindAvailableCellsMoveSwitchTest {
         y = player1.getFirstWorker().getCurrentPosition().getY();
         //assertEquals(x,2);
         //assertEquals(y,2);
-        System.out.println("Celle giuste == ");
         for (i = x - 1; i < x + 2 && i < 5 && i >= 0; i++) {
             for (j = y - 1; j < y + 2 && j < 5 && j >= 0; j++) {
                 if (!map[i][j].equals(cella11) && !map[i][j].equals(cella21) ){
                     MoveCellsGiuste.add(map[i][j]);
-                    System.out.print(map[i][j].getX());
-                    System.out.println(map[i][j].getY());
-
                 }
             }
         }

@@ -12,12 +12,11 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
         super.doAction(userInput);
         Cell[][] map = super.getExecutorPointer().getMap();
         Worker selectedWorker;
+        List<Cell> moveCells = new ArrayList<>();
+
         for (int index = 0; index < 2; index++) {
             if (index == 0) selectedWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();
             else selectedWorker = getExecutorPointer().getCurrentPlayer().getSecondWorker();
-            List<Cell> moveCells = super.getExecutorPointer().getNextMove().getAvailableCells(index);
-            List<Cell> addMoveCells = new ArrayList<>();
-
 
             int i, j, x, y;
 
@@ -29,13 +28,12 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
                     if (j < 0) j = 0;
                     //se  c'è un operatore non mio    aggiungo nella lista
                     if (map[i][j].getWorkerOnCell() != null && map[i][j].getWorkerOnCell().getOwner() != selectedWorker.getOwner()) {
-                        addMoveCells.add(map[i][j]); /* usare funzione addCells di LimitedAction */
-                        System.out.print(map[i][j].getX());
-                        System.out.println(map[i][j].getY());
+                        moveCells.add(map[i][j]); /* usare funzione addCells di LimitedAction */
                     }
                 }
             }
-            super.getExecutorPointer().getNextMove().addCells(addMoveCells, index);
+            super.getExecutorPointer().getNextMove().addCells(moveCells, index);
+            moveCells.clear();
         }
 
         return 0;

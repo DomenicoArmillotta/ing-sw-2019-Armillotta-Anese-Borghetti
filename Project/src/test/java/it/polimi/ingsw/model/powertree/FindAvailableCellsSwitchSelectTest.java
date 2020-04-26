@@ -21,8 +21,8 @@ public class FindAvailableCellsSwitchSelectTest {
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
         player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player2.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
+        player2.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
+        player3.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
         gameMaster.createActionExecutor();
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
@@ -38,7 +38,6 @@ public class FindAvailableCellsSwitchSelectTest {
         int[] userInput = new int[2];
         userInput[0] = 3;
         userInput[1] = 2;
-        actionExecutor.cleanActionExecutor();
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         assertEquals(actionExecutor.getNextSelect().getAvailableCells(0).size(), 1);
 
@@ -60,8 +59,8 @@ public class FindAvailableCellsSwitchSelectTest {
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
         player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player2.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
+        player2.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
+        player3.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
         gameMaster.createActionExecutor();
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
@@ -75,10 +74,10 @@ public class FindAvailableCellsSwitchSelectTest {
         player3.workersSetup(1, 0, 4, 4);
 
         int[] userInput = new int[2];
-        userInput[0] = 3;
-        userInput[1] = 2;
-        actionExecutor.cleanActionExecutor();
+        userInput[0] = 0;
+        userInput[1] = 0;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        actionExecutor.getNextPower().doAction(userInput);
         assertEquals(actionExecutor.getNextSelect().getAvailableCells(0).size(), 1);
         assertEquals(actionExecutor.getNextSelect().getAvailableCells(0).get(0).getWorkerOnCell(), player1.getSecondWorker());
     }

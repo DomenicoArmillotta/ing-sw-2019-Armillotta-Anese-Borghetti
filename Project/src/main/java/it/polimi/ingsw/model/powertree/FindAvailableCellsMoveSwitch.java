@@ -2,6 +2,7 @@ package it.polimi.ingsw.model.powertree;
 
 import it.polimi.ingsw.model.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
@@ -15,6 +16,8 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
             if (index == 0) selectedWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();
             else selectedWorker = getExecutorPointer().getCurrentPlayer().getSecondWorker();
             List<Cell> moveCells = super.getExecutorPointer().getNextMove().getAvailableCells(index);
+            List<Cell> addMoveCells = new ArrayList<>();
+
 
             int i, j, x, y;
 
@@ -26,13 +29,13 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
                     if (j < 0) j = 0;
                     //se  c'è un operatore non mio    aggiungo nella lista
                     if (map[i][j].getWorkerOnCell() != null && map[i][j].getWorkerOnCell().getOwner() != selectedWorker.getOwner()) {
-                        moveCells.add(map[i][j]); /* usare funzione addCells di LimitedAction */
+                        addMoveCells.add(map[i][j]); /* usare funzione addCells di LimitedAction */
                         System.out.print(map[i][j].getX());
                         System.out.println(map[i][j].getY());
                     }
                 }
             }
-            super.getExecutorPointer().getNextMove().setAvailableCells(moveCells, index);
+            super.getExecutorPointer().getNextMove().addCells(addMoveCells, index);
         }
 
         return 0;

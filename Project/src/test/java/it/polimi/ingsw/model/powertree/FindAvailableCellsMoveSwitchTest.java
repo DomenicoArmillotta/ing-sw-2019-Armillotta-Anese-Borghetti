@@ -32,7 +32,6 @@ public class FindAvailableCellsMoveSwitchTest {
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
 
-        actionExecutor.cleanActionExecutor();
         player1.workersSetup(2, 2, 4, 4);
         player2.workersSetup(2, 3, 4, 1);
         player3.workersSetup(4, 3, 0, 0);
@@ -41,10 +40,10 @@ public class FindAvailableCellsMoveSwitchTest {
         int[] a=new int[2];
         a[0]=2;
         a[1]=2;
+        //FindAvailableCellsMove
         actionExecutor.getNextPower().doAction(null);
+        //select
         actionExecutor.getNextPower().doAction(a);
-
-
         List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(0);
 
 
@@ -91,7 +90,6 @@ public class FindAvailableCellsMoveSwitchTest {
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
 
-        actionExecutor.cleanActionExecutor();
 
 
         player1.workersSetup(2, 2, 2, 3);

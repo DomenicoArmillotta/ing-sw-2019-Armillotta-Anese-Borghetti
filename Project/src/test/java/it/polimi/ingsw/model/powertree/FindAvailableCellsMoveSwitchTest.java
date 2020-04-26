@@ -43,7 +43,8 @@ public class FindAvailableCellsMoveSwitchTest {
         a[1]=2;
         actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
-        actionExecutor.getNextPower().doAction(null);
+
+
         List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(0);
 
 
@@ -54,7 +55,7 @@ public class FindAvailableCellsMoveSwitchTest {
         y = player1.getFirstWorker().getCurrentPosition().getY();
         //assertEquals(x,2);
         //assertEquals(y,2);
-        System.out.print("Celle giuste == ");
+        System.out.println("Celle giuste == ");
         for (i = x - 1; i < x + 2 && i < 5 && i >= 0; i++) {
             for (j = y - 1; j < y + 2 && j < 5 && j >= 0; j++) {
                 if (!map[i][j].equals(cella11) && !map[i][j].equals(cella21) ){
@@ -69,8 +70,7 @@ public class FindAvailableCellsMoveSwitchTest {
         assertEquals(MoveCellsGiuste,MoveCelleCalcolate);
 
     }
-/*
-    FUNZIONA E GIUSTA
+
     @Test
      public void TestWorkerMio() {
         List<Player> playersQueue = new ArrayList<>();
@@ -104,8 +104,9 @@ public class FindAvailableCellsMoveSwitchTest {
         a[1]=2;
         actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
-        actionExecutor.getNextPower().doAction(null);
-        List<Cell> MoveCelleCalcolate= actionExecutor.getNextMove().getAvailableCells();
+
+
+        List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(0);
 
 
         //creo lista con celle giuste per la assert cioe con anche il worker21
@@ -115,7 +116,7 @@ public class FindAvailableCellsMoveSwitchTest {
         y = player1.getFirstWorker().getCurrentPosition().getY();
         //assertEquals(x,2);
         //assertEquals(y,2);
-        System.out.print("Celle giuste == ");
+        System.out.println("Celle giuste == ");
         for (i = x - 1; i < x + 2 && i < 5 && i >= 0; i++) {
             for (j = y - 1; j < y + 2 && j < 5 && j >= 0; j++) {
                 if (!map[i][j].equals(cella11) && !map[i][j].equals(cella21) ){
@@ -128,5 +129,5 @@ public class FindAvailableCellsMoveSwitchTest {
         }
         assertEquals(MoveCellsGiuste,MoveCelleCalcolate);
     }
-*/
+
 }

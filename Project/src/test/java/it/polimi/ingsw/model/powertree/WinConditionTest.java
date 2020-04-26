@@ -33,20 +33,23 @@ public class WinConditionTest {
         player1.workersSetup(1, 2, 4, 4);
         player2.workersSetup(4, 2, 4, 1);
         player3.workersSetup(4, 3, 0, 0);
-        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        //worker selezionato
         int[] a = new int[5];
+
+
+        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+        //FindAvailableCellsMove
+        actionExecutor.getNextPower().doAction(null);
+        //Select
         a[0] = 1;
         a[1] = 2;
-        actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
+        //Move
         a[0] = 2;
         a[1] = 2;
-        actionExecutor.getNextPower().doAction(null);
-        //cella cord dove voglio spostare
         actionExecutor.getNextPower().doAction(a);
-        //verifico che vinca
-        assertEquals(0,actionExecutor.getNextPower().doAction(null));
+        //WinCondition
+        assertEquals(actionExecutor.getNextPower().doAction(null),0);
+
     }
 
     @Test
@@ -73,17 +76,18 @@ public class WinConditionTest {
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         //worker selezionato
         int[] a = new int[5];
+        //FindAvailableCellsMove
+        actionExecutor.getNextPower().doAction(null);
+        //Select
         a[0] = 1;
         a[1] = 2;
-        actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
+        //Move
         a[0] = 2;
         a[1] = 2;
-        actionExecutor.getNextPower().doAction(null);
-        //cella cord dove voglio spostare
         actionExecutor.getNextPower().doAction(a);
-        //verifico che vinca
-        assertEquals(-1,actionExecutor.getNextPower().doAction(null));
+        //WinCondition
+        assertEquals(actionExecutor.getNextPower().doAction(null),-1);
     }
 
 

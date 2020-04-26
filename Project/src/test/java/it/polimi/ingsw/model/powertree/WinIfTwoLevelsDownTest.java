@@ -41,14 +41,16 @@ import static org.junit.jupiter.api.Assertions.*;
          a[0] = 1;
          a[1] = 2;
          actionExecutor.getNextPower().doAction(null);
+         //Select
+         a[0] = 1;
+         a[1] = 2;
          actionExecutor.getNextPower().doAction(a);
+         //Move
          a[0] = 2;
          a[1] = 2;
-         actionExecutor.getNextPower().doAction(null);
-         //cella cord dove voglio spostare
          actionExecutor.getNextPower().doAction(a);
-         //verifico che vinca
-         assertEquals(0,actionExecutor.getNextPower().doAction(null));
+         //WinCondition
+         assertEquals(actionExecutor.getNextPower().doAction(null),0);
      }
 
 }

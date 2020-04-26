@@ -35,7 +35,7 @@ public class FindAvailableCellsMoveTest {
         a[1]=2;
         actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
-        actionExecutor.getNextPower().doAction(null);
+
 
         List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(0);
 

@@ -19,6 +19,7 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
             int i, j, x, y, check;
 
             //non devo aggiungere i workers
+            System.out.println("entro");
 
             //super.doAction(userInput);
             x = selectedWorker.getCurrentPosition().getX();
@@ -34,6 +35,8 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
                     if ((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal()) < 0 && check == 1) {
                         //devo aggiungere a removablecells le celle che hanno dh
                         toRemoveCells.add(map[i][j]);
+                        System.out.println("Rimuovo ==");
+                        System.out.print(map[i][j].getX());
                     }
 
                 }

@@ -89,8 +89,9 @@ public class ActionExecutor {
                 for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && selectPtr != indexPtr; j++) {
                     selectPtr = currentPlayer.getPlayerGod().getSelectList().get(j);
                 }
-                if (indexPtr == selectPtr)
+                if (indexPtr == selectPtr) {
                     return selectPtr;
+                }
             }
             return null;
         } else {

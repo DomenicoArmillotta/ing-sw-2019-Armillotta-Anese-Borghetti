@@ -171,7 +171,7 @@ public class FindAvailableCellsMovePushTest {
         actionExecutor.getNextPower().doAction(a);
 
 
-        List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(0);
+        List<Cell> MoveCelleCalcolate = actionExecutor.getNextMove().getAvailableCells(1);
 
 
         //creo lista con celle giuste per la assert cioe con anche il worker21

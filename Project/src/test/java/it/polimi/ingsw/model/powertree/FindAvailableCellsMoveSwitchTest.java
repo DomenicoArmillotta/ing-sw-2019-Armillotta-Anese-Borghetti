@@ -23,22 +23,22 @@ public class FindAvailableCellsMoveSwitchTest {
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
         player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player2.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
+
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
+        ActionExecutor actionExecutor=gameMaster.getActionExecutor();
         Cell[][] map=gameMaster.getActionExecutor().getMap();
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
-        ActionExecutor actionExecutor=gameMaster.getActionExecutor();
+
         actionExecutor.cleanActionExecutor();
         player1.workersSetup(2, 2, 4, 4);
         player2.workersSetup(2, 3, 4, 1);
         player3.workersSetup(4, 3, 0, 0);
 
 
-        int[] a=new int[5];
+        int[] a=new int[2];
         a[0]=2;
         a[1]=2;
         actionExecutor.getNextPower().doAction(null);
@@ -82,15 +82,15 @@ public class FindAvailableCellsMoveSwitchTest {
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
         player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player2.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
+
         GodCard godCard1 = player1.getPlayerGod();
         GodCard godCard2 = player2.getPlayerGod();
         GodCard godCard3 = player3.getPlayerGod();
+        ActionExecutor actionExecutor=gameMaster.getActionExecutor();
         Cell[][] map=gameMaster.getActionExecutor().getMap();
         Cell cella11 = map[2][2];
         Cell cella21 = map[2][3];
-        ActionExecutor actionExecutor=gameMaster.getActionExecutor();
+
         actionExecutor.cleanActionExecutor();
 
 
@@ -99,7 +99,7 @@ public class FindAvailableCellsMoveSwitchTest {
         player3.workersSetup(4, 3, 0, 0);
 
 
-        int[] a=new int[5];
+        int[] a=new int[2];
         a[0]=2;
         a[1]=2;
         actionExecutor.getNextPower().doAction(null);

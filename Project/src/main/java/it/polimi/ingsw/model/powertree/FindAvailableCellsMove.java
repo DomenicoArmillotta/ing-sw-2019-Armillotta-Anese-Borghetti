@@ -21,6 +21,8 @@ public class FindAvailableCellsMove extends FindAvailableCells {
 
         Cell[][] map = super.getExecutorPointer().getMap();
         Worker selectedWorker;
+        /*reinizzializza le celle rimouvibili*/
+        super.getExecutorPointer().getNextMove().clearPower();
         for (int index = 0; index < 2; index++) {
             if (index == 0) selectedWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();
             else selectedWorker = getExecutorPointer().getCurrentPlayer().getSecondWorker();

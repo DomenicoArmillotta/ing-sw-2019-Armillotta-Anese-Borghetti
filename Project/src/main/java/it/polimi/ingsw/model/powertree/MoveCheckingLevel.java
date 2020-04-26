@@ -44,6 +44,7 @@ public class MoveCheckingLevel extends Move{
                 }
                 h++;
             }
+
         }
     }
 

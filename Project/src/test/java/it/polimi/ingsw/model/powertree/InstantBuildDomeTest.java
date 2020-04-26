@@ -33,19 +33,22 @@ public class InstantBuildDomeTest {
         player1.setPlayerGod(gameMaster.getGodList().get(God.ATLAS.ordinal()));
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         int[] a = new int[5];
+        actionExecutor.getNextPower().doAction(null);
+        //Select
         a[0] = 1;
         a[1] = 2;
-        actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
+        //Move
         a[0] = 2;
         a[1] = 2;
-        actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
+        //WinCondition
         actionExecutor.getNextPower().doAction(null);
+        //FindAvailableCellsBuild
         actionExecutor.getNextPower().doAction(null);
+        //build
         a[0] = 2;
         a[1] = 3;
-        //build
         actionExecutor.getNextPower().doAction(a);
         assertEquals(map[2][3].getBuildingLevel(),Level.DOME);
     }

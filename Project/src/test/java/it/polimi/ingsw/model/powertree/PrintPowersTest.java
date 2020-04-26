@@ -1,5 +1,9 @@
-package it.polimi.ingsw.model;
+package it.polimi.ingsw.model.powertree;
 
+import it.polimi.ingsw.model.ActionExecutor;
+import it.polimi.ingsw.model.GameMaster;
+import it.polimi.ingsw.model.God;
+import it.polimi.ingsw.model.Player;
 import org.junit.Test;
 
 import java.util.ArrayList;

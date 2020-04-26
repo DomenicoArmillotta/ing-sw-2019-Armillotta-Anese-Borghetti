@@ -1,5 +1,6 @@
-package it.polimi.ingsw.model;
+package it.polimi.ingsw.model.powertree;
 
+import it.polimi.ingsw.model.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

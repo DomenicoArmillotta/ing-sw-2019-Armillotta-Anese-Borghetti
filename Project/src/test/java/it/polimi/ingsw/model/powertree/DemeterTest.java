@@ -48,7 +48,7 @@ public class DemeterTest {
         actionExecutor.getNextPower().doAction(userInput);
         actionExecutor.getNextPower().doAction(null);
         userInput[0] = 1;
-        userInput[1] = 1;
+        userInput[1] = 0;
         result = actionExecutor.getNextPower().doAction(userInput);
         System.out.println(result);
 

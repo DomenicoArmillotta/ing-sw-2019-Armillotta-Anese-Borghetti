@@ -84,9 +84,10 @@ public class ActionExecutor {
             for (index = 1; indexPtr != powerPtr; index++) {
                 indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
             }
-            for (; index > 0; index--) {
+            for (index -= 2; index > 0; index--) {
                 indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
-                for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && selectPtr != indexPtr; j++) {
+                int j;
+                for (j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && selectPtr != indexPtr; j++) {
                     selectPtr = currentPlayer.getPlayerGod().getSelectList().get(j);
                 }
                 if (indexPtr == selectPtr) {
@@ -158,8 +159,8 @@ public class ActionExecutor {
                     return movePtr;
             }
             return null;
-        } else {
-            Move movePtr = currentPlayer.getPlayerGod().getMoveList().get(0);
+        } /*else
+             Move movePtr = currentPlayer.getPlayerGod().getMoveList().get(0);
             Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
             for (int index = 0; index < currentPlayer.getPlayerGod().getPowerList().size(); index++) {
                 indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
@@ -170,8 +171,42 @@ public class ActionExecutor {
                     return movePtr;
             }
             return null;
-        }
+        }*/
+        return null;
     }
+/*
+public Move getPrevMove() {
+    if (this.powerPtr != null) {
+        Move movePtr = currentPlayer.getPlayerGod().getMoveList().get(0);
+        Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+        int index;
+        for (index = 1; indexPtr != powerPtr; index++) {
+            indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+        }
+        for (; index > 0; index--) {
+            indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+            for (int j = 0; j < currentPlayer.getPlayerGod().getMoveList().size() && movePtr != indexPtr; j++) {
+                movePtr = currentPlayer.getPlayerGod().getMoveList().get(j);
+            }
+            if (indexPtr == movePtr) {
+                return movePtr;
+            }
+        }
+        return null;
+    } else {
+            Select selectPtr = currentPlayer.getPlayerGod().getSelectList().get(0);
+            Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+            for (int index = 0; index < currentPlayer.getPlayerGod().getPowerList().size(); index++) {
+                indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+                for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && selectPtr != indexPtr; j++) {
+                    selectPtr = currentPlayer.getPlayerGod().getSelectList().get(j);
+                }
+                if (indexPtr == selectPtr)
+                    return selectPtr;
+            }
+        return null;
+    }
+}*/
 
     public Build getNextBuild() {
         if (this.powerPtr != null) {
@@ -213,7 +248,7 @@ public class ActionExecutor {
             for (index = 1; indexPtr != powerPtr; index++) {
                 indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
             }
-            for (index -= 2; index > 0; index--) { /* CONTROLLA!!! -=2 o -=1? Per Artemide serve prevMove??? */
+            for (index -= 2; index > 0; index--) {
                 indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
                 for (int j = 0; j < currentPlayer.getPlayerGod().getBuildList().size() && buildPtr != indexPtr; j++) {
                     buildPtr = currentPlayer.getPlayerGod().getBuildList().get(j);
@@ -222,21 +257,41 @@ public class ActionExecutor {
                     return buildPtr;
             }
             return null;
-        } else {
-            Build buildPtr = currentPlayer.getPlayerGod().getBuildList().get(0);
+        }
+        return null;
+    }/*
+public Build getPrevBuild() {
+    if (this.powerPtr != null) {
+        Build buildPtr = currentPlayer.getPlayerGod().getBuildList().get(0);
+        Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+        int index;
+        for (index = 1; indexPtr != powerPtr; index++) {
+            indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+        }
+        for (; index > 0; index--) {
+            indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+            for (int j = 0; j < currentPlayer.getPlayerGod().getBuildList().size() && buildPtr != indexPtr; j++) {
+                buildPtr = currentPlayer.getPlayerGod().getBuildList().get(j);
+            }
+            if (indexPtr == buildPtr) {
+                return buildPtr;
+            }
+        }
+        return null;
+    } else {
+            /* Select selectPtr = currentPlayer.getPlayerGod().getSelectList().get(0);
             Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
             for (int index = 0; index < currentPlayer.getPlayerGod().getPowerList().size(); index++) {
                 indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
-                for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && buildPtr != indexPtr; j++) {
-                    buildPtr = currentPlayer.getPlayerGod().getBuildList().get(j);
+                for (int j = 0; j < currentPlayer.getPlayerGod().getSelectList().size() && selectPtr != indexPtr; j++) {
+                    selectPtr = currentPlayer.getPlayerGod().getSelectList().get(j);
                 }
-                if (indexPtr == buildPtr)
-                    return buildPtr;
+                if (indexPtr == selectPtr)
+                    return selectPtr;
             }
-            return null;
-        }
+        return null;
     }
-
+}*/
     public void appendPower(Power nextPower) {
         currentPlayer.getPlayerGod().getPowerList().add(nextPower);
     }

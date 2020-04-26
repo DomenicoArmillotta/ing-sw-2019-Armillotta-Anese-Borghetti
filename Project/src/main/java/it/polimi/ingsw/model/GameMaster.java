@@ -347,8 +347,8 @@ public class GameMaster {
         GodCard prometheusCard = new GodCard("Prometheus", "Titan Benefactor of Mankind");
         List<Power> powerList = new ArrayList<>();
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
-        findAvailableCellsList.add(new FindAvailableCellsBuild());
         findAvailableCellsList.add(new FindAvailableCellsMove());
+        findAvailableCellsList.add(new FindAvailableCellsBuild());
         findAvailableCellsList.add(new FindAvailableCellsBuild());
         prometheusCard.setFindAvailableCellsList(findAvailableCellsList);
         List<Select> selectList = new ArrayList<>();
@@ -358,7 +358,7 @@ public class GameMaster {
         moveList.add(new Move());
         prometheusCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
-        buildList.add(new Build());
+        buildList.add(new BuildThenDontMoveUp());
         buildList.add(new Build());
         prometheusCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();

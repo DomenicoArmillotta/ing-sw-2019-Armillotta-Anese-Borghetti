@@ -18,10 +18,12 @@ public class MoveButDontGoBack extends Move {
         Cell previousPosition = selectedWorker.getCurrentPosition();
 
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevMove().getCellBeforeMove()) {
-            System.out.println("RET");
+            PointerBack();
             return -1;
-        } else
-            super.doAction(userInput);
+        } else {
+            if (super.doAction(userInput) == -1)
+                return -1;
+        }
 
         this.getExecutorPointer().getPrevSelect().setSelectedWorker(selectedWorker);
         return 0;

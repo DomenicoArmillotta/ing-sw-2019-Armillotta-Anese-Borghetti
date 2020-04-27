@@ -107,7 +107,7 @@ public class FindAvailableCellAppendTest {
         map[1][0].setBuildingLevel(Level.BASE);
         player1.workersSetup(0, 0, 1, 1);
         player2.workersSetup(0, 4, 2, 1);
-        player3.workersSetup(1, 2, 4, 4);
+        player3.workersSetup(1, 4, 4, 4); /* modificata posizione firstWorker (Marco) */
 
         int[] userInput = new int[2];
         userInput[0] = 0;
@@ -124,16 +124,16 @@ public class FindAvailableCellAppendTest {
         actionExecutor.nextTurn();
         actionExecutor.nextTurn();
 
-        assertEquals(actionExecutor.getCurrentPlayer().getName(),player1.getName());
-        userInput[0]=4;
-        userInput[1]=4;
-        actionExecutor.getNextPower().doAction(userInput);
-        actionExecutor.getNextPower().doAction(userInput);
-        userInput[0]=4;
-        userInput[1]=3;
-        actionExecutor.getNextPower().doAction(userInput);
-        assertEquals(player3.getPlayerGod().getPowerList().size(),6);
-        assertEquals(player2.getPlayerGod().getPowerList().size(),6);
+        assertEquals(actionExecutor.getCurrentPlayer().getName(), player1.getName());
+        userInput[0] = 1; /* modificato input (Marco) */
+        userInput[1] = 1; /* modificato input (Marco) */
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0); /* aggiunto assert (Marco) */
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);  /* aggiunto assert (Marco) */
+        userInput[0] = 1; /* modificato input (Marco) */
+        userInput[1] = 2; /* modificato input (Marco) */
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);  /* aggiunto assert (Marco) */
+        assertEquals(player3.getPlayerGod().getPowerList().size(), 6);
+        assertEquals(player2.getPlayerGod().getPowerList().size(), 6);
     }
     @Test
     public void otherPlayersCantMoveUpDuringTurnAthena(){

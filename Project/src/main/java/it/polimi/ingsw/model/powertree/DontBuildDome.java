@@ -13,14 +13,13 @@ public class DontBuildDome extends Build {
         //cella su cui voglio costruire
         int blockX = userInput[0];
         int blockY = userInput[1];
-        if (map[blockX][blockY].getBuildingLevel().getNext()!=Level.DOME) {
-            super.doAction(userInput);
+        if (map[blockX][blockY].getBuildingLevel().getNext() != Level.DOME) {
+            if (super.doAction(userInput) == -1)
+                return -1;
             return 0;
-        }else{
+        } else {
+            PointerBack();
             return -1;
-
         }
-
     }
-
 }

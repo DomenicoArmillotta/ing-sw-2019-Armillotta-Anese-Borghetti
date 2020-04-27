@@ -6,9 +6,12 @@ public class MoveSwitch extends Move {
     public int doAction(int[] userInput) {
         Worker floatingWorker = super.getExecutorPointer().getMap()[userInput[0]][userInput[1]].getWorkerOnCell();
         Cell floatingCell = super.getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition();
-        Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker();
+        Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         int index;
         super.doAction(userInput);
+        if (super.doAction(userInput) == -1) {
+            return -1;
+        }
         if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) {
             index = 0;
         } else index = 1;
@@ -20,8 +23,10 @@ public class MoveSwitch extends Move {
             floatingWorker.setCurrentPosition(floatingCell);
             floatingWorker.getCurrentPosition().setWorkerOnCell(floatingWorker);
             return 0;
-        } else
+        } else {
+            // <--- ptr back
             return -1;
+        }
     }
 }
 

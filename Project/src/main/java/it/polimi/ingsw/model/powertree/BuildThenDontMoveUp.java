@@ -32,11 +32,11 @@ public class BuildThenDontMoveUp extends Build {
         altComputeInjectionPowerIndex(getExecutorPointer().getCurrentPlayer());
 
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition()) {
-
+            PointerBack();
             return -1;
         } else {
-
-            super.doAction(userInput);
+            if (super.doAction(userInput) == -1)
+                return -1;
         }
 
         return 0;

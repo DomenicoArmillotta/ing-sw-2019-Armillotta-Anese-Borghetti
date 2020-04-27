@@ -10,6 +10,8 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
         System.out.println("Switch== ");
 
         super.doAction(userInput);
+
+
         Cell[][] map = super.getExecutorPointer().getMap();
         Worker selectedWorker;
         List<Cell> moveCells = new ArrayList<>();

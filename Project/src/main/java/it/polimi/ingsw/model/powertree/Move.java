@@ -36,9 +36,11 @@ public class Move extends LimitedPower {
 
         Cell previousPosition = selectedWorker.getCurrentPosition();
         if (availableCells == null) {
+            PointerBack();
             return -1;
         } else {
             if (!availableCells.contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
+                PointerBack();
                 return -1; /* deve rifare la move*/
             } else {
                 selectedWorker.setPreviousPosition(previousPosition);

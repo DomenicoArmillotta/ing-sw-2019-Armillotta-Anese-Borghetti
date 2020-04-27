@@ -41,17 +41,21 @@ public class Select extends LimitedPower {
             else if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getSecondWorker()) {
                 index = 1;
             } else {
+                PointerBack();
                 return -1;
             }
             if (getExecutorPointer().getNextMove().getAvailableCells(index) != null) {
                 /*
                 questo è un controllo agguntivo
                 */
-                if(super.getExecutorPointer().getNextMove().getAvailableCells(index).isEmpty())
+                if (super.getExecutorPointer().getNextMove().getAvailableCells(index).isEmpty()) {
+                    PointerBack();
                     return -1;
+                }
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
                 return 0;
             } else {
+                PointerBack();
                 return -1; /*Action failed: chosen Worker cannot move after selection */
             }
         }

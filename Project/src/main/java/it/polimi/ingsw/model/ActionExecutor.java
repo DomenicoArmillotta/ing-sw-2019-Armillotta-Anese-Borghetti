@@ -25,6 +25,10 @@ public class ActionExecutor {
         createMap();
     }
 
+    public Power getPowerPtr() {
+        return powerPtr;
+    }
+
     public void setPowerPtr(Power powerPtr) {
         this.powerPtr = powerPtr;
     }

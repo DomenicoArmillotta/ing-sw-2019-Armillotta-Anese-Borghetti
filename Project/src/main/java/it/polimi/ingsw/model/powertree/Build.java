@@ -34,10 +34,10 @@ public class Build extends LimitedPower {
             map[blockX][blockY].setBuildingLevel(map[blockX][blockY].getBuildingLevel().getNext());
             cellAfterBuild = map[blockX][blockY];
             this.setCellAfterBuild(cellAfterBuild);
-
             return 0;
         }
 
+        PointerBack();
         return -1;
     }
 }

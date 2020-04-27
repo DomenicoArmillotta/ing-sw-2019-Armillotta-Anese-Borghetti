@@ -12,9 +12,12 @@ public class BuildOnSameCell extends Build {
     public int doAction(int[] userInput) {
 
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]].getBuildingLevel().equals(Level.TOP) || getExecutorPointer().getMap()[userInput[0]][userInput[1]] != getExecutorPointer().getPrevBuild().getCellAfterBuild()) {
+            PointerBack();
             return -1;
-        } else
-            super.doAction(userInput);
+        } else {
+            if (super.doAction(userInput) == -1)
+                return -1;
+        }
 
         return 0;
     }

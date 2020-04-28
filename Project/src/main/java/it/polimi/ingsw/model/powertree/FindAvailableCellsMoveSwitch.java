@@ -7,7 +7,6 @@ import java.util.List;
 
 public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
     public int doAction(int[] userInput) {
-        System.out.println("Switch== ");
 
         super.doAction(userInput);
 

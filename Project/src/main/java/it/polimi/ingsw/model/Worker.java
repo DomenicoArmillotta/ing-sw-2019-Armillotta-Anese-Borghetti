@@ -32,8 +32,10 @@ public class Worker {
     {
         return previousPosition;
     }
-    private void removeWorker(){
+    public void removeWorker(){
         this.currentPosition=null;
+        this.previousPosition=null;
+        this.owner=null;
     }
 
 

@@ -23,7 +23,6 @@ public class FindAvailableCellsMove extends FindAvailableCells {
         Worker selectedWorker;
         /*reinizzializza le celle rimovibili*/
         super.getExecutorPointer().getNextMove().clearPower();
-        System.out.println("base==");
 
         for (int index = 0; index < 2; index++) {
             if (index == 0) selectedWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();
@@ -74,10 +73,12 @@ public class FindAvailableCellsMove extends FindAvailableCells {
                 }
             }
             super.getExecutorPointer().getNextMove().setAvailableCells(moveCells, index);
-
+        }
+        if (super.getExecutorPointer().getNextMove().getAvailableCells(0).isEmpty() && super.getExecutorPointer().getNextMove().getAvailableCells(1).isEmpty()) {
+            super.loseCondition();
+            return -1;
         }
         return 0;
-
     }
 
 }

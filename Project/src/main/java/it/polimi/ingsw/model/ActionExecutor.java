@@ -302,14 +302,17 @@ public Build getPrevBuild() {
 
     public void nextTurn() {
         this.powerPtr = null;
-
         Player tempPlayer = null;
         tempPlayer = this.currentPlayer;
-
-
+        if(this.nextPlayer.equals(this.prevPlayer)){
+            this.currentPlayer = this.prevPlayer;
+            this.prevPlayer=tempPlayer;
+            this.nextPlayer=tempPlayer;
+        }
         currentPlayer = nextPlayer;
         nextPlayer = prevPlayer;
         prevPlayer = tempPlayer;
+
     }
 
     public Player getCurrentPlayer() {

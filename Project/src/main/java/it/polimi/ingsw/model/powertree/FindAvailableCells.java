@@ -6,10 +6,34 @@ import java.util.List;
 
 public class FindAvailableCells extends Power {
 
+    public void loseCondition() {
+        /*
+        la loseCheck deve vedere di quanti giocatori è la partita e poi,se 2 fermare il game, se 3 pulire il model dal playerCurr;
+         */
+        Player toDeletePlayer = getExecutorPointer().getCurrentPlayer();
+        Player tempPlayer = super.getExecutorPointer().getPrevPlayer();
+        if(!super.getExecutorPointer().getNextPlayer().equals(super.getExecutorPointer().getPrevPlayer())) {
+            /*
+            match da 3 persone,deve terminare il turno, settare l'ordine corretto dei player e eliminare il player che ha perso
 
-    public boolean loseCheck(List<Cell> availableCells) {
-        if (availableCells == null)
-            return true;
-        return false;
+            note-to-self: quando elimino il worker devo anche aggionare la cella su cui stavano
+             */
+            super.getExecutorPointer().nextTurn();
+
+            super.getExecutorPointer().setPrevPlayer(tempPlayer);
+            super.getExecutorPointer().setNextPlayer(tempPlayer);
+
+            super.getExecutorPointer().getMap()[toDeletePlayer.getFirstWorker().getCurrentPosition().getX()][toDeletePlayer.getFirstWorker().getCurrentPosition().getY()].setWorkerOnCell(null);
+            toDeletePlayer.getFirstWorker().removeWorker();
+            super.getExecutorPointer().getMap()[toDeletePlayer.getSecondWorker().getPreviousPosition().getX()][toDeletePlayer.getSecondWorker().getPreviousPosition().getY()].setWorkerOnCell(null);
+            toDeletePlayer.getSecondWorker().removeWorker();
+            toDeletePlayer.deleteWorkers();
+            return;
+        }else{
+            /*
+            reset del game?? + scritta you win?
+             */
+            System.out.println("hai vinto "+super.getExecutorPointer().getNextPlayer().getName());
+        }
     }
 }

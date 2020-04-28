@@ -39,7 +39,6 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
 
             x = selectedWorker.getCurrentPosition().getX();
             y = selectedWorker.getCurrentPosition().getY();
-            System.out.println("calcolato==");
             for (i = x - 1; i < x + 2 && i < 5; i++) {
                 for (j = y - 1; j < y + 2 && j < 5; j++) {
                     check = 1;

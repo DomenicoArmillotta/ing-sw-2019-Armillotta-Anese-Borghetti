@@ -80,5 +80,9 @@ public class Player {
         }
         secondWorker.setOwner(this);
     }
+    public void deleteWorkers(){
+        this.firstWorker=null;
+        this.secondWorker=null;
+    }
 
 }

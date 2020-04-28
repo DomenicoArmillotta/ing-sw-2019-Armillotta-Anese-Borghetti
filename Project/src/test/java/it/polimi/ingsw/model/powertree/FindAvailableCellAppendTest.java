@@ -163,6 +163,7 @@ public class FindAvailableCellAppendTest {
         player3.workersSetup(1, 2, 4, 4);
         //muovo 00 in 10 e attivo athena
         int[] userInput = new int[2];
+
         userInput[0] = 0;
         userInput[1] = 0;
 
@@ -184,6 +185,9 @@ public class FindAvailableCellAppendTest {
         userInput[1]=2;
         assertEquals(actionExecutor.getCurrentPlayer().getPlayerGod().getPowerList().size(), 7);
         assertEquals(actionExecutor.getNextPower().doAction(userInput),-1);
+        userInput[0]=1;
+        userInput[1]=2;
+        actionExecutor.getNextPower().doAction(userInput);
 
         actionExecutor.nextTurn();
         actionExecutor.getNextPower().doAction(userInput);
@@ -191,18 +195,18 @@ public class FindAvailableCellAppendTest {
         userInput[1]=4;
         actionExecutor.getNextPower().doAction(userInput);
         userInput[0]=3;
-        userInput[1]=4;
+        userInput[1]=3;
+        actionExecutor.getNextPower().doAction(userInput);
         assertEquals(actionExecutor.getCurrentPlayer().getPlayerGod().getPowerList().size(), 7);
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),-1);
         actionExecutor.nextTurn();
 
         assertEquals(actionExecutor.getCurrentPlayer().getName(),player1.getName());
-        userInput[0]=4;
-        userInput[1]=4;
+        userInput[0]=1;
+        userInput[1]=0;
         actionExecutor.getNextPower().doAction(userInput);
         actionExecutor.getNextPower().doAction(userInput);
-        userInput[0]=4;
-        userInput[1]=3;
+        userInput[0]=0;
+        userInput[1]=0;
         actionExecutor.getNextPower().doAction(userInput);
         assertEquals(player3.getPlayerGod().getPowerList().size(),6);
         assertEquals(player2.getPlayerGod().getPowerList().size(),6);
@@ -256,6 +260,9 @@ public class FindAvailableCellAppendTest {
         userInput[1]=2;
         assertEquals(actionExecutor.getCurrentPlayer().getPlayerGod().getPowerList().size(), 7);
         assertEquals(actionExecutor.getNextPower().doAction(userInput),-1);
+        userInput[0]=2;
+        userInput[1]=3;
+        actionExecutor.getNextPower().doAction(userInput);
 
         actionExecutor.nextTurn();
         actionExecutor.getNextPower().doAction(userInput);
@@ -269,13 +276,14 @@ public class FindAvailableCellAppendTest {
         actionExecutor.nextTurn();
 
         assertEquals(actionExecutor.getCurrentPlayer().getName(),player1.getName());
-        userInput[0]=4;
-        userInput[1]=4;
+        userInput[0]=1;
+        userInput[1]=1;
         actionExecutor.getNextPower().doAction(userInput);
         actionExecutor.getNextPower().doAction(userInput);
-        userInput[0]=4;
-        userInput[1]=3;
-        actionExecutor.getNextPower().doAction(userInput);
+        userInput[0]=0;
+        userInput[1]=1;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);
+
         assertEquals(player3.getPlayerGod().getPowerList().size(),6);
         assertEquals(player2.getPlayerGod().getPowerList().size(),6);
 

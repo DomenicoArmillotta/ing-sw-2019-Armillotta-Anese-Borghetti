@@ -38,15 +38,15 @@ public class BuildTest {
         actionExecutor.getNextPower().doAction(a);
         a[0] = 2;
         a[1] = 2;
-        actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(a);
         actionExecutor.getNextPower().doAction(null);
         actionExecutor.getNextPower().doAction(null);
         a[0] = 2;
         a[1] = 3;
-        //build
         actionExecutor.getNextPower().doAction(a);
-        assertEquals(map[2][3].getBuildingLevel(),Level.BASE);
+
+        //actionExecutor.getNextPower().doAction(a);
+        assertEquals(map[2][3].getBuildingLevel(), Level.BASE);
     }
 
 }

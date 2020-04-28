@@ -25,6 +25,7 @@ public class Build extends LimitedPower {
 
     @Override
     public int doAction(int[] userInput) {
+        System.out.println("BUILD");
         List<Cell> availableCells = getAvailableCells(0);
         Cell[][] map = getExecutorPointer().getMap();
         //cella su cui voglio costruire

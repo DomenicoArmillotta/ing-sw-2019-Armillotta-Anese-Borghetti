@@ -7,7 +7,12 @@ public class ActionExecutor {
     private Player nextPlayer;
     private Player prevPlayer;
     private Power powerPtr;
+    private Power finalState;
     private Cell[][] map;
+
+    private void endGame() {
+        this.powerPtr = finalState;
+    }
 
     private static ActionExecutor instance;
 
@@ -15,6 +20,7 @@ public class ActionExecutor {
         if (instance == null) {
             instance = new ActionExecutor();
             instance.createMap();
+            instance.finalState = new Move(); /* stato terminatore, cambiare Move */
         }
         return instance;
     }
@@ -34,14 +40,22 @@ public class ActionExecutor {
     }
 
     public Power getNextPower() {
+        if (powerPtr == finalState)
+            return finalState;
         if (this.powerPtr != null) {
             Power indexPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
             int index;
             for (index = 1; indexPtr != powerPtr; index++) {
                 indexPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
             }
-            this.powerPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
-            return currentPlayer.getPlayerGod().getPowerList().get(index);
+            if (index == currentPlayer.getPlayerGod().getPowerList().size()) {
+                this.nextTurn();
+                this.powerPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
+                return this.currentPlayer.getPlayerGod().getPowerList().get(0);
+            } else {
+                this.powerPtr = currentPlayer.getPlayerGod().getPowerList().get(index);
+                return currentPlayer.getPlayerGod().getPowerList().get(index);
+            }
         } else {
             powerPtr = currentPlayer.getPlayerGod().getPowerList().get(0);
             return currentPlayer.getPlayerGod().getPowerList().get(0);

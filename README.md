@@ -9,7 +9,7 @@
 
 
 - ###   10600001    Michele Bertoini ([@michele-bertoni](https://github.com/michele-bertoni)<br>michele2.bertoni@mail.polimi.it;
-- ###   10600002    Ing Conti ([@ingconti]https://github.com/ingconti))<br>ingconti@ingconti.com
+- ###   10600002    Ing Conti ([@ingconti](https://github.com/ingconti))<br>ingconti@ingconti.com
 
 | Functionality | State |
 |:-----------------------|:------------------------------------:|

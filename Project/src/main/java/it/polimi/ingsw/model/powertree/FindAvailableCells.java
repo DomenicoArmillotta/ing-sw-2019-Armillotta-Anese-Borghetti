@@ -2,14 +2,10 @@ package it.polimi.ingsw.model.powertree;
 
 import it.polimi.ingsw.model.*;
 
-import java.util.List;
-
 public class FindAvailableCells extends Power {
 
     public void loseCondition() {
-        /*
-        la loseCheck deve vedere di quanti giocatori è la partita e poi,se 2 fermare il game, se 3 pulire il model dal playerCurr;
-         */
+
         Player toDeletePlayer = getExecutorPointer().getCurrentPlayer();
         Player tempPlayer = super.getExecutorPointer().getPrevPlayer();
         if(!super.getExecutorPointer().getNextPlayer().equals(super.getExecutorPointer().getPrevPlayer())) {

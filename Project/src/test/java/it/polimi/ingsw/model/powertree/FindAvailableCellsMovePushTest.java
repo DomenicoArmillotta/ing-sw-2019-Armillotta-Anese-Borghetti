@@ -117,9 +117,6 @@ public class FindAvailableCellsMovePushTest {
             for (j = y - 1; j < y + 2 && j < 5 && j >= 0; j++) {
                 if (!map[i][j].equals(cella11) && !map[i][j].equals(cella21)) {
                     MoveCellsGiuste.add(map[i][j]);
-                    System.out.print(map[i][j].getX());
-                    System.out.println(map[i][j].getY());
-
                 }
             }
         }
@@ -183,9 +180,6 @@ public class FindAvailableCellsMovePushTest {
             for (j = y - 1; j < y + 2 && j < 5 && j >= 0; j++) {
                 if (!map[i][j].equals(cella11) && !map[i][j].equals(cella00) && !map[i][j].equals(cella10) && !map[i][j].equals(cella01)) {
                     MoveCellsGiuste.add(map[i][j]);
-                    System.out.print(map[i][j].getX());
-                    System.out.println(map[i][j].getY());
-
                 }
             }
         }

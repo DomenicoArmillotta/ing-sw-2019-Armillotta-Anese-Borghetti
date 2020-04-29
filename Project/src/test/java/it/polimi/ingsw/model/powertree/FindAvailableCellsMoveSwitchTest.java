@@ -54,14 +54,10 @@ public class FindAvailableCellsMoveSwitchTest {
         y = player1.getFirstWorker().getCurrentPosition().getY();
         //assertEquals(x,2);
         //assertEquals(y,2);
-        System.out.println("Celle giuste == ");
         for (i = x - 1; i < x + 2 && i < 5 && i >= 0; i++) {
             for (j = y - 1; j < y + 2 && j < 5 && j >= 0; j++) {
                 if (!map[i][j].equals(cella11) && !map[i][j].equals(cella21) ){
                     MoveCellsGiuste.add(map[i][j]);
-                    System.out.print(map[i][j].getX());
-                    System.out.println(map[i][j].getY());
-
                 }
             }
         }

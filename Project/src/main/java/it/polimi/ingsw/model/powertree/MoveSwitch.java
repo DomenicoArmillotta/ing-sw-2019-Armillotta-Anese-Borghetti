@@ -8,7 +8,6 @@ public class MoveSwitch extends Move {
         Cell floatingCell = super.getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition();
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         int index;
-        super.doAction(userInput);
         if (super.doAction(userInput) == -1) {
             return -1;
         }

@@ -26,7 +26,6 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
 
             for (i = x - 1; i < x + 2 && i < 5; i++) {
                 for (j = y - 1; j < y + 2 && j < 5; j++) {
-                    //System.out.println("ENTERED1");
                     check = 1;
                     if (i < 0) i = 0;
                     if (j < 0) j = 0;

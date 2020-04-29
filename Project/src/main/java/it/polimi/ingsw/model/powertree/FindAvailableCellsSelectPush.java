@@ -31,7 +31,6 @@ public class FindAvailableCellsSelectPush extends FindAvailableCellsSelect {
                         if (super.getExecutorPointer().getMap()[i][j].getWorkerOnCell() != null && !pushableWorker.contains(super.getExecutorPointer().getMap()[i][j].getWorkerOnCell())) {
                             if (super.getExecutorPointer().getMap()[i][j].getBuildingLevel().ordinal() - (pushableWorker.get(h).getCurrentPosition().getBuildingLevel().ordinal()) <= 1) {
                                 //se c'è un worker che non è mio e che si può pushare;
-                                System.out.println();
                                 tempX = super.getExecutorPointer().getMap()[i][j].getX() - pushableWorker.get(h).getCurrentPosition().getX();
                                 tempY = super.getExecutorPointer().getMap()[i][j].getY() - pushableWorker.get(h).getCurrentPosition().getY();
 
@@ -56,7 +55,6 @@ public class FindAvailableCellsSelectPush extends FindAvailableCellsSelect {
             h++;
         }
         if (super.getExecutorPointer().getNextSelect().getAvailableCells(0).isEmpty()) {
-            System.out.println("routine di perdita");
             return 0;
         } else
             return 0;

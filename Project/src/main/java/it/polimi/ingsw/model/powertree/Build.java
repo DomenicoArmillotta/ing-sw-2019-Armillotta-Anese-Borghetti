@@ -25,8 +25,11 @@ public class Build extends LimitedPower {
 
     @Override
     public int doAction(int[] userInput) {
-        System.out.println("BUILD");
-        List<Cell> availableCells = getAvailableCells(0);
+        Worker selectedWorker = this.getExecutorPointer().getPrevSelect().getSelectedWorker();
+        int index;
+        if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) index = 0;
+        else index = 1;
+        List<Cell> availableCells = getAvailableCells(index);
         Cell[][] map = getExecutorPointer().getMap();
         //cella su cui voglio costruire
         int blockX = userInput[0];

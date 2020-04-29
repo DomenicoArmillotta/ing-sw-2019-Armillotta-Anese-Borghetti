@@ -52,7 +52,6 @@ public class FindAvailableCellsSelectMove extends FindAvailableCells {
                 }
             }
         }
-        //System.out.println(moveCells);
         getExecutorPointer().getNextMove().setAvailableCells(moveCells, index);
 
         return moveCells;

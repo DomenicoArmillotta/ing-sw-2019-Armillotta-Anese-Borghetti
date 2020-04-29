@@ -49,16 +49,6 @@ public class PrometheusTest {
         userInput[1] = 1;
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-/*
-        System.out.println(actionExecutor.getNextPower());
-        System.out.println(actionExecutor.getNextPower());
-        System.out.println(actionExecutor.getNextPower());
-        System.out.println(actionExecutor.getNextPower());
-        System.out.println(actionExecutor.getNextPower());
-        System.out.println(actionExecutor.getNextPower());
-        System.out.println(actionExecutor.getNextPower());
-        System.out.println(actionExecutor.getNextPower());
-*/
 
     }
 

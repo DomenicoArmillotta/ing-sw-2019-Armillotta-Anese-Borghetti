@@ -56,8 +56,6 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
                         if ((i - shiftX >= 0) && (j - shiftY >= 0) && map[i - shiftX][j - shiftY].getWorkerOnCell() == null) {
                             if (!moveCells.contains(map[i - shiftX][j - shiftY]))
                                 addMoveCells.add(map[i][j]);
-                            System.out.print(map[i][j].getX());
-                            System.out.println(map[i][j].getY());
                         }
                     }
 

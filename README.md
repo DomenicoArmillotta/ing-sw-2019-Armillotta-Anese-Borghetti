@@ -13,8 +13,8 @@
 
 | Functionality | State |
 |:-----------------------|:------------------------------------:|
-| Basic rules | [![GREEN](https://placehold.it/15/f03c15/f03c15)](#) |
-| Complete rules | [![GREEN](https://placehold.it/15/f03c15/f03c15)](#) |
+| Basic rules | [![GREEN](https://placehold.it/15/44bb44/44bb44)](#) |
+| Complete rules | [![GREEN](https://placehold.it/15/44bb44/44bb44)](#) |
 | Socket | [![RED](https://placehold.it/15/f03c15/f03c15)](#) |
 | GUI | [![RED](https://placehold.it/15/f03c15/f03c15)](#) |
 | CLI | [![RED](https://placehold.it/15/f03c15/f03c15)](#) |

@@ -8,7 +8,7 @@
 ## Gruppo AM46
 
 
-- ###   10584179    Matteo Borghetti ([@BorghittiMatteo](https://github.com/BorghettiMatteo))<br>matteo1.borghetti@mail.polimi.it;
+- ###   10584179    Matteo Borghetti ([@BorghettiMatteo](https://github.com/BorghettiMatteo))<br>matteo1.borghetti@mail.polimi.it;
 - ###   10615395    Marco Anese ([@AneseMarco](https://github.com/AneseMarco))<br>marco.anese@mail.polimi.it
 - ###   10582821    DomenicoArmillotta ([@DomenicoArmillotta](https://github.com/DomenicoArmillotta))<br>domenico.armillotta@mail.polimi.it
 

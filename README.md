@@ -8,13 +8,14 @@
 ## Gruppo AM46
 
 
-- ###   10600001    Michele Bertoini ([@michele-bertoni](https://github.com/michele-bertoni)<br>michele2.bertoni@mail.polimi.it;
-- ###   10600002    Ing Conti ([@ingconti](https://github.com/ingconti))<br>ingconti@ingconti.com
+- ###   10584179    Matteo Borghetti ([@BorghittiMatteo](https://github.com/BorghettiMatteo)<br>matteo1.borghetti@mail.polimi.it;
+- ###   10615395    Marco Anese ([@AneseMarco](https://github.com/AneseMarco))<br>marco.anese@mail.polimi.it
+- ###   10582821    DomenicoArmillotta ([@DomenicoArmillotta](https://github.com/DomenicoArmillotta))<br>domenico.armillotta@mail.polimi.it
 
 | Functionality | State |
 |:-----------------------|:------------------------------------:|
-| Basic rules | [![GREEN](https://placehold.it/15/44bb44/44bb44)](#) |
-| Complete rules | [![GREEN](https://placehold.it/15/44bb44/44bb44)](#) |
+| Basic rules | [![RED](https://placehold.it/15/f03c15/f03c15)](#) |
+| Complete rules | [![RED](https://placehold.it/15/f03c15/f03c15)](#)](#) |
 | Socket | [![RED](https://placehold.it/15/f03c15/f03c15)](#) |
 | GUI | [![RED](https://placehold.it/15/f03c15/f03c15)](#) |
 | CLI | [![RED](https://placehold.it/15/f03c15/f03c15)](#) |

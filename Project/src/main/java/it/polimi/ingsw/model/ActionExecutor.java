@@ -322,11 +322,11 @@ public Build getPrevBuild() {
             this.currentPlayer = this.prevPlayer;
             this.prevPlayer=tempPlayer;
             this.nextPlayer=tempPlayer;
+        }else {
+            currentPlayer = nextPlayer;
+            nextPlayer = prevPlayer;
+            prevPlayer = tempPlayer;
         }
-        currentPlayer = nextPlayer;
-        nextPlayer = prevPlayer;
-        prevPlayer = tempPlayer;
-
     }
 
     public Player getCurrentPlayer() {

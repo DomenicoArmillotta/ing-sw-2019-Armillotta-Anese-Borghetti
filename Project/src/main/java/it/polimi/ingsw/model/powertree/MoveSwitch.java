@@ -19,6 +19,7 @@ public class MoveSwitch extends Move {
             floatingWorker.getPreviousPosition().setWorkerOnCell(super.getExecutorPointer().getPrevSelect().getSelectedWorker());
             floatingWorker.setCurrentPosition(floatingCell);
             floatingWorker.getCurrentPosition().setWorkerOnCell(floatingWorker);
+            /* setState() -> floatingWorker si è mosso da previousPosition a currentPosition */
             return 0; /* [NOTIFY]: MoveSwitch successful */
         } else {
             pointerBack();

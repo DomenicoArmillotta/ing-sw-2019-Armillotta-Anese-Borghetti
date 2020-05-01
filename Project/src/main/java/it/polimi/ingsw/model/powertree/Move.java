@@ -45,6 +45,8 @@ public class Move extends LimitedPower {
                 selectedWorker.getPreviousPosition().setWorkerOnCell(null);
                 selectedWorker.setCurrentPosition(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]]);
                 selectedWorker.getCurrentPosition().setWorkerOnCell(selectedWorker);
+                /* setState() -> selectedWorker si è mosso da previousPosition a currentPosition */
+                /* [NOTIFY]: Move successful */
                 return 0; /* [NOTIFY]: Move successful */
             }
         }

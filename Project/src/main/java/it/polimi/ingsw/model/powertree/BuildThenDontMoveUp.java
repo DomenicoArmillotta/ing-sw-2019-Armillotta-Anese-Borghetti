@@ -1,6 +1,5 @@
 package it.polimi.ingsw.model.powertree;
-
-import it.polimi.ingsw.model.Player;
+import it.polimi.ingsw.model.*;
 
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class BuildThenDontMoveUp extends Build {
         }
         player.getPlayerGod().getFindAvailableCellsList().add(i, new FindAvailableCellsMoveButDontMoveUp());
         cachedPowerList.add(i + 1, player.getPlayerGod().getFindAvailableCellsList().get(i)); /* CONTROLLA i+1 */
-        //ho aggiornato la list power ma non la FindAvailableCells list;
+        /* Ho aggiornato la list power ma non la FindAvailableCells list; */
         player.getPlayerGod().setPowerList(cachedPowerList);
     }
 
@@ -32,7 +31,7 @@ public class BuildThenDontMoveUp extends Build {
         altComputeInjectionPowerIndex(getExecutorPointer().getCurrentPlayer());
 
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition()) {
-            PointerBack();
+            pointerBack();
             return -1;
         } else {
             if (super.doAction(userInput) == -1)

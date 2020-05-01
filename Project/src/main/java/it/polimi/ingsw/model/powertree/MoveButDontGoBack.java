@@ -1,13 +1,11 @@
 package it.polimi.ingsw.model.powertree;
-
-import it.polimi.ingsw.model.Cell;
-import it.polimi.ingsw.model.Worker;
+import it.polimi.ingsw.model.*;
 
 import java.util.List;
 
 public class MoveButDontGoBack extends Move {
 
-    //Worker selectedWorker;
+    /* Worker selectedWorker; */
     @Override
     public int doAction(int[] userInput) {
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
@@ -18,16 +16,15 @@ public class MoveButDontGoBack extends Move {
         Cell previousPosition = selectedWorker.getCurrentPosition();
 
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevMove().getCellBeforeMove()) {
-            PointerBack();
-            return -1;
+            pointerBack();
+            return -1; /* [NOTIFY]: MoveButDontGoBack failed */
         } else {
             if (super.doAction(userInput) == -1)
-                return -1;
+                return -1; /* Do not call pointerBack(): it has already been called in the superclass */
         }
 
         this.getExecutorPointer().getPrevSelect().setSelectedWorker(selectedWorker);
-        return 0;
+        return 0; /* [NOTIFY]: MoveButDontGoBack successful */
     }
+
 }
-
-

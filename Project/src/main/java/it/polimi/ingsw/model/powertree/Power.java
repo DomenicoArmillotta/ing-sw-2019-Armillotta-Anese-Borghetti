@@ -1,5 +1,4 @@
 package it.polimi.ingsw.model.powertree;
-
 import it.polimi.ingsw.model.*;
 
 public abstract class Power {
@@ -8,23 +7,7 @@ public abstract class Power {
     protected ActionExecutor executorPointer = ActionExecutor.instance(); /* Singleton ActionExecutor */
 
     public ActionExecutor getExecutorPointer() {
-        return executorPointer; /* Singleton ActionExecutor */
-    }
-
-    public int PointerBack() {
-
-        Power powerPtr = executorPointer.getPowerPtr();
-        if (powerPtr != null) {
-            Power indexPtr = executorPointer.getCurrentPlayer().getPlayerGod().getPowerList().get(0);
-            int index;
-            for (index = 0; indexPtr != powerPtr; index++) {
-                indexPtr = executorPointer.getCurrentPlayer().getPlayerGod().getPowerList().get(index);
-            }
-            executorPointer.setPowerPtr(executorPointer.getCurrentPlayer().getPlayerGod().getPowerList().get(index - 2));
-            return 0;
-        } else {
-            return -1;
-        }
+        return executorPointer;
     }
 
     public int doAction(int[] userInput) { /* Overridden in subclasses */
@@ -32,8 +15,19 @@ public abstract class Power {
         return -1; /* Action failed: this method should be called from Power subclasses */
     }
 
-    public int getActionType() {
-        return 0;
+    public int pointerBack() {
+        int index;
+        Power powerPtr = executorPointer.getPowerPtr();
+        if (powerPtr != null) {
+            Power indextPtr = executorPointer.getCurrentPlayer().getPlayerGod().getPowerList().get(0);
+            for (index = 0; indextPtr != powerPtr; index++) {
+                indextPtr = executorPointer.getCurrentPlayer().getPlayerGod().getPowerList().get(index);
+            }
+            executorPointer.setPowerPtr(executorPointer.getCurrentPlayer().getPlayerGod().getPowerList().get(index - 2));
+            return 0;
+        } else {
+            return -1;
+        }
     }
 
     public void clearPower() {

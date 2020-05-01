@@ -1,6 +1,5 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +23,9 @@ public class FindAvailableCellsBuild extends FindAvailableCells {
                     buildableCells.add(map[i][j]);
                 }
             }
-
             this.getExecutorPointer().getNextBuild().setAvailableCells(buildableCells, index);
         }
-
-        return 0;
+        return 0; /* [NOTIFY]: FindAvailableCellsBuild done */
     }
+
 }

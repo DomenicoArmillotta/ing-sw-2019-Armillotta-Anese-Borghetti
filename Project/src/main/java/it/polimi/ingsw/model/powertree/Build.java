@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model.powertree;
-
 import it.polimi.ingsw.model.*;
-
 import java.util.List;
 
 public class Build extends LimitedPower {
@@ -31,7 +29,7 @@ public class Build extends LimitedPower {
         else index = 1;
         List<Cell> availableCells = getAvailableCells(index);
         Cell[][] map = getExecutorPointer().getMap();
-        //cella su cui voglio costruire
+        /* Cella su cui voglio costruire */
         int blockX = userInput[0];
         int blockY = userInput[1];
         if (availableCells.contains(map[blockX][blockY])) {
@@ -41,7 +39,8 @@ public class Build extends LimitedPower {
             return 0;
         }
 
-        PointerBack();
-        return -1;
+        pointerBack();
+        return -1;  /* [NOTIFY]: Build failed */
     }
+
 }

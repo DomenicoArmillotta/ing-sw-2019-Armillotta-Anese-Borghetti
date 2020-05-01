@@ -1,8 +1,5 @@
 package it.polimi.ingsw.model.powertree;
-
 import it.polimi.ingsw.model.*;
-
-import java.util.List;
 
 public class Select extends LimitedPower {
 
@@ -14,50 +11,46 @@ public class Select extends LimitedPower {
         return this.selectedWorker;
     }
 
-    @Override
-    public void clearPower() {
-        super.clearPower();
-        selectedWorker = null;
-    }
-
     public void setSelectedWorker(Worker selectedWorker) {
         this.selectedWorker = selectedWorker;
     }
 
     @Override
     public int doAction(int[] userInput) { /* userInput contains the integer coordinates of the Worker to be selected */
-
         if (userInput == null) {
-            return -1; /* Action failed: userInput missing */
+            pointerBack();
+            return -1; /* [NOTIFY] Action failed: userInput missing */
         } else {
             int index;
             int selectedWorkerX = userInput[0];
             int selectedWorkerY = userInput[1];
             Cell[][] map = getExecutorPointer().getMap();
-            if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getFirstWorker())
-            {
-                index = 0;
-            }
-            else if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getSecondWorker()) {
-                index = 1;
+            if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getFirstWorker()) {
+                index = 0; /* firstWorker selected */
+            } else if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getSecondWorker()) {
+                index = 1; /* secondWorker selected */
             } else {
-                PointerBack();
-                return -1;
+                pointerBack();
+                return -1; /* [NOTIFY] Action failed: user did not select correct Worker */
             }
-            if (getExecutorPointer().getNextMove().getAvailableCells(index) != null) {
-                /*
-                questo è un controllo agguntivo
-                */
+            if (getExecutorPointer().getNextMove().getAvailableCells(index) != null) { /* This is an additional control */
                 if (super.getExecutorPointer().getNextMove().getAvailableCells(index).isEmpty()) {
-                    PointerBack();
-                    return -1;
+                    pointerBack();
+                    return -1;  /* [NOTIFY] Action failed: selected Worker cannot move after selection */
                 }
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
-                return 0;
+                return 0;  /* [NOTIFY] Action successful: Worker properly selected */
             } else {
-                PointerBack();
-                return -1; /*Action failed: chosen Worker cannot move after selection */
+                pointerBack();
+                return -1;  /* [NOTIFY] Action failed: selected Worker cannot move after selection */
             }
         }
     }
+
+    @Override
+    public void clearPower() {
+        super.clearPower();
+        selectedWorker = null;
+    }
+
 }

@@ -1,27 +1,17 @@
 package it.polimi.ingsw.model.powertree;
-
 import it.polimi.ingsw.model.*;
-/* DA VERIFICARE! */
-
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-
-        Worker firstWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();
-        Worker secondWorker = getExecutorPointer().getCurrentPlayer().getSecondWorker();
-        findMoveOptions(firstWorker);
-        findMoveOptions(secondWorker);
-
-
- */
 
 public class FindAvailableCellsMove extends FindAvailableCells {
+
+    @Override
     public int doAction(int[] userInput) {
 
         Cell[][] map = super.getExecutorPointer().getMap();
         Worker selectedWorker;
-        /*reinizzializza le celle rimovibili*/
+        /* Reinizializza le celle rimovibili */
         super.getExecutorPointer().getNextMove().clearPower();
 
         for (int index = 0; index < 2; index++) {
@@ -30,7 +20,7 @@ public class FindAvailableCellsMove extends FindAvailableCells {
 
             List<Cell> moveCells = new ArrayList<>();
 
-            //Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker();
+            /* Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker(); */
 
             int i, j, x, y, check;
 
@@ -38,31 +28,31 @@ public class FindAvailableCellsMove extends FindAvailableCells {
                 return -1; */
             x = selectedWorker.getCurrentPosition().getX();
             y = selectedWorker.getCurrentPosition().getY();
-            //aggiungere condizione del bordo inferiore
-            //System.out.print("Celle calcolate == ");
+            /* Aggiungere condizione del bordo inferiore */
+            /* System.out.print("Celle calcolate == "); */
 
             for (i = x - 1; i < x + 2 && i < 5; i++) {
                 for (j = y - 1; j < y + 2 && j < 5; j++) {
                     check = 1;
                     if (i < 0) i = 0;
                     if (j < 0) j = 0;
-                    //se  c'è un worker sopra non  aggiungo nella lista
+                    /* Se  c'è un worker sopra non  aggiungo nella lista */
                     if (map[i][j].getWorkerOnCell() != null && check == 1) {
                         check = 0;
                     }
-                    //se  c'è una cupola non  aggiungo nella lista
+                    /* Se  c'è una cupola non  aggiungo nella lista */
                     if (map[i][j].getBuildingLevel() == Level.DOME && check == 1) {
                         check = 0;
 
                     }
-                    //se la differenza è maggiore di 1 non aggiungo nella lista
+                    /* Se la differenza è maggiore di 1 non aggiungo nella lista */
                     if ((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal()) < -1 && check == 1) {
 
                         check = 0;
 
                     }
                     if (check == 1) {
-                        //inserisce nella lista
+                        /* Inserisce nella lista */
                         moveCells.add(map[i][j]);
                         if(index==0) {
                         }
@@ -74,9 +64,9 @@ public class FindAvailableCellsMove extends FindAvailableCells {
         }
         if (super.getExecutorPointer().getNextMove().getAvailableCells(0).isEmpty() && super.getExecutorPointer().getNextMove().getAvailableCells(1).isEmpty()) {
             super.loseCondition();
-            return -1;
+            return -1; /* [NOTIFY]: FindAvailableCellsMove failed */
         }
-        return 0;
+        return 0; /* [NOTIFY]: FindAvailableCellsMove done */
     }
 
 }

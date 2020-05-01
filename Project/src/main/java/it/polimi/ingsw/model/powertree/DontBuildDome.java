@@ -1,16 +1,17 @@
 package it.polimi.ingsw.model.powertree;
 
-import it.polimi.ingsw.model.Cell;
-import it.polimi.ingsw.model.Level;
+import it.polimi.ingsw.model.*;
 
 import java.util.List;
-//se non è cupola va normalmente,altrimenti ritorno -1
+
+/* Se non è cupola va normalmente,altrimenti ritorno -1 */
 public class DontBuildDome extends Build {
+
     @Override
     public int doAction(int[] userInput) {
         List<Cell> availableCells = getAvailableCells(0);
         Cell[][] map = getExecutorPointer().getMap();
-        //cella su cui voglio costruire
+        /* Cella su cui voglio costruire */
         int blockX = userInput[0];
         int blockY = userInput[1];
         if (map[blockX][blockY].getBuildingLevel().getNext() != Level.DOME) {
@@ -18,8 +19,9 @@ public class DontBuildDome extends Build {
                 return -1;
             return 0;
         } else {
-            PointerBack();
+            pointerBack();
             return -1;
         }
     }
+
 }

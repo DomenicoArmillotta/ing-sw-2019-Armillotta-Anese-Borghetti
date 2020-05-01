@@ -1,12 +1,11 @@
 package it.polimi.ingsw.model.powertree;
-
 import it.polimi.ingsw.model.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
-    //calcola spostamento indicando cosa somare alle cordinate x,y ritorna un array
+
+    /* Calcola spostamento indicando cosa somare alle cordinate x,y ritorna un array */
     public int calcolaSpostamentoX(Worker selectedWorker, Cell selectedCell) {
         Cell cellaWorkerCheSposta = selectedWorker.getCurrentPosition();
         Cell cellaWorkerDaSpostare = selectedCell;
@@ -15,12 +14,13 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
     }
 
     public int calcolaSpostamentoY(Worker selectedWorker, Cell selectedCell) {
-        Cell cellaWorkerCheSposta=selectedWorker.getCurrentPosition();
-        Cell cellaWorkerDaSpostare=selectedCell;
+        Cell cellaWorkerCheSposta = selectedWorker.getCurrentPosition();
+        Cell cellaWorkerDaSpostare = selectedCell;
         int differenceY=cellaWorkerCheSposta.getY()-cellaWorkerDaSpostare.getY();
         return differenceY;
     }
 
+    @Override
     public int doAction(int[] userInput) {
         super.doAction(userInput);
 
@@ -46,13 +46,13 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
                     if (j < 0) j = 0;
 
 
-                    //se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo e controllo che nella cella in direzione c'e una cella libera
+                    /* Se  c'è un operatore ed è mio  non  aggiungo nella lista in alternativa lo aggiungo e controllo che nella cella in direzione c'e una cella libera */
                     if (map[i][j].getWorkerOnCell() != null && map[i][j].getWorkerOnCell().getOwner() == selectedWorker.getOwner() && check == 1) {
                         check = 0;
                     } else if (map[i][j].getWorkerOnCell() != null && check == 1 && (selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal()) >= -1) {
                         shiftX = calcolaSpostamentoX(selectedWorker, map[i][j]);
                         shiftY = calcolaSpostamentoY(selectedWorker, map[i][j]);
-                        //se la cella dove si dovrebbe spostare il worker pushato è libera  aggiungo alla lista delle celle
+                        /* Se la cella dove si dovrebbe spostare il worker pushato è libera  aggiungo alla lista delle celle */
                         if ((i - shiftX >= 0) && (j - shiftY >= 0) && map[i - shiftX][j - shiftY].getWorkerOnCell() == null) {
                             if (!moveCells.contains(map[i - shiftX][j - shiftY]))
                                 addMoveCells.add(map[i][j]);
@@ -63,6 +63,7 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
             }
             super.getExecutorPointer().getNextMove().addCells(addMoveCells, index);
         }
-        return 0;
+        return 0; /* [NOTIFY]: FindAvailableCellsMovePush done */
     }
+
 }

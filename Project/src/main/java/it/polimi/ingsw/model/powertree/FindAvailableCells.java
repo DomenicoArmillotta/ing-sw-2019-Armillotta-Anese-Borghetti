@@ -1,5 +1,4 @@
 package it.polimi.ingsw.model.powertree;
-
 import it.polimi.ingsw.model.*;
 
 public class FindAvailableCells extends Power {
@@ -32,4 +31,5 @@ public class FindAvailableCells extends Power {
             System.out.println("hai vinto "+super.getExecutorPointer().getNextPlayer().getName());
         }
     }
+
 }

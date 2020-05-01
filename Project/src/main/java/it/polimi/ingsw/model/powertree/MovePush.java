@@ -1,25 +1,24 @@
 package it.polimi.ingsw.model.powertree;
-
-import it.polimi.ingsw.model.Cell;
-import it.polimi.ingsw.model.Worker;
+import it.polimi.ingsw.model.*;
 
 public class MovePush extends Move {
 
     public int doAction(int[] userInput) {
         Worker targetWorker = super.getExecutorPointer().getMap()[userInput[0]][userInput[1]].getWorkerOnCell();
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
-        int tempX = 0, tempY = 0;
+        int index;
+        int tempX, tempY;
         int oldX = selectedWorker.getCurrentPosition().getX();
         int oldY = selectedWorker.getCurrentPosition().getY();
-        if (super.doAction(userInput) == -1)
+        if (super.doAction(userInput) == -1) {
+            /* Do not call pointerBack(): it has already been called in the superclass */
             return -1;
-        int index;
+        }
         if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) {
             index = 0;
         } else index = 1;
-
         if (targetWorker == null) {
-            return 0;
+            return 0; /* [NOTIFY]: MovePush successful */
         } else {
             if (super.getAvailableCells(index).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
                 tempX = targetWorker.getCurrentPosition().getX() - oldX;
@@ -30,11 +29,12 @@ public class MovePush extends Move {
                 targetWorker.getPreviousPosition().setWorkerOnCell(selectedWorker);
                 targetWorker.setCurrentPosition(super.getExecutorPointer().getMap()[tempX][tempY]);
                 targetWorker.getCurrentPosition().setWorkerOnCell(targetWorker);
-                return 0;
+                return 0; /* [NOTIFY]: MovePush successful */
             } else {
-                PointerBack();
-                return -1;
+                pointerBack();
+                return -1; /* [NOTIFY]: MovePush failed */
             }
         }
     }
+
 }

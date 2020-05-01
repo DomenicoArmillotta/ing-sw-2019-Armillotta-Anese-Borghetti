@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.model.powertree.*;
-
 public class Player {
     private String playerName;
     private String networkAddress;

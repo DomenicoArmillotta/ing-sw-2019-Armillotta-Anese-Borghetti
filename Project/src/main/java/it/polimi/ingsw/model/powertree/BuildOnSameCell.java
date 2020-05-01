@@ -1,10 +1,5 @@
 package it.polimi.ingsw.model.powertree;
-
-import it.polimi.ingsw.model.Cell;
-import it.polimi.ingsw.model.Level;
-import it.polimi.ingsw.model.Worker;
-
-import java.util.List;
+import it.polimi.ingsw.model.*;
 
 public class BuildOnSameCell extends Build {
 
@@ -12,13 +7,13 @@ public class BuildOnSameCell extends Build {
     public int doAction(int[] userInput) {
 
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]].getBuildingLevel().equals(Level.TOP) || getExecutorPointer().getMap()[userInput[0]][userInput[1]] != getExecutorPointer().getPrevBuild().getCellAfterBuild()) {
-            PointerBack();
-            return -1;
+            pointerBack();
+            return -1; /* [NOTIFY]: BuildOnSameCell failed */
         } else {
             if (super.doAction(userInput) == -1)
-                return -1;
+                return -1; /* Do not call pointerBack() */
         }
-
-        return 0;
+        return 0; /* [NOTIFY]: BuildOnSameCell successful */
     }
+
 }

@@ -1,15 +1,13 @@
 package it.polimi.ingsw.model.powertree;
-
 import it.polimi.ingsw.model.*;
-
 import java.util.List;
 
 public class LimitedPower extends Power {
 
-    private List<Cell> addableCells1;
-    private List<Cell> removableCells1;
-    private List<Cell> addableCells2;
-    private List<Cell> removableCells2;
+    private List<Cell> firstWorkerAddableCells;
+    private List<Cell> firstWorkerRemovableCells;
+    private List<Cell> secondWorkerAddableCells;
+    private List<Cell> secondWorkerRemovableCells;
 
     /* LimitedPower can use its superclass' methods doAction() and getExecutorPointer() */
 
@@ -19,46 +17,45 @@ public class LimitedPower extends Power {
 
     public void addCells(List<Cell> addableCells, int index) {
         if (index == 0)
-            this.addableCells1.addAll(addableCells);
+            this.firstWorkerAddableCells.addAll(addableCells);
         else
-            this.addableCells2.addAll(addableCells);
+            this.secondWorkerAddableCells.addAll(addableCells);
     }
 
     public void removeCells(List<Cell> removableCells, int index) {
         if (index == 0) {
-            removableCells1 = removableCells;
-            //this.removableCells1.removeAll(removableCells);
+            firstWorkerRemovableCells = removableCells;
         } else {
-            removableCells2 = removableCells;
-            //this.removableCells2.removeAll(removableCells);
+            secondWorkerRemovableCells = removableCells;
         }
     }
 
-    //la get fa gia la sottrazione algebrica delle classi;
+    /* getAvailableCells returns the algebraic subtraction between AddableCells and RemovableCells */
     public List<Cell> getAvailableCells(int index) {
         if (index == 0) {
-            List<Cell> availableCells1 = addableCells1;
-            if (removableCells1 != null) availableCells1.removeAll(removableCells1);
+            List<Cell> availableCells1 = firstWorkerAddableCells;
+            if (firstWorkerRemovableCells != null) availableCells1.removeAll(firstWorkerRemovableCells);
             return availableCells1;
         } else {
-            List<Cell> availableCells2 = addableCells2;
-            if (removableCells2 != null) availableCells2.removeAll(removableCells2);
+            List<Cell> availableCells2 = secondWorkerAddableCells;
+            if (secondWorkerRemovableCells != null) availableCells2.removeAll(secondWorkerRemovableCells);
             return availableCells2;
         }
     }
 
     public void setAvailableCells(List<Cell> availableCells, int index) {
-        if (index == 0)
-            this.addableCells1 = availableCells;
-        else
-            this.addableCells2 = availableCells;
+        if (index == 0) {
+            this.firstWorkerAddableCells = availableCells;
+        } else {
+            this.secondWorkerAddableCells = availableCells;
+        }
     }
 
     public void clearPower() {
-        this.addableCells1 = null;
-        this.removableCells1 = null;
-        this.addableCells2 = null;
-        this.removableCells2 = null;
+        this.firstWorkerAddableCells = null;
+        this.firstWorkerRemovableCells = null;
+        this.secondWorkerAddableCells = null;
+        this.secondWorkerRemovableCells = null;
     }
 
 }

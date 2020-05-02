@@ -42,6 +42,10 @@ public abstract class Power {
         /* Nothing to clean */
     }
 
+    public List<Listener> getListenersList() {
+        return listenersList;
+    }
+
     public void notifyListeners() {
         for (int i = 0; i < listenersList.size(); i++) {
             listenersList.get(i).update();

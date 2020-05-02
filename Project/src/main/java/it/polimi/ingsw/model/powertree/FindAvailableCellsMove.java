@@ -66,9 +66,18 @@ public class FindAvailableCellsMove extends FindAvailableCells {
             super.loseCondition();
             return -1; /* [NOTIFY]: FindAvailableCellsMove failed */
         }
+
         return 0; /* [NOTIFY]: FindAvailableCellsMove done */
     }
+/*
+    public WorkerSelectionEvent getState() {
+        return lastEvent;
+    }
 
+    public void setState(WorkerSelectionEvent lastEvent) {
+        this.lastEvent = lastEvent;
+    }
+*/
 }
 
 

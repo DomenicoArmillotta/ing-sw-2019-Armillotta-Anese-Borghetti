@@ -43,7 +43,7 @@ public class Select extends LimitedPower {
                 }
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
                 setState(new WorkerSelectionEvent(selectedWorker));
-                notifyListeners();
+                if (getListenersList() != null) notifyListeners();
                 return 0;  /* [NOTIFY] Action successful: Worker properly selected */
             } else {
                 pointerBack();
@@ -58,7 +58,6 @@ public class Select extends LimitedPower {
         selectedWorker = null;
     }
 
-    @Override
     public WorkerSelectionEvent getState() {
         return lastEvent;
     }

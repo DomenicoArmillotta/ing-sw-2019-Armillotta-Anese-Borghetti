@@ -1,10 +1,15 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.virtualview.Listener;
+
+import java.util.List;
 
 public abstract class Power {
 
     /* Every Power can reach Map, Players, GodCards and other Powers through executorPointer */
     protected ActionExecutor executorPointer = ActionExecutor.instance(); /* Singleton ActionExecutor */
+
+    private List<Listener> listenersList;
 
     public ActionExecutor getExecutorPointer() {
         return executorPointer;
@@ -32,6 +37,25 @@ public abstract class Power {
 
     public void clearPower() {
         /* Nothing to clean */
+    }
+
+    public void notifyListeners() {
+        for (int i = 0; i < listenersList.size(); i++) {
+            listenersList.get(i).update();
+        }
+    }
+
+    public void attachListener(Listener listener) {
+        listenersList.add(listener);
+    }
+
+    public void removeListener() {
+        listenersList.remove(listenersList.size() - 1);
+    }
+    
+    public Event getState() {
+        event = new Event();
+        return event;
     }
 
 }

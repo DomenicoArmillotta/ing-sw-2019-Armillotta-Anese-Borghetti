@@ -66,7 +66,11 @@ public class FindAvailableCellsMove extends FindAvailableCells {
             super.loseCondition();
             return -1; /* [NOTIFY]: FindAvailableCellsMove failed */
         }
-
+        /* for(int i = 0; i < executorPointer.getCurrentPlayer().getPlayerGod().getFindAvailableCellsList().size()-1; i++) {
+            if (this == executorPointer.getCurrentPlayer().getPlayerGod().getFindAvailableCellsList().get(i))
+        } */
+        setState(new WaitingForEvent(executorPointer.getNextBuild(), getExecutorPointer().getNextMove().getAvailableCells(0)));
+        if (getListenersList() != null) notifyListeners();
         return 0; /* [NOTIFY]: FindAvailableCellsMove done */
     }
 /*

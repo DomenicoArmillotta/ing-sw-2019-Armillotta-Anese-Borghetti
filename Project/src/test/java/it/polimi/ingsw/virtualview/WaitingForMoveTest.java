@@ -1,6 +1,9 @@
 package it.polimi.ingsw.virtualview;
 
-import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.ActionExecutor;
+import it.polimi.ingsw.model.GameMaster;
+import it.polimi.ingsw.model.God;
+import it.polimi.ingsw.model.Player;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -8,9 +11,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class WorkerSelectionListenerTest {
+public class WaitingForMoveTest {
     @Test
-    public void workerSelectionListenerTest() {
+    public void waitingForMoveTest() {
         List<Player> playersQueue = new ArrayList<>();
         Player player1 = new Player("Matteo");
         Player player2 = new Player("Domenico");
@@ -35,9 +38,25 @@ public class WorkerSelectionListenerTest {
         selectionListener.setSubject(player1.getPlayerGod().getSelectList().get(0));
 
 
+        player1.getPlayerGod().getFindAvailableCellsList().get(0).initListenerList();
+        WaitingForEventListener waitingMoveListener = new WaitingForEventListener();
+        player1.getPlayerGod().getFindAvailableCellsList().get(0).attachListener(waitingMoveListener);
+        waitingMoveListener.setSubject(player1.getPlayerGod().getFindAvailableCellsList().get(1));
+
+
+        player1.getPlayerGod().getFindAvailableCellsList().get(1).initListenerList();
+        WaitingForEventListener waitingBuildListener = new WaitingForEventListener();
+        player1.getPlayerGod().getFindAvailableCellsList().get(1).attachListener(waitingBuildListener);
+        waitingBuildListener.setSubject(player1.getPlayerGod().getFindAvailableCellsList().get(1));
+
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 1;
         userInput[1] = 1;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        userInput[0] = 2;
+        userInput[1] = 2;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), -1);
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
     }
 }

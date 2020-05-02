@@ -53,6 +53,7 @@ public abstract class Power {
     }
 
     public void attachListener(Listener listener) {
+        System.out.println("attached" + listener.getClass());
         listenersList.add(listener);
     }
 

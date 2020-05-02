@@ -3,11 +3,13 @@ import it.polimi.ingsw.model.*;
 
 public class FindAvailableCells extends Power {
 
+    private WaitingForEvent lastEvent;
+
     public void loseCondition() {
 
         Player toDeletePlayer = getExecutorPointer().getCurrentPlayer();
         Player tempPlayer = super.getExecutorPointer().getPrevPlayer();
-        if(!super.getExecutorPointer().getNextPlayer().equals(super.getExecutorPointer().getPrevPlayer())) {
+        if (!super.getExecutorPointer().getNextPlayer().equals(super.getExecutorPointer().getPrevPlayer())) {
             /*
             match da 3 persone,deve terminare il turno, settare l'ordine corretto dei player e eliminare il player che ha perso
 
@@ -24,12 +26,20 @@ public class FindAvailableCells extends Power {
             toDeletePlayer.getSecondWorker().removeWorker();
             toDeletePlayer.deleteWorkers();
             return;
-        }else{
+        } else {
             /*
             reset del game?? + scritta you win?
              */
-            System.out.println("hai vinto "+super.getExecutorPointer().getNextPlayer().getName());
+            System.out.println("hai vinto " + super.getExecutorPointer().getNextPlayer().getName());
         }
+    }
+
+    public WaitingForEvent getState() {
+        return lastEvent;
+    }
+
+    public void setState(WaitingForEvent lastEvent) {
+        this.lastEvent = lastEvent;
     }
 
 }

@@ -6,6 +6,8 @@ public class Move extends LimitedPower {
 
     private Cell cellBeforeMove;
 
+    private WorkerMovementEvent lastEvent;
+
     public Cell getCellBeforeMove() {
         return this.cellBeforeMove;
     }
@@ -51,5 +53,14 @@ public class Move extends LimitedPower {
             }
         }
     }
+
+    public WorkerMovementEvent getState() {
+        return lastEvent;
+    }
+
+    public void setState(WorkerMovementEvent lastEvent) {
+        this.lastEvent = lastEvent;
+    }
+
 
 }

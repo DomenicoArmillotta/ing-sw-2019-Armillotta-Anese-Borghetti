@@ -2,6 +2,7 @@ package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.virtualview.Listener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Power {
@@ -10,6 +11,8 @@ public abstract class Power {
     protected ActionExecutor executorPointer = ActionExecutor.instance(); /* Singleton ActionExecutor */
 
     private List<Listener> listenersList;
+
+    private Event lastEvent;
 
     public ActionExecutor getExecutorPointer() {
         return executorPointer;
@@ -49,13 +52,20 @@ public abstract class Power {
         listenersList.add(listener);
     }
 
+    public void initListenerList() {
+        listenersList = new ArrayList<>();
+    }
+
     public void removeListener() {
         listenersList.remove(listenersList.size() - 1);
     }
-    
+
     public Event getState() {
-        event = new Event();
-        return event;
+        return lastEvent;
+    }
+
+    public void setState(Event lastEvent) {
+        this.lastEvent = lastEvent;
     }
 
 }

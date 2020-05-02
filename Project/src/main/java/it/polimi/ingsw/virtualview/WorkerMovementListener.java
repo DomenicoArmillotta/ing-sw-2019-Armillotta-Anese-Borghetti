@@ -1,6 +1,6 @@
 package it.polimi.ingsw.virtualview;
 
-public class WorkerMovementListener extends AbstractListener {
+public class WorkerMovementListener extends Listener {
 
     @Override
     public void update() {

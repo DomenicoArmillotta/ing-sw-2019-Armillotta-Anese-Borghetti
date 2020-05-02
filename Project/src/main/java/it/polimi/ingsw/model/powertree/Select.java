@@ -1,11 +1,14 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.virtualview.WorkerSelectionListener;
 
 public class Select extends LimitedPower {
 
     /* Select can use its superclass' method getAvailableCells() */
 
     private Worker selectedWorker;
+
+    private WorkerSelectionEvent lastEvent;
 
     public Worker getSelectedWorker() {
         return this.selectedWorker;
@@ -39,6 +42,8 @@ public class Select extends LimitedPower {
                     return -1;  /* [NOTIFY] Action failed: selected Worker cannot move after selection */
                 }
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
+                setState(new WorkerSelectionEvent(selectedWorker));
+                notifyListeners();
                 return 0;  /* [NOTIFY] Action successful: Worker properly selected */
             } else {
                 pointerBack();
@@ -51,6 +56,15 @@ public class Select extends LimitedPower {
     public void clearPower() {
         super.clearPower();
         selectedWorker = null;
+    }
+
+    @Override
+    public WorkerSelectionEvent getState() {
+        return lastEvent;
+    }
+
+    public void setState(WorkerSelectionEvent lastEvent) {
+        this.lastEvent = lastEvent;
     }
 
 }

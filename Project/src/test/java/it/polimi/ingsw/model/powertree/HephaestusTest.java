@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model.powertree;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.GodCardParser.God;
 import org.junit.Test;
 
 import java.util.ArrayList;

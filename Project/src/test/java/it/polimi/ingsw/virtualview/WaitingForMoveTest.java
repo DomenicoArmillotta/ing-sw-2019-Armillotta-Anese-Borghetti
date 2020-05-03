@@ -2,7 +2,7 @@ package it.polimi.ingsw.virtualview;
 
 import it.polimi.ingsw.model.ActionExecutor;
 import it.polimi.ingsw.model.GameMaster;
-import it.polimi.ingsw.model.God;
+import it.polimi.ingsw.model.GodCardParser.God;
 import it.polimi.ingsw.model.Player;
 import org.junit.jupiter.api.Test;
 

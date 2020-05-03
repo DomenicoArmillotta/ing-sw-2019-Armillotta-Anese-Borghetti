@@ -32,6 +32,7 @@ public class Worker {
     {
         return previousPosition;
     }
+
     public void removeWorker(){
         this.currentPosition=null;
         this.previousPosition=null;

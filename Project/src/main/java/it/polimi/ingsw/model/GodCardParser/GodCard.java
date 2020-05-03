@@ -1,4 +1,4 @@
-package it.polimi.ingsw.model;
+package it.polimi.ingsw.model.GodCardParser;
 import it.polimi.ingsw.model.powertree.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,21 @@ public class GodCard {
     private List<Build> buildList;
     private List<WinCondition> winCheckList;
     private List<FindAvailableCells> findAvailableCellsList;
+
+    public void setGodName(String godName) {
+        this.godName = godName;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setWinCheckList(List<WinCondition> winCheckList) {
+        this.winCheckList = winCheckList;
+    }
+
+    public GodCard() {
+    }
 
     public void setupLists() {
         List<Select> selectList = new ArrayList<>();

@@ -5,11 +5,12 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+import it.polimi.ingsw.model.GodCardParser.God;
+import it.polimi.ingsw.model.GodCardParser.GodCard;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class InstantBuildDomeTest {
     @Test

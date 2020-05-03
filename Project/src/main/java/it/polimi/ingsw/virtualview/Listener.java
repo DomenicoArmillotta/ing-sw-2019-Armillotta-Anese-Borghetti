@@ -27,5 +27,4 @@ public abstract class Listener {
     public void setSubject(Power subject) {
         this.subject = subject;
     }
-
 }

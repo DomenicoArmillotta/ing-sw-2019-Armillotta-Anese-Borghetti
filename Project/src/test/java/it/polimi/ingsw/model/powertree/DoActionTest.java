@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.GodCardParser.God;
 import org.junit.Test;
 
 import java.util.ArrayList;

@@ -8,7 +8,7 @@ public class Select extends LimitedPower {
 
     private Worker selectedWorker;
 
-    private WorkerSelectionEvent lastEvent;
+    private WorkerSelectionEvent lastSelectionEvent; /* and WaitingForMove */
 
     public Worker getSelectedWorker() {
         return this.selectedWorker;
@@ -42,8 +42,12 @@ public class Select extends LimitedPower {
                     return -1;  /* [NOTIFY] Action failed: selected Worker cannot move after selection */
                 }
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
-                setState(new WorkerSelectionEvent(selectedWorker));
+                setState(new WorkerSelectionEvent(selectedWorker, executorPointer.getNextMove()));
                 if (getListenersList() != null) notifyListeners();
+                /* ==== */
+                /* executorPointer.getNextSelect().getAvailableCells(1);
+                setState(new WaitingForEvent(executorPointer.getNextMove(), getAvailableCells(index)));
+                if (getListenersList() != null) notifyListeners(); */
                 return 0;  /* [NOTIFY] Action successful: Worker properly selected */
             } else {
                 pointerBack();
@@ -59,11 +63,15 @@ public class Select extends LimitedPower {
     }
 
     public WorkerSelectionEvent getState() {
-        return lastEvent;
+        return lastSelectionEvent;
     }
 
-    public void setState(WorkerSelectionEvent lastEvent) {
-        this.lastEvent = lastEvent;
+    public void setState(WorkerSelectionEvent lastSelectionEvent) {
+        this.lastSelectionEvent = lastSelectionEvent;
     }
+
+   /* public void setState(WaitingForEvent lastWaitingEvent) {
+        this.lastWaitingEvent = lastWaitingEvent;
+    } */
 
 }

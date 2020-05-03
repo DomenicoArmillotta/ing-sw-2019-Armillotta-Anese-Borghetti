@@ -12,7 +12,7 @@ public class WaitingForEventListener extends Listener {
     @Override
     public void update() {
         WaitingForEvent event = getSubject().getState();
-        System.out.println("Waiting for event");
+        System.out.println(ANSI_GREEN + event.getAvailableCells().size() + ANSI_RESET + " cells are available, " + ANSI_YELLOW + "waiting for next action..." + ANSI_RESET + " (" + event.getNextPower() + ")");
         /* Propago al resto della virtualview */
         /* Drawer drawer = new Drawer();
         drawer.printWorker(event.getSelectedWorker()); */

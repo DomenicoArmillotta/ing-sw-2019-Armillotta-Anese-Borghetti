@@ -46,6 +46,7 @@ public class MoveSwitchTest {
         userInput[1] = 0;
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
 
+
         assertEquals(actionExecutor.getMap()[0][0].getWorkerOnCell().getOwner(),player3);
         assertEquals(actionExecutor.getMap()[1][0].getWorkerOnCell().getOwner(),player1);
     }

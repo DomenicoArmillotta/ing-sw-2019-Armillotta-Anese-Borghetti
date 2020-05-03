@@ -69,7 +69,17 @@ public class FindAvailableCellsMove extends FindAvailableCells {
         /* for(int i = 0; i < executorPointer.getCurrentPlayer().getPlayerGod().getFindAvailableCellsList().size()-1; i++) {
             if (this == executorPointer.getCurrentPlayer().getPlayerGod().getFindAvailableCellsList().get(i))
         } */
-        setState(new WaitingForEvent(executorPointer.getNextBuild(), getExecutorPointer().getNextMove().getAvailableCells(0)));
+        Cell firstWorkerCell = getExecutorPointer().getCurrentPlayer().getFirstWorker().getCurrentPosition();
+        Cell secondWorkerCell = getExecutorPointer().getCurrentPlayer().getSecondWorker().getCurrentPosition();
+        List<Cell> selectOptions = new ArrayList<>();
+        if (executorPointer.getNextMove().getAvailableCells(0) != null) {
+            selectOptions.add(firstWorkerCell);
+        }
+        if (executorPointer.getNextMove().getAvailableCells(1) != null) {
+            selectOptions.add(secondWorkerCell);
+        }
+
+        setState(new WaitingForEvent(executorPointer.getNextSelect(), selectOptions));
         if (getListenersList() != null) notifyListeners();
         return 0; /* [NOTIFY]: FindAvailableCellsMove done */
     }

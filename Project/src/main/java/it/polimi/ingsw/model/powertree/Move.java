@@ -6,7 +6,7 @@ public class Move extends LimitedPower {
 
     private Cell cellBeforeMove;
 
-    private WorkerMovementEvent lastEvent;
+    private WorkerMovementEvent lastMoveEvent;
 
     public Cell getCellBeforeMove() {
         return this.cellBeforeMove;
@@ -47,19 +47,19 @@ public class Move extends LimitedPower {
                 selectedWorker.getPreviousPosition().setWorkerOnCell(null);
                 selectedWorker.setCurrentPosition(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]]);
                 selectedWorker.getCurrentPosition().setWorkerOnCell(selectedWorker);
-                /* setState() -> selectedWorker si è mosso da previousPosition a currentPosition */
-                /* [NOTIFY]: Move successful */
+                setState(new WorkerMovementEvent(selectedWorker));
+                if (getListenersList() != null) notifyListeners();
                 return 0; /* [NOTIFY]: Move successful */
             }
         }
     }
 
     public WorkerMovementEvent getState() {
-        return lastEvent;
+        return lastMoveEvent;
     }
 
-    public void setState(WorkerMovementEvent lastEvent) {
-        this.lastEvent = lastEvent;
+    public void setState(WorkerMovementEvent lastMoveEvent) {
+        this.lastMoveEvent = lastMoveEvent;
     }
 
 

@@ -6,6 +6,8 @@ public class Build extends LimitedPower {
 
     private Cell cellAfterBuild;
 
+    private BuildBlockEvent lastBuildEvent;
+
     public Cell getCellAfterBuild() {
         return this.cellAfterBuild;
     }
@@ -36,11 +38,22 @@ public class Build extends LimitedPower {
             map[blockX][blockY].setBuildingLevel(map[blockX][blockY].getBuildingLevel().getNext());
             cellAfterBuild = map[blockX][blockY];
             this.setCellAfterBuild(cellAfterBuild);
+            setState(new BuildBlockEvent(cellAfterBuild));
+            if (getListenersList() != null) notifyListeners();
             return 0;
         }
 
         pointerBack();
         return -1;  /* [NOTIFY]: Build failed */
     }
+
+    public BuildBlockEvent getState() {
+        return lastBuildEvent;
+    }
+
+    public void setState(BuildBlockEvent lastBuildEvent) {
+        this.lastBuildEvent = lastBuildEvent;
+    }
+
 
 }

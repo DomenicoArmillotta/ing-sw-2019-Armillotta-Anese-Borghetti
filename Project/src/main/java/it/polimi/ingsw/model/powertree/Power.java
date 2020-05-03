@@ -12,7 +12,7 @@ public abstract class Power {
 
     private List<Listener> listenersList;
 
-    private Event lastEvent;
+    /* private Event lastEvent; */
 
     public ActionExecutor getExecutorPointer() {
         return executorPointer;
@@ -53,7 +53,6 @@ public abstract class Power {
     }
 
     public void attachListener(Listener listener) {
-        System.out.println("attached" + listener.getClass());
         listenersList.add(listener);
     }
 
@@ -65,12 +64,12 @@ public abstract class Power {
         listenersList.remove(listenersList.size() - 1);
     }
 
-    public Event getState() {
+    /* public Event getState() {
         return lastEvent;
     }
 
     public void setState(Event lastEvent) {
         this.lastEvent = lastEvent;
-    }
+    } */
 
 }

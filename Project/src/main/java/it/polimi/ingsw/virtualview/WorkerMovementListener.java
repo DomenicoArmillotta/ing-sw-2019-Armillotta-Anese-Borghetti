@@ -12,8 +12,10 @@ public class WorkerMovementListener extends Listener {
     public void update() {
         WorkerMovementEvent event = getSubject().getState();
         /* Propago al resto della virtualview */
-        Drawer drawer = new Drawer();
-        drawer.printWorker(event.getSelectedWorker());
+        /* Drawer drawer = new Drawer();
+        drawer.printWorker(event.getSelectedWorker()); */
+        System.out.println(ANSI_BLUE + event.getSelectedWorker() + ANSI_RESET + " moved from " + ANSI_BLUE + event.getSelectedWorker().getPreviousPosition() + ANSI_RESET + " to " + ANSI_BLUE + event.getSelectedWorker().getCurrentPosition() + ANSI_RESET);
+
     }
 
     public Move getSubject() {

@@ -4,7 +4,7 @@ import it.polimi.ingsw.model.powertree.Power;
 
 import java.util.List;
 
-public class WaitingForEvent implements Event {
+public class WaitingForEvent implements Event { /* Waiting for select / Waiting for build */
     Power nextPower;
     List<Cell> availableCells;
 

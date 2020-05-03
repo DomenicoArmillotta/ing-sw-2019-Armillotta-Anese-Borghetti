@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<GodCardDeck>
+    <Godcard name ="Mortal">
+        <descrizione>just a stupid Mortal</descrizione>
+        <PowerList>
+            <FindAvailableCellsMove/>
+            <Select/>
+            <Move/>
+            <WinCondition/>
+            <FindAvailableCellsBuild/>
+            <Build/>
+        </PowerList>
+    </Godcard>
+    <Godcard name ="Apollo">
+        <descrizione>Dio della schifezza</descrizione>
+        <PowerList>
+            <FindAvailableCellsMoveSwitch/>
+            <Select/>
+            <MoveSwitch/>
+            <WinCondition/>
+            <FindAvailableCellsBuild/>
+            <Build/>
+        </PowerList>
+    </Godcard>
+    <Godcard name ="Demeter">
+        <descrizione>Dea della schifezza</descrizione>
+        <PowerList>
+            <FindAvailableCellsMove/>
+            <Select/>
+            <Move/>
+            <WinCondition/>
+            <FindAvailableCellsBuild/>
+            <Build/>
+            <FindAvailableCellsBuild/>
+            <BuildOnADifferentCell/>
+        </PowerList>
+    </Godcard>
+    <Godcard name ="Artemis">
+        <descrizione>Die della schifezza rancida</descrizione>
+        <PowerList>
+            <FindAvailableCellsMove/>
+            <Select/>
+            <Move/>
+            <WinCondition/>
+            <FindAvailableCellsMove/>
+            <MoveButDontGoBack/>
+            <WinCondition/>
+            <FindAvailableCellsBuild/>
+            <Build/>
+        </PowerList>
+    </Godcard>
+    <Godcard name ="Athena">
+        <descrizione>Dea della schifezza brutta</descrizione>
+        <PowerList>
+            <FindAvailableCellsMove/>
+            <Select/>
+            <MoveCheckingLevel/>
+            <WinCondition/>
+            <FindAvailableCellsBuild/>
+            <Build/>
+        </PowerList>
+    </Godcard>
+    <Godcard name ="Atlas">
+        <descrizione>Dea della schifezza brutta</descrizione>
+        <PowerList>
+            <FindAvailableCellsMove/>
+            <Select/>
+            <Move/>
+            <WinCondition/>
+            <FindAvailableCellsBuild/>
+            <InstantBuildDome/>
+        </PowerList>
+    </Godcard>
+    <Godcard name ="Hepaestus">
+        <descrizione>Dio dei blocchi</descrizione>
+        <PowerList>
+            <FindAvailableCellsMove/>
+            <Select/>
+            <Move/>
+            <WinCondition/>
+            <FindAvailableCellsBuild/>
+            <Build/>
+            <FindAvailableCellsBuild/>
+            <BuildOnSameCell/>
+        </PowerList>
+    </Godcard>
+    <Godcard name ="Minotaur">
+        <descrizione>Dio del dio</descrizione>
+        <PowerList>
+            <FindAvailableCellsMovePush/>
+            <Select/>
+            <MovePush/>
+            <WinCondition/>
+            <FindAvailableCellsBuild/>
+            <Build/>
+        </PowerList>
+    </Godcard>
+    <Godcard name ="Pan">
+        <descrizione>Dio dei flauti</descrizione>
+        <PowerList>
+            <FindAvailableCellsMove/>
+            <Select/>
+            <Move/>
+            <WinIfTwoLevelsDown/>
+            <FindAvailableCellsBuild/>
+            <Build/>
+        </PowerList>
+    </Godcard>
+    <Godcard name ="Prometheus">
+        <descrizione>Dio che genera la metà dei problemi di progettazione di softeng</descrizione>
+        <PowerList>
+            <FindAvailableCellsMove/>
+            <Select/>
+            <FindAvailableCellsBuild/>
+            <BuildThenDontMoveUp/>
+            <Move/>
+            <WinCondition/>
+            <FindAvailableCellsBuild/>
+            <Build/>
+        </PowerList>
+    </Godcard>
+</GodCardDeck>
+

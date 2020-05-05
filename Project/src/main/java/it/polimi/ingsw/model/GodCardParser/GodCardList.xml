@@ -2,7 +2,7 @@
 
 <GodCardDeck>
     <Godcard name ="Mortal">
-        <descrizione>just a stupid Mortal</descrizione>
+        <descrizione>just a Mortal</descrizione>
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -13,7 +13,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Apollo">
-        <descrizione>Dio della schifezza</descrizione>
+        <descrizione>God of music</descrizione>
         <PowerList>
             <FindAvailableCellsMoveSwitch/>
             <Select/>
@@ -24,7 +24,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Demeter">
-        <descrizione>Dea della schifezza</descrizione>
+        <descrizione>Goddess of the harvest</descrizione>
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -37,7 +37,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Artemis">
-        <descrizione>Die della schifezza rancida</descrizione>
+        <descrizione>Goddess of the hunt</descrizione>
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -51,7 +51,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Athena">
-        <descrizione>Dea della schifezza brutta</descrizione>
+        <descrizione>Goddess of wisdom</descrizione>
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -62,7 +62,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Atlas">
-        <descrizione>Dea della schifezza brutta</descrizione>
+        <descrizione>Titan shouldering the heavens</descrizione>
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -73,7 +73,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Hepaestus">
-        <descrizione>Dio dei blocchi</descrizione>
+        <descrizione>God of blacksmiths</descrizione>
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -86,7 +86,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Minotaur">
-        <descrizione>Dio del dio</descrizione>
+        <descrizione>Bull-headed monster</descrizione>
         <PowerList>
             <FindAvailableCellsMovePush/>
             <Select/>
@@ -97,7 +97,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Pan">
-        <descrizione>Dio dei flauti</descrizione>
+        <descrizione>God of the wind</descrizione>
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -108,7 +108,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Prometheus">
-        <descrizione>Dio che genera la metà dei problemi di progettazione di softeng</descrizione>
+        <descrizione>Titan benefactor if Mankind</descrizione>
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>

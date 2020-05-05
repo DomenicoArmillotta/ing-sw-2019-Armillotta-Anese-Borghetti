@@ -30,10 +30,15 @@ public class GodCard {
 
     public void setupLists() {
         List<Select> selectList = new ArrayList<>();
+        this.selectList = selectList;
         List<Move> moveList = new ArrayList<>();
+        this.moveList = moveList;
         List<Build> buildList = new ArrayList<>();
+        this.buildList = buildList;
         List<WinCondition> winCheckList = new ArrayList<>();
+        this.winCheckList = winCheckList;
         List<FindAvailableCells> findAvailableCellsList = new ArrayList<>();
+        this.findAvailableCellsList = findAvailableCellsList;
     }
 
     public List<Power> getPowerList() {

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.FailedActionEvent;
+import it.polimi.ingsw.model.events.NoUpdatesEvent;
 
 import java.util.List;
 
@@ -32,12 +34,13 @@ public class BuildThenDontMoveUp extends Build {
 
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition()) {
             pointerBack();
+            getFailedActionListener().actionFailed(new FailedActionEvent(this));
             return -1;
         } else {
             if (super.doAction(userInput) == -1)
                 return -1;
         }
-
+        getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
         return 0;
     }
 }

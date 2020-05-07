@@ -17,7 +17,9 @@ public abstract class Power {
     private WorkerMovementListener workerMovementListener = WorkerMovementListener.instance();
     private BuildBlockListener buildBlockListener = BuildBlockListener.instance();
     private PlayerWonListener playerWonListener = PlayerWonListener.instance();
+    private PlayerLostListener playerLostListener = PlayerLostListener.instance();
     private FailedActionListener failedActionListener = FailedActionListener.instance();
+    private NoUpdatesListener noUpdatesListener = NoUpdatesListener.instance();
 
     public WorkerSelectionListener getWorkerSelectionListener() {
         return workerSelectionListener;
@@ -39,8 +41,16 @@ public abstract class Power {
         return playerWonListener;
     }
 
+    public PlayerLostListener getPlayerLostListener() {
+        return playerLostListener;
+    }
+
     public FailedActionListener getFailedActionListener() {
         return failedActionListener;
+    }
+
+    public NoUpdatesListener getNoUpdatesListener() {
+        return noUpdatesListener;
     }
 
     public ActionExecutor getExecutorPointer() {

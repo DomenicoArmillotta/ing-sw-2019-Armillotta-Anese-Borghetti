@@ -1,6 +1,8 @@
 package it.polimi.ingsw.model.powertree;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.BuildBlockEvent;
+import it.polimi.ingsw.model.events.FailedActionEvent;
 
 import java.util.List;
 
@@ -15,8 +17,10 @@ public class InstantBuildDome extends Build {
         int blockY = userInput[1];
         if (availableCells.contains(map[blockX][blockY])) {
             map[blockX][blockY].setBuildingLevel(Level.DOME);
+            getBuildBlockListener().buildBlock(new BuildBlockEvent(map[blockX][blockY]));
             return 0; /* [NOTIFY]: Move successful */
         }
+        getFailedActionListener().actionFailed(new FailedActionEvent(this));
         return -1; /* [NOTIFY]: Move failed */
     }
 

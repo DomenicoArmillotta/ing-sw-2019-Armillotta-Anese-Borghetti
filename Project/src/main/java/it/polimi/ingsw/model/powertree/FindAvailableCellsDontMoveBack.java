@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model.powertree;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.WaitingForActionEvent;
 
 import java.util.List;
 
@@ -25,14 +26,15 @@ public class FindAvailableCellsDontMoveBack extends FindAvailableCellsMove {
                 break;
             }
         }
-        if(tempCells.isEmpty()) {
+        if (tempCells.isEmpty()) {
             /*
             se non si può muovere un altra volta deve finire il turno senza poter costruire,serve una specie di notify che non può
             essere svolta la seconda build;
              */
             return 1;/*valore speciale di ritorno per indicare chenon può fare la seconda move*/
-        }
-        else super.getExecutorPointer().getNextMove().setAvailableCells(tempCells,i);
+        } else super.getExecutorPointer().getNextMove().setAvailableCells(tempCells, i);
+
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(i), null));
         return 0;
     }
 }

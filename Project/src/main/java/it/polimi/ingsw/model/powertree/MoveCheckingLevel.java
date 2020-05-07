@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.WorkerMovementEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,8 +63,10 @@ public class MoveCheckingLevel extends Move {
         if (movedWorker.getCurrentPosition().getBuildingLevel().ordinal() - movedWorker.getPreviousPosition().getBuildingLevel().ordinal() == 1) {
             computeInjectionPowerIndex(super.getExecutorPointer().getNextPlayer());
             computeInjectionPowerIndex(super.getExecutorPointer().getPrevPlayer());
+            getWorkerMovementListener().workerMoved(new WorkerMovementEvent(movedWorker));
             return 0; /* [NOTIFY]: MoveCheckingLevel successful */
         }
+        getWorkerMovementListener().workerMoved(new WorkerMovementEvent(movedWorker));
         return 0; /* [NOTIFY]: MoveCheckingLevel successful */
     }
 

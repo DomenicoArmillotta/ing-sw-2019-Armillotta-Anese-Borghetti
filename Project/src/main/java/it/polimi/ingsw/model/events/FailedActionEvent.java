@@ -10,7 +10,7 @@ public class FailedActionEvent extends Event {
         this.failedPower = failedPower;
     }
 
-    public Power getFailedPower() {
+    private Power getFailedPower() {
         return failedPower;
     }
 

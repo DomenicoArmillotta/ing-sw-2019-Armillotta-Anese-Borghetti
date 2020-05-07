@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.Level;
 import it.polimi.ingsw.model.Worker;
+import it.polimi.ingsw.model.events.WaitingForActionEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +22,12 @@ public class FindAvailableCellsBuildDifferentCell  extends FindAvailableCellsBui
         else
             i = 1;
 
-        super.getExecutorPointer().getNextBuild().removeCells((List<Cell>) super.getExecutorPointer().getPrevBuild().getCellAfterBuild(),i);
-        if(super.getExecutorPointer().getNextBuild().getAvailableCells(i).isEmpty()) {
+        super.getExecutorPointer().getNextBuild().removeCells((List<Cell>) super.getExecutorPointer().getPrevBuild().getCellAfterBuild(), i);
+        if (super.getExecutorPointer().getNextBuild().getAvailableCells(i).isEmpty()) {
             return 1;/*special return value*/
         }
+
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(i), null));
         return 0;
     }
 }

@@ -9,7 +9,7 @@ public class BuildBlockEvent extends Event {
         this.cellWithBlock = cellWithBlock;
     }
 
-    public Cell getCellWithBlock() {
+    private Cell getCellWithBlock() {
         return cellWithBlock;
     }
 

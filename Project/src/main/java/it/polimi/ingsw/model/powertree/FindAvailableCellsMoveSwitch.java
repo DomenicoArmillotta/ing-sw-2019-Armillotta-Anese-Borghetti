@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.WaitingForActionEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +31,7 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
             super.getExecutorPointer().getNextMove().addCells(moveCells, index);
             moveCells.clear();
         }
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0), executorPointer.getNextMove()));
         return 0; /* [NOTIFY]: FindAvailableCellsMoveSwitch done */
     }
 

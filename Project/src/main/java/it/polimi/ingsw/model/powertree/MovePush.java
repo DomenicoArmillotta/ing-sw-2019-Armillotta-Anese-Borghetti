@@ -1,5 +1,8 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.FailedActionEvent;
+import it.polimi.ingsw.model.events.NoUpdatesEvent;
+import it.polimi.ingsw.model.events.WorkerMovementEvent;
 
 public class MovePush extends Move {
 
@@ -18,6 +21,7 @@ public class MovePush extends Move {
             index = 0;
         } else index = 1;
         if (targetWorker == null) {
+            getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
             return 0; /* [NOTIFY]: MovePush successful */
         } else {
             if (super.getAvailableCells(index).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
@@ -29,9 +33,11 @@ public class MovePush extends Move {
                 targetWorker.getPreviousPosition().setWorkerOnCell(selectedWorker);
                 targetWorker.setCurrentPosition(super.getExecutorPointer().getMap()[tempX][tempY]);
                 targetWorker.getCurrentPosition().setWorkerOnCell(targetWorker);
+                getWorkerMovementListener().workerMoved(new WorkerMovementEvent(targetWorker));
                 return 0; /* [NOTIFY]: MovePush successful */
             } else {
                 pointerBack();
+                getFailedActionListener().actionFailed(new FailedActionEvent(this));
                 return -1; /* [NOTIFY]: MovePush failed */
             }
         }

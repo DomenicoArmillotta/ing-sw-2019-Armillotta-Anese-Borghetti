@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.events.BuildBlockEvent;
+import it.polimi.ingsw.model.events.FailedActionEvent;
 
 import java.util.List;
 
@@ -38,10 +39,12 @@ public class Build extends LimitedPower {
             map[blockX][blockY].setBuildingLevel(map[blockX][blockY].getBuildingLevel().getNext());
             cellAfterBuild = map[blockX][blockY];
             this.setCellAfterBuild(cellAfterBuild);
+            getBuildBlockListener().buildBlock(new BuildBlockEvent(map[blockX][blockY]));
             return 0;
         }
 
         pointerBack();
+        getFailedActionListener().actionFailed(new FailedActionEvent(this));
         return -1;  /* [NOTIFY]: Build failed */
     }
 

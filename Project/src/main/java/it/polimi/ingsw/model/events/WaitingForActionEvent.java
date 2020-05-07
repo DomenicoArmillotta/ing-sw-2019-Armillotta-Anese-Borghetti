@@ -14,11 +14,11 @@ public class WaitingForActionEvent extends Event { /* Waiting for select / Waiti
         this.availableCells = availableCells;
     }
 
-    public Power getNextPower() {
+    private Power getNextPower() {
         return nextPower;
     }
 
-    public List<Cell> getAvailableCells() {
+    private List<Cell> getAvailableCells() {
         return availableCells;
     }
 

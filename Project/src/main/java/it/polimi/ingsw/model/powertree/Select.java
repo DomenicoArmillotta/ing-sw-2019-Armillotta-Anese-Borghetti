@@ -25,6 +25,7 @@ public class Select extends LimitedPower {
     public int doAction(int[] userInput) { /* userInput contains the integer coordinates of the Worker to be selected */
         if (userInput == null) {
             pointerBack();
+            getFailedActionListener().actionFailed(new FailedActionEvent(this));
             return -1; /* [NOTIFY] Action failed: userInput missing */
         } else {
             int index;
@@ -36,8 +37,8 @@ public class Select extends LimitedPower {
             } else if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getSecondWorker()) {
                 index = 1; /* secondWorker selected */
             } else {
-                getFailedActionListener().actionFailed(new FailedActionEvent(this));
                 pointerBack();
+                getFailedActionListener().actionFailed(new FailedActionEvent(this));
                 return -1; /* [NOTIFY] Action failed: user did not select correct Worker */
             }
             if (getExecutorPointer().getNextMove().getAvailableCells(index) != null) { /* This is an additional control */

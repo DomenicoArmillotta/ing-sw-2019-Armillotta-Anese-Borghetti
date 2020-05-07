@@ -1,5 +1,8 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.FailedActionEvent;
+import it.polimi.ingsw.model.events.WaitingForActionEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,9 +41,11 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
             }
             super.getExecutorPointer().getNextMove().removeCells(toRemoveCells, index);
         }
-        if (super.getExecutorPointer().getNextMove().getAvailableCells(0).isEmpty()) {
+        if (super.getExecutorPointer().getNextMove().getAvailableCells(0).isEmpty()) { /* correct index 0 */
+            getFailedActionListener().actionFailed(new FailedActionEvent(this));
             return -1; /* [NOTIFY]: FindAvailableCellsMoveButDontMoveUp failed */
         }
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0), executorPointer.getNextMove()));
         return 0; /* [NOTIFY]: FindAvailableCellsMovePush done */
     }
 }

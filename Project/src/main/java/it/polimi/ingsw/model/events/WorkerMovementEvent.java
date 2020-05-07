@@ -9,7 +9,7 @@ public class WorkerMovementEvent extends Event {
         this.movedWorker = movedWorker;
     }
 
-    public Worker getSelectedWorker() {
+    private Worker getSelectedWorker() {
         return movedWorker;
     }
 

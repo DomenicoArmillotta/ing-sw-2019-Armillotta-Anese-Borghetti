@@ -1,6 +1,8 @@
 package it.polimi.ingsw.model.powertree;
 
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.FailedActionEvent;
+import it.polimi.ingsw.model.events.NoUpdatesEvent;
 
 import java.util.List;
 
@@ -17,9 +19,11 @@ public class DontBuildDome extends Build {
         if (map[blockX][blockY].getBuildingLevel().getNext() != Level.DOME) {
             if (super.doAction(userInput) == -1)
                 return -1;
+            getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
             return 0;
         } else {
             pointerBack();
+            getFailedActionListener().actionFailed(new FailedActionEvent(this));
             return -1;
         }
     }

@@ -2,6 +2,7 @@ package it.polimi.ingsw.virtualview;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.GodCardParser.God;
+import it.polimi.ingsw.virtualview.listeners.WaitingForEventListener;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -31,10 +32,10 @@ public class WaitingForBuildTest {
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
 
         /* Associo il Listener al Soggetto che ascolta */
-        player1.getPlayerGod().getFindAvailableCellsList().get(1).initListenerList();
+        /* player1.getPlayerGod().getFindAvailableCellsList().get(1).initListenerList();
         WaitingForEventListener waitingListener = new WaitingForEventListener();
         player1.getPlayerGod().getFindAvailableCellsList().get(1).attachListener(waitingListener);
-        waitingListener.setSubject(player1.getPlayerGod().getFindAvailableCellsList().get(1));
+        waitingListener.setSubject(player1.getPlayerGod().getFindAvailableCellsList().get(1)); */
 
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 1;

@@ -1,6 +1,8 @@
-package it.polimi.ingsw.model;
+package it.polimi.ingsw.model.events;
 
-public class WorkerMovementEvent implements Event {
+import it.polimi.ingsw.model.Worker;
+
+public class WorkerMovementEvent extends Event {
     Worker movedWorker;
 
     public WorkerMovementEvent(Worker movedWorker) {
@@ -9,5 +11,9 @@ public class WorkerMovementEvent implements Event {
 
     public Worker getSelectedWorker() {
         return movedWorker;
+    }
+
+    public void eventMethod() {
+        ;
     }
 }

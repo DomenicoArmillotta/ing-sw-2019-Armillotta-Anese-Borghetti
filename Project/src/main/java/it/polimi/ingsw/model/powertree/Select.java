@@ -1,14 +1,17 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.virtualview.WorkerSelectionListener;
+import it.polimi.ingsw.model.events.FailedActionEvent;
+import it.polimi.ingsw.model.events.WaitingForActionEvent;
+import it.polimi.ingsw.model.events.WorkerSelectionEvent;
+import it.polimi.ingsw.virtualview.listeners.FailedActionListener;
+import it.polimi.ingsw.virtualview.listeners.WaitingForActionListener;
+import it.polimi.ingsw.virtualview.listeners.WorkerSelectionListener;
 
 public class Select extends LimitedPower {
 
     /* Select can use its superclass' method getAvailableCells() */
 
     private Worker selectedWorker;
-
-    private WorkerSelectionEvent lastSelectionEvent; /* and WaitingForMove */
 
     public Worker getSelectedWorker() {
         return this.selectedWorker;
@@ -33,24 +36,23 @@ public class Select extends LimitedPower {
             } else if (map[selectedWorkerX][selectedWorkerY].getWorkerOnCell() == getExecutorPointer().getCurrentPlayer().getSecondWorker()) {
                 index = 1; /* secondWorker selected */
             } else {
+                getFailedActionListener().actionFailed(new FailedActionEvent(this));
                 pointerBack();
                 return -1; /* [NOTIFY] Action failed: user did not select correct Worker */
             }
             if (getExecutorPointer().getNextMove().getAvailableCells(index) != null) { /* This is an additional control */
                 if (super.getExecutorPointer().getNextMove().getAvailableCells(index).isEmpty()) {
                     pointerBack();
+                    getFailedActionListener().actionFailed(new FailedActionEvent(this));
                     return -1;  /* [NOTIFY] Action failed: selected Worker cannot move after selection */
                 }
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
-                setState(new WorkerSelectionEvent(selectedWorker, executorPointer.getNextMove()));
-                if (getListenersList() != null) notifyListeners();
-                /* ==== */
-                /* executorPointer.getNextSelect().getAvailableCells(1);
-                setState(new WaitingForEvent(executorPointer.getNextMove(), getAvailableCells(index)));
-                if (getListenersList() != null) notifyListeners(); */
+                getWorkerSelectionListener().workerSelected(new WorkerSelectionEvent(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell()));
+                getWaitingForActionListener().waitForAction(new WaitingForActionEvent(getExecutorPointer().getNextMove().getAvailableCells(index), getExecutorPointer().getNextMove()));
                 return 0;  /* [NOTIFY] Action successful: Worker properly selected */
             } else {
                 pointerBack();
+                getFailedActionListener().actionFailed(new FailedActionEvent(this));
                 return -1;  /* [NOTIFY] Action failed: selected Worker cannot move after selection */
             }
         }
@@ -61,17 +63,5 @@ public class Select extends LimitedPower {
         super.clearPower();
         selectedWorker = null;
     }
-
-    public WorkerSelectionEvent getState() {
-        return lastSelectionEvent;
-    }
-
-    public void setState(WorkerSelectionEvent lastSelectionEvent) {
-        this.lastSelectionEvent = lastSelectionEvent;
-    }
-
-   /* public void setState(WaitingForEvent lastWaitingEvent) {
-        this.lastWaitingEvent = lastWaitingEvent;
-    } */
 
 }

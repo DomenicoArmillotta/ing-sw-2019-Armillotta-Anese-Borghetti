@@ -2,6 +2,7 @@ package it.polimi.ingsw.virtualview;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.GodCardParser.God;
+import it.polimi.ingsw.virtualview.listeners.WorkerSelectionListener;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -30,11 +31,11 @@ public class WorkerSelectionListenerTest {
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
 
         /* Associo il Listener al Soggetto che ascolta */
-        player1.getPlayerGod().getSelectList().get(0).initListenerList();
+/*        player1.getPlayerGod().getSelectList().get(0).initListenerList();
         WorkerSelectionListener selectionListener = new WorkerSelectionListener();
         player1.getPlayerGod().getSelectList().get(0).attachListener(selectionListener);
         selectionListener.setSubject(player1.getPlayerGod().getSelectList().get(0));
-
+*/
 
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 1;

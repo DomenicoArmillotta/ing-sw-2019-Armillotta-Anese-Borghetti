@@ -23,6 +23,7 @@ public class MoveSwitch extends Move {
             return 0; /* [NOTIFY]: MoveSwitch successful */
         } else {
             pointerBack();
+
             return -1; /* [NOTIFY]: MoveSwitch failed */
         }
     }

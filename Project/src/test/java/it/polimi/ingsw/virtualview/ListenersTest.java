@@ -2,6 +2,7 @@ package it.polimi.ingsw.virtualview;
 
 import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.powertree.Power;
+import it.polimi.ingsw.virtualview.listeners.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -12,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ListenersTest {
 
-    public void bindSubjectWithListener(Power subject, Listener listener) {
+    /* public void bindSubjectWithListener(Power subject, Listener listener) {
         subject.initListenerList();
         subject.attachListener(listener);
         listener.setSubject(subject);
-    }
+    } */
 
     @Test
     public void listenerTest() {
@@ -38,7 +39,7 @@ public class ListenersTest {
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
 
         /* Associo il Listener al Soggetto che ascolta */
-        player1.getPlayerGod().getFindAvailableCellsList().get(0).initListenerList();
+       /* player1.getPlayerGod().getFindAvailableCellsList().get(0).initListenerList();
         WaitingForEventListener waitingSelectListener = new WaitingForEventListener();
         player1.getPlayerGod().getFindAvailableCellsList().get(0).attachListener(waitingSelectListener);
         waitingSelectListener.setSubject(player1.getPlayerGod().getFindAvailableCellsList().get(0));
@@ -50,7 +51,7 @@ public class ListenersTest {
         waitingBuildListener.setSubject(player1.getPlayerGod().getFindAvailableCellsList().get(1));
 
         player1.getPlayerGod().getSelectList().get(0).initListenerList();
-        WorkerSelectionListener selectionListener = new WorkerSelectionListener(); /* waitingForMove */
+        WorkerSelectionListener selectionListener = new WorkerSelectionListener()
         player1.getPlayerGod().getSelectList().get(0).attachListener(selectionListener);
         selectionListener.setSubject(player1.getPlayerGod().getSelectList().get(0));
 
@@ -62,7 +63,7 @@ public class ListenersTest {
         player1.getPlayerGod().getBuildList().get(0).initListenerList();
         BuildBlockListener buildListener = new BuildBlockListener();
         player1.getPlayerGod().getBuildList().get(0).attachListener(buildListener);
-        buildListener.setSubject(player1.getPlayerGod().getBuildList().get(0));
+        buildListener.setSubject(player1.getPlayerGod().getBuildList().get(0)); */
 
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 1;

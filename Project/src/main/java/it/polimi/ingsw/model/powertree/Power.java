@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
-import it.polimi.ingsw.virtualview.Listener;
+import it.polimi.ingsw.virtualview.listeners.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +10,38 @@ public abstract class Power {
     /* Every Power can reach Map, Players, GodCards and other Powers through executorPointer */
     protected ActionExecutor executorPointer = ActionExecutor.instance(); /* Singleton ActionExecutor */
 
-    private List<Listener> listenersList;
-
     /* private Event lastEvent; */
+
+    private WorkerSelectionListener workerSelectionListener = WorkerSelectionListener.instance();
+    private WaitingForActionListener waitingForActionListener = WaitingForActionListener.instance();
+    private WorkerMovementListener workerMovementListener = WorkerMovementListener.instance();
+    private BuildBlockListener buildBlockListener = BuildBlockListener.instance();
+    private PlayerWonListener playerWonListener = PlayerWonListener.instance();
+    private FailedActionListener failedActionListener = FailedActionListener.instance();
+
+    public WorkerSelectionListener getWorkerSelectionListener() {
+        return workerSelectionListener;
+    }
+
+    public WaitingForActionListener getWaitingForActionListener() {
+        return waitingForActionListener;
+    }
+
+    public WorkerMovementListener getWorkerMovementListener() {
+        return workerMovementListener;
+    }
+
+    public BuildBlockListener getBuildBlockListener() {
+        return buildBlockListener;
+    }
+
+    public PlayerWonListener getPlayerWonListener() {
+        return playerWonListener;
+    }
+
+    public FailedActionListener getFailedActionListener() {
+        return failedActionListener;
+    }
 
     public ActionExecutor getExecutorPointer() {
         return executorPointer;
@@ -41,35 +70,5 @@ public abstract class Power {
     public void clearPower() {
         /* Nothing to clean */
     }
-
-    public List<Listener> getListenersList() {
-        return listenersList;
-    }
-
-    public void notifyListeners() {
-        for (int i = 0; i < listenersList.size(); i++) {
-            listenersList.get(i).update();
-        }
-    }
-
-    public void attachListener(Listener listener) {
-        listenersList.add(listener);
-    }
-
-    public void initListenerList() {
-        listenersList = new ArrayList<>();
-    }
-
-    public void removeListener() {
-        listenersList.remove(listenersList.size() - 1);
-    }
-
-    /* public Event getState() {
-        return lastEvent;
-    }
-
-    public void setState(Event lastEvent) {
-        this.lastEvent = lastEvent;
-    } */
 
 }

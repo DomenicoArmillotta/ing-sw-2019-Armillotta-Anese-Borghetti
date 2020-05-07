@@ -1,9 +1,8 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.WaitingForActionEvent;
 
 public class FindAvailableCells extends Power {
-
-    private WaitingForEvent lastEvent;
 
     public void loseCondition() {
 
@@ -32,14 +31,6 @@ public class FindAvailableCells extends Power {
              */
             System.out.println("hai vinto " + super.getExecutorPointer().getNextPlayer().getName());
         }
-    }
-
-    public WaitingForEvent getState() {
-        return lastEvent;
-    }
-
-    public void setState(WaitingForEvent lastEvent) {
-        this.lastEvent = lastEvent;
     }
 
 }

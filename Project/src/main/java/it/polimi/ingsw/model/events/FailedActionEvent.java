@@ -1,8 +1,8 @@
-package it.polimi.ingsw.model;
+package it.polimi.ingsw.model.events;
 
 import it.polimi.ingsw.model.powertree.Power;
 
-public class FailedActionEvent implements Event {
+public class FailedActionEvent extends Event {
 
     Power failedPower;
 
@@ -12,5 +12,9 @@ public class FailedActionEvent implements Event {
 
     public Power getFailedPower() {
         return failedPower;
+    }
+
+    public void eventMethod() {
+        ;
     }
 }

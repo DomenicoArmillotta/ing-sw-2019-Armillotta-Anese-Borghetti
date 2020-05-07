@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model.powertree;
 import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.events.WaitingForActionEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +28,6 @@ public class FindAvailableCellsBuild extends FindAvailableCells {
             this.getExecutorPointer().getNextBuild().setAvailableCells(buildableCells, index);
         }
         /* setState() <- waitingForBuild: these are availableCellsBuild */
-        setState(new WaitingForEvent(executorPointer.getNextBuild(), buildableCells));
-        if (getListenersList() != null) notifyListeners();
         return 0; /* [NOTIFY]: FindAvailableCellsBuild done */
     }
 

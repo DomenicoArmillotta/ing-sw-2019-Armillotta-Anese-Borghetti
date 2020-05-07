@@ -1,6 +1,8 @@
-package it.polimi.ingsw.model;
+package it.polimi.ingsw.model.events;
 
-public class BuildBlockEvent implements Event {
+import it.polimi.ingsw.model.Cell;
+
+public class BuildBlockEvent extends Event {
     Cell cellWithBlock;
 
     public BuildBlockEvent(Cell cellWithBlock) {
@@ -9,5 +11,9 @@ public class BuildBlockEvent implements Event {
 
     public Cell getCellWithBlock() {
         return cellWithBlock;
+    }
+
+    public void eventMethod() {
+        ;
     }
 }

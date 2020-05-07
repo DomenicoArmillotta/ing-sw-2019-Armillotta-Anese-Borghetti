@@ -1,14 +1,15 @@
-package it.polimi.ingsw.model;
+package it.polimi.ingsw.model.events;
 
+import it.polimi.ingsw.model.Cell;
 import it.polimi.ingsw.model.powertree.Power;
 
 import java.util.List;
 
-public class WaitingForEvent implements Event { /* Waiting for select / Waiting for build */
+public class WaitingForActionEvent extends Event { /* Waiting for select / Waiting for build */
     Power nextPower;
     List<Cell> availableCells;
 
-    public WaitingForEvent(Power nextPower, List<Cell> availableCells) {
+    public WaitingForActionEvent(List<Cell> availableCells, Power nextPower) {
         this.nextPower = nextPower;
         this.availableCells = availableCells;
     }
@@ -19,6 +20,10 @@ public class WaitingForEvent implements Event { /* Waiting for select / Waiting 
 
     public List<Cell> getAvailableCells() {
         return availableCells;
+    }
+
+    public void eventMethod() {
+        ;
     }
 
 }

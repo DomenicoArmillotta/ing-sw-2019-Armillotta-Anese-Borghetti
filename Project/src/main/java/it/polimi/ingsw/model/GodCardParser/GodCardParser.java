@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class GodCardParser {
     /*
     qui faccio il parser delle carte dal file xml;
@@ -23,6 +24,7 @@ public class GodCardParser {
 
      */
     private Power returnCorrectAtomicPower(String atomicPower,GodCard selectedGodCard) {
+
 
         if (atomicPower.equals("FindAvailableCellsMove")) {
             FindAvailableCells tempCell = new FindAvailableCellsMove();
@@ -44,7 +46,12 @@ public class GodCardParser {
             FindAvailableCells tempCell = new FindAvailableCellsMoveSwitch();
             selectedGodCard.getFindAvailableCellsList().add(tempCell);
             return tempCell;
+        }if (atomicPower.equals("FindAvailableCellDontMoveBack")) {
+            FindAvailableCells tempCell = new FindAvailableCellsDontMoveBack();
+            selectedGodCard.getFindAvailableCellsList().add(tempCell);
+            return tempCell;
         }
+
         if (atomicPower.equals("Select")) {
             Select tempSelect = new Select();
             selectedGodCard.getSelectList().add(tempSelect);
@@ -60,8 +67,18 @@ public class GodCardParser {
             selectedGodCard.getMoveList().add(tempMove);
             return tempMove;
         }
+        if (atomicPower.equals("MoveCheckingLevel")) {
+            Move tempMove = new MoveCheckingLevel();
+            selectedGodCard.getMoveList().add(tempMove);
+            return tempMove;
+        }
         if (atomicPower.equals("MoveSwitch")) {
             Move tempMove = new MoveSwitch();
+            selectedGodCard.getMoveList().add(tempMove);
+            return tempMove;
+        }
+        if (atomicPower.equals("MoveButDontGoBack")) {
+            Move tempMove = new MoveButDontGoBack();
             selectedGodCard.getMoveList().add(tempMove);
             return tempMove;
         }
@@ -80,7 +97,7 @@ public class GodCardParser {
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
         }
-        if (atomicPower.equals("BuildOnDifferentCells")) {
+        if (atomicPower.equals("BuildOnADifferentCell")) {
             Build tempBuild = new BuildOnDifferentCell();
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
@@ -107,6 +124,16 @@ public class GodCardParser {
         }
         if (atomicPower.equals("FindAvailableCellsBuild")) {
             FindAvailableCells tempCell = new FindAvailableCellsBuild();
+            selectedGodCard.getFindAvailableCellsList().add(tempCell);
+            return tempCell;
+        }
+        if (atomicPower.equals("FindAvailableCellsBuildDifferentCell")) {
+            FindAvailableCells tempCell = new FindAvailableCellsBuildDifferentCell();
+            selectedGodCard.getFindAvailableCellsList().add(tempCell);
+            return tempCell;
+        }
+        if (atomicPower.equals("FindAvailableCellsBuildSameCell")) {
+            FindAvailableCells tempCell = new FindAvailableCellsBuildSameCell();
             selectedGodCard.getFindAvailableCellsList().add(tempCell);
             return tempCell;
         }

@@ -32,7 +32,7 @@
             <WinCondition/>
             <FindAvailableCellsBuild/>
             <Build/>
-            <FindAvailableCellsBuild/>
+            <FindAvailableCellsBuildDifferentCell/>
             <BuildOnADifferentCell/>
         </PowerList>
     </Godcard>
@@ -43,7 +43,7 @@
             <Select/>
             <Move/>
             <WinCondition/>
-            <FindAvailableCellsMove/>
+            <FindAvailableCellDontMoveBack/>
             <MoveButDontGoBack/>
             <WinCondition/>
             <FindAvailableCellsBuild/>
@@ -81,7 +81,7 @@
             <WinCondition/>
             <FindAvailableCellsBuild/>
             <Build/>
-            <FindAvailableCellsBuild/>
+            <FindAvailableCellsBuildSameCell/>
             <BuildOnSameCell/>
         </PowerList>
     </Godcard>

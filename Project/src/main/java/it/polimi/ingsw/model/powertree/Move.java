@@ -38,7 +38,7 @@ public class Move extends LimitedPower {
         List<Cell> availableCells = super.getAvailableCells(index);
 
         Cell previousPosition = selectedWorker.getCurrentPosition();
-        if (availableCells == null) {
+        if (availableCells.isEmpty()) {
             pointerBack();
             getFailedActionListener().actionFailed(new FailedActionEvent(this));
             return -1; /* [NOTIFY]: Move failed */

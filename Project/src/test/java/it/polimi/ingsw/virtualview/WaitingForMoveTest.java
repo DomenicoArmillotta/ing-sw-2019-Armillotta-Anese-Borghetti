@@ -4,7 +4,6 @@ import it.polimi.ingsw.model.ActionExecutor;
 import it.polimi.ingsw.model.GameMaster;
 import it.polimi.ingsw.model.GodCardParser.God;
 import it.polimi.ingsw.model.Player;
-import it.polimi.ingsw.virtualview.listeners.WaitingForEventListener;
 import it.polimi.ingsw.virtualview.listeners.WorkerSelectionListener;
 import org.junit.jupiter.api.Test;
 

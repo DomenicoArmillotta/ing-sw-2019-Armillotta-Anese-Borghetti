@@ -1,9 +1,11 @@
 package it.polimi.ingsw.virtualview;
 
 import it.polimi.ingsw.model.events.Event;
+import it.polimi.ingsw.model.events.WorkerSelectionEvent;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -15,28 +17,25 @@ public class SocketHandler implements Runnable {
     }
     public void run() {
         try {
-            /* Scanner in = new Scanner(socket.getInputStream()); */
-            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-
-
-            PrintWriter out = new PrintWriter(socket.getOutputStream());
+            //ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+            Scanner in = new Scanner(socket.getInputStream());
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 // Leggo e scrivo nella connessione finche' non ricevo "quit"
             while (true) { /* while (gameIsOn) */
-                /* String line = in.nextLine(); */
-                Event e = (Event)ois.readObject();
-                e.eventMethod();
+                String e = in.nextLine();
+                //Event e = (Event)ois.readObject();
                 if (e.equals("quit")) {
                     break;
                 } else {
-                    out.println("Received: " + e);
-                    out.flush();
+                oos.writeObject(new WorkerSelectionEvent(null));
+                oos.flush();
                 }
             }
 // Chiudo gli stream e il socket
-            ois.close();
-            out.close();
+            in.close();
+            oos.close();
             socket.close();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }

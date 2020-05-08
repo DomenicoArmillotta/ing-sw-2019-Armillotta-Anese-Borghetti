@@ -29,7 +29,8 @@ public class SimpleListenerClient {
                 e.eventMethod();
                 System.out.println(e);
                 String toSend = "banana";
-                printWriter.write(toSend);
+                printWriter.println(toSend);
+                printWriter.flush();
             }
         } catch (NoSuchElementException | ClassNotFoundException e) {
             System.out.println("Connection closed");

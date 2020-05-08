@@ -22,13 +22,16 @@ public class SocketHandler implements Runnable {
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 // Leggo e scrivo nella connessione finche' non ricevo "quit"
             while (true) { /* while (gameIsOn) */
+                oos.writeObject(new WorkerSelectionEvent(null));
+                oos.flush();
                 String e = in.nextLine();
+                System.out.println("OMG "+e);
                 //Event e = (Event)ois.readObject();
                 if (e.equals("quit")) {
                     break;
                 } else {
-                oos.writeObject(new WorkerSelectionEvent(null));
-                oos.flush();
+                /* oos.writeObject(new WorkerSelectionEvent(null));
+                oos.flush(); */
                 }
             }
 // Chiudo gli stream e il socket

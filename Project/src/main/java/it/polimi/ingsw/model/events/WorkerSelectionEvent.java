@@ -3,7 +3,9 @@ package it.polimi.ingsw.model.events;
 import it.polimi.ingsw.model.Worker;
 import it.polimi.ingsw.model.powertree.Power;
 
-public class WorkerSelectionEvent extends Event {
+import java.io.Serializable;
+
+public class WorkerSelectionEvent extends Event implements Serializable {
     Worker selectedWorker;
 
     public WorkerSelectionEvent(Worker selectedWorker) {
@@ -15,6 +17,6 @@ public class WorkerSelectionEvent extends Event {
     }
 
     public void eventMethod() {
-        ;
+        System.out.println("EUREKA!!! WorkerSelectionEvent has called its eventMethod! :)");
     }
 }

@@ -24,6 +24,7 @@ public class SocketHandler implements Runnable {
             while (true) { /* while (gameIsOn) */
                 /* String line = in.nextLine(); */
                 Event e = (Event)ois.readObject();
+                e.eventMethod();
                 if (e.equals("quit")) {
                     break;
                 } else {

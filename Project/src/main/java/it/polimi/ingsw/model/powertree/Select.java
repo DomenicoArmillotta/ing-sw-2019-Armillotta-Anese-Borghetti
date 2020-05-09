@@ -23,6 +23,7 @@ public class Select extends LimitedPower {
 
     @Override
     public int doAction(int[] userInput) { /* userInput contains the integer coordinates of the Worker to be selected */
+        System.out.println("In select");
         if (userInput == null) {
             pointerBack();
             getFailedActionListener().actionFailed(new FailedActionEvent(this));

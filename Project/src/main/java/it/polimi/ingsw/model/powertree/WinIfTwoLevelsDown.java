@@ -15,7 +15,7 @@ public class WinIfTwoLevelsDown extends WinCondition{
             return 0;
         } else {
             getFailedActionListener().actionFailed(new FailedActionEvent(this));
-            return -1;
+            return 1;
         }
     }
 

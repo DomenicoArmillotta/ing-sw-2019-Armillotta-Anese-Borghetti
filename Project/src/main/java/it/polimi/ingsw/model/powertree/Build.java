@@ -26,6 +26,7 @@ public class Build extends LimitedPower {
 
     @Override
     public int doAction(int[] userInput) {
+        System.out.println("In build");
         Worker selectedWorker = this.getExecutorPointer().getPrevSelect().getSelectedWorker();
         int index;
         if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) index = 0;
@@ -40,7 +41,7 @@ public class Build extends LimitedPower {
             cellAfterBuild = map[blockX][blockY];
             this.setCellAfterBuild(cellAfterBuild);
             getBuildBlockListener().buildBlock(new BuildBlockEvent(map[blockX][blockY]));
-            return 0;
+            return 1;
         }
 
         pointerBack();

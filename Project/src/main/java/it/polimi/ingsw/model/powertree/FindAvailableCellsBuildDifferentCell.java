@@ -11,6 +11,7 @@ import java.util.List;
 public class FindAvailableCellsBuildDifferentCell  extends FindAvailableCellsBuild{
     @Override
     public int doAction(int[] userInput) {
+        System.out.println("In find availablecellsbuildondifferentcell");
         super.doAction(userInput);
         Worker workerSelected =  super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         Cell[][] map = super.getExecutorPointer().getMap();

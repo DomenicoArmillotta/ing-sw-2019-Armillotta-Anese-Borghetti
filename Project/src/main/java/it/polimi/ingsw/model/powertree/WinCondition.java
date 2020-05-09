@@ -8,13 +8,14 @@ public class WinCondition extends Power {
 
     @Override
     public int doAction(int[] userInput) {
+        System.out.println("In win check");
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         if ((selectedWorker.getPreviousPosition().getBuildingLevel().ordinal() - selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()) == -1 && selectedWorker.getCurrentPosition().getBuildingLevel() == Level.TOP) {
             getPlayerWonListener().winGame(new PlayerWonEvent(super.getExecutorPointer().getCurrentPlayer()));
             return 0;
         } else {
             getFailedActionListener().actionFailed(new FailedActionEvent(this));
-            return -1;
+            return 1;
         }
     }
 

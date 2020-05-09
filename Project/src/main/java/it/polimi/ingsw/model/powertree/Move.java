@@ -28,6 +28,7 @@ public class Move extends LimitedPower {
     /* Worker selectedWorker; */
     @Override
     public int doAction(int[] userInput) {
+        System.out.println("In move");
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         setCellBeforeMove(selectedWorker.getCurrentPosition());
 
@@ -53,7 +54,7 @@ public class Move extends LimitedPower {
                 selectedWorker.setCurrentPosition(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]]);
                 selectedWorker.getCurrentPosition().setWorkerOnCell(selectedWorker);
                 getWorkerMovementListener().workerMoved(new WorkerMovementEvent(selectedWorker));
-                return 0; /* [NOTIFY]: Move successful */
+                return 1; /* [NOTIFY]: Move successful */
             }
         }
     }

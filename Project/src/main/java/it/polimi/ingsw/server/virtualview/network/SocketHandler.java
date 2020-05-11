@@ -24,14 +24,7 @@ public class SocketHandler implements Runnable {
             Scanner in = new Scanner(socket.getInputStream());
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
-            while (status.running()) { /* while (gameIsOn) */
-                /* String inputLine;
-                if(in.hasNextLine()) inputLine = in.nextLine();
-                else inputLine = null; */
-                /* if(inputLine.equals("quit")) {
-                    status.setGameIsRunning(false);
-                } else { */
-
+            while (status.running()) {
                     CoordsEvent event = (CoordsEvent) ois.readObject();
                     int[] userInput = new int[10];
                     userInput[0] = event.getX();
@@ -39,21 +32,7 @@ public class SocketHandler implements Runnable {
                     System.out.println("In socket handler");
                     controller.setUserInput(userInput);
                     controller.control();
-                    /* oos.writeObject(new WorkerSelectionEvent(null));
-                    oos.flush(); */
-                    /* String inputLine = in.nextLine(); */
-                    /* oos.writeObject(new WorkerSelectionEvent(null));
-                    oos.flush();
-                    SelectedWorkerEvent event = (SelectedWorkerEvent) ois.readObject();
-                    //Event e = (Event)ois.readObject();
-                    if (event.getX() == 5) {
-                        break;
-                    } else { */
-                /* oos.writeObject(new WorkerSelectionEvent(null));
-                oos.flush(); */
-                    /* } */
                 }
-// Chiudo gli stream e il socket
             in.close();
             oos.close();
             socket.close();

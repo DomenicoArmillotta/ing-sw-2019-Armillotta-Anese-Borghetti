@@ -1,11 +1,7 @@
 package it.polimi.ingsw.client;
 
-import it.polimi.ingsw.model.events.Event;
-import it.polimi.ingsw.model.events.WorkerSelectionEvent;
-
 import java.io.*;
 import java.net.Socket;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class SimpleListenerClient {

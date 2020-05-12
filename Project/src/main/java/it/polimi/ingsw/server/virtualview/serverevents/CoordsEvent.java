@@ -1,5 +1,7 @@
 package it.polimi.ingsw.server.virtualview.serverevents;
 
+import it.polimi.ingsw.server.controller.Controller;
+
 public class CoordsEvent extends ServerEvent {
     int x;
     int y;
@@ -7,7 +9,11 @@ public class CoordsEvent extends ServerEvent {
         this.x = x;
         this.y = y;
     }
-    public void serverEventMethod() {
-
+    public void serverEventMethod(Controller controller) {
+        int[] userInput = new int[2];
+        userInput[0] = x;
+        userInput[1] = y;
+        controller.setUserInput(userInput);
+        controller.control();
     }
 }

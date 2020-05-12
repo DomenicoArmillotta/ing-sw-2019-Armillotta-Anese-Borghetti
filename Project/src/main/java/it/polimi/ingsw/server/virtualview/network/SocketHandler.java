@@ -49,7 +49,8 @@ public class SocketHandler implements Runnable {
                 Node typeEventNode = document.getElementsByTagName("eventType").item(0);
                 Element typeNodeElement = (Element) typeEventNode;
                 ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent() ,document);
-                System.out.println(serverEvent);
+                /* System.out.println(serverEvent); */
+                serverEvent.serverEventMethod(controller);
                 }
             in.close();
             socket.close();

@@ -59,9 +59,11 @@ public class SocketHandler implements Runnable {
     protected ServerEvent returnCorrectServerEvent(String eventType,Document doc){
         if(eventType.equals("CoordsEvent")) {
             int x,y;
+            String clientID;
             x = Integer.parseInt(doc.getElementsByTagName("x").item(0).getTextContent());
             y = Integer.parseInt(doc.getElementsByTagName("y").item(0).getTextContent());
-            return new it.polimi.ingsw.server.virtualview.serverevents.CoordsEvent(x,y);
+            clientID = doc.getElementsByTagName("clientID").item(0).getTextContent();
+            if(clientID.equals("Marco")) return new it.polimi.ingsw.server.virtualview.serverevents.CoordsEvent(x,y);
         }
         if(eventType.equals("StringEvent")){
             String payload = doc.getElementsByTagName("payload").item(0).getTextContent();

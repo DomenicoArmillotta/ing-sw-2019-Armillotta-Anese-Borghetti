@@ -5,6 +5,7 @@ import it.polimi.ingsw.server.virtualview.listeners.NoUpdatesListener;
 
 public class EventsBuffer {
     EventBean lastEventBean;
+    boolean waiting;
 
     private static EventsBuffer instance;
 
@@ -25,5 +26,13 @@ public class EventsBuffer {
 
     public void flushBuffer() {
         lastEventBean = null;
+    }
+
+    public void setWaiting(boolean waiting) {
+        this.waiting = waiting;
+    }
+
+    public boolean isWaiting() {
+        return waiting;
     }
 }

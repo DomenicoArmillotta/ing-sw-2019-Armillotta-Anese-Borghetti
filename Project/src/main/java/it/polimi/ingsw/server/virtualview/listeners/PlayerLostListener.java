@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.virtualview.listeners;
 
 import it.polimi.ingsw.server.model.mvevents.actionevents.PlayerLostEvent;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 
 public class PlayerLostListener extends Listener {
 
@@ -14,6 +15,10 @@ public class PlayerLostListener extends Listener {
     }
 
     public void loseGame(PlayerLostEvent playerLostEvent) {
+        eventsBuffer.flushBuffer();
+        EventBean eventBean = playerLostEvent.eventMethod();
+        eventsBuffer.setLastEventBean(eventBean);
+        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 

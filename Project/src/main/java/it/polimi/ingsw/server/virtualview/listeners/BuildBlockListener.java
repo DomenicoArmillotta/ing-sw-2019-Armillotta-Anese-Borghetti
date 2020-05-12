@@ -15,7 +15,10 @@ public class BuildBlockListener extends Listener {
     }
 
     public void buildBlock(BuildBlockEvent buildBlockEvent) {
+        eventsBuffer.flushBuffer();
         EventBean eventBean = buildBlockEvent.eventMethod();
+        eventsBuffer.setLastEventBean(eventBean);
+        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 

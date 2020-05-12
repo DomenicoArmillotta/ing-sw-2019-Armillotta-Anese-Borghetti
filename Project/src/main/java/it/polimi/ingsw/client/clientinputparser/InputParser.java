@@ -9,9 +9,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 public class InputParser {
-    private Document document;
 
-    public ViewEvent retrunCorrectClientEvent() throws ParserConfigurationException {
+    public ViewEvent retrunCorrectClientEvent(Document document) throws ParserConfigurationException {
         /*
         mo devo parsare per davvero , document contiene le in formazioni della stringa già parsata;
         */
@@ -35,8 +34,8 @@ public class InputParser {
             return new PlayerWonViewEvent(winnerName);
         }
         if(document.getElementsByTagName("eventType").item(0).getTextContent().equals("WaitingForActionEvent")){
-            String winnerName = document.getElementsByTagName("winnerName").item(0).getTextContent();
-            return null;
+            //String winnerName = document.getElementsByTagName("winnerName").item(0).getTextContent();
+            return new WaitingForActionViewEvent(null);
         }
         if(document.getElementsByTagName("eventType").item(0).getTextContent().equals("WorkerMovementEvent")){
             int currX = Integer.parseInt(document.getElementsByTagName("currX").item(0).getTextContent());

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.virtualview.listeners;
 
 import it.polimi.ingsw.server.model.mvevents.actionevents.WorkerMovementEvent;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 
 public class WorkerMovementListener extends Listener {
 
@@ -14,6 +15,10 @@ public class WorkerMovementListener extends Listener {
     }
 
     public void workerMoved(WorkerMovementEvent workerMovementEvent) {
+        eventsBuffer.flushBuffer();
+        EventBean eventBean = workerMovementEvent.eventMethod();
+        eventsBuffer.setLastEventBean(eventBean);
+        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 

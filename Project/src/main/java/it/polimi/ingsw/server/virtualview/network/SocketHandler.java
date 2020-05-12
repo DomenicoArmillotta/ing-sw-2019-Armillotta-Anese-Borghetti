@@ -6,6 +6,7 @@ import it.polimi.ingsw.client.CoordsEvent;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.WorkerSelectionEventBean;
 import it.polimi.ingsw.server.virtualview.serverevents.ServerEvent;
 import it.polimi.ingsw.server.virtualview.serverevents.StringEvent;
 import org.w3c.dom.Document;
@@ -34,6 +35,11 @@ public class SocketHandler implements Runnable {
         this.actionExecutor = actionExecutor;
         this.eventsBuffer = EventsBuffer.instance();
         eventsBuffer.flushBuffer();
+        writingPhase = false;
+    }
+    public void switchPhase() {
+        if(writingPhase == false) writingPhase = true;
+        else writingPhase = false;
     }
     public void run() {
         ServerStatus status = new ServerStatus();
@@ -44,11 +50,11 @@ public class SocketHandler implements Runnable {
             PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
             /* DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder(); */
-            writingPhase = false;
+            /* eventsBuffer.setLastEventBean(new WorkerSelectionEventBean(2,3)); */
             while (status.running()) {
                 if(writingPhase) {
                     if(eventsBuffer.getLastEventBean() != null) {
-                        System.out.println("Sending bean...");
+                        System.out.println("Sending bean");
                         XmlMapper xmlMapper = (new XmlMapper());
                         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                         String toSend = xmlMapper.writeValueAsString(eventsBuffer.getLastEventBean());
@@ -58,8 +64,12 @@ public class SocketHandler implements Runnable {
                         System.out.println("");
                         printWriter.flush();
                         System.out.println("Flushed bean");
+                        if(eventsBuffer.isWaiting()) {
+                            switchPhase();
+                        }
                     }
                 } else {
+                    //System.out.println("Reading phase");
                     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                     DocumentBuilder db = dbf.newDocumentBuilder();
                     Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
@@ -68,6 +78,7 @@ public class SocketHandler implements Runnable {
                     ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent(), document);
                     /* System.out.println(serverEvent); */
                     serverEvent.serverEventMethod(controller);
+                    switchPhase();
                 }
             }
             in.close();

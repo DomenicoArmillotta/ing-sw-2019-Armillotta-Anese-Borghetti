@@ -1,4 +1,6 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
-abstract public class EventBean {
+import java.io.Serializable;
+
+abstract public class EventBean implements Serializable {
 }

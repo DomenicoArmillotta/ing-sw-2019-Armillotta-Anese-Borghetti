@@ -5,4 +5,7 @@ public class PlayerWonViewEvent extends ViewEvent {
     public PlayerWonViewEvent(String winnerName) {
         this.winnerName = winnerName;
     }
+    public boolean startWaiting() {
+        return false;
+    }
 }

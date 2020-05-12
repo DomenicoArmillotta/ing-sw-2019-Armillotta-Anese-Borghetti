@@ -15,7 +15,10 @@ public class NoUpdatesListener extends Listener {
     }
 
     public void noUpdates(NoUpdatesEvent noUpdatesEvent) {
+        eventsBuffer.flushBuffer();
         EventBean eventBean = noUpdatesEvent.eventMethod();
+        eventsBuffer.setLastEventBean(eventBean);
+        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 

@@ -12,4 +12,7 @@ public class WorkerMovementViewEvent extends ViewEvent {
         this.currX = currX;
         this.currY = currY;
     }
+    public boolean startWaiting() {
+        return false;
+    }
 }

@@ -7,4 +7,7 @@ public class BuildBlockViewEvent extends ViewEvent {
         this.blockX = blockX;
         this.blockY = blockY;
     }
+    public boolean startWaiting() {
+        return false;
+    }
 }

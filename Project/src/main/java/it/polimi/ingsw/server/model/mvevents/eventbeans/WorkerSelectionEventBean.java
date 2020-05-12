@@ -1,6 +1,8 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
-public class WorkerSelectionEventBean extends EventBean {
+import java.io.Serializable;
+
+public class WorkerSelectionEventBean extends EventBean implements Serializable {
     String eventType;
     int workerX;
     int workerY;
@@ -9,5 +11,29 @@ public class WorkerSelectionEventBean extends EventBean {
         eventType = "WorkerSelectionEvent";
         this.workerX = workerX;
         this.workerY = workerY;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+
+    public void setWorkerX(int workerX) {
+        this.workerX = workerX;
+    }
+
+    public void setWorkerY(int workerY) {
+        this.workerY = workerY;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public int getWorkerX() {
+        return workerX;
+    }
+
+    public int getWorkerY() {
+        return workerY;
     }
 }

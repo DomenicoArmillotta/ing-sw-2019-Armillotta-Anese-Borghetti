@@ -5,4 +5,7 @@ public class PlayerLostViewEvent extends ViewEvent {
     public PlayerLostViewEvent(String loserName) {
         this.loserName = loserName;
     }
+    public boolean startWaiting() {
+        return false;
+    }
 }

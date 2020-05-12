@@ -9,5 +9,8 @@ public class WaitingForActionViewEvent extends ViewEvent {
     public WaitingForActionViewEvent(List<Integer> coordinates) {
         this.coordinates = coordinates;
     }
+    public boolean startWaiting() {
+        return true;
+    }
 }
 

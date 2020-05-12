@@ -10,6 +10,7 @@ public class SimpleListenerClientTest {
     public static void main(String[] args) throws IOException {
         SimpleClient simpleListenerClient = new SimpleClient(Inet4Address.getLocalHost().getHostAddress(),1234);
         simpleListenerClient.setClientID("Marco");
+        simpleListenerClient.setCurrentPlayer("Marco");
         simpleListenerClient.startClient();
 
     }

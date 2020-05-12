@@ -18,8 +18,7 @@ public class WorkerSelectionListener extends Listener {
         eventsBuffer.flushBuffer();
         EventBean eventBean = workerSelectionEvent.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
-        /* flusho buffer */
-        /* scrivo nel buffer */
+        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 

@@ -8,4 +8,7 @@ public class WorkerSelectionViewEvent extends ViewEvent {
         this.workerX = workerX;
         this.workerY = workerY;
     }
+    public boolean startWaiting() {
+        return false;
+    }
 }

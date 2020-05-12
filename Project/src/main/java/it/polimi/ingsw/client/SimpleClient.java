@@ -22,11 +22,13 @@ public class SimpleClient {
         status.setGameIsRunning(true);
         Socket socket = new Socket(ip, port);
         System.out.println("Connection established");
-        ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-        ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+        /* ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream()); */
+        /* ObjectInputStream ois = new ObjectInputStream(socket.getInputStream()); */
         PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
         Scanner stdin = new Scanner(System.in);
+
         try {
+
             while (status.running()) {
                 String inputLine = stdin.next();
                 if(inputLine.equals("quit")) {
@@ -37,28 +39,37 @@ public class SimpleClient {
                             int x = stdin.nextInt();
                             if (stdin.hasNextInt()) {
                                 int y = stdin.nextInt();
+                                System.out.println("Read coords " + x + " " + y);
                                 XmlMapper xmlMapper = (new XmlMapper());
                                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                                 String toSend = xmlMapper.writeValueAsString(new CoordsEvent(x, y));
+                                toSend+="\n";
                                 printWriter.print(toSend);
+                                System.out.print(toSend);
+                                System.out.println("");
                                 printWriter.flush();
                                 System.out.println("Flushed coords " + x + " " + y);
                             }
                         }
                     } else if (inputLine.equals("string")) {
                         String stringInput = stdin.next();
+                        System.out.println("Read string "+stringInput);
                         XmlMapper xmlMapper = (new XmlMapper());
                         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION,true);
                         String toSend = xmlMapper.writeValueAsString(new StringEvent(stringInput));
+                        toSend+="\n";
                         printWriter.print(toSend);
+                        System.out.print(toSend);
+                        System.out.println("");
                         printWriter.flush();
                         System.out.println("Flushed string "+stringInput);
                     }
                 }
             }
         } finally {
-            oos.close();
-            ois.close();
+
+            /* oos.close(); */
+            /* ois.close(); */
             socket.close();
         }
     }

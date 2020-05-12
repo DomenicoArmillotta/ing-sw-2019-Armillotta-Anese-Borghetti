@@ -46,9 +46,10 @@ public class SocketHandler implements Runnable {
 
             while (status.running()) {
                 Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
-                Node typeEventNode = document.getElementsByTagName("typeEvent").item(0);
+                Node typeEventNode = document.getElementsByTagName("eventType").item(0);
                 Element typeNodeElement = (Element) typeEventNode;
                 ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent() ,document);
+                System.out.println(serverEvent);
                 }
             in.close();
             socket.close();

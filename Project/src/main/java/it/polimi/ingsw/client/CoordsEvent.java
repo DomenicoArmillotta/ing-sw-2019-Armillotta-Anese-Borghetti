@@ -6,6 +6,7 @@ public class CoordsEvent extends ClientEvent implements Serializable {
     int x;
     int y;
     public CoordsEvent(int x, int y) {
+        eventType = "CoordsEvent";
         this.x = x;
         this.y = y;
     }

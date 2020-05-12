@@ -2,7 +2,7 @@ package it.polimi.ingsw.server.virtualview.listeners;
 
 import it.polimi.ingsw.server.model.mvevents.actionevents.PlayerWonEvent;
 
-public class PlayerWonListener implements Listener {
+public class PlayerWonListener extends Listener {
 
     private static PlayerWonListener instance;
 

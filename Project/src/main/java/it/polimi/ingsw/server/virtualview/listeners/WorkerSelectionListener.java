@@ -3,7 +3,7 @@ package it.polimi.ingsw.server.virtualview.listeners;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WorkerSelectionEvent;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 
-public class WorkerSelectionListener implements Listener {
+public class WorkerSelectionListener extends Listener {
 
     private static WorkerSelectionListener instance;
 
@@ -15,7 +15,11 @@ public class WorkerSelectionListener implements Listener {
     }
 
     public void workerSelected(WorkerSelectionEvent workerSelectionEvent) {
+        eventsBuffer.flushBuffer();
         EventBean eventBean = workerSelectionEvent.eventMethod();
+        eventsBuffer.setLastEventBean(eventBean);
+        /* flusho buffer */
+        /* scrivo nel buffer */
         /* send event to clients */
     }
 

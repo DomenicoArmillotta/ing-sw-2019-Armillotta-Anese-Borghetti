@@ -2,7 +2,7 @@ package it.polimi.ingsw.server.virtualview.listeners;
 
 import it.polimi.ingsw.server.model.mvevents.actionevents.PlayerLostEvent;
 
-public class PlayerLostListener implements Listener {
+public class PlayerLostListener extends Listener {
 
     private static PlayerLostListener instance;
 

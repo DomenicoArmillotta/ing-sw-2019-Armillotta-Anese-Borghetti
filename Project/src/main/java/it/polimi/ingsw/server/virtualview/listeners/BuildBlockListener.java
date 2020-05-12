@@ -3,7 +3,7 @@ package it.polimi.ingsw.server.virtualview.listeners;
 import it.polimi.ingsw.server.model.mvevents.actionevents.BuildBlockEvent;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 
-public class BuildBlockListener implements Listener {
+public class BuildBlockListener extends Listener {
 
     private static BuildBlockListener instance;
 

@@ -2,7 +2,7 @@ package it.polimi.ingsw.server.virtualview.listeners;
 
 import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
 
-public class WaitingForActionListener implements Listener {
+public class WaitingForActionListener extends Listener {
 
     private static WaitingForActionListener instance;
 

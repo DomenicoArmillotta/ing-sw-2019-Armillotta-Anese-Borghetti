@@ -1,11 +1,23 @@
 package it.polimi.ingsw.server.virtualview.network;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import it.polimi.ingsw.client.CoordsEvent;
 import it.polimi.ingsw.server.controller.Controller;
+import it.polimi.ingsw.server.virtualview.serverevents.ServerEvent;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.StringReader;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -19,25 +31,39 @@ public class SocketHandler implements Runnable {
     public void run() {
         ServerStatus status = new ServerStatus();
         status.setGameIsRunning(true);
+
         try {
+            /*
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             Scanner in = new Scanner(socket.getInputStream());
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            */
+
+            Scanner in = new Scanner(socket.getInputStream());
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+
 
             while (status.running()) {
-                    CoordsEvent event = (CoordsEvent) ois.readObject();
-                    int[] userInput = new int[10];
-                    userInput[0] = event.getX();
-                    userInput[1] = event.getY();
-                    System.out.println("In socket handler");
-                    controller.setUserInput(userInput);
-                    controller.control();
+                Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
+                Node typeEventNode = document.getElementsByTagName("typeEvent").item(0);
+                Element typeNodeElement = (Element) typeEventNode;
+                ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent() ,document);
                 }
             in.close();
-            oos.close();
             socket.close();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException | ParserConfigurationException | SAXException e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    protected ServerEvent returnCorrectServerEvent(String eventType,Document doc){
+        if(eventType.equals("CoordsEvent")) {
+            int x,y;
+            x = Integer.parseInt(doc.getElementsByTagName("x").item(0).getTextContent());
+            y = Integer.parseInt(doc.getElementsByTagName("y").item(0).getTextContent());
+            return new it.polimi.ingsw.server.virtualview.serverevents.CoordsEvent(x,y);
+        }
+        return null;
     }
 }

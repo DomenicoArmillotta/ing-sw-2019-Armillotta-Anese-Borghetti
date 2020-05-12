@@ -4,6 +4,7 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import it.polimi.ingsw.client.CoordsEvent;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.virtualview.serverevents.ServerEvent;
+import it.polimi.ingsw.server.virtualview.serverevents.StringEvent;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -33,11 +34,7 @@ public class SocketHandler implements Runnable {
         status.setGameIsRunning(true);
 
         try {
-            /*
-            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-            Scanner in = new Scanner(socket.getInputStream());
-            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
-            */
+
 
             Scanner in = new Scanner(socket.getInputStream());
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -65,6 +62,10 @@ public class SocketHandler implements Runnable {
             x = Integer.parseInt(doc.getElementsByTagName("x").item(0).getTextContent());
             y = Integer.parseInt(doc.getElementsByTagName("y").item(0).getTextContent());
             return new it.polimi.ingsw.server.virtualview.serverevents.CoordsEvent(x,y);
+        }
+        if(eventType.equals("StringEvent")){
+            String payload = doc.getElementsByTagName("payload").item(0).getTextContent();
+            return new StringEvent(payload);
         }
         return null;
     }

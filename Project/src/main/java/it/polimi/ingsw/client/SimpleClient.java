@@ -4,6 +4,8 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 
 import java.io.*;
+import java.net.Inet4Address;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.Scanner;
 

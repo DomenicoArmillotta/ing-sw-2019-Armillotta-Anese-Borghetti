@@ -2,7 +2,7 @@ package it.polimi.ingsw.server.virtualview.listeners;
 
 import it.polimi.ingsw.server.model.mvevents.actionevents.WorkerMovementEvent;
 
-public class WorkerMovementListener implements Listener {
+public class WorkerMovementListener extends Listener {
 
     private static WorkerMovementListener instance;
 

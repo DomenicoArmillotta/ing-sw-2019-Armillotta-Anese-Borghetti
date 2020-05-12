@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.virtualview.network;
 
 import it.polimi.ingsw.server.controller.Controller;
+import it.polimi.ingsw.server.model.ActionExecutor;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -15,6 +16,7 @@ public class NetworkHandler {
     }
     public void startServer() {
         Controller controller = new Controller();
+        ActionExecutor executorPointer = ActionExecutor.instance();
         ExecutorService executor = Executors.newCachedThreadPool();
         ServerSocket serverSocket;
         try {
@@ -27,7 +29,7 @@ public class NetworkHandler {
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
-                executor.submit(new SocketHandler(socket, controller));
+                executor.submit(new SocketHandler(socket, controller, executorPointer));
             } catch(IOException e) {
                 break; // Entrerei qui se serverSocket venisse chiuso
             }

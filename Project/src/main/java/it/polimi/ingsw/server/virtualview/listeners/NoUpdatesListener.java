@@ -3,7 +3,7 @@ package it.polimi.ingsw.server.virtualview.listeners;
 import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 
-public class NoUpdatesListener implements Listener {
+public class NoUpdatesListener extends Listener {
 
     private static NoUpdatesListener instance;
 

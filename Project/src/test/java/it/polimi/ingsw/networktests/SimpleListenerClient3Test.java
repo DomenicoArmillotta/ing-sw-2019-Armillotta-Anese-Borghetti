@@ -5,11 +5,11 @@ import it.polimi.ingsw.client.SimpleClient;
 import java.io.IOException;
 import java.net.Inet4Address;
 
-public class SimpleListenerClient2Test {
+public class SimpleListenerClient3Test {
     //@Test
     public static void main(String[] args) throws IOException {
         SimpleClient simpleListenerClient = new SimpleClient(Inet4Address.getLocalHost().getHostAddress(),1234);
-        simpleListenerClient.setClientID("Pietro");
+        simpleListenerClient.setClientID("Domenico");
         simpleListenerClient.startClient();
 
     }

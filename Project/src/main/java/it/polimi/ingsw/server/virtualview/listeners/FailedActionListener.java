@@ -3,7 +3,7 @@ package it.polimi.ingsw.server.virtualview.listeners;
 import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 
-public class FailedActionListener implements Listener {
+public class FailedActionListener extends Listener {
 
     private static FailedActionListener instance;
 

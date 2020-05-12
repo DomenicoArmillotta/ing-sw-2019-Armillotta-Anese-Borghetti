@@ -11,14 +11,20 @@ public class SimpleClient {
 
     private String ip;
     private int port;
+    ClientStatus status;
 
     public SimpleClient(String ip, int port) {
+        ClientStatus status = new ClientStatus();
+        this.status = status;
         this.ip = ip;
         this.port = port;
     }
 
+    public void setClientID(String clientID) {
+        status.setClientID(clientID);
+    }
+
     public void startClient() throws IOException {
-        ClientStatus status = new ClientStatus();
         status.setGameIsRunning(true);
         Socket socket = new Socket(ip, port);
         System.out.println("Connection established");
@@ -42,7 +48,7 @@ public class SimpleClient {
                                 System.out.println("Read coords " + x + " " + y);
                                 XmlMapper xmlMapper = (new XmlMapper());
                                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-                                String toSend = xmlMapper.writeValueAsString(new CoordsEvent(x, y));
+                                String toSend = xmlMapper.writeValueAsString(new CoordsEvent(x, y, status.getClientID()));
                                 toSend+="\n";
                                 printWriter.print(toSend);
                                 System.out.print(toSend);

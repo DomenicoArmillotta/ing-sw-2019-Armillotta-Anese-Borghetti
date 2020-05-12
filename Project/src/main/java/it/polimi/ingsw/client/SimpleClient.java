@@ -64,7 +64,7 @@ public class SimpleClient {
         try {
             while (status.running()) {
                 if(writingPhase) {
-                    System.out.println("Writing phase");
+                    /* System.out.println("Writing phase"); */
                     String inputLine = stdin.next();
                     if(inputLine.equals("quit")) {
                         status.setGameIsRunning(false);

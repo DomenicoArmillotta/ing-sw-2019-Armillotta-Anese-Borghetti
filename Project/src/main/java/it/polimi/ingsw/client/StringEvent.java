@@ -9,4 +9,8 @@ public class StringEvent extends ClientEvent implements Serializable {
         eventType = "CoordsEvent";
         this.payload = payload;
     }
+
+    public String getPayload() {
+        return payload;
+    }
 }

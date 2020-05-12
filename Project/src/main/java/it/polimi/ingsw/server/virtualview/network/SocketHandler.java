@@ -34,8 +34,6 @@ public class SocketHandler implements Runnable {
         status.setGameIsRunning(true);
 
         try {
-
-
             Scanner in = new Scanner(socket.getInputStream());
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();

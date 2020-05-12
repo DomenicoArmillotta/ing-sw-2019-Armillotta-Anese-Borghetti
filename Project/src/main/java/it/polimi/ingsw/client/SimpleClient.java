@@ -2,6 +2,7 @@ package it.polimi.ingsw.client;
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import it.polimi.ingsw.client.clientinputparser.InputParser;
 
 import java.io.*;
 import java.net.Inet4Address;
@@ -14,12 +15,14 @@ public class SimpleClient {
     private String ip;
     private int port;
     ClientStatus status;
+    private InputParser inputParser = new InputParser();
 
     public SimpleClient(String ip, int port) {
         ClientStatus status = new ClientStatus();
         this.status = status;
         this.ip = ip;
         this.port = port;
+
     }
 
     public void setClientID(String clientID) {
@@ -36,7 +39,6 @@ public class SimpleClient {
         Scanner stdin = new Scanner(System.in);
 
         try {
-
             while (status.running()) {
                 String inputLine = stdin.next();
                 if(inputLine.equals("quit")) {

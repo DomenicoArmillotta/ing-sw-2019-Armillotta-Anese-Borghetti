@@ -12,6 +12,5 @@ public class SimpleListenerClientTest {
         simpleListenerClient.setClientID("Marco");
         simpleListenerClient.setCurrentPlayer("Marco");
         simpleListenerClient.startClient();
-
     }
 }

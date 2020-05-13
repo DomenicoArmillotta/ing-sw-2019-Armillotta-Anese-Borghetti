@@ -19,6 +19,8 @@ public class NetworkHandler {
         ActionExecutor executorPointer = ActionExecutor.instance();
         ExecutorService executor = Executors.newCachedThreadPool();
         ServerSocket serverSocket;
+        SocketHandlerOutput socketHandlerOutput = SocketHandlerOutput.instance();
+        executor.submit(socketHandlerOutput);
         try {
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {
@@ -29,7 +31,10 @@ public class NetworkHandler {
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
-                executor.submit(new SocketHandler(socket, controller, executorPointer));
+                /* executor.submit(new SocketHandlerInput(socket, controller, executorPointer)); */
+                executor.submit(new SocketHandlerInput(socket, controller, executorPointer));
+                socketHandlerOutput.addSocketToList(socket);
+                /* addSocketToList(socket); */
             } catch(IOException e) {
                 break; // Entrerei qui se serverSocket venisse chiuso
             }

@@ -1,11 +1,13 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
+import it.polimi.ingsw.server.model.mvevents.actionevents.Coordinates;
+
 import java.util.List;
 
 public class WaitingForActionEventBean extends EventBean {
     String eventType;
-    List<Integer> coordinates;
+    List<Coordinates> coordinates;
 
-    public WaitingForActionEventBean(List<Integer> coordinates) {
+    public WaitingForActionEventBean(List<Coordinates> coordinates) {
         eventType = "WaitingForActionEvent";
         this.coordinates = coordinates;
     }
@@ -14,7 +16,7 @@ public class WaitingForActionEventBean extends EventBean {
         this.eventType = eventType;
     }
 
-    public void setCoordinates(List<Integer> coordinates) {
+    public void setCoordinates(List<Coordinates> coordinates) {
         this.coordinates = coordinates;
     }
 
@@ -22,7 +24,7 @@ public class WaitingForActionEventBean extends EventBean {
         return eventType;
     }
 
-    public List<Integer> getCoordinates() {
+    public List<Coordinates> getCoordinates() {
         return coordinates;
     }
 }

@@ -74,9 +74,7 @@ public class SocketHandler implements Runnable {
                     DocumentBuilder db = dbf.newDocumentBuilder();
                     Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
                     Node typeEventNode = document.getElementsByTagName("eventType").item(0);
-                    Element typeNodeElement = (Element) typeEventNode;
                     ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent(), document);
-                    /* System.out.println(serverEvent); */
                     serverEvent.serverEventMethod(controller);
                     switchPhase();
                 }

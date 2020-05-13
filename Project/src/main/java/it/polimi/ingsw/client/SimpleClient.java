@@ -119,9 +119,6 @@ public class SimpleClient {
         } catch (SAXException e) {
             e.printStackTrace();
         } finally {
-
-            /* oos.close(); */
-            /* ois.close(); */
             socket.close();
         }
     }

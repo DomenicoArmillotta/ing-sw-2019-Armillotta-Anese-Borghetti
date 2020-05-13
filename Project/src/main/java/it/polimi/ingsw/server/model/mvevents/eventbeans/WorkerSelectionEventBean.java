@@ -8,7 +8,7 @@ public class WorkerSelectionEventBean extends EventBean implements Serializable 
     int workerY;
 
     public WorkerSelectionEventBean(int workerX, int workerY){
-        eventType = "WorkerSelectionEvent";
+        eventType = "WorkerSelectionEvent"; /* non qui ma nel parser */
         this.workerX = workerX;
         this.workerY = workerY;
     }

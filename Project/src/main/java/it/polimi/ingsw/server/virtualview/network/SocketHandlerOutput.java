@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.virtualview.network;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import java.io.*;
@@ -40,31 +41,34 @@ public class SocketHandlerOutput implements Runnable {
     public void run() {
         ServerStatus status = new ServerStatus();
         status.setGameIsRunning(true);
-
         try {
             this.eventsBuffer = EventsBuffer.instance();
             while (status.running()) {
-                if(eventsBuffer.getLastEventBean() != null) {
-                    System.out.println("Sending bean");
-                    XmlMapper xmlMapper = (new XmlMapper());
-                    xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-                    String toSend = xmlMapper.writeValueAsString(eventsBuffer.getLastEventBean());
-                    toSend+="\n";
-                    for(int i = 0; i < printWriterList.size(); i++) {
-                        printWriterList.get(i).print(toSend);
-                        printWriterList.get(i).flush();
-                        System.out.print(toSend);
-                        System.out.println("");
-                        System.out.println("Flushed bean");
-                    }
-                    eventsBuffer.flushBuffer();
-                }
+                sendingBeans();
             }
             for(int i = 0; i < socketList.size(); i++) {
                 socketList.get(i).close();
             }
         } catch (IOException e) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    public synchronized void sendingBeans() throws JsonProcessingException {
+        if(eventsBuffer.getLastEventBean() != null) {
+            System.out.println("Sending bean");
+            XmlMapper xmlMapper = (new XmlMapper());
+            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+            String toSend = xmlMapper.writeValueAsString(eventsBuffer.getLastEventBean());
+            toSend+="\n";
+            for(int i = 0; i < printWriterList.size(); i++) {
+                printWriterList.get(i).print(toSend);
+                printWriterList.get(i).flush();
+                System.out.print(toSend);
+                System.out.println("");
+                System.out.println("Flushed bean");
+            }
+            eventsBuffer.flushBuffer();
         }
     }
 

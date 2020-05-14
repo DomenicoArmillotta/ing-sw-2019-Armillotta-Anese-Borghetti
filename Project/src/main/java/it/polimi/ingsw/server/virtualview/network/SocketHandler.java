@@ -64,9 +64,9 @@ public class SocketHandler implements Runnable {
                         System.out.println("");
                         printWriter.flush();
                         System.out.println("Flushed bean");
-                        if(eventsBuffer.isWaiting()) {
+                        /* if(eventsBuffer.isWaiting()) {
                             switchPhase();
-                        }
+                        } */
                     }
                 } else {
                     //System.out.println("Reading phase");

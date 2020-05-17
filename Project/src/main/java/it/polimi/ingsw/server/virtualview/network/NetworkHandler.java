@@ -31,8 +31,11 @@ public class NetworkHandler {
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
-                /* executor.submit(new SocketHandlerInput(socket, controller, executorPointer)); */
+                    //System.out.println("New connection Input");
                 executor.submit(new SocketHandlerInput(socket, controller, executorPointer));
+                //socket = serverSocket.accept();
+                    /* executor.submit(new SocketHandlerInput(socket, controller, executorPointer)); */
+                    //System.out.println("New connection Output, socket: "+socket);
                 socketHandlerOutput.addSocketToList(socket);
                 /* addSocketToList(socket); */
             } catch(IOException e) {

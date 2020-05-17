@@ -15,7 +15,6 @@ public class WorkerMovementListener extends Listener {
     }
 
     public void workerMoved(WorkerMovementEvent workerMovementEvent) {
-        eventsBuffer.flushBuffer();
         EventBean eventBean = workerMovementEvent.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
         eventsBuffer.setWaiting(false);

@@ -43,6 +43,7 @@ public class SocketHandlerOutput implements Runnable {
         status.setGameIsRunning(true);
         try {
             this.eventsBuffer = EventsBuffer.instance();
+
             while (status.running()) {
                 sendingBeans();
             }
@@ -55,8 +56,8 @@ public class SocketHandlerOutput implements Runnable {
     }
 
     public synchronized void sendingBeans() throws JsonProcessingException {
-        if(eventsBuffer.getLastEventBean() != null) {
-            System.out.println("Sending bean");
+
+        if(!eventsBuffer.emptyBuffer()) {
             XmlMapper xmlMapper = (new XmlMapper());
             xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
             String toSend = xmlMapper.writeValueAsString(eventsBuffer.getLastEventBean());
@@ -64,11 +65,9 @@ public class SocketHandlerOutput implements Runnable {
             for(int i = 0; i < printWriterList.size(); i++) {
                 printWriterList.get(i).print(toSend);
                 printWriterList.get(i).flush();
-                System.out.print(toSend);
-                System.out.println("");
-                System.out.println("Flushed bean");
+                System.out.print("Flushed bean: "+toSend);
             }
-            eventsBuffer.flushBuffer();
+            //eventsBuffer.flushBuffer();
         }
     }
 

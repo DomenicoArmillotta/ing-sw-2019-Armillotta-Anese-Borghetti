@@ -2,6 +2,7 @@ package it.polimi.ingsw.server.model.powertree;
 import it.polimi.ingsw.server.model.Level;
 import it.polimi.ingsw.server.model.Worker;
 import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
+import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.PlayerWonEvent;
 
 /* Player wins if his Worker has gone up one level and is now at TOP level */
@@ -15,7 +16,7 @@ public class WinCondition extends Power {
             getPlayerWonListener().winGame(new PlayerWonEvent(super.getExecutorPointer().getCurrentPlayer()));
             return 0;
         } else {
-            getFailedActionListener().actionFailed(new FailedActionEvent(this));
+            getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
             return 1;
         }
     }

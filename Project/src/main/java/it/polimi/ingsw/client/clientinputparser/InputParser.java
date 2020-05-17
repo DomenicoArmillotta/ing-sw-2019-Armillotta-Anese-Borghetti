@@ -19,8 +19,8 @@ public class InputParser {
         */
 
         if(document.getDocumentElement().getTagName().equals("BuildBlockEventBean")){
-            int x = Integer.parseInt(document.getElementsByTagName("x").item(0).getTextContent());
-            int y = Integer.parseInt(document.getElementsByTagName("y").item(0).getTextContent());
+            int x = Integer.parseInt(document.getElementsByTagName("blockX").item(0).getTextContent());
+            int y = Integer.parseInt(document.getElementsByTagName("blockY").item(0).getTextContent());
             return new BuildBlockViewEvent(x,y);
         }
         if(document.getDocumentElement().getTagName().equals("FailedActionEventBean")){

@@ -3,6 +3,7 @@ package it.polimi.ingsw.client.viewevents;
 public class BuildBlockViewEvent extends ViewEvent {
     int blockX;
     int blockY;
+    /* aggiungere livello */
     public BuildBlockViewEvent(int blockX, int blockY) {
         this.blockX = blockX;
         this.blockY = blockY;

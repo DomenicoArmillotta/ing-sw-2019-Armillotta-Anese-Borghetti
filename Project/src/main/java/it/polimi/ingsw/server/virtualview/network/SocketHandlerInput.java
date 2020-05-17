@@ -2,6 +2,8 @@ package it.polimi.ingsw.server.virtualview.network;
 
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.WorkerSelectionEventBean;
 import it.polimi.ingsw.server.virtualview.serverevents.ServerEvent;
 import it.polimi.ingsw.server.virtualview.serverevents.StringEvent;
 import org.w3c.dom.Document;
@@ -37,16 +39,18 @@ public class SocketHandlerInput implements Runnable {
 
         try {
             Scanner in = new Scanner(socket.getInputStream());
-            PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
 
             while (status.running()) {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
-                Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
+                String userInput = in.nextLine();
+                StringReader sr = new StringReader(userInput);
+                InputSource is = new InputSource(sr);
+                Document document = db.parse(is);
                 Node typeEventNode = document.getElementsByTagName("eventType").item(0);
-                /* Element typeNodeElement = (Element) typeEventNode; */
                 ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent(), document);
                 serverEvent.serverEventMethod(controller);
+                System.out.println(serverEvent);
             }
             in.close();
             socket.close();
@@ -62,7 +66,7 @@ public class SocketHandlerInput implements Runnable {
             x = Integer.parseInt(doc.getElementsByTagName("x").item(0).getTextContent());
             y = Integer.parseInt(doc.getElementsByTagName("y").item(0).getTextContent());
             clientID = doc.getElementsByTagName("clientID").item(0).getTextContent();
-            if(clientID.equals(actionExecutor.getCurrentPlayer().getName())) return new it.polimi.ingsw.server.virtualview.serverevents.CoordsEvent(x,y);
+            return new it.polimi.ingsw.server.virtualview.serverevents.CoordsEvent(x,y);
         }
         if(eventType.equals("StringEvent")){
             String payload = doc.getElementsByTagName("payload").item(0).getTextContent();

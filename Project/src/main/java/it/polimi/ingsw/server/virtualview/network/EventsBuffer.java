@@ -3,8 +3,11 @@ package it.polimi.ingsw.server.virtualview.network;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 import it.polimi.ingsw.server.virtualview.listeners.NoUpdatesListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventsBuffer {
-    EventBean lastEventBean;
+    List<EventBean> eventBeans;
     boolean waiting;
 
     private static EventsBuffer instance;
@@ -16,16 +19,29 @@ public class EventsBuffer {
         return instance;
     }
 
+    private EventsBuffer() {
+        List<EventBean> eventBeans = new ArrayList<>();
+        this.eventBeans = eventBeans;
+    }
+
     public void setLastEventBean(EventBean lastEventBean) {
-        this.lastEventBean = lastEventBean;
+        eventBeans.add(0, lastEventBean);
     }
 
     public EventBean getLastEventBean() {
+        EventBean lastEventBean = eventBeans.get(eventBeans.size()-1);
+        eventBeans.remove(eventBeans.size()-1);
         return lastEventBean;
     }
 
+    public boolean emptyBuffer() {
+        if(eventBeans.size() == 0)
+            return true;
+        else return false;
+    }
+
     public void flushBuffer() {
-        lastEventBean = null;
+        eventBeans.clear();
     }
 
     public void setWaiting(boolean waiting) {

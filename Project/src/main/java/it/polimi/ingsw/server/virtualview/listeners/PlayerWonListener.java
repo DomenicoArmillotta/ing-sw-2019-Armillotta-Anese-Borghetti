@@ -15,7 +15,6 @@ public class PlayerWonListener extends Listener {
     }
 
     public void winGame(PlayerWonEvent playerWonEvent) {
-        eventsBuffer.flushBuffer();
         EventBean eventBean = playerWonEvent.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
         eventsBuffer.setWaiting(false);

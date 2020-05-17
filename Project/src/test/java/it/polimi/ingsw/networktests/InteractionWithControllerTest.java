@@ -28,14 +28,14 @@ public class InteractionWithControllerTest {
         gameMaster.createGodList();
         gameMaster.createActionExecutor();
         GodCardsDeck godCardsDeck = new GodCardsDeck();
-        player1.setPlayerGod(godCardsDeck.createGodCard(God.APOLLO));
+        player1.setPlayerGod(godCardsDeck.createGodCard(God.MORTAL));
         player2.setPlayerGod(godCardsDeck.createGodCard(God.DEMETER));
         player3.setPlayerGod(godCardsDeck.createGodCard(God.PAN));
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
         player1.workersSetup(0, 0, 1, 1);
-        player2.workersSetup(0, 1, 2, 1);
+        player2.workersSetup(4, 1, 2, 1);
         player3.workersSetup(1, 0, 4, 4);
         actionExecutor.getNextPower().doAction(null);
         NetworkHandler networkHandler = new NetworkHandler(1234);

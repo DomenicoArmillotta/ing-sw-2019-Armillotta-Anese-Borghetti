@@ -2,28 +2,30 @@ package it.polimi.ingsw.client.proxymodel;
 
 public class WorkerClient {
     private int color;
-    private int x;
-    private int y;
-    private char symbol;
+    private Coords position;
 
-    public void setX(int x) {
-        this.x = x;
+    public char getGiovatore() {
+        return giovatore;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public void setGiovatore(char giovatore) {
+        this.giovatore = giovatore;
     }
+
+    private char giovatore;
+    private final char symbol='@';
+
 
     public int getColor() {
         return color;
     }
 
-    public int getX() {
-        return x;
+    public Coords getPosition() {
+        return position;
     }
 
-    public int getY() {
-        return y;
+    public void setPosition(Coords position) {
+        this.position = position;
     }
 
     public char getSymbol() {

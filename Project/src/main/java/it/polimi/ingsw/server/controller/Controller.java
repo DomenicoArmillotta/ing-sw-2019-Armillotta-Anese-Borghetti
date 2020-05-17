@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.controller;
 
 import it.polimi.ingsw.server.model.ActionExecutor;
+import it.polimi.ingsw.server.virtualview.network.VvLobby;
 
 public class Controller {
     private int[] userInput;
@@ -18,6 +19,21 @@ public class Controller {
         while(returnValue == 1) {
             returnValue = executorPointer.getNextPower().doAction(null);
             System.out.println("Return value: "+returnValue);
+        }
+    }
+    public  int loginControl(String nickName){
+        VvLobby vvLobby = VvLobby.instance();
+        if(vvLobby.getPlayers().isEmpty()) {
+            vvLobby.setPartyOwner(nickName);
+            vvLobby.setPlayer(nickName);
+            return 1;
+            /*il nick è gia preso */
+        }else
+        if(vvLobby.getPlayers().contains(nickName))
+            return 0;
+        else {
+            vvLobby.setPlayer(nickName);
+            return -1;
         }
     }
 }

@@ -77,7 +77,7 @@ public class SocketHandlerInput implements Runnable {
     }
 
     protected ServerEvent returnCorrectServerEvent(String eventType,Document doc){
-        if(eventType.equals("CoordsEvent")) {
+        if(doc.getDocumentElement().getTagName().equals("CoordsEvent")) {
             int x,y;
             String clientID;
             x = Integer.parseInt(doc.getElementsByTagName("x").item(0).getTextContent());
@@ -86,12 +86,12 @@ public class SocketHandlerInput implements Runnable {
             return new it.polimi.ingsw.server.virtualview.serverevents.CoordsEvent(x,y);
         }
 
-        if(eventType.equals("StringEvent")){
+        if(doc.getDocumentElement().getTagName().equals("StringEvent")){
             String payload = doc.getElementsByTagName("payload").item(0).getTextContent();
             return new StringEvent(payload);
         }
 
-        if(eventType.equals("LoginEvent")){
+        if(doc.getDocumentElement().getTagName().equals("LoginEvent")){
             String payload = doc.getElementsByTagName("payload").item(0).getTextContent();
             return new LoginEvent(payload);
         }

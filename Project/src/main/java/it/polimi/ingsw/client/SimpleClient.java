@@ -4,7 +4,9 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import it.polimi.ingsw.client.clientinputparser.InputParser;
 import it.polimi.ingsw.client.viewevents.ViewEvent;
+import it.polimi.ingsw.server.virtualview.serverevents.ServerEvent;
 import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -62,6 +64,36 @@ public class SimpleClient {
         Scanner stdin = new Scanner(System.in);
 
         try {
+            while(!status.running()) {
+                String inputLine = stdin.next();
+                if(inputLine.equals("quit")) {
+                    status.setGameIsRunning(false);
+                } else {
+                    if (inputLine.equals("coords")) {
+                        if (stdin.hasNextInt()) {
+                            int x = stdin.nextInt();
+                            if (stdin.hasNextInt()) {
+                                int y = stdin.nextInt();
+                                System.out.println("Read coords " + x + " " + y);
+                                XmlMapper xmlMapper = (new XmlMapper());
+                                xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                                String toSend = xmlMapper.writeValueAsString(new CoordsEvent(x, y, status.getClientID()));
+                                toSend += "\n";
+                                printWriter.print(toSend);
+                                System.out.print(toSend);
+                                System.out.println("");
+                                printWriter.flush();
+                                System.out.println("Flushed coords " + x + " " + y);
+                                switchPhase();
+                            }
+                        }
+                    } else if (inputLine.equals("start")) {
+                        status.setGameIsRunning(true);
+                    }
+                }
+                /*login event stringa*/
+            }
+
             while (status.running()) {
                 if(writingPhase) {
                     /* System.out.println("Writing phase"); */

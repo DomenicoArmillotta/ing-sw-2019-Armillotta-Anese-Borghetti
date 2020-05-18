@@ -36,7 +36,7 @@ public class SocketHandlerInput implements Runnable {
 
     public void run() {
         ServerStatus status = new ServerStatus();
-        status.setGameIsRunning(true);
+        status.setGameIsRunning(false);
 
         try {
             Scanner in = new Scanner(socket.getInputStream());
@@ -45,13 +45,15 @@ public class SocketHandlerInput implements Runnable {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 String userInput = in.nextLine();
+                System.out.println(userInput);
                 StringReader sr = new StringReader(userInput);
                 InputSource is = new InputSource(sr);
                 Document document = db.parse(is);
                 Node typeEventNode = document.getElementsByTagName("eventType").item(0);
                 ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent(), document);
-                serverEvent.serverEventMethod(controller);
                 System.out.println(serverEvent);
+                serverEvent.serverEventMethod(controller);
+                System.out.println("Done");
                 /*login event stringa*/
             }
 
@@ -75,7 +77,7 @@ public class SocketHandlerInput implements Runnable {
     }
 
     protected ServerEvent returnCorrectServerEvent(String eventType,Document doc){
-        if(eventType.equals("CoordsEvent")) {
+        if(doc.getDocumentElement().getTagName().equals("CoordsEvent")) {
             int x,y;
             String clientID;
             x = Integer.parseInt(doc.getElementsByTagName("x").item(0).getTextContent());
@@ -84,12 +86,12 @@ public class SocketHandlerInput implements Runnable {
             return new it.polimi.ingsw.server.virtualview.serverevents.CoordsEvent(x,y);
         }
 
-        if(eventType.equals("StringEvent")){
+        if(doc.getDocumentElement().getTagName().equals("StringEvent")){
             String payload = doc.getElementsByTagName("payload").item(0).getTextContent();
             return new StringEvent(payload);
         }
 
-        if(eventType.equals("LoginEvent")){
+        if(doc.getDocumentElement().getTagName().equals("LoginEvent")){
             String payload = doc.getElementsByTagName("payload").item(0).getTextContent();
             return new LoginEvent(payload);
         }

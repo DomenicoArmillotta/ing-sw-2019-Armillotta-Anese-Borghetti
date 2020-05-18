@@ -34,4 +34,5 @@ public class VvLobby {
     public void setPartyOwner(String partyOwner) {
         this.partyOwner = partyOwner;
     }
+
 }

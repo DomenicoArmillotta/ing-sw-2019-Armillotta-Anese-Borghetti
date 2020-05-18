@@ -21,19 +21,18 @@ public class Controller {
             System.out.println("Return value: "+returnValue);
         }
     }
-    public  int loginControl(String nickName){
+    public int loginControl(String nickName){
         VvLobby vvLobby = VvLobby.instance();
         if(vvLobby.getPlayers().isEmpty()) {
             vvLobby.setPartyOwner(nickName);
-            vvLobby.setPlayer(nickName);
-            return 1;
-            /*il nick è gia preso */
         }else
-        if(vvLobby.getPlayers().contains(nickName))
+        if(!vvLobby.getPlayers().isEmpty() && vvLobby.getPlayers().contains(nickName))
             return 0;
-        else {
-            vvLobby.setPlayer(nickName);
-            return -1;
-        }
+        vvLobby.setPlayer(nickName);
+        return 1;
+    }
+
+    public void startGameControl(){
+
     }
 }

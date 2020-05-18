@@ -7,6 +7,7 @@ public class StringEvent extends ServerEvent {
     public StringEvent(String userInput) {
         this.userInput = userInput;
     }
+
     public void serverEventMethod(Controller controller) {
         /* int result = controller.playerLogin(userInput); result: 0 se il nickname esiste già,
         1 se il nickname non esiste e il player non è il primo, 2 se il nick non esiste

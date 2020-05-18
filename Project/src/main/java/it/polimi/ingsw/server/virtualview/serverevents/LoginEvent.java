@@ -6,6 +6,7 @@ import it.polimi.ingsw.server.model.mvevents.eventbeans.CorrectLoginPartyOwnerEv
 import it.polimi.ingsw.server.model.mvevents.eventbeans.GenericLoginFailureEvent;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.TakenNickNameEvent;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
+import it.polimi.ingsw.server.virtualview.network.VvLobby;
 
 public class LoginEvent extends ServerEvent {
     private String payload;
@@ -20,7 +21,7 @@ public class LoginEvent extends ServerEvent {
         /* se uno è party-owner*/
         EventsBuffer eventsBuffer = EventsBuffer.instance();
         if(controllerReturn == 1)
-            eventsBuffer.setLastEventBean(new CorrectLoginPartyOwnerEvent(payload));
+            eventsBuffer.setLastEventBean(new CorrectLoginPartyOwnerEvent(VvLobby.instance().getPartyOwner(),payload));
         else
         if(controllerReturn == 0)
             eventsBuffer.setLastEventBean(new TakenNickNameEvent(payload));

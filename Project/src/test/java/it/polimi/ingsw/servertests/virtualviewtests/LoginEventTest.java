@@ -29,13 +29,11 @@ public class LoginEventTest {
         VvLobby vvLobby = VvLobby.instance();
         String nickName = "Pietro";
         LoginEvent loginEvent = new LoginEvent(nickName);
-        assertEquals(1,dummyController.loginControl(nickName));
         loginEvent.serverEventMethod(dummyController);
         assertNotNull(dummyEventBuffer.getLastEventBean());
 
         String secondNickName = "Pietro";
         LoginEvent newLoginEvent = new LoginEvent(secondNickName);
-        assertEquals(0,dummyController.loginControl(secondNickName));
         newLoginEvent.serverEventMethod(dummyController);
         assertNotNull(dummyEventBuffer.getLastEventBean());
         assertEquals(1,vvLobby.getPlayers().size());
@@ -50,20 +48,11 @@ public class LoginEventTest {
         String player2 = "Marco";
         String player3 = "Matteo";
         LoginEvent loginEvent = new LoginEvent(player1);
-        assertEquals(1,dummyController.loginControl(player1));
         loginEvent.serverEventMethod(dummyController);
-        assertNotNull(dummyEventBuffer.getLastEventBean());
-
         LoginEvent loginEvent1 = new LoginEvent(player2);
-        assertEquals(-1,dummyController.loginControl(player2));
         loginEvent1.serverEventMethod(dummyController);
-        assertNotNull(dummyEventBuffer.getLastEventBean());
-
         LoginEvent loginEvent2 = new LoginEvent(player3);
-        assertEquals(-1,dummyController.loginControl(player3));
         loginEvent2.serverEventMethod(dummyController);
-        assertNotNull(dummyEventBuffer.getLastEventBean());
-
         assertEquals(3,vvLobby.getPlayers().size());
         assertEquals(player1,vvLobby.getPartyOwner());
     }

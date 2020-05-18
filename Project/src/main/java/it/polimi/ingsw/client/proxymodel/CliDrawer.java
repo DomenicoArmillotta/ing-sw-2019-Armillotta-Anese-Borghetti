@@ -57,15 +57,62 @@ public class CliDrawer extends Drawer{
     void setup(ClientCell[][] map) {
         int i,j;
             //imposto tutte le celle a ground cioè 1
-        for(i=0;i<7;i++){
-            for(j=0;j<7;j++) {
-                map[i][j].setLevel(1);
+        for(i=0;i<=4;i++){
+            for(j=0;j<=4;j++) {
+                map[i][j].setLevel(0);
             }
         }
-
-
     }
     public void drawMap(ClientCell[][] map){
+        int i,j,k,m;
+        //ciclo y
+        for(j=0;j<=4;j++){
+
+
+                //ciclo degli strati cioe 3
+                for(k=1;k<=3;k++)
+                {
+                    //ciclo x
+                    for(i=0;i<=4;i++){
+                    //per ogni cella fa 3 colonne
+                    for(m=1;m<=3;m++){
+                        if(map[i][j].getLevel()==0 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3 )){
+                            System.out.print(GREEN_BACKGROUND+".."+RESET);
+                        } else if(map[i][j].getLevel()==1 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3 )){
+                            System.out.print(YELLOW_BACKGROUND+"°°"+RESET);
+                        }else if(map[i][j].getLevel()==2 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3)){
+                            System.out.print(PURPLE_BACKGROUND+"++"+RESET);
+                        }else if(map[i][j].getLevel()==3 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3)){
+                            System.out.print(RED_BACKGROUND+"--"+RESET);
+                        }else if(map[i][j].getLevel()==4 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3)){
+                            System.out.print(BLUE_BACKGROUND+"##"+RESET);
+                        }
+                        if(map[i][j].getWorker()!=null && m==2 && k==2){
+                            System.out.print(BLUE_BOLD+"<>"+RESET);
+                        }else if(map[i][j].getWorker()==null && m==2 && k==2) {
+                            System.out.print("  ");
+                        }
+                        if(map[i][j].getSelectable()==1 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3) ){
+                            System.out.print(WHITE_UNDERLINED+RESET);
+                        }
+
+
+                    }
+
+
+                }
+
+                    System.out.println("");
+
+
+            }
+            //System.out.println("");
+        }
+        System.out.println("");
+        System.out.println("");
+
+
+        /*
         int i,j;
         for(i=0;i<=6;i++)
             System.out.print(BLUE_BACKGROUND +" @"+RESET);
@@ -110,7 +157,7 @@ public class CliDrawer extends Drawer{
         System.out.println("");
         System.out.println("");
 
-
+*/
     };
     //mette 0 nella mappa
     public void setSelectableCell(ClientCell[][] map, List<Coords> selectableCoords){
@@ -132,11 +179,11 @@ public class CliDrawer extends Drawer{
     };
 
     public void drawWinGame(){
-        showMessageDialog(null, "Hai vinto tutti i soldi di marco anese!!");
+        //showMessageDialog(null, "Hai vinto tutti i soldi di marco anese!!");
         System.out.println("Hai vinto tutti i soldi di marco anese!!");
     };
     public void drawLooseGame(){
-        showMessageDialog(null, "Hai perso! Hai contribuito a rendere i tuoi compagni meno felici");
+        //showMessageDialog(null, "Hai perso! Hai contribuito a rendere i tuoi compagni meno felici");
         System.out.println("Hai perso! Hai contribuito a rendere i tuoi compagni meno felici ");
 
     };

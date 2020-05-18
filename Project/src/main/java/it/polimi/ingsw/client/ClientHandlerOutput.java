@@ -30,7 +30,7 @@ public class ClientHandlerOutput implements Runnable {
     }
 
     public void run() {
-        status.setGameIsRunning(true);
+        status.setGameIsRunning(false);
 
         System.out.println("Connection established Ouput");
         PrintWriter printWriter = null;
@@ -40,17 +40,39 @@ public class ClientHandlerOutput implements Runnable {
             e.printStackTrace();
         }
 
-        System.out.println("socket: "+socket);
+        System.out.println("socket: " + socket);
         Scanner stdin = new Scanner(System.in);
 
         try {
-            while (status.running()) {
+            while (!status.running()) {
+                String inputLine = stdin.next();
+                if (inputLine.equals("quit")) {
+                    status.setGameIsRunning(false);
+                } else {
+                    if (inputLine.equals("login")) {
+                        if (stdin.hasNextLine()) {
+                            String nickname = stdin.next();
+                                XmlMapper xmlMapper = (new XmlMapper());
+                                xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                                String toSend = xmlMapper.writeValueAsString(new LoginEvent(nickname));
+                                toSend += "\n";
+                                printWriter.print(toSend);
+                                System.out.print(toSend);
+                                System.out.println("");
+                                printWriter.flush();
+                                System.out.println("Plz start the game");
+                            }
+                    } else if (inputLine.equals("start")) {
+                        status.setGameIsRunning(true);
+                    }
+                } }
+                while (status.running()) {
                     String inputLine = stdin.next();
-                    if(inputLine.equals("quit")) {
+                    if (inputLine.equals("quit")) {
                         status.setGameIsRunning(false);
                     } else {
                         if (inputLine.equals("coords")) {
-                            if(stdin.hasNextInt()) {
+                            if (stdin.hasNextInt()) {
                                 int x = stdin.nextInt();
                                 if (stdin.hasNextInt()) {
                                     int y = stdin.nextInt();
@@ -59,7 +81,7 @@ public class ClientHandlerOutput implements Runnable {
                                     xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                                     CoordsEvent coordsEvent = new CoordsEvent(x, y, status.getClientID());
                                     String toSend = xmlMapper.writeValueAsString(coordsEvent);
-                                    toSend+='\n';
+                                    toSend += '\n';
                                     printWriter.print(toSend);
                                     System.out.print(toSend);
                                     System.out.println("");
@@ -69,30 +91,21 @@ public class ClientHandlerOutput implements Runnable {
                             }
                         } else if (inputLine.equals("string")) {
                             String stringInput = stdin.next();
-                            System.out.println("Read string "+stringInput);
+                            System.out.println("Read string " + stringInput);
                             XmlMapper xmlMapper = (new XmlMapper());
-                            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION,true);
+                            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                             String toSend = xmlMapper.writeValueAsString(new StringEvent(stringInput));
-                            toSend+="\n";
+                            toSend += "\n";
                             printWriter.print(toSend);
                             System.out.print(toSend);
                             System.out.println("");
                             printWriter.flush();
-                            System.out.println("Flushed string "+stringInput);
+                            System.out.println("Flushed string " + stringInput);
                         }
                     }
-            }
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                socket.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                }
+            } catch (JsonProcessingException jsonProcessingException) {
+            jsonProcessingException.printStackTrace();
         }
     }
 }
-
-
-

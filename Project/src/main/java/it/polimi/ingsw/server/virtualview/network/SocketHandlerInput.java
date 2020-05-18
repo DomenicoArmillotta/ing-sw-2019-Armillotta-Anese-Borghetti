@@ -36,7 +36,7 @@ public class SocketHandlerInput implements Runnable {
 
     public void run() {
         ServerStatus status = new ServerStatus();
-        status.setGameIsRunning(true);
+        status.setGameIsRunning(false);
 
         try {
             Scanner in = new Scanner(socket.getInputStream());
@@ -45,13 +45,15 @@ public class SocketHandlerInput implements Runnable {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 String userInput = in.nextLine();
+                System.out.println(userInput);
                 StringReader sr = new StringReader(userInput);
                 InputSource is = new InputSource(sr);
                 Document document = db.parse(is);
                 Node typeEventNode = document.getElementsByTagName("eventType").item(0);
                 ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent(), document);
-                serverEvent.serverEventMethod(controller);
                 System.out.println(serverEvent);
+                serverEvent.serverEventMethod(controller);
+                System.out.println("Done");
                 /*login event stringa*/
             }
 

@@ -3,7 +3,7 @@ package it.polimi.ingsw.server.model.mvevents.eventbeans;
 public class TakenNickNameEvent extends EventBean{
     private String takenNickNamePlayer;
 
-    public String getMessage() {
+    public String getTakenNickNamePlayer() {
         return takenNickNamePlayer;
     }
 
@@ -11,7 +11,7 @@ public class TakenNickNameEvent extends EventBean{
         this.takenNickNamePlayer = takenId;
     }
 
-    public void setMessage(String takenId) {
+    public void setTakenNickNamePlayer(String takenId) {
         this.takenNickNamePlayer = takenId;
     }
 }

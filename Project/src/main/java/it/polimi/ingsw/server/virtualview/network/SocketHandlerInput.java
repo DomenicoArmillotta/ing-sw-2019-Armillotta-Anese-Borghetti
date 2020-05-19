@@ -49,8 +49,8 @@ public class SocketHandlerInput implements Runnable {
                 StringReader sr = new StringReader(userInput);
                 InputSource is = new InputSource(sr);
                 Document document = db.parse(is);
-                Node typeEventNode = document.getElementsByTagName("eventType").item(0);
-                ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent(), document);
+                //Node typeEventNode = document.getElementsByTagName("eventType").item(0);
+                ServerEvent serverEvent = returnCorrectServerEvent(document);
                 System.out.println(serverEvent);
                 serverEvent.serverEventMethod(controller);
                 System.out.println("Done");
@@ -64,8 +64,8 @@ public class SocketHandlerInput implements Runnable {
                 StringReader sr = new StringReader(userInput);
                 InputSource is = new InputSource(sr);
                 Document document = db.parse(is);
-                Node typeEventNode = document.getElementsByTagName("eventType").item(0);
-                ServerEvent serverEvent = returnCorrectServerEvent(typeEventNode.getTextContent(), document);
+                //Node typeEventNode = document.getElementsByTagName("eventType").item(0);
+                ServerEvent serverEvent = returnCorrectServerEvent(document);
                 serverEvent.serverEventMethod(controller);
                 System.out.println(serverEvent);
             }
@@ -76,14 +76,19 @@ public class SocketHandlerInput implements Runnable {
         }
     }
 
-    protected ServerEvent returnCorrectServerEvent(String eventType,Document doc){
-        if(doc.getDocumentElement().getTagName().equals("CoordsEvent")) {
+    protected ServerEvent returnCorrectServerEvent(Document doc){
+        if(doc.getDocumentElement().getTagName().equals("GameCoordsEvent")) {
             int x,y;
-            String clientID;
             x = Integer.parseInt(doc.getElementsByTagName("x").item(0).getTextContent());
             y = Integer.parseInt(doc.getElementsByTagName("y").item(0).getTextContent());
-            clientID = doc.getElementsByTagName("clientID").item(0).getTextContent();
-            return new it.polimi.ingsw.server.virtualview.serverevents.CoordsEvent(x,y);
+            return new it.polimi.ingsw.server.virtualview.serverevents.GameCoordsEvent(x,y);
+        }
+
+        if(doc.getDocumentElement().getTagName().equals("SetupCoordsEvent")) {
+            int x,y;
+            x = Integer.parseInt(doc.getElementsByTagName("x").item(0).getTextContent());
+            y = Integer.parseInt(doc.getElementsByTagName("y").item(0).getTextContent());
+            return new it.polimi.ingsw.server.virtualview.serverevents.SetupCoordsEvent(x,y);
         }
 
         if(doc.getDocumentElement().getTagName().equals("StringEvent")){

@@ -6,7 +6,6 @@ public class StringEvent extends ClientEvent implements Serializable {
     String payload;
 
     StringEvent(String payload) {
-        eventType = "StringEvent";
         this.payload = payload;
     }
 

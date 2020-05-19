@@ -79,6 +79,17 @@ public class InputParser {
             int currY = Integer.parseInt(document.getElementsByTagName("workerY").item(0).getTextContent());
             return new WorkerSelectionViewEvent(currX,currY);
         }
+        if(document.getDocumentElement().getTagName().equals("CorrectLoginPartyOwnerEvent")){
+            String partyOwner = document.getElementsByTagName("partyOwner").item(0).getTextContent();
+            String loggedPlayer = document.getElementsByTagName("loggedPlayer").item(0).getTextContent();
+
+            return new PartyLoginViewEvent(partyOwner,loggedPlayer);
+        }
+        if(document.getDocumentElement().getTagName().equals("TakenNickNameEvent")){
+            String takenNickNamePlayer = document.getElementsByTagName("takenNickNamePlayer").item(0).getTextContent();
+
+            return new TakenNickNameViewEvent(takenNickNamePlayer);
+        }
         return null;
     }
 

@@ -57,56 +57,158 @@ public class CliDrawer extends Drawer{
     void setup(ClientCell[][] map) {
         int i,j;
             //imposto tutte le celle a ground cioè 1
-        for(i=0;i<7;i++){
-            for(j=0;j<7;j++) {
-                map[i][j].setLevel(1);
+        for(i=0;i<=4;i++){
+            for(j=0;j<=4;j++) {
+                map[i][j].setLevel(0);
             }
         }
-
-
     }
     public void drawMap(ClientCell[][] map){
-        int i,j;
-        for(i=0;i<=6;i++)
-            System.out.print(BLUE_BACKGROUND +" @"+RESET);
-        System.out.println("");
+        int i,j,k,m,w,q;
+        int black=1;
+        //bordi
+        System.out.print(RED_BACKGROUND + "  " + RESET);
         for(i=0;i<=4;i++){
-            System.out.print(BLUE_BACKGROUND+" @"+RESET);
-            for(j=0;j<5;j++){
-                if(map[i][j].getLevel()==1){
-                    System.out.print(GREEN_BACKGROUND+"");
+            for(m=0;m<=2;m++){
+                if(black==1) {
+                    if(m==1){
+                        System.out.print(WHITE_BOLD+BLACK_BACKGROUND +" "+i + RESET);
+                    }else
+                        System.out.print(BLACK_BACKGROUND + "  " + RESET);
 
                 }
-                else if(map[i][j].getLevel()==2){
-                    System.out.print(YELLOW_BACKGROUND+"");
-
-                }
-                else if(map[i][j].getLevel()==3){
-                    System.out.print(RED_BACKGROUND+"");
-
-                }
-                else if(map[i][j].getLevel()==4){
-                    System.out.print(BLUE_BACKGROUND+"");
+                if(black==0){
+                    if(m==1) {
+                        System.out.print(BLACK_BOLD+WHITE_BACKGROUND +" "+ i + RESET);
+                    }else
+                        System.out.print(WHITE_BACKGROUND + "  " + RESET);
 
                 }
 
-                if(map[i][j].getSelectable()==1){
-                    System.out.print(RED_UNDERLINED+" ");
-
-                }
-                if(map[i][j].getWorker()!=null){
-                    System.out.print("0");
-                }
-                if(map[i][j].getWorker()==null && map[i][j].getSelectable()==0 ){
-                    System.out.print("  ");
-                }
 
             }
-            System.out.print(BLUE_BACKGROUND + " @"+RESET);
-            System.out.println("");
+            if(black==0){
+                black=1;
+            }else
+            {
+                black=0;
+            }
         }
-        for(i=0;i<=6;i++)
-            System.out.print(BLUE_BACKGROUND + " @"+RESET);
+        System.out.print(RED_BACKGROUND + "  " + RESET);
+
+        System.out.println("");
+        black=0;
+        //ciclo y
+        for(j=0;j<=4;j++){
+                //ciclo degli strati cioe 3
+                for(k=1;k<=3;k++)
+                {
+                    //laterali
+                    if(black==1) {
+                        if(k==2){
+                            System.out.print(WHITE_BOLD+BLACK_BACKGROUND +j + " "+ RESET);
+                        }else
+                            System.out.print(BLACK_BACKGROUND + "  " + RESET);
+
+                    }
+                    if(black==0){
+                        if(k==2) {
+                            System.out.print(BLACK_BOLD+WHITE_BACKGROUND + j + " "+ RESET);
+                        }else
+                            System.out.print(WHITE_BACKGROUND + "  " + RESET);
+
+                    }
+                    //fine laterali
+
+                    //ciclo x
+                    for(i=0;i<=4;i++){
+                    //per ogni cella fa 3 colonne
+                    for(m=1;m<=3;m++){
+                        if(map[i][j].getLevel()==0 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3 )){
+                            System.out.print(GREEN_BACKGROUND+".."+RESET);
+                        } else if(map[i][j].getLevel()==1 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3 )){
+                            System.out.print(YELLOW_BACKGROUND+"°°"+RESET);
+                        }else if(map[i][j].getLevel()==2 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3)){
+                            System.out.print(PURPLE_BACKGROUND+"++"+RESET);
+                        }else if(map[i][j].getLevel()==3 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3)){
+                            System.out.print(RED_BACKGROUND+"--"+RESET);
+                        }else if(map[i][j].getLevel()==4 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3)){
+                            System.out.print(BLUE_BACKGROUND+"##"+RESET);
+                        }
+                        if(map[i][j].getWorker()!=null && m==2 && k==2){
+                            System.out.print(BLUE_BOLD+" 웃"+RESET);
+                        }else if(map[i][j].getWorker()==null && m==2 && k==2) {
+                            System.out.print("  ");
+                        }
+                        if(map[i][j].getSelectable()==1 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3) ){
+                            System.out.print(WHITE_UNDERLINED+RESET);
+                        }
+
+
+                    }
+
+
+                }
+                    //inizio bordi
+                    if(black==1) {
+                        if(k==2){
+                            System.out.print(WHITE_BOLD+BLACK_BACKGROUND + " "+j + RESET);
+                        }else
+                            System.out.print(BLACK_BACKGROUND + "  " + RESET);
+
+                    }
+                    if(black==0){
+                        if(k==2) {
+                            System.out.print(BLACK_BOLD+WHITE_BACKGROUND +" "+ j + RESET);
+                        }else
+                            System.out.print(WHITE_BACKGROUND + "  " + RESET);
+
+                    }
+                    //fine bordi
+
+                    System.out.println("");
+
+
+            }
+            if(black==0){
+                black=1;
+            }else
+            {
+                black=0;
+            }
+            //System.out.println("");
+        }
+        //bordi alternati nero/bianco
+        System.out.print(RED_BACKGROUND + "  " + RESET);
+        black=1;
+        for(i=0;i<=4;i++){
+            for(m=0;m<=2;m++){
+                if(black==1) {
+                    if(m==1){
+                        System.out.print(WHITE_BOLD+BLACK_BACKGROUND +" "+i + RESET);
+                    }else
+                        System.out.print(BLACK_BACKGROUND + "  " + RESET);
+
+                }
+                if(black==0){
+                    if(m==1) {
+                        System.out.print(BLACK_BOLD+WHITE_BACKGROUND +" "+ i + RESET);
+                    }else
+                        System.out.print(WHITE_BACKGROUND + "  " + RESET);
+
+                }
+
+
+            }
+            if(black==0){
+                black=1;
+            }else
+            {
+                black=0;
+            }
+        }
+        System.out.print(RED_BACKGROUND + "  " + RESET);
+
         System.out.println("");
         System.out.println("");
 
@@ -132,12 +234,12 @@ public class CliDrawer extends Drawer{
     };
 
     public void drawWinGame(){
-        showMessageDialog(null, "Hai vinto tutti i soldi di marco anese!!");
-        System.out.println("Hai vinto tutti i soldi di marco anese!!");
+        //showMessageDialog(null, "Hai vinto tutti i soldi di marco anese!!");
+        System.out.println("Hai vinto !!");
     };
     public void drawLooseGame(){
-        showMessageDialog(null, "Hai perso! Hai contribuito a rendere i tuoi compagni meno felici");
-        System.out.println("Hai perso! Hai contribuito a rendere i tuoi compagni meno felici ");
+        //showMessageDialog(null, "Hai perso! Hai contribuito a rendere i tuoi compagni meno felici");
+        System.out.println("Hai perso!");
 
     };
     public void firstPlayerLogin(){};

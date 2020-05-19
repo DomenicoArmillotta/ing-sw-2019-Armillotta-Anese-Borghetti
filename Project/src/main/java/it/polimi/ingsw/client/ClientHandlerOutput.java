@@ -44,6 +44,7 @@ public class ClientHandlerOutput implements Runnable {
         Scanner stdin = new Scanner(System.in);
 
         try {
+            String nickname = null;
             while (!status.running()) {
                 String inputLine = stdin.next();
                 if (inputLine.equals("quit")) {
@@ -51,7 +52,7 @@ public class ClientHandlerOutput implements Runnable {
                 } else {
                     if (inputLine.equals("login")) {
                         if (stdin.hasNextLine()) {
-                            String nickname = stdin.next();
+                                nickname = stdin.next();
                                 XmlMapper xmlMapper = (new XmlMapper());
                                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                                 String toSend = xmlMapper.writeValueAsString(new LoginEvent(nickname));
@@ -60,10 +61,19 @@ public class ClientHandlerOutput implements Runnable {
                                 System.out.print(toSend);
                                 System.out.println("");
                                 printWriter.flush();
-                                System.out.println("Plz start the game");
                             }
-                    } else if (inputLine.equals("start")) {
-                        status.setGameIsRunning(true);
+                    } else if (inputLine.equals("start")) { /* playerComm */
+                        XmlMapper xmlMapper = (new XmlMapper());
+                        xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                        if(nickname != null) {
+                            String toSend = xmlMapper.writeValueAsString(new StartUpEvent(nickname));
+                            toSend += "\n";
+                            printWriter.print(toSend);
+                            System.out.print(toSend);
+                            System.out.println("");
+                            printWriter.flush();
+                            status.setGameIsRunning(true);
+                        }
                     }
                 } }
                 while (status.running()) {
@@ -79,8 +89,8 @@ public class ClientHandlerOutput implements Runnable {
                                     System.out.println("Read coords " + x + " " + y);
                                     XmlMapper xmlMapper = (new XmlMapper());
                                     xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-                                    CoordsEvent coordsEvent = new CoordsEvent(x, y, status.getClientID());
-                                    String toSend = xmlMapper.writeValueAsString(coordsEvent);
+                                    GameCoordsEvent gameCoordsEvent = new GameCoordsEvent(x, y, status.getClientID());
+                                    String toSend = xmlMapper.writeValueAsString(gameCoordsEvent);
                                     toSend += '\n';
                                     printWriter.print(toSend);
                                     System.out.print(toSend);

@@ -3,9 +3,12 @@ package it.polimi.ingsw.server.virtualview.serverevents;
 import it.polimi.ingsw.server.controller.Controller;
 
 public class GameCoordsEvent extends CoordsEvent {
+    int x;
+    int y;
 
     public GameCoordsEvent(int x, int y) {
-        super(x, y);
+        this.x = x;
+        this.y = y;
     }
 
     public void serverEventMethod(Controller controller) {

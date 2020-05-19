@@ -12,6 +12,9 @@ public class CoordsEvent extends ClientEvent implements Serializable {
         this.y = y;
     }
 
+    public CoordsEvent() {
+    }
+
     public int getX() {
         return x;
     }

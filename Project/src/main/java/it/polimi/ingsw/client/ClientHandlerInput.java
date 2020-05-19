@@ -15,18 +15,16 @@ import java.util.Scanner;
 
 public class ClientHandlerInput implements Runnable {
 
-    ClientStatus status;
     private Socket socket;
     private InputParser inputParser = new InputParser();
 
     public ClientHandlerInput(Socket socket) {
-        ClientStatus status = new ClientStatus();
-        this.status = status;
         this.socket = socket;
     }
 
     public void run() {
-        status.setGameIsRunning(true);
+        ClientStatus status = ClientStatus.instance();
+        status.setGameIsRunning(false);
         System.out.println("Connection established Input");
         Scanner in = null;
         try {
@@ -36,6 +34,13 @@ public class ClientHandlerInput implements Runnable {
         }
 
         try {
+            while (!status.running()) {
+                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                DocumentBuilder db = dbf.newDocumentBuilder();
+                Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
+                ViewEvent viewEvent = inputParser.retrunCorrectClientEvent(document);
+                System.out.println(viewEvent);
+            }
             while (status.running()) {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();

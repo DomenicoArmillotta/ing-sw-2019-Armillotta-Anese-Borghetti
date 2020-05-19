@@ -63,7 +63,7 @@ public class CliDrawer extends Drawer{
             }
         }
     }
-    public void drawMap(ClientCell[][] map){
+    public void drawMap(ClientCell[][] map,String player1,String player2,String player3){
         int i,j,k,m,w,q;
         int black=1;
         //bordi
@@ -136,7 +136,12 @@ public class CliDrawer extends Drawer{
                             System.out.print(BLUE_BACKGROUND+"##"+RESET);
                         }
                         if(map[i][j].getWorker()!=null && m==2 && k==2){
-                            System.out.print(BLUE_BOLD+" 웃"+RESET);
+                            if(map[i][j].getWorker().getOwner().equals(player1))
+                                System.out.print(BLUE_BOLD+"çç"+RESET);
+                            if(map[i][j].getWorker().getOwner().equals(player2))
+                                System.out.print(PURPLE_BACKGROUND+"çç"+RESET);
+                            if(map[i][j].getWorker().getOwner().equals(player3))
+                                System.out.print(YELLOW_BOLD+"çç"+RESET);
                         }else if(map[i][j].getWorker()==null && m==2 && k==2) {
                             System.out.print("  ");
                         }

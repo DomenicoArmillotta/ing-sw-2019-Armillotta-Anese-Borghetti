@@ -20,6 +20,6 @@ public class BuildBlockViewEvent extends ViewEvent {
         Coords coords=new Coords(blockX,blockY);
         ProxyModel proxyModel=ProxyModel.instance();
         proxyModel.getDrawerStrategy().setBuild(proxyModel.getMap(),coords,levelToBuild);
-        proxyModel.getDrawerStrategy().drawMap(proxyModel.getMap());
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getMap(),"0","0","0");
     }
 }

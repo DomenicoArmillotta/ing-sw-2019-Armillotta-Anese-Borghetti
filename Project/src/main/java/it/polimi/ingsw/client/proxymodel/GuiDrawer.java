@@ -4,7 +4,7 @@ import it.polimi.ingsw.client.proxymodel.ClientCell;
 public class GuiDrawer extends Drawer {
 
     void setup(ClientCell[][] map) {};
-    public void drawMap(ClientCell[][] map){};
+    public void drawMap(ClientCell[][] map,String player1,String player2,String player3){};
     public void setSelectableCell(ClientCell[][] map,Coords[] selectableCoords){}; //colora le celle che potrebbero essere selezionate
     public void setMoveWorker(ClientCell[][] map,WorkerClient selectedWorker,Coords moveCell){};
     public void setBuild(ClientCell[][] map,Coords buildCell,int levelToBuild){};

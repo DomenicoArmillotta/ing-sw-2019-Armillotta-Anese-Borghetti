@@ -3,6 +3,15 @@ package it.polimi.ingsw.client.proxymodel;
 public class WorkerClient {
     private int color;
     private Coords position;
+    private String owner;
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 
     public char getGiovatore() {
         return giovatore;

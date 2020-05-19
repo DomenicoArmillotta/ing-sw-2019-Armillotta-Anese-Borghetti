@@ -54,7 +54,7 @@ public class CliDrawer extends Drawer{
     public static final String WHITE_BACKGROUND = "\033[47m";  // WHITE
 
 
-    void setup(ClientCell[][] map) {
+    public void setup(ClientCell[][] map) {
         int i,j;
             //imposto tutte le celle a ground cioè 1
         for(i=0;i<=4;i++){

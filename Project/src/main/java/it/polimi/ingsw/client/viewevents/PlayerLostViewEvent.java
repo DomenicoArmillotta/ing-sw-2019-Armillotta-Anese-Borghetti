@@ -1,5 +1,11 @@
 package it.polimi.ingsw.client.viewevents;
 
+import it.polimi.ingsw.client.proxymodel.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class PlayerLostViewEvent extends ViewEvent {
     String loserName;
     public PlayerLostViewEvent(String loserName) {
@@ -7,5 +13,9 @@ public class PlayerLostViewEvent extends ViewEvent {
     }
     public boolean startWaiting() {
         return false;
+    }
+
+    public void viewEventMethod() {
+
     }
 }

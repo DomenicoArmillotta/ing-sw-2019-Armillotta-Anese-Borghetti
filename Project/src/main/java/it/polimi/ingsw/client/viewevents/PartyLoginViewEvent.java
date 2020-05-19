@@ -1,5 +1,11 @@
 package it.polimi.ingsw.client.viewevents;
 
+import it.polimi.ingsw.client.proxymodel.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class PartyLoginViewEvent extends ViewEvent {
     String partyOwner;
     String loggedPlayer;
@@ -9,5 +15,9 @@ public class PartyLoginViewEvent extends ViewEvent {
     }
     public boolean startWaiting() {
         return false;
+    }
+
+    public void viewEventMethod() {
+
     }
 }

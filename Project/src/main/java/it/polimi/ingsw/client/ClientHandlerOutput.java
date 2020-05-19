@@ -28,7 +28,7 @@ public class ClientHandlerOutput implements Runnable {
 
     public void run() {
         ClientStatus status = ClientStatus.instance();
-        status.setGameIsRunning(false);
+        status.setGameIsRunning(true);
 
         System.out.println("Connection established Ouput");
         PrintWriter printWriter = null;

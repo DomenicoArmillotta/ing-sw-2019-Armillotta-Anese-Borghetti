@@ -24,7 +24,7 @@ public class ClientHandlerInput implements Runnable {
 
     public void run() {
         ClientStatus status = ClientStatus.instance();
-        status.setGameIsRunning(false);
+        status.setGameIsRunning(true);
         System.out.println("Connection established Input");
         Scanner in = null;
         try {
@@ -47,6 +47,8 @@ public class ClientHandlerInput implements Runnable {
                 Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
                 ViewEvent viewEvent = inputParser.retrunCorrectClientEvent(document);
                 System.out.println(viewEvent);
+                System.out.println("View");
+                viewEvent.viewEventMethod();
             }
         } catch (ParserConfigurationException e) {
             e.printStackTrace();

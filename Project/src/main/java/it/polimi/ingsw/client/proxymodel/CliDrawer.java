@@ -64,14 +64,62 @@ public class CliDrawer extends Drawer{
         }
     }
     public void drawMap(ClientCell[][] map){
-        int i,j,k,m;
+        int i,j,k,m,w,q;
+        int black=1;
+        //bordi
+        System.out.print(RED_BACKGROUND + "  " + RESET);
+        for(i=0;i<=4;i++){
+            for(m=0;m<=2;m++){
+                if(black==1) {
+                    if(m==1){
+                        System.out.print(WHITE_BOLD+BLACK_BACKGROUND +" "+i + RESET);
+                    }else
+                        System.out.print(BLACK_BACKGROUND + "  " + RESET);
+
+                }
+                if(black==0){
+                    if(m==1) {
+                        System.out.print(BLACK_BOLD+WHITE_BACKGROUND +" "+ i + RESET);
+                    }else
+                        System.out.print(WHITE_BACKGROUND + "  " + RESET);
+
+                }
+
+
+            }
+            if(black==0){
+                black=1;
+            }else
+            {
+                black=0;
+            }
+        }
+        System.out.print(RED_BACKGROUND + "  " + RESET);
+
+        System.out.println("");
+        black=0;
         //ciclo y
         for(j=0;j<=4;j++){
-
-
                 //ciclo degli strati cioe 3
                 for(k=1;k<=3;k++)
                 {
+                    //laterali
+                    if(black==1) {
+                        if(k==2){
+                            System.out.print(WHITE_BOLD+BLACK_BACKGROUND +j + " "+ RESET);
+                        }else
+                            System.out.print(BLACK_BACKGROUND + "  " + RESET);
+
+                    }
+                    if(black==0){
+                        if(k==2) {
+                            System.out.print(BLACK_BOLD+WHITE_BACKGROUND + j + " "+ RESET);
+                        }else
+                            System.out.print(WHITE_BACKGROUND + "  " + RESET);
+
+                    }
+                    //fine laterali
+
                     //ciclo x
                     for(i=0;i<=4;i++){
                     //per ogni cella fa 3 colonne
@@ -88,7 +136,7 @@ public class CliDrawer extends Drawer{
                             System.out.print(BLUE_BACKGROUND+"##"+RESET);
                         }
                         if(map[i][j].getWorker()!=null && m==2 && k==2){
-                            System.out.print(BLUE_BOLD+"<>"+RESET);
+                            System.out.print(BLUE_BOLD+" 웃"+RESET);
                         }else if(map[i][j].getWorker()==null && m==2 && k==2) {
                             System.out.print("  ");
                         }
@@ -101,63 +149,70 @@ public class CliDrawer extends Drawer{
 
 
                 }
+                    //inizio bordi
+                    if(black==1) {
+                        if(k==2){
+                            System.out.print(WHITE_BOLD+BLACK_BACKGROUND + " "+j + RESET);
+                        }else
+                            System.out.print(BLACK_BACKGROUND + "  " + RESET);
+
+                    }
+                    if(black==0){
+                        if(k==2) {
+                            System.out.print(BLACK_BOLD+WHITE_BACKGROUND +" "+ j + RESET);
+                        }else
+                            System.out.print(WHITE_BACKGROUND + "  " + RESET);
+
+                    }
+                    //fine bordi
 
                     System.out.println("");
 
 
             }
+            if(black==0){
+                black=1;
+            }else
+            {
+                black=0;
+            }
             //System.out.println("");
         }
-        System.out.println("");
-        System.out.println("");
-
-
-        /*
-        int i,j;
-        for(i=0;i<=6;i++)
-            System.out.print(BLUE_BACKGROUND +" @"+RESET);
-        System.out.println("");
+        //bordi alternati nero/bianco
+        System.out.print(RED_BACKGROUND + "  " + RESET);
+        black=1;
         for(i=0;i<=4;i++){
-            System.out.print(BLUE_BACKGROUND+" @"+RESET);
-            for(j=0;j<5;j++){
-                if(map[i][j].getLevel()==1){
-                    System.out.print(GREEN_BACKGROUND+"");
+            for(m=0;m<=2;m++){
+                if(black==1) {
+                    if(m==1){
+                        System.out.print(WHITE_BOLD+BLACK_BACKGROUND +" "+i + RESET);
+                    }else
+                        System.out.print(BLACK_BACKGROUND + "  " + RESET);
 
                 }
-                else if(map[i][j].getLevel()==2){
-                    System.out.print(YELLOW_BACKGROUND+"");
-
-                }
-                else if(map[i][j].getLevel()==3){
-                    System.out.print(RED_BACKGROUND+"");
-
-                }
-                else if(map[i][j].getLevel()==4){
-                    System.out.print(BLUE_BACKGROUND+"");
+                if(black==0){
+                    if(m==1) {
+                        System.out.print(BLACK_BOLD+WHITE_BACKGROUND +" "+ i + RESET);
+                    }else
+                        System.out.print(WHITE_BACKGROUND + "  " + RESET);
 
                 }
 
-                if(map[i][j].getSelectable()==1){
-                    System.out.print(RED_UNDERLINED+" ");
-
-                }
-                if(map[i][j].getWorker()!=null){
-                    System.out.print("0");
-                }
-                if(map[i][j].getWorker()==null && map[i][j].getSelectable()==0 ){
-                    System.out.print("  ");
-                }
 
             }
-            System.out.print(BLUE_BACKGROUND + " @"+RESET);
-            System.out.println("");
+            if(black==0){
+                black=1;
+            }else
+            {
+                black=0;
+            }
         }
-        for(i=0;i<=6;i++)
-            System.out.print(BLUE_BACKGROUND + " @"+RESET);
+        System.out.print(RED_BACKGROUND + "  " + RESET);
+
         System.out.println("");
         System.out.println("");
 
-*/
+
     };
     //mette 0 nella mappa
     public void setSelectableCell(ClientCell[][] map, List<Coords> selectableCoords){
@@ -180,11 +235,11 @@ public class CliDrawer extends Drawer{
 
     public void drawWinGame(){
         //showMessageDialog(null, "Hai vinto tutti i soldi di marco anese!!");
-        System.out.println("Hai vinto tutti i soldi di marco anese!!");
+        System.out.println("Hai vinto !!");
     };
     public void drawLooseGame(){
         //showMessageDialog(null, "Hai perso! Hai contribuito a rendere i tuoi compagni meno felici");
-        System.out.println("Hai perso! Hai contribuito a rendere i tuoi compagni meno felici ");
+        System.out.println("Hai perso!");
 
     };
     public void firstPlayerLogin(){};

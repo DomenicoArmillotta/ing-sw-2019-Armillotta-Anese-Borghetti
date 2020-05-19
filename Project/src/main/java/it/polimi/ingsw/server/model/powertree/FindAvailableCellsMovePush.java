@@ -66,7 +66,7 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
             }
             super.getExecutorPointer().getNextMove().addCells(addMoveCells, index);
         }
-        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0), executorPointer.getNextMove()));
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0)));
         return 0; /* [NOTIFY]: FindAvailableCellsMovePush done */
     }
 

@@ -48,7 +48,7 @@ public class Select extends LimitedPower {
                 }
                 setSelectedWorker(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell());
                 getWorkerSelectionListener().workerSelected(new WorkerSelectionEvent(map[selectedWorkerX][selectedWorkerY].getWorkerOnCell()));
-                getWaitingForActionListener().waitForAction(new WaitingForActionEvent(getExecutorPointer().getNextMove().getAvailableCells(index), getExecutorPointer().getNextMove()));
+                getWaitingForActionListener().waitForAction(new WaitingForActionEvent(getExecutorPointer().getNextMove().getAvailableCells(index)));
                 return 0;  /* [NOTIFY] Action successful: Worker properly selected */
             } else {
                 pointerBack();

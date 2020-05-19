@@ -4,24 +4,24 @@ import it.polimi.ingsw.server.model.mvevents.actionevents.Coordinates;
 import java.util.List;
 
 public class WaitingForActionEventBean extends EventBean {
-    String eventType;
-    List<Coordinates> coordinates;
+    private List<Coordinates> coordinates;
+    private String currTurn;
 
-    public WaitingForActionEventBean(List<Coordinates> coordinates) {
-        eventType = "WaitingForActionEvent";
+    public WaitingForActionEventBean(List<Coordinates> coordinates,String currTurn) {
         this.coordinates = coordinates;
+        this.currTurn = currTurn;
     }
 
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
+    public String getCurrTurn() {
+        return currTurn;
+    }
+
+    public void setCurrTurn(String currTurn) {
+        this.currTurn = currTurn;
     }
 
     public void setCoordinates(List<Coordinates> coordinates) {
         this.coordinates = coordinates;
-    }
-
-    public String getEventType() {
-        return eventType;
     }
 
     public List<Coordinates> getCoordinates() {

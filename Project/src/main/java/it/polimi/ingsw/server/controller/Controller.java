@@ -1,7 +1,12 @@
 package it.polimi.ingsw.server.controller;
 
 import it.polimi.ingsw.server.model.ActionExecutor;
+import it.polimi.ingsw.server.model.GameMaster;
+import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.virtualview.network.VvLobby;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
     private int[] userInput;
@@ -21,6 +26,7 @@ public class Controller {
             System.out.println("Return value: "+returnValue);
         }
     }
+
     public int loginControl(String nickName){
         VvLobby vvLobby = VvLobby.instance();
         if(vvLobby.getPlayers().isEmpty()) {
@@ -33,6 +39,14 @@ public class Controller {
     }
 
     public void startGameControl(){
-
+        List<Player> toQueuePlayerList = new ArrayList<>();
+        for (int i = 0; i < VvLobby.instance().getPlayers().size(); i++) {
+            toQueuePlayerList.add(new Player(VvLobby.instance().getPlayers().get(i)));
+        }
+        GameMaster gameMaster = new GameMaster(toQueuePlayerList,VvLobby.instance().getPlayers().size());
+        /*
+        logica per creare il action executor, poi settiamo i players
+         */
+        //
     }
 }

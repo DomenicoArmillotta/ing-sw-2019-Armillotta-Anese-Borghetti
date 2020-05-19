@@ -63,8 +63,9 @@ public class InputParser {
                     w8CoordinatesList.add(Integer.parseInt(node2.getTextContent()));
                 }
             }
+            String currTurn = document.getElementsByTagName("currTurn").item(0).getTextContent();
+            return new WaitingForActionViewEvent(w8CoordinatesList,currTurn);
 
-            return new WaitingForActionViewEvent(w8CoordinatesList);
         }
         if(document.getDocumentElement().getTagName().equals("WorkerMovementEventBean")){
             int currX = Integer.parseInt(document.getElementsByTagName("currX").item(0).getTextContent());

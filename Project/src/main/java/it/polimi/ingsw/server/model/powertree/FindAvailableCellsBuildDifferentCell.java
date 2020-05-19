@@ -27,7 +27,7 @@ public class FindAvailableCellsBuildDifferentCell  extends FindAvailableCellsBui
             return 1;/*special return value*/
         }
 
-        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(i), null));
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(i)));
         return 0;
     }
 }

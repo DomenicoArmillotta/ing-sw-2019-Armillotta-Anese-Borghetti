@@ -46,7 +46,7 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
             getFailedActionListener().actionFailed(new FailedActionEvent(this));
             return -1; /* [NOTIFY]: FindAvailableCellsMoveButDontMoveUp failed */
         }
-        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0), executorPointer.getNextMove()));
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0)));
         return 0; /* [NOTIFY]: FindAvailableCellsMovePush done */
     }
 }

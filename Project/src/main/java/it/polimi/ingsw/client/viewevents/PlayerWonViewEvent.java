@@ -16,6 +16,7 @@ public class PlayerWonViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
+        ProxyModel.instance().getDrawerStrategy().drawWinGame();
 
     }
 }

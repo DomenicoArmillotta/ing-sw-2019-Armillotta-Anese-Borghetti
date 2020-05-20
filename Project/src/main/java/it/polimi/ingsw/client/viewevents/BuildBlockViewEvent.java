@@ -20,20 +20,10 @@ public class BuildBlockViewEvent extends ViewEvent {
     public boolean startWaiting() {
         return false;
     }
-    public void viewMethod(){
-        Coords coords=new Coords(blockX,blockY);
-        ProxyModel proxyModel=ProxyModel.instance();
-        proxyModel.getDrawerStrategy().setBuild(proxyModel.getMap(),coords,levelToBuild);
-        proxyModel.getDrawerStrategy().drawMap(proxyModel.getMap(),"0","0","0");
-    }
+
 
     public void viewEventMethod() {
-        ProxyModel proxyModel = new ProxyModel();
-        proxyModel.createMap();
-        CliDrawer CliDrawer=new CliDrawer();
-        CliDrawer.setup(proxyModel.getMap());
-        proxyModel.setDrawerStrategy(CliDrawer);
-        proxyModel.getDrawerStrategy().setBuild(proxyModel.getMap(),new Coords(blockX,blockY),levelToBuild);
-        proxyModel.getDrawerStrategy().drawMap(proxyModel.getMap(),"0","0","0");
+        ProxyModel.instance().getDrawerStrategy().setBuild(new Coords(this.blockX,this.blockY),levelToBuild);
+        ProxyModel.instance().getDrawerStrategy().drawMap();
     }
 }

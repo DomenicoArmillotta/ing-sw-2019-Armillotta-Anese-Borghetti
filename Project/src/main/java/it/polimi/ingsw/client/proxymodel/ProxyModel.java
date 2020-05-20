@@ -4,11 +4,17 @@ import it.polimi.ingsw.client.proxymodel.CliDrawer;
 import it.polimi.ingsw.client.proxymodel.GuiDrawer;
 import it.polimi.ingsw.client.proxymodel.ClientCell;
 
-
-
+import java.util.ArrayList;
+import java.util.List;
+//quando si crea il proxy model,bisogna settare i turni e bisogna impostare nome dei giocatori
 
 public class ProxyModel {
     private static ProxyModel instance;
+    private List<Player> players=new ArrayList<>();
+
+    public List<Player> getPlayers() {
+        return players;
+    }
 
     public static ProxyModel instance() {
         if (instance == null) {

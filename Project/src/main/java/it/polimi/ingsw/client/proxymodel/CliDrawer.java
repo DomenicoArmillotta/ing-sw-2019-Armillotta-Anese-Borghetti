@@ -54,7 +54,8 @@ public class CliDrawer extends Drawer{
     public static final String WHITE_BACKGROUND = "\033[47m";  // WHITE
 
 
-    void setup(ClientCell[][] map) {
+    void setup() {
+        ClientCell[][] map=ProxyModel.instance().getMap();
         int i,j;
             //imposto tutte le celle a ground cioè 1
         for(i=0;i<=4;i++){
@@ -63,7 +64,9 @@ public class CliDrawer extends Drawer{
             }
         }
     }
-    public void drawMap(ClientCell[][] map,String player1,String player2,String player3){
+    public void drawMap(){
+        List<Player> players=ProxyModel.instance().getPlayers();
+        ClientCell[][] map=ProxyModel.instance().getMap();
         int i,j,k,m,w,q;
         int black=1;
         //bordi
@@ -136,11 +139,11 @@ public class CliDrawer extends Drawer{
                             System.out.print(BLUE_BACKGROUND+"##"+RESET);
                         }
                         if(map[i][j].getWorker()!=null && m==2 && k==2){
-                            if(map[i][j].getWorker().getOwner().equals(player1))
+                            if(map[i][j].getWorker().getOwner().equals(players.get(0)))
                                 System.out.print(BLUE_BOLD+"çç"+RESET);
-                            if(map[i][j].getWorker().getOwner().equals(player2))
+                            if(map[i][j].getWorker().getOwner().equals(players.get(1)))
                                 System.out.print(PURPLE_BACKGROUND+"çç"+RESET);
-                            if(map[i][j].getWorker().getOwner().equals(player3))
+                            if(map[i][j].getWorker().getOwner().equals(players.get(2)))
                                 System.out.print(YELLOW_BOLD+"çç"+RESET);
                         }else if(map[i][j].getWorker()==null && m==2 && k==2) {
                             System.out.print("  ");
@@ -220,7 +223,8 @@ public class CliDrawer extends Drawer{
 
     };
     //mette 0 nella mappa
-    public void setSelectableCell(ClientCell[][] map, List<Coords> selectableCoords){
+    public void setSelectableCell( List<Coords> selectableCoords){
+        ClientCell[][] map=ProxyModel.instance().getMap();
         int l,i;
         l=selectableCoords.size();
         for(i=0;i<l;i++){
@@ -228,13 +232,16 @@ public class CliDrawer extends Drawer{
         }
     }; //colora le celle che potrebbero essere selezionate
 
-    public void setMoveWorker(ClientCell[][] map,WorkerClient selectedWorker,Coords moveCell){
+    public void setMoveWorker(Coords workerCoords,Coords moveCell){
+        ClientCell[][] map=ProxyModel.instance().getMap();
         //cancello worker dalla posizione precedente
-        map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].setWorker(null);
+        map[workerCoords.getX()][workerCoords.getY()].setWorker(null);
         //lo metto nella cella
-        map[moveCell.getX()][moveCell.getY()].setWorker(selectedWorker);
+        map[moveCell.getX()][moveCell.getY()].setWorker(map[workerCoords.getX()][workerCoords.getY()].getWorker());
+        map[workerCoords.getX()][workerCoords.getY()].getWorker().setPosition(moveCell);
     };
-    public void setBuild(ClientCell[][] map,Coords buildCell,int levelToBuild){
+    public void setBuild(Coords buildCell,int levelToBuild){
+        ClientCell[][] map=ProxyModel.instance().getMap();
         map[buildCell.getX()][buildCell.getY()].setLevel(levelToBuild);
     };
 

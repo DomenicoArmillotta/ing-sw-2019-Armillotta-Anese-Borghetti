@@ -6,6 +6,7 @@ import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.WorkerSelectionEventBean;
 import it.polimi.ingsw.server.virtualview.serverevents.LoginEvent;
 import it.polimi.ingsw.server.virtualview.serverevents.ServerEvent;
+import it.polimi.ingsw.server.virtualview.serverevents.StartUpEvent;
 import it.polimi.ingsw.server.virtualview.serverevents.StringEvent;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -85,10 +86,12 @@ public class SocketHandlerInput implements Runnable {
         }
 
         if(doc.getDocumentElement().getTagName().equals("SetupCoordsEvent")) {
-            int x,y;
+            int x,y,z,w;
             x = Integer.parseInt(doc.getElementsByTagName("x").item(0).getTextContent());
             y = Integer.parseInt(doc.getElementsByTagName("y").item(0).getTextContent());
-            return new it.polimi.ingsw.server.virtualview.serverevents.SetupCoordsEvent(x,y);
+            z = Integer.parseInt(doc.getElementsByTagName("z").item(0).getTextContent());
+            w = Integer.parseInt(doc.getElementsByTagName("w").item(0).getTextContent());
+            return new it.polimi.ingsw.server.virtualview.serverevents.SetupCoordsEvent(x,y,z,w);
         }
 
         if(doc.getDocumentElement().getTagName().equals("StringEvent")){
@@ -99,6 +102,10 @@ public class SocketHandlerInput implements Runnable {
         if(doc.getDocumentElement().getTagName().equals("LoginEvent")){
             String payload = doc.getElementsByTagName("payload").item(0).getTextContent();
             return new LoginEvent(payload);
+        }
+        if(doc.getDocumentElement().getTagName().equals("StartUpEvent")){
+            String playerComm = doc.getElementsByTagName("playerComm").item(0).getTextContent();
+            return new StartUpEvent(playerComm);
         }
         return null;
     }

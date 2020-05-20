@@ -15,17 +15,15 @@ import java.util.Scanner;
 
 public class ClientHandlerInput implements Runnable {
 
-    ClientStatus status;
     private Socket socket;
     private InputParser inputParser = new InputParser();
 
     public ClientHandlerInput(Socket socket) {
-        ClientStatus status = new ClientStatus();
-        this.status = status;
         this.socket = socket;
     }
 
     public void run() {
+        ClientStatus status = ClientStatus.instance();
         status.setGameIsRunning(true);
         System.out.println("Connection established Input");
         Scanner in = null;
@@ -36,12 +34,21 @@ public class ClientHandlerInput implements Runnable {
         }
 
         try {
+            while (!status.running()) {
+                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+                DocumentBuilder db = dbf.newDocumentBuilder();
+                Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
+                ViewEvent viewEvent = inputParser.retrunCorrectClientEvent(document);
+                System.out.println(viewEvent);
+            }
             while (status.running()) {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
                 ViewEvent viewEvent = inputParser.retrunCorrectClientEvent(document);
                 System.out.println(viewEvent);
+                System.out.println("View");
+                viewEvent.viewEventMethod();
             }
         } catch (ParserConfigurationException e) {
             e.printStackTrace();

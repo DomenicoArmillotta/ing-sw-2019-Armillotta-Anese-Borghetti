@@ -1,6 +1,10 @@
 package it.polimi.ingsw.client.viewevents;
 
+import it.polimi.ingsw.client.proxymodel.*;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class WaitingForActionViewEvent extends ViewEvent {
     private List<Integer> coordinates;
@@ -12,6 +16,10 @@ public class WaitingForActionViewEvent extends ViewEvent {
     }
     public boolean startWaiting() {
         return true;
+    }
+
+    public void viewEventMethod() {
+
     }
 }
 

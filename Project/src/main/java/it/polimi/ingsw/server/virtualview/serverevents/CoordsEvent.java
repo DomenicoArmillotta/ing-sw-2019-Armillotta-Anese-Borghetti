@@ -9,5 +9,9 @@ public class CoordsEvent extends ServerEvent {
         this.x = x;
         this.y = y;
     }
+
+    public CoordsEvent() {
+    }
+
     public void serverEventMethod(Controller controller) {}
 }

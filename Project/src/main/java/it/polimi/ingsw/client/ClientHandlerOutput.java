@@ -21,16 +21,14 @@ import java.util.Scanner;
 public class ClientHandlerOutput implements Runnable {
 
     Socket socket;
-    ClientStatus status;
 
     public ClientHandlerOutput(Socket socket) {
-        ClientStatus status = new ClientStatus();
-        this.status = status;
         this.socket = socket;
     }
 
     public void run() {
-        status.setGameIsRunning(false);
+        ClientStatus status = ClientStatus.instance();
+        status.setGameIsRunning(true);
 
         System.out.println("Connection established Ouput");
         PrintWriter printWriter = null;

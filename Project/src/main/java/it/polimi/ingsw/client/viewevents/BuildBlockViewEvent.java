@@ -15,7 +15,7 @@ public class BuildBlockViewEvent extends ViewEvent {
     public BuildBlockViewEvent(int blockX, int blockY) {
         this.blockX = blockX;
         this.blockY = blockY;
-        this.levelToBuild=1;
+        this.levelToBuild=3;
     }
     public boolean startWaiting() {
         return false;

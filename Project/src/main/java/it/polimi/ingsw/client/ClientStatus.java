@@ -1,16 +1,11 @@
 package it.polimi.ingsw.client;
 
-import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
-import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class ClientStatus {
     boolean gameRunning;
     String clientID;
     String currentPlayer;
     String whoAmI;
+    String partyOwner;
 
     private static ClientStatus instance;
 
@@ -19,6 +14,10 @@ public class ClientStatus {
             instance = new ClientStatus();
         }
         return instance;
+    }
+
+    private ClientStatus() {
+        whoAmI = null;
     }
 
     public void setGameIsRunning(boolean gameIsRunning) {
@@ -51,5 +50,13 @@ public class ClientStatus {
 
     public String getWhoAmI() {
         return whoAmI;
+    }
+
+    public String getPartyOwner() {
+        return partyOwner;
+    }
+
+    public void setPartyOwner(String partyOwner) {
+        this.partyOwner = partyOwner;
     }
 }

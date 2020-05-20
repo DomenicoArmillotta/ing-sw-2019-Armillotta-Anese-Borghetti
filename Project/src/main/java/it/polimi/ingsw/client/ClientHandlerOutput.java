@@ -27,8 +27,7 @@ public class ClientHandlerOutput implements Runnable {
     }
 
     public void run() {
-        ClientStatus status = ClientStatus.instance();
-        status.setGameIsRunning(true);
+        ClientStatus.instance().setGameIsRunning(false);
 
         System.out.println("Connection established Ouput");
         PrintWriter printWriter = null;
@@ -42,13 +41,14 @@ public class ClientHandlerOutput implements Runnable {
         Scanner stdin = new Scanner(System.in);
 
         try {
-            String nickname = null;
-            while (!status.running()) {
-                String inputLine = stdin.next();
+            String nickname = "Guest";
+            while (!ClientStatus.instance().running()) {
+                String inputLine = null;
+                if(stdin.hasNextLine()) inputLine = stdin.next();
                 if (inputLine.equals("quit")) {
-                    status.setGameIsRunning(false);
+                    ClientStatus.instance().setGameIsRunning(false);
                 } else {
-                    if (inputLine.equals("login")) {
+                    if (inputLine.equals("login") && !nickname.equals(ClientStatus.instance().whoAmI)) {
                         if (stdin.hasNextLine()) {
                                 nickname = stdin.next();
                                 XmlMapper xmlMapper = (new XmlMapper());
@@ -60,7 +60,7 @@ public class ClientHandlerOutput implements Runnable {
                                 System.out.println("");
                                 printWriter.flush();
                             }
-                    } else if (inputLine.equals("start")) { /* playerComm */
+                    } else if (inputLine.equals("start") && nickname.equals(ClientStatus.instance().getPartyOwner())) { /* playerComm */
                         XmlMapper xmlMapper = (new XmlMapper());
                         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                         if(nickname != null) {
@@ -70,16 +70,18 @@ public class ClientHandlerOutput implements Runnable {
                             System.out.print(toSend);
                             System.out.println("");
                             printWriter.flush();
-                            status.setGameIsRunning(true);
+                            ClientStatus.instance().setGameIsRunning(true);
                         }
                     }
                 } }
-                while (status.running()) {
+                ClientStatus.instance().setWhoAmI(nickname);
+                System.out.println("whoIAm: "+ClientStatus.instance().getWhoAmI());
+                while (ClientStatus.instance().running()) {
                     String inputLine = stdin.next();
                     if (inputLine.equals("quit")) {
-                        status.setGameIsRunning(false);
+                        ClientStatus.instance().setGameIsRunning(false);
                     } else {
-                        if (inputLine.equals("coords")) {
+                        if (inputLine.equals("coords") && ClientStatus.instance().getCurrentPlayer().equals(ClientStatus.instance().getWhoAmI())) {
                             if (stdin.hasNextInt()) {
                                 int x = stdin.nextInt();
                                 if (stdin.hasNextInt()) {
@@ -87,7 +89,7 @@ public class ClientHandlerOutput implements Runnable {
                                     System.out.println("Read coords " + x + " " + y);
                                     XmlMapper xmlMapper = (new XmlMapper());
                                     xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-                                    GameCoordsEvent gameCoordsEvent = new GameCoordsEvent(x, y, status.getClientID());
+                                    GameCoordsEvent gameCoordsEvent = new GameCoordsEvent(x, y, ClientStatus.instance().getClientID());
                                     String toSend = xmlMapper.writeValueAsString(gameCoordsEvent);
                                     toSend += '\n';
                                     printWriter.print(toSend);
@@ -97,7 +99,7 @@ public class ClientHandlerOutput implements Runnable {
                                     System.out.println("Flushed coords " + x + " " + y);
                                 }
                             }
-                        } else if (inputLine.equals("string")) {
+                        } else if (inputLine.equals("string") && ClientStatus.instance().getCurrentPlayer().equals(ClientStatus.instance().getWhoAmI())) {
                             String stringInput = stdin.next();
                             System.out.println("Read string " + stringInput);
                             XmlMapper xmlMapper = (new XmlMapper());

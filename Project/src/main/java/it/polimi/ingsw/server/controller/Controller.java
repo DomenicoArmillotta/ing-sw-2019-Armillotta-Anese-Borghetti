@@ -3,6 +3,8 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.GameMaster;
 import it.polimi.ingsw.server.model.Player;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
+import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 import it.polimi.ingsw.server.virtualview.network.VvLobby;
 
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ public class Controller {
     public int loginControl(String nickName){
         VvLobby vvLobby = VvLobby.instance();
         if(vvLobby.getPlayers().isEmpty()) {
+
             vvLobby.setPartyOwner(nickName);
         }else
         if(!vvLobby.getPlayers().isEmpty() && vvLobby.getPlayers().contains(nickName))
@@ -44,9 +47,16 @@ public class Controller {
             toQueuePlayerList.add(new Player(VvLobby.instance().getPlayers().get(i)));
         }
         GameMaster gameMaster = new GameMaster(toQueuePlayerList,VvLobby.instance().getPlayers().size());
+        gameMaster.getActionExecutor().createMap();
+        gameMaster.getActionExecutor().getCurrentPlayer().workersSetup(0, 0, 1, 1);
+        gameMaster.getActionExecutor().getNextPlayer().workersSetup(4, 1, 2, 1);
+        gameMaster.getActionExecutor().getPrevPlayer().workersSetup(1, 0, 4, 4);
+        gameMaster.getActionExecutor().getNextPower().doAction(null);
+        if(gameMaster.getNumOfPlayers() == 2) EventsBuffer.instance().setLastEventBean(new GameStartEventBean(VvLobby.instance().getPlayers().get(0),VvLobby.instance().getPlayers().get(1),VvLobby.instance().getPlayers().get(1)));
+        else if(gameMaster.getNumOfPlayers() == 3) EventsBuffer.instance().setLastEventBean(new GameStartEventBean(VvLobby.instance().getPlayers().get(0),VvLobby.instance().getPlayers().get(1),VvLobby.instance().getPlayers().get(2)));
+
         /*
         logica per creare il action executor, poi settiamo i players
          */
-        //
     }
 }

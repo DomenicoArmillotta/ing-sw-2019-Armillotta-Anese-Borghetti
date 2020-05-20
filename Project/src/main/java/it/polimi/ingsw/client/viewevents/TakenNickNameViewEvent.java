@@ -17,5 +17,6 @@ public class TakenNickNameViewEvent extends ViewEvent {
 
     public void viewEventMethod() {
 
+
     }
 }

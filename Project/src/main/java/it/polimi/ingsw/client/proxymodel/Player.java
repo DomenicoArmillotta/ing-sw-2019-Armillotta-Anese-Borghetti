@@ -4,6 +4,9 @@ import it.polimi.ingsw.server.model.godcardparser.GodCard;
 
 public class Player {
     private String name;
+    public Player(String name){
+        this.name=name;
+    }
 
 
     public String getName() {

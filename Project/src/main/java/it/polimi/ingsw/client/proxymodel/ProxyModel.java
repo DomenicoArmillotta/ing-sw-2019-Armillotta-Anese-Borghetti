@@ -17,9 +17,12 @@ public class ProxyModel {
     }
 
     public static ProxyModel instance() {
+
         if (instance == null) {
             instance = new ProxyModel();
+            instance.createMap();
         }
+
         return instance;
     }
     private ClientCell[][] map;

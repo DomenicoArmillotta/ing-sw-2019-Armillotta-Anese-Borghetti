@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.viewevents;
 
+import it.polimi.ingsw.client.ClientStatus;
 import it.polimi.ingsw.client.proxymodel.*;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class WaitingForActionViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
-
+        ClientStatus.instance().setCurrentPlayer(currTurn);
     }
 }
 

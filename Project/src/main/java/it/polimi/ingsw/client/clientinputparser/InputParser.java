@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.clientinputparser;
 
 import it.polimi.ingsw.client.viewevents.*;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -89,6 +90,13 @@ public class InputParser {
             String takenNickNamePlayer = document.getElementsByTagName("takenNickNamePlayer").item(0).getTextContent();
 
             return new TakenNickNameViewEvent(takenNickNamePlayer);
+        }
+        if(document.getDocumentElement().getTagName().equals("GameStartEventBean")){
+            String firstPlayer = document.getElementsByTagName("firstPlayer").item(0).getTextContent();
+            String secondPlayer = document.getElementsByTagName("secondPlayer").item(0).getTextContent();
+            String thirdPlayer = document.getElementsByTagName("thirdPlayer").item(0).getTextContent();
+
+            return new GameStartViewEvent(firstPlayer, secondPlayer, thirdPlayer);
         }
         return null;
     }

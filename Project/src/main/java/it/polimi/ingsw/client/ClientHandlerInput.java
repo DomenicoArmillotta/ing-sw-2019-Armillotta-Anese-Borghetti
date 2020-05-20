@@ -23,8 +23,7 @@ public class ClientHandlerInput implements Runnable {
     }
 
     public void run() {
-        ClientStatus status = ClientStatus.instance();
-        status.setGameIsRunning(true);
+        ClientStatus.instance().setGameIsRunning(false);
         System.out.println("Connection established Input");
         Scanner in = null;
         try {
@@ -34,14 +33,15 @@ public class ClientHandlerInput implements Runnable {
         }
 
         try {
-            while (!status.running()) {
+            while (!ClientStatus.instance().running()) {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
                 ViewEvent viewEvent = inputParser.retrunCorrectClientEvent(document);
                 System.out.println(viewEvent);
+                viewEvent.viewEventMethod();
             }
-            while (status.running()) {
+            while (ClientStatus.instance().running()) {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(new InputSource(new StringReader(in.nextLine())));

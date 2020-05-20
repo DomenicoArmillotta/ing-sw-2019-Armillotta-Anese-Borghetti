@@ -28,7 +28,7 @@ public class SimpleClient {
     private InputParser inputParser = new InputParser();
 
     public SimpleClient(String ip, int port) {
-        ClientStatus status = new ClientStatus();
+        ClientStatus status = null;
         this.status = status;
         this.ip = ip;
         this.port = port;

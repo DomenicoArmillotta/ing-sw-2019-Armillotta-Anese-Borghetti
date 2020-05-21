@@ -9,8 +9,10 @@ import java.util.List;
 //quando si crea il proxy model,bisogna settare i turni e bisogna impostare nome dei giocatori
 
 public class ProxyModel {
+
     private static ProxyModel instance;
     private List<Player> players=new ArrayList<>();
+    private Turn turn;
 
     public List<Player> getPlayers() {
         return players;
@@ -64,6 +66,11 @@ public class ProxyModel {
                 }
             }
         this.map=map;
+        this.turn = new Turn();
+    }
+
+    public Turn getTurn(){
+        return this.turn;
     }
 
 

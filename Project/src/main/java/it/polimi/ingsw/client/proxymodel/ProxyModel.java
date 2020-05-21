@@ -66,12 +66,15 @@ public class ProxyModel {
                 }
             }
         this.map=map;
-        this.turn = new Turn();
+
     }
 
     public Turn getTurn(){
         return this.turn;
     }
 
+    public void createTurn(){
+        this.turn = new Turn();
+    }
 
 }

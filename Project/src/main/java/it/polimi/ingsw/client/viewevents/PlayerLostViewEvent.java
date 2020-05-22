@@ -16,7 +16,7 @@ public class PlayerLostViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
-        ProxyModel.instance().getDrawerStrategy().drawLooseGame();
+        //ProxyModel.instance().getDrawerStrategy().drawLooseGame();
 
     }
 }

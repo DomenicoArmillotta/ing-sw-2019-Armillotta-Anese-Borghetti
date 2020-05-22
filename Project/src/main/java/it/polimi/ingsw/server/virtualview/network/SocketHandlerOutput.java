@@ -14,6 +14,7 @@ public class SocketHandlerOutput implements Runnable {
     private List<PrintWriter> printWriterList;
     private PrintWriter printWriterPtr;
     private EventsBuffer eventsBuffer;
+    private ServerStatus serverStatus = ServerStatus.instance();
 
     private static SocketHandlerOutput instance;
 
@@ -39,12 +40,13 @@ public class SocketHandlerOutput implements Runnable {
 
 
     public void run() {
-        ServerStatus status = new ServerStatus();
-        status.setGameIsRunning(true);
         try {
             this.eventsBuffer = EventsBuffer.instance();
 
-            while (status.running()) {
+            while (!serverStatus.equals(null)) {
+                sendingBeans();
+            }
+            while (serverStatus.getGamePhase().equals(GamePhase.GAME)) {
                 sendingBeans();
             }
             for(int i = 0; i < socketList.size(); i++) {

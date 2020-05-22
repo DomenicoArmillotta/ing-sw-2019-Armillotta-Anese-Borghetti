@@ -26,8 +26,10 @@ public class SocketHandlerInput implements Runnable {
     private Controller controller;
     private ActionExecutor actionExecutor;
     private EventsBuffer eventsBuffer;
+    private ServerStatus serverStatus;
 
-    public SocketHandlerInput(Socket socket, Controller controller, ActionExecutor actionExecutor) {
+    public SocketHandlerInput(Socket socket, Controller controller, ActionExecutor actionExecutor, ServerStatus serverStatus) {
+        this.serverStatus = serverStatus;
         this.socket = socket;
         this.controller = controller;
         this.actionExecutor = actionExecutor;
@@ -36,15 +38,15 @@ public class SocketHandlerInput implements Runnable {
     }
 
     public void run() {
-        ServerStatus status = new ServerStatus();
-        status.setGameIsRunning(false);
 
         try {
             Scanner in = new Scanner(socket.getInputStream());
 
-            while(!status.running()){
+            while(!serverStatus.equals(null)){
+                System.out.println("Ready to read");
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
+                //System.out.println(in.nextLine());
                 String userInput = in.nextLine();
                 System.out.println(userInput);
                 StringReader sr = new StringReader(userInput);
@@ -57,11 +59,13 @@ public class SocketHandlerInput implements Runnable {
                 System.out.println("Done");
                 /*login event stringa*/
             }
-
-            while (status.running()) {
+            System.out.println("CLOSED WHILE 1");
+            while (serverStatus.getGamePhase().equals(GamePhase.GAME)) {
+                System.out.println("In game phase");
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 String userInput = in.nextLine();
+                System.out.println("userInput "+userInput);
                 StringReader sr = new StringReader(userInput);
                 InputSource is = new InputSource(sr);
                 Document document = db.parse(is);
@@ -70,6 +74,7 @@ public class SocketHandlerInput implements Runnable {
                 serverEvent.serverEventMethod(controller);
                 System.out.println(serverEvent);
             }
+            System.out.println("CLOSED WHILE 2");
             in.close();
             socket.close();
         } catch (IOException | ParserConfigurationException | SAXException e) {

@@ -23,7 +23,7 @@ public class BuildBlockViewEvent extends ViewEvent {
 
 
     public void viewEventMethod() {
-        ProxyModel.instance().getDrawerStrategy().setBuild(new Coords(this.blockX,this.blockY),levelToBuild);
-        ProxyModel.instance().getDrawerStrategy().drawMap();
+        /* ProxyModel.instance().getDrawerStrategy().setBuild(new Coords(this.blockX,this.blockY),levelToBuild);
+        ProxyModel.instance().getDrawerStrategy().drawMap(); */
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 public class InteractionWithControllerTest {
 
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-        Player player1 = new Player("Marco");
+        /* Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
         List<Player> playerQueue = new ArrayList<>();
@@ -37,7 +37,7 @@ public class InteractionWithControllerTest {
         player1.workersSetup(0, 0, 1, 1);
         player2.workersSetup(4, 1, 2, 1);
         player3.workersSetup(1, 0, 4, 4);
-        actionExecutor.getNextPower().doAction(null);
+        actionExecutor.getNextPower().doAction(null); */
         NetworkHandler networkHandler = new NetworkHandler(1234);
         networkHandler.startServer();
 

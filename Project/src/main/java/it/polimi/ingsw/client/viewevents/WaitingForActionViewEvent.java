@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.viewevents;
 
+import it.polimi.ingsw.client.ClientStatus;
 import it.polimi.ingsw.client.proxymodel.*;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.Map;
 public class WaitingForActionViewEvent extends ViewEvent {
     private List<Integer> coordinates;
     private String currTurn;
+    ProxyModel proxyModel = ProxyModel.instance();
 
     public WaitingForActionViewEvent(List<Integer> coordinates,String currTurn) {
         this.coordinates = coordinates;
@@ -19,8 +21,9 @@ public class WaitingForActionViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
+        /* proxyModel.getTurn().setCurrentPlayer(new Player(currTurn));
         ProxyModel.instance().getDrawerStrategy().setSelectableCell(convertIntoCoords());
-        ProxyModel.instance().getDrawerStrategy().drawMap();
+        ProxyModel.instance().getDrawerStrategy().drawMap(); */
 
     }
     public  List<Coords> convertIntoCoords(){

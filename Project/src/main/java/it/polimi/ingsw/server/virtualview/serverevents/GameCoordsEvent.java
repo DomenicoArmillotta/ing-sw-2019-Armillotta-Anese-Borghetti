@@ -2,7 +2,7 @@ package it.polimi.ingsw.server.virtualview.serverevents;
 
 import it.polimi.ingsw.server.controller.Controller;
 
-public class GameCoordsEvent extends CoordsEvent {
+public class GameCoordsEvent extends ServerEvent {
     int x;
     int y;
 

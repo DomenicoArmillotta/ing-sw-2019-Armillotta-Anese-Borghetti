@@ -23,7 +23,7 @@ public class WorkerMovementViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
-        ProxyModel.instance().getDrawerStrategy().setMoveWorker(new Coords(this.prevX,this.prevX),new Coords(this.currX,this.currY));
-        ProxyModel.instance().getDrawerStrategy().drawMap();
+        /* ProxyModel.instance().getDrawerStrategy().setMoveWorker(new Coords(this.prevX,this.prevX),new Coords(this.currX,this.currY));
+        ProxyModel.instance().getDrawerStrategy().drawMap(); */
     }
 }

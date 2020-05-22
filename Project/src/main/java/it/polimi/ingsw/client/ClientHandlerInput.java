@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.clientinputparser.InputParser;
+import it.polimi.ingsw.client.proxymodel.ProxyModel;
 import it.polimi.ingsw.client.viewevents.ViewEvent;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -16,14 +17,18 @@ import java.util.Scanner;
 public class ClientHandlerInput implements Runnable {
 
     private Socket socket;
+    private ClientStatus clientStatus;
+    private ProxyModel proxyModel;
     private InputParser inputParser = new InputParser();
 
-    public ClientHandlerInput(Socket socket) {
+    public ClientHandlerInput(Socket socket, ClientStatus clientStatus, ProxyModel proxyModel) {
         this.socket = socket;
+        this.clientStatus = clientStatus;
+        this.proxyModel = proxyModel;
     }
 
     public void run() {
-        ClientStatus.instance().setGameIsRunning(false);
+
         System.out.println("Connection established Input");
         Scanner in = null;
         try {
@@ -33,7 +38,8 @@ public class ClientHandlerInput implements Runnable {
         }
 
         try {
-            while (!ClientStatus.instance().running()) {
+            while (clientStatus.getGamePhase().equals(GamePhase.LOGIN)) {
+                System.out.println("Login phase reading");
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
@@ -41,7 +47,7 @@ public class ClientHandlerInput implements Runnable {
                 System.out.println(viewEvent);
                 viewEvent.viewEventMethod();
             }
-            while (ClientStatus.instance().running()) {
+            while (clientStatus.getGamePhase().equals(GamePhase.GAME)) {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
@@ -50,11 +56,7 @@ public class ClientHandlerInput implements Runnable {
                 System.out.println("View");
                 viewEvent.viewEventMethod();
             }
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         } finally {
             try {

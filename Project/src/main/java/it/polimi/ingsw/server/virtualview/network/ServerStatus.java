@@ -1,13 +1,23 @@
 package it.polimi.ingsw.server.virtualview.network;
 
 public class ServerStatus {
-    boolean gameRunning;
+    private GamePhase gamePhase;
 
-    public void setGameIsRunning(boolean gameIsRunning) {
-        this.gameRunning = gameIsRunning;
+    private static ServerStatus instance;
+
+    public static ServerStatus instance() {
+        if (instance == null) {
+            instance = new ServerStatus();
+        }
+        return instance;
     }
 
-    public boolean running() {
-        return gameRunning;
+    public GamePhase getGamePhase() {
+        return gamePhase;
     }
+
+    public void setGamePhase(GamePhase gamePhase) {
+        this.gamePhase = gamePhase;
+    }
+
 }

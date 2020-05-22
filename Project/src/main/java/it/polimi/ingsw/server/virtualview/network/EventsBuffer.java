@@ -25,12 +25,14 @@ public class EventsBuffer {
     }
 
     public void setLastEventBean(EventBean lastEventBean) {
+        System.out.println("In event buffer: "+lastEventBean);
         eventBeans.add(0, lastEventBean);
     }
 
     public EventBean getLastEventBean() {
         EventBean lastEventBean = eventBeans.get(eventBeans.size()-1);
         eventBeans.remove(eventBeans.size()-1);
+        System.out.println("Last Event Bean getted: "+lastEventBean+" current eventBeans: "+ eventBeans);
         return lastEventBean;
     }
 

@@ -10,6 +10,8 @@ import java.util.Map;
 public class PartyLoginViewEvent extends ViewEvent {
     String partyOwner;
     String loggedPlayer;
+    ClientStatus clientStatus = ClientStatus.instance();
+
     public PartyLoginViewEvent(String partyOwner, String loggedPlayer) {
         this.partyOwner = partyOwner;
         this.loggedPlayer = loggedPlayer;
@@ -20,6 +22,7 @@ public class PartyLoginViewEvent extends ViewEvent {
 
     public void viewEventMethod() {
         ProxyModel.instance().getPlayers().add(new Player(this.loggedPlayer));
-        ClientStatus.instance().setWhoAmI(this.loggedPlayer);
+        /* ClientStatus.instance().setWhoAmI(this.loggedPlayer); */
+        if(clientStatus.getPartyOwner().equals("")) clientStatus.setPartyOwner(partyOwner);
     }
 }

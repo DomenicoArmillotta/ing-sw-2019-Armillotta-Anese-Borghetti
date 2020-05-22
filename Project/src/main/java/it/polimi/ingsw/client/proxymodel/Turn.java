@@ -5,8 +5,6 @@ public class Turn {
     private Player nextPlayer;
     private Player prevPlayer;
 
-
-
     public void nextTurn() {
         Player tempPlayer = null;
         tempPlayer = this.currentPlayer;

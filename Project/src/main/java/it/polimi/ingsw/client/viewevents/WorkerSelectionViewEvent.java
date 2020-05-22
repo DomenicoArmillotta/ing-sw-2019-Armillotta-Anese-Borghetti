@@ -19,9 +19,9 @@ public class WorkerSelectionViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
-        List<Coords> coords=new ArrayList<>();
+        /* List<Coords> coords=new ArrayList<>();
         coords.add(new Coords(this.workerX,this.workerY));
         ProxyModel.instance().getDrawerStrategy().setSelectableCell(coords);
-        ProxyModel.instance().getDrawerStrategy().drawMap();
+        ProxyModel.instance().getDrawerStrategy().drawMap(); */
     }
 }

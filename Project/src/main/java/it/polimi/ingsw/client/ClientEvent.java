@@ -1,14 +1,15 @@
 package it.polimi.ingsw.client;
 
-public class ClientEvent {
+import java.io.Serializable;
+
+public class ClientEvent implements Serializable {
     protected String clientID;
-    protected String eventType;
 
     public String getClientID() {
         return clientID;
     }
 
-    public String getEventType() {
-        return eventType;
+    public void setClientID(String clientID) {
+        this.clientID = clientID;
     }
 }

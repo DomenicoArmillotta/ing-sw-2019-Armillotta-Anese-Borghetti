@@ -1,11 +1,9 @@
 package it.polimi.ingsw.client;
 
 public class ClientStatus {
-    boolean gameRunning;
-    String clientID;
-    String currentPlayer;
-    String whoAmI;
-    String partyOwner;
+    private GamePhase gamePhase;
+    private String thisClientNickname;
+    private String partyOwner;
 
     private static ClientStatus instance;
 
@@ -17,43 +15,28 @@ public class ClientStatus {
     }
 
     private ClientStatus() {
-        whoAmI = null;
+        setThisClientNickname("");
+        setPartyOwner("");
     }
 
-    public void setGameIsRunning(boolean gameIsRunning) {
-        this.gameRunning = gameIsRunning;
+    public GamePhase getGamePhase() {
+        return gamePhase;
     }
 
-    public void setClientID(String clientID) {
-        this.clientID = clientID;
-    }
-
-    public String getClientID() {
-        return clientID;
-    }
-
-    public void setCurrentPlayer(String currentPlayer) {
-        this.currentPlayer = currentPlayer;
-    }
-
-    public String getCurrentPlayer() {
-        return currentPlayer;
-    }
-
-    public boolean running() {
-        return gameRunning;
-    }
-
-    public void setWhoAmI(String whoAmI) {
-        this.whoAmI = whoAmI;
-    }
-
-    public String getWhoAmI() {
-        return whoAmI;
+    public String getThisClientNickname() {
+        return thisClientNickname;
     }
 
     public String getPartyOwner() {
         return partyOwner;
+    }
+
+    public void setGamePhase(GamePhase gamePhase) {
+        this.gamePhase = gamePhase;
+    }
+
+    public void setThisClientNickname(String thisClientNickname) {
+        this.thisClientNickname = thisClientNickname;
     }
 
     public void setPartyOwner(String partyOwner) {

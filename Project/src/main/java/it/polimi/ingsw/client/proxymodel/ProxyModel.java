@@ -18,6 +18,11 @@ public class ProxyModel {
         return players;
     }
 
+    public void addPlayer(Player playerToAdd){
+        this.players.add(playerToAdd);
+        System.out.println("aggiunto = "+ playerToAdd.getName());
+    }
+
     public static ProxyModel instance() {
 
         if (instance == null) {

@@ -10,88 +10,47 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProxyModelTest {
-    /*
+
     @Test
     public void BuildTest() {
-        Map map;
-        Worker worker11;
-        Worker worker12;
-        Worker worker21;
-        Worker worker22;
-        Drawer drawer;
-
-        ProxyModel proxyModel = new ProxyModel();
-        proxyModel.createMap();
-        CliDrawer CliDrawer=new CliDrawer();
-        CliDrawer.setup(proxyModel.getMap());
-        proxyModel.setDrawerStrategy(CliDrawer);
-        proxyModel.getDrawerStrategy().setBuild(proxyModel.getMap(),new Coords(2,3),3);
-        proxyModel.getDrawerStrategy().drawMap(proxyModel.getMap(),"0","0","0");
-    }
-    @Test
-    public void MoveTest() {
-
-        Map map;
-        WorkerClient worker11=new WorkerClient();
-        WorkerClient worker12=new WorkerClient();
-        WorkerClient worker21=new WorkerClient();
-        WorkerClient worker22=new WorkerClient();
-        Drawer drawer;
-        worker11.setOwner("marco");
-        worker12.setOwner("marco");
-        worker21.setOwner("davide");
-        worker22.setOwner("davide");
-
-        ProxyModel proxyModel = new ProxyModel();
-        proxyModel.createMap();
-        WorkerClient worker=new WorkerClient();
-        worker.setPosition(new Coords(1,1));
-        worker.setOwner("marco");
-        CliDrawer CliDrawer=new CliDrawer();
-        CliDrawer.setup(proxyModel.getMap());
-        proxyModel.setDrawerStrategy(CliDrawer);
-        proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getMap(),worker,new Coords(1,2));
-        proxyModel.getDrawerStrategy().drawMap(proxyModel.getMap(),"marco","davide","0");
-    }
-    @Test
-    public void BuildTest2() {
-        Map map;
-        WorkerClient worker11;
-        WorkerClient worker12;
-        WorkerClient worker21;
-        WorkerClient worker22;
-        Drawer drawer;
-
-        ProxyModel proxyModel = new ProxyModel();
-        proxyModel.createMap();
-        CliDrawer CliDrawer=new CliDrawer();
-        CliDrawer.setup(proxyModel.getMap());
-        proxyModel.setDrawerStrategy(CliDrawer);
-        proxyModel.getDrawerStrategy().setBuild(proxyModel.getMap(),new Coords(2,3),2);
-        proxyModel.getDrawerStrategy().drawMap(proxyModel.getMap(),"0","0","0");
-        proxyModel.getDrawerStrategy().drawLooseGame();
-    }
-    @Test
-    public void SelectTest() {
-        Map map;
-        WorkerClient worker11;
-        WorkerClient worker12;
-        WorkerClient worker21;
-        WorkerClient worker22;
-        Drawer drawer;
         List<Coords> coordsArray = new ArrayList();
         coordsArray.add(new Coords(1,1));
         coordsArray.add(new Coords(1,2));
         coordsArray.add(new Coords(1,4));
         coordsArray.add(new Coords(1,3));
-        ProxyModel proxyModel = new ProxyModel();
+        ProxyModel proxyModel = ProxyModel.instance();
         proxyModel.createMap();
         CliDrawer CliDrawer=new CliDrawer();
-        CliDrawer.setup(proxyModel.getMap());
         proxyModel.setDrawerStrategy(CliDrawer);
-        proxyModel.getDrawerStrategy().setSelectableCell(proxyModel.getMap(),coordsArray);
-        proxyModel.getDrawerStrategy().drawMap(proxyModel.getMap(),"0","0","0");
+        //creo tutti i player e worker
+        proxyModel.getDrawerStrategy().createPlayer("a");
+        proxyModel.getDrawerStrategy().createPlayer("b");
+        proxyModel.getDrawerStrategy().createPlayer("c");
+        //nella creazione dei worker vengono anche posizionati sulla mappa
+        System.out.println("nome = "+proxyModel.getPlayers().isEmpty());
+        proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(0),new Coords(1,1));
+        proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(0),new Coords(2,1));
+        proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(1),new Coords(1,2));
+        proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(1),new Coords(2,2));
+        proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(2),new Coords(1,3));
+        proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(2),new Coords(2,3));
+        //faccio setup  imposto ground su mappa
+        proxyModel.getDrawerStrategy().setup();
+        //disegno
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        //seleziono
+        proxyModel.getDrawerStrategy().setSelectableCell(coordsArray);
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        //moviamo un worker
+        proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getPlayers().get(0).getWorker1(),new Coords(4,4));
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        //build
+        proxyModel.getDrawerStrategy().setBuild(new Coords(4,4),4);
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        //win and loose
+        proxyModel.getDrawerStrategy().drawLooseGame();
+        proxyModel.getDrawerStrategy().drawWinGame();
     }
-*/
+
 
 }

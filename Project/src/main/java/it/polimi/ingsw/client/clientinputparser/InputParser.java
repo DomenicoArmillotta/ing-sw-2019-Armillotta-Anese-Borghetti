@@ -98,6 +98,12 @@ public class InputParser {
 
             return new GameStartViewEvent(firstPlayer, secondPlayer, thirdPlayer);
         }
+        if(document.getDocumentElement().getTagName().equals("GodCorrectlyChosen")){
+            String chosenGod = document.getElementsByTagName("chosenGod").item(0).getTextContent();
+            String player = document.getElementsByTagName("player").item(0).getTextContent();
+
+            return new GodChosenViewEvent(chosenGod, player);
+        }
         return null;
     }
 

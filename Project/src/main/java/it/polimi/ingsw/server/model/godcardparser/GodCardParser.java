@@ -141,7 +141,7 @@ public class GodCardParser {
     }
 
 
-    public GodCard selectedGodParser(God choosenGod) throws ParserConfigurationException, IOException, SAXException {
+    public GodCard selectedGodParser(String choosenGod) throws ParserConfigurationException, IOException, SAXException {
         File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcardparser/GodCardList.xml");
         int i;
         int j;
@@ -160,7 +160,7 @@ public class GodCardParser {
         for (i = 0; i < godCardList.getLength() && !selectable; i++) {
             Node nGodCardListNode = godCardList.item(i);
             Element eElement = (Element) nGodCardListNode;
-            if (eElement.getAttribute("name").toLowerCase().equals(choosenGod.toString().toLowerCase())) {
+            if (eElement.getAttribute("name").toLowerCase().equals(choosenGod.toLowerCase())) {
                 /*
                 se la divinità e quella deve uscire dal ciclo for
                  */

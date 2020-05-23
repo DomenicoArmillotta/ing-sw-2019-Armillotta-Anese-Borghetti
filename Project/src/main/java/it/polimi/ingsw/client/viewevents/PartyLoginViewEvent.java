@@ -1,16 +1,10 @@
 package it.polimi.ingsw.client.viewevents;
 
-import it.polimi.ingsw.client.ClientStatus;
 import it.polimi.ingsw.client.proxymodel.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class PartyLoginViewEvent extends ViewEvent {
     String partyOwner;
     String loggedPlayer;
-    ClientStatus clientStatus = ClientStatus.instance();
 
     public PartyLoginViewEvent(String partyOwner, String loggedPlayer) {
         this.partyOwner = partyOwner;
@@ -23,6 +17,6 @@ public class PartyLoginViewEvent extends ViewEvent {
     public void viewEventMethod() {
         ProxyModel.instance().getPlayers().add(new Player(this.loggedPlayer));
         /* ClientStatus.instance().setWhoAmI(this.loggedPlayer); */
-        if(clientStatus.getPartyOwner().equals("")) clientStatus.setPartyOwner(partyOwner);
+        if(ProxyModel.instance().getPartyOwner().equals("")) ProxyModel.instance().setPartyOwner(partyOwner);
     }
 }

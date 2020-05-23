@@ -16,7 +16,7 @@ public class GodCardParserTest {
      public void simpleTest() throws IOException, SAXException, ParserConfigurationException {
          GodCard godCard1;
          GodCardParser godCardParser = new GodCardParser();
-         godCard1 = godCardParser.selectedGodParser(God.MORTAL);
+         godCard1 = godCardParser.selectedGodParser(God.MORTAL.toString());
          assertEquals(godCard1.getGodName(),"Mortal");
 
      }
@@ -24,7 +24,7 @@ public class GodCardParserTest {
      public void chooseRightGodtest() throws IOException, SAXException, ParserConfigurationException {
          GodCard godCard1;
          GodCardParser godCardParser = new GodCardParser();
-         godCard1 = godCardParser.selectedGodParser(God.APOLLO);
+         godCard1 = godCardParser.selectedGodParser(God.APOLLO.toString());
          assertEquals(godCard1.getGodName(),"Apollo");
      }
      @Test
@@ -33,7 +33,7 @@ public class GodCardParserTest {
          GodCardParser godCardParser = new GodCardParser();
          for(God god : God.values()){
              godCard = new GodCard();
-             godCard = godCardParser.selectedGodParser(god);
+             godCard = godCardParser.selectedGodParser(god.toString());
              assertEquals(godCard.getPowerList().get(0),godCard.getFindAvailableCellsList().get(0));
          }
      }

@@ -27,14 +27,13 @@ public class NetworkHandler {
             System.err.println(e.getMessage()); // Porta non disponibile
             return;
         }
-        ServerStatus serverStatus = ServerStatus.instance();
-        serverStatus.setGamePhase(GamePhase.LOGIN);
+
         System.out.println("Server ready");
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
                     //System.out.println("New connection Input");
-                executor.submit(new SocketHandlerInput(socket, controller, executorPointer, serverStatus));
+                executor.submit(new SocketHandlerInput(socket, controller));
                 //socket = serverSocket.accept();
                     /* executor.submit(new SocketHandlerInput(socket, controller, executorPointer)); */
                     //System.out.println("New connection Output, socket: "+socket);

@@ -1,15 +1,10 @@
 package it.polimi.ingsw.client.viewevents;
 
-import it.polimi.ingsw.client.ClientStatus;
-import it.polimi.ingsw.client.proxymodel.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
 public class TakenNickNameViewEvent extends ViewEvent {
     String takenNickName;
-    ClientStatus clientStatus = ClientStatus.instance();
+    ProxyModel proxyModel = ProxyModel.instance();
     public TakenNickNameViewEvent(String takenNickName) {
         this.takenNickName = takenNickName;
     }
@@ -18,6 +13,6 @@ public class TakenNickNameViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
-        clientStatus.setThisClientNickname("");
+        proxyModel.setThisClientNickname("");
     }
 }

@@ -1,16 +1,8 @@
 package it.polimi.ingsw.server.virtualview.network;
 
 import it.polimi.ingsw.server.controller.Controller;
-import it.polimi.ingsw.server.model.ActionExecutor;
-import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
-import it.polimi.ingsw.server.model.mvevents.eventbeans.WorkerSelectionEventBean;
-import it.polimi.ingsw.server.virtualview.serverevents.LoginEvent;
-import it.polimi.ingsw.server.virtualview.serverevents.ServerEvent;
-import it.polimi.ingsw.server.virtualview.serverevents.StartUpEvent;
-import it.polimi.ingsw.server.virtualview.serverevents.StringEvent;
+import it.polimi.ingsw.server.virtualview.serverevents.*;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
@@ -24,15 +16,11 @@ import java.util.Scanner;
 public class SocketHandlerInput implements Runnable {
     private Socket socket;
     private Controller controller;
-    private ActionExecutor actionExecutor;
     private EventsBuffer eventsBuffer;
-    private ServerStatus serverStatus;
 
-    public SocketHandlerInput(Socket socket, Controller controller, ActionExecutor actionExecutor, ServerStatus serverStatus) {
-        this.serverStatus = serverStatus;
+    public SocketHandlerInput(Socket socket, Controller controller) {
         this.socket = socket;
         this.controller = controller;
-        this.actionExecutor = actionExecutor;
         this.eventsBuffer = EventsBuffer.instance();
         eventsBuffer.flushBuffer();
     }
@@ -42,41 +30,23 @@ public class SocketHandlerInput implements Runnable {
         try {
             Scanner in = new Scanner(socket.getInputStream());
 
-            while(!serverStatus.equals(null)){
+            while(true) {
                 System.out.println("Ready to read");
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
-                //System.out.println(in.nextLine());
                 String userInput = in.nextLine();
                 System.out.println(userInput);
                 StringReader sr = new StringReader(userInput);
                 InputSource is = new InputSource(sr);
                 Document document = db.parse(is);
-                //Node typeEventNode = document.getElementsByTagName("eventType").item(0);
                 ServerEvent serverEvent = returnCorrectServerEvent(document);
                 System.out.println(serverEvent);
                 serverEvent.serverEventMethod(controller);
                 System.out.println("Done");
-                /*login event stringa*/
             }
-            System.out.println("CLOSED WHILE 1");
-            while (serverStatus.getGamePhase().equals(GamePhase.GAME)) {
-                System.out.println("In game phase");
-                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                DocumentBuilder db = dbf.newDocumentBuilder();
-                String userInput = in.nextLine();
-                System.out.println("userInput "+userInput);
-                StringReader sr = new StringReader(userInput);
-                InputSource is = new InputSource(sr);
-                Document document = db.parse(is);
-                //Node typeEventNode = document.getElementsByTagName("eventType").item(0);
-                ServerEvent serverEvent = returnCorrectServerEvent(document);
-                serverEvent.serverEventMethod(controller);
-                System.out.println(serverEvent);
-            }
-            System.out.println("CLOSED WHILE 2");
-            in.close();
-            socket.close();
+            /* Andrà reinserita la chiusura dei canali quando sapremo dove metterla */
+            /* in.close();
+            socket.close(); */
         } catch (IOException | ParserConfigurationException | SAXException e) {
             System.err.println(e.getMessage());
         }
@@ -111,6 +81,11 @@ public class SocketHandlerInput implements Runnable {
         if(doc.getDocumentElement().getTagName().equals("StartUpEvent")){
             String playerComm = doc.getElementsByTagName("playerComm").item(0).getTextContent();
             return new StartUpEvent(playerComm);
+        }
+        if(doc.getDocumentElement().getTagName().equals("GodChoiceEvent")){
+            String chosenGod = doc.getElementsByTagName("chosenGod").item(0).getTextContent();
+            String player = doc.getElementsByTagName("player").item(0).getTextContent();
+            return new GodChoiceEvent(chosenGod, player);
         }
         return null;
     }

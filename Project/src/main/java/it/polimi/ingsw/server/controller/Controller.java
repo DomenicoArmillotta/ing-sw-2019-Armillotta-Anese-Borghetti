@@ -3,14 +3,11 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.GameMaster;
 import it.polimi.ingsw.server.model.Player;
-import it.polimi.ingsw.server.model.godcardparser.God;
 import it.polimi.ingsw.server.model.godcardparser.GodCardsDeck;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.FailedActionEventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
-import it.polimi.ingsw.server.model.mvevents.eventbeans.GenericLoginFailureEvent;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.GodCorrectlyChosen;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
-import it.polimi.ingsw.server.virtualview.network.GamePhase;
-import it.polimi.ingsw.server.virtualview.network.ServerStatus;
 import it.polimi.ingsw.server.virtualview.network.VvLobby;
 import org.xml.sax.SAXException;
 
@@ -50,6 +47,27 @@ public class Controller {
         return 1;
     }
 
+    public void setPlayerGod(String godName, String playerName) throws ParserConfigurationException, SAXException, IOException {
+        ActionExecutor actionExecutor = ActionExecutor.instance();
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        if(!actionExecutor.getCurrentPlayer().getPlayerGod().getGodName().toLowerCase().equals(godName.toLowerCase()) &&
+           !actionExecutor.getNextPlayer().getPlayerGod().getGodName().toLowerCase().equals(godName.toLowerCase()) &&
+           !actionExecutor.getPrevPlayer().getPlayerGod().getGodName().toLowerCase().equals(godName.toLowerCase())) {
+            if(playerName.equals(actionExecutor.getCurrentPlayer().getName())) {
+                actionExecutor.getCurrentPlayer().setPlayerGod(godCardsDeck.createGodCard(godName));
+            } else if(playerName.equals(actionExecutor.getNextPlayer().getName())) {
+                actionExecutor.getNextPlayer().setPlayerGod(godCardsDeck.createGodCard(godName));
+            } else if(playerName.equals(actionExecutor.getPrevPlayer().getName())) {
+                actionExecutor.getPrevPlayer().setPlayerGod(godCardsDeck.createGodCard(godName));
+            }
+        } else {
+            EventsBuffer.instance().setLastEventBean(new FailedActionEventBean());
+            return;
+        }
+        EventsBuffer.instance().setLastEventBean(new GodCorrectlyChosen(godName, playerName));
+        actionExecutor.nextTurn();
+    }
+
     public void startGameControl() throws ParserConfigurationException, SAXException, IOException {
         List<Player> toQueuePlayerList = new ArrayList<>();
         for (int i = 0; i < VvLobby.instance().getPlayers().size(); i++) {
@@ -57,10 +75,8 @@ public class Controller {
         }
         GameMaster gameMaster = new GameMaster(toQueuePlayerList,VvLobby.instance().getPlayers().size());
         gameMaster.getActionExecutor().createMap();
-        GodCardsDeck godCardsDeck = new GodCardsDeck();
-        gameMaster.getActionExecutor().getCurrentPlayer().setPlayerGod(godCardsDeck.createGodCard(God.MORTAL));
-        gameMaster.getActionExecutor().getNextPlayer().setPlayerGod(godCardsDeck.createGodCard(God.DEMETER));
-        gameMaster.getActionExecutor().getPrevPlayer().setPlayerGod(godCardsDeck.createGodCard(God.PAN));
+
+
         gameMaster.getActionExecutor().getCurrentPlayer().workersSetup(0, 0, 1, 1);
         gameMaster.getActionExecutor().getNextPlayer().workersSetup(4, 1, 2, 1);
         gameMaster.getActionExecutor().getPrevPlayer().workersSetup(1, 0, 4, 4);

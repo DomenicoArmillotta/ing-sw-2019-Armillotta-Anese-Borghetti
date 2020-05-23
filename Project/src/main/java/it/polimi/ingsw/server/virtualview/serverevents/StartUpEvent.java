@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.virtualview.serverevents;
 
 import it.polimi.ingsw.server.controller.Controller;
+import it.polimi.ingsw.server.virtualview.network.GamePhase;
 import it.polimi.ingsw.server.virtualview.network.VvLobby;
 import org.xml.sax.SAXException;
 
@@ -17,7 +18,6 @@ public class StartUpEvent extends ServerEvent {
     @Override
     public void serverEventMethod(Controller controller) throws IOException, SAXException, ParserConfigurationException {
         if(playerComm.equals(VvLobby.instance().getPartyOwner())) {
-
             controller.startGameControl();
             /*evento di inizio gioco*/
 

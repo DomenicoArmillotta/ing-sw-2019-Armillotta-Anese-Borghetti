@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.virtualview.network;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -12,9 +13,7 @@ import java.util.List;
 public class SocketHandlerOutput implements Runnable {
     private List<Socket> socketList;
     private List<PrintWriter> printWriterList;
-    private PrintWriter printWriterPtr;
     private EventsBuffer eventsBuffer;
-    private ServerStatus serverStatus = ServerStatus.instance();
 
     private static SocketHandlerOutput instance;
 
@@ -38,20 +37,17 @@ public class SocketHandlerOutput implements Runnable {
         printWriterList.add(printWriter);
     }
 
-
     public void run() {
         try {
             this.eventsBuffer = EventsBuffer.instance();
 
-            while (!serverStatus.equals(null)) {
+            while (true) {
                 sendingBeans();
             }
-            while (serverStatus.getGamePhase().equals(GamePhase.GAME)) {
-                sendingBeans();
-            }
-            for(int i = 0; i < socketList.size(); i++) {
+            /* Andrà reinserita */
+            /* for(int i = 0; i < socketList.size(); i++) {
                 socketList.get(i).close();
-            }
+            } */
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -69,8 +65,6 @@ public class SocketHandlerOutput implements Runnable {
                 printWriterList.get(i).flush();
                 System.out.print("Flushed bean: "+toSend);
             }
-            //eventsBuffer.flushBuffer();
         }
     }
-
 }

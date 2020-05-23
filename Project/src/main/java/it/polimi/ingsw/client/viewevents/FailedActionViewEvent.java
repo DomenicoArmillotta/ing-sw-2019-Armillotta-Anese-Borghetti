@@ -9,7 +9,7 @@ import java.util.Map;
 public class FailedActionViewEvent extends ViewEvent {
     /* Not much to see here... */
     public boolean startWaiting() {
-        return true;
+        return false;
     }
 
     public void viewEventMethod() {

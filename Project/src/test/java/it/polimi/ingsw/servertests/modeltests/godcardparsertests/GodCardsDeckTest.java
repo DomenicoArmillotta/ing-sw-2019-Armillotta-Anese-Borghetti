@@ -25,8 +25,8 @@ public class GodCardsDeckTest {
         playersQueue.add(player1);
         playersQueue.add(player2);
         playersQueue.add(player3);
-        player1.setPlayerGod(newDeck.createGodCard(God.APOLLO));
-        player2.setPlayerGod(newDeck.createGodCard(God.MORTAL));
+        player1.setPlayerGod(newDeck.createGodCard(God.APOLLO.toString()));
+        player2.setPlayerGod(newDeck.createGodCard(God.MORTAL.toString()));
         assertEquals(player1.getName(),"Matteo");
         assertEquals(player2.getName(),"Domenico");
         assertEquals(player1.getPlayerGod().getGodName(),"Apollo");
@@ -47,7 +47,7 @@ public class GodCardsDeckTest {
         playersQueue.add(player3);
         for (God god : God.values()) {
             tempGodCard=null;
-            tempGodCard = newDeck.createGodCard(god);
+            tempGodCard = newDeck.createGodCard(god.toString());
             System.out.println(tempGodCard.getGodName());
         }
     }

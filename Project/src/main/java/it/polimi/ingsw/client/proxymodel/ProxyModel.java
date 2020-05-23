@@ -13,6 +13,8 @@ public class ProxyModel {
     private static ProxyModel instance;
     private List<Player> players=new ArrayList<>();
     private Turn turn;
+    String thisClientNickname;
+    String partyOwner;
 
     public List<Player> getPlayers() {
         return players;
@@ -32,6 +34,27 @@ public class ProxyModel {
 
         return instance;
     }
+
+    private ProxyModel() {
+        this.thisClientNickname = "";
+        this.partyOwner = "";
+    }
+
+    public String getThisClientNickname() {
+        return thisClientNickname;
+    }
+    public String getPartyOwner() {
+        return partyOwner;
+    }
+
+    public void setThisClientNickname(String thisClientNickname) {
+        this.thisClientNickname = thisClientNickname;
+    }
+
+    public void setPartyOwner(String partyOwner) {
+        this.partyOwner = partyOwner;
+    }
+
     private ClientCell[][] map;
 
     public Drawer getDrawerStrategy() {

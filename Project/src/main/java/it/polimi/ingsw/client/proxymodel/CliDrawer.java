@@ -235,6 +235,10 @@ public class CliDrawer extends Drawer{
 
 
     };
+    public void setIsSelected(WorkerClient selectedWorker){
+        selectedWorker.setIsSelected(1);
+    }
+
     //mette 0 nella mappa
     public void setSelectableCell( List<Coords> selectableCoords){
         ClientCell[][] map=ProxyModel.instance().getMap();

@@ -2,6 +2,16 @@ package it.polimi.ingsw.client.proxymodel;
 
 public class WorkerClient {
     private int color;
+    private int isSelected;
+
+    public int getIsSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(int isSelected) {
+        this.isSelected = isSelected;
+    }
+
     private Coords position;
     private Player owner;
     public  WorkerClient(Player owner,Coords coords){

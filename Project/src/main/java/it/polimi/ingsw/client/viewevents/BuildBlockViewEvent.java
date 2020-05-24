@@ -19,7 +19,7 @@ public class BuildBlockViewEvent extends ViewEvent {
         this.blockY = blockY;
         this.levelToBuild = levelToBuild;
     }
-    
+
     public void viewEventMethod() {
         proxyModel.getDrawerStrategy().setBuild(new Coords(blockX,blockY),levelToBuild);
         proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));

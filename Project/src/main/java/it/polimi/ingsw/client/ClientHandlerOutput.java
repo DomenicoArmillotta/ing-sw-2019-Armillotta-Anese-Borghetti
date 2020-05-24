@@ -102,13 +102,13 @@ public class ClientHandlerOutput implements Runnable {
                                         int w = stdin.nextInt();
                                         XmlMapper xmlMapper = (new XmlMapper());
                                         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-                                        String toSend = xmlMapper.writeValueAsString(new GameCoordsEvent(x, y));
+                                        String toSend = xmlMapper.writeValueAsString(new SetupCoordsEvent(x, y, z, w));
                                         toSend += "\n";
                                         printWriter.print(toSend);
                                         System.out.print(toSend);
                                         System.out.println("");
                                         printWriter.flush();
-                                        System.out.println("Flushed coords " + x + " " + y);
+                                        System.out.println("Flushed setup coords " + x + " " + y);
                                     }
                                 }
                             }

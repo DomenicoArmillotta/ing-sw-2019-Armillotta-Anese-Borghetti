@@ -18,5 +18,6 @@ public class SetupCoordsEvent extends CoordsEvent {
 
     public void serverEventMethod(Controller controller) {
         ActionExecutor.instance().getCurrentPlayer().workersSetup(firstWorkerX, firstWorkerY, secondWorkerX, secondWorkerY);
+
     }
 }

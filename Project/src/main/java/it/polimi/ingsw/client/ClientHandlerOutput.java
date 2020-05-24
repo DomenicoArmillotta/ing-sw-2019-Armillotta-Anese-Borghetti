@@ -91,6 +91,28 @@ public class ClientHandlerOutput implements Runnable {
                         System.out.println("");
                         printWriter.flush();
                         System.out.println("Flushed GodChoice " + stringInput);
+                    } else if (inputLine.equals("setupcoords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname())) {
+                        if (stdin.hasNextInt()) {
+                            int x = stdin.nextInt();
+                            if (stdin.hasNextInt()) {
+                                int y = stdin.nextInt();
+                                if (stdin.hasNextInt()) {
+                                    int z = stdin.nextInt();
+                                    if (stdin.hasNextInt()) {
+                                        int w = stdin.nextInt();
+                                        XmlMapper xmlMapper = (new XmlMapper());
+                                        xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                                        String toSend = xmlMapper.writeValueAsString(new SetupCoordsEvent(x, y, z, w));
+                                        toSend += "\n";
+                                        printWriter.print(toSend);
+                                        System.out.print(toSend);
+                                        System.out.println("");
+                                        printWriter.flush();
+                                        System.out.println("Flushed setup coords " + x + " " + y);
+                                    }
+                                }
+                            }
+                        }
                     }
                 } }
             } catch (JsonProcessingException jsonProcessingException) {

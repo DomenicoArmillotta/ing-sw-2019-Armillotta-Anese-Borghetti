@@ -11,6 +11,7 @@ public class WorkerMovementViewEvent extends ViewEvent {
     int prevY;
     int currX;
     int currY;
+    ProxyModel proxyModel = ProxyModel.instance();
 
     public WorkerMovementViewEvent(int prevX, int prevY, int currX, int currY){
         this.prevX = prevX;
@@ -18,12 +19,9 @@ public class WorkerMovementViewEvent extends ViewEvent {
         this.currX = currX;
         this.currY = currY;
     }
-    public boolean startWaiting() {
-        return false;
-    }
 
     public void viewEventMethod() {
-        /* ProxyModel.instance().getDrawerStrategy().setMoveWorker(new Coords(this.prevX,this.prevX),new Coords(this.currX,this.currY));
-        ProxyModel.instance().getDrawerStrategy().drawMap(); */
+        proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getMap()[prevX][prevY].getWorker(), new Coords(currX,currY));
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
     }
 }

@@ -9,19 +9,14 @@ import java.util.Map;
 public class WorkerSelectionViewEvent extends ViewEvent {
     int workerX;
     int workerY;
+    ProxyModel proxyModel = ProxyModel.instance();
 
     public WorkerSelectionViewEvent(int workerX, int workerY) {
         this.workerX = workerX;
         this.workerY = workerY;
     }
-    public boolean startWaiting() {
-        return false;
-    }
 
     public void viewEventMethod() {
-        /* List<Coords> coords=new ArrayList<>();
-        coords.add(new Coords(this.workerX,this.workerY));
-        ProxyModel.instance().getDrawerStrategy().setSelectableCell(coords);
-        ProxyModel.instance().getDrawerStrategy().drawMap(); */
+
     }
 }

@@ -8,15 +8,12 @@ import java.util.Map;
 
 public class PlayerWonViewEvent extends ViewEvent {
     String winnerName;
+    ProxyModel proxyModel = ProxyModel.instance();
     public PlayerWonViewEvent(String winnerName) {
         this.winnerName = winnerName;
     }
-    public boolean startWaiting() {
-        return false;
-    }
 
     public void viewEventMethod() {
-        //ProxyModel.instance().getDrawerStrategy().drawWinGame();
-
+        proxyModel.getDrawerStrategy().drawWinGame();
     }
 }

@@ -3,7 +3,9 @@ package it.polimi.ingsw.server.controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.GameMaster;
 import it.polimi.ingsw.server.model.Player;
+import it.polimi.ingsw.server.model.godcardparser.God;
 import it.polimi.ingsw.server.model.godcardparser.GodCardsDeck;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.EveryGodChosenEventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.FailedActionEventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.GodCorrectlyChosen;
@@ -18,6 +20,7 @@ import java.util.List;
 
 public class Controller {
     private int[] userInput;
+
 
     public void setUserInput(int[] userInput) {
         this.userInput = userInput;
@@ -66,6 +69,12 @@ public class Controller {
         }
         EventsBuffer.instance().setLastEventBean(new GodCorrectlyChosen(godName, playerName));
         actionExecutor.nextTurn();
+        if(!actionExecutor.getCurrentPlayer().getPlayerGod().getGodName().toLowerCase().equals(God.MORTAL.toString().toLowerCase()) &&
+           !actionExecutor.getNextPlayer().getPlayerGod().getGodName().toLowerCase().equals(God.MORTAL.toString().toLowerCase()) &&
+           !actionExecutor.getPrevPlayer().getPlayerGod().getGodName().toLowerCase().equals(God.MORTAL.toString().toLowerCase()))
+        {
+            EventsBuffer.instance().setLastEventBean(new EveryGodChosenEventBean());
+        }
     }
 
     public void startGameControl() throws ParserConfigurationException, SAXException, IOException {
@@ -76,18 +85,15 @@ public class Controller {
         GameMaster gameMaster = new GameMaster(toQueuePlayerList,VvLobby.instance().getPlayers().size());
         gameMaster.getActionExecutor().createMap();
 
-
-        gameMaster.getActionExecutor().getCurrentPlayer().workersSetup(0, 0, 1, 1);
+        /* gameMaster.getActionExecutor().getCurrentPlayer().workersSetup(0, 0, 1, 1);
         gameMaster.getActionExecutor().getNextPlayer().workersSetup(4, 1, 2, 1);
-        gameMaster.getActionExecutor().getPrevPlayer().workersSetup(1, 0, 4, 4);
+        gameMaster.getActionExecutor().getPrevPlayer().workersSetup(1, 0, 4, 4); */
         if(gameMaster.getNumOfPlayers() == 1) EventsBuffer.instance().setLastEventBean(new FailedActionEventBean());
         else if(gameMaster.getNumOfPlayers() == 2) EventsBuffer.instance().setLastEventBean(new GameStartEventBean(VvLobby.instance().getPlayers().get(0),VvLobby.instance().getPlayers().get(1),VvLobby.instance().getPlayers().get(1)));
         else if(gameMaster.getNumOfPlayers() == 3) EventsBuffer.instance().setLastEventBean(new GameStartEventBean(VvLobby.instance().getPlayers().get(0),VvLobby.instance().getPlayers().get(1),VvLobby.instance().getPlayers().get(2)));
-        //ServerStatus.instance().setGamePhase(GamePhase.GAME);
-        gameMaster.getActionExecutor().getNextPower().doAction(null);
-        System.out.println("Stampa");
-        /*
-        logica per creare il action executor, poi settiamo i players
-         */
+
+        /* gameMaster.getActionExecutor().getNextPower().doAction(null);
+        System.out.println("Stampa"); */
+
     }
 }

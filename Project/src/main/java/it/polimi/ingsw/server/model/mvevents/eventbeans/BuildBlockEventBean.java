@@ -1,13 +1,9 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
 public class BuildBlockEventBean extends EventBean {
-    String eventType;
+    int levelToBuild;
     int blockX;
     int blockY;
-
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
-    }
 
     public void setBlockX(int blockX) {
         this.blockX = blockX;
@@ -15,10 +11,6 @@ public class BuildBlockEventBean extends EventBean {
 
     public void setBlockY(int blockY) {
         this.blockY = blockY;
-    }
-
-    public String getEventType() {
-        return eventType;
     }
 
     public int getBlockX() {
@@ -29,9 +21,18 @@ public class BuildBlockEventBean extends EventBean {
         return blockY;
     }
 
-    public BuildBlockEventBean(int blockX, int blockY){
-       eventType = "BuildBlockEvent";
+    public int getLevelToBuild() {
+        return levelToBuild;
+    }
+
+    public void setLevelToBuild(int levelToBuild) {
+        this.levelToBuild = levelToBuild;
+    }
+
+    public BuildBlockEventBean(int blockX, int blockY,int levelToBuild){
        this.blockX = blockX;
        this.blockY = blockY;
+       this.levelToBuild = levelToBuild;
     }
+
 }

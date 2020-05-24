@@ -12,11 +12,6 @@ public class GodChosenViewEvent extends ViewEvent {
     }
 
     @Override
-    public boolean startWaiting() {
-        return false;
-    }
-
-    @Override
     public void viewEventMethod() {
         ProxyModel.instance().getTurn().nextTurn();
         System.out.println(player+" ha scelto correttamente "+chosenGod.toUpperCase());

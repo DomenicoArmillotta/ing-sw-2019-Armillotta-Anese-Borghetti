@@ -22,7 +22,8 @@ public class InputParser {
         if(document.getDocumentElement().getTagName().equals("BuildBlockEventBean")){
             int x = Integer.parseInt(document.getElementsByTagName("blockX").item(0).getTextContent());
             int y = Integer.parseInt(document.getElementsByTagName("blockY").item(0).getTextContent());
-            return new BuildBlockViewEvent(x,y);
+            int levelToBuild = Integer.parseInt(document.getElementsByTagName("levelToBuild").item(0).getTextContent());
+            return new BuildBlockViewEvent(x,y,levelToBuild);
         }
         if(document.getDocumentElement().getTagName().equals("FailedActionEventBean")){
             return new FailedActionViewEvent();
@@ -96,13 +97,17 @@ public class InputParser {
             String secondPlayer = document.getElementsByTagName("secondPlayer").item(0).getTextContent();
             String thirdPlayer = document.getElementsByTagName("thirdPlayer").item(0).getTextContent();
 
-            return new GameStartViewEvent(firstPlayer, secondPlayer, thirdPlayer);
+            return new SetupStartViewEvent(firstPlayer, secondPlayer, thirdPlayer);
         }
         if(document.getDocumentElement().getTagName().equals("GodCorrectlyChosen")){
             String chosenGod = document.getElementsByTagName("chosenGod").item(0).getTextContent();
             String player = document.getElementsByTagName("player").item(0).getTextContent();
 
             return new GodChosenViewEvent(chosenGod, player);
+        }
+        if(document.getDocumentElement().getTagName().equals("EveryGodChosenEventBean")){
+
+            return new TrueGameStartEvent();
         }
         return null;
     }

@@ -36,6 +36,9 @@ public class ProxyModelTest {
         proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(2),new Coords(2,3));
         //faccio setup  imposto ground su mappa
         proxyModel.getDrawerStrategy().setup();
+        //seleziono due worer
+        proxyModel.getPlayers().get(0).getWorker1().setIsSelected(1);
+        proxyModel.getPlayers().get(2).getWorker1().setIsSelected(1);
         //disegno
         proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         //seleziono
@@ -46,6 +49,7 @@ public class ProxyModelTest {
         proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         //build
         proxyModel.getDrawerStrategy().setBuild(new Coords(4,4),4);
+        proxyModel.getDrawerStrategy().setBuild(new Coords(2,3),4);
         proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         //win and loose
         proxyModel.getDrawerStrategy().drawLooseGame();

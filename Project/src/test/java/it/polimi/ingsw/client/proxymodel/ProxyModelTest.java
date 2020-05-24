@@ -13,6 +13,8 @@ public class ProxyModelTest {
 
     @Test
     public void BuildTest() {
+        System.out.println("è il tuo turno "+ProxyModel.instance().getTurn().getCurrentPlayer().getName());
+        System.out.println("il prossimo turno è di "+ProxyModel.instance().getTurn().getNextPlayer().getName());
         List<Coords> coordsArray = new ArrayList();
         coordsArray.add(new Coords(1,1));
         coordsArray.add(new Coords(1,2));

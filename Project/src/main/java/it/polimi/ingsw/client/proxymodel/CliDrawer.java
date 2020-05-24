@@ -65,6 +65,7 @@ public class CliDrawer extends Drawer{
         }
     }
     public void drawMap(Player player1,Player player2,Player player3){
+
         ClientCell[][] map=ProxyModel.instance().getMap();
         int i,j,k,m,w,q;
         int black=1;

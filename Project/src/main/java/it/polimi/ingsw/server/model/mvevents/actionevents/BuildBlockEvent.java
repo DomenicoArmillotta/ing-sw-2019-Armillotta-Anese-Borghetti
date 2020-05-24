@@ -16,7 +16,7 @@ public class BuildBlockEvent extends ActionEvent {
     }
 
     public EventBean eventMethod() {
-        BuildBlockEventBean buildBlockEventBean = new BuildBlockEventBean(getCellWithBlock().getX(), getCellWithBlock().getY());
+        BuildBlockEventBean buildBlockEventBean = new BuildBlockEventBean(getCellWithBlock().getX(), getCellWithBlock().getY(), getCellWithBlock().getBuildingLevel().ordinal());
         return buildBlockEventBean;
     }
 }

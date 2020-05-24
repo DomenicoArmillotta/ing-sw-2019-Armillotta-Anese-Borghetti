@@ -12,11 +12,13 @@ public class BuildBlockViewEvent extends ViewEvent {
     int blockY;
     int levelToBuild;
     /* aggiungere livello */
-    public BuildBlockViewEvent(int blockX, int blockY) {
+
+    public BuildBlockViewEvent(int blockX, int blockY, int levelToBuild) {
         this.blockX = blockX;
         this.blockY = blockY;
-        this.levelToBuild=3;
+        this.levelToBuild = levelToBuild;
     }
+
     public boolean startWaiting() {
         return false;
     }

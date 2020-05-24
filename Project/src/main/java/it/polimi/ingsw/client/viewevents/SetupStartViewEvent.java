@@ -15,9 +15,18 @@ public class SetupStartViewEvent extends ViewEvent {
 
     public void viewEventMethod() {
         proxyModel.createTurn();
-        proxyModel.getTurn().setCurrentPlayer(new Player(firstPlayer));
-        proxyModel.getTurn().setNextPlayer(new Player(secondPlayer));
-        proxyModel.getTurn().setPreviousPlayer(new Player(thirdPlayer));
+        Player player1 = new Player(firstPlayer);
+        Player player2 = new Player(secondPlayer);
+        if(secondPlayer.equals(thirdPlayer)) {
+            proxyModel.getTurn().setCurrentPlayer(player1);
+            proxyModel.getTurn().setNextPlayer(player2);
+            proxyModel.getTurn().setPreviousPlayer(player2);
+        } else {
+            Player player3 = new Player(thirdPlayer);
+            proxyModel.getTurn().setCurrentPlayer(player1);
+            proxyModel.getTurn().setNextPlayer(player2);
+            proxyModel.getTurn().setPreviousPlayer(player3);
+        }
 
         System.out.println("Game STARTED");
     }

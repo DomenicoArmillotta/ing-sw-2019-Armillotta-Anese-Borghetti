@@ -79,7 +79,7 @@ public class ClientHandlerOutput implements Runnable {
                                 System.out.println("Flushed coords " + x + " " + y);
                             }
                         }
-                    } else if (inputLine.equals("god") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname())) {
+                    } else if (inputLine.equals("god") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getTurn().getPlayerByName(proxyModel.getThisClientNickname()).getGodCard() == null) {
                         String stringInput = stdin.next();
                         System.out.println("Read GodChoice " + stringInput);
                         XmlMapper xmlMapper = (new XmlMapper());

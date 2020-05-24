@@ -1,18 +1,27 @@
-package it.polimi.ingsw.client;
+package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
-import java.io.Serializable;
+public class SetupWorkerDoneEventBean extends EventBean {
 
-public class SetupCoordsEvent extends ClientEvent implements Serializable {
     int x;
     int y;
     int z;
     int w;
+    String ownerName;
 
-    public SetupCoordsEvent(int x, int y, int z, int w) {
+    public SetupWorkerDoneEventBean(int x, int y, int z, int w, String ownerName) {
         this.x = x;
         this.y = y;
         this.z = z;
         this.w = w;
+        this.ownerName = ownerName;
+    }
+
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
     }
 
     public int getX() {

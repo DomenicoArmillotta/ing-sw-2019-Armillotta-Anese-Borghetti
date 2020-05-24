@@ -11,17 +11,21 @@ public class BuildBlockViewEvent extends ViewEvent {
     int blockX;
     int blockY;
     int levelToBuild;
-    ProxyModel proxyModel = ProxyModel.instance();
     /* aggiungere livello */
-    public BuildBlockViewEvent(int blockX, int blockY) {
+
+    public BuildBlockViewEvent(int blockX, int blockY, int levelToBuild) {
         this.blockX = blockX;
         this.blockY = blockY;
-        this.levelToBuild=3;
+        this.levelToBuild = levelToBuild;
     }
 
-    public void viewEventMethod() {
-        proxyModel.getDrawerStrategy().setBuild(new Coords(blockX,blockY),levelToBuild);
-        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+    public boolean startWaiting() {
+        return false;
+    }
 
+
+    public void viewEventMethod() {
+        /* ProxyModel.instance().getDrawerStrategy().setBuild(new Coords(this.blockX,this.blockY),levelToBuild);
+        ProxyModel.instance().getDrawerStrategy().drawMap(); */
     }
 }

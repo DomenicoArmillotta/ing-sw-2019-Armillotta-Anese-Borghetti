@@ -20,15 +20,21 @@ public class WorkersSetupViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
+        proxyModel.getTurn().nextTurn();
+
         int playerIndex = 0;
         for(int i = 0; i < proxyModel.getPlayers().size(); i++) {
             if (proxyModel.getPlayers().get(i).getName().equals(player)) {
                 playerIndex = i;
             }
         }
+
         proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(playerIndex),new Coords(x,y));
         proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(playerIndex),new Coords(z,w));
-        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        //proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        if(proxyModel.getPlayers().size() == 2) proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(0));
+        else proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+
     }
 
 

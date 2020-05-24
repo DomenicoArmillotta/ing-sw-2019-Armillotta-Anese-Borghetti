@@ -109,6 +109,14 @@ public class InputParser {
 
             return new TrueGameStartEvent();
         }
+        if(document.getDocumentElement().getTagName().equals("SetupWorkerDoneEventBean")){
+            int x = Integer.parseInt(document.getElementsByTagName("x").item(0).getTextContent());
+            int y = Integer.parseInt(document.getElementsByTagName("y").item(0).getTextContent());
+            int z = Integer.parseInt(document.getElementsByTagName("z").item(0).getTextContent());
+            int w = Integer.parseInt(document.getElementsByTagName("w").item(0).getTextContent());
+            String ownerName = document.getElementsByTagName("ownerName").item(0).getTextContent();
+            return new WorkersSetupViewEvent(x, y, z, w, ownerName);
+        }
         return null;
     }
 

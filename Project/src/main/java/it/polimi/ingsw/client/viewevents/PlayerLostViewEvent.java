@@ -8,15 +8,12 @@ import java.util.Map;
 
 public class PlayerLostViewEvent extends ViewEvent {
     String loserName;
+    ProxyModel proxyModel = ProxyModel.instance();
     public PlayerLostViewEvent(String loserName) {
         this.loserName = loserName;
     }
-    public boolean startWaiting() {
-        return false;
-    }
 
     public void viewEventMethod() {
-        //ProxyModel.instance().getDrawerStrategy().drawLooseGame();
-
+        proxyModel.getDrawerStrategy().drawLooseGame();
     }
 }

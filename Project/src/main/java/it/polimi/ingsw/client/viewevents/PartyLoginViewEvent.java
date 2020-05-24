@@ -5,18 +5,15 @@ import it.polimi.ingsw.client.proxymodel.*;
 public class PartyLoginViewEvent extends ViewEvent {
     String partyOwner;
     String loggedPlayer;
+    ProxyModel proxyModel = ProxyModel.instance();
 
     public PartyLoginViewEvent(String partyOwner, String loggedPlayer) {
         this.partyOwner = partyOwner;
         this.loggedPlayer = loggedPlayer;
     }
-    public boolean startWaiting() {
-        return false;
-    }
 
     public void viewEventMethod() {
-        ProxyModel.instance().getPlayers().add(new Player(this.loggedPlayer));
-        /* ClientStatus.instance().setWhoAmI(this.loggedPlayer); */
+        proxyModel.getDrawerStrategy().createPlayer(loggedPlayer);
         if(ProxyModel.instance().getPartyOwner().equals("")) ProxyModel.instance().setPartyOwner(partyOwner);
     }
 }

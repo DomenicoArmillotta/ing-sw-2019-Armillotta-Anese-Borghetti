@@ -8,8 +8,6 @@ import java.util.Map;
 
 abstract public class ViewEvent {
 
-    public abstract boolean startWaiting();
-
     public abstract void viewEventMethod();
 
 }

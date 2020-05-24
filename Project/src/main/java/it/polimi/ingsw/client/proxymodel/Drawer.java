@@ -5,7 +5,7 @@ import java.util.List;
 
 public abstract class Drawer {
 
-    void setup() {};
+    public void setup() {};
     public void drawMap(Player player1,Player player2,Player player3){};
     public void setSelectableCell( List<Coords> selectableCoords){}; //colora le celle che potrebbero essere selezionate
     public void setMoveWorker(WorkerClient selectedWorker,Coords moveCell){};

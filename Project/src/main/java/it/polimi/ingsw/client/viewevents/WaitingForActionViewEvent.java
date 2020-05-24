@@ -14,15 +14,11 @@ public class WaitingForActionViewEvent extends ViewEvent {
         this.coordinates = coordinates;
         this.currTurn = currTurn;
     }
-    public boolean startWaiting() {
-        return true;
-    }
 
     public void viewEventMethod() {
         proxyModel.getTurn().setCurrentPlayer(new Player(currTurn));
-        /*  ProxyModel.instance().getDrawerStrategy().setSelectableCell(convertIntoCoords());
-        ProxyModel.instance().getDrawerStrategy().drawMap(); */
-
+        proxyModel.getDrawerStrategy().setSelectableCell(convertIntoCoords());
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
     }
     public  List<Coords> convertIntoCoords(){
         List<Coords> coords=new ArrayList<>();

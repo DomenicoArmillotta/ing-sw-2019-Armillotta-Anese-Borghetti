@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client;
 
+import it.polimi.ingsw.client.proxymodel.CliDrawer;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
 import java.io.IOException;
@@ -17,6 +18,10 @@ public class ClientHandler {
             ExecutorService executor = Executors.newFixedThreadPool(2);
             System.out.println("Client ready");
             ProxyModel proxyModel = ProxyModel.instance();
+            proxyModel.createMap();
+            CliDrawer CliDrawer=new CliDrawer();
+            proxyModel.setDrawerStrategy(CliDrawer);
+            System.out.println("CLI ready");
                 try {
                     Socket socket = new Socket(Inet4Address.getLocalHost().getHostAddress(), 1234);
                     executor.submit(new ClientHandlerOutput(socket));

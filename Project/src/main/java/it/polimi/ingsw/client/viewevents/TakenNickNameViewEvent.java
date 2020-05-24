@@ -8,9 +8,6 @@ public class TakenNickNameViewEvent extends ViewEvent {
     public TakenNickNameViewEvent(String takenNickName) {
         this.takenNickName = takenNickName;
     }
-    public boolean startWaiting() {
-        return false;
-    }
 
     public void viewEventMethod() {
         proxyModel.setThisClientNickname("");

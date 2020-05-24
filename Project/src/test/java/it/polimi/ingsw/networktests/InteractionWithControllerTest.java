@@ -28,9 +28,9 @@ public class InteractionWithControllerTest {
         gameMaster.createGodList();
         gameMaster.createActionExecutor();
         GodCardsDeck godCardsDeck = new GodCardsDeck();
-        player1.setPlayerGod(godCardsDeck.createGodCard(God.MORTAL));
-        player2.setPlayerGod(godCardsDeck.createGodCard(God.DEMETER));
-        player3.setPlayerGod(godCardsDeck.createGodCard(God.PAN));
+        player1.setPlayerGod(godCardsDeck.createGodCard(God.MORTAL.toString()));
+        player2.setPlayerGod(godCardsDeck.createGodCard(God.DEMETER.toString()));
+        player3.setPlayerGod(godCardsDeck.createGodCard(God.PAN.toString()));
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();

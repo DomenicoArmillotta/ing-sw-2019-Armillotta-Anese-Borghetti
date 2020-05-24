@@ -19,6 +19,7 @@ import java.util.List;
 public class Controller {
     private int[] userInput;
 
+
     public void setUserInput(int[] userInput) {
         this.userInput = userInput;
     }
@@ -76,18 +77,15 @@ public class Controller {
         GameMaster gameMaster = new GameMaster(toQueuePlayerList,VvLobby.instance().getPlayers().size());
         gameMaster.getActionExecutor().createMap();
 
-
         gameMaster.getActionExecutor().getCurrentPlayer().workersSetup(0, 0, 1, 1);
         gameMaster.getActionExecutor().getNextPlayer().workersSetup(4, 1, 2, 1);
         gameMaster.getActionExecutor().getPrevPlayer().workersSetup(1, 0, 4, 4);
         if(gameMaster.getNumOfPlayers() == 1) EventsBuffer.instance().setLastEventBean(new FailedActionEventBean());
         else if(gameMaster.getNumOfPlayers() == 2) EventsBuffer.instance().setLastEventBean(new GameStartEventBean(VvLobby.instance().getPlayers().get(0),VvLobby.instance().getPlayers().get(1),VvLobby.instance().getPlayers().get(1)));
         else if(gameMaster.getNumOfPlayers() == 3) EventsBuffer.instance().setLastEventBean(new GameStartEventBean(VvLobby.instance().getPlayers().get(0),VvLobby.instance().getPlayers().get(1),VvLobby.instance().getPlayers().get(2)));
-        //ServerStatus.instance().setGamePhase(GamePhase.GAME);
+
         gameMaster.getActionExecutor().getNextPower().doAction(null);
         System.out.println("Stampa");
-        /*
-        logica per creare il action executor, poi settiamo i players
-         */
+
     }
 }

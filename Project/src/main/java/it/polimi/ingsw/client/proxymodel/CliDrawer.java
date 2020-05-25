@@ -282,13 +282,13 @@ public class CliDrawer extends Drawer{
     }
 
     //mette 0 nella mappa
-    public void setSelectableCell( List<Coords> selectableCoords){
+    public void setSelectableCell( List<Coords> selectableCoords,int value){
         ClientCell[][] map=ProxyModel.instance().getMap();
 
         int l,i;
         l=selectableCoords.size();
         for(i=0;i<l;i++){
-            map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setSelectable(1);
+            map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setSelectable(value);
         }
     }; //colora le celle che potrebbero essere selezionate
 

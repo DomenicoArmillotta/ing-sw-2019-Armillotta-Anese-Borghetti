@@ -7,7 +7,7 @@ public class GuiDrawer extends Drawer {
 
     public void setup() {};
     public void drawMap(Player player1,Player player2,Player player3){};
-    public void setSelectableCell( List<Coords> selectableCoords){}; //colora le celle che potrebbero essere selezionate
+    public void setSelectableCell( List<Coords> selectableCoords,int value){}; //colora le celle che potrebbero essere selezionate
     public void setMoveWorker(WorkerClient selectedWorker,Coords moveCell){};
     public void setBuild(Coords buildCell,int levelToBuild){};
     public void setIsSelected(WorkerClient selectedWorker){};

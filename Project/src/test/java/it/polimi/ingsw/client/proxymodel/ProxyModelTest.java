@@ -13,8 +13,8 @@ public class ProxyModelTest {
 
     @Test
     public void BuildTest() {
-        System.out.println("è il tuo turno "+ProxyModel.instance().getTurn().getCurrentPlayer().getName());
-        System.out.println("il prossimo turno è di "+ProxyModel.instance().getTurn().getNextPlayer().getName());
+        //System.out.println("è il tuo turno "+ProxyModel.instance().getTurn().getCurrentPlayer().getName());
+        //System.out.println("il prossimo turno è di "+ProxyModel.instance().getTurn().getNextPlayer().getName());
         List<Coords> coordsArray = new ArrayList();
         coordsArray.add(new Coords(1,1));
         coordsArray.add(new Coords(1,2));
@@ -44,7 +44,7 @@ public class ProxyModelTest {
         //disegno
         proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         //seleziono
-        proxyModel.getDrawerStrategy().setSelectableCell(coordsArray);
+        proxyModel.getDrawerStrategy().setSelectableCell(coordsArray,1);
         proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         //moviamo un worker
         proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getPlayers().get(0).getWorker1(),new Coords(4,4));

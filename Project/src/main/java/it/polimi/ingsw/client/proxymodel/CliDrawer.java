@@ -198,12 +198,25 @@ public class CliDrawer extends Drawer{
                             }
                         }
                         if(map[i][j].getWorker()!=null && m==2 && k==2){
-                            if(map[i][j].getWorker().getOwner().equals(player1))
-                                System.out.print(BLUE_BOLD+"@@"+RESET);
-                            else if(map[i][j].getWorker().getOwner().equals(player2))
-                                System.out.print(PURPLE_BOLD+"@@"+RESET);
-                            else if(map[i][j].getWorker().getOwner().equals(player3))
-                                System.out.print(YELLOW_BOLD+"@@"+RESET);
+                            if(map[i][j].getWorker().getOwner().equals(player1)){
+                                if(map[i][j].getWorker().getIsSelected()==2)
+                                    System.out.print(BLUE_BOLD+"@@"+RESET);
+                                else
+                                    System.out.print(BLUE_BOLD+BLACK_BACKGROUND+"@@"+RESET);
+                            }
+                            else if(map[i][j].getWorker().getOwner().equals(player2)){
+                                if(map[i][j].getWorker().getIsSelected()==2)
+                                    System.out.print(PURPLE_BOLD+"@@"+RESET);
+                                else
+                                    System.out.print(PURPLE_BOLD+BLACK_BACKGROUND+"@@"+RESET);
+                            }
+                            else if(map[i][j].getWorker().getOwner().equals(player3)){
+                                if(map[i][j].getWorker().getIsSelected()==2)
+                                    System.out.print(YELLOW_BOLD+"@@"+RESET);
+                                else
+                                    System.out.print(YELLOW_BOLD+BLACK_BACKGROUND+"@@"+RESET);
+
+                            }
                         }else if(map[i][j].getWorker()==null && m==2 && k==2) {
                             System.out.print("  ");
                         }

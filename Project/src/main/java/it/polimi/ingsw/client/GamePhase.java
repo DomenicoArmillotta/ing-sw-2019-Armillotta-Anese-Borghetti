@@ -2,7 +2,8 @@ package it.polimi.ingsw.client;
 
 public enum GamePhase {
     LOGIN,
-    GAME_SETUP,
+    GOD_CHOICE,
+    BOARD_SETUP,
     GAME,
     DISCONNECTED
 }

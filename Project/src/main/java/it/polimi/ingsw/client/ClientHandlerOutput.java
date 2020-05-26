@@ -12,7 +12,6 @@ import java.util.Scanner;
 public class ClientHandlerOutput implements Runnable {
 
     private Socket socket;
-    private GamePhase gamePhase;
 
     public ClientHandlerOutput(Socket socket) {
         this.socket = socket;
@@ -30,14 +29,16 @@ public class ClientHandlerOutput implements Runnable {
 
         System.out.println("socket: " + socket);
         ProxyModel proxyModel = ProxyModel.instance();
+        //proxyModel.setGamePhase(GamePhase.LOGIN);
         Scanner stdin = new Scanner(System.in);
 
         try {
 
             while (true) {
+                //System.out.println("GAME PHASE: "+proxyModel.getGamePhase());
                 String inputLine = stdin.next();
                 if (inputLine.equals("quit")) {
-                    this.gamePhase = GamePhase.DISCONNECTED;
+                    //proxyModel.setGamePhase(GamePhase.DISCONNECTED);
                     break;
                 } else {
                     if (inputLine.equals("login") && proxyModel.getThisClientNickname().equals("")) {

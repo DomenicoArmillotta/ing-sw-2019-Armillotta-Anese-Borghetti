@@ -65,9 +65,18 @@ public class CliDrawer extends Drawer{
         }
     }
     public void drawMap(){
-        Player player1=ProxyModel.instance().getPlayers().get(0);
-        Player player2=ProxyModel.instance().getPlayers().get(1);
-        Player player3=ProxyModel.instance().getPlayers().get(2);
+        Player player1;
+        Player player2;
+        Player player3;
+        if(ProxyModel.instance().getPlayers().size() == 2) {
+            player1 = ProxyModel.instance().getPlayers().get(0);
+            player2 = ProxyModel.instance().getPlayers().get(1);
+            player3 = null;
+        } else {
+            player1 = ProxyModel.instance().getPlayers().get(0);
+            player2 = ProxyModel.instance().getPlayers().get(1);
+            player3 = ProxyModel.instance().getPlayers().get(2);
+        }
 
 
         ClientCell[][] map=ProxyModel.instance().getMap();

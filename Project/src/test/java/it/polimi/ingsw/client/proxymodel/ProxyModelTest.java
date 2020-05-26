@@ -38,21 +38,21 @@ public class ProxyModelTest {
         proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(2),new Coords(2,3));
         //faccio setup  imposto ground su mappa
         proxyModel.getDrawerStrategy().setup();
-        //seleziono due worer
+        //seleziono due worer DISEGNO 1
         proxyModel.getPlayers().get(0).getWorker1().setIsSelected(1);
         proxyModel.getPlayers().get(2).getWorker1().setIsSelected(1);
         //disegno
         proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
-        //seleziono
-        //proxyModel.getDrawerStrategy().setSelectableCell(coordsArray,1);
-        //proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        //seleziono DISEGNO 2
+        proxyModel.getDrawerStrategy().setSelectableCell(coordsArray,1);
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         //moviamo un worker
-        //proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getPlayers().get(0).getWorker1(),new Coords(4,4));
-        //proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getPlayers().get(0).getWorker1(),new Coords(4,4));
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         //build
-        //proxyModel.getDrawerStrategy().setBuild(new Coords(4,4),4);
-        //proxyModel.getDrawerStrategy().setBuild(new Coords(2,3),4);
-        //proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        proxyModel.getDrawerStrategy().setBuild(new Coords(4,4),4);
+        proxyModel.getDrawerStrategy().setBuild(new Coords(2,3),4);
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         //muovo giocatore dove ho costruito
         proxyModel.getDrawerStrategy().setBuild(new Coords(2,4),1);
         proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getPlayers().get(2).getWorker2(), new Coords(2,4));

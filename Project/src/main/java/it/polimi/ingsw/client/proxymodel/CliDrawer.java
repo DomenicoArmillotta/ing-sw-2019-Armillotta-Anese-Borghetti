@@ -130,78 +130,80 @@ public class CliDrawer extends Drawer{
                         if(map[i][j].getLevel()==0 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3 )){
                             if( map[i][j].getSelectable()==0) {
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
-                                    System.out.print(GREEN_BACKGROUND + ".." + RESET);
+                                    System.out.print(GREEN_BACKGROUND+GREEN_BOLD + ".." + RESET);
+                                //se è selezionabile il giocatore
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(GREEN_BACKGROUND + WHITE_BOLD + ".." + WHITE_BOLD + RESET);
+                                    System.out.print(GREEN_BACKGROUND + BLACK_BOLD + "##" + WHITE_BOLD + RESET);
                             }
+                            //se è selezionabile la cella
                             else if ( map[i][j].getSelectable()==1) {
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
                                     System.out.print(GREEN_BACKGROUND + "§§" + RESET);
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(GREEN_BACKGROUND +WHITE_BOLD+ "§§" +WHITE_BOLD+ RESET);
+                                    System.out.print(GREEN_BACKGROUND +BLACK_BOLD+ "§§" +WHITE_BOLD+ RESET);
                             }
 
                         } else if(map[i][j].getLevel()==1 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3 )){
                             if( map[i][j].getSelectable()==0) {
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
-                                    System.out.print(YELLOW_BACKGROUND + "°°" + RESET);
+                                    System.out.print(YELLOW_BACKGROUND +YELLOW_BOLD+ "°°" + RESET);
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(YELLOW_BACKGROUND + WHITE_BOLD + "°°" + WHITE_BOLD + RESET);
+                                    System.out.print(YELLOW_BACKGROUND + BLACK_BOLD + "##" + WHITE_BOLD + RESET);
                             }
                             else if ( map[i][j].getSelectable()==1){
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
                                     System.out.print(YELLOW_BACKGROUND + "§§" + RESET);
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(YELLOW_BACKGROUND +WHITE_BOLD+ "§§" +WHITE_BOLD+ RESET);
+                                    System.out.print(YELLOW_BACKGROUND +BLACK_BOLD+ "§§" +WHITE_BOLD+ RESET);
                             }
                         }else if(map[i][j].getLevel()==2 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3)){
                             if( map[i][j].getSelectable()==0){
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
-                                    System.out.print(PURPLE_BACKGROUND+"++"+RESET);
+                                    System.out.print(PURPLE_BACKGROUND+PURPLE_BOLD+"++"+RESET);
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(PURPLE_BACKGROUND + WHITE_BOLD + "++" + WHITE_BOLD + RESET);
+                                    System.out.print(PURPLE_BACKGROUND + BLACK_BOLD + "##" + WHITE_BOLD + RESET);
                             }
                             else if ( map[i][j].getSelectable()==1){
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
                                     System.out.print(PURPLE_BACKGROUND + "§§" + RESET);
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(PURPLE_BACKGROUND +WHITE_BOLD+ "§§" +WHITE_BOLD+ RESET);
+                                    System.out.print(PURPLE_BACKGROUND +BLACK_BOLD+ "§§" +WHITE_BOLD+ RESET);
                             }
                         }else if(map[i][j].getLevel()==3 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3)){
                             if( map[i][j].getSelectable()==0){
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
-                                    System.out.print(RED_BACKGROUND+"--"+RESET);
+                                    System.out.print(RED_BACKGROUND+RED_BOLD+"--"+RESET);
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(RED_BACKGROUND + WHITE_BOLD + "--" + WHITE_BOLD + RESET);
+                                    System.out.print(RED_BACKGROUND + BLACK_BOLD + "##" + WHITE_BOLD + RESET);
                             }
                             else if ( map[i][j].getSelectable()==1){
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
                                     System.out.print(RED_BACKGROUND + "§§" + RESET);
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(RED_BACKGROUND +WHITE_BOLD+ "§§" +WHITE_BOLD+ RESET);
+                                    System.out.print(RED_BACKGROUND +BLACK_BOLD+ "§§" +WHITE_BOLD+ RESET);
                             }
                         }else if(map[i][j].getLevel()==4 && (k==1 || (k==2 && m==1)|| (k==2 && m==3)|| k==3)){
                             if( map[i][j].getSelectable()==0){
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
-                                    System.out.print(BLUE_BACKGROUND+"##"+RESET);
+                                    System.out.print(BLUE_BACKGROUND+BLUE_BOLD+"##"+RESET);
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(BLUE_BACKGROUND + WHITE_BOLD + "##" + WHITE_BOLD + RESET);
+                                    System.out.print(BLUE_BACKGROUND + BLACK_BOLD + "##"  + RESET);
 
                             }
                             else if ( map[i][j].getSelectable()==1){
                                 if (map[i][j].getWorker() == null || (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 0))
                                     System.out.print(BLUE_BACKGROUND+ "§§" + RESET);
                                 else if (map[i][j].getWorker() != null && map[i][j].getWorker().getIsSelected() == 1)
-                                    System.out.print(BLUE_BACKGROUND +WHITE_BOLD+ "§§" +WHITE_BOLD+ RESET);
+                                    System.out.print(BLUE_BACKGROUND +BLACK_BOLD+ "§§" +WHITE_BOLD+ RESET);
                             }
                         }
                         if(map[i][j].getWorker()!=null && m==2 && k==2){
                             if(map[i][j].getWorker().getOwner().equals(player1))
-                                System.out.print(BLUE_BOLD+"çç"+RESET);
+                                System.out.print(BLUE_BOLD+"@@"+RESET);
                             else if(map[i][j].getWorker().getOwner().equals(player2))
-                                System.out.print(PURPLE_BACKGROUND+"çç"+RESET);
+                                System.out.print(PURPLE_BOLD+"@@"+RESET);
                             else if(map[i][j].getWorker().getOwner().equals(player3))
-                                System.out.print(YELLOW_BOLD+"çç"+RESET);
+                                System.out.print(YELLOW_BOLD+"@@"+RESET);
                         }else if(map[i][j].getWorker()==null && m==2 && k==2) {
                             System.out.print("  ");
                         }

@@ -34,8 +34,8 @@ public class WorkersSetupViewEvent extends ViewEvent {
         proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(playerIndex),new Coords(x,y),playerIndex);
         proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(playerIndex),new Coords(z,w),playerIndex);
         //proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
-        if(proxyModel.getPlayers().size() == 2) proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(0));
-        else proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
+        if(proxyModel.getPlayers().size() == 2) proxyModel.getDrawerStrategy().drawMap();
+        else proxyModel.getDrawerStrategy().drawMap();
 
     }
 

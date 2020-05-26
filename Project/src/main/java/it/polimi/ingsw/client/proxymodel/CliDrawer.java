@@ -64,7 +64,11 @@ public class CliDrawer extends Drawer{
             }
         }
     }
-    public void drawMap(Player player1,Player player2,Player player3){
+    public void drawMap(){
+        Player player1=ProxyModel.instance().getPlayers().get(0);
+        Player player2=ProxyModel.instance().getPlayers().get(1);
+        Player player3=ProxyModel.instance().getPlayers().get(2);
+
 
         ClientCell[][] map=ProxyModel.instance().getMap();
         int i,j,k,m,w,q;
@@ -199,19 +203,19 @@ public class CliDrawer extends Drawer{
                         }
                         if(map[i][j].getWorker()!=null && m==2 && k==2){
                             if(map[i][j].getWorker().getOwner().equals(player1)){
-                                if(map[i][j].getSelectable()!=2)
+                                if(map[i][j].getworkerSelectable()!=1)
                                     System.out.print(map[i][j].getWorker().getColor()+"@@"+RESET);
                                 else
                                     System.out.print(map[i][j].getWorker().getColor()+BLACK_BACKGROUND+"@@"+RESET);
                             }
                             else if(map[i][j].getWorker().getOwner().equals(player2)){
-                                if(map[i][j].getSelectable()!=2)
+                                if(map[i][j].getworkerSelectable()!=1)
                                     System.out.print(map[i][j].getWorker().getColor()+"@@"+RESET);
                                 else
                                     System.out.print(map[i][j].getWorker().getColor()+BLACK_BACKGROUND+"@@"+RESET);
                             }
                             else if(map[i][j].getWorker().getOwner().equals(player3)){
-                                if(map[i][j].getSelectable()!=2)
+                                if(map[i][j].getworkerSelectable()!=1)
                                     System.out.print(map[i][j].getWorker().getColor()+"@@"+RESET);
                                 else
                                     System.out.print(map[i][j].getWorker().getColor()+BLACK_BACKGROUND+"@@"+RESET);
@@ -302,9 +306,16 @@ public class CliDrawer extends Drawer{
 
         int l,i;
         l=selectableCoords.size();
-        for(i=0;i<l;i++){
-            map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setSelectable(value);
+        if(value==1){
+            for(i=0;i<l;i++){
+                map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setSelectable(1);
+            }
+        }else if(value==2){
+            for(i=0;i<l;i++){
+                map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setworkerSelectable(1);
+            }
         }
+
     }; //colora le celle che potrebbero essere selezionate
 
     public void setMoveWorker(WorkerClient selectedWorker,Coords moveCell){

@@ -3,6 +3,10 @@ package it.polimi.ingsw.client.proxymodel;
 public class ClientCell {
     private Coords cellCoords;
     private int selectable;//0 per i selectable
+
+
+
+    private int workerSelectable;
     private WorkerClient worker;
     private WorkerClient underWorker;
     private int level; //1,2,3,4 per i livelli
@@ -25,7 +29,13 @@ public class ClientCell {
     }
 
 
+    public int getworkerSelectable() {
+        return workerSelectable;
+    }
 
+    public void setworkerSelectable(int workerSelectable) {
+        this.workerSelectable = workerSelectable;
+    }
     public void setLevel(int level) {
         this.level = level;
     }

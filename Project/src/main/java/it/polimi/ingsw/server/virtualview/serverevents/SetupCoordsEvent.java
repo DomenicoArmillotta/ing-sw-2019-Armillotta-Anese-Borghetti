@@ -21,5 +21,14 @@ public class SetupCoordsEvent extends CoordsEvent {
     public void serverEventMethod(Controller controller) {
         ActionExecutor.instance().getCurrentPlayer().workersSetup(firstWorkerX, firstWorkerY, secondWorkerX, secondWorkerY);
         EventsBuffer.instance().setLastEventBean(new SetupWorkerDoneEventBean(firstWorkerX, firstWorkerY, secondWorkerX, secondWorkerY, ActionExecutor.instance().getCurrentPlayer().getName()));
+        ActionExecutor.instance().nextTurn();
+        if(ActionExecutor.instance().getCurrentPlayer().getFirstWorker() != null &&
+           ActionExecutor.instance().getCurrentPlayer().getSecondWorker() != null &&
+           ActionExecutor.instance().getNextPlayer().getFirstWorker() != null &&
+           ActionExecutor.instance().getNextPlayer().getSecondWorker() != null &&
+           ActionExecutor.instance().getPrevPlayer().getFirstWorker() != null &&
+           ActionExecutor.instance().getPrevPlayer().getSecondWorker() != null) {
+            ActionExecutor.instance().getNextPower().doAction(null);
+        }
     }
 }

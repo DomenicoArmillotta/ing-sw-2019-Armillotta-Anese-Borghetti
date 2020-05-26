@@ -54,6 +54,9 @@ public class ProxyModelTest {
         proxyModel.getDrawerStrategy().setBuild(new Coords(2,3),4);
         proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         //win and loose
+        proxyModel.getDrawerStrategy().setBuild(new Coords(2,4),1);
+        proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getPlayers().get(2).getWorker2(), new Coords(2,4));
+        proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         proxyModel.getDrawerStrategy().drawLooseGame();
         proxyModel.getDrawerStrategy().drawWinGame();
     }

@@ -299,6 +299,7 @@ public class CliDrawer extends Drawer{
         map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].setWorker(null);
         //lo metto nella cella
         map[moveCell.getX()][moveCell.getY()].setWorker(selectedWorker);
+        selectedWorker.setPosition(moveCell);
     };
     public void setBuild(Coords buildCell,int levelToBuild){
         ClientCell[][] map=ProxyModel.instance().getMap();

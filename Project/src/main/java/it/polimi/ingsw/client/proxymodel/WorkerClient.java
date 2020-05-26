@@ -1,7 +1,7 @@
 package it.polimi.ingsw.client.proxymodel;
 
 public class WorkerClient {
-    private int color;
+    private String color;
     private int isSelected;
 
     public int getIsSelected() {
@@ -14,9 +14,15 @@ public class WorkerClient {
 
     private Coords position;
     private Player owner;
-    public  WorkerClient(Player owner,Coords coords){
+    public  WorkerClient(Player owner,Coords coords,int index){
         this.owner=owner;
         this.position=coords;
+        if(index == 0)
+            this.setColor("\033[1;34m"); //BLUE_BOLD
+        else if(index == 1)
+            this.setColor("\033[1;35m"); //PURPLE
+        else if(index == 2)
+            this.setColor("\033[1;33m"); //YELLOW
 
     }
     public Player getOwner() {
@@ -38,8 +44,11 @@ public class WorkerClient {
     private char giovatore;
     private final char symbol='@';
 
+    public void setColor(String color) {
+        this.color = color;
+    }
 
-    public int getColor() {
+    public String getColor() {
         return color;
     }
 

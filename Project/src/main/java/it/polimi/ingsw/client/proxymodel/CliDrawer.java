@@ -199,22 +199,22 @@ public class CliDrawer extends Drawer{
                         }
                         if(map[i][j].getWorker()!=null && m==2 && k==2){
                             if(map[i][j].getWorker().getOwner().equals(player1)){
-                                if(map[i][j].getWorker().getIsSelected()==2)
-                                    System.out.print(BLUE_BOLD+"@@"+RESET);
+                                if(map[i][j].getSelectable()!=2)
+                                    System.out.print(map[i][j].getWorker().getColor()+"@@"+RESET);
                                 else
-                                    System.out.print(BLUE_BOLD+BLACK_BACKGROUND+"@@"+RESET);
+                                    System.out.print(map[i][j].getWorker().getColor()+BLACK_BACKGROUND+"@@"+RESET);
                             }
                             else if(map[i][j].getWorker().getOwner().equals(player2)){
-                                if(map[i][j].getWorker().getIsSelected()==2)
-                                    System.out.print(PURPLE_BOLD+"@@"+RESET);
+                                if(map[i][j].getSelectable()!=2)
+                                    System.out.print(map[i][j].getWorker().getColor()+"@@"+RESET);
                                 else
-                                    System.out.print(PURPLE_BOLD+BLACK_BACKGROUND+"@@"+RESET);
+                                    System.out.print(map[i][j].getWorker().getColor()+BLACK_BACKGROUND+"@@"+RESET);
                             }
                             else if(map[i][j].getWorker().getOwner().equals(player3)){
-                                if(map[i][j].getWorker().getIsSelected()==2)
-                                    System.out.print(YELLOW_BOLD+"@@"+RESET);
+                                if(map[i][j].getSelectable()!=2)
+                                    System.out.print(map[i][j].getWorker().getColor()+"@@"+RESET);
                                 else
-                                    System.out.print(YELLOW_BOLD+BLACK_BACKGROUND+"@@"+RESET);
+                                    System.out.print(map[i][j].getWorker().getColor()+BLACK_BACKGROUND+"@@"+RESET);
 
                             }
                         }else if(map[i][j].getWorker()==null && m==2 && k==2) {
@@ -309,11 +309,17 @@ public class CliDrawer extends Drawer{
 
     public void setMoveWorker(WorkerClient selectedWorker,Coords moveCell){
         ClientCell[][] map=ProxyModel.instance().getMap();
+        if(map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getUnderWorker() != null)
+            selectedWorker = map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getUnderWorker();
+            //cancello worker dalla posizione precedente
+        else map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].setWorker(null);
+        //lo metto nella cella+
+        if(map[moveCell.getX()][moveCell.getY()].getWorker() != null) {
+            map[moveCell.getX()][moveCell.getY()].setUnderWorker(selectedWorker);
+        } else {
+            map[moveCell.getX()][moveCell.getY()].setWorker(selectedWorker);
+        }
 
-        //cancello worker dalla posizione precedente
-        map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].setWorker(null);
-        //lo metto nella cella
-        map[moveCell.getX()][moveCell.getY()].setWorker(selectedWorker);
         selectedWorker.setPosition(moveCell);
     };
     public void setBuild(Coords buildCell,int levelToBuild){
@@ -336,15 +342,15 @@ public class CliDrawer extends Drawer{
         Player player=new Player(namePlayer);
         ProxyModel.instance().addPlayer(player);
     };
-    public void createWorker1(Player player,Coords startCoords){
+    public void createWorker1(Player player,Coords startCoords, int index){
         ClientCell[][] map=ProxyModel.instance().getMap();
-        WorkerClient worker=new WorkerClient(player,startCoords);
+        WorkerClient worker=new WorkerClient(player,startCoords,index);
         player.setWorker1(worker);
         map[startCoords.getX()][startCoords.getY()].setWorker(worker);
     };
-    public void createWorker2(Player player,Coords startCoords){
+    public void createWorker2(Player player,Coords startCoords, int index){
         ClientCell[][] map=ProxyModel.instance().getMap();
-        WorkerClient worker=new WorkerClient(player,startCoords);
+        WorkerClient worker=new WorkerClient(player,startCoords,index);
         player.setWorker2(worker);
         map[startCoords.getX()][startCoords.getY()].setWorker(worker);
 

@@ -4,8 +4,17 @@ public class ClientCell {
     private Coords cellCoords;
     private int selectable;//0 per i selectable
     private WorkerClient worker;
+    private WorkerClient underWorker;
     private int level; //1,2,3,4 per i livelli
     private int border;
+
+    public WorkerClient getUnderWorker() {
+        return underWorker;
+    }
+
+    public void setUnderWorker(WorkerClient underWorker) {
+        this.underWorker = underWorker;
+    }
 
     public void setCellCoords(Coords cellCoords) {
         this.cellCoords = cellCoords;

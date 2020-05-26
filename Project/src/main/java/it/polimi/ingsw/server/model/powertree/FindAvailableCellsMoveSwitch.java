@@ -32,7 +32,16 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
             super.getExecutorPointer().getNextMove().addCells(moveCells, index);
             moveCells.clear();
         }
-        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0)));
+        List<Cell> availableCellsSwitch = new ArrayList<>();
+        if(super.getExecutorPointer().getNextMove().getAvailableCells(0).size() != 0) {
+            availableCellsSwitch.add(getExecutorPointer().getCurrentPlayer().getFirstWorker().getCurrentPosition());
+        }
+        if(super.getExecutorPointer().getNextMove().getAvailableCells(1).size() != 0) {
+            availableCellsSwitch.add(getExecutorPointer().getCurrentPlayer().getSecondWorker().getCurrentPosition());
+        }
+
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(availableCellsSwitch));
+        //getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0)));
         return 0; /* [NOTIFY]: FindAvailableCellsMoveSwitch done */
     }
 

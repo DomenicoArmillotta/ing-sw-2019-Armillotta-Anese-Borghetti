@@ -30,12 +30,12 @@ public class ProxyModelTest {
         proxyModel.getDrawerStrategy().createPlayer("c");
         //nella creazione dei worker vengono anche posizionati sulla mappa
         System.out.println("nome = "+proxyModel.getPlayers().isEmpty());
-        proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(0),new Coords(1,1));
-        proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(0),new Coords(2,1));
-        proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(1),new Coords(1,2));
-        proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(1),new Coords(2,2));
-        proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(2),new Coords(1,3));
-        proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(2),new Coords(2,3));
+        proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(0),new Coords(1,1),0);
+        proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(0),new Coords(2,1),0);
+        proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(1),new Coords(1,2),1);
+        proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(1),new Coords(2,2),1);
+        proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(2),new Coords(1,3),2);
+        proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(2),new Coords(2,3),2);
         //faccio setup  imposto ground su mappa
         proxyModel.getDrawerStrategy().setup();
         //seleziono due worer DISEGNO 1

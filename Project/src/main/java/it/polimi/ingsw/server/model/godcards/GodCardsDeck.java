@@ -1,4 +1,4 @@
-package it.polimi.ingsw.server.model.godcardparser;
+package it.polimi.ingsw.server.model.godcards;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;

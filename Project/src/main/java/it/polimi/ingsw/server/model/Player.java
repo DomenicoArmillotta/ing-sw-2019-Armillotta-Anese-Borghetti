@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.model;
 
-import it.polimi.ingsw.server.model.godcardparser.GodCard;
+import it.polimi.ingsw.server.model.godcards.GodCard;
 
 public class Player {
     private String playerName;

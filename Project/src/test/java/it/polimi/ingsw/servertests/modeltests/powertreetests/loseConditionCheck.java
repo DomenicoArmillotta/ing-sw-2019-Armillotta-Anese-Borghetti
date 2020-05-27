@@ -1,8 +1,8 @@
 package it.polimi.ingsw.servertests.modeltests.powertreetests;
 
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.server.model.godcardparser.God;
-import it.polimi.ingsw.server.model.godcardparser.GodCard;
+import it.polimi.ingsw.server.model.godcards.God;
+import it.polimi.ingsw.server.model.godcards.GodCard;
 import org.junit.Test;
 
 import java.util.ArrayList;

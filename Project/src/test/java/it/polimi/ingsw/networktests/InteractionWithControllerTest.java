@@ -1,17 +1,9 @@
 package it.polimi.ingsw.networktests;
-import it.polimi.ingsw.server.model.ActionExecutor;
-import it.polimi.ingsw.server.model.Cell;
-import it.polimi.ingsw.server.model.GameMaster;
-import it.polimi.ingsw.server.model.godcardparser.God;
-import it.polimi.ingsw.server.model.godcardparser.GodCardsDeck;
-import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.virtualview.network.NetworkHandler;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class InteractionWithControllerTest {

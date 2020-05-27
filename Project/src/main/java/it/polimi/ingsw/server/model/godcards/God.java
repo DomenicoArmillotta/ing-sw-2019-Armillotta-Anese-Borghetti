@@ -1,4 +1,4 @@
-package it.polimi.ingsw.server.model.godcardparser;
+package it.polimi.ingsw.server.model.godcards;
 
 public enum God {
     MORTAL,

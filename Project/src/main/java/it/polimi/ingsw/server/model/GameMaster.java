@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.model;
-import it.polimi.ingsw.server.model.godcardparser.God;
-import it.polimi.ingsw.server.model.godcardparser.GodCard;
+import it.polimi.ingsw.server.model.godcards.God;
+import it.polimi.ingsw.server.model.godcards.GodCard;
 import it.polimi.ingsw.server.model.powertree.*;
 import java.util.ArrayList;
 import java.util.List;

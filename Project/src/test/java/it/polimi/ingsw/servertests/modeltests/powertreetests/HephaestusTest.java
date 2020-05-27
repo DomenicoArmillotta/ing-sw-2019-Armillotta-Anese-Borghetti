@@ -2,7 +2,7 @@ package it.polimi.ingsw.servertests.modeltests.powertreetests;
 
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.GameMaster;
-import it.polimi.ingsw.server.model.godcardparser.God;
+import it.polimi.ingsw.server.model.godcards.God;
 import it.polimi.ingsw.server.model.Level;
 import it.polimi.ingsw.server.model.Player;
 import org.junit.Test;

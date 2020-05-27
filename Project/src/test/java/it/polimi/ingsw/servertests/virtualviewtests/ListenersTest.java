@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import it.polimi.ingsw.server.model.godcardparser.God;
+import it.polimi.ingsw.server.model.godcards.God;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.server.model.godcardparser;
+package it.polimi.ingsw.server.model.godcards;
 import it.polimi.ingsw.server.model.powertree.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,8 @@ public class GodCard {
     private List<Build> buildList;
     private List<WinCondition> winCheckList;
     private List<FindAvailableCells> findAvailableCellsList;
+    private BooleanRequestAction booleanRequestActionStrategy;
+
 
     public void setGodName(String godName) {
         this.godName = godName;
@@ -100,6 +102,14 @@ public class GodCard {
         //powerList.add(new FindAvailableCells());
         //powerList.get(0).doAction();
 
+    }
+
+    public BooleanRequestAction getBooleanRequestActionStrategy() {
+        return booleanRequestActionStrategy;
+    }
+
+    public void setBooleanRequestActionStrategy(BooleanRequestAction booleanRequestActionStrategy){
+        this.booleanRequestActionStrategy = booleanRequestActionStrategy;
     }
 
     public String getGodName() {

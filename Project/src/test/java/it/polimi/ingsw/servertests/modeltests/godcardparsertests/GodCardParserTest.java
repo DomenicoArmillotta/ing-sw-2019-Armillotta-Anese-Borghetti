@@ -1,8 +1,8 @@
 package it.polimi.ingsw.servertests.modeltests.godcardparsertests;
 
-import it.polimi.ingsw.server.model.godcardparser.God;
-import it.polimi.ingsw.server.model.godcardparser.GodCard;
-import it.polimi.ingsw.server.model.godcardparser.GodCardParser;
+import it.polimi.ingsw.server.model.godcards.God;
+import it.polimi.ingsw.server.model.godcards.GodCard;
+import it.polimi.ingsw.server.model.godcards.GodCardParser;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 

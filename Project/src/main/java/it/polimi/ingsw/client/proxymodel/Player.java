@@ -1,7 +1,5 @@
 package it.polimi.ingsw.client.proxymodel;
 
-import it.polimi.ingsw.server.model.godcardparser.GodCard;
-
 public class Player {
     private String name;
 

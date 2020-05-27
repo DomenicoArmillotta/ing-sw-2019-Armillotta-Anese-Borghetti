@@ -1,9 +1,8 @@
 package it.polimi.ingsw.servertests.modeltests.powertreetests;
 
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.server.model.godcardparser.God;
-import it.polimi.ingsw.server.model.godcardparser.GodCard;
-import it.polimi.ingsw.server.model.godcardparser.GodCardsDeck;
+import it.polimi.ingsw.server.model.godcards.GodCard;
+import it.polimi.ingsw.server.model.godcards.GodCardsDeck;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 import org.junit.Test;
 import org.xml.sax.SAXException;

@@ -25,6 +25,7 @@
     </Godcard>
     <Godcard name ="Demeter">
         <descrizione>Goddess of the harvest</descrizione>
+        <BooleanRequest>AskSameActionTwice</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -39,6 +40,7 @@
     </Godcard>
     <Godcard name ="Artemis">
         <descrizione>Goddess of the hunt</descrizione>
+        <BooleanRequest>AskSameActionTwice</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -65,6 +67,7 @@
     </Godcard>
     <Godcard name ="Atlas">
         <descrizione>Titan shouldering the heavens</descrizione>
+        <BooleanRequest>askToBuildDome</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -76,6 +79,7 @@
     </Godcard>
     <Godcard name ="Hepaestus">
         <descrizione>God of blacksmiths</descrizione>
+        <BooleanRequest>AskSameActionTwice</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
@@ -112,6 +116,7 @@
     </Godcard>
     <Godcard name ="Prometheus">
         <descrizione>Titan benefactor of Mankind</descrizione>
+        <BooleanRequest>BuildOrMove</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.server.model.godcardparser;
+package it.polimi.ingsw.server.model.godcards;
 
 import it.polimi.ingsw.server.model.powertree.*;
 import org.w3c.dom.*;
@@ -135,9 +135,15 @@ public class GodCardParser {
         return null;
     }
 
+    public BooleanRequestAction parseBooleanRequestStrategy(String atomicStrategy){
+        if(atomicStrategy.equals("AskSameActionTwice"))
+            return new AskSameActionTwice();
+        return null;
+    }
+
 
     public GodCard selectedGodParser(String choosenGod) throws ParserConfigurationException, IOException, SAXException {
-        File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcardparser/GodCardList.xml");
+        File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
         int i;
         int j;
         int k;
@@ -168,6 +174,9 @@ public class GodCardParser {
         Element eElement = (Element) nGodCardListNode;
         selectedGodCard.setGodName(eElement.getAttribute("name"));
         selectedGodCard.setDescription(eElement.getElementsByTagName("descrizione").item(0).getTextContent());
+        if(eElement.getElementsByTagName("BooleanRequest").item(0) != null){
+            selectedGodCard.setBooleanRequestActionStrategy(parseBooleanRequestStrategy(eElement.getElementsByTagName("BooleanRequest").item(0).getTextContent()));
+        }
         /*System.out.println("NODECARDNAME " + eElement.getAttribute("name"));*/
         if (nGodCardListNode.getNodeType() == Node.ELEMENT_NODE) {
                 /*

@@ -27,15 +27,9 @@ public class FindAvailableCellsDontMoveBack extends FindAvailableCellsMove {
                 break;
             }
         }
-        if (tempCells.isEmpty()) {
-            /*
-            se non si può muovere un altra volta deve finire il turno senza poter costruire,serve una specie di notify che non può
-            essere svolta la seconda build;
-             */
-            return 1;/*valore speciale di ritorno per indicare chenon può fare la seconda move*/
-        } else super.getExecutorPointer().getNextMove().setAvailableCells(tempCells, i);
+        super.getExecutorPointer().getNextMove().setAvailableCells(tempCells, i);
 
         getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(i)));
-        return 0;
+        return 1;
     }
 }

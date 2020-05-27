@@ -54,7 +54,19 @@ public class ClientHandlerOutput implements Runnable {
                                 System.out.println("");
                                 printWriter.flush();
                             }
-                    } else if (inputLine.equals("start") && proxyModel.getThisClientNickname().equals(proxyModel.getPartyOwner())) { /* playerComm */
+                    } else if (inputLine.equals("bool") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname())) {
+                        if (stdin.hasNextBoolean()) {
+                            Boolean answer = stdin.nextBoolean();
+                            XmlMapper xmlMapper = (new XmlMapper());
+                            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                            String toSend = xmlMapper.writeValueAsString(new BooleanEvent(answer));
+                            toSend += "\n";
+                            printWriter.print(toSend);
+                            System.out.print(toSend);
+                            System.out.println("");
+                            printWriter.flush();
+                        }
+                    }else if (inputLine.equals("start") && proxyModel.getThisClientNickname().equals(proxyModel.getPartyOwner())) { /* playerComm */
                         XmlMapper xmlMapper = (new XmlMapper());
                         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                             String toSend = xmlMapper.writeValueAsString(new StartUpEvent(proxyModel.getThisClientNickname()));

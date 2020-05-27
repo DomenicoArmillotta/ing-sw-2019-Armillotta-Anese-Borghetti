@@ -117,6 +117,10 @@ public class InputParser {
             String ownerName = document.getElementsByTagName("ownerName").item(0).getTextContent();
             return new WorkersSetupViewEvent(x, y, z, w, ownerName);
         }
+        if(document.getDocumentElement().getTagName().equals("DoubleMoveEventBean")){
+            String doubleMethod = document.getElementsByTagName("doubleMethod").item(0).getTextContent();
+            return new DoubleMoveViewEvent(doubleMethod);
+        }
         return null;
     }
 

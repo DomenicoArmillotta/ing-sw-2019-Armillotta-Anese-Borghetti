@@ -7,7 +7,7 @@ public class Player {
 
 
     public Player(String userName){
-        this.name = name;
+        this.name = userName;
     }
     public String getName() {
         return name;

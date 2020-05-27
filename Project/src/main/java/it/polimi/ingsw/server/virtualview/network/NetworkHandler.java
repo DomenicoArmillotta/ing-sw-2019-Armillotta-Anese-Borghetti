@@ -21,7 +21,7 @@ public class NetworkHandler {
         ServerSocket serverSocket;
         SocketHandlerOutput socketHandlerOutput = SocketHandlerOutput.instance();
         executor.submit(socketHandlerOutput);
-        PingHandler pingHandler;
+        //PingHandler pingHandler;
         try {
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {

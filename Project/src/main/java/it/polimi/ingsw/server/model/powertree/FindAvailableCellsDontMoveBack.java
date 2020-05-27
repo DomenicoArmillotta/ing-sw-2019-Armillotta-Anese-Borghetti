@@ -35,7 +35,7 @@ public class FindAvailableCellsDontMoveBack extends FindAvailableCellsMove {
             return 1;/*valore speciale di ritorno per indicare chenon può fare la seconda move*/
         } else super.getExecutorPointer().getNextMove().setAvailableCells(tempCells, i);
 
-        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(i)));
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(i)));
         return 0;
     }
 }

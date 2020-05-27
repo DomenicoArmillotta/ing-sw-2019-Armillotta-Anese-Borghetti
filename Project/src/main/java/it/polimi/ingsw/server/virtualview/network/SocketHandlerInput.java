@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 public class SocketHandlerInput implements Runnable {
     private Socket socket;
-    private Controller controller;
+    private Controller  controller;
     private EventsBuffer eventsBuffer;
 
     public SocketHandlerInput(Socket socket, Controller controller) {

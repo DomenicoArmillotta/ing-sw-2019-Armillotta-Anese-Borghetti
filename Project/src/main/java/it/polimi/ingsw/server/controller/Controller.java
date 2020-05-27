@@ -20,6 +20,7 @@ import java.util.List;
 
 public class Controller {
     private int[] userInput;
+    private ActionExecutor actionExecutor = ActionExecutor.instance();
 
 
     public void setUserInput(int[] userInput) {

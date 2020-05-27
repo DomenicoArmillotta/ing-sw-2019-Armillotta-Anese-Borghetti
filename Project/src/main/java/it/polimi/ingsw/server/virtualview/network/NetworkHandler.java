@@ -21,6 +21,7 @@ public class NetworkHandler {
         ServerSocket serverSocket;
         SocketHandlerOutput socketHandlerOutput = SocketHandlerOutput.instance();
         executor.submit(socketHandlerOutput);
+        PingHandler pingHandler;
         try {
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {
@@ -38,6 +39,7 @@ public class NetworkHandler {
                     /* executor.submit(new SocketHandlerInput(socket, controller, executorPointer)); */
                     //System.out.println("New connection Output, socket: "+socket);
                 socketHandlerOutput.addSocketToList(socket);
+
                 /* addSocketToList(socket); */
             } catch(IOException e) {
                 break; // Entrerei qui se serverSocket venisse chiuso

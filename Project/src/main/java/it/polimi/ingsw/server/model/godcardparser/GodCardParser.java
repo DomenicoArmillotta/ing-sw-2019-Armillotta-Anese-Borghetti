@@ -15,14 +15,6 @@ import java.util.List;
 
 
 public class GodCardParser {
-    /*
-    qui faccio il parser delle carte dal file xml;
-
-    cosa faccio???
-
-    conettrà tutti i metodi per parsare
-
-     */
     private Power returnCorrectAtomicPower(String atomicPower,GodCard selectedGodCard) {
 
 
@@ -136,6 +128,9 @@ public class GodCardParser {
             FindAvailableCells tempCell = new FindAvailableCellsBuildSameCell();
             selectedGodCard.getFindAvailableCellsList().add(tempCell);
             return tempCell;
+        }
+        if (atomicPower.equals("DoubleMove")) {
+            return new DoubleMove();
         }
         return null;
     }

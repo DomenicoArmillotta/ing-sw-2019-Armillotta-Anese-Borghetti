@@ -17,6 +17,11 @@ public abstract class Power {
     private PlayerLostListener playerLostListener = PlayerLostListener.instance();
     private FailedActionListener failedActionListener = FailedActionListener.instance();
     private NoUpdatesListener noUpdatesListener = NoUpdatesListener.instance();
+    private BooleanActionListener booleanActionListener = BooleanActionListener.instance();
+
+    public BooleanActionListener getBooleanActionListener() {
+        return booleanActionListener;
+    }
 
     public WorkerSelectionListener getWorkerSelectionListener() {
         return workerSelectionListener;

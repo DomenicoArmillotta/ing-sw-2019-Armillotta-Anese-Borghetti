@@ -30,6 +30,7 @@
             <Select/>
             <Move/>
             <WinCondition/>
+            <DoubleBuild/> <!--qui-->
             <FindAvailableCellsBuild/>
             <Build/>
             <FindAvailableCellsBuildDifferentCell/>
@@ -44,6 +45,7 @@
             <Move/>
             <WinCondition/>
             <FindAvailableCellDontMoveBack/>
+            <DoubleMove/> <!--qui-->
             <MoveButDontGoBack/>
             <WinCondition/>
             <FindAvailableCellsBuild/>
@@ -79,6 +81,7 @@
             <Select/>
             <Move/>
             <WinCondition/>
+            <DoubleBuild/> <!--qui-->
             <FindAvailableCellsBuild/>
             <Build/>
             <FindAvailableCellsBuildSameCell/>
@@ -108,7 +111,7 @@
         </PowerList>
     </Godcard>
     <Godcard name ="Prometheus">
-        <descrizione>Titan benefactor if Mankind</descrizione>
+        <descrizione>Titan benefactor of Mankind</descrizione>
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>

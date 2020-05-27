@@ -44,5 +44,4 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
         //getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0)));
         return 0; /* [NOTIFY]: FindAvailableCellsMoveSwitch done */
     }
-
 }

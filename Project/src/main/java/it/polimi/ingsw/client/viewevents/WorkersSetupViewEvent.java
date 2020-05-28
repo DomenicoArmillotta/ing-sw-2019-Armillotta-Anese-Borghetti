@@ -40,11 +40,11 @@ public class WorkersSetupViewEvent extends ViewEvent {
 /* attenzione: i player del turn sono diversi dai player del proxy model */
         if(proxyModel.getPlayers().size() == 2) {
             if (proxyModel.getPlayers().get(0).getWorker1() != null && proxyModel.getPlayers().get(1).getWorker1() != null) {
-                System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should select a worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed its "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
+                System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should select a worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed by its "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
                 proxyModel.setPhase(3);
             }
         } else if(proxyModel.getPlayers().get(0).getWorker1() != null && proxyModel.getPlayers().get(1).getWorker1() != null && proxyModel.getPlayers().get(2).getWorker1() != null) {
-            System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should select a worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed its "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
+            System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should select a worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed by its "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
             proxyModel.setPhase(3);
         }
 

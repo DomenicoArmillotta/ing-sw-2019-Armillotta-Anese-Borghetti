@@ -68,6 +68,7 @@ public class CliDrawer extends Drawer{
         Player player1;
         Player player2;
         Player player3;
+        System.out.println("E' il turno di "+ProxyModel.instance().getTurn().getCurrentPlayer().getName());
         if(ProxyModel.instance().getPlayers().size() == 2) {
             player1 = ProxyModel.instance().getPlayers().get(0);
             player2 = ProxyModel.instance().getPlayers().get(1);

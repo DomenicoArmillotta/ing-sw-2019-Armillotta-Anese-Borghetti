@@ -323,6 +323,11 @@ public class CliDrawer extends Drawer{
             for(i=0;i<l;i++){
                 map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setworkerSelectable(1);
             }
+        }else if(value==0){
+            for(i=0;i<l;i++){
+                System.out.println("tolto");
+                map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setSelectable(0);
+            }
         }
 
     }; //colora le celle che potrebbero essere selezionate

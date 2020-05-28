@@ -50,12 +50,15 @@ public class ProxyModelTest {
         proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getPlayers().get(0).getWorker1(),new Coords(4,4));
         proxyModel.getDrawerStrategy().drawMap();
         //build
+
         proxyModel.getDrawerStrategy().setBuild(new Coords(4,4),4);
         proxyModel.getDrawerStrategy().setBuild(new Coords(2,3),4);
         proxyModel.getDrawerStrategy().drawMap();
-        //muovo giocatore dove ho costruito
+        //muovo giocatore dove ho costruito e DESELEZIONO
         proxyModel.getDrawerStrategy().setBuild(new Coords(2,4),1);
         proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getPlayers().get(2).getWorker2(), new Coords(2,4));
+        System.out.print("PROVAAAAAAAAAAAA");
+        proxyModel.getDrawerStrategy().setSelectableCell(coordsArray,0);
         proxyModel.getDrawerStrategy().drawMap();
         proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getPlayers().get(2).getWorker2(), new Coords(2,3));
         proxyModel.getPlayers().get(2).getWorker2().getPosition();

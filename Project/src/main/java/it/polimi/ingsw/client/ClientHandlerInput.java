@@ -24,7 +24,7 @@ public class ClientHandlerInput implements Runnable {
 
     public void run() {
 
-        System.out.println("Connection established Input");
+        /* System.out.println("[ClientHandlerInput] Connection established"); */
         Scanner in = null;
         try {
             in = new Scanner(socket.getInputStream());
@@ -34,12 +34,12 @@ public class ClientHandlerInput implements Runnable {
 
         try {
             while (true) {
-                System.out.println("Login phase reading");
+                /* System.out.println("Login phase reading"); */
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
                 Document document = db.parse(new InputSource(new StringReader(in.nextLine())));
                 ViewEvent viewEvent = inputParser.retrunCorrectClientEvent(document);
-                System.out.println(viewEvent);
+                /* System.out.println(viewEvent); */
                 viewEvent.viewEventMethod();
             }
 

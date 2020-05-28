@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.Map;
 
 public class FailedActionViewEvent extends ViewEvent {
-    /* Not much to see here... */
+
+    ProxyModel proxyModel = ProxyModel.instance();
 
     public void viewEventMethod() {
-
+        System.out.println("\u001B[31m"+"["+proxyModel.getTurn().getCurrentPlayer().getName()+"'s action failed]"+"\u001B[0m");
     }
 }

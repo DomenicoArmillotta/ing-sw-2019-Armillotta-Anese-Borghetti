@@ -16,12 +16,13 @@ public class ClientHandler {
         }
         public void startClient() {
             ExecutorService executor = Executors.newFixedThreadPool(2);
-            System.out.println("Client ready");
+            /* System.out.println("Client ready"); */
             ProxyModel proxyModel = ProxyModel.instance();
             proxyModel.createMap();
             CliDrawer CliDrawer=new CliDrawer();
             proxyModel.setDrawerStrategy(CliDrawer);
-            System.out.println("CLI ready");
+            proxyModel.setPhase(0);
+            /* System.out.println("CLI ready"); */
                 try {
                     Socket socket = new Socket(Inet4Address.getLocalHost().getHostAddress(), 1234);
                     executor.submit(new ClientHandlerOutput(socket));

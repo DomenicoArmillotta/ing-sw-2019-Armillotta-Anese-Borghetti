@@ -15,6 +15,15 @@ public class ProxyModel {
     private Turn turn;
     String thisClientNickname;
     String partyOwner;
+    int phase;
+
+    public int getPhase() {
+        return phase;
+    }
+
+    public void setPhase(int phase) {
+        this.phase = phase;
+    }
 
     public List<Player> getPlayers() {
         return players;
@@ -22,7 +31,7 @@ public class ProxyModel {
 
     public void addPlayer(Player playerToAdd){
         this.players.add(playerToAdd);
-        System.out.println("aggiunto = "+ playerToAdd.getName());
+        /* System.out.println("aggiunto = "+ playerToAdd.getName()); */
     }
 
     public static ProxyModel instance() {

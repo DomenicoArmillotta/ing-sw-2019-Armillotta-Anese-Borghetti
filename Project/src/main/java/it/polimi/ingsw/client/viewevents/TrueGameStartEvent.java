@@ -12,6 +12,7 @@ public class TrueGameStartEvent extends ViewEvent {
         if(proxyModel.getPlayers().size() == 2) proxyModel.getDrawerStrategy().drawMap();
         else proxyModel.getDrawerStrategy().drawMap();
         //proxyModel.getDrawerStrategy().setSelectableCell(0);
+        proxyModel.setPhase(2);
     }
 
 }

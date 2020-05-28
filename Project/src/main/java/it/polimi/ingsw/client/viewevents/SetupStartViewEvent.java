@@ -28,6 +28,6 @@ public class SetupStartViewEvent extends ViewEvent {
             proxyModel.getTurn().setPreviousPlayer(player3);
         }
 
-        System.out.println("Game STARTED");
+        proxyModel.setPhase(1);
     }
 }

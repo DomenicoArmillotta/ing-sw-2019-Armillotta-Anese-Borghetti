@@ -1,6 +1,5 @@
 package it.polimi.ingsw.client.viewevents;
 
-import it.polimi.ingsw.client.proxymodel.Coords;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
 public class DoubleMoveViewEvent extends ViewEvent {

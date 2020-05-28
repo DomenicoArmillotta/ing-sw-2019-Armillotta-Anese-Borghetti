@@ -21,8 +21,8 @@ public class WorkerSelectionViewEvent extends ViewEvent {
         coordsList.add(new Coords(workerX, workerY));
         proxyModel.getDrawerStrategy().setSelectableCell(coordsList,1);
         //proxyModel.getMap()[workerX][workerY].getWorker().setIsSelected(2);
-        if(proxyModel.getPlayers().size() == 2) proxyModel.getDrawerStrategy().drawMap();
-        else proxyModel.getDrawerStrategy().drawMap();
+        /* if(proxyModel.getPlayers().size() == 2) proxyModel.getDrawerStrategy().drawMap();
+        else proxyModel.getDrawerStrategy().drawMap(); */
         proxyModel.getDrawerStrategy().setSelectableCell(coordsList,0);
         //proxyModel.getMap()[workerX][workerY].getWorker().setIsSelected(0);
     }

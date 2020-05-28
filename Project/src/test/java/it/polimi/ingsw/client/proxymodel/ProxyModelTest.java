@@ -28,8 +28,10 @@ public class ProxyModelTest {
         proxyModel.getDrawerStrategy().createPlayer("a");
         proxyModel.getDrawerStrategy().createPlayer("b");
         proxyModel.getDrawerStrategy().createPlayer("c");
-        //nella creazione dei worker vengono anche posizionati sulla mappa
+        proxyModel.createTurn();
+        proxyModel.getTurn().setCurrentPlayer(proxyModel.getPlayers().get(1));
         System.out.println("nome = "+proxyModel.getPlayers().isEmpty());
+        //nella creazione dei worker vengono anche posizionati sulla mappa
         proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(0),new Coords(1,1),0);
         proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(0),new Coords(2,1),0);
         proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(1),new Coords(1,2),1);

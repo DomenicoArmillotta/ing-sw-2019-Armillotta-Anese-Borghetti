@@ -28,6 +28,9 @@ public class SetupStartViewEvent extends ViewEvent {
             proxyModel.getTurn().setPreviousPlayer(player3);
         }
 
+        System.out.println("\u001B[36m"+firstPlayer+"\u001B[0m"+" has started the game.");
+        System.out.println("\u001B[36m"+firstPlayer+"\u001B[0m"+" may choose a God to play with typing "+"\u001B[33m"+"god"+"\u001B[0m"+ " followed by the God's "+ "\u001B[33m" + "name" + "\u001B[0m"+".");
+        System.out.println("Choose between "+"\u001B[33m"+"apollo"+"\u001B[0m"+", "+"\u001B[33m"+"artemis"+"\u001B[0m"+", "+"\u001B[33m"+"athena"+"\u001B[0m"+", "+"\u001B[33m"+"atlas"+"\u001B[0m"+", "+"\u001B[33m"+"demeter"+"\u001B[0m"+", "+"\u001B[33m"+"hephaestus"+"\u001B[0m"+", "+"\u001B[33m"+"minotaur"+"\u001B[0m"+", "+"\u001B[33m"+"pan"+"\u001B[0m"+", "+"\u001B[33m"+"prometheus"+"\u001B[0m"+".");
         proxyModel.setPhase(1);
     }
 }

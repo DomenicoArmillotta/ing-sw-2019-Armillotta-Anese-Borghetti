@@ -4,7 +4,7 @@ public class DomePromptEventBean extends EventBean{
     private String  DoubleMethod;
 
     public DomePromptEventBean() {
-        DoubleMethod = "voi costruire subito una cupola?";
+        DoubleMethod = "do you want to build a dome?";
     }
 
     public String getDoubleMethod() {

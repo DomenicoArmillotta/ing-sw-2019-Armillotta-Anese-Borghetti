@@ -68,7 +68,7 @@ public class CliDrawer extends Drawer{
         Player player1;
         Player player2;
         Player player3;
-        System.out.println("E' il turno di "+ProxyModel.instance().getTurn().getCurrentPlayer().getName());
+
         if(ProxyModel.instance().getPlayers().size() == 2) {
             player1 = ProxyModel.instance().getPlayers().get(0);
             player2 = ProxyModel.instance().getPlayers().get(1);
@@ -79,6 +79,7 @@ public class CliDrawer extends Drawer{
             player3 = ProxyModel.instance().getPlayers().get(2);
         }
 
+        System.out.println("");
 
         ClientCell[][] map=ProxyModel.instance().getMap();
         int i,j,k,m,w,q;
@@ -304,7 +305,6 @@ public class CliDrawer extends Drawer{
         System.out.println("");
         System.out.println("");
 
-
     };
     public void setIsSelected(WorkerClient selectedWorker){
         selectedWorker.setIsSelected(1);
@@ -326,7 +326,7 @@ public class CliDrawer extends Drawer{
             }
         }else if(value==0){
             for(i=0;i<l;i++){
-                System.out.println("tolto");
+                /* System.out.println("tolto"); */
                 map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setSelectable(0);
             }
         }

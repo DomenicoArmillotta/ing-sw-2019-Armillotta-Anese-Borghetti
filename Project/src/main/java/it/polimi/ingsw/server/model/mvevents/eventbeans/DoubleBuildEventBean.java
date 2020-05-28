@@ -4,7 +4,7 @@ public class DoubleBuildEventBean extends EventBean {
     private String doubleMethod;
 
     public DoubleBuildEventBean() {
-        doubleMethod = "vuoi costruire due volte?";
+        doubleMethod = "do you want to build twice?";
     }
 
     public String getDoubleMethod() {

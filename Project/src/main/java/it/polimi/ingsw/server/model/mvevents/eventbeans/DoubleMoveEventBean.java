@@ -5,7 +5,7 @@ public class DoubleMoveEventBean extends EventBean {
     private String  DoubleMethod;
 
     public DoubleMoveEventBean() {
-        DoubleMethod = "ti vuoi muovere due volte?";
+        DoubleMethod = "do you want to move twice?";
     }
 
     public String getDoubleMethod() {

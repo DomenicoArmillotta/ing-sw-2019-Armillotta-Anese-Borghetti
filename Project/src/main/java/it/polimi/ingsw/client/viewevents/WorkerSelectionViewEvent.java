@@ -25,5 +25,6 @@ public class WorkerSelectionViewEvent extends ViewEvent {
         else proxyModel.getDrawerStrategy().drawMap(); */
         proxyModel.getDrawerStrategy().setSelectableCell(coordsList,0);
         //proxyModel.getMap()[workerX][workerY].getWorker().setIsSelected(0);
+        System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should move the selected worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed the desired  "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
     }
 }

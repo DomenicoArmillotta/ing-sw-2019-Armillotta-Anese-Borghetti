@@ -44,7 +44,7 @@ public class ClientHandlerOutput implements Runnable {
 
         try {
             System.out.println(ANSI_PURPLE+"SANTORINI BOARD GAME CLI SIMULATION"+ANSI_RESET+" (AM46)");
-            System.out.println("Type "+ANSI_YELLOW+"login"+ANSI_RESET+" followed by your nickname to play");
+            System.out.println("Type "+ANSI_YELLOW+"login"+ANSI_RESET+" followed by your nickname to create a room or join an existing one.");
             while (true) {
                 /* System.out.println("GAME PHASE: "+proxyModel.getPhase()); */
                 String inputLine = stdin.next();
@@ -64,9 +64,9 @@ public class ClientHandlerOutput implements Runnable {
                                 /* System.out.print(toSend);
                                 System.out.println(""); */
                                 printWriter.flush();
-                                System.out.println(ANSI_GREEN+"[Flushed login request]"+ANSI_RESET);
+                            System.out.println(ANSI_GREEN + "[Flushed login request (" + inputLine + ")]" + ANSI_RESET);
                             }
-                    } else if (inputLine.equals("bool") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname())  && proxyModel.getPhase() == 2) {
+                    } else if (inputLine.equals("bool") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname())  && proxyModel.getPhase() == 3) {
                         if (stdin.hasNextBoolean()) {
                             Boolean answer = stdin.nextBoolean();
                             XmlMapper xmlMapper = (new XmlMapper());
@@ -77,7 +77,7 @@ public class ClientHandlerOutput implements Runnable {
                             /* System.out.print(toSend);
                             System.out.println(""); */
                             printWriter.flush();
-                            System.out.println(ANSI_GREEN+"[Flushed bool answer]"+ANSI_RESET);
+                            System.out.println(ANSI_GREEN + "[Flushed bool answer (" + answer + ")]" + ANSI_RESET);
                         }
                     }else if (inputLine.equals("start") && proxyModel.getThisClientNickname().equals(proxyModel.getPartyOwner()) && proxyModel.getPlayers().size() > 1 && proxyModel.getPhase() == 0) { /* playerComm */
                         if (stdin.hasNextInt()) {
@@ -96,36 +96,37 @@ public class ClientHandlerOutput implements Runnable {
                                 System.out.println(ANSI_RED+"[There are only "+proxyModel.getPlayers().size()+" players in the room]"+ANSI_RESET);
                             }
                         }
-                    } else if (inputLine.equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 2) {
+                    } else if (inputLine.equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 3) {
                         if (stdin.hasNextInt()) {
                             int x = stdin.nextInt();
                             if (stdin.hasNextInt()) {
                                 int y = stdin.nextInt();
-                                System.out.println("Read coords " + x + " " + y);
+                                /* System.out.println("Read coords " + x + " " + y); */
                                 XmlMapper xmlMapper = (new XmlMapper());
                                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                                 String toSend = xmlMapper.writeValueAsString(new GameCoordsEvent(x, y));
                                 toSend += "\n";
                                 printWriter.print(toSend);
-                                System.out.print(toSend);
-                                System.out.println("");
+                                /* System.out.print(toSend);
+                                System.out.println(""); */
                                 printWriter.flush();
-                                System.out.println("Flushed coords " + x + " " + y);
+                                System.out.println(ANSI_GREEN + "[Flushed coords (" + x + ", "+ y +")]" + ANSI_RESET);
+                                /* System.out.println("Flushed coords " + x + " " + y); */
                             }
                         }
                     } else if (inputLine.equals("god") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getTurn().getPlayerByName(proxyModel.getThisClientNickname()).getGodCard() == null && proxyModel.getPhase() == 1) {
                         String stringInput = stdin.next();
-                        System.out.println("Read GodChoice " + stringInput);
+                        /* System.out.println("Read GodChoice " + stringInput); */
                         XmlMapper xmlMapper = (new XmlMapper());
                         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                         String toSend = xmlMapper.writeValueAsString(new GodChoiceEvent(stringInput, proxyModel.getThisClientNickname()));
                         toSend += "\n";
                         printWriter.print(toSend);
-                        System.out.print(toSend);
-                        System.out.println("");
+                        /* System.out.print(toSend);
+                        System.out.println(""); */
                         printWriter.flush();
-                        System.out.println("Flushed GodChoice " + stringInput);
-                    } else if (inputLine.equals("setupcoords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 2) {
+                        System.out.println(ANSI_GREEN + "[Flushed god choice (" + stringInput + ")]" + ANSI_RESET);
+                    } else if (inputLine.equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 2) {
                         if (stdin.hasNextInt()) {
                             int x = stdin.nextInt();
                             if (stdin.hasNextInt()) {
@@ -139,10 +140,10 @@ public class ClientHandlerOutput implements Runnable {
                                         String toSend = xmlMapper.writeValueAsString(new SetupCoordsEvent(x, y, z, w));
                                         toSend += "\n";
                                         printWriter.print(toSend);
-                                        System.out.print(toSend);
-                                        System.out.println("");
+                                        /* System.out.print(toSend);
+                                        System.out.println(""); */
                                         printWriter.flush();
-                                        System.out.println("Flushed setup coords " + x + " " + y);
+                                        System.out.println(ANSI_GREEN + "[Flushed coords (" + x + ", "+ y +", "+ z +", "+ w +")]" + ANSI_RESET);
                                     }
                                 }
                             }

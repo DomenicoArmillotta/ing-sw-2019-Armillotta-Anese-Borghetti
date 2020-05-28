@@ -29,13 +29,27 @@ public class WorkersSetupViewEvent extends ViewEvent {
             }
         }
 
-        System.out.println("Workers settati da: "+player);
+        /* System.out.println("Workers settati da: "+player); */
 
         proxyModel.getDrawerStrategy().createWorker1(proxyModel.getPlayers().get(playerIndex),new Coords(x,y),playerIndex);
         proxyModel.getDrawerStrategy().createWorker2(proxyModel.getPlayers().get(playerIndex),new Coords(z,w),playerIndex);
         //proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
-        if(proxyModel.getPlayers().size() == 2) proxyModel.getDrawerStrategy().drawMap();
-        else proxyModel.getDrawerStrategy().drawMap();
+        proxyModel.getDrawerStrategy().drawMap();
+
+
+/* attenzione: i player del turn sono diversi dai player del proxy model */
+        if(proxyModel.getPlayers().size() == 2) {
+            if (proxyModel.getPlayers().get(0).getWorker1() != null && proxyModel.getPlayers().get(1).getWorker1() != null) {
+                System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should select a worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed its "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
+                proxyModel.setPhase(3);
+            }
+        } else if(proxyModel.getPlayers().get(0).getWorker1() != null && proxyModel.getPlayers().get(1).getWorker1() != null && proxyModel.getPlayers().get(2).getWorker1() != null) {
+            System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should select a worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed its "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
+            proxyModel.setPhase(3);
+        }
+
+        if(proxyModel.getPhase() == 2)
+            System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should place his 2 workers typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed by the desired "+"\u001B[33m" + "4 coordinates" + "\u001B[0m"+".");
 
     }
 

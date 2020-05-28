@@ -17,7 +17,7 @@ public class Turn {
             nextPlayer = prevPlayer;
             prevPlayer = tempPlayer;
         }
-        System.out.println("Turno di "+currentPlayer.getName());
+        /* System.out.println("Turno di "+currentPlayer.getName()); */
     }
 
     public Player getPlayerByName(String name) {

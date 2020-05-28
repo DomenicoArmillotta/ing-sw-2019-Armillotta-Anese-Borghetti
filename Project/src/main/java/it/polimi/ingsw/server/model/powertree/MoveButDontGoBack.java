@@ -17,7 +17,8 @@ public class MoveButDontGoBack extends Move {
         else index = 1;
         List<Cell> availableCells = super.getAvailableCells(index);
         Cell previousPosition = selectedWorker.getCurrentPosition();
-
+        if(userInput[0] == selectedWorker.getCurrentPosition().getX() && userInput[1] == selectedWorker.getCurrentPosition().getY())
+            return 1;
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevMove().getCellBeforeMove()) {
             pointerBack();
             getFailedActionListener().actionFailed(new FailedActionEvent(this));
@@ -29,7 +30,7 @@ public class MoveButDontGoBack extends Move {
         /* Chi si è mosso? */
         this.getExecutorPointer().getPrevSelect().setSelectedWorker(selectedWorker);
         getNoUpdatesListener().noUpdates(new NoUpdatesEvent()); /* verificare che sia corretto */
-        return 0; /* [NOTIFY]: MoveButDontGoBack successful */
+        return 1; /* [NOTIFY]: MoveButDontGoBack successful */
     }
 
 }

@@ -138,6 +138,8 @@ public class GodCardParser {
     public BooleanRequestAction parseBooleanRequestStrategy(String atomicStrategy){
         if(atomicStrategy.equals("AskSameActionTwice"))
             return new AskSameActionTwice();
+        if(atomicStrategy.equals("AskBuildDome"))
+            return new AskBuildDome();
         return null;
     }
 

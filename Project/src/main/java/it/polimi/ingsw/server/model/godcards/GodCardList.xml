@@ -116,7 +116,7 @@
     </Godcard>
     <Godcard name ="Prometheus">
         <descrizione>Titan benefactor of Mankind</descrizione>
-        <BooleanRequest>BuildOrMove</BooleanRequest><!--qui la nuova strategy-->
+        <BooleanRequest>AskToBuildOrMove</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>

@@ -87,6 +87,9 @@ public class SocketHandlerInput implements Runnable {
             String player = doc.getElementsByTagName("player").item(0).getTextContent();
             return new GodChoiceEvent(chosenGod, player);
         }
+        if(doc.getDocumentElement().getTagName().equals("BooleanEvent"))
+            return new BooleanEvent(Boolean.parseBoolean(doc.getElementsByTagName("answer").item(0).getTextContent()));
         return null;
     }
+
 }

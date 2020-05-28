@@ -129,8 +129,16 @@ public class GodCardParser {
             selectedGodCard.getFindAvailableCellsList().add(tempCell);
             return tempCell;
         }
+        if (atomicPower.equals("FindAvailableCellsBuildInstantDome")) {
+            FindAvailableCells tempCell = new FindAvailableCellsBuildInstantDome();
+            selectedGodCard.getFindAvailableCellsList().add(tempCell);
+            return tempCell;
+        }
         if (atomicPower.equals("DoubleMove")) {
             return new DoubleMove();
+        }
+        if (atomicPower.equals("BuildDomePrompt")) {
+            return new BuildDomePrompt();
         }
         return null;
     }
@@ -138,7 +146,7 @@ public class GodCardParser {
     public BooleanRequestAction parseBooleanRequestStrategy(String atomicStrategy){
         if(atomicStrategy.equals("AskSameActionTwice"))
             return new AskSameActionTwice();
-        if(atomicStrategy.equals("AskBuildDome"))
+        if(atomicStrategy.equals("AskToBuildDome"))
             return new AskBuildDome();
         return null;
     }

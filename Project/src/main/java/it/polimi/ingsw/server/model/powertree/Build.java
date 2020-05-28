@@ -35,19 +35,23 @@ public class Build extends LimitedPower {
         List<Cell> availableCells = getAvailableCells(index);
         Cell[][] map = getExecutorPointer().getMap();
         /* Cella su cui voglio costruire */
-        int blockX = userInput[0];
-        int blockY = userInput[1];
-        if (availableCells.contains(map[blockX][blockY])) {
-            map[blockX][blockY].setBuildingLevel(map[blockX][blockY].getBuildingLevel().getNext());
-            cellAfterBuild = map[blockX][blockY];
-            this.setCellAfterBuild(cellAfterBuild);
-            getBuildBlockListener().buildBlock(new BuildBlockEvent(map[blockX][blockY]));
+        if(userInput == null)
             return 1;
-        }
+        else {
+            int blockX = userInput[0];
+            int blockY = userInput[1];
+            if (availableCells.contains(map[blockX][blockY])) {
+                map[blockX][blockY].setBuildingLevel(map[blockX][blockY].getBuildingLevel().getNext());
+                cellAfterBuild = map[blockX][blockY];
+                this.setCellAfterBuild(cellAfterBuild);
+                getBuildBlockListener().buildBlock(new BuildBlockEvent(map[blockX][blockY]));
+                return 1;
+            }
 
-        pointerBack();
-        getFailedActionListener().actionFailed(new FailedActionEvent(this));
-        return -1;  /* [NOTIFY]: Build failed */
+            pointerBack();
+            getFailedActionListener().actionFailed(new FailedActionEvent(this));
+            return -1;  /* [NOTIFY]: Build failed */
+        }
     }
 
 }

@@ -67,14 +67,16 @@
     </Godcard>
     <Godcard name ="Atlas">
         <descrizione>Titan shouldering the heavens</descrizione>
-        <BooleanRequest>askToBuildDome</BooleanRequest><!--qui la nuova strategy-->
+        <BooleanRequest>AskToBuildDome</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
             <FindAvailableCellsMove/>
             <Select/>
             <Move/>
             <WinCondition/>
-            <FindAvailableCellsBuild/>
+            <FindAvailableCellsBuildInstantDome/>
+            <BuildDomePrompt/>
             <InstantBuildDome/>
+            <Build/>
         </PowerList>
     </Godcard>
     <Godcard name ="Hepaestus">

@@ -140,6 +140,9 @@ public class GodCardParser {
         if (atomicPower.equals("BuildDomePrompt")) {
             return new BuildDomePrompt();
         }
+        if (atomicPower.equals("DoubleBuild")) {
+            return new DoubleBuild();
+        }
         return null;
     }
 

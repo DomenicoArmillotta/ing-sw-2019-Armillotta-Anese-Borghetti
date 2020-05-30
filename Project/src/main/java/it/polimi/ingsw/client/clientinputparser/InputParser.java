@@ -123,9 +123,12 @@ public class InputParser {
         }
         if(document.getDocumentElement().getTagName().equals("DomePromptEventBean")){
             String doubleMethod = document.getElementsByTagName("doubleMethod").item(0).getTextContent();
-            return new DoubleMoveViewEvent(doubleMethod);
+            return new DomePromptViewEvent(doubleMethod);
         }
-
+        if(document.getDocumentElement().getTagName().equals("DoubleBuildEventBean")){
+            String doubleMethod = document.getElementsByTagName("doubleMethod").item(0).getTextContent();
+            return new DoubleBuildViewEvent(doubleMethod);
+        }
         return null;
     }
 

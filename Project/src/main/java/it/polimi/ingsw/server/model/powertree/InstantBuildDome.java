@@ -13,11 +13,18 @@ import java.util.List;
 public class InstantBuildDome extends Build {
     @Override
     public int doAction(int[] userInput) {
-        List<Cell> availableCells = getAvailableCells(0);
+
         Cell[][] map = getExecutorPointer().getMap();
         /* Cella su cui voglio costruire */
         int blockX = userInput[0];
         int blockY = userInput[1];
+        int index;
+        if (getExecutorPointer().getPrevSelect().getSelectedWorker() == getExecutorPointer().getCurrentPlayer().getFirstWorker()) index = 0;
+        else index = 1;
+        List<Cell> availableCells = getAvailableCells(index);
+        /*propago le find available cells anche alla build successiva*/
+        getExecutorPointer().getNextBuild().setAvailableCells(availableCells,index);
+
         if(blockY == super.getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition().getY() && blockX == super.getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition().getX()){
             EventsBuffer.instance().setLastEventBean(new NoUpdatesEventBean());
             return 0;

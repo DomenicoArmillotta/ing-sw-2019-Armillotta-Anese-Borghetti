@@ -17,7 +17,7 @@ public class BuildOnSameCell extends Build {
                 return -1; /* Do not call pointerBack() */
         }
         getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
-        return 0; /* [NOTIFY]: BuildOnSameCell successful */
+        return 1; /* [NOTIFY]: BuildOnSameCell successful */
     }
 
 }

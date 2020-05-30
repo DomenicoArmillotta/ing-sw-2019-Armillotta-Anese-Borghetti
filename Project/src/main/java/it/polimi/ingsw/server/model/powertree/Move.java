@@ -30,7 +30,6 @@ public class Move extends LimitedPower {
         System.out.println("In move");
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         setCellBeforeMove(selectedWorker.getCurrentPosition());
-
         int index;
         if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) {
             index = 0;

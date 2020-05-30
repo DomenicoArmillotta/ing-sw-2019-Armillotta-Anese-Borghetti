@@ -12,6 +12,10 @@ public class MoveSwitch extends Move {
         System.out.println("In move switch");
         Worker floatingWorker = super.getExecutorPointer().getMap()[userInput[0]][userInput[1]].getWorkerOnCell();
         Cell floatingCell = super.getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition();
+        int index;
+        if(getExecutorPointer().getPrevSelect().getSelectedWorker() == getExecutorPointer().getCurrentPlayer().getFirstWorker())
+            index= 0;
+        else index = 1;
 
         if (super.doAction(userInput) == -1) {
             /* Do not call pointerBack(): it has already been called in the superclass */
@@ -21,7 +25,7 @@ public class MoveSwitch extends Move {
         if (floatingWorker == null) {
             getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
             return 1; /* [NOTIFY]: MoveSwitch successful */
-        } else if (super.getAvailableCells(0).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
+        } else if (super.getAvailableCells(index).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
             floatingWorker.setPreviousPosition(floatingWorker.getCurrentPosition());
             floatingWorker.getPreviousPosition().setWorkerOnCell(super.getExecutorPointer().getPrevSelect().getSelectedWorker());
             floatingWorker.setCurrentPosition(floatingCell);

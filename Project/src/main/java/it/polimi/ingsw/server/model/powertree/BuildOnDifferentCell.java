@@ -16,7 +16,7 @@ public class BuildOnDifferentCell extends Build {
                 return -1; /* Do not call pointerBack() */
         }
         getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
-        return 0; /* [NOTIFY]: BuildOnDifferentCell successful */
+        return 1; /* [NOTIFY]: BuildOnDifferentCell successful */
     }
 
 }

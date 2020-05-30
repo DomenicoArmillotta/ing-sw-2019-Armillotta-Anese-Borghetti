@@ -11,6 +11,7 @@ public class WorkerMovementViewEvent extends ViewEvent {
     int prevY;
     int currX;
     int currY;
+
     ProxyModel proxyModel = ProxyModel.instance();
 
     public WorkerMovementViewEvent(int prevX, int prevY, int currX, int currY){

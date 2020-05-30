@@ -4,7 +4,7 @@ import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.mvevents.actionevents.DoubleBuildEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.DoubleMoveEvent;
 
-public class DoubleBuildSameCell extends Power {
+public class DoubleBuild extends Power {
 
     @Override
     public int doAction(int[] userInput) {

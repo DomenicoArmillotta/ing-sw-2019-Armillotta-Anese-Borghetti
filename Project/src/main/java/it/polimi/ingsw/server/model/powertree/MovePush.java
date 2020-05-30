@@ -22,7 +22,7 @@ public class MovePush extends Move {
         } else index = 1;
         if (targetWorker == null) {
             getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
-            return 0; /* [NOTIFY]: MovePush successful */
+            return 1; /* [NOTIFY]: MovePush successful */
         } else {
             if (super.getAvailableCells(index).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {
                 tempX = targetWorker.getCurrentPosition().getX() - oldX;
@@ -34,7 +34,7 @@ public class MovePush extends Move {
                 targetWorker.setCurrentPosition(super.getExecutorPointer().getMap()[tempX][tempY]);
                 targetWorker.getCurrentPosition().setWorkerOnCell(targetWorker);
                 getWorkerMovementListener().workerMoved(new WorkerMovementEvent(targetWorker));
-                return 0; /* [NOTIFY]: MovePush successful */
+                return 1; /* [NOTIFY]: MovePush successful */
             } else {
                 pointerBack();
                 getFailedActionListener().actionFailed(new FailedActionEvent(this));

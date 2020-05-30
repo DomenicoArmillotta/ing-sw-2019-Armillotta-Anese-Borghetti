@@ -11,7 +11,8 @@ public class FindAvailableCellsBuildDifferentCell  extends FindAvailableCellsBui
     @Override
     public int doAction(int[] userInput) {
         System.out.println("In find availablecellsbuildondifferentcell");
-        super.doAction(userInput);
+        if(super.doAction(userInput) == 0)
+            return 1;
         Worker workerSelected =  super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         Cell[][] map = super.getExecutorPointer().getMap();
         List<Cell> toRemoveCell = new ArrayList<>();
@@ -28,6 +29,6 @@ public class FindAvailableCellsBuildDifferentCell  extends FindAvailableCellsBui
         }
 
         getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(i)));
-        return 0;
+        return 1;
     }
 }

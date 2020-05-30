@@ -31,10 +31,10 @@
             <Select/>
             <Move/>
             <WinCondition/>
-            <DoubleBuild/> <!--qui-->
             <FindAvailableCellsBuild/>
             <Build/>
             <FindAvailableCellsBuildDifferentCell/>
+            <DoubleBuild/> <!--qui-->
             <BuildOnADifferentCell/>
         </PowerList>
     </Godcard>
@@ -87,10 +87,10 @@
             <Select/>
             <Move/>
             <WinCondition/>
-            <DoubleBuild/> <!--qui-->
             <FindAvailableCellsBuild/>
             <Build/>
             <FindAvailableCellsBuildSameCell/>
+            <DoubleBuild/> <!--qui-->
             <BuildOnSameCell/>
         </PowerList>
     </Godcard>

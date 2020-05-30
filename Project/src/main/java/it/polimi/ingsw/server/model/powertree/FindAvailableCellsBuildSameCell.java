@@ -31,9 +31,8 @@ public class FindAvailableCellsBuildSameCell extends FindAvailableCellsBuild {
             }
         }
         super.getExecutorPointer().getNextBuild().removeCells(toRemoveCell,i);
-        if(super.getExecutorPointer().getNextBuild().getAvailableCells(i).isEmpty()){
-            return 1;/*special return value*/
-        }
-        return 0;
+        /*special return value*/
+        super.getExecutorPointer().getNextBuild().getAvailableCells(i);
+        return 1;
     }
 }

@@ -2,6 +2,10 @@ package it.polimi.ingsw.client.proxymodel;
 
 public class Player {
     private String name;
+    private String color;
+    private GodCards godCard;
+    private WorkerClient worker1;
+    private WorkerClient worker2;
 
 
     public Player(String userName){
@@ -39,7 +43,5 @@ public class Player {
         this.worker2 = worker2;
     }
 
-    private GodCards godCard;
-    private WorkerClient worker1;
-    private WorkerClient worker2;
+
 }

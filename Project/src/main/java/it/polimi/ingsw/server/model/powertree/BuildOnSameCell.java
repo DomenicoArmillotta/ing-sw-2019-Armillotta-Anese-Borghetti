@@ -7,7 +7,9 @@ public class BuildOnSameCell extends Build {
 
     @Override
     public int doAction(int[] userInput) {
-
+        //se passa l ostesso valore allora non deve costruire
+        if(getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition().getX() == userInput[0] && getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition().getY() == userInput[1])
+            return 1;
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]].getBuildingLevel().equals(Level.TOP) || getExecutorPointer().getMap()[userInput[0]][userInput[1]] != getExecutorPointer().getPrevBuild().getCellAfterBuild()) {
             pointerBack();
             getFailedActionListener().actionFailed(new FailedActionEvent(this));

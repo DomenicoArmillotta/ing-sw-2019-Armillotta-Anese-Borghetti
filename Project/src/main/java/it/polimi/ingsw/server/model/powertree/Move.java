@@ -34,6 +34,7 @@ public class Move extends LimitedPower {
         if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) {
             index = 0;
         } else index = 1;
+
         List<Cell> availableCells = super.getAvailableCells(index);
 
         Cell previousPosition = selectedWorker.getCurrentPosition();

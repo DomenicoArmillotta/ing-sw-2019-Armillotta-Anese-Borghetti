@@ -381,4 +381,6 @@ public class CliDrawer extends Drawer{
         map[startCoords.getX()][startCoords.getY()].setWorker(worker);
 
     };
+    public void login(){};
+
 }

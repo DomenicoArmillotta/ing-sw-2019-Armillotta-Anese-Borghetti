@@ -29,6 +29,13 @@ public class FindAvailableCellsDontMoveBack extends FindAvailableCellsMove {
         }
         super.getExecutorPointer().getNextMove().setAvailableCells(tempCells, i);
 
+        //getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(i)));
+
+        if(!getExecutorPointer().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().isEmpty())
+            executeMoveLimitations();
+        else
+            getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(i)));
+
         getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(i)));
         return 1;
     }

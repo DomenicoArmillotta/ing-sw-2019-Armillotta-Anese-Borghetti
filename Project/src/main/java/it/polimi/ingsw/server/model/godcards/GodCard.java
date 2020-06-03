@@ -12,8 +12,8 @@ public class GodCard {
     private List<Build> buildList;
     private List<WinCondition> winCheckList;
     private List<FindAvailableCells> findAvailableCellsList;
+    private List<FindAvailableCells> moveLimitationsList;
     private BooleanRequestAction booleanRequestActionStrategy;
-
 
     public void setGodName(String godName) {
         this.godName = godName;
@@ -27,7 +27,17 @@ public class GodCard {
         this.winCheckList = winCheckList;
     }
 
+    public List<FindAvailableCells> getMoveLimitationsList() {
+        return moveLimitationsList;
+    }
+
+    public void addMoveLimitations(FindAvailableCells moveLimitationsList) {
+        this.moveLimitationsList.add(moveLimitationsList);
+    }
+
     public GodCard() {
+        List<FindAvailableCells> moveLimitationsList = new ArrayList<>();
+        this.moveLimitationsList = moveLimitationsList;
     }
 
     public void setupLists() {

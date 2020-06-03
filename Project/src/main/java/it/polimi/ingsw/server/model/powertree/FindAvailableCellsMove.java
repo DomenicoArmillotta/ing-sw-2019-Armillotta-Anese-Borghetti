@@ -84,7 +84,12 @@ public class FindAvailableCellsMove extends FindAvailableCells {
         if (executorPointer.getNextMove().getAvailableCells(1) != null) {
             selectOptions.add(secondWorkerCell);
         }
-        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(selectOptions));
+
+        if(!getExecutorPointer().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().isEmpty())
+            executeMoveLimitations();
+        else
+            getWaitingForActionListener().waitForAction(new WaitingForActionEvent(selectOptions));
+
         return 0; /* [NOTIFY]: FindAvailableCellsMove done */
     }
 /*

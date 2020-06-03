@@ -1,7 +1,25 @@
 package it.polimi.ingsw.server.model.powertree;
 import it.polimi.ingsw.server.model.Player;
+import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
+
+import java.util.List;
 
 public class FindAvailableCells extends Power {
+
+    protected void executeMoveLimitations() {
+        List<FindAvailableCells> moveLimitationsList = getExecutorPointer().getCurrentPlayer().getPlayerGod().getMoveLimitationsList();
+        int result;
+        boolean lost;
+        lost = false;
+        for(int i = 0; i < moveLimitationsList.size() && !lost; i++) {
+            result = moveLimitationsList.get(i).doAction(null);
+            if(result == -1) {
+                lost = true;
+                getFailedActionListener().actionFailed(new FailedActionEvent(moveLimitationsList.get(i)));
+            }
+        }
+        /* moveLimitationsList.clear(); */
+    }
 
     public void loseCondition() {
 

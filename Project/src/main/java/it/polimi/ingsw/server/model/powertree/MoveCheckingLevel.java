@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.model.powertree;
 import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.model.Worker;
+import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WorkerMovementEvent;
 
 import java.util.ArrayList;
@@ -11,7 +12,9 @@ import java.util.List;
 public class MoveCheckingLevel extends Move {
 
     /* Voglio fare una copia della powerList e scorrerla fin che non trovo la move e quindi tornare indietro di un passo */
+    /*
     private void computeInjectionPowerIndex(Player player) {
+
         List<Power> cachedPowerList = player.getPlayerGod().getPowerList();
         Power injectionPtr;
         Power selectListPtr = player.getPlayerGod().getSelectList().get(0);
@@ -23,7 +26,7 @@ public class MoveCheckingLevel extends Move {
         }
         player.getPlayerGod().getFindAvailableCellsList().add(i, new FindAvailableCellsMoveButDontMoveUp());
         cachedPowerList.add(i, player.getPlayerGod().getFindAvailableCellsList().get(i));
-        /* Ho aggiornato la list power ma non la FindAvailableCells list; */
+         Ho aggiornato la list power ma non la FindAvailableCells list;
         player.getPlayerGod().setPowerList(cachedPowerList);
 
     }
@@ -47,12 +50,14 @@ public class MoveCheckingLevel extends Move {
             }
 
         }
-    }
+    } */
 
     @Override
     public int doAction(int[] userInput) {
 
-        removeMalusMoveUpEffects();
+        /* removeMalusMoveUpEffects(); */
+        getExecutorPointer().getNextPlayer().getPlayerGod().getMoveLimitationsList().clear();
+        getExecutorPointer().getPrevPlayer().getPlayerGod().getMoveLimitationsList().clear();
 
         if (super.doAction(userInput) == -1) {
             /* Do not call pointerBack(): it has already been called in the superclass */
@@ -62,13 +67,18 @@ public class MoveCheckingLevel extends Move {
         /* Devo computare il changing di startegy */
         Worker movedWorker = super.getExecutorPointer().getMap()[userInput[0]][userInput[1]].getWorkerOnCell();
         if (movedWorker.getCurrentPosition().getBuildingLevel().ordinal() - movedWorker.getPreviousPosition().getBuildingLevel().ordinal() == 1) {
-            computeInjectionPowerIndex(super.getExecutorPointer().getNextPlayer());
-            computeInjectionPowerIndex(super.getExecutorPointer().getPrevPlayer());
-            getWorkerMovementListener().workerMoved(new WorkerMovementEvent(movedWorker));
-            return 0; /* [NOTIFY]: MoveCheckingLevel successful */
+            getExecutorPointer().getNextPlayer().getPlayerGod().addMoveLimitations(new FindAvailableCellsMoveButDontMoveUp());
+            getExecutorPointer().getPrevPlayer().getPlayerGod().addMoveLimitations(new FindAvailableCellsMoveButDontMoveUp());
+            /* computeInjectionPowerIndex(super.getExecutorPointer().getNextPlayer());
+            computeInjectionPowerIndex(super.getExecutorPointer().getPrevPlayer()); */
+            //getWorkerMovementListener().workerMoved(new WorkerMovementEvent(movedWorker));
+            getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
+            return 1; /* [NOTIFY]: MoveCheckingLevel successful */
+
         }
-        getWorkerMovementListener().workerMoved(new WorkerMovementEvent(movedWorker));
-        return 0; /* [NOTIFY]: MoveCheckingLevel successful */
+        //getWorkerMovementListener().workerMoved(new WorkerMovementEvent(movedWorker));
+        getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
+        return 1; /* [NOTIFY]: MoveCheckingLevel successful */
     }
 
 }

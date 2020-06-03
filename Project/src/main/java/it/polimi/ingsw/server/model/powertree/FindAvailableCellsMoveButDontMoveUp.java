@@ -46,7 +46,18 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
             getFailedActionListener().actionFailed(new FailedActionEvent(this));
             return -1; /* [NOTIFY]: FindAvailableCellsMoveButDontMoveUp failed */
         }
-        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0)));
+
+        List<Cell> availableCellsDontMoveUp = new ArrayList<>();
+        if(super.getExecutorPointer().getNextMove().getAvailableCells(0).size() != 0) {
+            availableCellsDontMoveUp.add(getExecutorPointer().getCurrentPlayer().getFirstWorker().getCurrentPosition());
+        }
+        if(super.getExecutorPointer().getNextMove().getAvailableCells(1).size() != 0) {
+            availableCellsDontMoveUp.add(getExecutorPointer().getCurrentPlayer().getSecondWorker().getCurrentPosition());
+        }
+
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(availableCellsDontMoveUp));
+
+        //getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0)));
         return 0; /* [NOTIFY]: FindAvailableCellsMovePush done */
     }
 }

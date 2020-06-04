@@ -45,8 +45,8 @@ public class FindAvailableCellAppendTest {
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
         userInput[0] = 1;
         userInput[1] = 0;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
-        assertEquals(true, true);
+        assertEquals(actionExecutor.getNextPower().doAction(userInput),1);//find cell move
+
     }
     @Test
     public void dontActivateDontMoveUp() {
@@ -247,7 +247,7 @@ public class FindAvailableCellAppendTest {
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//select
         userInput[0] = 1;
         userInput[1] = 0;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//move
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);//move
         assertEquals(actionExecutor.getPrevPlayer().getPlayerGod().getPowerList().size(), 7);
         assertEquals(actionExecutor.getNextPlayer().getPlayerGod().getPowerList().size(), 7);
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);//wincheck

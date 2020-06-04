@@ -15,6 +15,7 @@ public class GodCard {
     private List<FindAvailableCells> moveLimitationsList;
     private BooleanRequestAction booleanRequestActionStrategy;
 
+
     public void setGodName(String godName) {
         this.godName = godName;
     }

@@ -1,6 +1,6 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
-public class BuildOrMoveEventBean {
+public class BuildOrMoveEventBean extends EventBean{
     private String  doubleMethod;
 
     public BuildOrMoveEventBean() {

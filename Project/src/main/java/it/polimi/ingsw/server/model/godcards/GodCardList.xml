@@ -4,7 +4,7 @@
     <Godcard name ="Mortal">
         <descrizione>just a Mortal</descrizione>
         <PowerList>
-            <FindAvailableCellsMove/>
+            <FindAvailableCellsSelectOptions/>
             <Select/>
             <Move/>
             <WinCondition/>
@@ -27,7 +27,7 @@
         <descrizione>Goddess of the harvest</descrizione>
         <BooleanRequest>AskSameActionTwice</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
-            <FindAvailableCellsMove/>
+            <FindAvailableCellsSelectOptions/>
             <Select/>
             <Move/>
             <WinCondition/>
@@ -42,7 +42,7 @@
         <descrizione>Goddess of the hunt</descrizione>
         <BooleanRequest>AskSameActionTwice</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
-            <FindAvailableCellsMove/>
+            <FindAvailableCellsSelectOptions/>
             <Select/>
             <Move/>
             <WinCondition/>
@@ -57,7 +57,7 @@
     <Godcard name ="Athena">
         <descrizione>Goddess of wisdom</descrizione>
         <PowerList>
-            <FindAvailableCellsMove/>
+            <FindAvailableCellsSelectOptions/>
             <Select/>
             <MoveCheckingLevel/>
             <WinCondition/>
@@ -69,7 +69,7 @@
         <descrizione>Titan shouldering the heavens</descrizione>
         <BooleanRequest>AskToBuildDome</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
-            <FindAvailableCellsMove/>
+            <FindAvailableCellsSelectOptions/>
             <Select/>
             <Move/>
             <WinCondition/>
@@ -83,7 +83,7 @@
         <descrizione>God of blacksmiths</descrizione>
         <BooleanRequest>AskSameActionTwice</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
-            <FindAvailableCellsMove/>
+            <FindAvailableCellsSelectOptions/>
             <Select/>
             <Move/>
             <WinCondition/>
@@ -108,7 +108,7 @@
     <Godcard name ="Pan">
         <descrizione>God of the wind</descrizione>
         <PowerList>
-            <FindAvailableCellsMove/>
+            <FindAvailableCellsSelectOptions/>
             <Select/>
             <Move/>
             <WinIfTwoLevelsDown/>
@@ -120,11 +120,12 @@
         <descrizione>Titan benefactor of Mankind</descrizione>
         <BooleanRequest>AskToBuildOrMove</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>
-            <FindAvailableCellsMove/>
-            <Select/>
-            <FindAvailableCellsBuild/>
+            <FindAvailableCellsSelectOptions/>
+            <SelectThenSkip/>
+            <FindAvailableCellsBuildBeforeMove/>
             <BuildOrMovePrompt/>
             <Build/>
+            <FindAvailableCellsMoveOptions/>
             <Move/>
             <WinCondition/>
             <FindAvailableCellsBuild/>

@@ -72,35 +72,13 @@ public class FindAvailableCellsMove extends FindAvailableCells {
             getFailedActionListener().actionFailed(new FailedActionEvent(this));
             return -1; /* [NOTIFY]: FindAvailableCellsMove failed */
         }
-        /* for(int i = 0; i < executorPointer.getCurrentPlayer().getPlayerGod().getFindAvailableCellsList().size()-1; i++) {
-            if (this == executorPointer.getCurrentPlayer().getPlayerGod().getFindAvailableCellsList().get(i))
-        } */
-        Cell firstWorkerCell = getExecutorPointer().getCurrentPlayer().getFirstWorker().getCurrentPosition();
-        Cell secondWorkerCell = getExecutorPointer().getCurrentPlayer().getSecondWorker().getCurrentPosition();
-        List<Cell> selectOptions = new ArrayList<>();
-        if (executorPointer.getNextMove().getAvailableCells(0) != null) {
-            selectOptions.add(firstWorkerCell);
-        }
-        if (executorPointer.getNextMove().getAvailableCells(1) != null) {
-            selectOptions.add(secondWorkerCell);
-        }
 
         if(!getExecutorPointer().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().isEmpty())
             executeMoveLimitations();
-        else
-            getWaitingForActionListener().waitForAction(new WaitingForActionEvent(selectOptions));
 
         return 0; /* [NOTIFY]: FindAvailableCellsMove done */
     }
-/*
-    public WorkerSelectionEvent getState() {
-        return lastEvent;
-    }
 
-    public void setState(WorkerSelectionEvent lastEvent) {
-        this.lastEvent = lastEvent;
-    }
-*/
 }
 
 

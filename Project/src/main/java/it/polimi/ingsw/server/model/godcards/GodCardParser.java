@@ -23,6 +23,16 @@ public class GodCardParser {
             selectedGodCard.getFindAvailableCellsList().add(tempCell);
             return tempCell;
         }
+        if (atomicPower.equals("FindAvailableCellsMoveOptions")) {
+            FindAvailableCells tempCell = new FindAvailableCellsMoveOptions();
+            selectedGodCard.getFindAvailableCellsList().add(tempCell);
+            return tempCell;
+        }
+        if (atomicPower.equals("FindAvailableCellsSelectOptions")) {
+            FindAvailableCells tempCell = new FindAvailableCellsSelectOptions();
+            selectedGodCard.getFindAvailableCellsList().add(tempCell);
+            return tempCell;
+        }
         if (atomicPower.equals("FindAvailableCellsMoveButDontMoveUp")) {
             FindAvailableCells tempCell = new FindAvailableCellsMoveButDontMoveUp();
             selectedGodCard.getFindAvailableCellsList().add(tempCell);
@@ -46,6 +56,11 @@ public class GodCardParser {
 
         if (atomicPower.equals("Select")) {
             Select tempSelect = new Select();
+            selectedGodCard.getSelectList().add(tempSelect);
+            return tempSelect;
+        }
+        if (atomicPower.equals("SelectThenSkip")) {
+            Select tempSelect = new SelectThenSkip();
             selectedGodCard.getSelectList().add(tempSelect);
             return tempSelect;
         }
@@ -86,6 +101,11 @@ public class GodCardParser {
         }
         if (atomicPower.equals("Build")) {
             Build tempBuild = new Build();
+            selectedGodCard.getBuildList().add(tempBuild);
+            return tempBuild;
+        }
+        if (atomicPower.equals("BuildThenStop")) {
+            Build tempBuild = new BuildThenStop();
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
         }
@@ -134,6 +154,11 @@ public class GodCardParser {
             selectedGodCard.getFindAvailableCellsList().add(tempCell);
             return tempCell;
         }
+        if (atomicPower.equals("FindAvailableCellsBuildBeforeMove")) {
+            FindAvailableCells tempCell = new FindAvailableCellsBuildBeforeMove();
+            selectedGodCard.getFindAvailableCellsList().add(tempCell);
+            return tempCell;
+        }
         if (atomicPower.equals("DoubleMove")) {
             return new DoubleMove();
         }
@@ -143,6 +168,9 @@ public class GodCardParser {
         if (atomicPower.equals("DoubleBuild")) {
             return new DoubleBuild();
         }
+        if (atomicPower.equals("BuildOrMovePrompt")) {
+            return new BuildOrMovePrompt();
+        }
         return null;
     }
 
@@ -151,6 +179,8 @@ public class GodCardParser {
             return new AskSameActionTwice();
         if(atomicStrategy.equals("AskToBuildDome"))
             return new AskBuildDome();
+        if(atomicStrategy.equals("AskToBuildOrMove"))
+            return new AskToBuildOrMove();
         return null;
     }
 

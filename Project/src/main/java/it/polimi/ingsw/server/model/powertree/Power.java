@@ -83,4 +83,10 @@ public abstract class Power {
         /* Nothing to clean */
     }
 
+    protected int getWorkerIndex() {
+        if(getExecutorPointer().getPrevSelect().getSelectedWorker().equals(getExecutorPointer().getCurrentPlayer().getFirstWorker())) {
+            return 0;
+        } return 1;
+    }
+
 }

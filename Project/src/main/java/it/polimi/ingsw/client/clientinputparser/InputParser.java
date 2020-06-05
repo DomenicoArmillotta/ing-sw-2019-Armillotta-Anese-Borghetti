@@ -129,7 +129,7 @@ public class InputParser {
             String doubleMethod = document.getElementsByTagName("doubleMethod").item(0).getTextContent();
             return new DoubleBuildViewEvent(doubleMethod);
         }
-        if(document.getDocumentElement().getTagName().equals("DoubleBuildEventBean")){
+        if(document.getDocumentElement().getTagName().equals("BuildOrMoveEventBean")){
             String doubleMethod = document.getElementsByTagName("doubleMethod").item(0).getTextContent();
             return new BuildOrMoveViewEvent(doubleMethod);
         }

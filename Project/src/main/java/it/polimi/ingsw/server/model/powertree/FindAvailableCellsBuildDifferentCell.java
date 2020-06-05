@@ -11,8 +11,8 @@ public class FindAvailableCellsBuildDifferentCell  extends FindAvailableCellsBui
     @Override
     public int doAction(int[] userInput) {
         System.out.println("In find availablecellsbuildondifferentcell");
-        if(super.doAction(userInput) == 0)
-            return 1;
+        if(super.doAction(userInput) == -1)
+            return -1;
         Worker workerSelected =  super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         Cell[][] map = super.getExecutorPointer().getMap();
         List<Cell> toRemoveCell = new ArrayList<>();
@@ -23,7 +23,12 @@ public class FindAvailableCellsBuildDifferentCell  extends FindAvailableCellsBui
         else
             i = 1;
 
-        super.getExecutorPointer().getNextBuild().removeCells((List<Cell>) super.getExecutorPointer().getPrevBuild().getCellAfterBuild(), i);
+        System.out.println("DEMETER");
+        System.out.println("findCells"+getExecutorPointer().getNextBuild().getAvailableCells(i));
+        toRemoveCell.add(super.getExecutorPointer().getPrevBuild().getCellAfterBuild());
+        System.out.println("toRemoveCell"+toRemoveCell);
+        super.getExecutorPointer().getNextBuild().removeCells(toRemoveCell, i);
+        System.out.println("findCells"+getExecutorPointer().getNextBuild().getAvailableCells(i));
         if (super.getExecutorPointer().getNextBuild().getAvailableCells(i).isEmpty()) {
             return 1;/*special return value*/
         }

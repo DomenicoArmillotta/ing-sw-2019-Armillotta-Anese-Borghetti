@@ -335,15 +335,21 @@ public class CliDrawer extends Drawer{
 
     public void setMoveWorker(WorkerClient selectedWorker,Coords moveCell){
         ClientCell[][] map=ProxyModel.instance().getMap();
-        if(map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getUnderWorker() != null)
-            selectedWorker = map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getUnderWorker();
-            //cancello worker dalla posizione precedente
-        else map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].setWorker(null);
-        //lo metto nella cella+
+        if(map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getUnderWorker() != null) {
+            selectedWorker = map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getWorker();
+            map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].setWorker(map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getUnderWorker());
+            System.out.println("1");
+        }
+        else {
+            map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].setWorker(null);
+            System.out.println("2");
+        }
         if(map[moveCell.getX()][moveCell.getY()].getWorker() != null) {
             map[moveCell.getX()][moveCell.getY()].setUnderWorker(selectedWorker);
+            System.out.println("3");
         } else {
             map[moveCell.getX()][moveCell.getY()].setWorker(selectedWorker);
+            System.out.println("4");
         }
 
         selectedWorker.setPosition(moveCell);

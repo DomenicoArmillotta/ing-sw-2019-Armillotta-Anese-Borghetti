@@ -350,8 +350,6 @@ public Build getPrevBuild() {
             }
         }
 
-        map[0][1].setBuildingLevel(Level.BASE);
-
         this.map = map;
     }
 

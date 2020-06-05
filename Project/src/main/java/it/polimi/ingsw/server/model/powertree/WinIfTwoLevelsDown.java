@@ -14,7 +14,7 @@ public class WinIfTwoLevelsDown extends WinCondition{
             getPlayerWonListener().winGame(new PlayerWonEvent(super.getExecutorPointer().getCurrentPlayer()));
             return 0;
         } else {
-            getFailedActionListener().actionFailed(new FailedActionEvent(this));
+            /* getFailedActionListener().actionFailed(new FailedActionEvent(this)); */
             return 1;
         }
     }

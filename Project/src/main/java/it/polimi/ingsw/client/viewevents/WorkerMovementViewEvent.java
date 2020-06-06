@@ -22,7 +22,8 @@ public class WorkerMovementViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
-        proxyModel.getDrawerStrategy().setMoveWorker(proxyModel.getMap()[prevX][prevY].getWorker(), new Coords(currX,currY));
+        proxyModel.setMoveWorker(proxyModel.getMap()[prevX][prevY].getWorker(), new Coords(currX,currY));
+        proxyModel.getMap()[currX][currY].getWorker().unselect();
         //proxyModel.getDrawerStrategy().drawMap(proxyModel.getPlayers().get(0),proxyModel.getPlayers().get(1),proxyModel.getPlayers().get(2));
         proxyModel.getDrawerStrategy().drawMap();
         System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should build a block typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed the desired  "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");

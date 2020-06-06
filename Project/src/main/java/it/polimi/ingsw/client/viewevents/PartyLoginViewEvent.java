@@ -13,7 +13,7 @@ public class PartyLoginViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
-        proxyModel.getDrawerStrategy().createPlayer(loggedPlayer);
+        proxyModel.addPlayer(loggedPlayer);
         if(ProxyModel.instance().getPartyOwner().equals("")) ProxyModel.instance().setPartyOwner(partyOwner);
         if(loggedPlayer.equals(partyOwner)) {
             System.out.println("\u001B[36m"+loggedPlayer+"\u001B[0m"+" created a new room.");

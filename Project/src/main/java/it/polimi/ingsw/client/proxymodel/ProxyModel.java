@@ -1,20 +1,17 @@
 package it.polimi.ingsw.client.proxymodel;
-import it.polimi.ingsw.client.proxymodel.WorkerClient;
-import it.polimi.ingsw.client.proxymodel.CliDrawer;
-import it.polimi.ingsw.client.proxymodel.GuiDrawer;
-import it.polimi.ingsw.client.proxymodel.ClientCell;
 
 import java.util.ArrayList;
 import java.util.List;
-//quando si crea il proxy model,bisogna settare i turni e bisogna impostare nome dei giocatori
 
 public class ProxyModel {
 
     private static ProxyModel instance;
-    private List<Player> players=new ArrayList<>();
+    private List<Player> players = new ArrayList<>();
     private Turn turn;
     String thisClientNickname;
     String partyOwner;
+    private ClientCell[][] map;
+    private Drawer drawerStrategy;
     int phase;
 
     public int getPhase() {
@@ -29,18 +26,16 @@ public class ProxyModel {
         return players;
     }
 
-    public void addPlayer(Player playerToAdd){
+    public void addPlayer(String playerName){
+        Player playerToAdd = new Player(playerName);
         this.players.add(playerToAdd);
-        /* System.out.println("aggiunto = "+ playerToAdd.getName()); */
     }
 
     public static ProxyModel instance() {
-
         if (instance == null) {
             instance = new ProxyModel();
             instance.createMap();
         }
-
         return instance;
     }
 
@@ -52,58 +47,22 @@ public class ProxyModel {
     public String getThisClientNickname() {
         return thisClientNickname;
     }
-    public String getPartyOwner() {
-        return partyOwner;
-    }
-
     public void setThisClientNickname(String thisClientNickname) {
         this.thisClientNickname = thisClientNickname;
     }
 
+    public String getPartyOwner() {
+        return partyOwner;
+    }
     public void setPartyOwner(String partyOwner) {
         this.partyOwner = partyOwner;
     }
 
-    private ClientCell[][] map;
-
     public Drawer getDrawerStrategy() {
         return drawerStrategy;
     }
-
-    private ClientCell selectCell;
-    private ClientCell moveCell;
-    private ClientCell buildCell;
-    private WorkerClient selectedWorker;
-    private WorkerClient[] allWorker;
-    //fare classe coordinate
-    private Coords selectableCoords;  //vale per select,buil,move array a 3 dimensioni per le cordinate
-    private Drawer drawerStrategy;
-
-
     public void setDrawerStrategy(Drawer drawerStrategy) {
         this.drawerStrategy = drawerStrategy;
-    }
-    public ClientCell[][] getMap() {
-        return map;
-    }
-
-
-
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
-    public void createMap(){
-        this.map=new ClientCell[7][7];
-        int i,j;
-        for(i=0;i<7;i++){
-            for(j=0;j<7;j++) {
-                map[i][j]=new ClientCell();
-                }
-            }
-        this.map=map;
-
     }
 
     public Turn getTurn(){
@@ -112,6 +71,80 @@ public class ProxyModel {
 
     public void createTurn(){
         this.turn = new Turn();
+    }
+
+    public ClientCell[][] getMap() {
+        return map;
+    }
+    public void createMap(){
+        ClientCell[][] map = new ClientCell[5][5];
+        int i,j;
+        for(i=0;i<5;i++){
+            for(j=0;j<5;j++) {
+                map[i][j]=new ClientCell();
+                map[i][j].setLevel(0);
+            }
+        }
+        this.map = map;
+    }
+
+    public void createWorker1(Player player,Coords startCoords, int index){
+        ClientCell[][] map = getMap();
+        WorkerClient worker=new WorkerClient(player,startCoords,index);
+        player.setWorker1(worker);
+        map[startCoords.getX()][startCoords.getY()].setWorker(worker);
+    }
+
+    public void createWorker2(Player player,Coords startCoords, int index){
+        ClientCell[][] map = getMap();
+        WorkerClient worker=new WorkerClient(player,startCoords,index);
+        player.setWorker2(worker);
+        map[startCoords.getX()][startCoords.getY()].setWorker(worker);
+    }
+
+    public void addSelectableCells( List<Coords> selectableCoords){
+        ClientCell[][] map = getMap();
+
+        int length, i;
+        length=selectableCoords.size();
+        for(i=0; i<length; i++){
+            map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setSelectable(1);
+        }
+
+    }
+
+    public void removeSelectableCells( List<Coords> selectableCoords){
+        ClientCell[][] map = getMap();
+
+        int length, i;
+        length=selectableCoords.size();
+        for(i=0; i<length; i++){
+            map[selectableCoords.get(i).getX()][selectableCoords.get(i).getY()].setSelectable(0);
+        }
+
+    }
+
+    public void setMoveWorker(WorkerClient selectedWorker,Coords moveCell){
+        ClientCell[][] map=getMap();
+        if(map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getUnderWorker() != null) {
+            selectedWorker = map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getWorker();
+            map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].setWorker(map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].getUnderWorker());
+        }
+        else {
+            map[selectedWorker.getPosition().getX()][selectedWorker.getPosition().getY()].setWorker(null);
+        }
+        if(map[moveCell.getX()][moveCell.getY()].getWorker() != null) {
+            map[moveCell.getX()][moveCell.getY()].setUnderWorker(selectedWorker);
+        } else {
+            map[moveCell.getX()][moveCell.getY()].setWorker(selectedWorker);
+        }
+
+        selectedWorker.setPosition(moveCell);
+    }
+
+    public void setBuild(Coords buildCell,int levelToBuild){
+        ClientCell[][] map=getMap();
+        map[buildCell.getX()][buildCell.getY()].setLevel(levelToBuild);
     }
 
 }

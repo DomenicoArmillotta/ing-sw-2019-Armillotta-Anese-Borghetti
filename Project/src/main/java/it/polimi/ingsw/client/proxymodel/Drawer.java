@@ -19,6 +19,7 @@ public abstract class Drawer {
     public void createPlayer(String name){};
     public void createWorker1(Player player,Coords startCoords,int index){};
     public void createWorker2(Player player,Coords startCoords,int index){};
+    public void title(){};
     public void login(){};
 
 }

@@ -388,5 +388,5 @@ public class CliDrawer extends Drawer{
 
     };
     public void login(){};
-
+    public void title(){};
 }

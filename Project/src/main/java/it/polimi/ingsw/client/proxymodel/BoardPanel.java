@@ -20,10 +20,11 @@ public class BoardPanel extends JPanel {
         InputStream url1 = cl.getResourceAsStream("pawn1.png");
         InputStream url2 = cl.getResourceAsStream("pawn2.png");
         InputStream url3 = cl.getResourceAsStream("SantoriniBoard.png");
-        InputStream url4 = cl.getResourceAsStream("block1.png");
-        InputStream url5 = cl.getResourceAsStream("block2.png");
-        InputStream url6 = cl.getResourceAsStream("block3.png");
-        InputStream url7 = cl.getResourceAsStream("block4.png");
+        InputStream url4 = cl.getResourceAsStream("pawn1.png");
+        InputStream url5 = cl.getResourceAsStream("pawn1.png");
+        InputStream url6 = cl.getResourceAsStream("pawn1.png");
+        InputStream url7 = cl.getResourceAsStream("pawn1.png");
+
         BufferedImage img1 = null;
         BufferedImage img2 = null;
         BufferedImage img3 = null;
@@ -83,8 +84,8 @@ public class BoardPanel extends JPanel {
             int wx2p2 = proxyModel.getPlayers().get(1).getWorker2().getPosition().getX();
             int wy2p2 = proxyModel.getPlayers().get(1).getWorker2().getPosition().getY();
 
-            g.drawImage(img1, firstCellX - 25  + shift * wx1p2, firstCellY - 25  + shift * wy1p2, 50, 50, null);
-            g.drawImage(img1, firstCellX - 25  + shift * wx2p2, firstCellY - 25  + shift * wy2p2, 50, 50, null);
+            g.drawImage(img2, firstCellX - 25  + shift * wx1p2, firstCellY - 25  + shift * wy1p2, 50, 50, null);
+            g.drawImage(img2, firstCellX - 25  + shift * wx2p2, firstCellY - 25  + shift * wy2p2, 50, 50, null);
 
         }
 ;

@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Display {
     private JFrame frame;
-    private static int dimensionX=500;
-    private static int dimensionY=500;
+    private static final int dimensionX = 960;
+    private static final int dimensionY = 580;
     private String titleFrame;
     List<JPanel> panels;
 
     private Display(){
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Santorini Board Game GUI [AM46]");
         frame.setSize(dimensionX, dimensionY);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame=frame;

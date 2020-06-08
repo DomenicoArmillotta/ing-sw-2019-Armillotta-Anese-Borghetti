@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.proxymodel.CliDrawer;
+import it.polimi.ingsw.client.proxymodel.GuiDrawer;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
 import java.io.IOException;
@@ -19,8 +20,9 @@ public class ClientHandler {
             /* System.out.println("Client ready"); */
             ProxyModel proxyModel = ProxyModel.instance();
             proxyModel.createMap();
-            CliDrawer CliDrawer=new CliDrawer();
-            proxyModel.setDrawerStrategy(CliDrawer);
+            //CliDrawer CliDrawer=new CliDrawer();
+            GuiDrawer GuiDrawer=new GuiDrawer();
+            proxyModel.setDrawerStrategy(GuiDrawer);
             proxyModel.setPhase(0);
             /* System.out.println("CLI ready"); */
                 try {

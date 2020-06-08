@@ -7,12 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.ImageObserver;
+import java.text.AttributedCharacterIterator;
 import java.util.List;
 
 public class GuiDrawer extends Drawer {
 
     public void drawMap(){
-        MouseListenerGame MouseListenerGame=new MouseListenerGame();
+        /* MouseListenerGame MouseListenerGame=new MouseListenerGame();
         Display display=Display.instance();
         JPanel gamePanel = new JPanel();
         gamePanel.setSize(1920,1080);
@@ -24,9 +26,12 @@ public class GuiDrawer extends Drawer {
         gamePanel.add(backgroundLabel);
         display.getFrame().add(gamePanel);
         gamePanel.addMouseListener(MouseListenerGame);
-        display.getFrame().setVisible(true);
-        
-
+        display.getFrame().setVisible(true); */
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        Container c = myFrame.getContentPane();
+        c.add(new BoardPanel());
+        myFrame.setVisible(true);
 
 
     };

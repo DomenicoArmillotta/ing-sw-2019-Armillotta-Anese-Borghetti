@@ -17,9 +17,11 @@ public class WaitingForActionViewEvent extends ViewEvent {
 
     public void viewEventMethod() {
         proxyModel.getTurn().setCurrentPlayer(new Player(currTurn));
+        proxyModel.clearSelectableCells();
         proxyModel.addSelectableCells(convertIntoCoords());
+        System.out.println("New selectable cells");
         proxyModel.getDrawerStrategy().drawMap();
-        proxyModel.removeSelectableCells(convertIntoCoords());
+        //proxyModel.removeSelectableCells(convertIntoCoords());
         System.out.println("It's "+"\u001B[36m"+ProxyModel.instance().getTurn().getCurrentPlayer().getName()+"\u001B[0m"+"'s turn.");
 
     }

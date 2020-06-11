@@ -113,6 +113,13 @@ public class ProxyModel {
 
     }
 
+    public void clearSelectableCells() {
+        ClientCell[][] map = getMap();
+        for(int i = 0; i < 5; i++)
+            for(int j = 0; j < 5; j++)
+                map[i][j].setSelectable(0);
+    }
+
     public void removeSelectableCells( List<Coords> selectableCoords){
         ClientCell[][] map = getMap();
 

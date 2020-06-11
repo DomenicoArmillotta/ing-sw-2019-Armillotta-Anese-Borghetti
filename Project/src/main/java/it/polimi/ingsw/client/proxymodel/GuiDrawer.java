@@ -31,6 +31,7 @@ public class GuiDrawer extends Drawer {
         JFrame myFrame = display.getFrame();
         Container c = myFrame.getContentPane();
         c.add(new BoardPanel());
+        /* myFrame.removeAll(); */
         myFrame.setVisible(true);
 
 

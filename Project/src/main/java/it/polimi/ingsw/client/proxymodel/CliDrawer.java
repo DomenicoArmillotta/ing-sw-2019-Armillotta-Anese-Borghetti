@@ -41,6 +41,11 @@ public class CliDrawer extends Drawer{
         System.out.println("");
 
         ClientCell[][] map=ProxyModel.instance().getMap();
+
+        for(int ii = 0; ii < 5; ii++)
+            for(int jj = 0; jj < 5; jj++)
+                System.out.println("[CLI] i: "+ii+" j: "+jj+" selectable: "+map[ii][jj].getSelectable());
+
         int i,j,k,m,w,q;
         int black=1;
         //bordi

@@ -17,13 +17,17 @@ public class BoardPanel extends JPanel {
     private void drawImage(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         ClassLoader cl = this.getClass().getClassLoader();
+        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g3 = (Graphics2D) g;
+        Graphics2D g4 = (Graphics2D) g;
+
         InputStream url1 = cl.getResourceAsStream("pawn1.png");
         InputStream url2 = cl.getResourceAsStream("pawn2.png");
         InputStream url3 = cl.getResourceAsStream("SantoriniBoard.png");
-        InputStream url4 = cl.getResourceAsStream("pawn1.png");
-        InputStream url5 = cl.getResourceAsStream("pawn1.png");
-        InputStream url6 = cl.getResourceAsStream("pawn1.png");
-        InputStream url7 = cl.getResourceAsStream("pawn1.png");
+        InputStream url4 = cl.getResourceAsStream("block1.png");
+        InputStream url5 = cl.getResourceAsStream("block2.png");
+        InputStream url6 = cl.getResourceAsStream("block3.png");
+        InputStream url7 = cl.getResourceAsStream("block4.png");
 
         BufferedImage img1 = null;
         BufferedImage img2 = null;
@@ -66,7 +70,25 @@ public class BoardPanel extends JPanel {
                             break;
                     default: break;
                 }
+                /* System.out.println("i: "+i+" j: "+j+" selectable: "+map[i][j].getSelectable()); */
+                if(map[i][j].getSelectable() == 1) {
+                    g2.setColor(new Color(255, 0, 0, 80));
+                    g2.fillRect(firstCellX - 40 + shift * i,firstCellY - 40  + shift * j,80,80);
+                }
+                /* switch (map[i][j].getSelectable()) {
+                    case 0:  if(i%2==0) g2.setColor(new Color(0, 255, 0, 80));
+                            if(i%2==0) g2.fillRect(firstCellX - 40 + shift * i,firstCellY - 40  + shift * j,80,80);
+                            break;
+                    case 1:  System.out.println("Banana");
+                             g3.setColor(new Color(255, 0, 0, 80));
+                             g3.fillRect(firstCellX - 40 + shift * i,firstCellY - 40  + shift * j,80,80);
+                             break;
+                    default: break;
+                } */
             }
+
+        //g2.setColor(new Color(0, 255, 0, 50));
+        //g2.fillRect(firstCellX - 40 + shift * 3,firstCellY - 40  + shift * 3,80,80);
 
         if(proxyModel.getPlayers().size() > 1 && proxyModel.getPlayers().get(0).getWorker1() != null) {
             int wx1p1 = proxyModel.getPlayers().get(0).getWorker1().getPosition().getX();
@@ -88,6 +110,8 @@ public class BoardPanel extends JPanel {
             g.drawImage(img2, firstCellX - 25  + shift * wx2p2, firstCellY - 25  + shift * wy2p2, 50, 50, null);
 
         }
+
+
 ;
 
         /* g.drawImage(img1, 322-(50/2), 114-(50/2), 50, 50, null);

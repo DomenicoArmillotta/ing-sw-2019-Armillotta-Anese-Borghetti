@@ -32,9 +32,10 @@ public class DoubleMoveTest {
         playersQueue.add(player2);
         GodCardsDeck godCardsDeck = new GodCardsDeck();
         GameMaster gameMaster = new GameMaster(playersQueue, 2);
-        player1.setPlayerGod(godCardsDeck.createGodCard("artemis"));
-        player2.setPlayerGod(godCardsDeck.createGodCard("pan"));
-
+        GodCard godCard1 = godCardsDeck.createGodCard("Artemis");
+        GodCard godCard2 = godCardsDeck.createGodCard("Pan");
+        player1.setPlayerGod(godCard1);
+        player2.setPlayerGod(godCard2);
 
         player1.workersSetup(1, 1, 4, 2);
         player2.workersSetup(4, 4, 4, 3);

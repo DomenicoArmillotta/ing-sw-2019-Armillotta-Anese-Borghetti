@@ -4,16 +4,21 @@ import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.GameMaster;
 import it.polimi.ingsw.server.model.godcards.God;
 import it.polimi.ingsw.server.model.Player;
+import it.polimi.ingsw.server.model.godcards.GodCard;
+import it.polimi.ingsw.server.model.godcards.GodCardsDeck;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+//fail
 public class DemeterTest {
     @Test
-    public void demeterTest() {
+    public void demeterTest() throws ParserConfigurationException, SAXException, IOException {
         List<Player> playersQueue = new ArrayList<>();
         Player player1 = new Player("Matteo");
         Player player2 = new Player("Domenico");
@@ -21,10 +26,14 @@ public class DemeterTest {
         playersQueue.add(player1);
         playersQueue.add(player2);
         playersQueue.add(player3);
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        GodCard godCard1 = godCardsDeck.createGodCard("Demeter");
+        GodCard godCard2 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
+        player1.setPlayerGod(godCard1);
+        player1.setPlayerGod(godCard2);
+        player1.setPlayerGod(godCard3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
-        player1.setPlayerGod(gameMaster.getGodList().get(God.DEMETER.ordinal()));
-        assertEquals(player1.getPlayerGod().getGodName(), "Demeter");
-        assertEquals(player2.getPlayerGod().getGodName(), "Mortal");
 
         player1.workersSetup(0, 0, 1, 4);
         player2.workersSetup(4, 0, 2, 1);

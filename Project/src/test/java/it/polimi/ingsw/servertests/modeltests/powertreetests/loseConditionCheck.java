@@ -18,25 +18,23 @@ public class loseConditionCheck {
 //fail
     @Test
     public void loseConditionIn3PlayersMatchChangWorkersOrderTest() throws ParserConfigurationException, SAXException, IOException {
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
-        List<Player> playerQueue = new ArrayList<>();
         playerQueue.add(player1);
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
-        GodCardsDeck godCardsDeck = new GodCardsDeck();
         GodCard godCard1 = godCardsDeck.createGodCard("Pan");
-        GodCard godCard2 = godCardsDeck.createGodCard("Athena");
+        GodCard godCard2 = godCardsDeck.createGodCard("Athena ");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
         player3.setPlayerGod(godCard3);
-
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
         map[1][1].setBuildingLevel(Level.TOP);
         map[3][3].setBuildingLevel(Level.TOP);
@@ -53,24 +51,24 @@ public class loseConditionCheck {
     }
 
     @Test
-    public void loseConditionIn3PlayersMatchDeletingCurrPlayer() {
+    public void loseConditionIn3PlayersMatchDeletingCurrPlayer() throws ParserConfigurationException, SAXException, IOException {
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
-        List<Player> playerQueue = new ArrayList<>();
         playerQueue.add(player1);
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
-        player1.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
-        player2.setPlayerGod(gameMaster.getGodList().get(God.ATHENA.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        GodCard godCard1 = player1.getPlayerGod();
-        GodCard godCard2 = player2.getPlayerGod();
-        GodCard godCard3 = player3.getPlayerGod();
+        GodCard godCard1 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Athena ");
+        GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
+        player1.setPlayerGod(godCard1);
+        player2.setPlayerGod(godCard2);
+        player3.setPlayerGod(godCard3);
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
         map[1][1].setBuildingLevel(Level.TOP);
         map[3][3].setBuildingLevel(Level.TOP);
@@ -89,24 +87,24 @@ public class loseConditionCheck {
         assertEquals(actionExecutor.getCurrentPlayer(),player2);
     }
     @Test
-    public void loseConditionIn3PlayersButMatchGoesOn() {
+    public void loseConditionIn3PlayersButMatchGoesOn() throws ParserConfigurationException, SAXException, IOException {
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
-        List<Player> playerQueue = new ArrayList<>();
         playerQueue.add(player1);
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
-        player1.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
-        player2.setPlayerGod(gameMaster.getGodList().get(God.ARTEMIS.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        GodCard godCard1 = player1.getPlayerGod();
-        GodCard godCard2 = player2.getPlayerGod();
-        GodCard godCard3 = player3.getPlayerGod();
+        GodCard godCard1 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Artemis ");
+        GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
+        player1.setPlayerGod(godCard1);
+        player2.setPlayerGod(godCard2);
+        player3.setPlayerGod(godCard3);
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
         map[1][1].setBuildingLevel(Level.TOP);
         map[3][3].setBuildingLevel(Level.TOP);
@@ -137,24 +135,24 @@ public class loseConditionCheck {
         assertEquals(actionExecutor.getNextPlayer(),actionExecutor.getPrevPlayer());
     }
     @Test
-    public void loseConditionIn3PlayersLoseConditionNotFirstPlayer(){
+    public void loseConditionIn3PlayersLoseConditionNotFirstPlayer() throws ParserConfigurationException, SAXException, IOException {
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
-        List<Player> playerQueue = new ArrayList<>();
         playerQueue.add(player1);
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
-        player1.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
-        player2.setPlayerGod(gameMaster.getGodList().get(God.PAN.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        GodCard godCard1 = player1.getPlayerGod();
-        GodCard godCard2 = player2.getPlayerGod();
-        GodCard godCard3 = player3.getPlayerGod();
+        GodCard godCard1 = godCardsDeck.createGodCard("Atlante");
+        GodCard godCard2 = godCardsDeck.createGodCard("Pan ");
+        GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
+        player1.setPlayerGod(godCard1);
+        player2.setPlayerGod(godCard2);
+        player3.setPlayerGod(godCard3);
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
         map[1][1].setBuildingLevel(Level.TOP);
         map[3][3].setBuildingLevel(Level.TOP);

@@ -22,45 +22,55 @@ import java.util.List;
 public class ArtemisTest {
     @Test
     public void artemisTest() throws ParserConfigurationException, SAXException, IOException {
-        List<Player> playersQueue = new ArrayList<>();
-        Player player1 = new Player("Matteo");
-        Player player2 = new Player("Domenico");
-        Player player3 = new Player("Marco");
-        playersQueue.add(player1);
-        playersQueue.add(player2);
-        playersQueue.add(player3);
         GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
+        Player player1 = new Player("Marco");
+        Player player2 = new Player("Pietro");
+        Player player3 = new Player("Domenico");
+        playerQueue.add(player1);
+        playerQueue.add(player2);
+        playerQueue.add(player3);
+        GameMaster gameMaster = new GameMaster(playerQueue, 3);
+        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Artemis");
-        GodCard godCard2 = godCardsDeck.createGodCard("Pan");
-        GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
+        GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
+        GodCard godCard3 = godCardsDeck.createGodCard("Minotaur");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
         player3.setPlayerGod(godCard3);
-
+        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+        Cell[][] map = actionExecutor.getMap();
         player1.workersSetup(1, 1, 4, 2);
         player2.workersSetup(4, 4, 4, 3);
         player3.workersSetup(3, 4, 4, 1);
         int[] userInput = new int[10];
-        GameMaster gameMaster = new GameMaster(playersQueue, 3);
-        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        Cell[][] map = actionExecutor.getMap();
+
 
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 1;
         userInput[1] = 1;
+        //select
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         userInput[0] = 2;
         userInput[1] = 2;
+        //move
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
+        //wincondition
         assertEquals(actionExecutor.getNextPower().doAction(null), 1);
         userInput[0] = 1;
         userInput[1] = 2;
-        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        //FindAvailableCellDontMoveBack
         assertEquals(actionExecutor.getNextPower().doAction(null), 1);
+        //DoubleMove
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
+        //MoveButDontGoBack
+        assertEquals(actionExecutor.getNextPower().doAction(null), 1);
+        //WinCondition
+        //FindAvailableCellsBuild
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 2;
         userInput[1] = 2;
+        //Build
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
 
     }

@@ -31,8 +31,8 @@ public class FindAvailableCellsMoveTest {
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
         GodCardsDeck godCardsDeck = new GodCardsDeck();
         GodCard godCard1 = godCardsDeck.createGodCard("Pan");
-        GodCard godCard2 = godCardsDeck.createGodCard("Pan");
-        GodCard godCard3 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Apollo");
+        GodCard godCard3 = godCardsDeck.createGodCard("Athena");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
         player3.setPlayerGod(godCard3);

@@ -22,29 +22,31 @@ import java.util.List;
 public class PrometheusTest {
     @Test
     public void prometheusTest() throws ParserConfigurationException, SAXException, IOException {
-        List<Player> playersQueue = new ArrayList<>();
-        Player player1 = new Player("Matteo");
-        Player player2 = new Player("Domenico");
-        Player player3 = new Player("Marco");
         GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
+        Player player1 = new Player("Marco");
+        Player player2 = new Player("Pietro");
+        Player player3 = new Player("Domenico");
+        playerQueue.add(player1);
+        playerQueue.add(player2);
+        playerQueue.add(player3);
+        GameMaster gameMaster = new GameMaster(playerQueue, 3);
+        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Prometheus");
-        GodCard godCard2 = godCardsDeck.createGodCard("Pan");
-        GodCard godCard3 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Pan ");
+        GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
         player3.setPlayerGod(godCard3);
-
-
-        GameMaster gameMaster = new GameMaster(playersQueue, 3);
-        player1.setPlayerGod(gameMaster.getGodList().get(God.PROMETHEUS.ordinal()));
+        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+        Cell[][] map = actionExecutor.getMap();
         assertEquals(player1.getPlayerGod().getGodName(), "Prometheus");
         player1.workersSetup(1, 1, 4, 2);
         player2.workersSetup(4, 4, 4, 3);
         player3.workersSetup(3, 4, 4, 1);
 
         int[] userInput = new int[10];
-        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        Cell[][] map = actionExecutor.getMap();
+        
 
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 1;

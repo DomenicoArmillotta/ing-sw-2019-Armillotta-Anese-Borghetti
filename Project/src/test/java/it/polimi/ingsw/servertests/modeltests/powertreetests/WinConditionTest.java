@@ -6,26 +6,36 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.server.model.godcards.GodCard;
+import it.polimi.ingsw.server.model.godcards.GodCardsDeck;
 import org.junit.Test;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WinConditionTest {
     @Test
-    public void WinVerification() {
-        List<Player> playersQueue = new ArrayList<>();
-        Player player1 = new Player("Matteo");
-        Player player2 = new Player("Domenico");
-        Player player3 = new Player("Marco");
-        playersQueue.add(player1);
-        playersQueue.add(player2);
-        playersQueue.add(player3);
-        GameMaster gameMaster = new GameMaster(playersQueue, 3);
-        GodCard godCard1 = player1.getPlayerGod();
-        GodCard godCard2 = player2.getPlayerGod();
-        GodCard godCard3 = player3.getPlayerGod();
-        Cell[][] map = gameMaster.getActionExecutor().getMap();
+    public void WinVerification() throws ParserConfigurationException, SAXException, IOException {
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
+        Player player1 = new Player("Marco");
+        Player player2 = new Player("Pietro");
+        Player player3 = new Player("Domenico");
+        playerQueue.add(player1);
+        playerQueue.add(player2);
+        playerQueue.add(player3);
+        GameMaster gameMaster = new GameMaster(playerQueue, 3);
+        gameMaster.createGodList();
+        GodCard godCard1 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
+        GodCard godCard3 = godCardsDeck.createGodCard("Atlante");
+        player1.setPlayerGod(godCard1);
+        player2.setPlayerGod(godCard2);
+        player3.setPlayerGod(godCard3);
+        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+        Cell[][] map = actionExecutor.getMap();
         Cell cella11 = map[2][2];
         cella11.setBuildingLevel(Level.TOP);
         Cell cella00 = map[1][2];
@@ -36,7 +46,6 @@ public class WinConditionTest {
         int[] a = new int[5];
 
 
-        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         //FindAvailableCellsMove
         actionExecutor.getNextPower().doAction(null);
         //Select
@@ -53,19 +62,25 @@ public class WinConditionTest {
     }
 
     @Test
-    public void NotWinVerification() {
-        List<Player> playersQueue = new ArrayList<>();
-        Player player1 = new Player("Matteo");
-        Player player2 = new Player("Domenico");
-        Player player3 = new Player("Marco");
-        playersQueue.add(player1);
-        playersQueue.add(player2);
-        playersQueue.add(player3);
-        GameMaster gameMaster = new GameMaster(playersQueue, 3);
-        GodCard godCard1 = player1.getPlayerGod();
-        GodCard godCard2 = player2.getPlayerGod();
-        GodCard godCard3 = player3.getPlayerGod();
-        Cell[][] map = gameMaster.getActionExecutor().getMap();
+    public void NotWinVerification() throws ParserConfigurationException, SAXException, IOException {
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
+        Player player1 = new Player("Marco");
+        Player player2 = new Player("Pietro");
+        Player player3 = new Player("Domenico");
+        playerQueue.add(player1);
+        playerQueue.add(player2);
+        playerQueue.add(player3);
+        GameMaster gameMaster = new GameMaster(playerQueue, 3);
+        gameMaster.createGodList();
+        GodCard godCard1 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
+        GodCard godCard3 = godCardsDeck.createGodCard("Atlante");
+        player1.setPlayerGod(godCard1);
+        player2.setPlayerGod(godCard2);
+        player3.setPlayerGod(godCard3);
+        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
+        Cell[][] map = actionExecutor.getMap();
         Cell cella11 = map[2][2];
         cella11.setBuildingLevel(Level.MID);
         Cell cella00 = map[1][2];
@@ -73,7 +88,6 @@ public class WinConditionTest {
         player1.workersSetup(1, 2, 4, 4);
         player2.workersSetup(4, 2, 4, 1);
         player3.workersSetup(4, 3, 0, 0);
-        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         //worker selezionato
         int[] a = new int[5];
         //FindAvailableCellsMove

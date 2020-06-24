@@ -20,26 +20,23 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FindAvailableCellsSwitchSelectTest {
     @Test
     public void testFindAvailableCellSwitchSelect() throws ParserConfigurationException, SAXException, IOException {
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
-        List<Player> playerQueue = new ArrayList<>();
         playerQueue.add(player1);
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
-        gameMaster.createActionExecutor();
-        GodCardsDeck godCardsDeck = new GodCardsDeck();
-        GodCard godCard1 = godCardsDeck.createGodCard("Apollo");
-        GodCard godCard2 = godCardsDeck.createGodCard("Pan");
-        GodCard godCard3 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard1 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
+        GodCard godCard3 = godCardsDeck.createGodCard("Atlante");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
         player3.setPlayerGod(godCard3);
-        ActionExecutor actionExecutor = new ActionExecutor();
-        actionExecutor = gameMaster.getActionExecutor();
-        actionExecutor.createMap();
+        ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         Cell[][] map = actionExecutor.getMap();
         player1.workersSetup(0, 0, 1, 1);
         player2.workersSetup(0, 1, 2, 1);
@@ -58,25 +55,24 @@ public class FindAvailableCellsSwitchSelectTest {
     }
 
     @Test
-    public void lostDueToSelectWitchingWorkers(){
+    public void lostDueToSelectWitchingWorkers() throws ParserConfigurationException, SAXException, IOException {
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
+        List<Player> playerQueue = new ArrayList<>();
         Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
-        List<Player> playerQueue = new ArrayList<>();
         playerQueue.add(player1);
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
-        player1.setPlayerGod(gameMaster.getGodList().get(God.APOLLO.ordinal()));
-        player2.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
-        player3.setPlayerGod(gameMaster.getGodList().get(God.MORTAL.ordinal()));
-        gameMaster.createActionExecutor();
-        GodCard godCard1 = player1.getPlayerGod();
-        GodCard godCard2 = player2.getPlayerGod();
-        GodCard godCard3 = player3.getPlayerGod();
+        GodCard godCard1 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
+        GodCard godCard3 = godCardsDeck.createGodCard("Atlante");
+        player1.setPlayerGod(godCard1);
+        player2.setPlayerGod(godCard2);
+        player3.setPlayerGod(godCard3);
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
-        actionExecutor.createMap();
         Cell[][] map = actionExecutor.getMap();
 
         player1.workersSetup(0, 0, 1, 1);

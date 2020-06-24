@@ -45,7 +45,7 @@ public class ArtemisTest {
         player3.workersSetup(3, 4, 4, 1);
         int[] userInput = new int[10];
 
-
+        //FindAvailableCellsSelectOptions
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 1;
         userInput[1] = 1;

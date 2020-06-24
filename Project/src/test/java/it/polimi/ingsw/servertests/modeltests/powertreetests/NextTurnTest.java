@@ -75,8 +75,8 @@ public class NextTurnTest {
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Pan");
-        GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
-        GodCard godCard3 = godCardsDeck.createGodCard("Minotaur");
+        GodCard godCard2 = godCardsDeck.createGodCard("Apollo");
+        GodCard godCard3 = godCardsDeck.createGodCard("Athena");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
         player3.setPlayerGod(godCard3);

@@ -58,20 +58,24 @@ public class DoActionTest {
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         userInput[0] = 1;
         userInput[1] = 1;
+        //select
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         userInput[0] = 2;
         userInput[1] = 2;
+        //move
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
+        //WinIfTwoLevelsDown
         assertEquals(actionExecutor.getNextPower().doAction(null), 1);
         userInput[0] = 1;
         userInput[1] = 2;
-        assertEquals(actionExecutor.getNextPower().doAction(null), 1);
-        assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
-        assertEquals(actionExecutor.getNextPower().doAction(null), 1);
+        //FindAvailableCellsBuild
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        userInput[0] = 2;
-        userInput[1] = 2;
+        //Build
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
+        //Apollo
+        //FindAvailableCellsMoveSwitch
+        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
+
 
 
 

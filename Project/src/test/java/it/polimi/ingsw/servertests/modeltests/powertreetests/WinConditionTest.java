@@ -57,7 +57,7 @@ public class WinConditionTest {
         a[1] = 2;
         actionExecutor.getNextPower().doAction(a);
         //WinCondition
-        assertEquals(actionExecutor.getNextPower().doAction(null),0);
+        assertEquals(actionExecutor.getNextPower().doAction(null),1);
 
     }
 

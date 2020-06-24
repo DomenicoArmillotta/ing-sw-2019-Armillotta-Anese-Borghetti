@@ -28,8 +28,8 @@ public class DontBuildDomeTest {
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
         GodCardsDeck godCardsDeck = new GodCardsDeck();
-        GodCard godCard1 = godCardsDeck.createGodCard("Hephaestus");
-        GodCard godCard2 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard1 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Atlas");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
@@ -74,8 +74,8 @@ public class DontBuildDomeTest {
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
         GodCardsDeck godCardsDeck = new GodCardsDeck();
-        GodCard godCard1 = godCardsDeck.createGodCard("Hephaestus");
-        GodCard godCard2 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard1 = godCardsDeck.createGodCard("Pan");
+        GodCard godCard2 = godCardsDeck.createGodCard("Atlas");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);

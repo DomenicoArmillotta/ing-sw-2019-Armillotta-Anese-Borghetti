@@ -47,7 +47,7 @@ public class MovePushTest {
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
         userInput[0] = 1;
         userInput[1] = 0;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//move pushing workers
+        assertEquals(actionExecutor.getNextPower().doAction(userInput),1);//move pushing workers
         assertEquals(actionExecutor.getMap()[2][0].getWorkerOnCell(),player3.getFirstWorker());
     }
     @Test
@@ -123,7 +123,7 @@ public class MovePushTest {
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//select
         userInput[0]=2;
         userInput[1]=2;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);//find cell move
+        assertEquals(actionExecutor.getNextPower().doAction(userInput),1);//find cell move
         assertEquals(actionExecutor.getPrevSelect().getSelectedWorker(),player1.getSecondWorker());
         assertEquals(map[3][3].getWorkerOnCell().getOwner(),player2);
 

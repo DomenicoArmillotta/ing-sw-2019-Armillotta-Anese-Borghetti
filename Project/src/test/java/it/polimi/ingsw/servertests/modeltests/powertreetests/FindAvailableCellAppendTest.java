@@ -176,9 +176,9 @@ public class FindAvailableCellAppendTest {
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//select
         userInput[0] = 1;
         userInput[1] = 0;
-        assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//find cell move
-        assertEquals(actionExecutor.getPrevPlayer().getPlayerGod().getPowerList().size(), 7);
-        assertEquals(actionExecutor.getNextPlayer().getPlayerGod().getPowerList().size(), 7);
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);//find cell move
+        assertEquals(actionExecutor.getPrevPlayer().getPlayerGod().getPowerList().size(), 6);
+        assertEquals(actionExecutor.getNextPlayer().getPlayerGod().getPowerList().size(), 6);
 
         actionExecutor.nextTurn();
         //muovo player 2 da 21 in 22 ma non devo poter fare la mossa
@@ -251,8 +251,8 @@ public class FindAvailableCellAppendTest {
         userInput[0] = 1;
         userInput[1] = 0;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);//move
-        assertEquals(actionExecutor.getPrevPlayer().getPlayerGod().getPowerList().size(), 7);
-        assertEquals(actionExecutor.getNextPlayer().getPlayerGod().getPowerList().size(), 7);
+        assertEquals(actionExecutor.getPrevPlayer().getPlayerGod().getPowerList().size(), 6);
+        assertEquals(actionExecutor.getNextPlayer().getPlayerGod().getPowerList().size(), 10);
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);//wincheck
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);//findAvailabeCellsBuild
         userInput[0] = 0;

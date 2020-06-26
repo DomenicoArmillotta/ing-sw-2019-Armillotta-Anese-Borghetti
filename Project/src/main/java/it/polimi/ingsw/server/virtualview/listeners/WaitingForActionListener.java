@@ -17,7 +17,7 @@ public class WaitingForActionListener extends Listener {
     public void waitForAction(WaitingForActionEvent waitingForActionEvent) {
         EventBean eventBean = waitingForActionEvent.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
-        eventsBuffer.setWaiting(true);
+
         /* send event to clients */
     }
 

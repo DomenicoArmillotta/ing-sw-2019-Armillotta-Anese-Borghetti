@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.clientinputparser.InputParser;
+import it.polimi.ingsw.client.proxymodel.ProxyModel;
 import it.polimi.ingsw.client.viewevents.ViewEvent;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -33,7 +34,7 @@ public class ClientHandlerInput implements Runnable {
         }
 
         try {
-            while (true) {
+            while (ProxyModel.instance().getPhase()!=-1) {
                 /* System.out.println("Login phase reading"); */
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();
@@ -42,7 +43,9 @@ public class ClientHandlerInput implements Runnable {
                 /* System.out.println(viewEvent); */
                 viewEvent.viewEventMethod();
             }
-
+            in.close();
+            ProxyModel.instance().getPrintWrite().close();
+            System.out.println("wssssss");
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         } finally {

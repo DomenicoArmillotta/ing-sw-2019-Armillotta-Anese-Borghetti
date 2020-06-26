@@ -70,7 +70,7 @@ public class FindAvailableCellsMove extends FindAvailableCells {
         if (super.getExecutorPointer().getNextMove().getAvailableCells(0).isEmpty() && super.getExecutorPointer().getNextMove().getAvailableCells(1).isEmpty()) {
             super.loseCondition();
             getFailedActionListener().actionFailed(new FailedActionEvent(this));
-            return -1; /* [NOTIFY]: FindAvailableCellsMove failed */
+            return 1; /* [NOTIFY]: FindAvailableCellsMove failed */
         }
 
         if(!getExecutorPointer().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().isEmpty())

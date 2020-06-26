@@ -20,7 +20,6 @@ public class BooleanActionListener extends Listener {
     public void createPromptBean(BooleanRequestEvent doubleBooleanRequest) {
         EventBean eventBean =  doubleBooleanRequest.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
-        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 }

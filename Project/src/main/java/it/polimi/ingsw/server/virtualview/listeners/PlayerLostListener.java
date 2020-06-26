@@ -17,7 +17,6 @@ public class PlayerLostListener extends Listener {
     public void loseGame(PlayerLostEvent playerLostEvent) {
         EventBean eventBean = playerLostEvent.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
-        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 

@@ -17,7 +17,6 @@ public class FailedActionListener extends Listener {
     public void actionFailed(FailedActionEvent failedActionEvent) {
         EventBean eventBean = failedActionEvent.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
-        eventsBuffer.setWaiting(true);
         /* send event to clients */
     }
 

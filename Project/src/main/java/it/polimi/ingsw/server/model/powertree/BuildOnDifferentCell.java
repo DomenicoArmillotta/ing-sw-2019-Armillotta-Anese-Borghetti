@@ -7,6 +7,8 @@ public class BuildOnDifferentCell extends Build {
     @Override
     public int doAction(int[] userInput) {
         System.out.println("In build on different cell");
+        if(getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition())
+            return 1;
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevBuild().getCellAfterBuild()) {
             pointerBack();
             getFailedActionListener().actionFailed(new FailedActionEvent(this));

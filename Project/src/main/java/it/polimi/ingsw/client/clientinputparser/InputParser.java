@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client.clientinputparser;
 
+import it.polimi.ingsw.client.ClientAckDisconnectionEvent;
+import it.polimi.ingsw.client.proxymodel.ProxyModel;
 import it.polimi.ingsw.client.viewevents.*;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
 import org.w3c.dom.Document;
@@ -8,6 +10,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.ParserConfigurationException;
+import java.net.Socket;
+import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,6 +137,10 @@ public class InputParser {
             String doubleMethod = document.getElementsByTagName("doubleMethod").item(0).getTextContent();
             return new BuildOrMoveViewEvent(doubleMethod);
         }
+        if(document.getDocumentElement().getTagName().equals("CorrectGodListEventBean"))
+            return new CorrectlyChoseGodListViewEvent(document.getElementsByTagName("god1").item(0).getTextContent(),document.getElementsByTagName("god2").item(0).getTextContent(),document.getElementsByTagName("god3").item(0).getTextContent());
+        if(document.getDocumentElement().getTagName().equals("ConnectionInterruptEventBean"))
+            return new ConnectionInterruptViewEvent(document.getElementsByTagName("faultyClient").item(0).getTextContent());
         return null;
     }
 

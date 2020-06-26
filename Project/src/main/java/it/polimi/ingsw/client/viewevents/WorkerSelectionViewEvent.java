@@ -20,6 +20,7 @@ public class WorkerSelectionViewEvent extends ViewEvent {
         List<Coords> coordsList = new ArrayList<>();
         coordsList.add(new Coords(workerX, workerY));
         proxyModel.getMap()[workerX][workerY].getWorker().select();
-        System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should move the selected worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed the desired  "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
+        proxyModel.getDrawerStrategy().promptMovementText();
+
     }
 }

@@ -23,6 +23,20 @@ public class CliDrawer extends Drawer{
     public static final String CYAN_BACKGROUND = "\033[46m";
     public static final String WHITE_BACKGROUND = "\033[47m";
 
+    public void promptSelectionText() {
+        System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getNextPlayer().getName() + "\u001B[0m" + " should select a worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed by its "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
+    };
+    public void promptMovementText() {
+        System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should move the selected worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed the desired "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
+    };
+    public void promptBuildText() {
+        System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should build a block typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed the desired "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
+    };
+
+    public void promptPlaceWorkersTest() {
+        System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should place his 2 workers typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed by the desired "+"\u001B[33m" + "4 coordinates" + "\u001B[0m"+".");
+    };
+
     public void drawMap(){
         Player player1;
         Player player2;
@@ -41,10 +55,6 @@ public class CliDrawer extends Drawer{
         System.out.println("");
 
         ClientCell[][] map=ProxyModel.instance().getMap();
-
-        for(int ii = 0; ii < 5; ii++)
-            for(int jj = 0; jj < 5; jj++)
-                System.out.println("[CLI] i: "+ii+" j: "+jj+" selectable: "+map[ii][jj].getSelectable());
 
         int i,j,k,m,w,q;
         int black=1;
@@ -281,6 +291,10 @@ public class CliDrawer extends Drawer{
 
     };
 
-    public void login(){};
+    public void login(){
+        System.out.println(PURPLE_BOLD+"SANTORINI BOARD GAME CLI SIMULATION"+RESET+" (AM46)");
+        System.out.println("Type "+YELLOW_BOLD+"login"+RESET+" followed by your nickname to create a room or join an existing one.");
+
+    };
     public void title(){};
 }

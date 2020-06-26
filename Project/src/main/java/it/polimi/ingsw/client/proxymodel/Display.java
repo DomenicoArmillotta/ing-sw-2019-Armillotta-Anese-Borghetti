@@ -7,10 +7,28 @@ import java.util.List;
 
 public class Display {
     private JFrame frame;
-    private static final int dimensionX = 960;
-    private static final int dimensionY = 580;
+    private static final int dimensionX = 615;
+    private static final int dimensionY = 730;
     private String titleFrame;
     List<JPanel> panels;
+    int graphicsFlag;
+    MouseListenerGame mouseListenerGame;
+
+    public MouseListenerGame getMouseListenerGame() {
+        return mouseListenerGame;
+    }
+
+    public void setMouseListenerGame(MouseListenerGame mouseListenerGame) {
+        this.mouseListenerGame = mouseListenerGame;
+    }
+
+    public int getGraphicsFlag() {
+        return graphicsFlag;
+    }
+
+    public void setGraphicsFlag(int graphicsFlag) {
+        this.graphicsFlag = graphicsFlag;
+    }
 
     private Display(){
         JFrame frame = new JFrame("Santorini Board Game GUI [AM46]");

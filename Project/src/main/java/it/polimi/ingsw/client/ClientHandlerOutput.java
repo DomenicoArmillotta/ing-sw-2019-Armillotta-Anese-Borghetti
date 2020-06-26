@@ -3,6 +3,8 @@ package it.polimi.ingsw.client;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import it.polimi.ingsw.client.proxymodel.Display;
+import it.polimi.ingsw.client.proxymodel.MouseListenerGame;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
 import java.io.*;
@@ -31,11 +33,14 @@ public class ClientHandlerOutput implements Runnable {
 
         /* System.out.println("[ClientHandlerOutput] Connection established"); */
         PrintWriter printWriter = null;
+
         try {
             printWriter = new PrintWriter(socket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        Display.instance().setMouseListenerGame(new MouseListenerGame(printWriter));
 
         /* System.out.println("socket: " + socket); */
         ProxyModel proxyModel = ProxyModel.instance();
@@ -43,8 +48,7 @@ public class ClientHandlerOutput implements Runnable {
         Scanner stdin = new Scanner(System.in);
 
         try {
-            System.out.println(ANSI_PURPLE+"SANTORINI BOARD GAME CLI SIMULATION"+ANSI_RESET+" (AM46)");
-            System.out.println("Type "+ANSI_YELLOW+"login"+ANSI_RESET+" followed by your nickname to create a room or join an existing one.");
+            proxyModel.getDrawerStrategy().login();
             while (true) {
                 /* System.out.println("GAME PHASE: "+proxyModel.getPhase()); */
                 String inputLine = stdin.next();

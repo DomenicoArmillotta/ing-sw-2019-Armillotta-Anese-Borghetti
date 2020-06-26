@@ -1,5 +1,12 @@
 package it.polimi.ingsw.client.proxymodel;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import it.polimi.ingsw.client.LoginEvent;
+import it.polimi.ingsw.client.SetupCoordsEvent;
+import it.polimi.ingsw.client.StartUpEvent;
 import it.polimi.ingsw.client.proxymodel.ClientCell;
+import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,41 +15,90 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.ImageObserver;
+import java.io.PrintWriter;
 import java.text.AttributedCharacterIterator;
 import java.util.List;
 
 public class GuiDrawer extends Drawer {
 
-    public void drawMap(){
-        /* MouseListenerGame MouseListenerGame=new MouseListenerGame();
-        Display display=Display.instance();
-        JPanel gamePanel = new JPanel();
-        gamePanel.setSize(1920,1080);
-        display.getPanels().add(gamePanel);
-        ImageIcon image=new ImageIcon("C:\\Users\\domen\\Desktop\\ing-sw-2019-Armillotta-Anese-Borghetti\\Project\\src\\main\\java\\it\\polimi\\ingsw\\client\\proxymodel\\SantoriniBoard.png");
-        JLabel backgroundLabel = new JLabel("ciao",image,JLabel.CENTER);
-        display.getFrame().setSize(1920,1080);
-        backgroundLabel.setBounds(0,0,1920,1080);
-        gamePanel.add(backgroundLabel);
-        display.getFrame().add(gamePanel);
-        gamePanel.addMouseListener(MouseListenerGame);
-        display.getFrame().setVisible(true); */
+    public synchronized void promptSelectionText() {
+
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
         Container c = myFrame.getContentPane();
-        c.add(new BoardPanel());
-        /* myFrame.removeAll(); */
+        BoardPanel mapPanel = new BoardPanel();
+        mapPanel.setGraphicsFlag(1);
+        System.out.println("GRAPHICS_FLAG 1");
+        mapPanel.addMouseListener(display.getMouseListenerGame());
+        c.add(mapPanel);
         myFrame.setVisible(true);
+    }
+
+    public synchronized void promptMovementText() {
+
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        Container c = myFrame.getContentPane();
+        BoardPanel mapPanel = new BoardPanel();
+        mapPanel.setGraphicsFlag(2);
+        System.out.println("GRAPHICS_FLAG 2");
+        mapPanel.addMouseListener(display.getMouseListenerGame());
+        c.add(mapPanel);
+        myFrame.setVisible(true);
+    }
+
+    public synchronized void promptBuildText() {
+
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        Container c = myFrame.getContentPane();
+        BoardPanel mapPanel = new BoardPanel();
+        mapPanel.setGraphicsFlag(3);
+        System.out.println("GRAPHICS_FLAG 3");
+        mapPanel.addMouseListener(display.getMouseListenerGame());
+        c.add(mapPanel);
+        myFrame.setVisible(true);
+    }
+
+    public void promptPlaceWorkersTest() {
+
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        Container c = myFrame.getContentPane();
+        BoardPanel mapPanel = new BoardPanel();
+        mapPanel.setGraphicsFlag(4);
+        System.out.println("GRAPHICS_FLAG 4");
+        mapPanel.addMouseListener(display.getMouseListenerGame());
+        c.add(mapPanel);
+        myFrame.setVisible(true);};
 
 
-    };
+    public synchronized void drawMap(){
+
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        Container c = myFrame.getContentPane();
+        BoardPanel mapPanel = new BoardPanel();
+        //mapPanel.setGraphicsFlag(0);
+        System.out.println("DRAW_MAP");
+        mapPanel.addMouseListener(display.getMouseListenerGame());
+        c.add(mapPanel);
+        myFrame.setVisible(true);
+    }
 
     public void drawSelectWorker(Coords selectCell){};
     public void drawWinGame(){};
     public void drawLooseGame(){};
 
     public void title(){
-        MyAction myAction=new MyAction();
+        System.out.println("In title");
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        myFrame.removeAll();
+        myFrame.repaint();
+        System.out.println("Repainted");
+
+        /* MyAction myAction=new MyAction();
         Display display=Display.instance();
         JPanel titlePanel = new JPanel();
         display.panels.add(titlePanel);
@@ -60,11 +116,103 @@ public class GuiDrawer extends Drawer {
         loginButton.setBackground(Color.lightGray);
         display.panels.get(0).add(loginButton);
         loginButton.addActionListener(myAction);
-        display.getFrame().setVisible(true);
+        display.getFrame().setVisible(true); */
     }
-    public void login(){
+    String name;
+    public void login() {
+        System.out.println("In login");
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        Container c = myFrame.getContentPane();
+        LoginPanel loginPanel = new LoginPanel();
+        // loginPanel.addMouseListener(display.getMouseListenerGame());
+        Font font = new Font("Serif", Font.PLAIN, 24);
 
-        if(ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getPartyOwner()))
+        Font fontButton = new Font("Serif", Font.PLAIN, 22);
+        JTextField textField = new JTextField(20);
+        this.name = textField.getText();
+        textField.setFont(font);
+        loginPanel.add(textField);
+        JButton b = new JButton("LOGIN");
+        b.setFont(fontButton);
+        b.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ProxyModel.instance().setThisClientNickname(name);
+                PrintWriter printWriter = Display.instance().getMouseListenerGame().printWriter;
+                XmlMapper xmlMapper = (new XmlMapper());
+                xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                String toSend = null;
+                try {
+                    toSend = xmlMapper.writeValueAsString(new LoginEvent(name));
+                } catch (JsonProcessingException jsonProcessingException) {
+                    jsonProcessingException.printStackTrace();
+                }
+                toSend += "\n";
+                printWriter.print(toSend);
+                printWriter.flush();
+
+                //your actions
+            }
+        });
+        loginPanel.add(b);
+
+        JLabel lblWelcome = new JLabel("<html><br/><br/>", SwingConstants.CENTER);
+        loginPanel.add(lblWelcome);
+
+        JButton b1 = new JButton("2 PLAYERS");
+        b1.setFont(fontButton);
+        b1.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PrintWriter printWriter = Display.instance().getMouseListenerGame().printWriter;
+                XmlMapper xmlMapper = (new XmlMapper());
+                xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                String toSend = null;
+                try {
+                    toSend = xmlMapper.writeValueAsString(new StartUpEvent(ProxyModel.instance().getThisClientNickname()));
+                } catch (JsonProcessingException jsonProcessingException) {
+                    jsonProcessingException.printStackTrace();
+                }
+                toSend += "\n";
+                printWriter.print(toSend);
+                printWriter.flush();
+                printWriter.flush();
+                //your actions
+            }
+        });
+        loginPanel.add(b1);
+        JButton b2 = new JButton("3 PLAYERS");
+        b2.setFont(fontButton);
+        b2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PrintWriter printWriter = Display.instance().getMouseListenerGame().printWriter;
+                XmlMapper xmlMapper = (new XmlMapper());
+                xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                String toSend = null;
+                try {
+                    toSend = xmlMapper.writeValueAsString(new StartUpEvent(ProxyModel.instance().getThisClientNickname()));
+                } catch (JsonProcessingException jsonProcessingException) {
+                    jsonProcessingException.printStackTrace();
+                }
+                toSend += "\n";
+                printWriter.print(toSend);
+                printWriter.flush();
+                printWriter.flush();
+                //your actions
+            }
+        });
+        loginPanel.add(b2);
+
+        c.add(loginPanel);
+
+        myFrame.setVisible(true);
+
+        /* if(ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getPartyOwner()))
         {
             StartGame startGame=new StartGame();
             Display display=Display.instance();
@@ -89,7 +237,7 @@ public class GuiDrawer extends Drawer {
             jRadioButton3.addActionListener(startGame);
             display.getFrame().setVisible(true);
 
-        }
+        } */
     };
 
 }

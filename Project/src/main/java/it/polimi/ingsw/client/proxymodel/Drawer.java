@@ -7,5 +7,9 @@ public abstract class Drawer {
     public void drawLooseGame(){};
     public void title(){};
     public void login(){};
+    public void promptSelectionText(){};
+    public void promptMovementText(){};
+    public void promptBuildText(){};
+    public void promptPlaceWorkersTest(){};
 
 }

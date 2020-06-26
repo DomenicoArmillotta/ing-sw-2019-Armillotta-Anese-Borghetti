@@ -14,6 +14,7 @@ public class GodChosenViewEvent extends ViewEvent {
 
     @Override
     public void viewEventMethod() {
+        ProxyModel.instance().getDrawerStrategy().title();
         ProxyModel.instance().getTurn().getCurrentPlayer().setGodCard(new GodCards(chosenGod));
         ProxyModel.instance().getTurn().nextTurn();
         /* System.out.println(player+" ha scelto correttamente "+chosenGod.toUpperCase()); */

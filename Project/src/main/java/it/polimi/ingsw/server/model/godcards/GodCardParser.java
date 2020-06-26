@@ -248,4 +248,22 @@ public class GodCardParser {
         selectedGodCard.setPowerList(temporaryPowerList);
         return selectedGodCard;
     }
+
+    public List<String> returnGodList() throws ParserConfigurationException, IOException, SAXException {
+        List<String> godList = new ArrayList<>();
+        File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
+        int i;
+
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder = dbf.newDocumentBuilder();
+        Document document = dBuilder.parse(cardFile);
+        NodeList godCardList = document.getElementsByTagName("Godcard");
+        for (i = 0; i < godCardList.getLength() ; i++) {
+            Node nGodCardListNode = godCardList.item(i);
+            Element eElement = (Element) nGodCardListNode;
+            godList.add(eElement.getAttribute("name").toLowerCase());
+
+        }
+        return godList;
+    }
 }

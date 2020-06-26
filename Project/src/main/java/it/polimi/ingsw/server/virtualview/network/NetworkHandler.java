@@ -2,7 +2,9 @@ package it.polimi.ingsw.server.virtualview.network;
 
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -14,12 +16,12 @@ public class NetworkHandler {
     public NetworkHandler(int port) {
         this.port = port;
     }
-    public void startServer() {
+    public void startServer() throws ParserConfigurationException, SAXException, IOException {
         Controller controller = new Controller();
         ActionExecutor executorPointer = ActionExecutor.instance();
         ExecutorService executor = Executors.newFixedThreadPool(4);
         ServerSocket serverSocket;
-        SocketHandlerOutput socketHandlerOutput = SocketHandlerOutput.instance();
+        SocketHandlerOutput socketHandlerOutput = SocketHandlerOutput.instance(controller);
         executor.submit(socketHandlerOutput);
         //PingHandler pingHandler;
         try {
@@ -33,16 +35,12 @@ public class NetworkHandler {
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
-                    //System.out.println("New connection Input");
+                /* new class method per aggingerla alla lista*/
                 executor.submit(new SocketHandlerInput(socket, controller));
-                //socket = serverSocket.accept();
-                    /* executor.submit(new SocketHandlerInput(socket, controller, executorPointer)); */
-                    //System.out.println("New connection Output, socket: "+socket);
                 socketHandlerOutput.addSocketToList(socket);
-
                 /* addSocketToList(socket); */
             } catch(IOException e) {
-                break; // Entrerei qui se serverSocket venisse chiuso
+                break;
             }
         }
         executor.shutdown();

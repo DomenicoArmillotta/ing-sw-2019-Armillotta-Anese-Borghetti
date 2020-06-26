@@ -17,7 +17,6 @@ public class PlayerWonListener extends Listener {
     public void winGame(PlayerWonEvent playerWonEvent) {
         EventBean eventBean = playerWonEvent.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
-        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 

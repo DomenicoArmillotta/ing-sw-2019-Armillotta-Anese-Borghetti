@@ -11,7 +11,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ClientHandler {
-
         public ClientHandler() {
             startClient();
         }
@@ -21,12 +20,13 @@ public class ClientHandler {
             ProxyModel proxyModel = ProxyModel.instance();
             proxyModel.createMap();
             //CliDrawer CliDrawer=new CliDrawer();
-            GuiDrawer GuiDrawer=new GuiDrawer();
+            CliDrawer GuiDrawer=new CliDrawer();
             proxyModel.setDrawerStrategy(GuiDrawer);
             proxyModel.setPhase(0);
             /* System.out.println("CLI ready"); */
                 try {
                     Socket socket = new Socket(Inet4Address.getLocalHost().getHostAddress(), 1234);
+                    ProxyModel.instance().thisScoket = socket;
                     executor.submit(new ClientHandlerOutput(socket));
                     executor.submit(new ClientHandlerInput(socket));
                 } catch(IOException e) {

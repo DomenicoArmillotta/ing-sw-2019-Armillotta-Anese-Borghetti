@@ -1,5 +1,6 @@
 package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.server.model.powertree.*;
+import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
 public class ActionExecutor {
     private Player currentPlayer;
@@ -349,7 +350,9 @@ public Build getPrevBuild() {
                 map[i][j].setY(j);
             }
         }
-
+        map[1][1].setBuildingLevel(Level.BASE);
+        map[1][2].setBuildingLevel(Level.MID);
+        map[1][3].setBuildingLevel(Level.TOP);
         this.map = map;
     }
 
@@ -368,4 +371,15 @@ public Build getPrevBuild() {
     public void setPrevPlayer(Player prevPlayer) {
         this.prevPlayer = prevPlayer;
     }
+
+    public synchronized void resetActionExecutor(){
+         createMap();
+         currentPlayer = null;
+         prevPlayer = null;
+         nextPlayer = null;
+         powerPtr = null;
+
+    }
+
+
 }

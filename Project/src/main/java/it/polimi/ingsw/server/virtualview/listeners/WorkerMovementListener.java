@@ -17,7 +17,6 @@ public class WorkerMovementListener extends Listener {
     public void workerMoved(WorkerMovementEvent workerMovementEvent) {
         EventBean eventBean = workerMovementEvent.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
-        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 

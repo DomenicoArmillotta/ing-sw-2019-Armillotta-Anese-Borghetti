@@ -8,11 +8,13 @@ import java.util.List;
 
 public class EventsBuffer {
     List<EventBean> eventBeans;
-    boolean waiting;
+    boolean endGame = false;
+    private boolean sendEventBeanLock = true;
+    public Object brdLock = new Object();
 
     private static EventsBuffer instance;
 
-    public static EventsBuffer instance() {
+    public synchronized static EventsBuffer instance() {
         if (instance == null) {
             instance = new EventsBuffer();
         }
@@ -46,11 +48,23 @@ public class EventsBuffer {
         eventBeans.clear();
     }
 
-    public void setWaiting(boolean waiting) {
-        this.waiting = waiting;
+    public synchronized void setEndGame() {
+        this.endGame = true;
     }
 
-    public boolean isWaiting() {
-        return waiting;
+    public synchronized boolean getEndGame() {
+        return endGame;
+    }
+
+    public void setNotEndGame(){
+        this.endGame = false;
+    }
+
+    public boolean isSendEventBeanLock() {
+        return sendEventBeanLock;
+    }
+
+    public void setSendEventBeanLock(boolean sendEventBeanLock) {
+        this.sendEventBeanLock = sendEventBeanLock;
     }
 }

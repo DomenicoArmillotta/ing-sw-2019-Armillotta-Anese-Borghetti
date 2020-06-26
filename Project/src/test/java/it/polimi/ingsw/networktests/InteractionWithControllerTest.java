@@ -1,5 +1,6 @@
 package it.polimi.ingsw.networktests;
 import it.polimi.ingsw.server.virtualview.network.NetworkHandler;
+import org.junit.jupiter.api.Test;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -9,6 +10,19 @@ import java.io.IOException;
 public class InteractionWithControllerTest {
 
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+        /*
+        if(args.length == 0)
+            runGui();
+        else
+            if(args[0].equals("server"))
+                runServer();
+            else
+                if(args[1].equals("client"))
+                    cliStart();
+                else
+                    System.out.println("errore");
+        */
+
         /* Player player1 = new Player("Marco");
         Player player2 = new Player("Pietro");
         Player player3 = new Player("Domenico");
@@ -32,6 +46,7 @@ public class InteractionWithControllerTest {
         actionExecutor.getNextPower().doAction(null); */
         NetworkHandler networkHandler = new NetworkHandler(1234);
         networkHandler.startServer();
+        System.out.println("sono alla fine del test");
 
     }
 }

@@ -1,5 +1,13 @@
 package it.polimi.ingsw.client.proxymodel;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import it.polimi.ingsw.client.ClientEvent;
+
+import java.io.PrintWriter;
+
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +21,8 @@ public class ProxyModel {
     private ClientCell[][] map;
     private Drawer drawerStrategy;
     int phase;
+    private PrintWriter printWriter;
+    public Socket thisScoket;
 
     public int getPhase() {
         return phase;
@@ -154,4 +164,20 @@ public class ProxyModel {
         map[buildCell.getX()][buildCell.getY()].setLevel(levelToBuild);
     }
 
+    public PrintWriter getPrintWrite() {
+        return printWriter;
+    }
+
+    public void setPrintWriter(PrintWriter printWriter) {
+        this.printWriter = printWriter;
+    }
+
+    synchronized public void sendAutonomousEvents(ClientEvent clientEvent) throws JsonProcessingException {
+        XmlMapper xmlMapper = (new XmlMapper());
+        xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+        String toSend = xmlMapper.writeValueAsString(clientEvent);
+        toSend = toSend + "\n";
+        this.printWriter.print(toSend);
+        this.printWriter.flush();
+    }
 }

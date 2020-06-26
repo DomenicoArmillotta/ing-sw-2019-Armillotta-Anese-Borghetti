@@ -17,7 +17,6 @@ public class WorkerSelectionListener extends Listener {
     public void workerSelected(WorkerSelectionEvent workerSelectionEvent) {
         EventBean eventBean = workerSelectionEvent.eventMethod();
         eventsBuffer.setLastEventBean(eventBean);
-        eventsBuffer.setWaiting(false);
         /* send event to clients */
     }
 

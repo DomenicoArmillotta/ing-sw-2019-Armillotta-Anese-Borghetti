@@ -4,6 +4,8 @@ import it.polimi.ingsw.server.model.Worker;
 import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.PlayerWonEvent;
+import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
+import it.polimi.ingsw.server.virtualview.network.NetworkHandler;
 
 /* Player wins if his Worker has gone up one level and is now at TOP level */
 public class WinCondition extends Power {
@@ -14,6 +16,9 @@ public class WinCondition extends Power {
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         if ((selectedWorker.getPreviousPosition().getBuildingLevel().ordinal() - selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()) == -1 && selectedWorker.getCurrentPosition().getBuildingLevel() == Level.TOP) {
             getPlayerWonListener().winGame(new PlayerWonEvent(super.getExecutorPointer().getCurrentPlayer()));
+            /*
+            setEndGame pone a true endGame non funzione ancora
+             */
             return 0;
         } else {
             getNoUpdatesListener().noUpdates(new NoUpdatesEvent());

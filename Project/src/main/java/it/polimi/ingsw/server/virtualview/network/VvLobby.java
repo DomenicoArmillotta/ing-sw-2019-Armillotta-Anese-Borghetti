@@ -35,4 +35,8 @@ public class VvLobby {
         this.partyOwner = partyOwner;
     }
 
+    public void resetVvLobby(){
+        this.players.clear();
+        this.partyOwner = new String();
+    }
 }

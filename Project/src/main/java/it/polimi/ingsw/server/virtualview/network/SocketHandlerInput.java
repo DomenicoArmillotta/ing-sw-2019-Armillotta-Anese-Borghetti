@@ -47,18 +47,23 @@ public class SocketHandlerInput implements Runnable {
             //tolto dal while le righe qui sopra.
 
             while((userInput = brd.readLine()) != null){
-                    System.out.println("Ready to read");
-                    StringReader sr = new StringReader(userInput);
-                    InputSource is = new InputSource(sr);
-                    Document document = db.parse(is);
-                    ServerEvent serverEvent = returnCorrectServerEvent(document);
-                    System.out.println(serverEvent);
-                    serverEvent.serverEventMethod(controller);
-                    System.out.println("Done");
+                System.out.println("Ready to read");
+                StringReader sr = new StringReader(userInput);
+                InputSource is = new InputSource(sr);
+                Document document = db.parse(is);
+                ServerEvent serverEvent = returnCorrectServerEvent(document);
+                System.out.println(serverEvent);
+                serverEvent.serverEventMethod(controller);
+                System.out.println("Done");
             }
             /*/
             solo quando il client crasha in game oppure viene chiuso o non è ancora partito;
              */
+
+        } catch ( IOException  | SAXException | ParserConfigurationException e) {
+            System.out.println("non ti preoccupare mon fre, è solo il gioco bizzarro");
+            System.err.println(e.getMessage());
+        } finally {
             if(!EventsBuffer.instance().getEndGame()) {
                 eventsBuffer.setLastEventBean(new ConnectionInterruptEventBean("payload"));
                 controller.deleteElementInScannerInList(Integer.toString(socket.getPort()));
@@ -68,11 +73,11 @@ public class SocketHandlerInput implements Runnable {
                 System.out.println("chiusura inaspettata");
             }else
                 controller.deleteElementInScannerInList(Integer.toString(socket.getPort()));
-            brd.close();//sia socket che input stream;
-
-        } catch (SAXException | ParserConfigurationException | IOException e) {
-                System.out.println("non ti preoccupare mon fre, è solo il gioco bizzarro");
-                System.err.println(e.getMessage());
+            try {
+                brd.close();//sia socket che input stream;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         System.out.println("madonna");
     }

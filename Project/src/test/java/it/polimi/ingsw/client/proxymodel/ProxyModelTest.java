@@ -71,7 +71,7 @@ public class ProxyModelTest {
         proxyModel.getDrawerStrategy().drawMap();
 
         //win and loose
-        proxyModel.getDrawerStrategy().drawLooseGame();
+        proxyModel.getDrawerStrategy().drawLooseGame("");
         proxyModel.getDrawerStrategy().drawWinGame();
     }
 

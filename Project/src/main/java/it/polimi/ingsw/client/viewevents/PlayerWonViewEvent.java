@@ -20,7 +20,8 @@ public class PlayerWonViewEvent extends ViewEvent {
 
     public void viewEventMethod() throws UnknownHostException, JsonProcessingException {
         System.out.println("hai vinto");
-        ProxyModel.instance().sendAutonomousEvents(new ClientAckDisconnectionEvent(Integer.toString(socket.getLocalPort())));
+        //ProxyModel.instance().sendAutonomousEvents(new ClientAckDisconnectionEvent(Integer.toString(socket.getLocalPort())));
         proxyModel.getDrawerStrategy().drawWinGame();
+        proxyModel.setPhase(-1);
     }
 }

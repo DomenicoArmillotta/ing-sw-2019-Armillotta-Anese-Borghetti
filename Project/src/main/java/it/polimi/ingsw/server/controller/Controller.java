@@ -145,12 +145,11 @@ public class Controller {
         return false;
     }
 
-     public synchronized void closeThisBufferedReaderIn(String socketToDisconnect) throws IOException {
+     /*public synchronized void closeThisBufferedReaderIn(String socketToDisconnect) throws IOException {
         String localPort = socketToDisconnect;
         while(lineClientCtrlLock)
             ;
         for(LineClientSocketsAndPort lineClientSocketsAndPort: lineClientSocketsAndPortList){
-            /*riesco correttamente a trovare la porta compromettente*/
             if(lineClientSocketsAndPort.getPort().equals(localPort)){
                     try {
                         wait();
@@ -174,10 +173,8 @@ public class Controller {
             bufferedReaderList.clear();
             EventsBuffer.instance().setEndGame();
         }
+     } */
 
-     */
-
-     }
     public void addScannerInToList(LineClientSocketsAndPort lineClientSocketsAndPort){
         this.lineClientSocketsAndPortList.add(lineClientSocketsAndPort);
     }

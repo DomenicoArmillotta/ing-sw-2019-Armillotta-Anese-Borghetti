@@ -37,6 +37,6 @@ public class VvLobby {
 
     public void resetVvLobby(){
         this.players.clear();
-        this.partyOwner = new String();
+        this.partyOwner = "";
     }
 }

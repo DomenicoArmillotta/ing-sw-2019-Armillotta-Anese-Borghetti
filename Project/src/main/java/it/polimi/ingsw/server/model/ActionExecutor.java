@@ -350,9 +350,14 @@ public Build getPrevBuild() {
                 map[i][j].setY(j);
             }
         }
-        /* map[1][1].setBuildingLevel(Level.BASE);
-        map[1][2].setBuildingLevel(Level.MID);
-        map[1][3].setBuildingLevel(Level.TOP); */
+        /*mappa magica
+        map[1][0].setBuildingLevel(Level.TOP);
+        map[0][1].setBuildingLevel(Level.TOP);
+        map[1][1].setBuildingLevel(Level.TOP);
+        map[4][3].setBuildingLevel(Level.TOP);
+        map[3][4].setBuildingLevel(Level.TOP);
+        map[3][3].setBuildingLevel(Level.TOP);
+        */
         this.map = map;
     }
 

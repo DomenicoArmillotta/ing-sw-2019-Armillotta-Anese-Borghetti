@@ -55,15 +55,16 @@ public class SocketHandlerOutput implements Runnable {
                         while (!EventsBuffer.instance().emptyBuffer())
                             sendingBeans();
                     }
-                    eventsBuffer.setSendEventBeanLock(false);
+                    EventsBuffer.instance().setSendEventBeanLock(false);
 
                     while (controller.getLineClientSocketsAndPortListSize() > 0)
 
-                        resetSocketHandlerOutput();
+
                     VvLobby.instance().resetVvLobby();
                     ActionExecutor.instance().resetActionExecutor();
                     resetSocketHandlerOutput();
                     EventsBuffer.instance().setNotEndGame();
+                    EventsBuffer.instance().setSendEventBeanLock(true);
                 }
             } catch (IOException e) {
                 System.err.println(e.getMessage());
@@ -100,11 +101,12 @@ public class SocketHandlerOutput implements Runnable {
     }
 
     public void resetSocketHandlerOutput(){
-        if(!socketList.isEmpty())
-            socketList.clear();
+        socketList.clear();
+        printWriterList.clear();
         List<Socket> socketList = new ArrayList<>();
         this.socketList = socketList;
         List<PrintWriter> printWriterList = new ArrayList<>();
         this.printWriterList = printWriterList;
+        eventsBuffer.flushBuffer();
     }
 }

@@ -68,7 +68,7 @@ public class SocketHandlerInput implements Runnable {
                 eventsBuffer.setLastEventBean(new ConnectionInterruptEventBean("payload"));
                 controller.deleteElementInScannerInList(Integer.toString(socket.getPort()));
                 eventsBuffer.setEndGame();
-                while (EventsBuffer.instance().isSendEventBeanLock())
+                while (EventsBuffer.instance().isSendEventBeanLock() == true)
                     ;
                 System.out.println("chiusura inaspettata");
             }else

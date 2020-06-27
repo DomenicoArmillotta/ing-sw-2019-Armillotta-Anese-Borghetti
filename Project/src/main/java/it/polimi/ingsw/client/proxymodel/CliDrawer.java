@@ -285,9 +285,9 @@ public class CliDrawer extends Drawer{
         //showMessageDialog(null, "Hai vinto tutti i soldi di marco anese!!");
         System.out.println("Hai vinto !!");
     };
-    public void drawLooseGame(){
+    public void drawLooseGame(String loser){
         //showMessageDialog(null, "Hai perso! Hai contribuito a rendere i tuoi compagni meno felici");
-        System.out.println("Hai perso!");
+        System.out.println("Ha perso "+loser);
 
     };
 

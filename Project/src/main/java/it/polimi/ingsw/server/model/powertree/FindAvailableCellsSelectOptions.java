@@ -9,7 +9,9 @@ import java.util.List;
 public class FindAvailableCellsSelectOptions extends FindAvailableCellsMove {
     @Override
     public int doAction(int[] userInput) {
-        if(super.doAction(userInput) == 0) {
+        /*cambiato valore di ritorno da 0 a 1 e doppio controllo qui sotto*/
+        int x = super.doAction(userInput);
+        if(x==1||x==0) {
             Cell firstWorkerCell = getExecutorPointer().getCurrentPlayer().getFirstWorker().getCurrentPosition();
             Cell secondWorkerCell = getExecutorPointer().getCurrentPlayer().getSecondWorker().getCurrentPosition();
             List<Cell> selectOptions = new ArrayList<>();

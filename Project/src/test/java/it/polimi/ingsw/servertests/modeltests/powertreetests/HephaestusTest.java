@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HephaestusTest {
     @Test
+    //non funziona il build
     public void hephaestusTest() throws ParserConfigurationException, SAXException, IOException {
         GodCardsDeck godCardsDeck = new GodCardsDeck();
         List<Player> playerQueue = new ArrayList<>();
@@ -35,6 +36,7 @@ public class HephaestusTest {
         player3.setPlayerGod(godCard3);
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         Cell[][] map = actionExecutor.getMap();
+        actionExecutor.getMap()[1][1].setBuildingLevel(Level.GROUND); /* try with TOP */
 
 
         player1.workersSetup(0, 0, 1, 4);
@@ -43,26 +45,31 @@ public class HephaestusTest {
 
         int[] userInput = new int[10];
         int result;
-
+        //FindAvailableCellsSelectOptions
         actionExecutor.getNextPower().doAction(null);
+        //select
         userInput[0] = 0;
         userInput[1] = 0;
         actionExecutor.getNextPower().doAction(userInput);
+        //move
         userInput[0] = 0;
         userInput[1] = 1;
         actionExecutor.getNextPower().doAction(userInput);
+        //WinCondition
         actionExecutor.getNextPower().doAction(null);
+        //FindAvailableCellsBuild
         actionExecutor.getNextPower().doAction(null);
+        //build
         userInput[0] = 1;
         userInput[1] = 1;
         actionExecutor.getNextPower().doAction(userInput);
-        actionExecutor.getNextPower().doAction(null);
-        actionExecutor.getMap()[1][1].setBuildingLevel(Level.MID); /* try with TOP */
-        userInput[0] = 1;
-        userInput[1] = 1;
-        result = actionExecutor.getNextPower().doAction(userInput);
-        System.out.println(result);
-
+        //FindAvailableCellsBuildSameCell
+        actionExecutor.getNextPower().doAction(userInput);
+        //DoubleBuild
+        actionExecutor.getNextPower().doAction(userInput);
+        //BuildOnSameCell
+        actionExecutor.getNextPower().doAction(userInput);
+        assertEquals(actionExecutor.getMap()[1][1].getBuildingLevel(),Level.TOP);
 
     }
 }

@@ -49,21 +49,33 @@ public class PrometheusTest {
         
         //FindAvailableCellsSelectOptions
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
+        //SelectThenSkip
         userInput[0] = 1;
         userInput[1] = 1;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
+        //FindAvailableCellsBuildBeforeMove
         assertEquals(actionExecutor.getNextPower().doAction(null), 1);
+        //BuildOrMovePrompt
         userInput[0] = 1;
         userInput[1] = 2;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-        assertEquals(actionExecutor.getNextPower().doAction(null), 1);
+        //build
+        userInput[0] = 1;
+        userInput[1] = 2;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
+        //FindAvailableCellsMoveOptions
+        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
+        //move
         userInput[0] = 1;
         userInput[1] = 0;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
+        //WinCondition
         assertEquals(actionExecutor.getNextPower().doAction(null), 1);
+        //FindAvailableCellsBuild
+        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
+        //build
         userInput[0] = 1;
         userInput[1] = 1;
-        assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
 
     }

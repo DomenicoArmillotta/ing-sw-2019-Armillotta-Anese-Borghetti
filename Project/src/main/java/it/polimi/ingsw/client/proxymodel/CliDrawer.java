@@ -287,7 +287,6 @@ public class CliDrawer extends Drawer{
         System.out.println("");
 
     };
-
     public void drawWinGame(){
         System.out.println("Hai vinto !!");
     };

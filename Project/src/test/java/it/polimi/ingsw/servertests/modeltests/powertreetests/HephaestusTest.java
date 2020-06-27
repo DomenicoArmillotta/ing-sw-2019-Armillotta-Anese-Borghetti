@@ -28,7 +28,7 @@ public class HephaestusTest {
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         gameMaster.createGodList();
-        GodCard godCard1 = godCardsDeck.createGodCard("Hephaestus");
+        GodCard godCard1 = godCardsDeck.createGodCard("Hepaestus");
         GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
         GodCard godCard3 = godCardsDeck.createGodCard("Pan");
         player1.setPlayerGod(godCard1);
@@ -63,14 +63,14 @@ public class HephaestusTest {
         userInput[0] = 1;
         userInput[1] = 1;
         actionExecutor.getNextPower().doAction(userInput);
-        assertEquals(actionExecutor.getMap()[1][1].getBuildingLevel(),Level.MID);
+        assertEquals(actionExecutor.getMap()[1][1].getBuildingLevel(),Level.BASE);
         //FindAvailableCellsBuildSameCell
         actionExecutor.getNextPower().doAction(userInput);
         //DoubleBuild
         actionExecutor.getNextPower().doAction(userInput);
         //BuildOnSameCell
         actionExecutor.getNextPower().doAction(userInput);
-        assertEquals(actionExecutor.getMap()[1][1].getBuildingLevel(),Level.TOP);
+        assertEquals(actionExecutor.getMap()[1][1].getBuildingLevel(),Level.MID);
 
     }
 }

@@ -20,6 +20,9 @@ public class Turn {
         /* System.out.println("Turno di "+currentPlayer.getName()); */
     }
 
+    /**
+     *from the string name returns the player
+     **/
     public Player getPlayerByName(String name) {
         if(currentPlayer.getName().equals(name))
             return currentPlayer;

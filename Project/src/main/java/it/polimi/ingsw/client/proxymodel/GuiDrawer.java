@@ -20,6 +20,7 @@ import java.text.AttributedCharacterIterator;
 import java.util.List;
 
 public class GuiDrawer extends Drawer {
+    String name;
 
     public synchronized void promptSelectionText() {
 
@@ -77,6 +78,7 @@ public class GuiDrawer extends Drawer {
 
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
+        myFrame.revalidate();
         Container c = myFrame.getContentPane();
         BoardPanel mapPanel = new BoardPanel();
         //mapPanel.setGraphicsFlag(0);
@@ -92,6 +94,17 @@ public class GuiDrawer extends Drawer {
     public void drawLooseGame(){};
 
     public void title(){
+
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        myFrame.revalidate();
+        Container c = myFrame.getContentPane();
+        GodsPanel godsPanel = new GodsPanel();
+        //mapPanel.setGraphicsFlag(0);
+        godsPanel.addMouseListener(display.getMouseListenerGame());
+        c.add(godsPanel);
+        myFrame.setVisible(true);
+
         /* System.out.println("In title");
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
@@ -119,9 +132,17 @@ public class GuiDrawer extends Drawer {
         loginButton.addActionListener(myAction);
         display.getFrame().setVisible(true); */
     }
-    //String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void login() {
-        /*
+
         System.out.println("In login");
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
@@ -132,7 +153,6 @@ public class GuiDrawer extends Drawer {
 
         Font fontButton = new Font("Serif", Font.PLAIN, 22);
         JTextField textField = new JTextField(20);
-        this.name = textField.getText();
         textField.setFont(font);
         loginPanel.add(textField);
         JButton b = new JButton("LOGIN");
@@ -141,7 +161,8 @@ public class GuiDrawer extends Drawer {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ProxyModel.instance().setThisClientNickname(name);
+                setName(textField.getText());
+                ProxyModel.instance().setThisClientNickname(getName());
                 PrintWriter printWriter = Display.instance().getMouseListenerGame().printWriter;
                 XmlMapper xmlMapper = (new XmlMapper());
                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
@@ -154,7 +175,6 @@ public class GuiDrawer extends Drawer {
                 toSend += "\n";
                 printWriter.print(toSend);
                 printWriter.flush();
-
                 //your actions
             }
         });

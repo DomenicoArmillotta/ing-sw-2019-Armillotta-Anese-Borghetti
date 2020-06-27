@@ -30,12 +30,14 @@ public class ClientHandlerOutput implements Runnable {
     public void run() {
 
         /* System.out.println("[ClientHandlerOutput] Connection established"); */
-        PrintWriter printWriter = null;
+        /* PrintWriter printWriter = null;
         try {
             printWriter = new PrintWriter(socket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        } */
+
+        PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();
 
         /* System.out.println("socket: " + socket); */
         ProxyModel proxyModel = ProxyModel.instance();
@@ -49,6 +51,7 @@ public class ClientHandlerOutput implements Runnable {
         ProxyModel.instance().setPrintWriter(printWriter);
 
         try {
+            proxyModel.getDrawerStrategy().title();
             System.out.println(ANSI_PURPLE+"SANTORINI BOARD GAME CLI SIMULATION"+ANSI_RESET+" (AM46)");
             System.out.println("Type "+ANSI_YELLOW+"login"+ANSI_RESET+" followed by your nickname to create a room or join an existing one.");
             /*

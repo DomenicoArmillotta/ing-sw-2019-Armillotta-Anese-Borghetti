@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client.proxymodel;
 
+import it.polimi.ingsw.client.ClientSocketManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.List;
 public class Display {
     private JFrame frame;
     private static final int dimensionX = 615;
-    private static final int dimensionY = 730;
+    private static final int dimensionY = 800;
     private String titleFrame;
     List<JPanel> panels;
     int graphicsFlag;
@@ -37,7 +39,7 @@ public class Display {
         this.frame=frame;
         List<JPanel> panels= new ArrayList();
         this.panels=panels;
-        mouseListenerGame = new MouseListenerGame(ProxyModel.instance().getPrintWrite());
+        mouseListenerGame = new MouseListenerGame(ClientSocketManager.getInstance().getPrintWriter());
     }
     public List<JPanel> getPanels() {
         return panels;

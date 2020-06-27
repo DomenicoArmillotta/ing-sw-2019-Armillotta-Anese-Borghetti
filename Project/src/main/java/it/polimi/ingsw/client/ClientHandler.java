@@ -5,6 +5,7 @@ import it.polimi.ingsw.client.proxymodel.GuiDrawer;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Inet4Address;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -20,13 +21,15 @@ public class ClientHandler {
             ProxyModel proxyModel = ProxyModel.instance();
             proxyModel.createMap();
             //CliDrawer CliDrawer=new CliDrawer();
-            GuiDrawer drawer = new GuiDrawer();
+            CliDrawer drawer = new CliDrawer();
             proxyModel.setDrawerStrategy(drawer);
             proxyModel.setPhase(0);
             /* System.out.println("CLI ready"); */
                 try {
                     Socket socket = new Socket(Inet4Address.getLocalHost().getHostAddress(), 1234);
                     ProxyModel.instance().thisScoket = socket;
+                    PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
+                    ClientSocketManager.getInstance().setPrintWriter(printWriter);
                     executor.submit(new ClientHandlerOutput(socket));
                     executor.submit(new ClientHandlerInput(socket));
                 } catch(IOException e) {

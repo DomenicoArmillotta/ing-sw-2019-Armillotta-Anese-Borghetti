@@ -37,6 +37,7 @@ public class Display {
         this.frame=frame;
         List<JPanel> panels= new ArrayList();
         this.panels=panels;
+        mouseListenerGame = new MouseListenerGame(ProxyModel.instance().getPrintWrite());
     }
     public List<JPanel> getPanels() {
         return panels;

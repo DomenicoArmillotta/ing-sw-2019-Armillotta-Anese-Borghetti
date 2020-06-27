@@ -350,9 +350,9 @@ public Build getPrevBuild() {
                 map[i][j].setY(j);
             }
         }
-        map[1][1].setBuildingLevel(Level.BASE);
+        /* map[1][1].setBuildingLevel(Level.BASE);
         map[1][2].setBuildingLevel(Level.MID);
-        map[1][3].setBuildingLevel(Level.TOP);
+        map[1][3].setBuildingLevel(Level.TOP); */
         this.map = map;
     }
 

@@ -84,6 +84,7 @@ public class GuiDrawer extends Drawer {
         mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);
+        System.out.println("map drawn");
     }
 
     public void drawSelectWorker(Coords selectCell){};
@@ -91,12 +92,12 @@ public class GuiDrawer extends Drawer {
     public void drawLooseGame(){};
 
     public void title(){
-        System.out.println("In title");
+        /* System.out.println("In title");
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
         myFrame.removeAll();
         myFrame.repaint();
-        System.out.println("Repainted");
+        System.out.println("Repainted"); */
 
         /* MyAction myAction=new MyAction();
         Display display=Display.instance();
@@ -118,8 +119,9 @@ public class GuiDrawer extends Drawer {
         loginButton.addActionListener(myAction);
         display.getFrame().setVisible(true); */
     }
-    String name;
+    //String name;
     public void login() {
+        /*
         System.out.println("In login");
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();

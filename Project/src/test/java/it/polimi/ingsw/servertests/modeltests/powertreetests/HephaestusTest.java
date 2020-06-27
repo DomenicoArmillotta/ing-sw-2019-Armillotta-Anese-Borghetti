@@ -39,9 +39,9 @@ public class HephaestusTest {
         actionExecutor.getMap()[1][1].setBuildingLevel(Level.GROUND); /* try with TOP */
 
 
-        player1.workersSetup(0, 0, 1, 4);
-        player2.workersSetup(4, 0, 2, 1);
-        player3.workersSetup(4, 2, 3, 1);
+        player1.workersSetup(0, 0, 3, 4);
+        player2.workersSetup(4, 3, 4, 1);
+        player3.workersSetup(4, 2, 4, 4);
 
         int[] userInput = new int[10];
         int result;
@@ -63,6 +63,7 @@ public class HephaestusTest {
         userInput[0] = 1;
         userInput[1] = 1;
         actionExecutor.getNextPower().doAction(userInput);
+        assertEquals(actionExecutor.getMap()[1][1].getBuildingLevel(),Level.MID);
         //FindAvailableCellsBuildSameCell
         actionExecutor.getNextPower().doAction(userInput);
         //DoubleBuild

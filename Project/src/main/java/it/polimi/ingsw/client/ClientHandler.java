@@ -16,12 +16,14 @@ public class ClientHandler {
             startClient();
         }
         public void startClient() {
+            int drawerType; /* 0 for CLI, 1 for GUI */
             ExecutorService executor = Executors.newFixedThreadPool(2);
             /* System.out.println("Client ready"); */
             ProxyModel proxyModel = ProxyModel.instance();
             proxyModel.createMap();
             //CliDrawer CliDrawer=new CliDrawer();
-            CliDrawer drawer = new CliDrawer();
+            GuiDrawer drawer = new GuiDrawer();
+            drawerType = 1;
             proxyModel.setDrawerStrategy(drawer);
             proxyModel.setPhase(0);
             /* System.out.println("CLI ready"); */
@@ -30,7 +32,14 @@ public class ClientHandler {
                     ProxyModel.instance().thisScoket = socket;
                     PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
                     ClientSocketManager.getInstance().setPrintWriter(printWriter);
-                    executor.submit(new ClientHandlerOutput(socket));
+                    /* ATTENZIONE */
+                    if(drawerType == 0)
+                        executor.submit(new ClientHandlerOutput(socket));
+                    else
+                        proxyModel.getDrawerStrategy().login();
+
+                    //executor.submit(new ClientHandlerOutput(socket)); /* rimuovere */
+
                     executor.submit(new ClientHandlerInput(socket));
                 } catch(IOException e) {
                     executor.shutdown();

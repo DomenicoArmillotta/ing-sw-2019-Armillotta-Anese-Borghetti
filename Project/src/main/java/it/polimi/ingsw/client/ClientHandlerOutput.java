@@ -51,7 +51,7 @@ public class ClientHandlerOutput implements Runnable {
         ProxyModel.instance().setPrintWriter(printWriter);
 
         try {
-            proxyModel.getDrawerStrategy().title();
+
             System.out.println(ANSI_PURPLE+"SANTORINI BOARD GAME CLI SIMULATION"+ANSI_RESET+" (AM46)");
             System.out.println("Type "+ANSI_YELLOW+"login"+ANSI_RESET+" followed by your nickname to create a room or join an existing one.");
             /*

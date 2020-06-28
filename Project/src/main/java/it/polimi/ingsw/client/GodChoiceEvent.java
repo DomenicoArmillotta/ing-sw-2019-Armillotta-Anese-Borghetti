@@ -4,7 +4,7 @@ public class GodChoiceEvent extends ClientEvent {
     String chosenGod;
     String player;
 
-    GodChoiceEvent(String chosenGod, String player) {
+    public GodChoiceEvent(String chosenGod, String player) {
         this.chosenGod = chosenGod;
         this.player = player;
     }

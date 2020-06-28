@@ -80,6 +80,7 @@ public class GuiDrawer extends Drawer {
         JFrame myFrame = display.getFrame();
         myFrame.revalidate();
         Container c = myFrame.getContentPane();
+        c.removeAll();
         BoardPanel mapPanel = new BoardPanel();
         //mapPanel.setGraphicsFlag(0);
         System.out.println("DRAW_MAP");
@@ -95,15 +96,19 @@ public class GuiDrawer extends Drawer {
 
     public void title(){
 
+
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
-        myFrame.revalidate();
+        //myFrame.revalidate();
         Container c = myFrame.getContentPane();
+        c.removeAll();
         GodsPanel godsPanel = new GodsPanel();
         //mapPanel.setGraphicsFlag(0);
-        godsPanel.addMouseListener(display.getMouseListenerGame());
+        godsPanel.addMouseListener(new MouseListenerGodCards());
         c.add(godsPanel);
         myFrame.setVisible(true);
+
+
 
         /* System.out.println("In title");
         Display display = Display.instance();
@@ -156,11 +161,14 @@ public class GuiDrawer extends Drawer {
         textField.setFont(font);
         loginPanel.add(textField);
         JButton b = new JButton("LOGIN");
+        JButton b1 = new JButton("2 PLAYERS");
+        JButton b2 = new JButton("3 PLAYERS");
         b.setFont(fontButton);
         b.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 setName(textField.getText());
                 ProxyModel.instance().setThisClientNickname(getName());
                 PrintWriter printWriter = Display.instance().getMouseListenerGame().printWriter;
@@ -183,7 +191,7 @@ public class GuiDrawer extends Drawer {
         JLabel lblWelcome = new JLabel("<html><br/><br/>", SwingConstants.CENTER);
         loginPanel.add(lblWelcome);
 
-        JButton b1 = new JButton("2 PLAYERS");
+
         b1.setFont(fontButton);
         b1.addActionListener(new ActionListener() {
 
@@ -206,7 +214,7 @@ public class GuiDrawer extends Drawer {
             }
         });
         loginPanel.add(b1);
-        JButton b2 = new JButton("3 PLAYERS");
+
         b2.setFont(fontButton);
         b2.addActionListener(new ActionListener() {
 

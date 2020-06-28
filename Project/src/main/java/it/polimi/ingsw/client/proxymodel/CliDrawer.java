@@ -23,17 +23,28 @@ public class CliDrawer extends Drawer{
     public static final String CYAN_BACKGROUND = "\033[46m";
     public static final String WHITE_BACKGROUND = "\033[47m";
 
-
+    /**
+     * print the instructions to select
+     */
     public void promptSelectionText() {
         System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getNextPlayer().getName() + "\u001B[0m" + " should select a worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed by its "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
     };
+    /**
+     * print the instructions to move
+     */
     public void promptMovementText() {
         System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should move the selected worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed the desired "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
     };
+    /**
+     * print the instructions to build
+     */
     public void promptBuildText() {
         System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should build a block typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed the desired "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
     };
 
+    /**
+     * print the instructions to Place worker
+     */
     public void promptPlaceWorkersTest() {
         System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should place his 2 workers typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed by the desired "+"\u001B[33m" + "4 coordinates" + "\u001B[0m"+".");
     };
@@ -41,9 +52,12 @@ public class CliDrawer extends Drawer{
     /**
      *
      * This function converts the values ​​of the virtual matrix map to those to be displayed in the prompt.
-     * Create the edges of the map and draw each cell of the map according to a structure consisting of 9 spaces
-     *
-     **/
+     * 1.Create the edges of the map and draw each cell of the map according to a structure consisting of 9 spaces
+     * 2.According to the level changes color of cells: ground==,mid==,top==,dome==,
+     * 3.If the worker is selectable then it will be surrounded by the "" symbol
+     * 4.If the cells are selectable then the cell will be surrounded by the "" symbol
+     * 5.According to the player, the corresponding workers have different colors to distinguish them
+     */
     public void drawMap(){
         Player player1;
         Player player2;
@@ -287,14 +301,26 @@ public class CliDrawer extends Drawer{
         System.out.println("");
 
     };
+
+    /**
+     * print the winner's name
+     */
     public void drawWinGame(){
         System.out.println("Hai vinto !!");
     };
+
+    /**
+     * print the loser's name
+     * @param loser
+     */
     public void drawLooseGame(String loser){
         System.out.println("Ha perso "+loser);
 
     };
 
+    /**
+     * print the instructions to login
+     */
     public void login(){
         System.out.println(PURPLE_BOLD+"SANTORINI BOARD GAME CLI SIMULATION"+RESET+" (AM46)");
         System.out.println("Type "+YELLOW_BOLD+"login"+RESET+" followed by your nickname to create a room or join an existing one.");

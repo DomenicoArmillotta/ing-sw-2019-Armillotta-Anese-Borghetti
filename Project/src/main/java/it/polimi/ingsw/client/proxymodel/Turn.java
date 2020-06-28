@@ -5,6 +5,9 @@ public class Turn {
     private Player nextPlayer;
     private Player prevPlayer;
 
+    /**
+     *this function advances the turn by correctly setting the previous turn and the next turn
+     */
     public void nextTurn() {
         Player tempPlayer = null;
         tempPlayer = this.currentPlayer;
@@ -21,8 +24,10 @@ public class Turn {
     }
 
     /**
-     *from the string name returns the player
-     **/
+     * from the string name returns the player
+     * @param name name of the player I want returned
+     * @return the player that matches the name
+     */
     public Player getPlayerByName(String name) {
         if(currentPlayer.getName().equals(name))
             return currentPlayer;

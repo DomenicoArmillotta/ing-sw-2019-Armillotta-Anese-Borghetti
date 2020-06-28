@@ -139,6 +139,18 @@ public class BoardPanel extends JPanel {
                 g.drawImage(img2, firstCellX - (firstCellX/2)  + shift * wx2p2, firstCellY - (firstCellY / 2) + shift * wy2p2, firstCellY, firstCellY, null);
             }
 
+        g4.setColor(new Color(20, 20, 20));
+        Font font = new Font("Serif", Font.PLAIN, 24);
+        g4.setFont(font);
+        g4.drawString(proxyModel.getThisClientNickname(), 15, 700);
+        /* if(proxyModel.getThisClientNickname().equals(proxyModel.getTurn().getCurrentPlayer().getName())) {
+            g4.drawString("("+proxyModel.getTurn().getCurrentPlayer().getGodCard().getName()+")", 15, 750);
+        } else if(proxyModel.getThisClientNickname().equals(proxyModel.getTurn().getNextPlayer().getName())) {
+            g4.drawString("("+proxyModel.getTurn().getNextPlayer().getGodCard().getName()+")", 15, 750);
+        } else if(proxyModel.getThisClientNickname().equals(proxyModel.getTurn().getPreviousPlayer().getName())) {
+            g4.drawString("("+proxyModel.getTurn().getPreviousPlayer().getGodCard().getName()+")", 15, 750);
+        } */
+
         /* g.drawImage(img1, 322-(50/2), 114-(50/2), 50, 50, null);
         g.drawImage(img2, 322-(50/2)+80, 114-(50/2), 50, 50, null);
         g.drawImage(img1, 322-(50/2)+80*2, 114-(50/2)+80*3, 50, 50, null);

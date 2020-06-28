@@ -4,11 +4,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-import it.polimi.ingsw.server.model.ActionExecutor;
-import it.polimi.ingsw.server.model.Cell;
-import it.polimi.ingsw.server.model.GameMaster;
+import it.polimi.ingsw.server.model.*;
 import it.polimi.ingsw.server.model.godcards.God;
-import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.model.godcards.GodCard;
 import it.polimi.ingsw.server.model.godcards.GodCardsDeck;
 import org.junit.Test;
@@ -40,38 +37,42 @@ public class ArtemisTest {
         player3.setPlayerGod(godCard3);
         ActionExecutor actionExecutor = gameMaster.getActionExecutor();
         Cell[][] map = actionExecutor.getMap();
-        player1.workersSetup(1, 1, 4, 2);
+        player1.workersSetup(0, 0, 4, 2);
         player2.workersSetup(4, 4, 4, 3);
         player3.workersSetup(3, 4, 4, 1);
         int[] userInput = new int[10];
+        actionExecutor.getMap()[1][2].setBuildingLevel(Level.GROUND);
 
         //FindAvailableCellsSelectOptions
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        userInput[0] = 1;
-        userInput[1] = 1;
         //select
+        userInput[0] =0;
+        userInput[1] = 0;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
-        userInput[0] = 2;
-        userInput[1] = 2;
         //move
+        userInput[0] = 0;
+        userInput[1] = 1;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
         //wincondition
         assertEquals(actionExecutor.getNextPower().doAction(null), 1);
-        userInput[0] = 1;
-        userInput[1] = 2;
         //FindAvailableCellDontMoveBack
         assertEquals(actionExecutor.getNextPower().doAction(null), 1);
         //DoubleMove
+        userInput[0] = 0;
+        userInput[1] = 2;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         //MoveButDontGoBack
-        assertEquals(actionExecutor.getNextPower().doAction(null), 1);
+        assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
         //WinCondition
+        assertEquals(actionExecutor.getNextPower().doAction(null), 1);
         //FindAvailableCellsBuild
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
-        userInput[0] = 2;
-        userInput[1] = 2;
         //Build
+        userInput[0] = 1;
+        userInput[1] = 2;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 1);
+        assertEquals(actionExecutor.getMap()[1][2].getBuildingLevel(), Level.BASE);
+
 
     }
 

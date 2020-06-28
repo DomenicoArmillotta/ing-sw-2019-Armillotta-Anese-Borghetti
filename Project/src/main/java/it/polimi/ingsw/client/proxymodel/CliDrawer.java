@@ -23,6 +23,7 @@ public class CliDrawer extends Drawer{
     public static final String CYAN_BACKGROUND = "\033[46m";
     public static final String WHITE_BACKGROUND = "\033[47m";
 
+
     public void promptSelectionText() {
         System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getNextPlayer().getName() + "\u001B[0m" + " should select a worker typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed by its "+"\u001B[33m" + "2 coordinates" + "\u001B[0m"+".");
     };
@@ -37,6 +38,12 @@ public class CliDrawer extends Drawer{
         System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m" + " should place his 2 workers typing " + "\u001B[33m" + "coords" + "\u001B[0m" + " followed by the desired "+"\u001B[33m" + "4 coordinates" + "\u001B[0m"+".");
     };
 
+    /**
+     *
+     * This function converts the values ​​of the virtual matrix map to those to be displayed in the prompt.
+     * Create the edges of the map and draw each cell of the map according to a structure consisting of 9 spaces
+     *
+     **/
     public void drawMap(){
         Player player1;
         Player player2;
@@ -280,13 +287,10 @@ public class CliDrawer extends Drawer{
         System.out.println("");
 
     };
-
     public void drawWinGame(){
-        //showMessageDialog(null, "Hai vinto tutti i soldi di marco anese!!");
         System.out.println("Hai vinto !!");
     };
     public void drawLooseGame(String loser){
-        //showMessageDialog(null, "Hai perso! Hai contribuito a rendere i tuoi compagni meno felici");
         System.out.println("Ha perso "+loser);
 
     };

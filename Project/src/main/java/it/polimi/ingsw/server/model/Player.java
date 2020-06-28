@@ -47,11 +47,22 @@ public class Player {
         return secondWorker;
     }
 
+    /**
+     * initializes both workers
+     * @param firstX coord where I want to position my first worker
+     * @param firstY coord where I want to position my first worker
+     * @param secondX coord where I want to position my second worker
+     * @param secondY coord where I want to position my second worker
+     */
     public void workersSetup(int firstX, int firstY, int secondX, int secondY) {
         initFirstWorker(firstX, firstY);
         initSecondWorker(secondX, secondY);
     }
-
+    /**
+     *initialize the first worker by placing him on the map, making sure that the position is not already occupied.
+     * @param x coord where I want to position my worker
+     * @param y  coord where I want to position my worker
+     */
     public void initFirstWorker(int x, int y) {
         ActionExecutor actionExecutor = this.getPlayerGod().getFindAvailableCellsList().get(0).getExecutorPointer();
         Cell[][] map = actionExecutor.getMap();
@@ -66,6 +77,11 @@ public class Player {
         firstWorker.setOwner(this);
     }
 
+    /**
+     *initialize the second worker by placing him on the map, making sure that the position is not already occupied.
+     * @param x coord where I want to position my worker
+     * @param y  coord where I want to position my worker
+     */
     public void initSecondWorker(int x, int y) {
         ActionExecutor actionExecutor = this.getPlayerGod().getFindAvailableCellsList().get(0).getExecutorPointer();
         Cell[][] map = actionExecutor.getMap();
@@ -80,6 +96,10 @@ public class Player {
         }
         secondWorker.setOwner(this);
     }
+
+    /**
+     *remove both workers from the player
+     */
     public void deleteWorkers(){
         this.firstWorker=null;
         this.secondWorker=null;

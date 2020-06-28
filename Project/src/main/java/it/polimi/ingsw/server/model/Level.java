@@ -7,6 +7,10 @@ public enum Level {
     TOP,
     DOME;
 
+    /**
+     * return the number corresponds to the level
+     * @return return the level number
+     */
     public Level getNext() {
         return this.ordinal() < Level.values().length - 1
                 ? Level.values()[this.ordinal() + 1]

@@ -12,6 +12,12 @@ public class GameMaster {
     private ActionExecutor actionExecutor;
     private List<GodCard> godCards;
 
+    /**
+     * the gamemaster  creates the deck of cards and the ActionExecutor
+     * set the number of players and the queue of players, which is used to manage the turn
+     * @param playerQueue
+     * @param numOfPlayers
+     */
     public GameMaster(List<Player> playerQueue, int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
         this.playerQueue = playerQueue;
@@ -53,6 +59,9 @@ public class GameMaster {
         return godCards;
     }
 
+    /**
+     * create the list of cards to form the deck
+     */
     public void createGodList() {
         List<GodCard> godCards = new ArrayList<>();
         godCards.add(createMortalCard());
@@ -97,6 +106,12 @@ public class GameMaster {
         return mortalCard;
     }
 
+    /**
+     * the god card is created, the description and name of the god are added.
+     * each power is added to the list of powers becouse......
+     * the actions that the god can perform each turn are added to the powerList
+     * @return the card of apollo
+     */
     private GodCard createApolloCard() {
         GodCard apolloCard = new GodCard("Apollo", "God of Music");
         List<Power> powerList = new ArrayList<>();

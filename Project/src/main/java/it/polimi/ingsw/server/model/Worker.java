@@ -13,6 +13,10 @@ public class Worker {
         this.owner = owner;
     }
 
+    /**
+     * constructor setting the position
+     * @param currentPosition
+     */
     public Worker(Cell currentPosition) {
         this.currentPosition = currentPosition;
         this.previousPosition = currentPosition;
@@ -33,6 +37,9 @@ public class Worker {
         return previousPosition;
     }
 
+    /**
+     * remove the worker from the game
+     */
     public void removeWorker(){
         this.currentPosition=null;
         this.previousPosition=null;

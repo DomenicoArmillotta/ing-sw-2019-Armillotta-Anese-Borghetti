@@ -5,11 +5,22 @@ import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WorkerMovementEvent;
 
+/**
+ * this additional move, called MoveSwitch has this effect:
+ * move into an opponent Worker’s
+ * space by forcing their Worker to
+ * the space yours just vacated.
+ * it is used by the god apollo
+ */
 public class MoveSwitch extends Move {
-
+    /**
+     * if in the cell passed as parameter there is a worker then I make the switch
+     * @param userInput the cell where the worker you want to switch is located
+     * @return 1  MoveSwitch successful else -1 MoveSwitch failed
+     */
     @Override
     public int doAction(int[] userInput) {
-        System.out.println("In move switch");
+        //System.out.println("In move switch");//*refactoring
         Worker floatingWorker = super.getExecutorPointer().getMap()[userInput[0]][userInput[1]].getWorkerOnCell();
         Cell floatingCell = super.getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition();
         int index;

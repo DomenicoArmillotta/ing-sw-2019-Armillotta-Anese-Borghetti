@@ -6,6 +6,10 @@ import it.polimi.ingsw.server.model.mvevents.actionevents.WorkerMovementEvent;
 
 import java.util.List;
 
+/**
+ *this class includes the whole family of constructions,
+ *that is, all possible types of moves of all gods
+ */
 public class Move extends LimitedPower {
 
     private Cell cellBeforeMove;
@@ -24,10 +28,14 @@ public class Move extends LimitedPower {
         this.cellBeforeMove = cellBeforeMove;
     }
 
-    /* Worker selectedWorker; */
+    /**
+     *if the cell passed as a parameter is in the list of cells in which the worker wants to move then the move can be made
+     * @param userInput the cell where I want to move
+     * @return 1  Move successful else -1 Move failed
+     */
     @Override
     public int doAction(int[] userInput) {
-        System.out.println("In move");
+        //System.out.println("In move");//*refactor
 
         Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         setCellBeforeMove(selectedWorker.getCurrentPosition());
@@ -54,8 +62,6 @@ public class Move extends LimitedPower {
                 selectedWorker.setCurrentPosition(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]]);
                 selectedWorker.getCurrentPosition().setWorkerOnCell(selectedWorker);
                 getWorkerMovementListener().workerMoved(new WorkerMovementEvent(selectedWorker));
-                /* getAvailableCells(0).clear();
-                getAvailableCells(1).clear(); */
                 return 1; /* [NOTIFY]: Move successful */
             }
         }

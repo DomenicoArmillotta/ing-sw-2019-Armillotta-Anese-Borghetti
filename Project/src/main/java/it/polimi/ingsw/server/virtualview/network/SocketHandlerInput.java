@@ -50,25 +50,40 @@ public class SocketHandlerInput implements Runnable {
                 System.out.println("Ready to read");
                 StringReader sr = new StringReader(userInput);
                 InputSource is = new InputSource(sr);
-                Document document = db.parse(is);
+                Document document = null;
+                try {
+                    document = db.parse(is);
+                } catch (SAXException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 ServerEvent serverEvent = returnCorrectServerEvent(document);
                 System.out.println(serverEvent);
-                serverEvent.serverEventMethod(controller);
+                try {
+                    serverEvent.serverEventMethod(controller);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (SAXException e) {
+                    e.printStackTrace();
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Done");
             }
             /*/
             solo quando il client crasha in game oppure viene chiuso o non è ancora partito;
              */
 
-        } catch ( IOException  | SAXException | ParserConfigurationException e) {
+        } catch (IOException | ParserConfigurationException t) {
             System.out.println("non ti preoccupare mon fre, è solo il gioco bizzarro");
-            System.err.println(e.getMessage());
+            System.err.println(t.getMessage());
         } finally {
             if(!EventsBuffer.instance().getEndGame()) {
                 eventsBuffer.setLastEventBean(new ConnectionInterruptEventBean("payload"));
                 controller.deleteElementInScannerInList(Integer.toString(socket.getPort()));
                 eventsBuffer.setEndGame();
-                while (EventsBuffer.instance().isSendEventBeanLock() == true)
+                while (EventsBuffer.instance().isSendEventBeanLock())
                     ;
                 System.out.println("chiusura inaspettata");
             }else

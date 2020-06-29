@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
-public class StartUpEvent {
+
+public class StartUpEvent extends ClientEvent {
     String playerComm;
 
     public StartUpEvent(String playerComm) {

@@ -22,7 +22,7 @@ public class ConnectionInterruptViewEvent extends ViewEvent{
     }
 
     @Override
-    public void viewEventMethod() throws UnknownHostException, JsonProcessingException {
+    public void viewEventMethod(){
         // 26 06 ProxyModel.instance().sendAutonomousEvents(new ClientAckDisconnectionEvent(Integer.toString(socket.getLocalPort())));
         proxyModel.setPhase(-1);
     }

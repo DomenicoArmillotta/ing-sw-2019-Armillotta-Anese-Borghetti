@@ -10,6 +10,6 @@ public class TakenNickNameViewEvent extends ViewEvent {
     }
 
     public void viewEventMethod() {
-        proxyModel.setThisClientNickname("");
+        System.out.println("questo nome è gia stato scelto, perfavore inserirne un altro");
     }
 }

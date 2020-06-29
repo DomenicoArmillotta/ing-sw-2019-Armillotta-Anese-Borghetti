@@ -57,7 +57,6 @@ public class Controller {
     public int loginControl(String nickName){
         VvLobby vvLobby = VvLobby.instance();
         if(vvLobby.getPlayers().isEmpty()) {
-
             vvLobby.setPartyOwner(nickName);
         }else
         if(!vvLobby.getPlayers().isEmpty() && vvLobby.getPlayers().contains(nickName))

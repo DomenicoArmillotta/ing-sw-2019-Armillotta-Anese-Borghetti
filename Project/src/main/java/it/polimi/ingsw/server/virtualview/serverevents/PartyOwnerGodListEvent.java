@@ -23,6 +23,7 @@ public class PartyOwnerGodListEvent  extends ServerEvent{
     public void serverEventMethod(Controller controller) throws IOException, SAXException, ParserConfigurationException {
         if(controller.setCurrentGodList(god1,god2,god3)){
             EventsBuffer.instance().setLastEventBean(new CorrectGodListEventBean(god1,god2,god3));
-        }
+        }else
+            System.out.println("non devo crashare");
     }
 }

@@ -3,11 +3,13 @@ package it.polimi.ingsw.client;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import it.polimi.ingsw.client.proxymodel.Player;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
+import java.util.*;
 
 public class ClientHandlerOutput implements Runnable {
 
@@ -21,6 +23,9 @@ public class ClientHandlerOutput implements Runnable {
     public static final String ANSI_CYAN = "\u001B[36m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
+    List<String> commands = Arrays.asList("login", "gods", "god", "coords", "start", "true", "false", "bool");
+    List<Integer> caratteri = Arrays.asList(48,49,50,51,52,53,54,55,56,57,56);
+
     private Socket socket;
 
     public ClientHandlerOutput(Socket socket) {
@@ -30,152 +35,146 @@ public class ClientHandlerOutput implements Runnable {
     public void run() {
 
         /* System.out.println("[ClientHandlerOutput] Connection established"); */
-        /* PrintWriter printWriter = null;
+        PrintWriter printWriter = null;
         try {
-            printWriter = new PrintWriter(socket.getOutputStream());
+            printWriter = new PrintWriter(this.socket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
-        } */
+        }
 
-        PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();
 
-        /* System.out.println("socket: " + socket); */
         ProxyModel proxyModel = ProxyModel.instance();
-        //proxyModel.setGamePhase(GamePhase.LOGIN);
         Scanner stdin = new Scanner(System.in);
+        BufferedReader brd = new BufferedReader(new InputStreamReader(System.in));
+        int clientPhase = ProxyModel.instance().getPhase();
         XmlMapper xmlMapper = (new XmlMapper());
+        String toSend = "";
+        ClientEvent eventToSend = new ClientEvent();
         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-        /*
-        settiamo canale e parser per i messaggi automatici
-         */
         ProxyModel.instance().setPrintWriter(printWriter);
+        System.out.println(ANSI_PURPLE + "SANTORINI BOARD GAME CLI SIMULATION" + ANSI_RESET + " (AM46)");
+        System.out.println("Type " + ANSI_YELLOW + "login" + ANSI_RESET + " followed by your nickname to create a room or join an existing one.");
+        String inputLine = null;
 
-        try {
+        while (true) {
+            try{
+                inputLine= brd.readLine();
+            } catch (IOException | NullPointerException r) {
+                System.out.println("coordinate inserite non valide per favore reiserirle");
+                r.printStackTrace();
+            }
 
-            System.out.println(ANSI_PURPLE+"SANTORINI BOARD GAME CLI SIMULATION"+ANSI_RESET+" (AM46)");
-            System.out.println("Type "+ANSI_YELLOW+"login"+ANSI_RESET+" followed by your nickname to create a room or join an existing one.");
-            /*
-            server un flag che permette di uscire dal ciclo e in qualche modo mandare 
-             */
-            while (true) {
-                /* System.out.println("GAME PHASE: "+proxyModel.getPhase()); */
-                String inputLine = stdin.next();
-                if (inputLine.equals("quit")) {
-                    //proxyModel.setGamePhase(GamePhase.DISCONNECTED);
-                    break;
-                } else {
-                    if (inputLine.equals("login") && proxyModel.getThisClientNickname().equals("") && proxyModel.getPhase() == 0) {
-                        if (stdin.hasNextLine()) {
-                            inputLine = stdin.next();
-                            proxyModel.setThisClientNickname(inputLine);
+            //String inputLine = stdin.nextLine();
 
-                            String toSend = xmlMapper.writeValueAsString(new LoginEvent(proxyModel.getThisClientNickname()));
-                            toSend += "\n";
-                            printWriter.print(toSend);
-                                /* System.out.print(toSend);
-                                System.out.println(""); */
-                            printWriter.flush();
-                            System.out.println(ANSI_GREEN + "[Flushed login request (" + inputLine + ")]" + ANSI_RESET);
-                        }
-                    } else if (inputLine.equals("bool") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname())  && proxyModel.getPhase() == 3) {
-                        if (stdin.hasNextBoolean()) {
-                            Boolean answer = stdin.nextBoolean();
-
-                            String toSend = xmlMapper.writeValueAsString(new BooleanEvent(answer));
-                            toSend += "\n";
-                            printWriter.print(toSend);
-                            /* System.out.print(toSend);
-                            System.out.println(""); */
-                            printWriter.flush();
-                            System.out.println(ANSI_GREEN + "[Flushed bool answer (" + answer + ")]" + ANSI_RESET);
-                        }
-                    }else if (inputLine.equals("start") && proxyModel.getThisClientNickname().equals(proxyModel.getPartyOwner()) && proxyModel.getPlayers().size() > 1 && proxyModel.getPhase() == 0) { /* playerComm */
-                        if (stdin.hasNextInt()) {
-                            int num = stdin.nextInt();
-                            if(num <= proxyModel.getPlayers().size()) {
-                                String toSend = xmlMapper.writeValueAsString(new StartUpEvent(proxyModel.getThisClientNickname()));
-                                toSend += "\n";
-                                printWriter.print(toSend);
-                            /* System.out.print(toSend);
-                            System.out.println(""); */
-                                printWriter.flush();
-                                System.out.println(ANSI_GREEN + "[Flushed start request (" + proxyModel.getPlayers().size() + " players)]" + ANSI_RESET);
-                            } else {
-                                System.out.println(ANSI_RED+"[There are only "+proxyModel.getPlayers().size()+" players in the room]"+ANSI_RESET);
-                            }
-                        }
-                    } else if (inputLine.equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 3) {
-                        if (stdin.hasNextInt()) {
-                            int x = stdin.nextInt();
-                            if (stdin.hasNextInt()) {
-                                int y = stdin.nextInt();
-                                /* System.out.println("Read coords " + x + " " + y); */
-
-                                String toSend = xmlMapper.writeValueAsString(new GameCoordsEvent(x, y));
-                                toSend += "\n";
-                                printWriter.print(toSend);
-                                /* System.out.print(toSend);
-                                System.out.println(""); */
-                                printWriter.flush();
-                                System.out.println(ANSI_GREEN + "[Flushed coords (" + x + ", "+ y +")]" + ANSI_RESET);
-                                /* System.out.println("Flushed coords " + x + " " + y); */
-                            }
-                        }
-                    } else if (inputLine.equals("god") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getTurn().getPlayerByName(proxyModel.getThisClientNickname()).getGodCard() == null && proxyModel.getPhase() == 1) {
-                        String stringInput = stdin.next();
-                        /* System.out.println("Read GodChoice " + stringInput); */
-
-                        String toSend = xmlMapper.writeValueAsString(new GodChoiceEvent(stringInput, proxyModel.getThisClientNickname()));
-                        toSend += "\n";
-                        printWriter.print(toSend);
-                        /* System.out.print(toSend);
-                        System.out.println(""); */
-                        printWriter.flush();
-                        System.out.println(ANSI_GREEN + "[Flushed god choice (" + stringInput + ")]" + ANSI_RESET);
-                    } else if (inputLine.equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 2) {
-                        if (stdin.hasNextInt()) {
-                            int x = stdin.nextInt();
-                            if (stdin.hasNextInt()) {
-                                int y = stdin.nextInt();
-                                if (stdin.hasNextInt()) {
-                                    int z = stdin.nextInt();
-                                    if (stdin.hasNextInt()) {
-                                        int w = stdin.nextInt();
-                                        String toSend = xmlMapper.writeValueAsString(new SetupCoordsEvent(x, y, z, w));
-                                        toSend += "\n";
-                                        printWriter.print(toSend);
-                                        /* System.out.print(toSend);
-                                        System.out.println(""); */
-                                        printWriter.flush();
-                                        System.out.println(ANSI_GREEN + "[Flushed coords (" + x + ", "+ y +", "+ z +", "+ w +")]" + ANSI_RESET);
-                                    }
-                                }
-                            }
-                        }
-                    }else if(inputLine.equals("gods") && proxyModel.getPartyOwner().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 4){
-                        String god3 = "";/*unico che potrebbe non essere utilizzato , potremmo sostituirlo con un controllo per il n di giocatori*/
-                        if(stdin.hasNext()) {
-                            String god1 = stdin.next();
-                            if (stdin.hasNext()) {
-                                String god2 = stdin.next();
-                                if (ProxyModel.instance().getPlayers().size()==3 &&stdin.hasNext()) /* se ci sono 2 persone balza questo input*/
-                                    god3 = stdin.next();
-
-                                String toSend = xmlMapper.writeValueAsString(new GodListEvent(god1,god2,god3));
-                                toSend += "\n";
-                                printWriter.print(toSend);
-                                printWriter.flush();
-                                System.out.println(ANSI_GREEN + "[Flushed coords ("+god1+" "+god2+" "+god3+")]" + ANSI_RESET);
-                            }
-                        }
-                    }
+                List<String> userInput = spaceStripper(inputLine);
+                if (commands.contains(userInput.get(0)) && userInput.size() > 1) {
+                    eventToSend = createUserEventToSend(userInput, proxyModel);
+                    if (eventToSend == null)
+                        System.out.println("formato dell'ultima azione inserita non corretto,reinserire");
                     else {
-                        System.out.println(ANSI_RED+"[Unknown/incorrect command \""+inputLine+"\"]"+ANSI_RESET);
+                        try {
+                            toSend = xmlMapper.writeValueAsString(eventToSend);
+                            toSend += "\n";
+                        } catch (JsonProcessingException e) {
+                            e.printStackTrace();
+                        }
+                        if (printWriter != null) {
+                            printWriter.print(toSend);
+                            printWriter.flush();
+                        } else
+                            System.out.println("errore con il printWriter");
+                        /*reset lista per eveitare problemi sovrascrittura*/
+                        userInput.clear();
                     }
+                } else
+                    System.out.println(ANSI_RED + "[Unknown/incorrect command \"" + inputLine + "\"]" + ANSI_RESET);
+        }
+    }
+
+
+        public List<String> spaceStripper(String toSend){
+            List<String> parsedString = new ArrayList<>();
+            for(String atomicWord: toSend.split("\\s+")){
+                //atomicWord.replaceAll("\\s+","");
+                if(!atomicWord.equals(""))
+                    parsedString.add(atomicWord);
+            }
+            return parsedString;
+        }
+
+        public ClientEvent createUserEventToSend(List<String> userInput,ProxyModel proxyModel) {
+            if (userInput.get(0).equals("login") && proxyModel.getPhase() == 0) {
+                if (userInput.get(1).equals("")) {
+                    System.out.println("nome non valido");
+                    return null;
+                }
+                for (Player players : proxyModel.getPlayers())
+                    if(players.getName().equals(userInput.get(1))){
+                        System.out.println("nick name gia preso , reinserire un nickname valido");
+                        return new LoginEvent(userInput.get(1));
+                    }
+                if(proxyModel.getThisClientNickname().equals("")) {
+                    proxyModel.setThisClientNickname(userInput.get(1));
+                    return new LoginEvent(userInput.get(1));
                 }
             }
-        } catch (JsonProcessingException jsonProcessingException) {
-            jsonProcessingException.printStackTrace();
+            if (userInput.get(0).equals("bool") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 3) {
+                if (userInput.get(1).equals("true") || userInput.get(1).equals("false"))
+                    return new BooleanEvent(Boolean.parseBoolean(userInput.get(1)));
+                else
+                    return null;
+            }
+            if (userInput.get(0).equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 2) {
+
+                if(caratteri.contains((int)(userInput.get(1).charAt(0))) && caratteri.contains((int)(userInput.get(2).charAt(0))) && caratteri.contains(((int)(userInput.get(3).charAt(0)))) && caratteri.contains(((int)(userInput.get(4).charAt(0))))) {
+                    int x = Integer.parseInt(userInput.get(1));
+                    int y = Integer.parseInt(userInput.get(2));
+                    int z = Integer.parseInt(userInput.get(3));
+                    int g = Integer.parseInt(userInput.get(4));
+                    return new SetupCoordsEvent(x, y, z, g);
+                }else {
+                    System.out.println("perfavore immetere solo caratteri numeri da 0-9");
+                    return null;
+                }
+            }
+            if (userInput.get(0).equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 3) {
+                userInput.remove(0);
+                userInput = refactorCoordinatesInput(userInput);
+                if(caratteri.contains((int)(userInput.get(0).charAt(0))) && caratteri.contains((int)(userInput.get(1).charAt(0)))) {
+                    int x = Integer.parseInt(userInput.get(0));
+                    int y = Integer.parseInt(userInput.get(1));
+                    return new GameCoordsEvent(x, y);
+                }else
+                    return null;
+            }
+            if (userInput.get(0).equals("start") && proxyModel.getThisClientNickname().equals(proxyModel.getPartyOwner()) && proxyModel.getPlayers().size() > 1 && proxyModel.getPhase() == 0) {
+                if (proxyModel.getPlayers().size() == 2 || proxyModel.getPlayers().size() == 3)
+                    return new StartUpEvent(proxyModel.getThisClientNickname());
+                else
+                    return null;
+            }
+            if ((userInput.get(0).equals("god") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getTurn().getPlayerByName(proxyModel.getThisClientNickname()).getGodCard() == null && proxyModel.getPhase() == 1)) {
+                if(userInput.size()>1)
+                    return new GodChoiceEvent(userInput.get(1), proxyModel.getThisClientNickname());
+            }
+            if (userInput.get(0).equals("gods") && proxyModel.getPartyOwner().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 4) {
+                if (proxyModel.getPlayers().size() == 3 && userInput.size() >= 4)
+                    return new GodListEvent(userInput.get(1), userInput.get(2), userInput.get(3));
+                else {
+                    if (proxyModel.getPlayers().size() == 2 && userInput.size() >= 3)
+                        return new GodListEvent(userInput.get(1), userInput.get(2), null);
+                }
+                return null;
+            }
+            return  null;
         }
+
+
+    public List<String> refactorCoordinatesInput(List<String> userInput) {
+        for (int i = 1; i != userInput.size(); i++) {
+            String s = Character.toString(userInput.get(i).charAt(0));
+            userInput.set(i, s);
+        }
+        return userInput;
     }
 }

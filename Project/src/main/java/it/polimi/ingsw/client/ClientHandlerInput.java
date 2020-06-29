@@ -47,6 +47,7 @@ public class ClientHandlerInput implements Runnable {
             ProxyModel.instance().getPrintWrite().close();
             System.out.println("questo client "+socket+" si è disconneso");
         } catch (ParserConfigurationException | SAXException | IOException e) {
+            e.getMessage();
             e.printStackTrace();
         } finally {
             try {

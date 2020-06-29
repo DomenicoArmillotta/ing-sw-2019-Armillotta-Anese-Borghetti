@@ -1,6 +1,6 @@
 package it.polimi.ingsw.client;
 
-public class LoginEvent {
+public class LoginEvent extends ClientEvent{
     String payload;
 
     public LoginEvent(String payload) {

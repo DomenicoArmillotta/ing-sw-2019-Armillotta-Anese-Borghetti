@@ -1,5 +1,7 @@
 package it.polimi.ingsw.server.model.powertree;
 
+/* refactor */
+/*
 public class BuildThenStop extends Build {
     @Override
     public int doAction(int[] userInput) {
@@ -8,3 +10,4 @@ public class BuildThenStop extends Build {
         return  -1;
     }
 }
+*/

@@ -1,10 +1,14 @@
 package it.polimi.ingsw.server.model.powertree;
 import it.polimi.ingsw.server.model.Cell;
-import it.polimi.ingsw.server.model.Worker;
 import it.polimi.ingsw.server.model.mvevents.actionevents.BuildBlockEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
 
 import java.util.List;
+
+/**
+ * Build a block on one of the available cells
+ * Contains cellAfterBuild attribute, which is the cell that has been built on during the last turn
+ */
 
 public class Build extends LimitedPower {
 
@@ -14,24 +18,38 @@ public class Build extends LimitedPower {
         return this.cellAfterBuild;
     }
 
+    /**
+     * Calls the superclass' clearPower and set to null cellAfterBuild attribute
+     */
     @Override
     public void clearPower() {
         super.clearPower();
         cellAfterBuild = null;
     }
 
+    /**
+     * Sets cellAfterBuild attribute
+     * @param cellAfterBuild
+     */
     public void setCellAfterBuild(Cell cellAfterBuild) {
         this.cellAfterBuild = cellAfterBuild;
         
     }
 
+    /**
+     * d
+     * @param userInput
+     * @return 1 if there is no userInput (fake build), or if userInput correctly represents one of the availableCells
+     *         -1 if userInput is not correct
+     *         Notifies the BuildBlockListener in case of success, the FailedActionListener otherwise
+     */
     @Override
     public int doAction(int[] userInput) {
-        System.out.println("In build");
-        Worker selectedWorker = this.getExecutorPointer().getPrevSelect().getSelectedWorker();
+
         int index;
-        if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) index = 0;
-        else index = 1;
+        /* refactor */ /* if (selectedWorker == getExecutorPointer().getCurrentPlayer().getFirstWorker()) index = 0;
+        else index = 1; */
+        index = getWorkerIndex();
         List<Cell> availableCells = getAvailableCells(index);
         Cell[][] map = getExecutorPointer().getMap();
         /* Cella su cui voglio costruire */
@@ -47,11 +65,9 @@ public class Build extends LimitedPower {
                 getBuildBlockListener().buildBlock(new BuildBlockEvent(map[blockX][blockY]));
                 return 1;
             }
-
             pointerBack();
             getFailedActionListener().actionFailed(new FailedActionEvent(this));
             return -1;  /* [NOTIFY]: Build failed */
         }
     }
-
 }

@@ -109,7 +109,7 @@ public class GodCardParser {
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
         }
-        if (atomicPower.equals("BuildOnADifferentCell")) {
+        if (atomicPower.equals("BuildOnDifferentCell")) {
             Build tempBuild = new BuildOnDifferentCell();
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;

@@ -2,11 +2,22 @@ package it.polimi.ingsw.server.model.powertree;
 import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 
+/**
+ * Build a second block on one of the available cells, which must be different from the previous built cell
+ */
+
 public class BuildOnDifferentCell extends Build {
+
+    /**
+     * Calls the superclass' doAction if userInput correctly represents a different cell to build on
+     * @param userInput
+     * @return 1 if userInput correctly represents a different cell to build on, -1 if the action fails
+     * The BuildBlockListener is called in the superclass
+     */
 
     @Override
     public int doAction(int[] userInput) {
-        System.out.println("In build on different cell");
+
         if(getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition())
             return 1;
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevBuild().getCellAfterBuild()) {

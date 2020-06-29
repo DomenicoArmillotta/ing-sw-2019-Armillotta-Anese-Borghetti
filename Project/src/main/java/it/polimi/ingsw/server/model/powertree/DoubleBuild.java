@@ -1,8 +1,6 @@
 package it.polimi.ingsw.server.model.powertree;
-
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.mvevents.actionevents.DoubleBuildEvent;
-import it.polimi.ingsw.server.model.mvevents.actionevents.DoubleMoveEvent;
 
 public class DoubleBuild extends Power {
 

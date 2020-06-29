@@ -4,7 +4,7 @@ import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 
 import java.util.List;
-
+/* refactor */ /*
 public class BuildThenDontMoveUp extends Build {
 
     private void altComputeInjectionPowerIndex(Player player) {
@@ -18,17 +18,16 @@ public class BuildThenDontMoveUp extends Build {
             ;
         }
         player.getPlayerGod().getFindAvailableCellsList().add(i, new FindAvailableCellsMoveButDontMoveUp());
-        cachedPowerList.add(i + 1, player.getPlayerGod().getFindAvailableCellsList().get(i)); /* CONTROLLA i+1 */
-        /* Ho aggiornato la list power ma non la FindAvailableCells list; */
+        cachedPowerList.add(i + 1, player.getPlayerGod().getFindAvailableCellsList().get(i)); // CONTROLLA i+1
+        // Ho aggiornato la list power ma non la FindAvailableCells list;
         player.getPlayerGod().setPowerList(cachedPowerList);
     }
-
     @Override
     public int doAction(int[] userInput) {
 
         if (getExecutorPointer().getMap()[userInput[0]][userInput[1]] == getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition()) {
 
-            return 0; /* Il Player ha "costruito" sulla stessa cella del Worker selezionato, ovvero NON vuole costruire */
+            return 0; // Il Player ha "costruito" sulla stessa cella del Worker selezionato, ovvero NON vuole costruire
         }
         altComputeInjectionPowerIndex(getExecutorPointer().getCurrentPlayer());
 
@@ -43,4 +42,4 @@ public class BuildThenDontMoveUp extends Build {
         getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
         return 0;
     }
-}
+} */

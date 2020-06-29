@@ -42,6 +42,7 @@ public class Display {
     }
 
     private Display(){
+        this.promptText = "";
         JFrame frame = new JFrame("Santorini Board Game GUI [AM46]");
         frame.setSize(dimensionX, dimensionY);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

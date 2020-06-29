@@ -69,7 +69,7 @@ public class GuiDrawer extends Drawer {
         BoardPanel mapPanel = new BoardPanel();
         mapPanel.setGraphicsFlag(4);
         System.out.println("GRAPHICS_FLAG 4");
-        mapPanel.addMouseListener(new MouseListenerChoice());
+        mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);};
 

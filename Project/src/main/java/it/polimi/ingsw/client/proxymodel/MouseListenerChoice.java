@@ -19,7 +19,7 @@ public class MouseListenerChoice implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
+        System.out.println("Clicked with MouseListenerChoice");
         int x = e.getX();
         int y = e.getY();
         PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();
@@ -27,6 +27,7 @@ public class MouseListenerChoice implements MouseListener {
         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
         String toSend = null;
         if(x < 300) {
+            System.out.println("yes");
             try {
                 toSend = xmlMapper.writeValueAsString(new BooleanEvent(true));
             } catch (JsonProcessingException jsonProcessingException) {
@@ -34,6 +35,7 @@ public class MouseListenerChoice implements MouseListener {
             }
         }
         else {
+            System.out.println("no");
             try {
                 toSend = xmlMapper.writeValueAsString(new BooleanEvent(false));
             } catch (JsonProcessingException jsonProcessingException) {

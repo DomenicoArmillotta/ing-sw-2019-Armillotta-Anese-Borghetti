@@ -2,6 +2,7 @@ package it.polimi.ingsw.client.proxymodel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import it.polimi.ingsw.client.BooleanEvent;
 import it.polimi.ingsw.client.GameCoordsEvent;
 import it.polimi.ingsw.client.SetupCoordsEvent;
 
@@ -23,6 +24,39 @@ public class MouseListenerGame implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
+
+        /* System.out.println("GET PROMPT TEXT: "+Display.instance().getPromptText()); */
+        if(!Display.instance().getPromptText().equals("") && x < 300) {
+            Display.instance().setPrompt("");
+            XmlMapper xmlMapper = (new XmlMapper());
+            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+            String toSend = null;
+            try {
+                toSend = xmlMapper.writeValueAsString(new BooleanEvent(true));
+            } catch (JsonProcessingException jsonProcessingException) {
+                jsonProcessingException.printStackTrace();
+            }
+            toSend += "\n";
+            printWriter.print(toSend);
+            printWriter.flush();
+            System.out.println("yes");
+        } else if(!Display.instance().getPromptText().equals("")) {
+            Display.instance().setPrompt("");
+            XmlMapper xmlMapper = (new XmlMapper());
+            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+            String toSend = null;
+            try {
+                toSend = xmlMapper.writeValueAsString(new BooleanEvent(false));
+            } catch (JsonProcessingException jsonProcessingException) {
+                jsonProcessingException.printStackTrace();
+            }
+            toSend += "\n";
+            printWriter.print(toSend);
+            printWriter.flush();
+            System.out.println("no");
+        }
+
+
         System.out.println("MOUSE_COORDS" + x + "," + y);//these co-ords are relative to the component
         int firstCellX = 64;
         int firstCellY = 64;
@@ -64,6 +98,7 @@ public class MouseListenerGame implements MouseListener {
                             this.prevCellClickX = i;
                             this.prevCellClickY = j;
                         }
+
                     }
 
 

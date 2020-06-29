@@ -63,6 +63,7 @@ public class BoardPanel extends JPanel {
             InputStream url5 = cl.getResourceAsStream("block2.png");
             InputStream url6 = cl.getResourceAsStream("block3.png");
             InputStream url7 = cl.getResourceAsStream("block4.png");
+            InputStream url8 = cl.getResourceAsStream("pawn3.png");
 
             BufferedImage img1 = null;
             BufferedImage img2 = null;
@@ -71,6 +72,7 @@ public class BoardPanel extends JPanel {
             BufferedImage img5 = null;
             BufferedImage img6 = null;
             BufferedImage img7 = null;
+            BufferedImage img8 = null;
 
 
             try {
@@ -81,6 +83,7 @@ public class BoardPanel extends JPanel {
                 img5 = ImageIO.read(url5);
                 img6 = ImageIO.read(url6);
                 img7 = ImageIO.read(url7);
+                img8 = ImageIO.read(url8);
             } catch (IOException e) {
                 e.printStackTrace();
                 return;
@@ -149,6 +152,16 @@ public class BoardPanel extends JPanel {
 
                 g.drawImage(img2, firstCellX - (firstCellX/2) + shift * wx1p2, firstCellY - (firstCellY / 2) + shift * wy1p2, firstCellX, firstCellY, null);
                 g.drawImage(img2, firstCellX - (firstCellX/2)  + shift * wx2p2, firstCellY - (firstCellY / 2) + shift * wy2p2, firstCellY, firstCellY, null);
+            }
+
+            if (proxyModel.getPlayers().size() > 2 && proxyModel.getPlayers().get(2).getWorker1() != null) {
+                int wx1p3 = proxyModel.getPlayers().get(2).getWorker1().getPosition().getX();
+                int wy1p3 = proxyModel.getPlayers().get(2).getWorker1().getPosition().getY();
+                int wx2p3 = proxyModel.getPlayers().get(2).getWorker2().getPosition().getX();
+                int wy2p3 = proxyModel.getPlayers().get(2).getWorker2().getPosition().getY();
+
+                g.drawImage(img8, firstCellX - (firstCellX/2) + shift * wx1p3, firstCellY - (firstCellY / 2) + shift * wy1p3, firstCellX, firstCellY, null);
+                g.drawImage(img8, firstCellX - (firstCellX/2)  + shift * wx2p3, firstCellY - (firstCellY / 2) + shift * wy2p3, firstCellY, firstCellY, null);
             }
 
         g4.setColor(new Color(20, 20, 20));

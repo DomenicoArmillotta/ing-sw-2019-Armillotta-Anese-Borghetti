@@ -44,6 +44,8 @@ public class BoardPanel extends JPanel {
                     break;
             case 5: writeText5(g);
                     break;
+            case 6: writeText6(g);
+                    break;
             case 0: ;
                     break;
         }
@@ -232,7 +234,6 @@ public class BoardPanel extends JPanel {
         BufferedImage img1 = null;
         BufferedImage img2 = null;
 
-
         try {
             img1 = ImageIO.read(url1);
             img2 = ImageIO.read(url2);
@@ -246,10 +247,19 @@ public class BoardPanel extends JPanel {
         Font font = new Font("Serif", Font.PLAIN, 24);
         g2d.setColor(new Color(20, 20, 20));
         g2d.setFont(font);
-        g2d.drawString(getPrompt(), 15, 640);
+        g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName()+", "+getPrompt(), 15, 640);
         g.drawImage(img1, 150, 650, 100, 100, null);
         g.drawImage(img2, 350, 650, 100, 100, null);
 
+    }
+
+    private void writeText6(Graphics g) {
+        ProxyModel proxyModel = ProxyModel.instance();
+        Graphics2D g2d = (Graphics2D) g;
+        Font font = new Font("Serif", Font.PLAIN, 24);
+        g2d.setColor(new Color(20, 20, 20));
+        g2d.setFont(font);
+        g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should place his Workers.", 15, 640);
     }
 
     private void writeText0(Graphics g) {

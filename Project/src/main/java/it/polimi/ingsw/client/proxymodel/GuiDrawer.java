@@ -104,7 +104,19 @@ public class GuiDrawer extends Drawer {
     }
 
     public void drawSelectWorker(Coords selectCell){};
-    public void drawWinGame(){};
+
+    public void drawWinGame(){
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        Container c = myFrame.getContentPane();
+        BoardPanel mapPanel = new BoardPanel();
+        mapPanel.setGraphicsFlag(6);
+        System.out.println("GRAPHICS_FLAG 6");
+        mapPanel.addMouseListener(display.getMouseListenerGame());
+        c.add(mapPanel);
+        myFrame.setVisible(true);}
+
+
     public void drawLooseGame(){};
 
     public void title(){

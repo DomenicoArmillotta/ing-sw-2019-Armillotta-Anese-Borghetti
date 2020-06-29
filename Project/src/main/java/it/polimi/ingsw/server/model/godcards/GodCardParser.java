@@ -104,11 +104,11 @@ public class GodCardParser {
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
         }
-        if (atomicPower.equals("BuildThenStop")) {
+        /* refactor */ /* if (atomicPower.equals("BuildThenStop")) {
             Build tempBuild = new BuildThenStop();
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
-        }
+        } */
         if (atomicPower.equals("BuildOnDifferentCell")) {
             Build tempBuild = new BuildOnDifferentCell();
             selectedGodCard.getBuildList().add(tempBuild);
@@ -119,11 +119,11 @@ public class GodCardParser {
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
         }
-        if (atomicPower.equals("BuildThenDontMoveUp")) {
+        /* refactor */ /* if (atomicPower.equals("BuildThenDontMoveUp")) {
             Build tempBuild = new BuildThenDontMoveUp();
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
-        }
+        } */
         if (atomicPower.equals("DontBuildDome")) {
             Build tempBuild = new DontBuildDome();
             selectedGodCard.getBuildList().add(tempBuild);

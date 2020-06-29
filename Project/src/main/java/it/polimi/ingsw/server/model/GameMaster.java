@@ -373,7 +373,7 @@ public class GameMaster {
         moveList.add(new Move());
         prometheusCard.setMoveList(moveList);
         List<Build> buildList = new ArrayList<>();
-        buildList.add(new BuildThenDontMoveUp());
+        /* refactor */ /* buildList.add(new BuildThenDontMoveUp()); */
         buildList.add(new Build());
         prometheusCard.setBuildList(buildList);
         List<WinCondition> winConditionList = new ArrayList<>();

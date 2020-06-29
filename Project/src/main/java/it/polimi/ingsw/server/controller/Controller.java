@@ -144,36 +144,6 @@ public class Controller {
         return false;
     }
 
-     /*public synchronized void closeThisBufferedReaderIn(String socketToDisconnect) throws IOException {
-        String localPort = socketToDisconnect;
-        while(lineClientCtrlLock)
-            ;
-        for(LineClientSocketsAndPort lineClientSocketsAndPort: lineClientSocketsAndPortList){
-            if(lineClientSocketsAndPort.getPort().equals(localPort)){
-                    try {
-                        wait();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                lineClientSocketsAndPort.getSocket().shutdownInput();
-                lineClientSocketsAndPort.getSocket().close();
-                lineClientSocketsAndPortList.remove(lineClientSocketsAndPort);
-                if(lineClientSocketsAndPortList.size() == 0){
-                    //VvLobby.instance().resetVvLobby();
-                }
-            }
-        }
-        /*
-        if(!bufferedReaderList.isEmpty()) {
-            for (int i = 0; i < bufferedReaderList.size(); i++) {
-                bufferedReaderList.get(i).close();
-                System.out.println("sono dentro la chiusstura del printwriter " + i);
-            }
-            bufferedReaderList.clear();
-            EventsBuffer.instance().setEndGame();
-        }
-     } */
-
     public void addScannerInToList(LineClientSocketsAndPort lineClientSocketsAndPort){
         this.lineClientSocketsAndPortList.add(lineClientSocketsAndPort);
     }

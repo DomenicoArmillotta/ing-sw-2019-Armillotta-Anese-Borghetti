@@ -125,16 +125,15 @@ public class ClientHandlerOutput implements Runnable {
                     return null;
             }
             if (userInput.get(0).equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 2) {
-
-                if(caratteri.contains((int)(userInput.get(1).charAt(0))) && caratteri.contains((int)(userInput.get(2).charAt(0))) && caratteri.contains(((int)(userInput.get(3).charAt(0)))) && caratteri.contains(((int)(userInput.get(4).charAt(0))))) {
-                    int x = Integer.parseInt(userInput.get(1));
-                    int y = Integer.parseInt(userInput.get(2));
-                    int z = Integer.parseInt(userInput.get(3));
-                    int g = Integer.parseInt(userInput.get(4));
+                /**/
+                userInput.remove(0);
+                userInput = refactorCoordinatesInput(userInput);
+                if(caratteri.contains((int)(userInput.get(0).charAt(0))) && caratteri.contains((int)(userInput.get(1).charAt(0))) && caratteri.contains((int)(userInput.get(2).charAt(0)))&& caratteri.contains((int)(userInput.get(3).charAt(0)))) {
+                    int x = Integer.parseInt(userInput.get(0));
+                    int y = Integer.parseInt(userInput.get(1));
+                    int z = Integer.parseInt(userInput.get(2));
+                    int g = Integer.parseInt(userInput.get(3));
                     return new SetupCoordsEvent(x, y, z, g);
-                }else {
-                    System.out.println("perfavore immetere solo caratteri numeri da 0-9");
-                    return null;
                 }
             }
             if (userInput.get(0).equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 3) {

@@ -2,6 +2,8 @@ package it.polimi.ingsw.client.viewevents;
 
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
+import java.util.Arrays;
+
 public class CorrectlyChoseGodListViewEvent extends ViewEvent{
     private String god1;
     private String god2;
@@ -16,6 +18,6 @@ public class CorrectlyChoseGodListViewEvent extends ViewEvent{
     @Override
     public void viewEventMethod() {
         ProxyModel.instance().setPhase(1);
-        System.out.println("le divinità disponibili sono: "+god1+" "+god2+" "+god3+"");
+        ProxyModel.instance().getDrawerStrategy().drawPartyOwnerGodChoices(Arrays.asList(god1,god2,god3));
     }
 }

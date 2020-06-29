@@ -157,9 +157,10 @@ public class ClientHandlerOutput implements Runnable {
                     return new GodChoiceEvent(userInput.get(1), proxyModel.getThisClientNickname());
             }
             if (userInput.get(0).equals("gods") && proxyModel.getPartyOwner().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 4) {
-                if (proxyModel.getPlayers().size() == 3 && userInput.size() >= 4)
+                if (proxyModel.getPlayers().size() == 3 && userInput.size() >= 4) {
                     return new GodListEvent(userInput.get(1), userInput.get(2), userInput.get(3));
-                else {
+
+                }else {
                     if (proxyModel.getPlayers().size() == 2 && userInput.size() >= 3)
                         return new GodListEvent(userInput.get(1), userInput.get(2), null);
                 }

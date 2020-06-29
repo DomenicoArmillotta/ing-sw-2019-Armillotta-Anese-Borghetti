@@ -1,5 +1,8 @@
 package it.polimi.ingsw.client.proxymodel;
 
+
+import it.polimi.ingsw.client.ClientSocketManager;
+
 import java.util.List;
 
 
@@ -23,8 +26,18 @@ public class CliDrawer extends Drawer{
     public static final String CYAN_BACKGROUND = "\033[46m";
     public static final String WHITE_BACKGROUND = "\033[47m";
 
+    @Override
+    public void drawFailedAction() {
+        System.out.println("\u001B[31m"+"["+ProxyModel.instance().getTurn().getCurrentPlayer().getName()+"'s action failed]"+"\u001B[0m");
+    }
+
+    public void drawPartyOwnerGodChoices(List<String> godList) {
+        System.out.println("divinità disponibili: ");
+        godList.forEach(System.out::println);
+    }
+
     public void promptChoice(String promptText) {
-        ;
+        System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m"+", "+promptText);
     }
 
     /**
@@ -331,4 +344,8 @@ public class CliDrawer extends Drawer{
 
     };
     public void title(){};
+
+    public void drawConnectionInterrupt() {
+        System.out.println("questo client "+ ClientSocketManager.getInstance().getSocket() +" si è disconneso");
+    }
 }

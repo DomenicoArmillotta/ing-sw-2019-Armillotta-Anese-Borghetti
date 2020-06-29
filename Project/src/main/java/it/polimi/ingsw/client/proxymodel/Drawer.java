@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client.proxymodel;
 
+import java.util.List;
+
 public abstract class Drawer {
 
     public void drawMap(){};
@@ -12,5 +14,9 @@ public abstract class Drawer {
     public void promptBuildText(){};
     public void promptPlaceWorkersTest(){};
     public void promptChoice(String promptText){};
+    public void drawConnectionInterrupt(){}
+    public void drawPartyOwnerGodChoices(List<String> godList){}
+    public void drawFailedAction(){}
+
 
 }

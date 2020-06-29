@@ -172,12 +172,12 @@ public class ProxyModel {
         this.printWriter = printWriter;
     }
 
-    synchronized public void sendAutonomousEvents(ClientEvent clientEvent) throws JsonProcessingException {
+    /*synchronized public void sendAutonomousEvents(ClientEvent clientEvent) throws JsonProcessingException {
         XmlMapper xmlMapper = (new XmlMapper());
         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
         String toSend = xmlMapper.writeValueAsString(clientEvent);
         toSend = toSend + "\n";
         this.printWriter.print(toSend);
         this.printWriter.flush();
-    }
+    }*/
 }

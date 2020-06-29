@@ -11,6 +11,6 @@ public class FailedActionViewEvent extends ViewEvent {
     ProxyModel proxyModel = ProxyModel.instance();
 
     public void viewEventMethod() {
-        System.out.println("\u001B[31m"+"["+proxyModel.getTurn().getCurrentPlayer().getName()+"'s action failed]"+"\u001B[0m");
+        proxyModel.getDrawerStrategy().drawFailedAction();
     }
 }

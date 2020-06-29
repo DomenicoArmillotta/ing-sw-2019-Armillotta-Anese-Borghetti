@@ -2,6 +2,7 @@ package it.polimi.ingsw.client.viewevents;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import it.polimi.ingsw.client.ClientAckDisconnectionEvent;
+import it.polimi.ingsw.client.ClientSocketManager;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
 
@@ -23,7 +24,7 @@ public class ConnectionInterruptViewEvent extends ViewEvent{
 
     @Override
     public void viewEventMethod(){
-        // 26 06 ProxyModel.instance().sendAutonomousEvents(new ClientAckDisconnectionEvent(Integer.toString(socket.getLocalPort())));
+        proxyModel.getDrawerStrategy().drawConnectionInterrupt();
         proxyModel.setPhase(-1);
     }
 }

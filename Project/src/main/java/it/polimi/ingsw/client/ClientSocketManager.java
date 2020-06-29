@@ -1,12 +1,14 @@
 package it.polimi.ingsw.client;
 
 import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.Scanner;
 
 public class ClientSocketManager {
 
     private PrintWriter printWriter;
     private Scanner scannerIn;
+    private Socket socket;
 
     private static ClientSocketManager instance;
 
@@ -31,5 +33,13 @@ public class ClientSocketManager {
 
     public void setScannerIn(Scanner scannerIn) {
         this.scannerIn = scannerIn;
+    }
+
+    public Socket getSocket() {
+        return socket;
+    }
+
+    public void setSocket(Socket socket) {
+        this.socket = socket;
     }
 }

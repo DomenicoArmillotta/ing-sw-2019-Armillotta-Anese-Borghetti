@@ -22,8 +22,8 @@ public class ClientHandler {
             ProxyModel proxyModel = ProxyModel.instance();
             proxyModel.createMap();
             //CliDrawer CliDrawer=new CliDrawer();
-            GuiDrawer drawer = new GuiDrawer();
-            drawerType = 1;
+            CliDrawer drawer = new CliDrawer();
+            drawerType = 0;
             proxyModel.setDrawerStrategy(drawer);
             proxyModel.setPhase(0);
             /* System.out.println("CLI ready"); */
@@ -32,6 +32,7 @@ public class ClientHandler {
                     ProxyModel.instance().thisScoket = socket;
                     PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
                     ClientSocketManager.getInstance().setPrintWriter(printWriter);
+                    ClientSocketManager.getInstance().setSocket(socket);
                     /* ATTENZIONE */
                     if(drawerType == 0)
                         executor.submit(new ClientHandlerOutput(socket));

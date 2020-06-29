@@ -69,6 +69,19 @@ public class GuiDrawer extends Drawer {
         BoardPanel mapPanel = new BoardPanel();
         mapPanel.setGraphicsFlag(4);
         System.out.println("GRAPHICS_FLAG 4");
+        mapPanel.addMouseListener(new MouseListenerChoice());
+        c.add(mapPanel);
+        myFrame.setVisible(true);};
+
+    public void promptChoice(String promptText) {
+
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        Container c = myFrame.getContentPane();
+        BoardPanel mapPanel = new BoardPanel();
+        mapPanel.setPrompt(promptText);
+        mapPanel.setGraphicsFlag(5);
+        System.out.println("GRAPHICS_FLAG 5");
         mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);};

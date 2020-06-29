@@ -11,5 +11,6 @@ public abstract class Drawer {
     public void promptMovementText(){};
     public void promptBuildText(){};
     public void promptPlaceWorkersTest(){};
+    public void promptChoice(String promptText){};
 
 }

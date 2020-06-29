@@ -23,6 +23,10 @@ public class CliDrawer extends Drawer{
     public static final String CYAN_BACKGROUND = "\033[46m";
     public static final String WHITE_BACKGROUND = "\033[47m";
 
+    public void promptChoice(String promptText) {
+        ;
+    }
+
     /**
      * print the instructions to select
      */

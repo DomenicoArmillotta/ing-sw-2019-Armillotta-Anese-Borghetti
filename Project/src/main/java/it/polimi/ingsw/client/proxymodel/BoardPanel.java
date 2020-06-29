@@ -9,6 +9,16 @@ import java.io.InputStream;
 
 public class BoardPanel extends JPanel {
 
+    public String getPrompt() {
+        Display display = Display.instance();
+        return display.getPromptText();
+    }
+
+    public void setPrompt(String promptText) {
+        Display display = Display.instance();
+        display.setPrompt(promptText);
+    }
+
     public int getGraphicsFlag() {
         Display display = Display.instance();
         return display.getGraphicsFlag();
@@ -31,7 +41,9 @@ public class BoardPanel extends JPanel {
             case 3: writeText3(g);
                     break;
             case 4: writeText4(g);
-                break;
+                    break;
+            case 5: writeText5(g);
+                    break;
             case 0: ;
                     break;
         }
@@ -193,7 +205,50 @@ public class BoardPanel extends JPanel {
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should place his Workers.", 15, 640);
     }
 
+    public void writeText5(Graphics g) {
+
+        ProxyModel proxyModel = ProxyModel.instance();
+        ClassLoader cl = this.getClass().getClassLoader();
+        Graphics2D g2 = (Graphics2D) g;
+        Graphics2D g3 = (Graphics2D) g;
+        Graphics2D g4 = (Graphics2D) g;
+
+        InputStream url1 = cl.getResourceAsStream("yes.png");
+        InputStream url2 = cl.getResourceAsStream("no.png");
+
+        BufferedImage img1 = null;
+        BufferedImage img2 = null;
+
+
+        try {
+            img1 = ImageIO.read(url1);
+            img2 = ImageIO.read(url2);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        Graphics2D g2d = (Graphics2D) g;
+        Graphics2D g2dbutton = (Graphics2D) g;
+        Font font = new Font("Serif", Font.PLAIN, 24);
+        g2d.setColor(new Color(20, 20, 20));
+        g2d.setFont(font);
+        g2d.drawString(getPrompt(), 15, 640);
+        g.drawImage(img1, 150, 650, 100, 100, null);
+        g.drawImage(img2, 350, 650, 100, 100, null);
+
+    }
+
     private void writeText0(Graphics g) {
+        ProxyModel proxyModel = ProxyModel.instance();
+        Graphics2D g2d = (Graphics2D) g;
+        Font font = new Font("Serif", Font.PLAIN, 24);
+        g2d.setColor(new Color(20, 20, 20));
+        g2d.setFont(font);
+        g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName(), 15, 640);
+    }
+
+    private void writePrompt(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         Graphics2D g2d = (Graphics2D) g;
         Font font = new Font("Serif", Font.PLAIN, 24);

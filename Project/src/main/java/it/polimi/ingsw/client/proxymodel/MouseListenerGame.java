@@ -48,7 +48,7 @@ public class MouseListenerGame implements MouseListener {
                             printWriter.flush();
                         } else if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() == 2) {
                             System.out.println("PH 2 " + i + " " + j);
-                            if (this.prevCellClickX != -1 && this.prevCellClickY!= -1) {
+                            if (this.prevCellClickX != -1 && this.prevCellClickY!= -1 && this.prevCellClickX != x && this.prevCellClickY != y) {
                                 XmlMapper xmlMapper = (new XmlMapper());
                                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                                 String toSend = null;

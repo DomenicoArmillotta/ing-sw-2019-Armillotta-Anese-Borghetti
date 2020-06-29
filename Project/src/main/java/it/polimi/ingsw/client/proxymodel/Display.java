@@ -15,6 +15,7 @@ public class Display {
     List<JPanel> panels;
     int graphicsFlag;
     MouseListenerGame mouseListenerGame;
+    String promptText;
 
     public MouseListenerGame getMouseListenerGame() {
         return mouseListenerGame;
@@ -30,6 +31,14 @@ public class Display {
 
     public void setGraphicsFlag(int graphicsFlag) {
         this.graphicsFlag = graphicsFlag;
+    }
+
+    public void setPrompt(String promptText) {
+        this.promptText = promptText;
+    }
+
+    public String getPromptText() {
+        return promptText;
     }
 
     private Display(){

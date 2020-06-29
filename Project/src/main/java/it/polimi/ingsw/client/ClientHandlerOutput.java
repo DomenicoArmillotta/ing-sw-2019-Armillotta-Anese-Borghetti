@@ -128,6 +128,9 @@ public class ClientHandlerOutput implements Runnable {
                 /**/
                 userInput.remove(0);
                 userInput = refactorCoordinatesInput(userInput);
+                if(userInput.size()<4){
+                    return null;
+                }
                 if(caratteri.contains((int)(userInput.get(0).charAt(0))) && caratteri.contains((int)(userInput.get(1).charAt(0))) && caratteri.contains((int)(userInput.get(2).charAt(0)))&& caratteri.contains((int)(userInput.get(3).charAt(0)))) {
                     int x = Integer.parseInt(userInput.get(0));
                     int y = Integer.parseInt(userInput.get(1));
@@ -157,12 +160,12 @@ public class ClientHandlerOutput implements Runnable {
                     return new GodChoiceEvent(userInput.get(1), proxyModel.getThisClientNickname());
             }
             if (userInput.get(0).equals("gods") && proxyModel.getPartyOwner().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 4) {
-                if (proxyModel.getPlayers().size() == 3 && userInput.size() >= 4) {
-                    return new GodListEvent(userInput.get(1), userInput.get(2), userInput.get(3));
+                if (proxyModel.getPlayers().size() == 2 && userInput.size()>=3) {
+                    return new GodListEvent(userInput.get(1).toLowerCase(),userInput.get(2).toLowerCase(),null);
 
                 }else {
-                    if (proxyModel.getPlayers().size() == 2 && userInput.size() >= 3)
-                        return new GodListEvent(userInput.get(1), userInput.get(2), null);
+                    if (proxyModel.getPlayers().size() == 3 && userInput.size() >= 4)
+                        return new GodListEvent(userInput.get(1).toLowerCase(), userInput.get(2).toLowerCase(), userInput.get(3).toLowerCase());
                 }
                 return null;
             }

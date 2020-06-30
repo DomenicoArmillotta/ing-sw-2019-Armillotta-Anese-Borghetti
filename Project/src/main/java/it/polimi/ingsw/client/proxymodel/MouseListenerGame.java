@@ -83,9 +83,27 @@ public class MouseListenerGame implements MouseListener {
                             toSend += "\n";
                             printWriter.print(toSend);
                             printWriter.flush();
+
                         } else if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() == 2) {
                             System.out.println("PH 2 " + i + " " + j);
-                            if (this.prevCellClickX != -1 && this.prevCellClickY!= -1 && this.prevCellClickX != x && this.prevCellClickY != y) {
+
+                            if (this.prevCellClickX == -1 && this.prevCellClickY== -1) {
+                                System.out.println("First worker setup");
+                                XmlMapper xmlMapper = (new XmlMapper());
+                                xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                                String toSend = null;
+                                try {
+                                    toSend = xmlMapper.writeValueAsString(new SetupCoordsEvent(prevCellClickX, prevCellClickY, i, j));
+                                } catch (JsonProcessingException jsonProcessingException) {
+                                    jsonProcessingException.printStackTrace();
+                                }
+                                toSend += "\n";
+                                printWriter.print(toSend);
+                                printWriter.flush();
+                                this.prevCellClickX = i;
+                                this.prevCellClickY = j;
+                            } else if (this.prevCellClickX != -1 && this.prevCellClickY!= -1 && this.prevCellClickX != x && this.prevCellClickY != y) {
+                                System.out.println("Second worker setup");
                                 XmlMapper xmlMapper = (new XmlMapper());
                                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                                 String toSend = null;
@@ -98,8 +116,7 @@ public class MouseListenerGame implements MouseListener {
                                 printWriter.print(toSend);
                                 printWriter.flush();
                             }
-                            this.prevCellClickX = i;
-                            this.prevCellClickY = j;
+
                         }
 
                     }

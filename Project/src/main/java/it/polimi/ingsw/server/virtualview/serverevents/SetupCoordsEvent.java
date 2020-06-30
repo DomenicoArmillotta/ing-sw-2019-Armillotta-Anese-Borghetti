@@ -28,8 +28,8 @@ public class SetupCoordsEvent extends CoordsEvent {
     public void serverEventMethod(Controller controller) {
         /* non accede al controller*/
         if((this.firstWorkerX>=0 && this.firstWorkerX<5)&&(this.firstWorkerY>=0 && this.firstWorkerY<5)&&(this.secondWorkerY>=0 && this.secondWorkerY<5)&&(this.secondWorkerX>=0 && this.secondWorkerX<5) ){
-            if(this.secondWorkerX!=this.firstWorkerX && this.secondWorkerY!=this.firstWorkerY) {
 
+            if(this.secondWorkerX!=this.firstWorkerX || this.secondWorkerY!=this.firstWorkerY) {
                 if(!correctSetUpCoordinatesCheck()){
                     EventsBuffer.instance().setLastEventBean(new FailedActionEventBean());
                     return;
@@ -43,8 +43,6 @@ public class SetupCoordsEvent extends CoordsEvent {
                     EventsBuffer.instance().setLastEventBean(new FailedActionEventBean());
                     return;
                 }
-
-
                 if (ActionExecutor.instance().getCurrentPlayer().getFirstWorker() != null &&
                         ActionExecutor.instance().getCurrentPlayer().getSecondWorker() != null &&
                         ActionExecutor.instance().getNextPlayer().getFirstWorker() != null &&

@@ -7,19 +7,22 @@ import it.polimi.ingsw.server.model.Worker;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * extends FindAvailableCellsBuild ,override super.doAction();
+ */
 public class FindAvailableCellsBuildSameCell extends FindAvailableCellsBuild {
+    /**
+     * call super.doAction()
+     * @param userInput this method doesn't require a particular userInput;
+     * @return
+     */
     @Override
     public int doAction(int[] userInput) {
         super.doAction(userInput);
         Worker workerSelected =  super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         Cell[][] map = super.getExecutorPointer().getMap();
         List<Cell> toRemoveCell = new ArrayList<>();
-        int i;
-
-        if (workerSelected.equals(super.getExecutorPointer().getCurrentPlayer().getFirstWorker()))
-            i = 0;
-        else
-            i = 1;
+        int workerIndex = getWorkerIndex();
 
         for (int k = workerSelected.getCurrentPosition().getX() - 1; k < workerSelected.getCurrentPosition().getX() + 2 && k < 5; k++) {
             for (int j = workerSelected.getCurrentPosition().getY() - 1; j < workerSelected.getCurrentPosition().getY() + 2 && j < 5; j++) {
@@ -30,9 +33,9 @@ public class FindAvailableCellsBuildSameCell extends FindAvailableCellsBuild {
                 }
             }
         }
-        super.getExecutorPointer().getNextBuild().removeCells(toRemoveCell,i);
+        super.getExecutorPointer().getNextBuild().removeCells(toRemoveCell,workerIndex);
         /*special return value*/
-        super.getExecutorPointer().getNextBuild().getAvailableCells(i);
+        super.getExecutorPointer().getNextBuild().getAvailableCells(workerIndex);
         return 1;
     }
 }

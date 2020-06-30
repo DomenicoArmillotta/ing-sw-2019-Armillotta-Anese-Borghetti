@@ -30,7 +30,6 @@ public class FindAvailableCellsMovePushTest {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Minotaur");
         GodCard godCard2 = godCardsDeck.createGodCard("Pan ");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
@@ -89,7 +88,6 @@ public class FindAvailableCellsMovePushTest {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Minotaur");
         GodCard godCard2 = godCardsDeck.createGodCard("Pan ");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
@@ -146,7 +144,6 @@ public class FindAvailableCellsMovePushTest {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Minotaur");
         GodCard godCard2 = godCardsDeck.createGodCard("Pan ");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");

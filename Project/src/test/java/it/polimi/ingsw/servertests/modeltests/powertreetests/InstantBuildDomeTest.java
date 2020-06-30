@@ -28,7 +28,6 @@ public class InstantBuildDomeTest {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Atlas");
         GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
         GodCard godCard3 = godCardsDeck.createGodCard("Pan");

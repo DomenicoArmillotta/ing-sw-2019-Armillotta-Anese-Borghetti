@@ -27,9 +27,8 @@ public class loseConditionCheck {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Pan");
-        GodCard godCard2 = godCardsDeck.createGodCard("Athena ");
+        GodCard godCard2 = godCardsDeck.createGodCard("Athena");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
@@ -46,7 +45,8 @@ public class loseConditionCheck {
 
         int[] userInput = new int[2];
 
-        assertEquals(actionExecutor.getNextPower().doAction(null), -1);
+        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);
+
         assertEquals(actionExecutor.getNextPlayer(), actionExecutor.getPrevPlayer());
     }
 
@@ -61,7 +61,6 @@ public class loseConditionCheck {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Pan");
         GodCard godCard2 = godCardsDeck.createGodCard("Athena ");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
@@ -97,7 +96,6 @@ public class loseConditionCheck {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Pan");
         GodCard godCard2 = godCardsDeck.createGodCard("Artemis ");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
@@ -145,7 +143,6 @@ public class loseConditionCheck {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        gameMaster.createGodList();
         GodCard godCard1 = godCardsDeck.createGodCard("Pan");
         GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
         GodCard godCard3 = godCardsDeck.createGodCard("Atlas");

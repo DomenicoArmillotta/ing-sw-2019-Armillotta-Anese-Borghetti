@@ -22,7 +22,6 @@ public class PrintPowersTest {
         playersQueue.add(player2);
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
-        player1.setPlayerGod(gameMaster.getGodList().get(God.DEMETER.ordinal()));
         assertEquals(player1.getPlayerGod().getGodName(), "Demeter");
         assertEquals(player2.getPlayerGod().getGodName(), "Mortal");
 

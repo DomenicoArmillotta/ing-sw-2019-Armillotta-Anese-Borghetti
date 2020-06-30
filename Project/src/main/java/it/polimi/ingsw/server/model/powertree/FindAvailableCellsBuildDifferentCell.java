@@ -7,33 +7,33 @@ import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * extends FindAvailableCells , override doAction() and compute cells for building a second time but not on the
+ * same call as previous build;
+ */
+
 public class FindAvailableCellsBuildDifferentCell  extends FindAvailableCellsBuild{
+    /**
+     * call super.doAction() and remove form buildable the cell where the same worker previously built;
+     * @param userInput this method doesn't require a particular userInput;
+     * @return 1 for autonomously execute the next Power;
+     */
     @Override
     public int doAction(int[] userInput) {
         System.out.println("In find availablecellsbuildondifferentcell");
-        if(super.doAction(userInput) == -1)
-            return -1;
-        Worker workerSelected =  super.getExecutorPointer().getPrevSelect().getSelectedWorker();
-        Cell[][] map = super.getExecutorPointer().getMap();
+        super.doAction(userInput);
         List<Cell> toRemoveCell = new ArrayList<>();
-        int i;
+        int workerIndex;
 
-        if (workerSelected.equals(super.getExecutorPointer().getCurrentPlayer().getFirstWorker()))
-            i = 0;
-        else
-            i = 1;
+       workerIndex = getWorkerIndex();
 
-        System.out.println("DEMETER");
-        System.out.println("findCells"+getExecutorPointer().getNextBuild().getAvailableCells(i));
         toRemoveCell.add(super.getExecutorPointer().getPrevBuild().getCellAfterBuild());
-        System.out.println("toRemoveCell"+toRemoveCell);
-        super.getExecutorPointer().getNextBuild().removeCells(toRemoveCell, i);
-        System.out.println("findCells"+getExecutorPointer().getNextBuild().getAvailableCells(i));
-        if (super.getExecutorPointer().getNextBuild().getAvailableCells(i).isEmpty()) {
+        super.getExecutorPointer().getNextBuild().removeCells(toRemoveCell, workerIndex);
+        if (super.getExecutorPointer().getNextBuild().getAvailableCells(workerIndex).isEmpty()) {
             return 1;/*special return value*/
         }
 
-        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(i)));
+        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(workerIndex)));
         return 1;
     }
 }

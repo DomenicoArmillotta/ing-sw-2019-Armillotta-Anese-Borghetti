@@ -23,7 +23,6 @@ public class FakeServer {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        gameMaster.createGodList();
         gameMaster.createActionExecutor();
         GodCardsDeck godCardsDeck = new GodCardsDeck();
         player1.setPlayerGod(godCardsDeck.createGodCard(God.APOLLO.toString()));

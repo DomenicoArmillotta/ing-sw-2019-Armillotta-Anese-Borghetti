@@ -16,6 +16,15 @@ public class Display {
     int graphicsFlag;
     MouseListenerGame mouseListenerGame;
     String promptText;
+    int[] selectableGods = new int[9];
+
+    public int[] getSelectableGods() {
+        return selectableGods;
+    }
+
+    public void setSelectableGods(int[] selectableGods) {
+        this.selectableGods = selectableGods;
+    }
 
     public MouseListenerGame getMouseListenerGame() {
         return mouseListenerGame;

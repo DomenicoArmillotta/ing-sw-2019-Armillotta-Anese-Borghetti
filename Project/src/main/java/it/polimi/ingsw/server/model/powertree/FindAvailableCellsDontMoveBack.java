@@ -33,6 +33,10 @@ public class FindAvailableCellsDontMoveBack extends FindAvailableCellsMove {
         if(!getExecutorPointer().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().isEmpty())
             executeMoveLimitations();
 
+        if (super.getExecutorPointer().getNextMove().getAvailableCells(i).isEmpty()) {
+            return 1;/*special return value*/
+        }
+
         getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(i)));
         return 1;
     }

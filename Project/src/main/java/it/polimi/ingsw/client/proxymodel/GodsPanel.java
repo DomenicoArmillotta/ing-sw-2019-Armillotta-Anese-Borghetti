@@ -35,6 +35,7 @@ public class GodsPanel extends JPanel {
         }
 
         for(int i = 0; i < 3; i++) {
+            /* if() */
             g.drawImage(imgArray[i], 80+i*140, 5, 840/6, 1410/6, null);
         }
         for(int i = 0; i < 3; i++) {

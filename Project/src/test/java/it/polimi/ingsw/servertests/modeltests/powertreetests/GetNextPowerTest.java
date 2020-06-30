@@ -29,7 +29,7 @@ public class GetNextPowerTest {
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
         player1.setPlayerGod(godCardsDeck.createGodCard("apollo"));
-        assertEquals(player1.getPlayerGod().getGodName(), "apollo");
+        assertEquals(player1.getPlayerGod().getGodName(), "Apollo");
 
         player1.workersSetup(0, 0, 1, 4);
         player2.workersSetup(4, 0, 2, 1);

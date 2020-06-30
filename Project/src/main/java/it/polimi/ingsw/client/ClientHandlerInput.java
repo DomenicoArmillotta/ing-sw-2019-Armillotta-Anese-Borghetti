@@ -32,7 +32,6 @@ public class ClientHandlerInput implements Runnable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         try {
             while (ProxyModel.instance().getPhase()!=-1) {
                 /* System.out.println("Login phase reading"); */

@@ -204,6 +204,7 @@ public class GodCardParser {
             e.printStackTrace();
             return null;
         }
+
         Document document = null;
 
         try {

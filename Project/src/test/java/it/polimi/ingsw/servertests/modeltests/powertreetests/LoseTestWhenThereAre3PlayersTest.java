@@ -1,4 +1,4 @@
-package it.polimi.ingsw.server.model.powertree;
+package it.polimi.ingsw.servertests.modeltests.powertreetests;
 
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.*;
@@ -32,7 +32,7 @@ public class LoseTestWhenThereAre3PlayersTest{
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         GodCard godCard1 = godCardsDeck.createGodCard("Atlas");
-        GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
+        GodCard godCard2 = godCardsDeck.createGodCard("Apollo");
         GodCard godCard3 = godCardsDeck.createGodCard("Pan");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
@@ -83,7 +83,10 @@ public class LoseTestWhenThereAre3PlayersTest{
         assertEquals(actionExecutor.getCurrentPlayer(),player2);
         userInput[0] = 1;
         userInput[1] = 0;
+        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);
         actionExecutor.getNextPower().doAction(userInput);
+        userInput[0] = 2;
+        userInput[1] = 0;
         actionExecutor.getNextPower().doAction(userInput);
         assertEquals(actionExecutor.getPrevSelect().getSelectedWorker(),player2.getFirstWorker());
     }

@@ -25,12 +25,12 @@ public class FindAvailableCellsBuildDifferentCell  extends FindAvailableCellsBui
         List<Cell> toRemoveCell = new ArrayList<>();
         int workerIndex;
 
-       workerIndex = getWorkerIndex();
+        workerIndex = getWorkerIndex();
 
         toRemoveCell.add(super.getExecutorPointer().getPrevBuild().getCellAfterBuild());
         super.getExecutorPointer().getNextBuild().removeCells(toRemoveCell, workerIndex);
         if (super.getExecutorPointer().getNextBuild().getAvailableCells(workerIndex).isEmpty()) {
-            return 1;/*special return value*/
+            return 1;
         }
 
         getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(workerIndex)));

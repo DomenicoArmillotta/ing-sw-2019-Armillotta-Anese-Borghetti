@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GodCardParserTest {
      @Test
-     public void simpleTest() throws IOException, SAXException, ParserConfigurationException {
+     public void simpleTest(){
          GodCard godCard1;
          GodCardParser godCardParser = new GodCardParser();
          godCard1 = godCardParser.selectedGodParser(God.MORTAL.toString());
@@ -21,14 +21,14 @@ public class GodCardParserTest {
 
      }
      @Test
-     public void chooseRightGodtest() throws IOException, SAXException, ParserConfigurationException {
+     public void chooseRightGodtest(){
          GodCard godCard1;
          GodCardParser godCardParser = new GodCardParser();
          godCard1 = godCardParser.selectedGodParser(God.APOLLO.toString());
          assertEquals(godCard1.getGodName(),"Apollo");
      }
      @Test
-    public void checkIfSubListsAreCorrectlyCreated() throws IOException, SAXException, ParserConfigurationException {
+    public void checkIfSubListsAreCorrectlyCreated(){
          GodCard godCard;
          GodCardParser godCardParser = new GodCardParser();
          for(God god : God.values()){

@@ -19,7 +19,7 @@ import java.util.List;
 
 public class FindAvailableCellsMovePushTest {
     @Test
-    public void TestWorkerNonMio() throws ParserConfigurationException, SAXException, IOException {
+    public void TestWorkerNonMio(){
 
         GodCardsDeck godCardsDeck = new GodCardsDeck();
         List<Player> playerQueue = new ArrayList<>();

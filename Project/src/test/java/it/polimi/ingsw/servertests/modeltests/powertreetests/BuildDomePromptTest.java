@@ -1,4 +1,4 @@
-package it.polimi.ingsw.server.model.powertree;
+package it.polimi.ingsw.servertests.modeltests.powertreetests;
 
 import it.polimi.ingsw.server.model.Player;
 import it.polimi.ingsw.server.model.godcards.GodCardsDeck;

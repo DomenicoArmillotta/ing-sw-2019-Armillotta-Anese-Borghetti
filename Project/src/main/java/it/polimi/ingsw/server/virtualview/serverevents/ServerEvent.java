@@ -7,5 +7,5 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 
 public abstract class ServerEvent {
-    abstract public void serverEventMethod(Controller controller) throws IOException, SAXException, ParserConfigurationException;
+    abstract public void serverEventMethod(Controller controller);
 }

@@ -16,7 +16,7 @@ public class ClientDisconnectRequestEvent extends ServerEvent{
     }
 
     @Override
-    public void serverEventMethod(Controller controller) throws IOException, SAXException, ParserConfigurationException {
+    public void serverEventMethod(Controller controller) {
         System.out.println("sssss");
     }
 }

@@ -17,7 +17,7 @@ public class BooleanEvent extends ServerEvent {
     }
 
     @Override
-    public void serverEventMethod(Controller controller) throws IOException, SAXException, ParserConfigurationException {
+    public void serverEventMethod(Controller controller) {
         ActionExecutor.instance().getCurrentPlayer().getPlayerGod().getBooleanRequestActionStrategy().BooleanRequestStrategy(controller,booleanRequest);
     }
 }

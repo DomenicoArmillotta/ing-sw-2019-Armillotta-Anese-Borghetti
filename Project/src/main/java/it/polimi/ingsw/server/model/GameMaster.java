@@ -35,23 +35,16 @@ public class GameMaster {
         if (numOfPlayers == 2) {
             for (int i = 0; i < 2; i++) {
                 /*GodCard is Mortal by default for every Player, then it can be changed*/
-                try {
                     playerQueue.get(i).setPlayerGod(godCardsDeck.createGodCard("mortal"));
-                } catch (IOException | ParserConfigurationException | SAXException e) {
-                    e.printStackTrace();
                 }
-            }
+
             this.actionExecutor.setCurrentPlayer(playerQueue.get(0));
             this.actionExecutor.setNextPlayer(playerQueue.get(1));
             this.actionExecutor.setPrevPlayer(playerQueue.get(1));
         } else if (numOfPlayers == 3) {
             for (int i = 0; i < 3; i++) {
                 /*GodCard is Mortal by default for every Player, then it can be changed*/
-                try {
                     playerQueue.get(i).setPlayerGod(godCardsDeck.createGodCard("mortal"));
-                } catch (IOException | ParserConfigurationException | SAXException e) {
-                    e.printStackTrace();
-                }
 
             }
             this.actionExecutor.setCurrentPlayer(playerQueue.get(0));

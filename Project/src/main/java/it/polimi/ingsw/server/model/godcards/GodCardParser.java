@@ -185,7 +185,7 @@ public class GodCardParser {
     }
 
 
-    public GodCard selectedGodParser(String choosenGod) throws ParserConfigurationException, IOException, SAXException {
+    public GodCard selectedGodParser(String choosenGod){
         File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
         int i;
         int j;
@@ -196,22 +196,35 @@ public class GodCardParser {
         selectedGodCard.setupLists();
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbf.newDocumentBuilder();
-        Document document = dBuilder.parse(cardFile);
-        //document.getDocumentElement().normalize();
-        /*System.out.println("ROOT  ELEMENT : " + document.getDocumentElement().getNodeName());*/
+        DocumentBuilder dBuilder = null;
+
+        try {
+            dBuilder = dbf.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+            return null;
+        }
+        Document document = null;
+
+        try {
+            document = dBuilder.parse(cardFile);
+        } catch (SAXException | IOException e) {
+            System.out.println("perser error");
+            e.printStackTrace();
+            e.getMessage();
+            return null;
+        }
+
+
         NodeList godCardList = document.getElementsByTagName("Godcard");
         for (i = 0; i < godCardList.getLength() && !selectable; i++) {
             Node nGodCardListNode = godCardList.item(i);
             Element eElement = (Element) nGodCardListNode;
             if (eElement.getAttribute("name").toLowerCase().equals(choosenGod.toLowerCase())) {
-                /*
-                se la divinità e quella deve uscire dal ciclo for
-                 */
+
                 selectable = true;
             }
         }
-        //reinizializzo alla godCard con l'attributo desiderato
         Node nGodCardListNode = godCardList.item(i - 1);
         /*System.out.println(i);*/
         Element eElement = (Element) nGodCardListNode;
@@ -220,26 +233,21 @@ public class GodCardParser {
         if(eElement.getElementsByTagName("BooleanRequest").item(0) != null){
             selectedGodCard.setBooleanRequestActionStrategy(parseBooleanRequestStrategy(eElement.getElementsByTagName("BooleanRequest").item(0).getTextContent()));
         }
-        /*System.out.println("NODECARDNAME " + eElement.getAttribute("name"));*/
         if (nGodCardListNode.getNodeType() == Node.ELEMENT_NODE) {
                 /*
                 questo codice trova correttamente i figli di GodCard
                  */
             NodeList contenutoLista = (((Element) nGodCardListNode).getElementsByTagName("PowerList"));
             Node tempNodeList = contenutoLista.item(0);
-            /*System.out.println("dovrebbe essere powerList " + tempNodeList.getNodeName());
-            System.out.println("dimension e powerlist " + contenutoLista.getLength());*/
+            System.out.println("dimension e powerlist " + contenutoLista.getLength());
             for (j = 0; j < contenutoLista.getLength(); j++) {
                 Node tempNode = contenutoLista.item(j);
                 if (tempNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element actualPowerList = (Element) contenutoLista.item(0);
-                    /*System.out.println("n nodi filgi di powerList");*/
                     NodeList atomicNodeList = actualPowerList.getChildNodes();
                     for (k = 0; k < atomicNodeList.getLength(); k++) {
                         if (atomicNodeList.item(k).getNodeType() == Node.ELEMENT_NODE) {
-                            /*qui dentro passo i poteri atomici;*/
                             temporaryPowerList.add(returnCorrectAtomicPower(atomicNodeList.item(k).getNodeName(),selectedGodCard));
-                            /*System.out.println(atomicNodeList.item(k).getNodeName());*/
                         }
                     }
                 }
@@ -249,14 +257,27 @@ public class GodCardParser {
         return selectedGodCard;
     }
 
-    public List<String> returnGodList() throws ParserConfigurationException, IOException, SAXException {
+    public List<String> returnGodList(){
         List<String> godList = new ArrayList<>();
         File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
         int i;
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        DocumentBuilder dBuilder = dbf.newDocumentBuilder();
-        Document document = dBuilder.parse(cardFile);
+        DocumentBuilder dBuilder = null;
+        try {
+            dBuilder = dbf.newDocumentBuilder();
+        } catch (ParserConfigurationException e) {
+            System.out.println("errore nella creazione della godlist");
+            e.printStackTrace();
+            return null;
+        }
+        Document document = null;
+        try {
+            document = dBuilder.parse(cardFile);
+        } catch (SAXException | IOException e) {
+            e.printStackTrace();
+            return null;
+        }
         NodeList godCardList = document.getElementsByTagName("Godcard");
         for (i = 0; i < godCardList.getLength() ; i++) {
             Node nGodCardListNode = godCardList.item(i);

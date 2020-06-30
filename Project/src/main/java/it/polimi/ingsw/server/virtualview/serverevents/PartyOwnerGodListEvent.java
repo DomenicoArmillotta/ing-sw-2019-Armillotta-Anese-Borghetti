@@ -20,7 +20,7 @@ public class PartyOwnerGodListEvent  extends ServerEvent{
     }
 
     @Override
-    public void serverEventMethod(Controller controller) throws IOException, SAXException, ParserConfigurationException {
+    public void serverEventMethod(Controller controller) {
         if(controller.setCurrentGodList(god1,god2,god3)){
             EventsBuffer.instance().setLastEventBean(new CorrectGodListEventBean(god1,god2,god3));
         }else

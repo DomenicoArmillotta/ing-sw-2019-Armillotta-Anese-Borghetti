@@ -16,7 +16,7 @@ public class StartUpEvent extends ServerEvent {
     }
 
     @Override
-    public void serverEventMethod(Controller controller) throws IOException, SAXException, ParserConfigurationException {
+    public void serverEventMethod(Controller controller){
         if(playerComm.equals(VvLobby.instance().getPartyOwner())) {
             controller.startGameControl();
             /*evento di inizio gioco*/

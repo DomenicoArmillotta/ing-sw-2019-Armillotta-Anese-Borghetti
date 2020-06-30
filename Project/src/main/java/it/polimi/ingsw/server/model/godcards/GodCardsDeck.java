@@ -14,7 +14,7 @@ public class GodCardsDeck {
         this.godCardParser = new GodCardParser();
     }
 
-    public GodCard createGodCard(String selectedGod) throws IOException, SAXException, ParserConfigurationException {
+    public GodCard createGodCard(String selectedGod){
         return godCardParser.selectedGodParser(selectedGod);
     }
 }

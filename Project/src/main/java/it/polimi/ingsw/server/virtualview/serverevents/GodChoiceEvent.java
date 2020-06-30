@@ -16,7 +16,7 @@ public class GodChoiceEvent extends ServerEvent {
     }
 
     @Override
-    public void serverEventMethod(Controller controller) throws IOException, SAXException, ParserConfigurationException {
+    public void serverEventMethod(Controller controller){
         controller.setPlayerGod(chosenGod, player);
     }
 }

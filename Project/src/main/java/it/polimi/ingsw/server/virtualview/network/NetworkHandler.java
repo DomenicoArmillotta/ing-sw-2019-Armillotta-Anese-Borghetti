@@ -16,7 +16,7 @@ public class NetworkHandler {
     public NetworkHandler(int port) {
         this.port = port;
     }
-    public void startServer() throws ParserConfigurationException, SAXException, IOException {
+    public void startServer(){
         Controller controller = new Controller();
         ActionExecutor executorPointer = ActionExecutor.instance();
         ExecutorService executor = Executors.newFixedThreadPool(4);

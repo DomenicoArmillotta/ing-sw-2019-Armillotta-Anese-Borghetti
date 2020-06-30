@@ -65,7 +65,7 @@ public class Controller {
         return 1;
     }
 
-    public void setPlayerGod(String godName, String playerName) throws ParserConfigurationException, SAXException, IOException {
+    public void setPlayerGod(String godName, String playerName){
         ActionExecutor actionExecutor = ActionExecutor.instance();
         GodCardsDeck godCardsDeck = new GodCardsDeck();
         if(!currentGodList.contains(godName.toLowerCase())){
@@ -77,6 +77,7 @@ public class Controller {
            !actionExecutor.getPrevPlayer().getPlayerGod().getGodName().toLowerCase().equals(godName.toLowerCase())) {
             if(playerName.equals(actionExecutor.getCurrentPlayer().getName())) {
                 actionExecutor.getCurrentPlayer().setPlayerGod(godCardsDeck.createGodCard(godName));
+                System.out.println("ssssssssssss");
             } else if(playerName.equals(actionExecutor.getNextPlayer().getName())) {
                 actionExecutor.getNextPlayer().setPlayerGod(godCardsDeck.createGodCard(godName));
             } else if(playerName.equals(actionExecutor.getPrevPlayer().getName())) {
@@ -88,15 +89,15 @@ public class Controller {
         }
         EventsBuffer.instance().setLastEventBean(new GodCorrectlyChosen(godName, playerName));
         actionExecutor.nextTurn();
-        if(!actionExecutor.getCurrentPlayer().getPlayerGod().getGodName().toLowerCase().equals("") &&
-           !actionExecutor.getNextPlayer().getPlayerGod().getGodName().toLowerCase().equals("") &&
-           !actionExecutor.getPrevPlayer().getPlayerGod().getGodName().toLowerCase().equals(""));
+        if(!actionExecutor.getCurrentPlayer().getPlayerGod().getGodName().toLowerCase().equals("mortal") &&
+           !actionExecutor.getNextPlayer().getPlayerGod().getGodName().toLowerCase().equals("mortal") &&
+           !actionExecutor.getPrevPlayer().getPlayerGod().getGodName().toLowerCase().equals("mortal"))
         {
             EventsBuffer.instance().setLastEventBean(new EveryGodChosenEventBean());
         }
     }
 
-    public void startGameControl() throws ParserConfigurationException, SAXException, IOException {
+    public void startGameControl() {
         List<Player> toQueuePlayerList = new ArrayList<>();
         for (int i = 0; i < VvLobby.instance().getPlayers().size(); i++) {
             toQueuePlayerList.add(new Player(VvLobby.instance().getPlayers().get(i)));
@@ -114,7 +115,7 @@ public class Controller {
 
     }
 
-    public boolean setCurrentGodList(String god1,String god2,String god3) throws IOException, SAXException, ParserConfigurationException {
+    public boolean setCurrentGodList(String god1,String god2,String god3){
         List<String> godList = new GodCardParser().returnGodList();
         if (gameMaster.getNumOfPlayers() == 2) {
             if (godList.contains(god1) && godList.contains(god2)) {

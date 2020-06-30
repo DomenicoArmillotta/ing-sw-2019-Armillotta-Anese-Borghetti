@@ -60,15 +60,7 @@ public class SocketHandlerInput implements Runnable {
                 }
                 ServerEvent serverEvent = returnCorrectServerEvent(document);
                 System.out.println(serverEvent);
-                try {
-                    serverEvent.serverEventMethod(controller);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (SAXException e) {
-                    e.printStackTrace();
-                } catch (ParserConfigurationException e) {
-                    e.printStackTrace();
-                }
+                serverEvent.serverEventMethod(controller);
                 System.out.println("Done");
             }
             /*/
@@ -94,7 +86,6 @@ public class SocketHandlerInput implements Runnable {
                 e.printStackTrace();
             }
         }
-        System.out.println("madonna");
     }
 
     protected ServerEvent returnCorrectServerEvent(Document doc){

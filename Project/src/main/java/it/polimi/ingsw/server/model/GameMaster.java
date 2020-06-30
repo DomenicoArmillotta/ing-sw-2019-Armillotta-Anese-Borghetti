@@ -15,11 +15,13 @@ public class GameMaster {
     private GodCardsDeck godCardsDeck = new GodCardsDeck();
 
     /**
-     * the gamemaster  creates the deck of cards and the ActionExecutor
+     *  DA RISCRIVERE
      * set the number of players and the queue of players, which is used to manage the turn
      * @param playerQueue
      * @param numOfPlayers
      */
+
+
     public GameMaster(List<Player> playerQueue, int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
         this.playerQueue = playerQueue;

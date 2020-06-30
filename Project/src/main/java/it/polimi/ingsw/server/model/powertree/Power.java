@@ -9,6 +9,7 @@ public abstract class Power {
 
     /* private Event lastEvent; */
 
+
     private WorkerSelectionListener workerSelectionListener = WorkerSelectionListener.instance();
     private WaitingForActionListener waitingForActionListener = WaitingForActionListener.instance();
     private WorkerMovementListener workerMovementListener = WorkerMovementListener.instance();
@@ -59,11 +60,24 @@ public abstract class Power {
         return executorPointer;
     }
 
+    /**
+     * function that take @param as input and return 3 different values 0, 1 , -1; the action is succesfully executed and the model
+     * need
+     * @param userInput
+     * @return
+     */
+    /*
+    set abstract;
+     */
     public int doAction(int[] userInput) { /* Overridden in subclasses */
         /* No action */
-        return -1; /* Action failed: this method should be called from Power subclasses */
+       return -1;/* Action failed: this method should be called from Power subclasses */
     }
 
+    /**
+     * when a doAction() fails, pointerBack reset the pointer to the same action that failed
+     * @return 0 if successful, -1 if failed;
+     */
     public int pointerBack() {
         int index;
         Power powerPtr = executorPointer.getPowerPtr();
@@ -78,11 +92,16 @@ public abstract class Power {
             return -1;
         }
     }
+        //*refactor
+    public void clearPower(){
 
-    public void clearPower() {
-        /* Nothing to clean */
     }
+        /* Nothing to clean */
 
+    /**
+     * Method that return the index of AvailableCells for the last selected worker
+     * @return 0 if is the first, 1 if is the second
+     */
     protected int getWorkerIndex() {
         if(getExecutorPointer().getPrevSelect().getSelectedWorker().equals(getExecutorPointer().getCurrentPlayer().getFirstWorker())) {
             return 0;

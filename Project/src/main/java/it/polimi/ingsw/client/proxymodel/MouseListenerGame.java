@@ -26,7 +26,8 @@ public class MouseListenerGame implements MouseListener {
         int y = e.getY();
 
         /* System.out.println("GET PROMPT TEXT: "+Display.instance().getPromptText()); */
-        if(!Display.instance().getPromptText().equals("") && x < 300) {
+        if(!Display.instance().getPromptText().equals("") && x < 300 && y > 500) {
+            System.out.println("\u001B[32m"+"CLICKED ON BUTTON YES"+x+" "+y+"\u001B[0m");
             Display.instance().setPrompt("");
             XmlMapper xmlMapper = (new XmlMapper());
             xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
@@ -41,6 +42,7 @@ public class MouseListenerGame implements MouseListener {
             printWriter.flush();
             System.out.println("yes");
         } else if(!Display.instance().getPromptText().equals("")) {
+            System.out.println("\u001B[32m"+"CLICKED ON BUTTON NO"+x+" "+y+"\u001B[0m");
             Display.instance().setPrompt("");
             XmlMapper xmlMapper = (new XmlMapper());
             xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
@@ -65,10 +67,11 @@ public class MouseListenerGame implements MouseListener {
             for (int j = 0; j < 5; j++) {
                 if (x > (firstCellX + (shift * i) - (firstCellX)) && x < (firstCellX + (shift * i) + (firstCellX)))
                     if (y > (firstCellY + (shift * j) - (firstCellY)) && y < (firstCellY + (shift * j) + (firstCellY))) {
+                        System.out.println("\u001B[32m"+"CLICKED ON CELL"+x+" "+y+"\u001B[0m");
                         //System.out.println("PH 3 CLICKED ON CELL " + i + " " + j);
                         /* this.prevCellClickX = i;
                         this.prevCellClickY = j; */
-                        if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() == 3) {
+                        if (Display.instance().getPromptText().equals("") && ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() == 3) {
                             XmlMapper xmlMapper = (new XmlMapper());
                             xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                             String toSend = null;

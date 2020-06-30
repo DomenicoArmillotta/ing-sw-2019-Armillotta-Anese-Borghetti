@@ -22,8 +22,8 @@ public class ClientHandler {
             ProxyModel proxyModel = ProxyModel.instance();
             proxyModel.createMap();
             //CliDrawer CliDrawer=new CliDrawer();
-            CliDrawer drawer = new CliDrawer();
-            drawerType = 0;
+            GuiDrawer drawer = new GuiDrawer();
+            drawerType = 1;
             proxyModel.setDrawerStrategy(drawer);
             proxyModel.setPhase(0);
             /* System.out.println("CLI ready"); */

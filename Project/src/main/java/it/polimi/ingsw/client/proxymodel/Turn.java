@@ -9,6 +9,7 @@ public class Turn {
      *this function advances the turn by correctly setting the previous turn and the next turn
      */
     public void nextTurn() {
+        System.out.println("CLIENT NEXT TURN");
         Player tempPlayer = null;
         tempPlayer = this.currentPlayer;
         if(this.nextPlayer.equals(this.prevPlayer)){

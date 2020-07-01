@@ -7,6 +7,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * it is used to build the display where the size of the gui jframe is set,
+ * mouse listeners are created
+ */
 public class Display {
     private JFrame frame;
     private static final int dimensionX = 615;
@@ -18,7 +22,7 @@ public class Display {
     MouseListenerGodCards mouseListenerGodCards;
     MouseListenerChoice mouseListenerChoice;
     String promptText;
-    int[] selectableGods = new int[9];
+    //int[] selectableGods = new int[9];//*refactoring
     int clicked;
 
     public MouseListenerChoice getMouseListenerChoice() {
@@ -44,14 +48,14 @@ public class Display {
     public void setMouseListenerGodCards(MouseListenerGodCards mouseListenerGodCards) {
         this.mouseListenerGodCards = mouseListenerGodCards;
     }
-
+    /*
     public int[] getSelectableGods() {
         return selectableGods;
     }
 
     public void setSelectableGods(int[] selectableGods) {
         this.selectableGods = selectableGods;
-    }
+    }*///*refactoring
 
     public MouseListenerGame getMouseListenerGame() {
         return mouseListenerGame;
@@ -77,6 +81,10 @@ public class Display {
         return promptText;
     }
 
+    /**
+     * is the constructor of the display,so
+     *  sets the size of the frame and creates the Mouselisteners, which will be used in the gui
+     */
     private Display(){
         this.clicked = -1;;
         this.promptText = "";
@@ -94,9 +102,10 @@ public class Display {
     public List<JPanel> getPanels() {
         return panels;
     }
+    /*
     public void addPanel(JPanel panel){
         this.panels.add(panel);
-    }
+    }*///*refactoring
 
     public String getTitleFrame() {
         return titleFrame;

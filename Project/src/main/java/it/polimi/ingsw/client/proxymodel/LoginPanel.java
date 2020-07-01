@@ -8,14 +8,27 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * create the game login screen where you log in and choose the number of players,
+ * with the background image and set the font and the color of the displayed text
+ * the buttons and the textbox are drawn in the guiDrawer
+ */
 public class LoginPanel extends JPanel {
-
-        public void paintComponent(Graphics g) {
+    /**
+     * used for print image
+     * @param g
+     */
+    public void paintComponent(Graphics g) {
             super.paintComponent(g);
             drawImage(g);
         }
 
-        private void drawImage(Graphics g) {
+    /**
+     * draw the login screen, with the background image and set the font and the color of the displayed text
+     * also set the name of the jframe
+     * @param g
+     */
+    private void drawImage(Graphics g) {
             ProxyModel proxyModel = ProxyModel.instance();
             ClassLoader cl = this.getClass().getClassLoader();
             Graphics2D g2d = (Graphics2D) g;

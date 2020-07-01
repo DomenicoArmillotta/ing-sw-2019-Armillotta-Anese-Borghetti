@@ -7,13 +7,25 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * draw the game screen for selecting the gods
+ */
 public class GodsPanel extends JPanel {
-
+    /**
+     * GUI function for drawing images
+     * @param g
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         drawImage(g);
     }
 
+    /**
+     * the cards of the gods are drawn, based on their position.
+     * this screen is shown before the game starts in the god selection phase.
+     * also when players select their god with a clic on image, it lights up
+     * @param g
+     */
     private void drawImage(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         ClassLoader cl = this.getClass().getClassLoader();

@@ -26,16 +26,27 @@ public class CliDrawer extends Drawer{
     public static final String CYAN_BACKGROUND = "\033[46m";
     public static final String WHITE_BACKGROUND = "\033[47m";
 
+    /**
+     * print action failed if an action fail
+     */
     @Override
     public void drawFailedAction() {
         System.out.println("\u001B[31m"+"["+ProxyModel.instance().getTurn().getCurrentPlayer().getName()+"'s action failed]"+"\u001B[0m");
     }
 
+    /**
+     *print all the gods available and chosen by the party owner
+     * @param godList
+     */
     public void drawPartyOwnerGodChoices(List<String> godList) {
         System.out.println("divinità disponibili: ");
         godList.forEach(System.out::println);
     }
 
+    /**
+     *print the text of the prompts to make the player choose
+     * @param promptText
+     */
     public void promptChoice(String promptText) {
         System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m"+", "+promptText);
     }
@@ -70,9 +81,9 @@ public class CliDrawer extends Drawer{
      *
      * This function converts the values ​​of the virtual matrix map to those to be displayed in the prompt.
      * 1.Create the edges of the map and draw each cell of the map according to a structure consisting of 9 spaces
-     * 2.According to the level changes color of cells: ground==,mid==,top==,dome==,
-     * 3.If the worker is selectable then it will be surrounded by the "" symbol
-     * 4.If the cells are selectable then the cell will be surrounded by the "" symbol
+     * 2.According to the level changes color of cells
+     * 3.If the worker is selectable then it will be surrounded by the "##" symbol
+     * 4.If the cells are selectable then the cell will be surrounded by the "§§" symbol
      * 5.According to the player, the corresponding workers have different colors to distinguish them
      */
     public void drawMap(){

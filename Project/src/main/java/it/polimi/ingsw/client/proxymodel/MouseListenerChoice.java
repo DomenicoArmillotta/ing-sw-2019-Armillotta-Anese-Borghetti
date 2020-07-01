@@ -14,7 +14,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * used to click on the choice that is offered when playing whether or not you want to use the power of the god you are using.
+ * The selection is located at the bottom and has two yes or no choices of green and red color respectively
+ */
 public class MouseListenerChoice implements MouseListener {
 
     @Override

@@ -11,7 +11,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.PrintWriter;
 
-
+/**
+ * it is used to play in the game, ie select the cells where you want to move, build and which worker to select.
+ * it is also used to select cells where you want to place workers at the start of the game
+ */
 public class MouseListenerGame implements MouseListener {
     PrintWriter printWriter;
     int prevCellClickX;

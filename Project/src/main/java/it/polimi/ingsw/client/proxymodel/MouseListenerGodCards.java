@@ -13,7 +13,10 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * 1.serve to let the partyOwner select the gods that all players can use in the game
+ * 2.Each player selects the god he wants to use in the game
+ */
 public class MouseListenerGodCards implements MouseListener {
     List<String> selectableGods = new ArrayList<>();
 

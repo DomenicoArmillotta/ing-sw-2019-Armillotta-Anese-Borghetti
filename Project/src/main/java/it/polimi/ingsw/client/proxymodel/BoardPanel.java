@@ -46,6 +46,8 @@ public class BoardPanel extends JPanel {
                     break;
             case 6: writeText6(g);
                     break;
+            case 7: writeText7(g);
+                    break;
             case 0: ;
                     break;
         }
@@ -259,8 +261,18 @@ public class BoardPanel extends JPanel {
         Font font = new Font("Serif", Font.PLAIN, 24);
         g2d.setColor(new Color(20, 20, 20));
         g2d.setFont(font);
-        g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should place his Workers.", 15, 640);
+        g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " won the game!", 15, 640);
     }
+
+    private void writeText7(Graphics g) {
+        ProxyModel proxyModel = ProxyModel.instance();
+        Graphics2D g2d = (Graphics2D) g;
+        Font font = new Font("Serif", Font.PLAIN, 24);
+        g2d.setColor(new Color(20, 20, 20));
+        g2d.setFont(font);
+        g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " lost the game...", 15, 640);
+    }
+
 
     private void writeText0(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();

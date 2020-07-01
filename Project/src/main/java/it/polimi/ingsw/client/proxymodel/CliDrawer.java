@@ -350,7 +350,7 @@ public class CliDrawer extends Drawer{
 
 
     public void drawCommandFailure(String whatFailed) {
-        System.out.println(whatFailed);
+        System.out.println("\u001B[31m"+whatFailed+"\u001B[0m");
 
     }
 }

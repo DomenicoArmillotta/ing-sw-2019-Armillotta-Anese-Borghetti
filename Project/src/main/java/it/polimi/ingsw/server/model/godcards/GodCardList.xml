@@ -79,7 +79,7 @@
             <Build/>
         </PowerList>
     </Godcard>
-    <Godcard name ="Hepaestus">
+    <Godcard name ="Hephaestus">
         <descrizione>God of blacksmiths</descrizione>
         <BooleanRequest>AskSameActionTwice</BooleanRequest><!--qui la nuova strategy-->
         <PowerList>

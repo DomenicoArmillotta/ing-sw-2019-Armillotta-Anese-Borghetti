@@ -119,7 +119,22 @@ public class GuiDrawer extends Drawer {
         myFrame.setVisible(true);}
 
 
-    public void drawLooseGame(){};
+    public void drawLooseGame(){
+        Display display = Display.instance();
+        JFrame myFrame = display.getFrame();
+        Container c = myFrame.getContentPane();
+        BoardPanel mapPanel = new BoardPanel();
+        mapPanel.setGraphicsFlag(7);
+        //System.out.println("GRAPHICS_FLAG 7");
+        //mapPanel.addMouseListener(display.getMouseListenerGame());
+        c.add(mapPanel);
+        myFrame.setVisible(true);
+    };
+
+    public void drawCommandFailure(String whatFailed) {
+        System.out.println("\u001B[31m"+whatFailed+"\u001B[0m");
+
+    }
 
     @Override
     public void drawPartyOwnerGodChoices(List<String> godList) {

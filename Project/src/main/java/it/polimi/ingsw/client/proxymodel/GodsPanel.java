@@ -18,12 +18,12 @@ public class GodsPanel extends JPanel {
         ProxyModel proxyModel = ProxyModel.instance();
         ClassLoader cl = this.getClass().getClassLoader();
         Graphics2D g2d = (Graphics2D) g;
-        InputStream urlArray[] = new InputStream[10];
+        InputStream urlArray[] = new InputStream[9];
         for(int i = 0; i < 9; i++) {
             urlArray[i] = cl.getResourceAsStream("godpics/"+i+".png");
         }
 
-        BufferedImage imgArray[] = new BufferedImage[10];
+        BufferedImage imgArray[] = new BufferedImage[9];
 
         try {
             for(int i = 0; i < 9; i++) {

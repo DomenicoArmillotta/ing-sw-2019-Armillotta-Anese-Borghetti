@@ -1,11 +1,8 @@
 package it.polimi.ingsw.servertests.modeltests.powertreetests;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import it.polimi.ingsw.server.model.*;
-import it.polimi.ingsw.server.model.godcards.God;
 import it.polimi.ingsw.server.model.godcards.GodCard;
 import it.polimi.ingsw.server.model.godcards.GodCardsDeck;
 import org.junit.Test;
@@ -15,7 +12,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-//fail
 public class ArtemisTest {
     @Test
     public void artemisTest() throws ParserConfigurationException, SAXException, IOException {

@@ -24,6 +24,7 @@ public class LoginEventTest {
     }
     @Test
     public void takenUserNameTest(){
+        VvLobby.instance().getPlayers().clear();
         Controller dummyController = new Controller();
         EventsBuffer dummyEventBuffer = EventsBuffer.instance();
         VvLobby vvLobby = VvLobby.instance();

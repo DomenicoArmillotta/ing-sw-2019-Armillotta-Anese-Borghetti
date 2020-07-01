@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server.model.godcards;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.CorrectPromptAnswer;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
@@ -18,5 +19,7 @@ public class AskBuildDome implements BooleanRequestAction{
             controller.control();
         }else
             EventsBuffer.instance().setLastEventBean(new NoUpdatesEventBean());
+
+        EventsBuffer.instance().setLastEventBean(new CorrectPromptAnswer(booleanChoice));
     }
 }

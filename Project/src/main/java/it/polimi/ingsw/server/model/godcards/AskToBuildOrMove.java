@@ -4,6 +4,7 @@ import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.CorrectPromptAnswer;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.WaitingForActionEventBean;
 import it.polimi.ingsw.server.model.powertree.FindAvailableCellsMoveButDontMoveUp;
@@ -27,5 +28,7 @@ public class AskToBuildOrMove implements BooleanRequestAction{
             //WaitingForActionListener.instance().waitForAction(new WaitingForActionEvent(ActionExecutor.instance().getNextMove().getAvailableCells(index)));
             ActionExecutor.instance().getCurrentPlayer().getPlayerGod().addMoveLimitations(new FindAvailableCellsMoveButDontMoveUp());
         }
+
+        EventsBuffer.instance().setLastEventBean(new CorrectPromptAnswer(booleanChoice));
     }
 }

@@ -3,7 +3,7 @@ package it.polimi.ingsw.server.virtualview.serverevents;
 
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.CorrectLoginPartyOwnerEvent;
-import it.polimi.ingsw.server.model.mvevents.eventbeans.GenericLoginFailureEvent;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.TakenNickNameEvent;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 import it.polimi.ingsw.server.virtualview.network.VvLobby;
@@ -26,6 +26,6 @@ public class LoginEvent extends ServerEvent {
         if(controllerReturn == 0)
             eventsBuffer.setLastEventBean(new TakenNickNameEvent(payload));
         else
-            eventsBuffer.setLastEventBean(new GenericLoginFailureEvent());
+            eventsBuffer.setLastEventBean(new NoUpdatesEventBean());
     }
 }

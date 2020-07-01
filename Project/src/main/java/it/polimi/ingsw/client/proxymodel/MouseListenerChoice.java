@@ -19,34 +19,41 @@ public class MouseListenerChoice implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("Clicked with MouseListenerChoice");
+        //System.out.println("WOW! Clicked with MouseListenerChoice");
         int x = e.getX();
         int y = e.getY();
         PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();
         XmlMapper xmlMapper = (new XmlMapper());
         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-        String toSend = null;
-        if(x < 300) {
-            System.out.println("yes");
+        if((Display.instance().getGraphicsFlag() == 5)&&(!Display.instance().getPromptText().equals("")) && x < 300 && y > 500) {
+            //System.out.println("\u001B[32m"+"CLICKED ON BUTTON YES"+x+" "+y+"\u001B[0m");
+            //Display.instance().setPrompt("");
+            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+            String toSend = null;
             try {
                 toSend = xmlMapper.writeValueAsString(new BooleanEvent(true));
             } catch (JsonProcessingException jsonProcessingException) {
                 jsonProcessingException.printStackTrace();
             }
-        }
-        else {
-            System.out.println("no");
+            toSend += "\n";
+            printWriter.print(toSend);
+            printWriter.flush();
+            //System.out.println("yes");
+        } else if((Display.instance().getGraphicsFlag() == 5)&&(!Display.instance().getPromptText().equals("")) && y > 500) { // (Display.instance().getGraphicsFlag() == 5)&&(!Display.instance().getPromptText().equals(""))
+            //System.out.println("\u001B[32m"+"CLICKED ON BUTTON NO"+x+" "+y+"\u001B[0m");
+            //Display.instance().setPrompt("");
+            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+            String toSend = null;
             try {
                 toSend = xmlMapper.writeValueAsString(new BooleanEvent(false));
             } catch (JsonProcessingException jsonProcessingException) {
                 jsonProcessingException.printStackTrace();
             }
+            toSend += "\n";
+            printWriter.print(toSend);
+            printWriter.flush();
+            //System.out.println("no");
         }
-        toSend += "\n";
-        printWriter.print(toSend);
-        printWriter.flush();
-
-
     }
 
     @Override

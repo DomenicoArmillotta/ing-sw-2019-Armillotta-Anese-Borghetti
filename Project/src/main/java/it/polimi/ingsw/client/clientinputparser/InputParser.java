@@ -35,6 +35,9 @@ public class InputParser {
         if(document.getDocumentElement().getTagName().equals("NoUpdatesEventBean")){
             return new NoUpdatesViewEvent();
         }
+        if(document.getDocumentElement().getTagName().equals("CorrectPromptAnswer")){
+            return new CorrectPromptAnswerView();
+        }
         if(document.getDocumentElement().getTagName().equals("PlayerLostEventBean")){
             String loserName = document.getElementsByTagName("loserName").item(0).getTextContent();
             return new PlayerLostViewEvent(loserName);

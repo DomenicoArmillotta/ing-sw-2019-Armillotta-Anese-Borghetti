@@ -29,8 +29,8 @@ public class GuiDrawer extends Drawer {
         Container c = myFrame.getContentPane();
         BoardPanel mapPanel = new BoardPanel();
         mapPanel.setGraphicsFlag(1);
-        System.out.println("GRAPHICS_FLAG 1");
-        mapPanel.addMouseListener(display.getMouseListenerGame());
+        //System.out.println("GRAPHICS_FLAG 1");
+        //mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);
     }
@@ -42,8 +42,8 @@ public class GuiDrawer extends Drawer {
         Container c = myFrame.getContentPane();
         BoardPanel mapPanel = new BoardPanel();
         mapPanel.setGraphicsFlag(2);
-        System.out.println("GRAPHICS_FLAG 2");
-        mapPanel.addMouseListener(display.getMouseListenerGame());
+        //System.out.println("GRAPHICS_FLAG 2");
+        //mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);
     }
@@ -55,8 +55,8 @@ public class GuiDrawer extends Drawer {
         Container c = myFrame.getContentPane();
         BoardPanel mapPanel = new BoardPanel();
         mapPanel.setGraphicsFlag(3);
-        System.out.println("GRAPHICS_FLAG 3");
-        mapPanel.addMouseListener(display.getMouseListenerGame());
+        //System.out.println("GRAPHICS_FLAG 3");
+        //mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);
     }
@@ -68,7 +68,7 @@ public class GuiDrawer extends Drawer {
         Container c = myFrame.getContentPane();
         BoardPanel mapPanel = new BoardPanel();
         mapPanel.setGraphicsFlag(4);
-        System.out.println("GRAPHICS_FLAG 4");
+        //System.out.println("GRAPHICS_FLAG 4");
         mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);};
@@ -77,12 +77,14 @@ public class GuiDrawer extends Drawer {
 
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
+        myFrame.revalidate();
         Container c = myFrame.getContentPane();
+        c.removeAll();
         BoardPanel mapPanel = new BoardPanel();
         mapPanel.setPrompt(promptText);
         mapPanel.setGraphicsFlag(5);
-        System.out.println("GRAPHICS_FLAG 5");
-        mapPanel.addMouseListener(display.getMouseListenerGame());
+        //System.out.println("GRAPHICS_FLAG 5");
+        mapPanel.addMouseListener(display.getMouseListenerChoice());
         c.add(mapPanel);
         myFrame.setVisible(true);};
 
@@ -96,11 +98,11 @@ public class GuiDrawer extends Drawer {
         c.removeAll();
         BoardPanel mapPanel = new BoardPanel();
         //mapPanel.setGraphicsFlag(0);
-        System.out.println("DRAW_MAP");
+        //System.out.println("DRAW_MAP");
         mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);
-        System.out.println("map drawn");
+        //System.out.println("map drawn");
     }
 
     public void drawSelectWorker(Coords selectCell){};
@@ -111,13 +113,18 @@ public class GuiDrawer extends Drawer {
         Container c = myFrame.getContentPane();
         BoardPanel mapPanel = new BoardPanel();
         mapPanel.setGraphicsFlag(6);
-        System.out.println("GRAPHICS_FLAG 6");
-        mapPanel.addMouseListener(display.getMouseListenerGame());
+        //System.out.println("GRAPHICS_FLAG 6");
+        //mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);}
 
 
     public void drawLooseGame(){};
+
+    @Override
+    public void drawPartyOwnerGodChoices(List<String> godList) {
+        Display.instance().getMouseListenerGodCards().setSelectableGods(godList);
+    }
 
     public void title(){
 
@@ -129,7 +136,7 @@ public class GuiDrawer extends Drawer {
         c.removeAll();
         GodsPanel godsPanel = new GodsPanel();
         //mapPanel.setGraphicsFlag(0);
-        godsPanel.addMouseListener(new MouseListenerGodCards());
+        godsPanel.addMouseListener(display.getMouseListenerGodCards());
         c.add(godsPanel);
         myFrame.setVisible(true);
 
@@ -173,7 +180,7 @@ public class GuiDrawer extends Drawer {
 
     public void login() {
 
-        System.out.println("In login");
+        //System.out.println("In login");
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
         Container c = myFrame.getContentPane();

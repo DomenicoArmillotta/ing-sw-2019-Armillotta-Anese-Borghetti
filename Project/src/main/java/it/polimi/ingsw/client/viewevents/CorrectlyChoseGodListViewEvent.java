@@ -19,5 +19,6 @@ public class CorrectlyChoseGodListViewEvent extends ViewEvent{
     public void viewEventMethod() {
         ProxyModel.instance().setPhase(1);
         ProxyModel.instance().getDrawerStrategy().drawPartyOwnerGodChoices(Arrays.asList(god1,god2,god3));
+        ProxyModel.instance().getDrawerStrategy().title();
     }
 }

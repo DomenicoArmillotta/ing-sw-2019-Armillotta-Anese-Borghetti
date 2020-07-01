@@ -1,6 +1,8 @@
 package it.polimi.ingsw.server.model;
 
 import it.polimi.ingsw.server.model.godcards.GodCard;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.CommandFailureEventBean;
+import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
 public class Player {
     private String playerName;
@@ -73,6 +75,7 @@ public class Player {
         } else {
             System.out.println("Cannot place " + this.playerName + "'s first Worker on cell " + x + " " + y);
             System.out.println("Cell " + x + " " + y + " is already occupied by " + map[x][y].getWorkerOnCell());
+            EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean("cant place a worker here"));
         }
         firstWorker.setOwner(this);
     }

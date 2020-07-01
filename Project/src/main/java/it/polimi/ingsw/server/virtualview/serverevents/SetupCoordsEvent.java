@@ -59,7 +59,7 @@ public class SetupCoordsEvent extends CoordsEvent {
 
     public boolean areCellsOccupied() {
         ActionExecutor actionExecutor = ActionExecutor.instance();
-        if (actionExecutor.getMap()[firstWorkerX][firstWorkerY].getWorkerOnCell() == null || actionExecutor.getMap()[secondWorkerX][secondWorkerY] == null)
+        if (actionExecutor.getMap()[firstWorkerX][firstWorkerY].getWorkerOnCell() == null && actionExecutor.getMap()[secondWorkerX][secondWorkerY].getWorkerOnCell() == null)
             return false;
         else
             return true;

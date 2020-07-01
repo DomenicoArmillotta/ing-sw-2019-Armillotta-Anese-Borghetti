@@ -9,3 +9,6 @@ target/
 
 # Ignore all .idea files
 *.idea
+
+#ingore out
+out

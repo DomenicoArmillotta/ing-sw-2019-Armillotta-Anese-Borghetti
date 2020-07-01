@@ -2,8 +2,6 @@ package it.polimi.ingsw.client.proxymodel;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
-import it.polimi.ingsw.client.BooleanEvent;
-import it.polimi.ingsw.client.ClientSocketManager;
 import it.polimi.ingsw.client.GameCoordsEvent;
 import it.polimi.ingsw.client.SetupCoordsEvent;
 
@@ -25,6 +23,12 @@ public class MouseListenerGame implements MouseListener {
         this.prevCellClickX = -1;
         this.prevCellClickY = -1;
     }
+
+    /**
+     * if the game is in the right phase,based on the click the workers of the player are positioned if you are in the setup phase,
+     * after which it is used to select the worker on which to carry out the operations and select the cells on which to build, select, move
+     * @param e
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         int x = e.getX();

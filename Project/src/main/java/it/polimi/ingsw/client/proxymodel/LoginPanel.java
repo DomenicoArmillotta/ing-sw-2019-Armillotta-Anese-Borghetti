@@ -2,7 +2,6 @@ package it.polimi.ingsw.client.proxymodel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;

@@ -3,25 +3,24 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import it.polimi.ingsw.client.LoginEvent;
-import it.polimi.ingsw.client.SetupCoordsEvent;
 import it.polimi.ingsw.client.StartUpEvent;
-import it.polimi.ingsw.client.proxymodel.ClientCell;
-import org.w3c.dom.Text;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.ImageObserver;
 import java.io.PrintWriter;
-import java.text.AttributedCharacterIterator;
 import java.util.List;
 
+/**
+ *this function sets the flags in order to understand in drawing mode what to draw when certain events are triggered
+ *it also sends the data, i.e. the name and number of players when the preset buttons are pressed
+ */
 public class GuiDrawer extends Drawer {
     String name;
 
+    /**
+     *it is used to display the text indicating the information for selection in the panel
+     */
     public synchronized void promptSelectionText() {
 
         Display display = Display.instance();
@@ -34,7 +33,9 @@ public class GuiDrawer extends Drawer {
         c.add(mapPanel);
         myFrame.setVisible(true);
     }
-
+    /**
+     *it is used to display the text indicating the information for movement in the panel
+     */
     public synchronized void promptMovementText() {
 
         Display display = Display.instance();
@@ -47,7 +48,9 @@ public class GuiDrawer extends Drawer {
         c.add(mapPanel);
         myFrame.setVisible(true);
     }
-
+    /**
+     *it is used to display the text indicating the information for build in the panel
+     */
     public synchronized void promptBuildText() {
 
         Display display = Display.instance();
@@ -60,7 +63,9 @@ public class GuiDrawer extends Drawer {
         c.add(mapPanel);
         myFrame.setVisible(true);
     }
-
+    /**
+     *it is used to display the text indicating the information to place worker in the panel
+     */
     public void promptPlaceWorkersTest() {
 
         Display display = Display.instance();
@@ -72,7 +77,9 @@ public class GuiDrawer extends Drawer {
         mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);};
-
+    /**
+     *it is used to display the text indicating the info to make a choice in the panel
+     */
     public void promptChoice(String promptText) {
 
         Display display = Display.instance();
@@ -88,7 +95,9 @@ public class GuiDrawer extends Drawer {
         c.add(mapPanel);
         myFrame.setVisible(true);};
 
-
+    /**
+     *it is used to draw the map on which the game is developed
+     */
     public synchronized void drawMap(){
 
         Display display = Display.instance();
@@ -107,6 +116,9 @@ public class GuiDrawer extends Drawer {
 
     public void drawSelectWorker(Coords selectCell){};
 
+    /**
+     * it is used to display the text indicating the win in the panel
+     */
     public void drawWinGame(){
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
@@ -117,8 +129,9 @@ public class GuiDrawer extends Drawer {
         //mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
         myFrame.setVisible(true);}
-
-
+    /**
+     * it is used to display the text indicating the loose in the panel
+     */
     public void drawLooseGame(){
         Display display = Display.instance();
         JFrame myFrame = display.getFrame();
@@ -130,17 +143,27 @@ public class GuiDrawer extends Drawer {
         c.add(mapPanel);
         myFrame.setVisible(true);
     };
-
+    /**
+     * it is used to display the text indicating the command failure in the panel
+     */
     public void drawCommandFailure(String whatFailed) {
         System.out.println("\u001B[31m"+whatFailed+"\u001B[0m");
 
     }
 
+    /**
+     * it is used to display the text indicating the gods chosen by the party owner in the panel
+     * @param godList gods chosen by party owner
+     */
     @Override
     public void drawPartyOwnerGodChoices(List<String> godList) {
         Display.instance().getMouseListenerGodCards().setSelectableGods(godList);
     }
 
+    /**
+     * create a display instance and create the jpanel with the mouselistener
+     * where the choice of the gods will take place
+     */
     public void title(){
 
 
@@ -193,6 +216,15 @@ public class GuiDrawer extends Drawer {
         this.name = name;
     }
 
+    /**
+     *
+     * create a display instance and create the jpanel with the mouselistener,
+     * where the buttons are positioned to select how many players you are in the game,
+     * with the login button and a textbox where you can enter your username
+     *
+     *once you click on the login button, or if you are the party owner,
+     *the players button you perform an action that sends the data respectively
+     */
     public void login() {
 
         //System.out.println("In login");

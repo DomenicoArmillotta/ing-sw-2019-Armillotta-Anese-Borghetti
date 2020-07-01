@@ -1,5 +1,8 @@
 package it.polimi.ingsw.client.proxymodel;
 
+/**
+ * used to store name and description to be shown to the player
+ */
 public class GodCards {
     private String name;
     private String description;

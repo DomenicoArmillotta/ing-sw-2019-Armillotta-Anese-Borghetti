@@ -1,5 +1,8 @@
 package it.polimi.ingsw.client.proxymodel;
 
+/**
+ * manages turn, memorizing the prev, post and current player
+ */
 public class Turn {
     private Player currentPlayer;
     private Player nextPlayer;

@@ -24,6 +24,10 @@ public class MouseListenerGodCards implements MouseListener {
         this.selectableGods = selectableGods;
     }
 
+    /**
+     * it associates to each card a coordinate based on the position in the drawing of the gui
+     * @return the position of the cards selected by the party owner
+     */
     public List<Coords> getSelectableGods() {
         List<Coords> cardCoords = new ArrayList<>();
         for (int i = 0; i < selectableGods.size(); i++) {
@@ -61,6 +65,14 @@ public class MouseListenerGodCards implements MouseListener {
         return cardCoords;
     }
 
+    /**
+     *
+     * if the game is in the right phase, that is to select the gods, then the party owner can select the gods that can be used in the game,
+     * after  he and the other players can select their god to associate with their workers.
+     * Based on the position of the mouse click you understand that god has been selected
+     * once selected the gods send everything to the server
+     * @param e
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
 

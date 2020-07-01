@@ -1,5 +1,11 @@
 package it.polimi.ingsw.client.proxymodel;
 
+/**
+ *
+ * it contains all the worker information including the position, the owner and if it is selected,
+ * useful information for the cli,
+ *  which colors differently according to the owner and does operations based on the position
+ */
 public class WorkerClient {
     private String color;
     private Coords position;

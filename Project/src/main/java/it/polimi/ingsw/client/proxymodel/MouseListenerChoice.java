@@ -5,21 +5,21 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
 import it.polimi.ingsw.client.BooleanEvent;
 import it.polimi.ingsw.client.ClientSocketManager;
-import it.polimi.ingsw.client.GodChoiceEvent;
-import it.polimi.ingsw.client.GodListEvent;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * used to click on the choice that is offered when playing whether or not you want to use the power of the god you are using.
  * The selection is located at the bottom and has two yes or no choices of green and red color respectively
  */
 public class MouseListenerChoice implements MouseListener {
-
+    /**
+     *
+     if you are in the right phase, you choose whether to use the power of god if the click takes place in the position
+     *where the word yes or no is positioned
+     * @param e
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
         //System.out.println("WOW! Clicked with MouseListenerChoice");

@@ -45,18 +45,24 @@ public class FindAvailableCells extends Power {
             super.getExecutorPointer().nextTurn();
             super.getExecutorPointer().setPrevPlayer(tempPlayer);
             super.getExecutorPointer().setNextPlayer(tempPlayer);
-
+            /*
+            vediamo se cossì funzia
+             */
+            //uno dei due dovrebbe andare, ora bisogna capire quale;
             getExecutorPointer().setPowerPtr(getExecutorPointer().getCurrentPlayer().getPlayerGod().getPowerList().get(0));
-
+            //getExecutorPointer().setPowerPtr(null);
             super.getExecutorPointer().getMap()[toDeletePlayer.getFirstWorker().getCurrentPosition().getX()][toDeletePlayer.getFirstWorker().getCurrentPosition().getY()].setWorkerOnCell(null);
             toDeletePlayer.getFirstWorker().removeWorker();
             super.getExecutorPointer().getMap()[toDeletePlayer.getSecondWorker().getPreviousPosition().getX()][toDeletePlayer.getSecondWorker().getPreviousPosition().getY()].setWorkerOnCell(null);
             toDeletePlayer.getSecondWorker().removeWorker();
             toDeletePlayer.deleteWorkers();
+            /*
+            creare una funzione che refrasha la mappa dopo che uno perde
+             */
             getPlayerLostListener().loseGame(new PlayerLostEvent(toDeletePlayer));
+
         } else {
             getPlayerWonListener().winGame(new PlayerWonEvent(getExecutorPointer().getCurrentPlayer()));
-            //System.out.println("hai vinto " + super.getExecutorPointer().getNextPlayer().getName());//*refactor
         }
     }
 

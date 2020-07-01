@@ -40,13 +40,14 @@ public class ArtemisTest {
         player2.workersSetup(4, 4, 4, 3);
         player3.workersSetup(3, 4, 4, 1);
         int[] userInput = new int[10];
+
         actionExecutor.getMap()[1][2].setBuildingLevel(Level.GROUND);
 
         //FindAvailableCellsSelectOptions
         assertEquals(actionExecutor.getNextPower().doAction(null), 0);
         //select
         userInput[0] =0;
-        userInput[1] = 0;
+        userInput[1] =0;
         assertEquals(actionExecutor.getNextPower().doAction(userInput), 0);
         //move
         userInput[0] = 0;

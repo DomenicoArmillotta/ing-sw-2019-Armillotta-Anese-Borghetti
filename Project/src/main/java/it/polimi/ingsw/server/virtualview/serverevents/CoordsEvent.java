@@ -12,6 +12,5 @@ public class CoordsEvent extends ServerEvent {
 
     public CoordsEvent() {
     }
-
     public void serverEventMethod(Controller controller) {}
 }

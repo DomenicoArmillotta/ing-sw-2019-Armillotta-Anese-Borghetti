@@ -113,7 +113,6 @@ public class InputParser {
             return new GodChosenViewEvent(chosenGod, player);
         }
         if(document.getDocumentElement().getTagName().equals("EveryGodChosenEventBean")){
-
             return new TrueGameStartEvent();
         }
         if(document.getDocumentElement().getTagName().equals("SetupWorkerDoneEventBean")){
@@ -144,6 +143,10 @@ public class InputParser {
             return new CorrectlyChoseGodListViewEvent(document.getElementsByTagName("god1").item(0).getTextContent(),document.getElementsByTagName("god2").item(0).getTextContent(),document.getElementsByTagName("god3").item(0).getTextContent());
         if(document.getDocumentElement().getTagName().equals("ConnectionInterruptEventBean"))
             return new ConnectionInterruptViewEvent(document.getElementsByTagName("faultyClient").item(0).getTextContent());
+        if(document.getDocumentElement().getTagName().equals("CommandFailureEventBean")){
+            String whatFailed = document.getElementsByTagName("whatFailed").item(0).getTextContent();
+            return new CommandFailureViewEvent(whatFailed);
+        }
         return null;
     }
 

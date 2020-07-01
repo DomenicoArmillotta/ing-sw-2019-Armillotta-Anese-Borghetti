@@ -27,8 +27,7 @@ public class SetupStartViewEvent extends ViewEvent {
                 player3 = proxyModel.getPlayers().get(i);
             }
         }
-        /* Player player1 = new Player(firstPlayer);
-        Player player2 = new Player(secondPlayer); */
+
         if(secondPlayer.equals(thirdPlayer)) {
             proxyModel.getTurn().setCurrentPlayer(player1);
             proxyModel.getTurn().setNextPlayer(player2);

@@ -234,7 +234,7 @@ public class GuiDrawer extends Drawer {
                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                 String toSend = null;
                 try {
-                    toSend = xmlMapper.writeValueAsString(new StartUpEvent(ProxyModel.instance().getThisClientNickname()));
+                    toSend = xmlMapper.writeValueAsString(new StartUpEvent(ProxyModel.instance().getThisClientNickname(),"2"));
                 } catch (JsonProcessingException jsonProcessingException) {
                     jsonProcessingException.printStackTrace();
                 }
@@ -257,7 +257,7 @@ public class GuiDrawer extends Drawer {
                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                 String toSend = null;
                 try {
-                    toSend = xmlMapper.writeValueAsString(new StartUpEvent(ProxyModel.instance().getThisClientNickname()));
+                    toSend = xmlMapper.writeValueAsString(new StartUpEvent(ProxyModel.instance().getThisClientNickname(),"3"));
                 } catch (JsonProcessingException jsonProcessingException) {
                     jsonProcessingException.printStackTrace();
                 }

@@ -19,14 +19,14 @@ public class GodsPanel extends JPanel {
         ClassLoader cl = this.getClass().getClassLoader();
         Graphics2D g2d = (Graphics2D) g;
         InputStream urlArray[] = new InputStream[10];
-        for(int i = 0; i < 10; i++) {
+        for(int i = 0; i < 9; i++) {
             urlArray[i] = cl.getResourceAsStream("godpics/"+i+".png");
         }
 
         BufferedImage imgArray[] = new BufferedImage[10];
 
         try {
-            for(int i = 0; i < 10; i++) {
+            for(int i = 0; i < 9; i++) {
                 imgArray[i] = ImageIO.read(urlArray[i]);
             }
         } catch (IOException e) {

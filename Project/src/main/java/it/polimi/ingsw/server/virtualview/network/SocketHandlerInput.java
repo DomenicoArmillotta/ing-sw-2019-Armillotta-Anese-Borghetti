@@ -68,7 +68,7 @@ public class SocketHandlerInput implements Runnable {
              */
 
         } catch (IOException | ParserConfigurationException t) {
-            System.out.println("non ti preoccupare mon fre, è solo il gioco bizzarro");
+            System.out.println("exceptional disconnection");
             System.err.println(t.getMessage());
         } finally {
             if(!EventsBuffer.instance().getEndGame()) {
@@ -105,10 +105,6 @@ public class SocketHandlerInput implements Runnable {
             return new it.polimi.ingsw.server.virtualview.serverevents.SetupCoordsEvent(x,y,z,w);
         }
 
-        if(doc.getDocumentElement().getTagName().equals("StringEvent")){
-            String payload = doc.getElementsByTagName("payload").item(0).getTextContent();
-            return new StringEvent(payload);
-        }
 
         if(doc.getDocumentElement().getTagName().equals("LoginEvent")){
             String payload = doc.getElementsByTagName("payload").item(0).getTextContent();
@@ -116,7 +112,8 @@ public class SocketHandlerInput implements Runnable {
         }
         if(doc.getDocumentElement().getTagName().equals("StartUpEvent")){
             String playerComm = doc.getElementsByTagName("playerComm").item(0).getTextContent();
-            return new StartUpEvent(playerComm);
+            String numberOfPlayers = doc.getElementsByTagName("numberOfPlayers").item(0).getTextContent();
+            return new StartUpEvent(playerComm,numberOfPlayers);
         }
         if(doc.getDocumentElement().getTagName().equals("GodChoiceEvent")){
             String chosenGod = doc.getElementsByTagName("chosenGod").item(0).getTextContent();

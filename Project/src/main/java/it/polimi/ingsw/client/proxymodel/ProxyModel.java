@@ -180,4 +180,12 @@ public class ProxyModel {
         this.printWriter.print(toSend);
         this.printWriter.flush();
     }*/
+    /*public void deleteWorkersFromMap(String loser){
+        for (Player player:players){
+            if(player.getName().equals(loser)){
+                player.setWorker1(null);
+                player.setWorker2(null);
+            }
+        }
+    }*/
 }

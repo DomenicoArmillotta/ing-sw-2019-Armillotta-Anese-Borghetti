@@ -3,6 +3,7 @@ package it.polimi.ingsw.server.model.powertree;
 import it.polimi.ingsw.server.model.Cell;
 import it.polimi.ingsw.server.model.Worker;
 import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
+import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.FailedActionEventBean;
 
@@ -22,7 +23,7 @@ public class FindAvailableCellsDontMoveBack extends FindAvailableCellsMove {
         tempCells.remove(toRemoveCell);
 
         if(tempCells.isEmpty()){
-            getFailedActionListener().actionFailed(new FailedActionEvent(this));
+            getNoUpdatesListener().noUpdates(new NoUpdatesEvent());
             return 1;
         }
 

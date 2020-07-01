@@ -157,7 +157,7 @@ public class ClientHandlerOutput implements Runnable {
             }
             if (userInput.get(0).equals("start") && proxyModel.getThisClientNickname().equals(proxyModel.getPartyOwner()) && proxyModel.getPlayers().size() > 1 && proxyModel.getPhase() == 0) {
                 if (proxyModel.getPlayers().size() == 2 || proxyModel.getPlayers().size() == 3)
-                    return new StartUpEvent(proxyModel.getThisClientNickname());
+                    return new StartUpEvent(proxyModel.getThisClientNickname(),userInput.get(1));
                 else
                     return null;
             }

@@ -4,6 +4,7 @@ import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.GameMaster;
 import it.polimi.ingsw.server.model.godcards.God;
 import it.polimi.ingsw.server.model.Player;
+import it.polimi.ingsw.server.model.godcards.GodCardsDeck;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class PrintPowersTest {
     @Test
     public void printPowerTest() {
         List<Player> playersQueue = new ArrayList<>();
+        GodCardsDeck godCardsDeck = new GodCardsDeck();
         Player player1 = new Player("Matteo");
         Player player2 = new Player("Domenico");
         Player player3 = new Player("Marco");
@@ -22,6 +24,7 @@ public class PrintPowersTest {
         playersQueue.add(player2);
         playersQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playersQueue, 3);
+        player1.setPlayerGod(godCardsDeck.createGodCard("demeter"));
         assertEquals(player1.getPlayerGod().getGodName(), "Demeter");
         assertEquals(player2.getPlayerGod().getGodName(), "Mortal");
 

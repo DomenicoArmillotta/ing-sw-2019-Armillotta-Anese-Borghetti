@@ -357,7 +357,7 @@ public Build getPrevBuild() {
         map[4][3].setBuildingLevel(Level.TOP);
         map[3][4].setBuildingLevel(Level.TOP);
         map[3][3].setBuildingLevel(Level.TOP);
-        */
+        //*/
         this.map = map;
     }
 

@@ -17,6 +17,7 @@ public abstract class Drawer {
     public void drawConnectionInterrupt(){}
     public void drawPartyOwnerGodChoices(List<String> godList){}
     public void drawFailedAction(){}
+    public void drawCommandFailure(String whatFailed){}
 
 
 }

@@ -87,19 +87,6 @@ public class SocketHandlerOutput implements Runnable {
         }
     }
 
-    public synchronized void quitOutputSocket() throws IOException {
-        synchronized (eventsBuffer) {
-            for (int i = 0; i < socketList.size() && eventsBuffer.getEndGame(); i++) {
-                printWriterList.get(i).close();
-                socketList.get(i).close();
-                System.out.println("socket status " + socketList.get(i).isClosed());
-            }
-
-            socketList.clear();
-
-        }
-    }
-
     public void resetSocketHandlerOutput(){
         socketList.clear();
         printWriterList.clear();

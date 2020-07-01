@@ -2,7 +2,8 @@ package it.polimi.ingsw.server.virtualview.serverevents;
 
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
-import it.polimi.ingsw.server.model.mvevents.eventbeans.FailedActionEventBean;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.CommandFailureEventBean;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.SetupWorkerDoneEventBean;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
@@ -30,17 +31,17 @@ public class SetupCoordsEvent extends CoordsEvent {
         if((this.firstWorkerX>=0 && this.firstWorkerX<5)&&(this.firstWorkerY>=0 && this.firstWorkerY<5)&&(this.secondWorkerY>=0 && this.secondWorkerY<5)&&(this.secondWorkerX>=0 && this.secondWorkerX<5) ){
 
             if(this.secondWorkerX!=this.firstWorkerX || this.secondWorkerY!=this.firstWorkerY) {
-                if(!correctSetUpCoordinatesCheck()){
-                    EventsBuffer.instance().setLastEventBean(new FailedActionEventBean());
+                if (!correctSetUpCoordinatesCheck()) {
+                    EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean("coordinates format non valid, reinsert with a valid format (numbers 0-9)"));
                     return;
                 }
 
-                if(!areCellsOccupied()) {
+                if (!areCellsOccupied()) {
                     ActionExecutor.instance().getCurrentPlayer().workersSetup(firstWorkerX, firstWorkerY, secondWorkerX, secondWorkerY);
                     EventsBuffer.instance().setLastEventBean(new SetupWorkerDoneEventBean(firstWorkerX, firstWorkerY, secondWorkerX, secondWorkerY, ActionExecutor.instance().getCurrentPlayer().getName()));
                     ActionExecutor.instance().nextTurn();
-                }else{
-                    EventsBuffer.instance().setLastEventBean(new FailedActionEventBean());
+                } else {
+                    EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean("these cells are occupied, reinsert new coordinates"));
                     return;
                 }
                 if (ActionExecutor.instance().getCurrentPlayer().getFirstWorker() != null &&
@@ -51,8 +52,9 @@ public class SetupCoordsEvent extends CoordsEvent {
                         ActionExecutor.instance().getPrevPlayer().getSecondWorker() != null) {
                     ActionExecutor.instance().getNextPower().doAction(null);
                 }
-            }else EventsBuffer.instance().setLastEventBean(new FailedActionEventBean());
-        }else EventsBuffer.instance().setLastEventBean(new FailedActionEventBean());
+            }else EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean("can't place workers on the same cells"));
+
+        }else EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean("can't place two worker on the same cells, insert new coordinates"));
     }
 
     public boolean areCellsOccupied() {
@@ -64,7 +66,7 @@ public class SetupCoordsEvent extends CoordsEvent {
     }
 
     public boolean correctSetUpCoordinatesCheck() {
-        if (caratteri.contains((firstWorkerY)) && caratteri.contains((int) firstWorkerY) && caratteri.contains(((int) secondWorkerY)) && caratteri.contains((int) secondWorkerX))
+        if (caratteri.contains((firstWorkerY)) && caratteri.contains( firstWorkerY) && caratteri.contains(( secondWorkerY)) && caratteri.contains( secondWorkerX))
             return true;
         return false;
     }

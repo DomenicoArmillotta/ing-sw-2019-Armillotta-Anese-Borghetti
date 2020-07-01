@@ -97,7 +97,7 @@ public class loseConditionCheck {
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
         GodCard godCard1 = godCardsDeck.createGodCard("Pan");
-        GodCard godCard2 = godCardsDeck.createGodCard("Artemis");
+        GodCard godCard2 = godCardsDeck.createGodCard("Hepaestus");
         GodCard godCard3 = godCardsDeck.createGodCard("Apollo");
         player1.setPlayerGod(godCard1);
         player2.setPlayerGod(godCard2);
@@ -119,9 +119,11 @@ public class loseConditionCheck {
         assertEquals(map[0][0].getWorkerOnCell(),null);
         assertEquals(map[4][4].getWorkerOnCell(),null);
         assertEquals(actionExecutor.getCurrentPlayer(),player2);
-        assertEquals(actionExecutor.getNextPlayer(), actionExecutor.getPrevPlayer());
 
-        actionExecutor.getNextPower().doAction(userInput);//selezione di player 2
+        userInput[0] = 0;
+        userInput[1] = 1;
+        assertEquals(actionExecutor.getNextPlayer(), actionExecutor.getPrevPlayer());
+        assertEquals(actionExecutor.getNextPower().doAction(userInput),0);
         userInput[0] = 0;
         userInput[1] = 1;
         assertEquals(actionExecutor.getNextPower().doAction(userInput),0);

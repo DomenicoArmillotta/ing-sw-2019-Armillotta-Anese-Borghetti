@@ -332,8 +332,7 @@ public class CliDrawer extends Drawer{
      */
     public void drawLooseGame(String loser){
         System.out.println("Ha perso "+loser);
-
-    };
+    }
 
     /**
      * print the instructions to login
@@ -347,5 +346,11 @@ public class CliDrawer extends Drawer{
 
     public void drawConnectionInterrupt() {
         System.out.println("questo client "+ ClientSocketManager.getInstance().getSocket() +" si è disconneso");
+    }
+
+
+    public void drawCommandFailure(String whatFailed) {
+        System.out.println(whatFailed);
+
     }
 }

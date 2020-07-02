@@ -2,15 +2,20 @@ package it.polimi.ingsw.server.model.powertree;
 import it.polimi.ingsw.server.model.Cell;
 import it.polimi.ingsw.server.model.Level;
 import it.polimi.ingsw.server.model.Worker;
-import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
-import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
-
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * it is used to create a list with the cells in which the selected worker can move
+ */
 public class FindAvailableCellsMove extends FindAvailableCells {
-
+    /**
+     * it is used to create a list with the cells in which the selected worker can move,
+     * all adjacent cells are checked and checking if there is another worker on the cell,
+     * if there is a dome, if the difference is greater than one
+     * @param userInput
+     * @return
+     */
     @Override
     public int doAction(int[] userInput) {
 

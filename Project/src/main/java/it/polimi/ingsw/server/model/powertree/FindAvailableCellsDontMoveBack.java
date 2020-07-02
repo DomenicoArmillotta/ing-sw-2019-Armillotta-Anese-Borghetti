@@ -1,15 +1,22 @@
 package it.polimi.ingsw.server.model.powertree;
-
 import it.polimi.ingsw.server.model.Cell;
 import it.polimi.ingsw.server.model.Worker;
-import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
-import it.polimi.ingsw.server.model.mvevents.eventbeans.FailedActionEventBean;
 
 import java.util.List;
 
+/**
+ * performs the same function as FindAvailableCellsMove,but delete the cell where it was previously,
+ * so it cannot go back to where it was before, used for the second move of artemis
+ */
 public class FindAvailableCellsDontMoveBack extends FindAvailableCellsMove {
+    /**
+     *  performs the same function as FindAvailableCellsMove,but delete the cell where it was previously,
+     *  if the list has no cells then there are no updates
+     * @param userInput
+     * @return
+     */
     @Override
     public int doAction(int[] userInput) {
         super.doAction(userInput);

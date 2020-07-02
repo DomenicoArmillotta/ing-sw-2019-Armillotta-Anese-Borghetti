@@ -5,6 +5,9 @@ import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WorkerSelectionEvent;
 
+/**
+ * manages the selection of workers in the selection phase
+ */
 public class Select extends LimitedPower {
 
     /* Select can use its superclass' method getAvailableCells() */
@@ -19,8 +22,17 @@ public class Select extends LimitedPower {
         this.selectedWorker = selectedWorker;
     }
 
+    /**
+     * if the coordinates are null send actionFailed to server
+     * if the coordinates coincide with the first worker select the first,
+     * if they coincide with the second worker then select the second
+     * in other cases none of the workers have been selected
+     * it also checks whether the selected worker can move
+     * @param userInput the integer coordinates of the Worker to be selected
+     * @return
+     */
     @Override
-    public int doAction(int[] userInput) { /* userInput contains the integer coordinates of the Worker to be selected */
+    public int doAction(int[] userInput) {
         System.out.println("In select");
         if (userInput == null) {
             pointerBack();

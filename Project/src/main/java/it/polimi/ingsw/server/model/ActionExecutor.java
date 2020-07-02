@@ -1,7 +1,10 @@
 package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.server.model.powertree.*;
-import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
+/**
+ * ActionExecutor is used to manage the current,next and prev player
+ * and to move between the powers pointer
+ */
 public class ActionExecutor {
     private Player currentPlayer;
     private Player nextPlayer;
@@ -16,6 +19,10 @@ public class ActionExecutor {
 
     private static ActionExecutor instance;
 
+    /**
+     * constructor of ActionExecutor
+     * @return the instance of ActionExecutor
+     */
     public static ActionExecutor instance() {
         if (instance == null) {
             instance = new ActionExecutor();
@@ -25,6 +32,9 @@ public class ActionExecutor {
         return instance;
     }
 
+    /**
+     * set the map null and the power pointer as null
+     */
     public void cleanActionExecutor() {
         this.powerPtr = null;
         this.map = null;
@@ -43,6 +53,10 @@ public class ActionExecutor {
         this.powerPtr = powerPtr;
     }
 
+    /**
+     * used to move to the next power
+     * @return
+     */
     public Power getNextPower() {
         if (powerPtr == finalState)
             return finalState;
@@ -66,6 +80,10 @@ public class ActionExecutor {
         }
     }
 
+    /**
+     * used for switch to next select
+     * @return the select pointer
+     */
     public Select getNextSelect() {
         if (this.powerPtr != null) {
             Select selectPtr = currentPlayer.getPlayerGod().getSelectList().get(0);
@@ -97,7 +115,10 @@ public class ActionExecutor {
             return null;
         }
     }
-
+    /**
+     * used for switch to previous select
+     * @return the select pointer
+     */
     public Select getPrevSelect() {
         if (this.powerPtr != null) {
             Select selectPtr = currentPlayer.getPlayerGod().getSelectList().get(0);
@@ -131,7 +152,10 @@ public class ActionExecutor {
             return null;
         }
     }
-
+    /**
+     * used for switch to next move
+     * @return the move pointer
+     */
     public Move getNextMove() {
         if (this.powerPtr != null) {
             Move movePtr = currentPlayer.getPlayerGod().getMoveList().get(0);
@@ -164,6 +188,10 @@ public class ActionExecutor {
         }
     }
 
+    /**
+     * used for switch to previous move
+     * @return the move pointer
+     */
     public Move getPrevMove() {
         if (this.powerPtr != null) {
             Move movePtr = currentPlayer.getPlayerGod().getMoveList().get(0);
@@ -229,7 +257,10 @@ public Move getPrevMove() {
         return null;
     }
 }*/
-
+    /**
+     * used for switch to next build
+     * @return the build pointer
+     */
     public Build getNextBuild() {
         if (this.powerPtr != null) {
             Build buildPtr = currentPlayer.getPlayerGod().getBuildList().get(0);
@@ -262,6 +293,10 @@ public Move getPrevMove() {
         }
     }
 
+    /**
+     * used for switch to previous build
+     * @return the build pointer
+     */
     public Build getPrevBuild() {
         if (this.powerPtr != null) {
             Build buildPtr = currentPlayer.getPlayerGod().getBuildList().get(0);
@@ -318,6 +353,9 @@ public Build getPrevBuild() {
         currentPlayer.getPlayerGod().getPowerList().add(nextPower);
     }
 
+    /**
+     * used to move to the next round of the game
+     */
     public void nextTurn() {
         this.powerPtr = null;
         Player tempPlayer = null;
@@ -345,6 +383,9 @@ public Build getPrevBuild() {
         return prevPlayer;
     }
 
+    /**
+     * create the map formed of cells
+     */
     public void createMap() {
         Cell[][] map = new Cell[5][5];
         for (int i = 0; i < 5; i++) {

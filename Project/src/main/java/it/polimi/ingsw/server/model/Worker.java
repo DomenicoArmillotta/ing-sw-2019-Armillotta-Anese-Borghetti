@@ -1,5 +1,8 @@
 package it.polimi.ingsw.server.model;
 
+/**
+ * used for manage the worker
+ */
 public class Worker {
     private Cell currentPosition;
     private Cell previousPosition;

@@ -11,9 +11,18 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * contains all the method necessary to create a godCard with all its powers.
+ * uses DOM Parser for reading and parsing the xml file (GodListEvent)
+ */
 
 public class GodCardParser {
+    /**
+     * add in the correct position of the GodCard the power contained in the String atomicPower
+     * @param atomicPower String that contains the power to create;
+     * @param selectedGodCard the requested godCard;
+     * @return a power or null if atomicPower is non containend in this list
+     */
     private Power returnCorrectAtomicPower(String atomicPower,GodCard selectedGodCard) {
 
 
@@ -103,11 +112,7 @@ public class GodCardParser {
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
         }
-        /* refactor */ /* if (atomicPower.equals("BuildThenStop")) {
-            Build tempBuild = new BuildThenStop();
-            selectedGodCard.getBuildList().add(tempBuild);
-            return tempBuild;
-        } */
+
         if (atomicPower.equals("BuildOnDifferentCell")) {
             Build tempBuild = new BuildOnDifferentCell();
             selectedGodCard.getBuildList().add(tempBuild);
@@ -118,11 +123,7 @@ public class GodCardParser {
             selectedGodCard.getBuildList().add(tempBuild);
             return tempBuild;
         }
-        /* refactor */ /* if (atomicPower.equals("BuildThenDontMoveUp")) {
-            Build tempBuild = new BuildThenDontMoveUp();
-            selectedGodCard.getBuildList().add(tempBuild);
-            return tempBuild;
-        } */
+
         if (atomicPower.equals("DontBuildDome")) {
             Build tempBuild = new DontBuildDome();
             selectedGodCard.getBuildList().add(tempBuild);
@@ -173,6 +174,11 @@ public class GodCardParser {
         return null;
     }
 
+    /**
+     * create a new BooleanRequestStrategy
+     * @param atomicStrategy contains the name of the BooleanRequestStrategy
+     * @return new BooleanRequestStrategy
+     */
     public BooleanRequestAction parseBooleanRequestStrategy(String atomicStrategy){
         if(atomicStrategy.equals("AskSameActionTwice"))
             return new AskSameActionTwice();
@@ -183,11 +189,14 @@ public class GodCardParser {
         return null;
     }
 
-
+    /**
+     * loads GodCardList.xml and start parsing using DOM parser, call parseBooleanRequestStrategy and returnCorrectAtomicPower
+     * for creating the requested god card
+     * @param choosenGod name of the godCard
+     * @return a GodCard of that particular god and  fully populated with powers
+     */
     public GodCard selectedGodParser(String choosenGod){
-        //File cardFile = new File(this.getClass().getClassLoader().getResource("out/artifacts/AM46_jar/GodCardList.xml").getFile());
-        //file = this.getClass().getClassLoader().getResource("GodCardList.xml").getFile();
-        //File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
+
         int i;
         int j;
         int k;
@@ -209,7 +218,6 @@ public class GodCardParser {
 
         Document document = null;
         try {
-            //ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
             ClassLoader classLoader = this.getClass().getClassLoader();
             InputStream inputStream  = classLoader.getResourceAsStream("GodCardList.xml");
             document = dBuilder.parse(inputStream);
@@ -231,7 +239,6 @@ public class GodCardParser {
             }
         }
         Node nGodCardListNode = godCardList.item(i - 1);
-        /*System.out.println(i);*/
         Element eElement = (Element) nGodCardListNode;
         selectedGodCard.setGodName(eElement.getAttribute("name"));
         selectedGodCard.setDescription(eElement.getElementsByTagName("descrizione").item(0).getTextContent());
@@ -239,9 +246,7 @@ public class GodCardParser {
             selectedGodCard.setBooleanRequestActionStrategy(parseBooleanRequestStrategy(eElement.getElementsByTagName("BooleanRequest").item(0).getTextContent()));
         }
         if (nGodCardListNode.getNodeType() == Node.ELEMENT_NODE) {
-                /*
-                questo codice trova correttamente i figli di GodCard
-                 */
+
             NodeList contenutoLista = (((Element) nGodCardListNode).getElementsByTagName("PowerList"));
             Node tempNodeList = contenutoLista.item(0);
             System.out.println("dimension e powerlist " + contenutoLista.getLength());
@@ -262,9 +267,12 @@ public class GodCardParser {
         return selectedGodCard;
     }
 
+    /**
+     * create a list of strings containing the name of all available gods
+     * @return list of available gods name
+     */
     public List<String> returnGodList(){
         List<String> godList = new ArrayList<>();
-        //File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
         System.out.println("cerco di creare una carta");
 
 

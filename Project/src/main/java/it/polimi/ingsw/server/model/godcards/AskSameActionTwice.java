@@ -7,6 +7,13 @@ import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
 public class AskSameActionTwice implements BooleanRequestAction {
+    /**
+     * manage the reply of the player , in the if statement if received a True reply the controller skips over that move and automatically
+     * goes on to the next one.
+     * else move the powerPointer to the next action and signals the players of the choice made.
+     * @param controller use controller to execute a particular power
+     * @param promptChoice
+     */
     @Override
     public void BooleanRequestStrategy(Controller controller,Boolean promptChoice) {
         int[] userInput = new int[2];

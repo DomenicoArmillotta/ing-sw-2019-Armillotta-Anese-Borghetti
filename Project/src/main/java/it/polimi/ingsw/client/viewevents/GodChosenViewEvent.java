@@ -14,7 +14,7 @@ public class GodChosenViewEvent extends ViewEvent {
 
     @Override
     public void viewEventMethod() {
-        ProxyModel.instance().getDrawerStrategy().title();
+        //ProxyModel.instance().getDrawerStrategy().title();
         ProxyModel.instance().getTurn().getCurrentPlayer().setGodCard(new GodCards(chosenGod));
         ProxyModel.instance().getTurn().nextTurn();
         System.out.println("\u001B[36m"+player+"\u001B[0m"+" has chosen "+"\u001B[33m"+chosenGod.toLowerCase()+"\u001B[0m"+".");

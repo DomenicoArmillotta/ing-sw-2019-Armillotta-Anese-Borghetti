@@ -3,6 +3,19 @@ import it.polimi.ingsw.server.model.powertree.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * this class contains all the attributes useful to completely characterize a god.
+ * godName contains the name of the god, Description contain a brief descriptions of his power
+ * powerList contains is a list of power that aa particular god can execute
+ * selectList contain all the powers regarding the process of selection of a worker
+ * moveList contains all the power regarding the ability of movement of this god
+ * BuildList contains all the powers regarding the type of build of this god
+ * WinConditions contains all the powers used for checking if a player won
+ * findAvailableCells list contains all the powers regarding the selection of cell available for constructing and moving
+ * moveLimitationsList contains all the move limitations that other gods can add to this god
+ * booleanRequestStrategy contains the powers regarding boolean choice
+ *
+ */
 public class GodCard {
     private String godName;
     private String description;
@@ -41,6 +54,9 @@ public class GodCard {
         this.moveLimitationsList = moveLimitationsList;
     }
 
+    /**
+     * setup a list of powers for a particular god
+     */
     public void setupLists() {
         List<Select> selectList = new ArrayList<>();
         this.selectList = selectList;
@@ -106,19 +122,16 @@ public class GodCard {
     public GodCard(String godName, String description) {
         this.godName = godName;
         this.description = description;
-        /* Move myMove = new Move();
-        moveList.add(myMove);
-        moveList.get(0).getOrderNumber();
-        powerPointer = moveList.get(0); */
-        //powerList.add(new FindAvailableCells());
-        //powerList.get(0).doAction();
-
     }
 
     public BooleanRequestAction getBooleanRequestActionStrategy() {
         return booleanRequestActionStrategy;
     }
 
+    /**
+     * set a particular booleanRequestActionStrategy
+     * @param booleanRequestActionStrategy
+     */
     public void setBooleanRequestActionStrategy(BooleanRequestAction booleanRequestActionStrategy){
         this.booleanRequestActionStrategy = booleanRequestActionStrategy;
     }
@@ -130,33 +143,5 @@ public class GodCard {
     public String getDescription() {
         return description;
     }
-    /*
-        public void setSelectMoveList(List<SelectMove> selectMoveList) {
-            this.selectMoveList = selectMoveList;
-        }
 
-        public void setBuildList(List<Build> buildList) {
-            this.buildList = buildList;
-        }
-
-        public void setWinCheckList(List<WinCheck> winCheckList) {
-            this.winCheckList = winCheckList;
-        }
-
-        public void setFindAvailableCellsList(List<FindAvailableCells> findAvailableCellsList) {
-            this.findAvailableCellsList = findAvailableCellsList;
-        }
-
-        public List<SelectMove> getSelectMoveList() {
-            return selectMoveList;
-        }
-
-        public List<Build> getBuildList() {
-            return buildList;
-        }
-
-        public List<WinCheck> getWinCheckList() {
-            return winCheckList;
-        }
-    */
 }

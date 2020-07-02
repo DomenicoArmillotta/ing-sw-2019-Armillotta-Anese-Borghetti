@@ -1,5 +1,8 @@
 package it.polimi.ingsw.server.model.godcards;
 
+/**
+ * enumeration for all usable gods
+ */
 public enum God {
     MORTAL,
     APOLLO,

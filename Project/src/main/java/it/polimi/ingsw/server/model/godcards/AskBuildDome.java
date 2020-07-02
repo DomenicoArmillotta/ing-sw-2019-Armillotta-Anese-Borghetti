@@ -6,6 +6,13 @@ import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
 public class AskBuildDome implements BooleanRequestAction{
+    /**
+     * manage the boolean choice of a player, in the if statement if received a True reply the controller skips over autonomously
+     * to the next action.
+     * else move the powerPointer to the next action and signals the choice to all the players
+     * @param controller use controller to execute a particular power
+     * @param booleanChoice contains the reply in Boolean
+     */
     @Override
     public void BooleanRequestStrategy(Controller controller, Boolean booleanChoice) {
         /*

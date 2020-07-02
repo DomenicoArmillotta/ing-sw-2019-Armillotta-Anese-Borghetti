@@ -1,11 +1,12 @@
 package it.polimi.ingsw.server.model.godcards;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * contains a GodCardParser and method to create a particular card
+ */
 public class GodCardsDeck {
     private GodCardParser godCardParser;
     private List<GodCard> inUseGodCards = new ArrayList<>();
@@ -14,6 +15,11 @@ public class GodCardsDeck {
         this.godCardParser = new GodCardParser();
     }
 
+    /**
+     *
+     * @param selectedGod god to be created
+     * @return GodCard fully populated with powers
+     */
     public GodCard createGodCard(String selectedGod){
         return godCardParser.selectedGodParser(selectedGod);
     }

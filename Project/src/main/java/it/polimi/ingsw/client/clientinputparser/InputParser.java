@@ -1,17 +1,12 @@
 package it.polimi.ingsw.client.clientinputparser;
 
-import it.polimi.ingsw.client.ClientAckDisconnectionEvent;
-import it.polimi.ingsw.client.proxymodel.ProxyModel;
 import it.polimi.ingsw.client.viewevents.*;
-import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.ParserConfigurationException;
-import java.net.Socket;
-import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,7 +104,6 @@ public class InputParser {
         if(document.getDocumentElement().getTagName().equals("GodCorrectlyChosen")){
             String chosenGod = document.getElementsByTagName("chosenGod").item(0).getTextContent();
             String player = document.getElementsByTagName("player").item(0).getTextContent();
-
             return new GodChosenViewEvent(chosenGod, player);
         }
         if(document.getDocumentElement().getTagName().equals("EveryGodChosenEventBean")){

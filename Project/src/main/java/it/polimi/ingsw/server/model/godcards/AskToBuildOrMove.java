@@ -13,9 +13,16 @@ import it.polimi.ingsw.server.virtualview.listeners.WaitingForActionListener;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
 public class AskToBuildOrMove implements BooleanRequestAction{
+
+    /**
+     * manage the choice of building before moving: if the players have move limitations that list il cleared.
+     * if the choice is true the controller skips over autonomously to the next power, else move limitations are added to
+     * this player.
+     * @param controller use controller to execute a particular power
+     * @param booleanChoice contains the reply in Boolean
+     */
     @Override
     public void BooleanRequestStrategy(Controller controller, Boolean booleanChoice) {
-        /* true = costruisci; false = non costruisci */
         if(!ActionExecutor.instance().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().isEmpty())
             ActionExecutor.instance().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().clear();
         if(!booleanChoice) {

@@ -61,12 +61,12 @@ public class Controller {
         return 1;
     }
 
-    public void setPlayerGod(String godName, String playerName){
+    public boolean setPlayerGod(String godName, String playerName){
         ActionExecutor actionExecutor = ActionExecutor.instance();
         GodCardsDeck godCardsDeck = new GodCardsDeck();
         if(!currentGodList.contains(godName.toLowerCase())){
             EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean("This god doesen't exists, reinsert another god form the list"));
-            return;
+            return false;
         }
         if(!actionExecutor.getCurrentPlayer().getPlayerGod().getGodName().toLowerCase().equals(godName.toLowerCase()) &&
            !actionExecutor.getNextPlayer().getPlayerGod().getGodName().toLowerCase().equals(godName.toLowerCase()) &&
@@ -80,16 +80,17 @@ public class Controller {
             }
         } else {
             EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean(godName+" is already taken, reinsert another god form the list"));
-            return;
+            return false;
         }
-        EventsBuffer.instance().setLastEventBean(new GodCorrectlyChosen(godName, playerName));
-        actionExecutor.nextTurn();
+        EventsBuffer.instance().setLastEventBean(new GodCorrectlyChosen(godName,playerName));
+        ActionExecutor.instance().nextTurn();
         if(!actionExecutor.getCurrentPlayer().getPlayerGod().getGodName().toLowerCase().equals("mortal") &&
            !actionExecutor.getNextPlayer().getPlayerGod().getGodName().toLowerCase().equals("mortal") &&
            !actionExecutor.getPrevPlayer().getPlayerGod().getGodName().toLowerCase().equals("mortal"))
         {
             EventsBuffer.instance().setLastEventBean(new EveryGodChosenEventBean());
         }
+        return true;
     }
 
     public void startGameControl(int numOfPlayer) {

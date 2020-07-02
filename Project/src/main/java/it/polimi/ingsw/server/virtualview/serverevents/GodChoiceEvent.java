@@ -1,6 +1,8 @@
 package it.polimi.ingsw.server.virtualview.serverevents;
 
 import it.polimi.ingsw.server.controller.Controller;
+import it.polimi.ingsw.server.model.mvevents.eventbeans.CommandFailureEventBean;
+import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,7 +19,8 @@ public class GodChoiceEvent extends ServerEvent {
 
     @Override
     public void serverEventMethod(Controller controller){
-        controller.setPlayerGod(chosenGod, player);
+        if(!controller.setPlayerGod(chosenGod, player))
+            EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean("error"));
         return;
     }
 }

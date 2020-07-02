@@ -22,8 +22,15 @@ public class Display {
     MouseListenerGodCards mouseListenerGodCards;
     MouseListenerChoice mouseListenerChoice;
     String promptText;
-    //int[] selectableGods = new int[9];//*refactoring
-    int clicked;
+    int buttonAnswer = 0; /* 0 both 1 yes 2 no */
+
+    public int getButtonAnswer() {
+        return buttonAnswer;
+    }
+
+    public void setButtonAnswer(int buttonAnswer) {
+        this.buttonAnswer = buttonAnswer;
+    }
 
     public MouseListenerChoice getMouseListenerChoice() {
         return mouseListenerChoice;
@@ -33,13 +40,6 @@ public class Display {
         this.mouseListenerChoice = mouseListenerChoice;
     }
 
-    public int getClicked() {
-        return clicked;
-    }
-
-    public void setClicked(int clicked) {
-        this.clicked = clicked;
-    }
 
     public MouseListenerGodCards getMouseListenerGodCards() {
         return mouseListenerGodCards;
@@ -86,7 +86,6 @@ public class Display {
      *  sets the size of the frame and creates the Mouselisteners, which will be used in the gui
      */
     private Display(){
-        this.clicked = -1;;
         this.promptText = "";
         JFrame frame = new JFrame("Santorini Board Game GUI [AM46]");
         frame.setSize(dimensionX, dimensionY);
@@ -96,7 +95,7 @@ public class Display {
         this.panels=panels;
         mouseListenerGame = new MouseListenerGame(ClientSocketManager.getInstance().getPrintWriter());
         mouseListenerGodCards = new MouseListenerGodCards();
-        mouseListenerChoice = new MouseListenerChoice();
+        mouseListenerChoice = new MouseListenerChoice(this);
 
     }
     public List<JPanel> getPanels() {

@@ -20,42 +20,43 @@ public class MouseListenerChoice implements MouseListener {
      *where the word yes or no is positioned
      * @param e
      */
+    private Display display;
+    private static int threshX = 300;
+    private static int threshY = 600;
+
+    public MouseListenerChoice(Display display) {
+        this.display = display;
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        //System.out.println("WOW! Clicked with MouseListenerChoice");
+
         int x = e.getX();
         int y = e.getY();
+
         PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();
         XmlMapper xmlMapper = (new XmlMapper());
         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-        if((Display.instance().getGraphicsFlag() == 5)&&(!Display.instance().getPromptText().equals("")) && x < 300 && y > 500) {
-            //System.out.println("\u001B[32m"+"CLICKED ON BUTTON YES"+x+" "+y+"\u001B[0m");
-            //Display.instance().setPrompt("");
-            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-            String toSend = null;
+        String toSend = null;
+        if(display.getButtonAnswer() == 0 && (display.getGraphicsFlag() == 5) && x < threshX && y > threshY) {
+            display.setButtonAnswer(1);
             try {
                 toSend = xmlMapper.writeValueAsString(new BooleanEvent(true));
             } catch (JsonProcessingException jsonProcessingException) {
                 jsonProcessingException.printStackTrace();
             }
-            toSend += "\n";
-            printWriter.print(toSend);
-            printWriter.flush();
-            //System.out.println("yes");
-        } else if((Display.instance().getGraphicsFlag() == 5)&&(!Display.instance().getPromptText().equals("")) && y > 500) { // (Display.instance().getGraphicsFlag() == 5)&&(!Display.instance().getPromptText().equals(""))
-            //System.out.println("\u001B[32m"+"CLICKED ON BUTTON NO"+x+" "+y+"\u001B[0m");
-            //Display.instance().setPrompt("");
-            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-            String toSend = null;
+        } else if(display.getButtonAnswer() == 0 && (display.getGraphicsFlag() == 5) && y > threshY) {
+            display.setButtonAnswer(2);
             try {
                 toSend = xmlMapper.writeValueAsString(new BooleanEvent(false));
             } catch (JsonProcessingException jsonProcessingException) {
                 jsonProcessingException.printStackTrace();
             }
+        }
+        if(toSend != null) {
             toSend += "\n";
             printWriter.print(toSend);
             printWriter.flush();
-            //System.out.println("no");
         }
     }
 

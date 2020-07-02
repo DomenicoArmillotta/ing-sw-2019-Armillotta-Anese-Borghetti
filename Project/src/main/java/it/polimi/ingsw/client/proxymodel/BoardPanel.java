@@ -244,14 +244,30 @@ public class BoardPanel extends JPanel {
             return;
         }
 
+
+        //Display.instance().setClicked(0);
         Graphics2D g2d = (Graphics2D) g;
         Graphics2D g2dbutton = (Graphics2D) g;
         Font font = new Font("Serif", Font.PLAIN, 24);
         g2d.setColor(new Color(20, 20, 20));
         g2d.setFont(font);
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName()+", "+getPrompt(), 15, 640);
-        g.drawImage(img1, 150, 650, 100, 100, null);
-        g.drawImage(img2, 350, 650, 100, 100, null);
+
+        if(ProxyModel.instance().getTurn().getCurrentPlayer().getName().equals(ProxyModel.instance().getThisClientNickname())) {
+            g.drawImage(img1, 150, 650, 100, 100, null);
+            g.drawImage(img2, 350, 650, 100, 100, null);
+            if (Display.instance().getButtonAnswer() == 1) {
+                g.setColor(new Color(20, 150, 20, 200));
+                g.fillArc(150, 650, 100, 100, 0, 360);
+                g.setColor(new Color(200, 200, 200, 200));
+                g.fillArc(350, 650, 100, 100, 0, 360);
+            } else if (Display.instance().getButtonAnswer() == 2) {
+                g.setColor(new Color(150, 20, 20, 200));
+                g.fillArc(350, 650, 100, 100, 0, 360);
+                g.setColor(new Color(200, 200, 200, 200));
+                g.fillArc(150, 650, 100, 100, 0, 360);
+            }
+        }
 
     }
 

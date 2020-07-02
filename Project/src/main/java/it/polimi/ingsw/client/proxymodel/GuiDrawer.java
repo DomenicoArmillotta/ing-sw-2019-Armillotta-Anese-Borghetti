@@ -83,6 +83,7 @@ public class GuiDrawer extends Drawer {
     public void promptChoice(String promptText) {
 
         Display display = Display.instance();
+        display.setButtonAnswer(0);
         JFrame myFrame = display.getFrame();
         myFrame.revalidate();
         Container c = myFrame.getContentPane();

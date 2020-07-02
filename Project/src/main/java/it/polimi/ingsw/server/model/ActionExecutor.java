@@ -1,6 +1,5 @@
 package it.polimi.ingsw.server.model;
 import it.polimi.ingsw.server.model.powertree.*;
-import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
 public class ActionExecutor {
     private Player currentPlayer;

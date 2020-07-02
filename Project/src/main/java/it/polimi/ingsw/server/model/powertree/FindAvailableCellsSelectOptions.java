@@ -2,14 +2,18 @@ package it.polimi.ingsw.server.model.powertree;
 
 import it.polimi.ingsw.server.model.Cell;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * controls which workers are selectable
+ */
 public class FindAvailableCellsSelectOptions extends FindAvailableCellsMove {
+    /**
+     *if the worker AvailableCells (the cells in which they can move) are different from 0 we give the possibility to select it
+     */
     @Override
     public int doAction(int[] userInput) {
-        /*cambiato valore di ritorno da 0 a 1 e doppio controllo qui sotto*/
         int x = super.doAction(userInput);
         if(x==1||x==0) {
             Cell firstWorkerCell = getExecutorPointer().getCurrentPlayer().getFirstWorker().getCurrentPosition();

@@ -7,15 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
-
-    /* Calcola spostamento indicando cosa somare alle cordinate x,y ritorna un array */
+    /**
+     * Compute displacement indicating what to add to the coordinates x
+     * @param selectedWorker
+     * @param selectedCell
+     * @return the difference of X to add
+     */
     public int calcolaSpostamentoX(Worker selectedWorker, Cell selectedCell) {
         Cell cellaWorkerCheSposta = selectedWorker.getCurrentPosition();
         Cell cellaWorkerDaSpostare = selectedCell;
         int differenceX = cellaWorkerCheSposta.getX() - cellaWorkerDaSpostare.getX();
         return differenceX;
     }
-
+    /**
+     * Compute displacement indicating what to add to the coordinates y
+     * @param selectedWorker
+     * @param selectedCell
+     * @return the difference of Y to add
+     */
     public int calcolaSpostamentoY(Worker selectedWorker, Cell selectedCell) {
         Cell cellaWorkerCheSposta = selectedWorker.getCurrentPosition();
         Cell cellaWorkerDaSpostare = selectedCell;
@@ -23,6 +32,12 @@ public class FindAvailableCellsMovePush extends FindAvailableCellsMove {
         return differenceY;
     }
 
+    /**
+     * adds to the list of cells found by FindAvailableCellsMove the cells in which it is possible to push,
+     * thus checking that the worker is the opponent and that he has a free cell in the direction of the push
+     * @param userInput
+     * @return 0 if FindAvailableCellsMovePush done,-1 if FindAvailableCellsMovePush fail
+     */
     @Override
     public int doAction(int[] userInput) {
         super.doAction(userInput);

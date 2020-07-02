@@ -1,12 +1,6 @@
 package it.polimi.ingsw.server.model;
-import it.polimi.ingsw.server.model.godcards.God;
 import it.polimi.ingsw.server.model.godcards.GodCardsDeck;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.util.List;
-
 public class GameMaster {
 
     private List<Player> playerQueue;

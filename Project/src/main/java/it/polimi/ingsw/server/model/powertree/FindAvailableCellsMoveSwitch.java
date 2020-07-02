@@ -6,8 +6,17 @@ import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * used to return the cells to the god (Apollo) who must be able to  switch
+ */
 public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
 
+    /**
+     * adds to the list of cells found by FindAvailableCellsMove the cells in which it is possible to switch,
+     * thus checking that the worker is the opponent
+     * @param userInput
+     * @return
+     */
     public int doAction(int[] userInput) {
         super.doAction(userInput);
         Cell[][] map = super.getExecutorPointer().getMap();

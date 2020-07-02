@@ -1,6 +1,8 @@
 package it.polimi.ingsw.server.model;
 
-//da sistemare x e Y ATTENZIONE
+/**
+ * class that identifies the cell, also  in its attributes has the worker and level on it
+ */
 public class Cell {
     private Level buildingLevel;
     private Worker workerOnCell;

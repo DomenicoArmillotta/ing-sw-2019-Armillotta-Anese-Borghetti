@@ -3,12 +3,18 @@ import it.polimi.ingsw.server.model.Cell;
 import it.polimi.ingsw.server.model.Worker;
 import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
 import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * performs the same function as FindAvailableCellsMove but checks that the cells are on the same level as the worker
+ */
 public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove {
-
+    /**
+     * from the list of find I delete the cells that have a difference in level greater than or equal to 1 from the list
+     * @param userInput
+     * @return 0 if FindAvailableCellsMovePush its ok,-1 if FindAvailableCellsMovePush failed
+     */
     @Override
     public int doAction(int[] userInput) {
         Cell[][] map = super.getExecutorPointer().getMap();
@@ -57,7 +63,6 @@ public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove 
 
         getWaitingForActionListener().waitForAction(new WaitingForActionEvent(availableCellsDontMoveUp));
 
-        //getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextMove().getAvailableCells(0)));
         return 0; /* [NOTIFY]: FindAvailableCellsMovePush done */
     }
 }

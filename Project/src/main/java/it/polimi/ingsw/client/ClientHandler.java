@@ -13,12 +13,14 @@ import java.util.concurrent.Executors;
 
 public class ClientHandler {
     private String drawerType;
+    private int portNumber;
 
-        public ClientHandler(String drawerChoice) {
+        public ClientHandler(String drawerChoice,int portNumber) {
             this.drawerType = drawerChoice;
             System.out.println("start client");
-            //startClient();
+            this.portNumber = portNumber;
         }
+
         public void startClient() {
             int drawerType; /* 0 for CLI, 1 for GUI */
             ExecutorService executor = Executors.newFixedThreadPool(2);
@@ -42,19 +44,17 @@ public class ClientHandler {
             proxyModel.setPhase(0);
 
                 try {
-                    Socket socket = new Socket(Inet4Address.getLocalHost(), 1234);
+                    Socket socket = new Socket(Inet4Address.getLocalHost(), this.portNumber);
                     ProxyModel.instance().thisScoket = socket;
                     PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
                     ClientSocketManager.getInstance().setPrintWriter(printWriter);
                     ClientSocketManager.getInstance().setSocket(socket);
-
 
                     if(drawerType == 0)
                         executor.submit(new ClientHandlerOutput(socket));
                     else
                         proxyModel.getDrawerStrategy().login();
 
-                    //executor.submit(new ClientHandlerOutput(socket));
                     executor.submit(new ClientHandlerInput(socket));
                 } catch(IOException e) {
                     executor.shutdown();

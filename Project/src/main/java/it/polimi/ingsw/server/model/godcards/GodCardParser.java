@@ -7,8 +7,7 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -186,13 +185,14 @@ public class GodCardParser {
 
 
     public GodCard selectedGodParser(String choosenGod){
-        File cardFile = new File(this.getClass().getClassLoader().getResource("GodCardList.xml").getFile());
+        //File cardFile = new File(this.getClass().getClassLoader().getResource("out/artifacts/AM46_jar/GodCardList.xml").getFile());
         //file = this.getClass().getClassLoader().getResource("GodCardList.xml").getFile();
         //File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
         int i;
         int j;
         int k;
         boolean selectable = false;
+
         List<Power> temporaryPowerList = new ArrayList<>();
         GodCard selectedGodCard = new GodCard();
         selectedGodCard.setupLists();
@@ -208,15 +208,16 @@ public class GodCardParser {
         }
 
         Document document = null;
-
         try {
-            document = dBuilder.parse(cardFile);
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream inputStream  = classLoader.getResourceAsStream("GodCardList.xml");
+            document = dBuilder.parse(inputStream);
         } catch (SAXException | IOException e) {
-            System.out.println("perser error");
+            System.out.println("loading XmlFile error ");
             e.printStackTrace();
-            e.getMessage();
             return null;
         }
+
 
 
         NodeList godCardList = document.getElementsByTagName("Godcard");
@@ -263,7 +264,10 @@ public class GodCardParser {
     public List<String> returnGodList(){
         List<String> godList = new ArrayList<>();
         //File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
-        File cardFile = new File(this.getClass().getClassLoader().getResource("GodCardList.xml").getFile());
+        System.out.println("cerco di creare una carta");
+
+
+
         int i;
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -271,19 +275,28 @@ public class GodCardParser {
         try {
             dBuilder = dbf.newDocumentBuilder();
         } catch (ParserConfigurationException e) {
-            System.out.println("errore nella creazione della godlist");
+            System.out.println("error creating ");
             e.printStackTrace();
             return null;
         }
+
+
         Document document = null;
+
         try {
-            document = dBuilder.parse(cardFile);
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream inputStream  = classLoader.getResourceAsStream("GodCardList.xml");
+            document = dBuilder.parse(inputStream);
         } catch (SAXException | IOException e) {
+            System.out.println("error loading Xml file");
             e.printStackTrace();
             return null;
         }
+
+
+
         NodeList godCardList = document.getElementsByTagName("Godcard");
-        for (i = 0; i < godCardList.getLength() ; i++) {
+        for (i = 0; i < godCardList.getLength(); i++) {
             Node nGodCardListNode = godCardList.item(i);
             Element eElement = (Element) nGodCardListNode;
             godList.add(eElement.getAttribute("name").toLowerCase());

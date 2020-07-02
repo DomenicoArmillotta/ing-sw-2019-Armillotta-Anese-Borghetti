@@ -30,7 +30,7 @@ public class MouseListenerGame implements MouseListener {
      * @param e
      */
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public synchronized void mouseClicked(MouseEvent e) {
         int x = e.getX();
         int y = e.getY();
         /* if((Display.instance().getGraphicsFlag() == 5)&&(!Display.instance().getPromptText().equals("")) &&  ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) ) {

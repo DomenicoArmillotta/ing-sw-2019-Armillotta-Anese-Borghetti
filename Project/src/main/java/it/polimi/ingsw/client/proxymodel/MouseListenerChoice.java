@@ -29,7 +29,7 @@ public class MouseListenerChoice implements MouseListener {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public synchronized void mouseClicked(MouseEvent e) {
 
         int x = e.getX();
         int y = e.getY();

@@ -58,7 +58,7 @@ public class SocketHandlerOutput implements Runnable {
                     EventsBuffer.instance().setSendEventBeanLock(false);
 
                     while (controller.getLineClientSocketsAndPortListSize() > 0)
-
+                    ;
 
                     VvLobby.instance().resetVvLobby();
                     ActionExecutor.instance().resetActionExecutor();

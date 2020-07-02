@@ -29,6 +29,17 @@ public class BoardPanel extends JPanel {
         display.setGraphicsFlag(graphicsFlag);
     }
 
+    /**
+     *this function is used to switch on a case-by-case basis what to write in the prompt and indicate what to do in the various turn and phases
+     * writeText1=text to give indications to select the worker
+     * writeText2=text to give indications to move the worker selected
+     * writeText3=text to give indications to build block
+     * writeText4=text to give indications to place worker
+     * writeText5=shows the choice to choose between yes or no, when the power of god can be used
+     * writeText6=text that is shown when someone wins
+     * writeText7=text that is shown when someone lost the game
+     * @param g
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         drawImage(g);
@@ -185,7 +196,10 @@ public class BoardPanel extends JPanel {
         g.drawImage(img1, 322-(50/2)+80*2, 114-(50/2)+80*3, 50, 50, null);
         g.drawImage(img2, 322-(50/2)+80*3, 114-(50/2), 50, 50, null); */
     }
-
+    /**
+     *text to give indications to select a worker
+     * @param g
+     */
     private void writeText1(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         Graphics2D g2d = (Graphics2D) g;
@@ -194,7 +208,10 @@ public class BoardPanel extends JPanel {
         g2d.setFont(font);
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should select a worker.", 15, 640);
     }
-
+    /**
+     *text to give indications to move worker
+     * @param g
+     */
     private void writeText2(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         Graphics2D g2d = (Graphics2D) g;
@@ -203,7 +220,10 @@ public class BoardPanel extends JPanel {
         g2d.setFont(font);
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should move the selected worker.", 15, 640);
     }
-
+    /**
+     *text to give indications to build block
+     * @param g
+     */
     private void writeText3(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         Graphics2D g2d = (Graphics2D) g;
@@ -213,6 +233,10 @@ public class BoardPanel extends JPanel {
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should build a block.", 15, 640);
     }
 
+    /**
+     *text to give indications to place worker
+     * @param g
+     */
     private void writeText4(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         Graphics2D g2d = (Graphics2D) g;
@@ -221,7 +245,9 @@ public class BoardPanel extends JPanel {
         g2d.setFont(font);
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should place his Workers.", 15, 640);
     }
-
+     /**
+     *writeText5=shows the choice to choose between yes or no, when the power of god can be used
+     **/
     public void writeText5(Graphics g) {
 
         ProxyModel proxyModel = ProxyModel.instance();
@@ -270,7 +296,10 @@ public class BoardPanel extends JPanel {
         }
 
     }
-
+    /**
+     * text that is shown when someone win the game
+     * @param g
+     */
     private void writeText6(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         Graphics2D g2d = (Graphics2D) g;
@@ -280,6 +309,10 @@ public class BoardPanel extends JPanel {
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " won the game!", 15, 640);
     }
 
+    /**
+     * text that is shown when someone lost the game
+     * @param g
+     */
     private void writeText7(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         Graphics2D g2d = (Graphics2D) g;

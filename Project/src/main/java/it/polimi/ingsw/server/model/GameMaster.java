@@ -9,13 +9,11 @@ public class GameMaster {
     private GodCardsDeck godCardsDeck = new GodCardsDeck();
 
     /**
-     *  DA RISCRIVERE
-     * set the number of players and the queue of players, which is used to manage the turn
+     *  is the constructor and set the number of players and the queue of players, which is used to manage the turn
+     *  create the ActionExecutor
      * @param playerQueue
      * @param numOfPlayers
      */
-
-
     public GameMaster(List<Player> playerQueue, int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
         this.playerQueue = playerQueue;
@@ -24,6 +22,10 @@ public class GameMaster {
         getActionExecutor().cleanActionExecutor();
     }
 
+    /**
+     * whether the game has two or three players
+     * set the mortal as the god of default who has no particular powers and also set prev and next player to manage the turns
+     */
     public void createActionExecutor() {
         this.actionExecutor = ActionExecutor.instance();
         if (numOfPlayers == 2) {

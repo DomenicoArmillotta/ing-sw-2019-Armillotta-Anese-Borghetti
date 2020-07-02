@@ -186,7 +186,9 @@ public class GodCardParser {
 
 
     public GodCard selectedGodParser(String choosenGod){
-        File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
+        File cardFile = new File(this.getClass().getClassLoader().getResource("GodCardList.xml").getFile());
+        //file = this.getClass().getClassLoader().getResource("GodCardList.xml").getFile();
+        //File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
         int i;
         int j;
         int k;
@@ -260,7 +262,8 @@ public class GodCardParser {
 
     public List<String> returnGodList(){
         List<String> godList = new ArrayList<>();
-        File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
+        //File cardFile = new File("src/main/java/it/polimi/ingsw/server/model/godcards/GodCardList.xml");
+        File cardFile = new File(this.getClass().getClassLoader().getResource("GodCardList.xml").getFile());
         int i;
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

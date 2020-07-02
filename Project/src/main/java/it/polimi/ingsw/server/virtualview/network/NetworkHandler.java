@@ -23,10 +23,11 @@ public class NetworkHandler {
         ServerSocket serverSocket;
         SocketHandlerOutput socketHandlerOutput = SocketHandlerOutput.instance(controller);
         executor.submit(socketHandlerOutput);
-        //PingHandler pingHandler;
+
         try {
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {
+            System.out.println("porta non disponibile");
             System.err.println(e.getMessage()); // Porta non disponibile
             return;
         }

@@ -47,6 +47,6 @@ public class InteractionWithControllerTest {
         NetworkHandler networkHandler = new NetworkHandler(1234);
         networkHandler.startServer();
         System.out.println("sono alla fine del test");
-
+        return;
     }
 }

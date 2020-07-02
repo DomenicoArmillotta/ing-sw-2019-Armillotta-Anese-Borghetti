@@ -19,9 +19,9 @@ public class NetworkHandler {
     public void startServer(){
         Controller controller = new Controller();
         ActionExecutor executorPointer = ActionExecutor.instance();
-        ExecutorService executor = Executors.newFixedThreadPool(4);
+        ExecutorService executor = Executors.newCachedThreadPool();
         ServerSocket serverSocket;
-        SocketHandlerOutput socketHandlerOutput = SocketHandlerOutput.instance(controller);
+        SocketHandlerOutput socketHandlerOutput = new SocketHandlerOutput(controller);
         executor.submit(socketHandlerOutput);
 
         try {

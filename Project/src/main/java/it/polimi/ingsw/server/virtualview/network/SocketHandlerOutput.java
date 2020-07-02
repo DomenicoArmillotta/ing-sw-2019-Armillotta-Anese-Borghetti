@@ -18,16 +18,16 @@ public class SocketHandlerOutput implements Runnable {
     private EventsBuffer eventsBuffer;
     private Controller controller;
 
-    private static SocketHandlerOutput instance;
+    //private static SocketHandlerOutput instance;
 
-    public static SocketHandlerOutput instance(Controller controller) {
+    /* public static SocketHandlerOutput instance(Controller controller) {
         if (instance == null) {
             instance = new SocketHandlerOutput(controller);
         }
         return instance;
-    }
+    } */
 
-    private SocketHandlerOutput(Controller controller) {
+    public SocketHandlerOutput(Controller controller) {
         this.controller = controller;
         List<Socket> socketList = new ArrayList<>();
         this.socketList = socketList;
@@ -61,7 +61,8 @@ public class SocketHandlerOutput implements Runnable {
                     ;
 
                     VvLobby.instance().resetVvLobby();
-                    ActionExecutor.instance().resetActionExecutor();
+                    ActionExecutor.instance().nullActionExecutor();
+                    //ActionExecutor.instance().resetActionExecutor();
                     resetSocketHandlerOutput();
                     EventsBuffer.instance().setNotEndGame();
                     EventsBuffer.instance().setSendEventBeanLock(true);

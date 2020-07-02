@@ -209,7 +209,8 @@ public class GodCardParser {
 
         Document document = null;
         try {
-            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            //ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            ClassLoader classLoader = this.getClass().getClassLoader();
             InputStream inputStream  = classLoader.getResourceAsStream("GodCardList.xml");
             document = dBuilder.parse(inputStream);
         } catch (SAXException | IOException e) {
@@ -284,7 +285,8 @@ public class GodCardParser {
         Document document = null;
 
         try {
-            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            //ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            ClassLoader classLoader = this.getClass().getClassLoader();
             InputStream inputStream  = classLoader.getResourceAsStream("GodCardList.xml");
             document = dBuilder.parse(inputStream);
         } catch (SAXException | IOException e) {

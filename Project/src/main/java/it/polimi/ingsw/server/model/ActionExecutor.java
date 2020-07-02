@@ -31,6 +31,10 @@ public class ActionExecutor {
         createMap();
     }
 
+    public void nullActionExecutor() {
+        instance = null;
+    }
+
     public Power getPowerPtr() {
         return powerPtr;
     }
@@ -375,15 +379,6 @@ public Build getPrevBuild() {
 
     public void setPrevPlayer(Player prevPlayer) {
         this.prevPlayer = prevPlayer;
-    }
-
-    public synchronized void resetActionExecutor(){
-         createMap();
-         currentPlayer = null;
-         prevPlayer = null;
-         nextPlayer = null;
-         powerPtr = null;
-
     }
 
 

@@ -105,7 +105,6 @@ public class SocketHandlerInput implements Runnable {
             return new it.polimi.ingsw.server.virtualview.serverevents.SetupCoordsEvent(x,y,z,w);
         }
 
-
         if(doc.getDocumentElement().getTagName().equals("LoginEvent")){
             String payload = doc.getElementsByTagName("payload").item(0).getTextContent();
             return new LoginEvent(payload);

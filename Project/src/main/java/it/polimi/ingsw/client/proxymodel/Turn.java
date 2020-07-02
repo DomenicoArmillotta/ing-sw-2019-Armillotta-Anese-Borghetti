@@ -4,6 +4,7 @@ package it.polimi.ingsw.client.proxymodel;
  * manages turn, memorizing the prev, post and current player
  */
 public class Turn {
+    int turns_num = 0;
     private Player currentPlayer;
     private Player nextPlayer;
     private Player prevPlayer;
@@ -24,6 +25,8 @@ public class Turn {
             nextPlayer = prevPlayer;
             prevPlayer = tempPlayer;
         }
+        turns_num++;
+        System.out.println("Numero di turni: "+turns_num);
         /* System.out.println("Turno di "+currentPlayer.getName()); */
     }
 

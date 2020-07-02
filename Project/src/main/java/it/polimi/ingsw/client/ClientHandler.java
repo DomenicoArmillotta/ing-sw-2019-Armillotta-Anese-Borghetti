@@ -23,7 +23,7 @@ public class ClientHandler {
 
         public void startClient() {
             int drawerType; /* 0 for CLI, 1 for GUI */
-            ExecutorService executor = Executors.newFixedThreadPool(2);
+            ExecutorService executor = Executors.newCachedThreadPool();
             /* System.out.println("Client ready"); */
             ProxyModel proxyModel = ProxyModel.instance();
             proxyModel.createMap();

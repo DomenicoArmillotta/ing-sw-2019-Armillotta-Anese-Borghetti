@@ -18,5 +18,6 @@ public class GodChoiceEvent extends ServerEvent {
     @Override
     public void serverEventMethod(Controller controller){
         controller.setPlayerGod(chosenGod, player);
+        return;
     }
 }

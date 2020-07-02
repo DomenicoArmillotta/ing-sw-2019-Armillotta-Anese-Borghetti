@@ -1,5 +1,7 @@
 package it.polimi.ingsw.server.virtualview.network;
 
+import it.polimi.ingsw.server.model.ActionExecutor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,5 +40,6 @@ public class VvLobby {
     public void resetVvLobby(){
         this.players.clear();
         this.partyOwner = "";
+        instance = null;
     }
 }

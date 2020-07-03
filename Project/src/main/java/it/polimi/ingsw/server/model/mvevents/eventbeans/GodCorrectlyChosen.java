@@ -8,7 +8,7 @@ public class GodCorrectlyChosen extends EventBean {
     String player;
 
     /**
-     * create GodCorrectlyChosen which will be sent to the client by the server
+     * is the constructor of GodCorrectlyChosen which will be sent to the client by the server
      * to communicate the correct pairing between player and god
      * @param chosenGod
      * @param player

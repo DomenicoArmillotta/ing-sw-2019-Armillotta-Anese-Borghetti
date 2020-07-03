@@ -8,8 +8,8 @@ public class CorrectLoginPartyOwnerEvent extends EventBean{
     private String loggedPlayer;
 
     /**
-     * create CorrectLoginPartyOwnerEvent which will be sent to the client
-     *  by the server to communicate the correct party owner
+     * is the constructor of  CorrectLoginPartyOwnerEvent which will be sent to the client
+     *  by the server to communicate the correct party owner after checking it on the server
      * @param partyOwner
      * @param loggedPlayer
      */

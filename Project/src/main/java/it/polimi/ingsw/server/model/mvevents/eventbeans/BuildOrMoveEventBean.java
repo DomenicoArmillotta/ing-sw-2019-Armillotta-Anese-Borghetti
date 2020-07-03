@@ -7,7 +7,7 @@ public class BuildOrMoveEventBean extends EventBean{
     private String  doubleMethod;
 
     /**
-     * ask if the player want build before move or not
+     * is the constructor of BuildOrMoveEventBean used for ask if the player want build before move or not
      */
     public BuildOrMoveEventBean() {
         doubleMethod = "do you want to build before move?";

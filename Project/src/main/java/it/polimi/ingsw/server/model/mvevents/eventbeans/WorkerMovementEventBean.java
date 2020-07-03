@@ -12,7 +12,7 @@ public class WorkerMovementEventBean extends EventBean implements Serializable {
     int currX;
     int currY;
     /**
-     *create WorkerMovementEventBean that will be sent to the client by the server to communicate the movement made by the worker,
+     *is the constructor of WorkerMovementEventBean that will be sent to the client by the server to communicate the movement made by the worker,
      *  then send the previous and current coordinates of the server
      */
     public WorkerMovementEventBean(int prevX, int prevY, int currX, int currY){

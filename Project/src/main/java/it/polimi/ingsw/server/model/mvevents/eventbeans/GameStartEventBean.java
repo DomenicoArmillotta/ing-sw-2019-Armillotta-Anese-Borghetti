@@ -9,7 +9,7 @@ public class GameStartEventBean extends EventBean{
     private String thirdPlayer;
 
     /**
-     *create GameStartEventBean which will be sent to the client by the server to start the game,
+     * is the constructor of  GameStartEventBean which will be sent to the client by the server to start the game,
      * setting the position of the players in order in the turn
      * @param firstPlayer
      * @param secondPlayer

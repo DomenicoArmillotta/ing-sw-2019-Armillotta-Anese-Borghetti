@@ -8,6 +8,9 @@ import it.polimi.ingsw.server.model.mvevents.eventbeans.WaitingForActionEventBea
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * is the event that corresponds to waiting for user action and is created the eventBean
+ */
 public class WaitingForActionEvent extends ActionEvent { /* Waiting for select / Waiting for build */
     private List<Cell> availableCells;
 

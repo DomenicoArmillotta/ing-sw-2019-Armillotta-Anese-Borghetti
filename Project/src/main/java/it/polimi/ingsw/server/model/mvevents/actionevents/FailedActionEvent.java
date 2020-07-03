@@ -3,7 +3,9 @@ package it.polimi.ingsw.server.model.mvevents.actionevents;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.FailedActionEventBean;
 import it.polimi.ingsw.server.model.powertree.Power;
-
+/**
+ * event that is generated when a action fail and also has the function of creating his eventbean
+ */
 public class FailedActionEvent extends ActionEvent {
 
     Power failedPower;

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client;
-
+/**
+ * the event is sent to the server by the client,with the answer of boolean choice
+ */
 public class BooleanEvent extends ClientEvent {
     Boolean answer;
 

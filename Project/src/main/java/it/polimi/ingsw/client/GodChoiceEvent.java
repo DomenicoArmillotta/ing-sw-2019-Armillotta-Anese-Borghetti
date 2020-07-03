@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client;
-
+/**
+ * the event is sent to the server by the client,with the information of the chosen god and the player that chose
+ */
 public class GodChoiceEvent extends ClientEvent {
     String chosenGod;
     String player;

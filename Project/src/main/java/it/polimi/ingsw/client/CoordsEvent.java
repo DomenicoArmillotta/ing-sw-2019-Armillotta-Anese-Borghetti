@@ -1,7 +1,9 @@
 package it.polimi.ingsw.client;
 
 import java.io.Serializable;
-
+/**
+ * the event is sent to the server by the client,with the information of the coordinates associate to clientId
+ */
 public class CoordsEvent extends ClientEvent implements Serializable {
     int x;
     int y;

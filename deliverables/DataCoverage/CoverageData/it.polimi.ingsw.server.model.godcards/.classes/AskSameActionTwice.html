@@ -1,0 +1,114 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: AskSameActionTwice</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.godcards</a> ]
+</div>
+
+<h1>Coverage Summary for Class: AskSameActionTwice (it.polimi.ingsw.server.model.godcards)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AskSameActionTwice</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10%
+  </span>
+  <span class="absValue">
+    (1/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.godcards;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.controller.Controller;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.ActionExecutor;
+<i>5</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.CorrectPromptAnswer;
+<i>6</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
+<i>7</i>&nbsp;import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
+<i>8</i>&nbsp;
+<b class="fc"><i>9</i>&nbsp;public class AskSameActionTwice implements BooleanRequestAction {</b>
+<i>10</i>&nbsp;    /**
+<i>11</i>&nbsp;     * manage the reply of the player , in the if statement if received a True reply the controller skips over that move and automatically
+<i>12</i>&nbsp;     * goes on to the next one.
+<i>13</i>&nbsp;     * else move the powerPointer to the next action and signals the players of the choice made.
+<i>14</i>&nbsp;     * @param controller use controller to execute a particular power
+<i>15</i>&nbsp;     * @param promptChoice
+<i>16</i>&nbsp;     */
+<i>17</i>&nbsp;    @Override
+<i>18</i>&nbsp;    public void BooleanRequestStrategy(Controller controller,Boolean promptChoice) {
+<b class="nc"><i>19</i>&nbsp;        int[] userInput = new int[2];</b>
+<b class="nc"><i>20</i>&nbsp;        if(!promptChoice){</b>
+<b class="nc"><i>21</i>&nbsp;            userInput[0] = ActionExecutor.instance().getPrevSelect().getSelectedWorker().getCurrentPosition().getX();</b>
+<b class="nc"><i>22</i>&nbsp;            userInput[1] = ActionExecutor.instance().getPrevSelect().getSelectedWorker().getCurrentPosition().getY();</b>
+<b class="nc"><i>23</i>&nbsp;            controller.setUserInput(userInput);</b>
+<b class="nc"><i>24</i>&nbsp;            controller.control();</b>
+<i>25</i>&nbsp;        }
+<i>26</i>&nbsp;        else
+<b class="nc"><i>27</i>&nbsp;            EventsBuffer.instance().setLastEventBean(new NoUpdatesEventBean());</b>
+<i>28</i>&nbsp;
+<b class="nc"><i>29</i>&nbsp;        EventsBuffer.instance().setLastEventBean(new CorrectPromptAnswer(promptChoice));</b>
+<b class="nc"><i>30</i>&nbsp;    }</b>
+<i>31</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

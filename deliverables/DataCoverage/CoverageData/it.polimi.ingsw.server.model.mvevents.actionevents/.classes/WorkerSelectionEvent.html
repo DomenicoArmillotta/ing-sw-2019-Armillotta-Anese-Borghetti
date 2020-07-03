@@ -1,0 +1,107 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: WorkerSelectionEvent</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.mvevents.actionevents</a> ]
+</div>
+
+<h1>Coverage Summary for Class: WorkerSelectionEvent (it.polimi.ingsw.server.model.mvevents.actionevents)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WorkerSelectionEvent</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.mvevents.actionevents;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.model.Worker;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
+<i>5</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.WorkerSelectionEventBean;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import java.io.Serializable;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;public class WorkerSelectionEvent extends ActionEvent implements Serializable {
+<i>10</i>&nbsp;    private Worker selectedWorker;
+<i>11</i>&nbsp;
+<b class="fc"><i>12</i>&nbsp;    public WorkerSelectionEvent(Worker selectedWorker) {</b>
+<b class="fc"><i>13</i>&nbsp;        this.selectedWorker = selectedWorker;</b>
+<b class="fc"><i>14</i>&nbsp;    }</b>
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    private Worker getSelectedWorker() {
+<b class="fc"><i>17</i>&nbsp;        return selectedWorker;</b>
+<i>18</i>&nbsp;    }
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    public EventBean eventMethod() {
+<b class="fc"><i>21</i>&nbsp;        WorkerSelectionEventBean workerSelectionEventBean = new WorkerSelectionEventBean(getSelectedWorker().getCurrentPosition().getX(), getSelectedWorker().getCurrentPosition().getY());</b>
+<b class="fc"><i>22</i>&nbsp;        return workerSelectionEventBean;</b>
+<i>23</i>&nbsp;    }
+<i>24</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

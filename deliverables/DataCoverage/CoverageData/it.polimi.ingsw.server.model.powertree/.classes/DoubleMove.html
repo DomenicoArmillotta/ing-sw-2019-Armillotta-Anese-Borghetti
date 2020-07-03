@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DoubleMove</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.powertree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DoubleMove (it.polimi.ingsw.server.model.powertree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DoubleMove</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85,7%
+  </span>
+  <span class="absValue">
+    (6/ 7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.powertree;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.model.ActionExecutor;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.DoubleMoveEvent;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; *  check if a worker is able to move another time after their previous move.
+<i>8</i>&nbsp; */
+<b class="fc"><i>9</i>&nbsp;public class DoubleMove extends Power{</b>
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    /**
+<i>12</i>&nbsp;     * @return 1 if worker ins not able to perform another move else 0 and notify woith DoubleMoveEvent
+<i>13</i>&nbsp;     */
+<i>14</i>&nbsp;    @Override
+<i>15</i>&nbsp;    public int doAction(int[] userInput) {
+<b class="fc"><i>16</i>&nbsp;        ActionExecutor actionExecutor = super.executorPointer;</b>
+<b class="fc"><i>17</i>&nbsp;        int selectedWorker = getWorkerIndex();</b>
+<i>18</i>&nbsp;
+<b class="fc"><i>19</i>&nbsp;        if(actionExecutor.getNextMove().getAvailableCells(selectedWorker).size() == 0) {</b>
+<b class="nc"><i>20</i>&nbsp;            return 1;</b>
+<i>21</i>&nbsp;        }else{
+<b class="fc"><i>22</i>&nbsp;            super.getBooleanActionListener().createPromptBean(new DoubleMoveEvent());</b>
+<i>23</i>&nbsp;        }
+<b class="fc"><i>24</i>&nbsp;        return 0;</b>
+<i>25</i>&nbsp;    }
+<i>26</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ClientCell</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.client.proxymodel</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ClientCell (it.polimi.ingsw.client.proxymodel)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ClientCell</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (9/ 15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    54,5%
+  </span>
+  <span class="absValue">
+    (12/ 22)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.client.proxymodel;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * ClientCell represent the model&#39;s cell without the server&#39;s logic
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;
+<b class="fc"><i>7</i>&nbsp;public class ClientCell {</b>
+<i>8</i>&nbsp;    private Coords cellCoords;
+<i>9</i>&nbsp;    private int selectable;//0 per i selectable
+<i>10</i>&nbsp;    private int workerSelectable;
+<i>11</i>&nbsp;    private WorkerClient worker;
+<i>12</i>&nbsp;    private WorkerClient underWorker;
+<i>13</i>&nbsp;    private int level; //1,2,3,4 per i livelli
+<i>14</i>&nbsp;    private int border;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    /**
+<i>17</i>&nbsp;     * getUnderWorker returns the worker which is on this cell under another worker
+<i>18</i>&nbsp;     * @return the said WorkerClient
+<i>19</i>&nbsp;     */
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    public WorkerClient getUnderWorker() {
+<b class="fc"><i>22</i>&nbsp;        return underWorker;</b>
+<i>23</i>&nbsp;    }
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    /**
+<i>26</i>&nbsp;     * getUnderWorker place a worker on this cell, under another worker
+<i>27</i>&nbsp;     * @param underWorker
+<i>28</i>&nbsp;     */
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;    public void setUnderWorker(WorkerClient underWorker) {
+<b class="nc"><i>31</i>&nbsp;        this.underWorker = underWorker;</b>
+<b class="nc"><i>32</i>&nbsp;    }</b>
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    public void setCellCoords(Coords cellCoords) {
+<b class="nc"><i>36</i>&nbsp;        this.cellCoords = cellCoords;</b>
+<b class="nc"><i>37</i>&nbsp;    }</b>
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    /**
+<i>40</i>&nbsp;     * setSelectable sets if this cell is selectable by the user (for a selection, movement or build) or not
+<i>41</i>&nbsp;     * @param selectable
+<i>42</i>&nbsp;     */
+<i>43</i>&nbsp;    public void setSelectable(int selectable) {
+<b class="fc"><i>44</i>&nbsp;        this.selectable = selectable;</b>
+<b class="fc"><i>45</i>&nbsp;    }</b>
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    /**
+<i>48</i>&nbsp;     * getworkerSelectable specifies if the worker that is on this cell is selectable or not during the selection phase
+<i>49</i>&nbsp;     * @return
+<i>50</i>&nbsp;     */
+<i>51</i>&nbsp;    public int getworkerSelectable() {
+<b class="fc"><i>52</i>&nbsp;        return workerSelectable;</b>
+<i>53</i>&nbsp;    }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    /**
+<i>56</i>&nbsp;     * getworkerSelectable sets if the worker that is on this cell is selectable or not during the selection phase
+<i>57</i>&nbsp;     */
+<i>58</i>&nbsp;    public void setworkerSelectable(int workerSelectable) {
+<b class="nc"><i>59</i>&nbsp;        this.workerSelectable = workerSelectable;</b>
+<b class="nc"><i>60</i>&nbsp;    }</b>
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    /**
+<i>63</i>&nbsp;     * setLevel sets this cell&#39;s building level
+<i>64</i>&nbsp;     * @param level
+<i>65</i>&nbsp;     */
+<i>66</i>&nbsp;    public void setLevel(int level) {
+<b class="fc"><i>67</i>&nbsp;        this.level = level;</b>
+<b class="fc"><i>68</i>&nbsp;    }</b>
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    /* not used */
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;    public void setBorder(int border) {
+<b class="nc"><i>73</i>&nbsp;        this.border = border;</b>
+<b class="nc"><i>74</i>&nbsp;    }</b>
+<i>75</i>&nbsp;
+<i>76</i>&nbsp;    /**
+<i>77</i>&nbsp;     * getCellCoords returns the coordinates of this cell
+<i>78</i>&nbsp;     * @return the said Coords
+<i>79</i>&nbsp;     */
+<i>80</i>&nbsp;    public Coords getCellCoords() {
+<b class="nc"><i>81</i>&nbsp;        return cellCoords;</b>
+<i>82</i>&nbsp;    }
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    /**
+<i>85</i>&nbsp;     * getSelectable return an integer value that specifies if this cell is selectable or not
+<i>86</i>&nbsp;     * @return the said value
+<i>87</i>&nbsp;     */
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    public int getSelectable() {
+<b class="fc"><i>90</i>&nbsp;        return selectable;</b>
+<i>91</i>&nbsp;    }
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;    /**
+<i>94</i>&nbsp;     * getWorker returns the worker that is on this cell
+<i>95</i>&nbsp;     * @return the said WorkerClient
+<i>96</i>&nbsp;     */
+<i>97</i>&nbsp;
+<i>98</i>&nbsp;    public WorkerClient getWorker() {
+<b class="fc"><i>99</i>&nbsp;        return worker;</b>
+<i>100</i>&nbsp;    }
+<i>101</i>&nbsp;
+<i>102</i>&nbsp;    /**
+<i>103</i>&nbsp;     * setWorker is used to place a worker on this cell
+<i>104</i>&nbsp;     * @param worker
+<i>105</i>&nbsp;     */
+<i>106</i>&nbsp;
+<i>107</i>&nbsp;    public void setWorker(WorkerClient worker) {
+<b class="fc"><i>108</i>&nbsp;        this.worker = worker;</b>
+<b class="fc"><i>109</i>&nbsp;    }</b>
+<i>110</i>&nbsp;
+<i>111</i>&nbsp;    /**
+<i>112</i>&nbsp;     * getLevel gets this cell&#39;s building level
+<i>113</i>&nbsp;     * @return
+<i>114</i>&nbsp;     */
+<i>115</i>&nbsp;
+<i>116</i>&nbsp;    public int getLevel() {
+<b class="fc"><i>117</i>&nbsp;        return level;</b>
+<i>118</i>&nbsp;    }
+<i>119</i>&nbsp;
+<i>120</i>&nbsp;    /* not used */
+<i>121</i>&nbsp;
+<i>122</i>&nbsp;    public int getBorder() {
+<b class="nc"><i>123</i>&nbsp;        return border;</b>
+<i>124</i>&nbsp;    }
+<i>125</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

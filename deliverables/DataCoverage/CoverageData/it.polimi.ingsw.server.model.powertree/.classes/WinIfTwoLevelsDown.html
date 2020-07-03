@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: WinIfTwoLevelsDown</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.powertree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: WinIfTwoLevelsDown (it.polimi.ingsw.server.model.powertree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WinIfTwoLevelsDown</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/ 7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.powertree;
+<i>2</i>&nbsp;import it.polimi.ingsw.server.model.Worker;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.PlayerWonEvent;
+<i>4</i>&nbsp;/**
+<i>5</i>&nbsp; * This is Pan&#39;s winCondition
+<i>6</i>&nbsp; */
+<b class="fc"><i>7</i>&nbsp;public class WinIfTwoLevelsDown extends WinCondition{</b>
+<i>8</i>&nbsp;    /**
+<i>9</i>&nbsp;     * the player who has the god with this win condition and moves between two cells and these two cells have difference equal to two then wins
+<i>10</i>&nbsp;     * @param userInput contains null;
+<i>11</i>&nbsp;     * @return
+<i>12</i>&nbsp;     */
+<i>13</i>&nbsp;    @Override
+<i>14</i>&nbsp;    public int doAction(int[] userInput) {
+<b class="fc"><i>15</i>&nbsp;        Worker selectedWorker = super.getExecutorPointer().getPrevSelect().getSelectedWorker();</b>
+<b class="fc"><i>16</i>&nbsp;        super.doAction(userInput);</b>
+<b class="fc"><i>17</i>&nbsp;        if ((selectedWorker.getPreviousPosition().getBuildingLevel().ordinal() - selectedWorker.getCurrentPosition().getBuildingLevel().ordinal()) == 2) {</b>
+<b class="fc"><i>18</i>&nbsp;            getPlayerWonListener().winGame(new PlayerWonEvent(super.getExecutorPointer().getCurrentPlayer()));</b>
+<b class="fc"><i>19</i>&nbsp;            return 0;</b>
+<i>20</i>&nbsp;        } else {
+<i>21</i>&nbsp;            /* getFailedActionListener().actionFailed(new FailedActionEvent(this)); */
+<b class="fc"><i>22</i>&nbsp;            return 1;</b>
+<i>23</i>&nbsp;        }
+<i>24</i>&nbsp;    }
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

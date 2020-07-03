@@ -1,0 +1,201 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SocketHandlerOutput</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.virtualview.network</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SocketHandlerOutput (it.polimi.ingsw.server.virtualview.network)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SocketHandlerOutput</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (3/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    35,4%
+  </span>
+  <span class="absValue">
+    (17/ 48)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.virtualview.network;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.fasterxml.jackson.core.JsonProcessingException;
+<i>4</i>&nbsp;import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+<i>5</i>&nbsp;import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+<i>6</i>&nbsp;import it.polimi.ingsw.server.controller.Controller;
+<i>7</i>&nbsp;import it.polimi.ingsw.server.model.ActionExecutor;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;import java.io.*;
+<i>10</i>&nbsp;import java.net.Socket;
+<i>11</i>&nbsp;import java.util.ArrayList;
+<i>12</i>&nbsp;import java.util.List;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;/**
+<i>16</i>&nbsp; * handle broadcast communication from server to client
+<i>17</i>&nbsp; */
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;/* SocketHandlerOutput singleton */
+<i>20</i>&nbsp;public class SocketHandlerOutput implements Runnable {
+<i>21</i>&nbsp;    private List&lt;Socket&gt; socketList;
+<i>22</i>&nbsp;    private List&lt;PrintWriter&gt; printWriterList;
+<i>23</i>&nbsp;    private EventsBuffer eventsBuffer;
+<i>24</i>&nbsp;    private Controller controller;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    /**
+<i>28</i>&nbsp;     * create a new socketHandlerOutput
+<i>29</i>&nbsp;     * @param controller controller created at startUp
+<i>30</i>&nbsp;     */
+<b class="fc"><i>31</i>&nbsp;    public SocketHandlerOutput(Controller controller) {</b>
+<b class="fc"><i>32</i>&nbsp;        this.controller = controller;</b>
+<b class="fc"><i>33</i>&nbsp;        List&lt;Socket&gt; socketList = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>34</i>&nbsp;        this.socketList = socketList;</b>
+<b class="fc"><i>35</i>&nbsp;        List&lt;PrintWriter&gt; printWriterList = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>36</i>&nbsp;        this.printWriterList = printWriterList;</b>
+<b class="fc"><i>37</i>&nbsp;    }</b>
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    /**
+<i>40</i>&nbsp;     * add socket to socketList and create a new printWriter form this socket
+<i>41</i>&nbsp;     * @param socket socket to add
+<i>42</i>&nbsp;     * @throws IOException if socket is unavailable
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;    public void addSocketToList(Socket socket) throws IOException {
+<b class="nc"><i>45</i>&nbsp;        socketList.add(socket);</b>
+<b class="nc"><i>46</i>&nbsp;        PrintWriter printWriter = new PrintWriter(socket.getOutputStream());</b>
+<b class="nc"><i>47</i>&nbsp;        printWriterList.add(printWriter);</b>
+<b class="nc"><i>48</i>&nbsp;    }</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    /**
+<i>51</i>&nbsp;     * run and keep sending beans every time that Eventsbuffer isnt&#39; empty.
+<i>52</i>&nbsp;     * reboot the server when a connection is closed by flushing remaining beans in the parser and set brdLock to false enabling the buffered reader to
+<i>53</i>&nbsp;     * close itself.
+<i>54</i>&nbsp;     * Then resets actionExecutor and flush players in the virtualLobby.
+<i>55</i>&nbsp;     */
+<i>56</i>&nbsp;    public void run(){
+<i>57</i>&nbsp;
+<b class="fc"><i>58</i>&nbsp;        this.eventsBuffer = EventsBuffer.instance();</b>
+<i>59</i>&nbsp;        while(true) {
+<i>60</i>&nbsp;            try {
+<b class="fc"><i>61</i>&nbsp;                while (!EventsBuffer.instance().getEndGame()) {</b>
+<b class="fc"><i>62</i>&nbsp;                    sendingBeans();</b>
+<i>63</i>&nbsp;                }
+<b class="nc"><i>64</i>&nbsp;                synchronized (eventsBuffer.brdLock) {</b>
+<b class="nc"><i>65</i>&nbsp;                    if (!EventsBuffer.instance().emptyBuffer()) {</b>
+<b class="nc"><i>66</i>&nbsp;                        while (!EventsBuffer.instance().emptyBuffer())</b>
+<b class="nc"><i>67</i>&nbsp;                            sendingBeans();</b>
+<i>68</i>&nbsp;                    }
+<b class="nc"><i>69</i>&nbsp;                    EventsBuffer.instance().setSendEventBeanLock(false);</b>
+<i>70</i>&nbsp;
+<b class="nc"><i>71</i>&nbsp;                    while (controller.getLineClientSocketsAndPortListSize() &gt; 0)</b>
+<b class="nc"><i>72</i>&nbsp;                    ;</b>
+<i>73</i>&nbsp;
+<b class="nc"><i>74</i>&nbsp;                    VvLobby.instance().resetVvLobby();</b>
+<b class="nc"><i>75</i>&nbsp;                    ActionExecutor.instance().nullActionExecutor();</b>
+<i>76</i>&nbsp;                    //ActionExecutor.instance().resetActionExecutor();
+<b class="nc"><i>77</i>&nbsp;                    resetSocketHandlerOutput();</b>
+<b class="nc"><i>78</i>&nbsp;                    EventsBuffer.instance().setNotEndGame();</b>
+<b class="nc"><i>79</i>&nbsp;                    EventsBuffer.instance().setSendEventBeanLock(true);</b>
+<b class="nc"><i>80</i>&nbsp;                }</b>
+<b class="nc"><i>81</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>82</i>&nbsp;                System.err.println(e.getMessage());</b>
+<b class="nc"><i>83</i>&nbsp;            }</b>
+<i>84</i>&nbsp;        }
+<i>85</i>&nbsp;    }
+<i>86</i>&nbsp;
+<i>87</i>&nbsp;    /**
+<i>88</i>&nbsp;     * get the last bean in the buffer, parsed it and than send it broadcast across all printwriters
+<i>89</i>&nbsp;     * @throws JsonProcessingException if xmlMapper fails
+<i>90</i>&nbsp;     */
+<i>91</i>&nbsp;    public synchronized void sendingBeans() throws JsonProcessingException {
+<i>92</i>&nbsp;
+<b class="fc"><i>93</i>&nbsp;        if(!eventsBuffer.emptyBuffer()) {</b>
+<b class="fc"><i>94</i>&nbsp;            XmlMapper xmlMapper = (new XmlMapper());</b>
+<b class="fc"><i>95</i>&nbsp;            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);</b>
+<b class="fc"><i>96</i>&nbsp;            String toSend = xmlMapper.writeValueAsString(eventsBuffer.getLastEventBean());</b>
+<b class="fc"><i>97</i>&nbsp;            toSend+=&quot;\n&quot;;</b>
+<b class="fc"><i>98</i>&nbsp;            for(int i = 0; i &lt; printWriterList.size(); i++) {</b>
+<b class="nc"><i>99</i>&nbsp;                printWriterList.get(i).print(toSend);</b>
+<b class="nc"><i>100</i>&nbsp;                printWriterList.get(i).flush();</b>
+<b class="nc"><i>101</i>&nbsp;                System.out.print(&quot;Flushed bean: &quot;+toSend);</b>
+<i>102</i>&nbsp;            }
+<i>103</i>&nbsp;        }
+<b class="fc"><i>104</i>&nbsp;    }</b>
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;    /**
+<i>107</i>&nbsp;     * reset socketList and printWriter.
+<i>108</i>&nbsp;     */
+<i>109</i>&nbsp;    public void resetSocketHandlerOutput(){
+<b class="nc"><i>110</i>&nbsp;        socketList.clear();</b>
+<b class="nc"><i>111</i>&nbsp;        printWriterList.clear();</b>
+<b class="nc"><i>112</i>&nbsp;        List&lt;Socket&gt; socketList = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>113</i>&nbsp;        this.socketList = socketList;</b>
+<b class="nc"><i>114</i>&nbsp;        List&lt;PrintWriter&gt; printWriterList = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>115</i>&nbsp;        this.printWriterList = printWriterList;</b>
+<b class="nc"><i>116</i>&nbsp;        eventsBuffer.flushBuffer();</b>
+<b class="nc"><i>117</i>&nbsp;    }</b>
+<i>118</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

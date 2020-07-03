@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DomePromptViewEvent</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.client.viewevents</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DomePromptViewEvent (it.polimi.ingsw.client.viewevents)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DomePromptViewEvent</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.client.viewevents;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.client.proxymodel.ProxyModel;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * show the prompt for the dome build chose
+<i>7</i>&nbsp; */
+<i>8</i>&nbsp;public class DomePromptViewEvent extends ViewEvent{
+<i>9</i>&nbsp;    private String domeRequest;
+<i>10</i>&nbsp;
+<b class="nc"><i>11</i>&nbsp;    public DomePromptViewEvent(String domeRequest){</b>
+<b class="nc"><i>12</i>&nbsp;        this.domeRequest = domeRequest;</b>
+<b class="nc"><i>13</i>&nbsp;    }</b>
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    /**
+<i>16</i>&nbsp;     * used for show the prompt to choose whether to use the power to build the dome or not
+<i>17</i>&nbsp;     */
+<i>18</i>&nbsp;    @Override
+<i>19</i>&nbsp;    public void viewEventMethod() {
+<b class="nc"><i>20</i>&nbsp;        ProxyModel.instance().getDrawerStrategy().promptChoice(domeRequest);</b>
+<i>21</i>&nbsp;        //System.out.println(&quot;\u001B[36m&quot; + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + &quot;\u001B[0m&quot;+&quot;, &quot;+domeRequest);
+<i>22</i>&nbsp;        //System.out.println(&quot;Answer by typing &quot;+&quot;\u001B[33m&quot;+&quot;bool&quot;+&quot;\u001B[0m&quot;+&quot; followed by &quot;+&quot;\u001B[33m&quot;+&quot;true&quot;+&quot;\u001B[0m&quot;+&quot; or &quot;+&quot;\u001B[33m&quot;+&quot;false&quot;+&quot;\u001B[0m&quot;+&quot;.&quot;);
+<i>23</i>&nbsp;        //System.out.println(&quot;If &quot;+&quot;\u001B[36m&quot; + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + &quot;\u001B[0m&quot;+&quot; answers &quot;+&quot;\u001B[33m&quot;+&quot;false&quot;+&quot;\u001B[0m&quot;+&quot;, he/she should then build a regular block typing &quot; + &quot;\u001B[33m&quot; + &quot;coords&quot; + &quot;\u001B[0m&quot; + &quot; followed the desired &quot;+&quot;\u001B[33m&quot; + &quot;2 coordinates&quot; + &quot;\u001B[0m&quot;+&quot;.&quot;);
+<i>24</i>&nbsp;
+<b class="nc"><i>25</i>&nbsp;    }</b>
+<i>26</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

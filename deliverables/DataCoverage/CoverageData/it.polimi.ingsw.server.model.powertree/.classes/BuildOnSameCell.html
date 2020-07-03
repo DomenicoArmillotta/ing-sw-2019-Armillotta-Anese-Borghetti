@@ -1,0 +1,119 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: BuildOnSameCell</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.powertree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: BuildOnSameCell (it.polimi.ingsw.server.model.powertree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">BuildOnSameCell</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    54,5%
+  </span>
+  <span class="absValue">
+    (6/ 11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.powertree;
+<i>2</i>&nbsp;import it.polimi.ingsw.server.model.Level;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;/**
+<i>7</i>&nbsp; * Build a second block on one of the available cells, which must be the same of the previous built cell
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;
+<b class="fc"><i>10</i>&nbsp;public class BuildOnSameCell extends Build {</b>
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * Calls the superclass&#39; doAction if userInput correctly represents the same cell to build on
+<i>14</i>&nbsp;     * @param userInput
+<i>15</i>&nbsp;     * @return 1 if userInput correctly represents the same cell to build on, -1 if the action fails
+<i>16</i>&nbsp;     * The BuildBlockListener is called in the superclass
+<i>17</i>&nbsp;     */
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    @Override
+<i>20</i>&nbsp;    public int doAction(int[] userInput) {
+<i>21</i>&nbsp;        /* se passa lo stesso valore allora non deve costruire */
+<b class="fc"><i>22</i>&nbsp;        if(getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition().getX() == userInput[0] &amp;&amp; getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition().getY() == userInput[1])</b>
+<b class="nc"><i>23</i>&nbsp;            return 1;</b>
+<b class="fc"><i>24</i>&nbsp;        if (getExecutorPointer().getMap()[userInput[0]][userInput[1]].getBuildingLevel().equals(Level.TOP) || getExecutorPointer().getMap()[userInput[0]][userInput[1]] != getExecutorPointer().getPrevBuild().getCellAfterBuild()) {</b>
+<b class="nc"><i>25</i>&nbsp;            pointerBack();</b>
+<b class="nc"><i>26</i>&nbsp;            getFailedActionListener().actionFailed(new FailedActionEvent(this));</b>
+<b class="nc"><i>27</i>&nbsp;            return -1; /* [NOTIFY]: BuildOnSameCell failed */</b>
+<i>28</i>&nbsp;        } else {
+<b class="fc"><i>29</i>&nbsp;            if (super.doAction(userInput) == -1)</b>
+<b class="nc"><i>30</i>&nbsp;                return -1; /* Do not call pointerBack() */</b>
+<i>31</i>&nbsp;        }
+<b class="fc"><i>32</i>&nbsp;        getNoUpdatesListener().noUpdates(new NoUpdatesEvent());</b>
+<b class="fc"><i>33</i>&nbsp;        return 1; /* [NOTIFY]: BuildOnSameCell successful */</b>
+<i>34</i>&nbsp;    }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

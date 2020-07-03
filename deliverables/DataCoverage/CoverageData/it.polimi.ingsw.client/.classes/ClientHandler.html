@@ -1,0 +1,154 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ClientHandler</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.client</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ClientHandler (it.polimi.ingsw.client)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ClientHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.client;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.client.proxymodel.CliDrawer;
+<i>4</i>&nbsp;import it.polimi.ingsw.client.proxymodel.GuiDrawer;
+<i>5</i>&nbsp;import it.polimi.ingsw.client.proxymodel.ProxyModel;
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;import java.io.IOException;
+<i>8</i>&nbsp;import java.io.PrintWriter;
+<i>9</i>&nbsp;import java.net.Inet4Address;
+<i>10</i>&nbsp;import java.net.Socket;
+<i>11</i>&nbsp;import java.util.concurrent.ExecutorService;
+<i>12</i>&nbsp;import java.util.concurrent.Executors;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;/**
+<i>15</i>&nbsp; *it is the main thread for communication and starts the other two handlers, that is, the input and output handlers
+<i>16</i>&nbsp; */
+<i>17</i>&nbsp;public class ClientHandler {
+<i>18</i>&nbsp;    private String drawerType;
+<i>19</i>&nbsp;    private int portNumber;
+<i>20</i>&nbsp;
+<b class="nc"><i>21</i>&nbsp;        public ClientHandler(String drawerChoice,int portNumber) {</b>
+<b class="nc"><i>22</i>&nbsp;            this.drawerType = drawerChoice;</b>
+<b class="nc"><i>23</i>&nbsp;            System.out.println(&quot;start client&quot;);</b>
+<b class="nc"><i>24</i>&nbsp;            this.portNumber = portNumber;</b>
+<b class="nc"><i>25</i>&nbsp;        }</b>
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    /**
+<i>28</i>&nbsp;     * it is chosen whether to start the gui or the cli, the port for the communication is chosen and the socket is created
+<i>29</i>&nbsp;     * the login is started
+<i>30</i>&nbsp;     *
+<i>31</i>&nbsp;     */
+<i>32</i>&nbsp;    public void startClient() {
+<i>33</i>&nbsp;            int drawerType; /* 0 for CLI, 1 for GUI */
+<b class="nc"><i>34</i>&nbsp;            ExecutorService executor = Executors.newCachedThreadPool();</b>
+<i>35</i>&nbsp;            /* System.out.println(&quot;Client ready&quot;); */
+<b class="nc"><i>36</i>&nbsp;            ProxyModel proxyModel = ProxyModel.instance();</b>
+<b class="nc"><i>37</i>&nbsp;            proxyModel.createMap();</b>
+<b class="nc"><i>38</i>&nbsp;            if(this.drawerType.equals(&quot;gui&quot;)){</b>
+<b class="nc"><i>39</i>&nbsp;                GuiDrawer guiDrawer = new GuiDrawer();</b>
+<b class="nc"><i>40</i>&nbsp;                proxyModel.setDrawerStrategy(guiDrawer);</b>
+<b class="nc"><i>41</i>&nbsp;                drawerType = 1;</b>
+<b class="nc"><i>42</i>&nbsp;            }else</b>
+<b class="nc"><i>43</i>&nbsp;                if(this.drawerType.equals(&quot;cli&quot;)){</b>
+<b class="nc"><i>44</i>&nbsp;                    CliDrawer cliDrawer = new CliDrawer();</b>
+<b class="nc"><i>45</i>&nbsp;                    drawerType = 0;</b>
+<b class="nc"><i>46</i>&nbsp;                    proxyModel.setDrawerStrategy(cliDrawer);</b>
+<b class="nc"><i>47</i>&nbsp;                }else {</b>
+<b class="nc"><i>48</i>&nbsp;                    System.out.println(&quot;inserted draw method unavailable, pleas reinsert&quot;);</b>
+<b class="nc"><i>49</i>&nbsp;                    return;</b>
+<i>50</i>&nbsp;                }
+<i>51</i>&nbsp;
+<b class="nc"><i>52</i>&nbsp;            proxyModel.setPhase(0);</b>
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;                try {
+<b class="nc"><i>55</i>&nbsp;                    Socket socket = new Socket(Inet4Address.getLocalHost(), this.portNumber);</b>
+<b class="nc"><i>56</i>&nbsp;                    ProxyModel.instance().thisScoket = socket;</b>
+<b class="nc"><i>57</i>&nbsp;                    PrintWriter printWriter = new PrintWriter(socket.getOutputStream());</b>
+<b class="nc"><i>58</i>&nbsp;                    ClientSocketManager.getInstance().setPrintWriter(printWriter);</b>
+<b class="nc"><i>59</i>&nbsp;                    ClientSocketManager.getInstance().setSocket(socket);</b>
+<i>60</i>&nbsp;
+<b class="nc"><i>61</i>&nbsp;                    if(drawerType == 0)</b>
+<b class="nc"><i>62</i>&nbsp;                        executor.submit(new ClientHandlerOutput(socket));</b>
+<i>63</i>&nbsp;                    else
+<b class="nc"><i>64</i>&nbsp;                        proxyModel.getDrawerStrategy().login();</b>
+<i>65</i>&nbsp;
+<b class="nc"><i>66</i>&nbsp;                    executor.submit(new ClientHandlerInput(socket));</b>
+<b class="nc"><i>67</i>&nbsp;                } catch(IOException e) {</b>
+<b class="nc"><i>68</i>&nbsp;                    executor.shutdown();</b>
+<b class="nc"><i>69</i>&nbsp;                }</b>
+<b class="nc"><i>70</i>&nbsp;        }</b>
+<i>71</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

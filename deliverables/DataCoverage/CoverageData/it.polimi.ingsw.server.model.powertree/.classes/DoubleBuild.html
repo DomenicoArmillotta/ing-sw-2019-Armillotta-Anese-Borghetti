@@ -1,0 +1,121 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DoubleBuild</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.powertree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DoubleBuild (it.polimi.ingsw.server.model.powertree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DoubleBuild</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85,7%
+  </span>
+  <span class="absValue">
+    (6/ 7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.powertree;
+<i>2</i>&nbsp;import it.polimi.ingsw.server.model.ActionExecutor;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.DoubleBuildEvent;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; *  check if a worker is able to build another time ather their previous build.
+<i>7</i>&nbsp; *
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;
+<b class="fc"><i>11</i>&nbsp;public class DoubleBuild extends Power {</b>
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp; /**
+<i>15</i>&nbsp;  * override superClass doAction and returns 0, call createPromptListener and pass a new DoubleBuildEvent.
+<i>16</i>&nbsp;  * @return 1 if a second move is not allowed due to the lack of available cells to build, 0 if is allowed
+<i>17</i>&nbsp; */
+<i>18</i>&nbsp;    @Override
+<i>19</i>&nbsp;    public int doAction(int[] userInput) {
+<i>20</i>&nbsp;        /*creo nuovi listener*/
+<b class="fc"><i>21</i>&nbsp;        ActionExecutor actionExecutor = ActionExecutor.instance();</b>
+<b class="fc"><i>22</i>&nbsp;        int selectedWorker = getWorkerIndex();</b>
+<i>23</i>&nbsp;        /*//refactor
+<i>24</i>&nbsp;        int selectedWorker;
+<i>25</i>&nbsp;        if(actionExecutor.getPrevSelect().getSelectedWorker().equals(actionExecutor.getCurrentPlayer().getFirstWorker()))
+<i>26</i>&nbsp;            selectedWorker = 0;
+<i>27</i>&nbsp;        else
+<i>28</i>&nbsp;            selectedWorker = 1;
+<i>29</i>&nbsp;        */
+<b class="fc"><i>30</i>&nbsp;        if(actionExecutor.getNextBuild().getAvailableCells(selectedWorker).isEmpty()) {</b>
+<b class="nc"><i>31</i>&nbsp;            return 1; // non ci sono celle disponibili per questo worker quindi passiamo oltre</b>
+<i>32</i>&nbsp;        }
+<i>33</i>&nbsp;        else{
+<b class="fc"><i>34</i>&nbsp;            super.getBooleanActionListener().createPromptBean(new DoubleBuildEvent());</b>
+<i>35</i>&nbsp;        }
+<b class="fc"><i>36</i>&nbsp;        return 0;</b>
+<i>37</i>&nbsp;    }
+<i>38</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

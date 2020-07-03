@@ -1,0 +1,174 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: FindAvailableCellsMove</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.powertree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: FindAvailableCellsMove (it.polimi.ingsw.server.model.powertree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FindAvailableCellsMove</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (30/ 30)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.powertree;
+<i>2</i>&nbsp;import it.polimi.ingsw.server.model.Cell;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.model.Level;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.Worker;
+<i>5</i>&nbsp;import java.util.ArrayList;
+<i>6</i>&nbsp;import java.util.List;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;/**
+<i>9</i>&nbsp; * it is used to create a list with the cells in which the selected worker can move
+<i>10</i>&nbsp; */
+<b class="fc"><i>11</i>&nbsp;public class FindAvailableCellsMove extends FindAvailableCells {</b>
+<i>12</i>&nbsp;    /**
+<i>13</i>&nbsp;     * it is used to create a list with the cells in which the selected worker can move,
+<i>14</i>&nbsp;     * all adjacent cells are checked and checking if there is another worker on the cell,
+<i>15</i>&nbsp;     * if there is a dome, if the difference is greater than one
+<i>16</i>&nbsp;     * @param userInput
+<i>17</i>&nbsp;     * @return
+<i>18</i>&nbsp;     */
+<i>19</i>&nbsp;    @Override
+<i>20</i>&nbsp;    public int doAction(int[] userInput) {
+<i>21</i>&nbsp;
+<b class="fc"><i>22</i>&nbsp;        Cell[][] map = super.getExecutorPointer().getMap();</b>
+<i>23</i>&nbsp;        Worker selectedWorker;
+<i>24</i>&nbsp;        /* Reinizializza le celle rimovibili */
+<b class="fc"><i>25</i>&nbsp;        super.getExecutorPointer().getNextMove().clearPower();</b>
+<i>26</i>&nbsp;
+<b class="fc"><i>27</i>&nbsp;        for (int index = 0; index &lt; 2; index++) {</b>
+<b class="fc"><i>28</i>&nbsp;            if (index == 0) selectedWorker = getExecutorPointer().getCurrentPlayer().getFirstWorker();</b>
+<b class="fc"><i>29</i>&nbsp;            else selectedWorker = getExecutorPointer().getCurrentPlayer().getSecondWorker();</b>
+<i>30</i>&nbsp;
+<b class="fc"><i>31</i>&nbsp;            List&lt;Cell&gt; moveCells = new ArrayList&lt;&gt;();</b>
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;            /* Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker(); */
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;            int i, j, x, y, check;
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;            /* if (selectedWorker == null)
+<i>38</i>&nbsp;                return -1; */
+<b class="fc"><i>39</i>&nbsp;            x = selectedWorker.getCurrentPosition().getX();</b>
+<b class="fc"><i>40</i>&nbsp;            y = selectedWorker.getCurrentPosition().getY();</b>
+<i>41</i>&nbsp;            /* Aggiungere condizione del bordo inferiore */
+<i>42</i>&nbsp;            /* System.out.print(&quot;Celle calcolate == &quot;); */
+<i>43</i>&nbsp;
+<b class="fc"><i>44</i>&nbsp;            for (i = x - 1; i &lt; x + 2 &amp;&amp; i &lt; 5; i++) {</b>
+<b class="fc"><i>45</i>&nbsp;                for (j = y - 1; j &lt; y + 2 &amp;&amp; j &lt; 5; j++) {</b>
+<b class="fc"><i>46</i>&nbsp;                    check = 1;</b>
+<b class="fc"><i>47</i>&nbsp;                    if (i &lt; 0) i = 0;</b>
+<b class="fc"><i>48</i>&nbsp;                    if (j &lt; 0) j = 0;</b>
+<i>49</i>&nbsp;                    /* Se  c&#39;è un worker sopra non  aggiungo nella lista */
+<b class="fc"><i>50</i>&nbsp;                    if (map[i][j].getWorkerOnCell() != null &amp;&amp; check == 1) {</b>
+<b class="fc"><i>51</i>&nbsp;                        check = 0;</b>
+<i>52</i>&nbsp;                    }
+<i>53</i>&nbsp;                    /* Se  c&#39;è una cupola non  aggiungo nella lista */
+<b class="fc"><i>54</i>&nbsp;                    if (map[i][j].getBuildingLevel() == Level.DOME &amp;&amp; check == 1) {</b>
+<b class="fc"><i>55</i>&nbsp;                        check = 0;</b>
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;                    }
+<i>58</i>&nbsp;                    /* Se la differenza è maggiore di 1 non aggiungo nella lista */
+<b class="fc"><i>59</i>&nbsp;                    if ((selectedWorker.getCurrentPosition().getBuildingLevel().ordinal() - map[i][j].getBuildingLevel().ordinal()) &lt; -1 &amp;&amp; check == 1) {</b>
+<i>60</i>&nbsp;
+<b class="fc"><i>61</i>&nbsp;                        check = 0;</b>
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;                    }
+<b class="fc"><i>64</i>&nbsp;                    if (check == 1) {</b>
+<i>65</i>&nbsp;                        /* Inserisce nella lista */
+<b class="fc"><i>66</i>&nbsp;                        moveCells.add(map[i][j]);</b>
+<b class="fc"><i>67</i>&nbsp;                        if(index==0) {</b>
+<i>68</i>&nbsp;                        }
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;                    }
+<i>71</i>&nbsp;                }
+<i>72</i>&nbsp;            }
+<b class="fc"><i>73</i>&nbsp;            super.getExecutorPointer().getNextMove().setAvailableCells(moveCells, index);</b>
+<i>74</i>&nbsp;        }
+<b class="fc"><i>75</i>&nbsp;        if (super.getExecutorPointer().getNextMove().getAvailableCells(0).isEmpty() &amp;&amp; super.getExecutorPointer().getNextMove().getAvailableCells(1).isEmpty()) {</b>
+<b class="fc"><i>76</i>&nbsp;            super.loseCondition();</b>
+<b class="fc"><i>77</i>&nbsp;            return 1; /* [NOTIFY]: FindAvailableCellsMove failed */</b>
+<i>78</i>&nbsp;        }
+<i>79</i>&nbsp;
+<b class="fc"><i>80</i>&nbsp;        if(!getExecutorPointer().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().isEmpty())</b>
+<b class="fc"><i>81</i>&nbsp;            executeMoveLimitations();</b>
+<i>82</i>&nbsp;
+<b class="fc"><i>83</i>&nbsp;        return 0; /* [NOTIFY]: FindAvailableCellsMove done */</b>
+<i>84</i>&nbsp;    }
+<i>85</i>&nbsp;
+<i>86</i>&nbsp;}
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;
+<i>90</i>&nbsp;
+<i>91</i>&nbsp;
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MouseListenerChoice</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.client.proxymodel</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MouseListenerChoice (it.polimi.ingsw.client.proxymodel)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MouseListenerChoice</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.client.proxymodel;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.fasterxml.jackson.core.JsonProcessingException;
+<i>4</i>&nbsp;import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+<i>5</i>&nbsp;import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+<i>6</i>&nbsp;import it.polimi.ingsw.client.BooleanEvent;
+<i>7</i>&nbsp;import it.polimi.ingsw.client.ClientSocketManager;
+<i>8</i>&nbsp;import java.awt.event.MouseEvent;
+<i>9</i>&nbsp;import java.awt.event.MouseListener;
+<i>10</i>&nbsp;import java.io.PrintWriter;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;/**
+<i>13</i>&nbsp; * used to click on the choice that is offered when playing whether or not you want to use the power of the god you are using.
+<i>14</i>&nbsp; * The selection is located at the bottom and has two yes or no choices of green and red color respectively
+<i>15</i>&nbsp; */
+<i>16</i>&nbsp;public class MouseListenerChoice implements MouseListener {
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     *
+<i>19</i>&nbsp;     if you are in the right phase, you choose whether to use the power of god if the click takes place in the position
+<i>20</i>&nbsp;     *where the word yes or no is positioned
+<i>21</i>&nbsp;     * @param e
+<i>22</i>&nbsp;     */
+<i>23</i>&nbsp;    private Display display;
+<i>24</i>&nbsp;    private final static int threshX = 300;
+<i>25</i>&nbsp;    private final static int threshY = 600;
+<b class="nc"><i>26</i>&nbsp;    int clickCounter = 0;</b>
+<i>27</i>&nbsp;
+<b class="nc"><i>28</i>&nbsp;    public MouseListenerChoice(Display display) {</b>
+<b class="nc"><i>29</i>&nbsp;        this.display = display;</b>
+<b class="nc"><i>30</i>&nbsp;    }</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    @Override
+<i>33</i>&nbsp;    public synchronized void mouseClicked(MouseEvent e) {
+<b class="nc"><i>34</i>&nbsp;        synchronized(Display.instance().lock) {</b>
+<b class="nc"><i>35</i>&nbsp;            clickCounter++;</b>
+<i>36</i>&nbsp;            /* System.out.println(&quot;####### choice click counter: &quot;+clickCounter); */
+<i>37</i>&nbsp;
+<b class="nc"><i>38</i>&nbsp;            int x = e.getX();</b>
+<b class="nc"><i>39</i>&nbsp;            int y = e.getY();</b>
+<i>40</i>&nbsp;
+<b class="nc"><i>41</i>&nbsp;            PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();</b>
+<b class="nc"><i>42</i>&nbsp;            XmlMapper xmlMapper = (new XmlMapper());</b>
+<b class="nc"><i>43</i>&nbsp;            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);</b>
+<b class="nc"><i>44</i>&nbsp;            String toSend = null;</b>
+<b class="nc"><i>45</i>&nbsp;            if (display.getButtonAnswer() == 0 &amp;&amp; (display.getGraphicsFlag() == 5) &amp;&amp; x &lt; threshX &amp;&amp; y &gt; threshY) {</b>
+<b class="nc"><i>46</i>&nbsp;                display.setButtonAnswer(1);</b>
+<i>47</i>&nbsp;                try {
+<b class="nc"><i>48</i>&nbsp;                    toSend = xmlMapper.writeValueAsString(new BooleanEvent(true));</b>
+<b class="nc"><i>49</i>&nbsp;                } catch (JsonProcessingException jsonProcessingException) {</b>
+<b class="nc"><i>50</i>&nbsp;                    jsonProcessingException.printStackTrace();</b>
+<b class="nc"><i>51</i>&nbsp;                }</b>
+<b class="nc"><i>52</i>&nbsp;            } else if (display.getButtonAnswer() == 0 &amp;&amp; (display.getGraphicsFlag() == 5) &amp;&amp; y &gt; threshY) {</b>
+<b class="nc"><i>53</i>&nbsp;                display.setButtonAnswer(2);</b>
+<i>54</i>&nbsp;                try {
+<b class="nc"><i>55</i>&nbsp;                    toSend = xmlMapper.writeValueAsString(new BooleanEvent(false));</b>
+<b class="nc"><i>56</i>&nbsp;                } catch (JsonProcessingException jsonProcessingException) {</b>
+<b class="nc"><i>57</i>&nbsp;                    jsonProcessingException.printStackTrace();</b>
+<b class="nc"><i>58</i>&nbsp;                }</b>
+<i>59</i>&nbsp;            }
+<b class="nc"><i>60</i>&nbsp;            if (toSend != null) {</b>
+<b class="nc"><i>61</i>&nbsp;                toSend += &quot;\n&quot;;</b>
+<b class="nc"><i>62</i>&nbsp;                printWriter.print(toSend);</b>
+<b class="nc"><i>63</i>&nbsp;                printWriter.flush();</b>
+<i>64</i>&nbsp;            }
+<b class="nc"><i>65</i>&nbsp;        }</b>
+<b class="nc"><i>66</i>&nbsp;    }</b>
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;    @Override
+<i>69</i>&nbsp;    public void mousePressed(MouseEvent e) {
+<i>70</i>&nbsp;
+<b class="nc"><i>71</i>&nbsp;    }</b>
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    @Override
+<i>74</i>&nbsp;    public void mouseReleased(MouseEvent e) {
+<i>75</i>&nbsp;
+<b class="nc"><i>76</i>&nbsp;    }</b>
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;    @Override
+<i>79</i>&nbsp;    public void mouseEntered(MouseEvent e) {
+<i>80</i>&nbsp;
+<b class="nc"><i>81</i>&nbsp;    }</b>
+<i>82</i>&nbsp;
+<i>83</i>&nbsp;    @Override
+<i>84</i>&nbsp;    public void mouseExited(MouseEvent e) {
+<i>85</i>&nbsp;
+<b class="nc"><i>86</i>&nbsp;    }</b>
+<i>87</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

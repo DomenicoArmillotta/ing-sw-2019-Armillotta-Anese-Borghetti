@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Player</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.client.proxymodel</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Player (it.polimi.ingsw.client.proxymodel)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Player</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    55,6%
+  </span>
+  <span class="absValue">
+    (5/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (9/ 15)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.client.proxymodel;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * This class represents the game&#39;s Player in the client, with its name, color, godCard and workers
+<i>5</i>&nbsp; * It is similar to the server&#39;s Player class, but without the model&#39;s logic
+<i>6</i>&nbsp; */
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;public class Player {
+<i>9</i>&nbsp;    private String name;
+<i>10</i>&nbsp;    private String color;
+<i>11</i>&nbsp;    private GodCards godCard;
+<i>12</i>&nbsp;    private WorkerClient worker1;
+<i>13</i>&nbsp;    private WorkerClient worker2;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;
+<b class="fc"><i>16</i>&nbsp;    public Player(String userName){</b>
+<b class="fc"><i>17</i>&nbsp;        this.name = userName;</b>
+<b class="fc"><i>18</i>&nbsp;    }</b>
+<i>19</i>&nbsp;    public String getName() {
+<b class="nc"><i>20</i>&nbsp;        return name;</b>
+<i>21</i>&nbsp;    }
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public void setName(String name) {
+<b class="nc"><i>24</i>&nbsp;        this.name = name;</b>
+<b class="nc"><i>25</i>&nbsp;    }</b>
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    public GodCards getGodCard() {
+<b class="nc"><i>28</i>&nbsp;        return godCard;</b>
+<i>29</i>&nbsp;    }
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    public void setGodCard(GodCards godCard) {
+<b class="nc"><i>32</i>&nbsp;        this.godCard = godCard;</b>
+<b class="nc"><i>33</i>&nbsp;    }</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    public WorkerClient getWorker1() {
+<b class="fc"><i>36</i>&nbsp;        return worker1;</b>
+<i>37</i>&nbsp;    }
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    public void setWorker1(WorkerClient worker1) {
+<b class="fc"><i>40</i>&nbsp;        this.worker1 = worker1;</b>
+<b class="fc"><i>41</i>&nbsp;    }</b>
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    public WorkerClient getWorker2() {
+<b class="fc"><i>44</i>&nbsp;        return worker2;</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    public void setWorker2(WorkerClient worker2) {
+<b class="fc"><i>48</i>&nbsp;        this.worker2 = worker2;</b>
+<b class="fc"><i>49</i>&nbsp;    }</b>
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;
+<i>52</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

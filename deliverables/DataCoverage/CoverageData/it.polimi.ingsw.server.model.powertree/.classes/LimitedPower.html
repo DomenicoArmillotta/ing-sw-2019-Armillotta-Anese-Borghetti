@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: LimitedPower</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.powertree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: LimitedPower (it.polimi.ingsw.server.model.powertree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">LimitedPower</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (27/ 27)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.powertree;
+<i>2</i>&nbsp;import it.polimi.ingsw.server.model.Cell;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import java.util.List;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;public class LimitedPower extends Power {
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;    private List&lt;Cell&gt; firstWorkerAddableCells;
+<i>9</i>&nbsp;    private List&lt;Cell&gt; firstWorkerRemovableCells;
+<i>10</i>&nbsp;    private List&lt;Cell&gt; secondWorkerAddableCells;
+<i>11</i>&nbsp;    private List&lt;Cell&gt; secondWorkerRemovableCells;
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    /* LimitedPower can use its superclass&#39; methods doAction() and getExecutorPointer() */
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    //*refactor, eliminare
+<b class="fc"><i>16</i>&nbsp;    public LimitedPower() {</b>
+<b class="fc"><i>17</i>&nbsp;        clearPower();</b>
+<b class="fc"><i>18</i>&nbsp;    }</b>
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    /**
+<i>21</i>&nbsp;     * add or remove cells form the previous computed cells by FindAvailableCells classes.
+<i>22</i>&nbsp;     * @param addableCells list of selectable cells
+<i>23</i>&nbsp;     * @param index of the selected workers
+<i>24</i>&nbsp;     */
+<i>25</i>&nbsp;    public void addCells(List&lt;Cell&gt; addableCells, int index) {
+<b class="fc"><i>26</i>&nbsp;        if (index == 0)</b>
+<b class="fc"><i>27</i>&nbsp;            this.firstWorkerAddableCells.addAll(addableCells);</b>
+<i>28</i>&nbsp;        else
+<b class="fc"><i>29</i>&nbsp;            this.secondWorkerAddableCells.addAll(addableCells);</b>
+<b class="fc"><i>30</i>&nbsp;    }</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    public void removeCells(List&lt;Cell&gt; removableCells, int index) {
+<b class="fc"><i>33</i>&nbsp;        if (index == 0) {</b>
+<b class="fc"><i>34</i>&nbsp;            firstWorkerRemovableCells = removableCells;</b>
+<i>35</i>&nbsp;        } else {
+<b class="fc"><i>36</i>&nbsp;            secondWorkerRemovableCells = removableCells;</b>
+<i>37</i>&nbsp;        }
+<b class="fc"><i>38</i>&nbsp;    }</b>
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    /* getAvailableCells returns the algebraic subtraction between AddableCells and RemovableCells */
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    /**
+<i>43</i>&nbsp;     * return the list of available cell doing an algebric-set subtration between addableCell and removableCells
+<i>44</i>&nbsp;     * @param index worker index ,either 0 or 1;
+<i>45</i>&nbsp;     * @return list of available Cells for a particular worker given by the index @param
+<i>46</i>&nbsp;     */
+<i>47</i>&nbsp;    public List&lt;Cell&gt; getAvailableCells(int index) {
+<b class="fc"><i>48</i>&nbsp;        if (index == 0) {</b>
+<b class="fc"><i>49</i>&nbsp;            List&lt;Cell&gt; availableCells1 = firstWorkerAddableCells;</b>
+<b class="fc"><i>50</i>&nbsp;            if (firstWorkerRemovableCells != null) availableCells1.removeAll(firstWorkerRemovableCells);</b>
+<b class="fc"><i>51</i>&nbsp;            return availableCells1;</b>
+<i>52</i>&nbsp;        } else {
+<b class="fc"><i>53</i>&nbsp;            List&lt;Cell&gt; availableCells2 = secondWorkerAddableCells;</b>
+<b class="fc"><i>54</i>&nbsp;            if (secondWorkerRemovableCells != null) availableCells2.removeAll(secondWorkerRemovableCells);</b>
+<b class="fc"><i>55</i>&nbsp;            return availableCells2;</b>
+<i>56</i>&nbsp;        }
+<i>57</i>&nbsp;    }
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    /**
+<i>60</i>&nbsp;     * override addableCells instead of adding to the existing firstWorkerAddableCells or secondWorkerAvailableCells
+<i>61</i>&nbsp;     * @param availableCells cells to override
+<i>62</i>&nbsp;     * @param index index of the worker either 0 or 1;
+<i>63</i>&nbsp;     */
+<i>64</i>&nbsp;    public void setAvailableCells(List&lt;Cell&gt; availableCells, int index) {
+<b class="fc"><i>65</i>&nbsp;        if (index == 0) {</b>
+<b class="fc"><i>66</i>&nbsp;            this.firstWorkerAddableCells = availableCells;</b>
+<i>67</i>&nbsp;        } else {
+<b class="fc"><i>68</i>&nbsp;            this.secondWorkerAddableCells = availableCells;</b>
+<i>69</i>&nbsp;        }
+<b class="fc"><i>70</i>&nbsp;    }</b>
+<i>71</i>&nbsp;
+<i>72</i>&nbsp;    /**
+<i>73</i>&nbsp;     * set to null all the lists preparing them for the next turn
+<i>74</i>&nbsp;     */
+<i>75</i>&nbsp;    public void clearPower() {
+<b class="fc"><i>76</i>&nbsp;        this.firstWorkerAddableCells = null;</b>
+<b class="fc"><i>77</i>&nbsp;        this.firstWorkerRemovableCells = null;</b>
+<b class="fc"><i>78</i>&nbsp;        this.secondWorkerAddableCells = null;</b>
+<b class="fc"><i>79</i>&nbsp;        this.secondWorkerRemovableCells = null;</b>
+<b class="fc"><i>80</i>&nbsp;    }</b>
+<i>81</i>&nbsp;
+<i>82</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

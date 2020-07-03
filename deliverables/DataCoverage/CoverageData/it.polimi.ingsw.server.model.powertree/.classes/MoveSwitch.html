@@ -1,0 +1,137 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: MoveSwitch</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.powertree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: MoveSwitch (it.polimi.ingsw.server.model.powertree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MoveSwitch</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    85,7%
+  </span>
+  <span class="absValue">
+    (18/ 21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.powertree;
+<i>2</i>&nbsp;import it.polimi.ingsw.server.model.Cell;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.model.Worker;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.FailedActionEvent;
+<i>5</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
+<i>6</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.WorkerMovementEvent;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;/**
+<i>9</i>&nbsp; * this additional move, called MoveSwitch has this effect:
+<i>10</i>&nbsp; * move into an opponent Worker’s
+<i>11</i>&nbsp; * space by forcing their Worker to
+<i>12</i>&nbsp; * the space yours just vacated.
+<i>13</i>&nbsp; * it is used by the god apollo
+<i>14</i>&nbsp; */
+<b class="fc"><i>15</i>&nbsp;public class MoveSwitch extends Move {</b>
+<i>16</i>&nbsp;    /**
+<i>17</i>&nbsp;     * if in the cell passed as parameter there is a worker then I make the switch
+<i>18</i>&nbsp;     * @param userInput the cell where the worker you want to switch is located
+<i>19</i>&nbsp;     * @return 1  MoveSwitch successful else -1 MoveSwitch failed
+<i>20</i>&nbsp;     */
+<i>21</i>&nbsp;    @Override
+<i>22</i>&nbsp;    public int doAction(int[] userInput) {
+<i>23</i>&nbsp;        //System.out.println(&quot;In move switch&quot;);//*refactoring
+<b class="fc"><i>24</i>&nbsp;        Worker floatingWorker = super.getExecutorPointer().getMap()[userInput[0]][userInput[1]].getWorkerOnCell();</b>
+<b class="fc"><i>25</i>&nbsp;        Cell floatingCell = super.getExecutorPointer().getPrevSelect().getSelectedWorker().getCurrentPosition();</b>
+<i>26</i>&nbsp;        int index;
+<b class="fc"><i>27</i>&nbsp;        if(getExecutorPointer().getPrevSelect().getSelectedWorker() == getExecutorPointer().getCurrentPlayer().getFirstWorker())</b>
+<b class="fc"><i>28</i>&nbsp;            index= 0;</b>
+<b class="fc"><i>29</i>&nbsp;        else index = 1;</b>
+<i>30</i>&nbsp;
+<b class="fc"><i>31</i>&nbsp;        if (super.doAction(userInput) == -1) {</b>
+<i>32</i>&nbsp;            /* Do not call pointerBack(): it has already been called in the superclass */
+<i>33</i>&nbsp;            /* getFailedActionListener().actionFailed(new FailedActionEvent(this)); */
+<b class="fc"><i>34</i>&nbsp;            return -1;</b>
+<i>35</i>&nbsp;        }
+<b class="fc"><i>36</i>&nbsp;        if (floatingWorker == null) {</b>
+<b class="fc"><i>37</i>&nbsp;            getNoUpdatesListener().noUpdates(new NoUpdatesEvent());</b>
+<b class="fc"><i>38</i>&nbsp;            return 1; /* [NOTIFY]: MoveSwitch successful */</b>
+<b class="fc"><i>39</i>&nbsp;        } else if (super.getAvailableCells(index).contains(super.getExecutorPointer().getMap()[userInput[0]][userInput[1]])) {</b>
+<b class="fc"><i>40</i>&nbsp;            floatingWorker.setPreviousPosition(floatingWorker.getCurrentPosition());</b>
+<b class="fc"><i>41</i>&nbsp;            floatingWorker.getPreviousPosition().setWorkerOnCell(super.getExecutorPointer().getPrevSelect().getSelectedWorker());</b>
+<b class="fc"><i>42</i>&nbsp;            floatingWorker.setCurrentPosition(floatingCell);</b>
+<b class="fc"><i>43</i>&nbsp;            floatingWorker.getCurrentPosition().setWorkerOnCell(floatingWorker);</b>
+<i>44</i>&nbsp;            /* setState() -&gt; floatingWorker si è mosso da previousPosition a currentPosition */
+<b class="fc"><i>45</i>&nbsp;            getWorkerMovementListener().workerMoved(new WorkerMovementEvent(floatingWorker));</b>
+<b class="fc"><i>46</i>&nbsp;            return 1; /* [NOTIFY]: MoveSwitch successful */</b>
+<i>47</i>&nbsp;        } else {
+<b class="nc"><i>48</i>&nbsp;            pointerBack();</b>
+<b class="nc"><i>49</i>&nbsp;            getFailedActionListener().actionFailed(new FailedActionEvent(this));</b>
+<b class="nc"><i>50</i>&nbsp;            return -1; /* [NOTIFY]: MoveSwitch failed */</b>
+<i>51</i>&nbsp;        }
+<i>52</i>&nbsp;    }
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

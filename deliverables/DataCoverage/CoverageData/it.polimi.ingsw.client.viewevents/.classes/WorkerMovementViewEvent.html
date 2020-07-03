@@ -1,0 +1,115 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: WorkerMovementViewEvent</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.client.viewevents</a> ]
+</div>
+
+<h1>Coverage Summary for Class: WorkerMovementViewEvent (it.polimi.ingsw.client.viewevents)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WorkerMovementViewEvent</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 12)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.client.viewevents;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.client.proxymodel.*;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;/**
+<i>6</i>&nbsp; * draw the movement done by the selected worker
+<i>7</i>&nbsp; */
+<i>8</i>&nbsp;public class WorkerMovementViewEvent extends ViewEvent {
+<i>9</i>&nbsp;    int prevX;
+<i>10</i>&nbsp;    int prevY;
+<i>11</i>&nbsp;    int currX;
+<i>12</i>&nbsp;    int currY;
+<i>13</i>&nbsp;
+<b class="nc"><i>14</i>&nbsp;    ProxyModel proxyModel = ProxyModel.instance();</b>
+<i>15</i>&nbsp;
+<b class="nc"><i>16</i>&nbsp;    public WorkerMovementViewEvent(int prevX, int prevY, int currX, int currY){</b>
+<b class="nc"><i>17</i>&nbsp;        this.prevX = prevX;</b>
+<b class="nc"><i>18</i>&nbsp;        this.prevY = prevY;</b>
+<b class="nc"><i>19</i>&nbsp;        this.currX = currX;</b>
+<b class="nc"><i>20</i>&nbsp;        this.currY = currY;</b>
+<b class="nc"><i>21</i>&nbsp;    }</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    /**
+<i>24</i>&nbsp;     * draw the movement done by the selected worker and the map is updated and draw the build prompt if is necessary
+<i>25</i>&nbsp;     */
+<i>26</i>&nbsp;    public void viewEventMethod() {
+<b class="nc"><i>27</i>&nbsp;        proxyModel.setMoveWorker(proxyModel.getMap()[prevX][prevY].getWorker(), new Coords(currX,currY));</b>
+<b class="nc"><i>28</i>&nbsp;        proxyModel.getMap()[currX][currY].getWorker().unselect();</b>
+<b class="nc"><i>29</i>&nbsp;        proxyModel.getDrawerStrategy().drawMap();</b>
+<b class="nc"><i>30</i>&nbsp;        proxyModel.getDrawerStrategy().promptBuildText();</b>
+<b class="nc"><i>31</i>&nbsp;    }</b>
+<i>32</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

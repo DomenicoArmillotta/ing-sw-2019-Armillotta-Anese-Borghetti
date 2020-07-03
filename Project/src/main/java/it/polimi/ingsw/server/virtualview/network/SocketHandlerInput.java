@@ -13,12 +13,20 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * manage all input of a single client towards the server and parse the input creating a ServerEvent
+ */
+
 public class SocketHandlerInput implements Runnable {
     private Socket socket;
     private Controller  controller;
     private EventsBuffer eventsBuffer;
 
-
+    /**
+     * create a new SocketHandlerOutput
+     * @param socket client socket
+     * @param controller server controller
+     */
     public SocketHandlerInput(Socket socket, Controller controller) {
         this.socket = socket;
         this.controller = controller;
@@ -26,6 +34,13 @@ public class SocketHandlerInput implements Runnable {
         eventsBuffer.flushBuffer();
     }
 
+    /**
+     * keeps reading from the input until bufferedReader read a connection Interrupt or end of stream.
+     * when a client disconnects anomalously or decidec to quit the game the socketHandlerInput signals to the game is going to be ended
+     * and start the procedure for rebooting @see socketHandlerOutpu
+     * @throws IOException if cannot create the parser
+     * @throws SAXException if parser crash
+     */
     public void run() {
         BufferedReader brd = null;
         synchronized (eventsBuffer.brdLock) {
@@ -88,6 +103,12 @@ public class SocketHandlerInput implements Runnable {
         }
     }
 
+    /**
+     * create a ServerEvent from the input that the server received form a client by using the doc document passed by the SocketHandlerInput.
+     *
+     * @param doc document containing the xml version of the original String Message
+     * @return ServerEvent or null if there are no such event in the server.
+     */
     protected ServerEvent returnCorrectServerEvent(Document doc){
         if(doc.getDocumentElement().getTagName().equals("GameCoordsEvent")) {
             int x,y;

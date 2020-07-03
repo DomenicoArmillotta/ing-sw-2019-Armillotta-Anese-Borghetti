@@ -1,10 +1,11 @@
 package it.polimi.ingsw.server.virtualview.network;
 
-import it.polimi.ingsw.server.model.ActionExecutor;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Virtual View Lobby collects all clients before creating actual players entities in the server
+ */
 public class VvLobby {
     private List<String> players;
     private String partyOwner;
@@ -37,6 +38,9 @@ public class VvLobby {
         this.partyOwner = partyOwner;
     }
 
+    /**
+     * when the current game ended this function is called to clear the virtualLobby preparing it for the next game
+     */
     public void resetVvLobby(){
         this.players.clear();
         this.partyOwner = "";

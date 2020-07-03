@@ -11,6 +11,11 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * handle broadcast communication from server to client
+ */
+
 /* SocketHandlerOutput singleton */
 public class SocketHandlerOutput implements Runnable {
     private List<Socket> socketList;
@@ -18,15 +23,11 @@ public class SocketHandlerOutput implements Runnable {
     private EventsBuffer eventsBuffer;
     private Controller controller;
 
-    //private static SocketHandlerOutput instance;
 
-    /* public static SocketHandlerOutput instance(Controller controller) {
-        if (instance == null) {
-            instance = new SocketHandlerOutput(controller);
-        }
-        return instance;
-    } */
-
+    /**
+     * create a new socketHandlerOutput
+     * @param controller controller created at startUp
+     */
     public SocketHandlerOutput(Controller controller) {
         this.controller = controller;
         List<Socket> socketList = new ArrayList<>();
@@ -35,13 +36,23 @@ public class SocketHandlerOutput implements Runnable {
         this.printWriterList = printWriterList;
     }
 
+    /**
+     * add socket to socketList and create a new printWriter form this socket
+     * @param socket socket to add
+     * @throws IOException if socket is unavailable
+     */
     public void addSocketToList(Socket socket) throws IOException {
         socketList.add(socket);
         PrintWriter printWriter = new PrintWriter(socket.getOutputStream());
         printWriterList.add(printWriter);
     }
 
-
+    /**
+     * run and keep sending beans every time that Eventsbuffer isnt' empty.
+     * reboot the server when a connection is closed by flushing remaining beans in the parser and set brdLock to false enabling the buffered reader to
+     * close itself.
+     * Then resets actionExecutor and flush players in the virtualLobby.
+     */
     public void run(){
 
         this.eventsBuffer = EventsBuffer.instance();
@@ -73,6 +84,10 @@ public class SocketHandlerOutput implements Runnable {
         }
     }
 
+    /**
+     * get the last bean in the buffer, parsed it and than send it broadcast across all printwriters
+     * @throws JsonProcessingException if xmlMapper fails
+     */
     public synchronized void sendingBeans() throws JsonProcessingException {
 
         if(!eventsBuffer.emptyBuffer()) {
@@ -88,6 +103,9 @@ public class SocketHandlerOutput implements Runnable {
         }
     }
 
+    /**
+     * reset socketList and printWriter.
+     */
     public void resetSocketHandlerOutput(){
         socketList.clear();
         printWriterList.clear();

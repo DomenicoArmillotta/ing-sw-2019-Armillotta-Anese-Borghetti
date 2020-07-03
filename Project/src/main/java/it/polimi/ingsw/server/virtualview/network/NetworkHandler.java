@@ -11,11 +11,19 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * main class of the virtualView, manage all incoming connections and creates SocketHandlerInputs and the only SocketHandlerOutput.
+ */
 public class NetworkHandler {
     private int port;
     public NetworkHandler(int port) {
         this.port = port;
     }
+
+    /**
+     * start the server by creating SocketHandlerOutput and a threasd for every SocketHandlerInput.
+     * @throws IOException if the desired port is unavailable
+     */
     public void startServer(){
         Controller controller = new Controller();
         ActionExecutor executorPointer = ActionExecutor.instance();
@@ -27,7 +35,7 @@ public class NetworkHandler {
         try {
             serverSocket = new ServerSocket(port);
         } catch (IOException e) {
-            System.out.println("porta non disponibile");
+            System.out.println("unavailable port");
             System.err.println(e.getMessage()); // Porta non disponibile
             return;
         }

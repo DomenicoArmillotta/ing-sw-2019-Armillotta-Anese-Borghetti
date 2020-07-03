@@ -2,7 +2,10 @@ package it.polimi.ingsw.server.virtualview.listeners;
 
 import it.polimi.ingsw.server.model.mvevents.actionevents.WorkerMovementEvent;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
-
+/**
+ * when in the server workerMovementEvent is triggered,
+ * the corresponding eventBean is created, it is inserted in the buffer which will subsequently be sent
+ */
 public class WorkerMovementListener extends Listener {
 
     private static WorkerMovementListener instance;

@@ -7,11 +7,21 @@ public class PartyLoginViewEvent extends ViewEvent {
     String loggedPlayer;
     ProxyModel proxyModel = ProxyModel.instance();
 
+    /**
+     * is the constructor
+     * @param partyOwner
+     * @param loggedPlayer
+     */
     public PartyLoginViewEvent(String partyOwner, String loggedPlayer) {
         this.partyOwner = partyOwner;
         this.loggedPlayer = loggedPlayer;
     }
 
+    /**
+     * who is partyOwner is shown (that is who created the room) and shows the indications to start a game
+     * add the player that enter in the room to proxyModel
+     * show who has just entered with the name
+     */
     public void viewEventMethod() {
         proxyModel.addPlayer(loggedPlayer);
         if(ProxyModel.instance().getPartyOwner().equals("")) ProxyModel.instance().setPartyOwner(partyOwner);

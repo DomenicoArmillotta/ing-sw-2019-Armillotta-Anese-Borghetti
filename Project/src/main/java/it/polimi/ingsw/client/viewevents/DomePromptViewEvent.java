@@ -2,12 +2,19 @@ package it.polimi.ingsw.client.viewevents;
 
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
+/**
+ * show the prompt for the dome build chose
+ */
 public class DomePromptViewEvent extends ViewEvent{
     private String domeRequest;
 
     public DomePromptViewEvent(String domeRequest){
         this.domeRequest = domeRequest;
     }
+
+    /**
+     * used for show the prompt to choose whether to use the power to build the dome or not
+     */
     @Override
     public void viewEventMethod() {
         ProxyModel.instance().getDrawerStrategy().promptChoice(domeRequest);

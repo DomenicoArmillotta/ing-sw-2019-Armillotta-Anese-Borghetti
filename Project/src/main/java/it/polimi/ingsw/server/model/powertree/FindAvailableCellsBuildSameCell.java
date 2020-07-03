@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class FindAvailableCellsBuildSameCell extends FindAvailableCellsBuild {
     /**
-     * call super.doAction()
+     * call super.doAction() and excludes for BuildableCells the cell where the worker was previously.
      * @param userInput this method doesn't require a particular userInput;
      * @return
      */
@@ -23,15 +23,7 @@ public class FindAvailableCellsBuildSameCell extends FindAvailableCellsBuild {
         Worker workerSelected =  super.getExecutorPointer().getPrevSelect().getSelectedWorker();
         int workerIndex = getWorkerIndex();
 
-        /*for (int k = workerSelected.getCurrentPosition().getX() - 1; k < workerSelected.getCurrentPosition().getX() + 2 && k < 5; k++) {
-            for (int j = workerSelected.getCurrentPosition().getY() - 1; j < workerSelected.getCurrentPosition().getY() + 2 && j < 5; j++) {
-                if (k < 0) k = 0;
-                if (j < 0) j = 0;
-                if (map[k][j].getBuildingLevel() == Level.TOP){
-                    toRemoveCell.add(map[k][j]);
-                }
-            }
-        }*/
+
         if(executorPointer.getPrevBuild().getCellAfterBuild().getBuildingLevel()!=Level.TOP && executorPointer.getPrevBuild().getCellAfterBuild().getBuildingLevel()!=Level.DOME){
             Cell cellAvailable = executorPointer.getPrevBuild().getCellAfterBuild();
             List<Cell> toAddCell = new ArrayList<>();

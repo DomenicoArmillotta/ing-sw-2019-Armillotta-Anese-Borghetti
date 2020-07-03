@@ -1,0 +1,194 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Power</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.powertree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Power (it.polimi.ingsw.server.model.powertree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Power</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    86,7%
+  </span>
+  <span class="absValue">
+    (13/ 15)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    91,2%
+  </span>
+  <span class="absValue">
+    (31/ 34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.powertree;
+<i>2</i>&nbsp;import it.polimi.ingsw.server.model.ActionExecutor;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.virtualview.listeners.*;
+<i>4</i>&nbsp;
+<b class="fc"><i>5</i>&nbsp;public abstract class Power {</b>
+<i>6</i>&nbsp;
+<i>7</i>&nbsp;    /* Every Power can reach Map, Players, GodCards and other Powers through executorPointer */
+<b class="fc"><i>8</i>&nbsp;    protected ActionExecutor executorPointer = ActionExecutor.instance(); /* Singleton ActionExecutor */</b>
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;    /* private Event lastEvent; */
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;
+<b class="fc"><i>13</i>&nbsp;    private WorkerSelectionListener workerSelectionListener = WorkerSelectionListener.instance();</b>
+<b class="fc"><i>14</i>&nbsp;    private WaitingForActionListener waitingForActionListener = WaitingForActionListener.instance();</b>
+<b class="fc"><i>15</i>&nbsp;    private WorkerMovementListener workerMovementListener = WorkerMovementListener.instance();</b>
+<b class="fc"><i>16</i>&nbsp;    private BuildBlockListener buildBlockListener = BuildBlockListener.instance();</b>
+<b class="fc"><i>17</i>&nbsp;    private PlayerWonListener playerWonListener = PlayerWonListener.instance();</b>
+<b class="fc"><i>18</i>&nbsp;    private PlayerLostListener playerLostListener = PlayerLostListener.instance();</b>
+<b class="fc"><i>19</i>&nbsp;    private FailedActionListener failedActionListener = FailedActionListener.instance();</b>
+<b class="fc"><i>20</i>&nbsp;    private NoUpdatesListener noUpdatesListener = NoUpdatesListener.instance();</b>
+<b class="fc"><i>21</i>&nbsp;    private BooleanActionListener booleanActionListener = BooleanActionListener.instance();</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public BooleanActionListener getBooleanActionListener() {
+<b class="fc"><i>24</i>&nbsp;        return booleanActionListener;</b>
+<i>25</i>&nbsp;    }
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    public WorkerSelectionListener getWorkerSelectionListener() {
+<b class="fc"><i>28</i>&nbsp;        return workerSelectionListener;</b>
+<i>29</i>&nbsp;    }
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    public WaitingForActionListener getWaitingForActionListener() {
+<b class="fc"><i>32</i>&nbsp;        return waitingForActionListener;</b>
+<i>33</i>&nbsp;    }
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    public WorkerMovementListener getWorkerMovementListener() {
+<b class="fc"><i>36</i>&nbsp;        return workerMovementListener;</b>
+<i>37</i>&nbsp;    }
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    public BuildBlockListener getBuildBlockListener() {
+<b class="fc"><i>40</i>&nbsp;        return buildBlockListener;</b>
+<i>41</i>&nbsp;    }
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    public PlayerWonListener getPlayerWonListener() {
+<b class="fc"><i>44</i>&nbsp;        return playerWonListener;</b>
+<i>45</i>&nbsp;    }
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;    public PlayerLostListener getPlayerLostListener() {
+<b class="fc"><i>48</i>&nbsp;        return playerLostListener;</b>
+<i>49</i>&nbsp;    }
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;    public FailedActionListener getFailedActionListener() {
+<b class="fc"><i>52</i>&nbsp;        return failedActionListener;</b>
+<i>53</i>&nbsp;    }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    public NoUpdatesListener getNoUpdatesListener() {
+<b class="fc"><i>56</i>&nbsp;        return noUpdatesListener;</b>
+<i>57</i>&nbsp;    }
+<i>58</i>&nbsp;
+<i>59</i>&nbsp;    public ActionExecutor getExecutorPointer() {
+<b class="fc"><i>60</i>&nbsp;        return executorPointer;</b>
+<i>61</i>&nbsp;    }
+<i>62</i>&nbsp;
+<i>63</i>&nbsp;    /**
+<i>64</i>&nbsp;     * function that take @param as input and return 3 different values 0, 1 , -1; the action is succesfully executed and the model
+<i>65</i>&nbsp;     * need
+<i>66</i>&nbsp;     * @param userInput
+<i>67</i>&nbsp;     * @return
+<i>68</i>&nbsp;     */
+<i>69</i>&nbsp;    /*
+<i>70</i>&nbsp;    set abstract;
+<i>71</i>&nbsp;     */
+<i>72</i>&nbsp;    public int doAction(int[] userInput) { /* Overridden in subclasses */
+<i>73</i>&nbsp;        /* No action */
+<b class="nc"><i>74</i>&nbsp;       return -1;/* Action failed: this method should be called from Power subclasses */</b>
+<i>75</i>&nbsp;    }
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    /**
+<i>78</i>&nbsp;     * when a doAction() fails, pointerBack reset the pointer to the same action that failed
+<i>79</i>&nbsp;     * @return 0 if successful, -1 if failed;
+<i>80</i>&nbsp;     */
+<i>81</i>&nbsp;    public int pointerBack() {
+<i>82</i>&nbsp;        int index;
+<b class="fc"><i>83</i>&nbsp;        Power powerPtr = executorPointer.getPowerPtr();</b>
+<b class="fc"><i>84</i>&nbsp;        if (powerPtr != null) {</b>
+<b class="fc"><i>85</i>&nbsp;            Power indextPtr = executorPointer.getCurrentPlayer().getPlayerGod().getPowerList().get(0);</b>
+<b class="fc"><i>86</i>&nbsp;            for (index = 0; indextPtr != powerPtr; index++) {</b>
+<b class="fc"><i>87</i>&nbsp;                indextPtr = executorPointer.getCurrentPlayer().getPlayerGod().getPowerList().get(index);</b>
+<i>88</i>&nbsp;            }
+<b class="fc"><i>89</i>&nbsp;            executorPointer.setPowerPtr(executorPointer.getCurrentPlayer().getPlayerGod().getPowerList().get(index - 2));</b>
+<b class="fc"><i>90</i>&nbsp;            return 0;</b>
+<i>91</i>&nbsp;        } else {
+<b class="nc"><i>92</i>&nbsp;            return -1;</b>
+<i>93</i>&nbsp;        }
+<i>94</i>&nbsp;    }
+<i>95</i>&nbsp;        //*refactor
+<i>96</i>&nbsp;    public void clearPower(){
+<i>97</i>&nbsp;
+<b class="nc"><i>98</i>&nbsp;    }</b>
+<i>99</i>&nbsp;        /* Nothing to clean */
+<i>100</i>&nbsp;
+<i>101</i>&nbsp;    /**
+<i>102</i>&nbsp;     * Method that return the index of AvailableCells for the last selected worker
+<i>103</i>&nbsp;     * @return 0 if is the first, 1 if is the second
+<i>104</i>&nbsp;     */
+<i>105</i>&nbsp;    protected int getWorkerIndex() {
+<b class="fc"><i>106</i>&nbsp;        if(getExecutorPointer().getPrevSelect().getSelectedWorker().equals(getExecutorPointer().getCurrentPlayer().getFirstWorker())) {</b>
+<b class="fc"><i>107</i>&nbsp;            return 0;</b>
+<b class="fc"><i>108</i>&nbsp;        } return 1;</b>
+<i>109</i>&nbsp;    }
+<i>110</i>&nbsp;
+<i>111</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

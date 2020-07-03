@@ -1,0 +1,128 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: FindAvailableCellsBuildSameCell</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.powertree</a> ]
+</div>
+
+<h1>Coverage Summary for Class: FindAvailableCellsBuildSameCell (it.polimi.ingsw.server.model.powertree)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">FindAvailableCellsBuildSameCell</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (11/ 11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.powertree;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.model.Cell;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.Level;
+<i>5</i>&nbsp;import it.polimi.ingsw.server.model.Worker;
+<i>6</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import java.util.ArrayList;
+<i>9</i>&nbsp;import java.util.List;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;/**
+<i>12</i>&nbsp; * extends FindAvailableCellsBuild ,override super.doAction();
+<i>13</i>&nbsp; */
+<b class="fc"><i>14</i>&nbsp;public class FindAvailableCellsBuildSameCell extends FindAvailableCellsBuild {</b>
+<i>15</i>&nbsp;    /**
+<i>16</i>&nbsp;     * call super.doAction()
+<i>17</i>&nbsp;     * @param userInput this method doesn&#39;t require a particular userInput;
+<i>18</i>&nbsp;     * @return
+<i>19</i>&nbsp;     */
+<i>20</i>&nbsp;    @Override
+<i>21</i>&nbsp;    public int doAction(int[] userInput) {
+<b class="fc"><i>22</i>&nbsp;        super.doAction(userInput);</b>
+<b class="fc"><i>23</i>&nbsp;        Worker workerSelected =  super.getExecutorPointer().getPrevSelect().getSelectedWorker();</b>
+<b class="fc"><i>24</i>&nbsp;        int workerIndex = getWorkerIndex();</b>
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;        /*for (int k = workerSelected.getCurrentPosition().getX() - 1; k &lt; workerSelected.getCurrentPosition().getX() + 2 &amp;&amp; k &lt; 5; k++) {
+<i>27</i>&nbsp;            for (int j = workerSelected.getCurrentPosition().getY() - 1; j &lt; workerSelected.getCurrentPosition().getY() + 2 &amp;&amp; j &lt; 5; j++) {
+<i>28</i>&nbsp;                if (k &lt; 0) k = 0;
+<i>29</i>&nbsp;                if (j &lt; 0) j = 0;
+<i>30</i>&nbsp;                if (map[k][j].getBuildingLevel() == Level.TOP){
+<i>31</i>&nbsp;                    toRemoveCell.add(map[k][j]);
+<i>32</i>&nbsp;                }
+<i>33</i>&nbsp;            }
+<i>34</i>&nbsp;        }*/
+<b class="fc"><i>35</i>&nbsp;        if(executorPointer.getPrevBuild().getCellAfterBuild().getBuildingLevel()!=Level.TOP &amp;&amp; executorPointer.getPrevBuild().getCellAfterBuild().getBuildingLevel()!=Level.DOME){</b>
+<b class="fc"><i>36</i>&nbsp;            Cell cellAvailable = executorPointer.getPrevBuild().getCellAfterBuild();</b>
+<b class="fc"><i>37</i>&nbsp;            List&lt;Cell&gt; toAddCell = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>38</i>&nbsp;            toAddCell.add(cellAvailable);</b>
+<b class="fc"><i>39</i>&nbsp;            executorPointer.getNextBuild().setAvailableCells(toAddCell,workerIndex);</b>
+<i>40</i>&nbsp;        }
+<i>41</i>&nbsp;
+<b class="fc"><i>42</i>&nbsp;        getWaitingForActionListener().waitForAction(new WaitingForActionEvent(super.getExecutorPointer().getNextBuild().getAvailableCells(workerIndex)));</b>
+<b class="fc"><i>43</i>&nbsp;        return 1;</b>
+<i>44</i>&nbsp;    }
+<i>45</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: AskToBuildOrMove</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.godcards</a> ]
+</div>
+
+<h1>Coverage Summary for Class: AskToBuildOrMove (it.polimi.ingsw.server.model.godcards)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AskToBuildOrMove</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    50%
+  </span>
+  <span class="absValue">
+    (1/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10%
+  </span>
+  <span class="absValue">
+    (1/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.godcards;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.controller.Controller;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.ActionExecutor;
+<i>5</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.NoUpdatesEvent;
+<i>6</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
+<i>7</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.CorrectPromptAnswer;
+<i>8</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
+<i>9</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.WaitingForActionEventBean;
+<i>10</i>&nbsp;import it.polimi.ingsw.server.model.powertree.FindAvailableCellsMoveButDontMoveUp;
+<i>11</i>&nbsp;import it.polimi.ingsw.server.virtualview.listeners.NoUpdatesListener;
+<i>12</i>&nbsp;import it.polimi.ingsw.server.virtualview.listeners.WaitingForActionListener;
+<i>13</i>&nbsp;import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
+<i>14</i>&nbsp;
+<b class="fc"><i>15</i>&nbsp;public class AskToBuildOrMove implements BooleanRequestAction{</b>
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    /**
+<i>18</i>&nbsp;     * manage the choice of building before moving: if the players have move limitations that list il cleared.
+<i>19</i>&nbsp;     * if the choice is true the controller skips over autonomously to the next power, else move limitations are added to
+<i>20</i>&nbsp;     * this player.
+<i>21</i>&nbsp;     * @param controller use controller to execute a particular power
+<i>22</i>&nbsp;     * @param booleanChoice contains the reply in Boolean
+<i>23</i>&nbsp;     */
+<i>24</i>&nbsp;    @Override
+<i>25</i>&nbsp;    public void BooleanRequestStrategy(Controller controller, Boolean booleanChoice) {
+<b class="nc"><i>26</i>&nbsp;        if(!ActionExecutor.instance().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().isEmpty())</b>
+<b class="nc"><i>27</i>&nbsp;            ActionExecutor.instance().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().clear();</b>
+<b class="nc"><i>28</i>&nbsp;        if(!booleanChoice) {</b>
+<b class="nc"><i>29</i>&nbsp;            controller.setUserInput(null);</b>
+<b class="nc"><i>30</i>&nbsp;            controller.control();</b>
+<i>31</i>&nbsp;            /* ActionExecutor.instance().getNextPower().doAction(null);
+<i>32</i>&nbsp;            ActionExecutor.instance().getNextPower().doAction(null); */
+<i>33</i>&nbsp;        } else {
+<b class="nc"><i>34</i>&nbsp;            NoUpdatesListener.instance().noUpdates(new NoUpdatesEvent());</b>
+<i>35</i>&nbsp;            //WaitingForActionListener.instance().waitForAction(new WaitingForActionEvent(ActionExecutor.instance().getNextMove().getAvailableCells(index)));
+<b class="nc"><i>36</i>&nbsp;            ActionExecutor.instance().getCurrentPlayer().getPlayerGod().addMoveLimitations(new FindAvailableCellsMoveButDontMoveUp());</b>
+<i>37</i>&nbsp;        }
+<i>38</i>&nbsp;
+<b class="nc"><i>39</i>&nbsp;        EventsBuffer.instance().setLastEventBean(new CorrectPromptAnswer(booleanChoice));</b>
+<b class="nc"><i>40</i>&nbsp;    }</b>
+<i>41</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

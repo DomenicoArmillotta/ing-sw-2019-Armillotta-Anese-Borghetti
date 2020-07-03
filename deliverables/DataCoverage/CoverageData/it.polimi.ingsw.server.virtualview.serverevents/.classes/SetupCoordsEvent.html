@@ -1,0 +1,157 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SetupCoordsEvent</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.virtualview.serverevents</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SetupCoordsEvent (it.polimi.ingsw.server.virtualview.serverevents)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SetupCoordsEvent</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 35)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.virtualview.serverevents;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.controller.Controller;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.ActionExecutor;
+<i>5</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.CommandFailureEventBean;
+<i>6</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
+<i>7</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.SetupWorkerDoneEventBean;
+<i>8</i>&nbsp;import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import javax.swing.*;
+<i>11</i>&nbsp;import java.util.Arrays;
+<i>12</i>&nbsp;import java.util.List;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;public class SetupCoordsEvent extends CoordsEvent {
+<i>15</i>&nbsp;    int firstWorkerX;
+<i>16</i>&nbsp;    int firstWorkerY;
+<i>17</i>&nbsp;    int secondWorkerX;
+<i>18</i>&nbsp;    int secondWorkerY;
+<b class="nc"><i>19</i>&nbsp;    List&lt;Integer&gt; caratteri = Arrays.asList(0,1,2,3,4);</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;
+<b class="nc"><i>22</i>&nbsp;    public SetupCoordsEvent(int firstWorkerX, int firstWorkerY, int secondWorkerX, int secondWorkerY) {</b>
+<b class="nc"><i>23</i>&nbsp;        this.firstWorkerX = firstWorkerX;</b>
+<b class="nc"><i>24</i>&nbsp;        this.firstWorkerY = firstWorkerY;</b>
+<b class="nc"><i>25</i>&nbsp;        this.secondWorkerX = secondWorkerX;</b>
+<b class="nc"><i>26</i>&nbsp;        this.secondWorkerY = secondWorkerY;</b>
+<b class="nc"><i>27</i>&nbsp;    }</b>
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    public void serverEventMethod(Controller controller) {
+<i>30</i>&nbsp;        /* non accede al controller*/
+<b class="nc"><i>31</i>&nbsp;        if((this.firstWorkerX&gt;=0 &amp;&amp; this.firstWorkerX&lt;5)&amp;&amp;(this.firstWorkerY&gt;=0 &amp;&amp; this.firstWorkerY&lt;5)&amp;&amp;(this.secondWorkerY&gt;=0 &amp;&amp; this.secondWorkerY&lt;5)&amp;&amp;(this.secondWorkerX&gt;=0 &amp;&amp; this.secondWorkerX&lt;5) ){</b>
+<i>32</i>&nbsp;
+<b class="nc"><i>33</i>&nbsp;            if(this.secondWorkerX!=this.firstWorkerX || this.secondWorkerY!=this.firstWorkerY) {</b>
+<b class="nc"><i>34</i>&nbsp;                if (!correctSetUpCoordinatesCheck()) {</b>
+<b class="nc"><i>35</i>&nbsp;                    EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean(&quot;coordinates format non valid, reinsert with a valid format (numbers 0-9)&quot;));</b>
+<b class="nc"><i>36</i>&nbsp;                    return;</b>
+<i>37</i>&nbsp;                }
+<i>38</i>&nbsp;
+<b class="nc"><i>39</i>&nbsp;                if (!areCellsOccupied()) {</b>
+<b class="nc"><i>40</i>&nbsp;                    ActionExecutor.instance().getCurrentPlayer().workersSetup(firstWorkerX, firstWorkerY, secondWorkerX, secondWorkerY);</b>
+<b class="nc"><i>41</i>&nbsp;                    EventsBuffer.instance().setLastEventBean(new SetupWorkerDoneEventBean(firstWorkerX, firstWorkerY, secondWorkerX, secondWorkerY, ActionExecutor.instance().getCurrentPlayer().getName()));</b>
+<b class="nc"><i>42</i>&nbsp;                    ActionExecutor.instance().nextTurn();</b>
+<i>43</i>&nbsp;                } else {
+<b class="nc"><i>44</i>&nbsp;                    EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean(&quot;these cells are occupied, reinsert new coordinates&quot;));</b>
+<b class="nc"><i>45</i>&nbsp;                    return;</b>
+<i>46</i>&nbsp;                }
+<b class="nc"><i>47</i>&nbsp;                if (ActionExecutor.instance().getCurrentPlayer().getFirstWorker() != null &amp;&amp;</b>
+<b class="nc"><i>48</i>&nbsp;                        ActionExecutor.instance().getCurrentPlayer().getSecondWorker() != null &amp;&amp;</b>
+<b class="nc"><i>49</i>&nbsp;                        ActionExecutor.instance().getNextPlayer().getFirstWorker() != null &amp;&amp;</b>
+<b class="nc"><i>50</i>&nbsp;                        ActionExecutor.instance().getNextPlayer().getSecondWorker() != null &amp;&amp;</b>
+<b class="nc"><i>51</i>&nbsp;                        ActionExecutor.instance().getPrevPlayer().getFirstWorker() != null &amp;&amp;</b>
+<b class="nc"><i>52</i>&nbsp;                        ActionExecutor.instance().getPrevPlayer().getSecondWorker() != null) {</b>
+<b class="nc"><i>53</i>&nbsp;                    ActionExecutor.instance().getNextPower().doAction(null);</b>
+<i>54</i>&nbsp;                }
+<b class="nc"><i>55</i>&nbsp;            }else EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean(&quot;can&#39;t place workers on the same cells&quot;));</b>
+<i>56</i>&nbsp;
+<b class="nc"><i>57</i>&nbsp;        }else EventsBuffer.instance().setLastEventBean(new CommandFailureEventBean(&quot;can&#39;t place two worker on the same cells, insert new coordinates&quot;));</b>
+<b class="nc"><i>58</i>&nbsp;    }</b>
+<i>59</i>&nbsp;
+<i>60</i>&nbsp;    public boolean areCellsOccupied() {
+<b class="nc"><i>61</i>&nbsp;        ActionExecutor actionExecutor = ActionExecutor.instance();</b>
+<b class="nc"><i>62</i>&nbsp;        if (actionExecutor.getMap()[firstWorkerX][firstWorkerY].getWorkerOnCell() == null &amp;&amp; actionExecutor.getMap()[secondWorkerX][secondWorkerY].getWorkerOnCell() == null)</b>
+<b class="nc"><i>63</i>&nbsp;            return false;</b>
+<i>64</i>&nbsp;        else
+<b class="nc"><i>65</i>&nbsp;            return true;</b>
+<i>66</i>&nbsp;    }
+<i>67</i>&nbsp;
+<i>68</i>&nbsp;    public boolean correctSetUpCoordinatesCheck() {
+<b class="nc"><i>69</i>&nbsp;        if (caratteri.contains((firstWorkerY)) &amp;&amp; caratteri.contains( firstWorkerY) &amp;&amp; caratteri.contains(( secondWorkerY)) &amp;&amp; caratteri.contains( secondWorkerX))</b>
+<b class="nc"><i>70</i>&nbsp;            return true;</b>
+<b class="nc"><i>71</i>&nbsp;        return false;</b>
+<i>72</i>&nbsp;    }
+<i>73</i>&nbsp;}
+<i>74</i>&nbsp;
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

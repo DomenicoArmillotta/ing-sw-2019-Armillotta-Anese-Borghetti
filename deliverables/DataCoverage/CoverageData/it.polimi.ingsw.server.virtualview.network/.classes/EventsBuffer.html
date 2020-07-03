@@ -1,0 +1,178 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: EventsBuffer</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.virtualview.network</a> ]
+</div>
+
+<h1>Coverage Summary for Class: EventsBuffer (it.polimi.ingsw.server.virtualview.network)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EventsBuffer</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    63,6%
+  </span>
+  <span class="absValue">
+    (7/ 11)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    75,8%
+  </span>
+  <span class="absValue">
+    (25/ 33)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.virtualview.network;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;import java.util.ArrayList;
+<i>7</i>&nbsp;import java.util.List;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;/**
+<i>10</i>&nbsp; * list of event that the server need to sends to all the clients.
+<i>11</i>&nbsp; * contains a list of EventBeans, two locks and a endGame that contain the status of the current game.
+<i>12</i>&nbsp; * endGame == true, the game is ended else the game is still going.
+<i>13</i>&nbsp; */
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;public class EventsBuffer {
+<i>16</i>&nbsp;    List&lt;EventBean&gt; eventBeans;
+<b class="fc"><i>17</i>&nbsp;    boolean endGame = false;</b>
+<b class="fc"><i>18</i>&nbsp;    private boolean sendEventBeanLock = true;</b>
+<b class="fc"><i>19</i>&nbsp;    public final Object brdLock = new Object();</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    private static EventsBuffer instance;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public static EventsBuffer instance() {
+<b class="fc"><i>24</i>&nbsp;        if (instance == null) {</b>
+<b class="fc"><i>25</i>&nbsp;            instance = new EventsBuffer();</b>
+<i>26</i>&nbsp;        }
+<b class="fc"><i>27</i>&nbsp;        return instance;</b>
+<i>28</i>&nbsp;    }
+<i>29</i>&nbsp;
+<b class="fc"><i>30</i>&nbsp;    private EventsBuffer() {</b>
+<b class="fc"><i>31</i>&nbsp;        List&lt;EventBean&gt; eventBeans = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i>32</i>&nbsp;        this.eventBeans = eventBeans;</b>
+<b class="fc"><i>33</i>&nbsp;    }</b>
+<i>34</i>&nbsp;    /**
+<i>35</i>&nbsp;     * push an eventBean to the top of EventBeans list.
+<i>36</i>&nbsp;     * @param lastEventBean last bean created by the server and pushed on top of EvenBeans list
+<i>37</i>&nbsp;     */
+<i>38</i>&nbsp;    public void setLastEventBean(EventBean lastEventBean) {
+<b class="fc"><i>39</i>&nbsp;        System.out.println(&quot;In event buffer: &quot;+lastEventBean);</b>
+<b class="fc"><i>40</i>&nbsp;        eventBeans.add(0, lastEventBean);</b>
+<b class="fc"><i>41</i>&nbsp;    }</b>
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    /**
+<i>44</i>&nbsp;     * pop the top element of EventBeans
+<i>45</i>&nbsp;     * @return last pushed eventBeans
+<i>46</i>&nbsp;     */
+<i>47</i>&nbsp;    public EventBean getLastEventBean() {
+<b class="fc"><i>48</i>&nbsp;        synchronized (eventBeans) {</b>
+<b class="fc"><i>49</i>&nbsp;            EventBean lastEventBean = eventBeans.get(eventBeans.size() - 1);</b>
+<b class="fc"><i>50</i>&nbsp;            if (eventBeans.size() &gt; 0) {</b>
+<b class="fc"><i>51</i>&nbsp;                eventBeans.remove(eventBeans.size() - 1);</b>
+<i>52</i>&nbsp;            }
+<b class="fc"><i>53</i>&nbsp;            System.out.println(&quot;Last Event Bean getted: &quot; + lastEventBean + &quot; current eventBeans: &quot; + eventBeans);</b>
+<b class="fc"><i>54</i>&nbsp;            return lastEventBean;</b>
+<b class="nc"><i>55</i>&nbsp;        }</b>
+<i>56</i>&nbsp;    }
+<i>57</i>&nbsp;    /**
+<i>58</i>&nbsp;     * return true if EventBeans is empty
+<i>59</i>&nbsp;     */
+<i>60</i>&nbsp;    public boolean emptyBuffer() {
+<b class="fc"><i>61</i>&nbsp;        if(eventBeans.size() == 0)</b>
+<b class="fc"><i>62</i>&nbsp;            return true;</b>
+<b class="fc"><i>63</i>&nbsp;        else return false;</b>
+<i>64</i>&nbsp;    }
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    /**
+<i>67</i>&nbsp;     * flush eventBeans list
+<i>68</i>&nbsp;     */
+<i>69</i>&nbsp;    public void flushBuffer() {
+<b class="fc"><i>70</i>&nbsp;        eventBeans.clear();</b>
+<b class="fc"><i>71</i>&nbsp;    }</b>
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    /**
+<i>74</i>&nbsp;     * set endGame to true
+<i>75</i>&nbsp;     */
+<i>76</i>&nbsp;    public synchronized void setEndGame() {
+<b class="nc"><i>77</i>&nbsp;        this.endGame = true;</b>
+<b class="nc"><i>78</i>&nbsp;    }</b>
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;    public synchronized boolean getEndGame() {
+<b class="fc"><i>81</i>&nbsp;        return endGame;</b>
+<i>82</i>&nbsp;    }
+<i>83</i>&nbsp;
+<i>84</i>&nbsp;    public void setNotEndGame(){
+<b class="nc"><i>85</i>&nbsp;        this.endGame = false;</b>
+<b class="nc"><i>86</i>&nbsp;    }</b>
+<i>87</i>&nbsp;
+<i>88</i>&nbsp;    public boolean isSendEventBeanLock() {
+<b class="nc"><i>89</i>&nbsp;        return sendEventBeanLock;</b>
+<i>90</i>&nbsp;    }
+<i>91</i>&nbsp;
+<i>92</i>&nbsp;    public void setSendEventBeanLock(boolean sendEventBeanLock) {
+<b class="nc"><i>93</i>&nbsp;        this.sendEventBeanLock = sendEventBeanLock;</b>
+<b class="nc"><i>94</i>&nbsp;    }</b>
+<i>95</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

@@ -30,16 +30,12 @@ public class FindAvailableCellsMove extends FindAvailableCells {
 
             List<Cell> moveCells = new ArrayList<>();
 
-            /* Worker selectedWorker=super.getExecutorPointer().getPrevSelect().getSelectedWorker(); */
 
             int i, j, x, y, check;
 
-            /* if (selectedWorker == null)
-                return -1; */
+
             x = selectedWorker.getCurrentPosition().getX();
             y = selectedWorker.getCurrentPosition().getY();
-            /* Aggiungere condizione del bordo inferiore */
-            /* System.out.print("Celle calcolate == "); */
 
             for (i = x - 1; i < x + 2 && i < 5; i++) {
                 for (j = y - 1; j < y + 2 && j < 5; j++) {
@@ -74,13 +70,13 @@ public class FindAvailableCellsMove extends FindAvailableCells {
         }
         if (super.getExecutorPointer().getNextMove().getAvailableCells(0).isEmpty() && super.getExecutorPointer().getNextMove().getAvailableCells(1).isEmpty()) {
             super.loseCondition();
-            return 1; /* [NOTIFY]: FindAvailableCellsMove failed */
+            return 1;
         }
 
         if(!getExecutorPointer().getCurrentPlayer().getPlayerGod().getMoveLimitationsList().isEmpty())
             executeMoveLimitations();
 
-        return 0; /* [NOTIFY]: FindAvailableCellsMove done */
+        return 0;
     }
 
 }

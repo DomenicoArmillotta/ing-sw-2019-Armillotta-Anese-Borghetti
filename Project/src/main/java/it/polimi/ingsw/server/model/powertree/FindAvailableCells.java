@@ -15,7 +15,7 @@ public class FindAvailableCells extends Power {
     /**
      * executeMoveLimitation search through current player godCard and apply all malus effect that other gods
      * imposed on his god.
-     *if moveLimitationLists  isn't empty, execute all the methods doAction() contained in the list else go on;
+     * if moveLimitationLists  isn't empty, execute all the methods doAction() contained in the list else go on;
      */
     protected void executeMoveLimitations() {
         List<FindAvailableCells> moveLimitationsList = getExecutorPointer().getCurrentPlayer().getPlayerGod().getMoveLimitationsList();

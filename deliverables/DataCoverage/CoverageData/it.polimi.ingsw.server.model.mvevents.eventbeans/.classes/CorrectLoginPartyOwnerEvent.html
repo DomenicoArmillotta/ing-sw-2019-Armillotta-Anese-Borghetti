@@ -1,0 +1,119 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: CorrectLoginPartyOwnerEvent</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.model.mvevents.eventbeans</a> ]
+</div>
+
+<h1>Coverage Summary for Class: CorrectLoginPartyOwnerEvent (it.polimi.ingsw.server.model.mvevents.eventbeans)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CorrectLoginPartyOwnerEvent</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (3/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    60%
+  </span>
+  <span class="absValue">
+    (6/ 10)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.model.mvevents.eventbeans;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; * create CorrectLoginPartyOwnerEvent
+<i>5</i>&nbsp; */
+<i>6</i>&nbsp;public class CorrectLoginPartyOwnerEvent extends EventBean{
+<i>7</i>&nbsp;    private String partyOwner;
+<i>8</i>&nbsp;    private String loggedPlayer;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;    /**
+<i>11</i>&nbsp;     * is the constructor of  CorrectLoginPartyOwnerEvent which will be sent to the client
+<i>12</i>&nbsp;     *  by the server to communicate the correct party owner after checking it on the server
+<i>13</i>&nbsp;     * @param partyOwner
+<i>14</i>&nbsp;     * @param loggedPlayer
+<i>15</i>&nbsp;     */
+<b class="fc"><i>16</i>&nbsp;    public CorrectLoginPartyOwnerEvent(String partyOwner,String loggedPlayer) {</b>
+<b class="fc"><i>17</i>&nbsp;        this.loggedPlayer = loggedPlayer;</b>
+<b class="fc"><i>18</i>&nbsp;        this.partyOwner = partyOwner;</b>
+<b class="fc"><i>19</i>&nbsp;    }</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    public String getPartyOwner() {
+<b class="fc"><i>22</i>&nbsp;        return partyOwner;</b>
+<i>23</i>&nbsp;    }
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    public void setPartyOwner(String partyOwner) {
+<b class="nc"><i>26</i>&nbsp;        this.partyOwner = partyOwner;</b>
+<b class="nc"><i>27</i>&nbsp;    }</b>
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    public String getLoggedPlayer() {
+<b class="fc"><i>30</i>&nbsp;        return loggedPlayer;</b>
+<i>31</i>&nbsp;    }
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    public void setLoggedPlayer(String loggedPlayer) {
+<b class="nc"><i>34</i>&nbsp;        this.loggedPlayer = loggedPlayer;</b>
+<b class="nc"><i>35</i>&nbsp;    }</b>
+<i>36</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,294 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ClientHandlerOutput</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.client</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ClientHandlerOutput (it.polimi.ingsw.client)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ClientHandlerOutput</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 103)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.client;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.fasterxml.jackson.core.JsonProcessingException;
+<i>4</i>&nbsp;import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+<i>5</i>&nbsp;import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+<i>6</i>&nbsp;import it.polimi.ingsw.client.proxymodel.Player;
+<i>7</i>&nbsp;import it.polimi.ingsw.client.proxymodel.ProxyModel;
+<i>8</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import java.io.*;
+<i>11</i>&nbsp;import java.net.Socket;
+<i>12</i>&nbsp;import java.util.*;
+<i>13</i>&nbsp;/**
+<i>14</i>&nbsp; * ClientHandlerInput it&#39;s used for send event to server
+<i>15</i>&nbsp; */
+<i>16</i>&nbsp;public class ClientHandlerOutput implements Runnable {
+<i>17</i>&nbsp;
+<i>18</i>&nbsp;    public static final String ANSI_RESET = &quot;\u001B[0m&quot;;
+<i>19</i>&nbsp;    public static final String ANSI_BLACK = &quot;\u001B[30m&quot;;
+<i>20</i>&nbsp;    public static final String ANSI_RED = &quot;\u001B[31m&quot;;
+<i>21</i>&nbsp;    public static final String ANSI_GREEN = &quot;\u001B[32m&quot;;
+<i>22</i>&nbsp;    public static final String ANSI_YELLOW = &quot;\u001B[33m&quot;;
+<i>23</i>&nbsp;    public static final String ANSI_BLUE = &quot;\u001B[34m&quot;;
+<i>24</i>&nbsp;    public static final String ANSI_PURPLE = &quot;\u001B[35m&quot;;
+<i>25</i>&nbsp;    public static final String ANSI_CYAN = &quot;\u001B[36m&quot;;
+<i>26</i>&nbsp;    public static final String ANSI_WHITE = &quot;\u001B[37m&quot;;
+<i>27</i>&nbsp;
+<b class="nc"><i>28</i>&nbsp;    List&lt;String&gt; commands = Arrays.asList(&quot;login&quot;, &quot;gods&quot;, &quot;god&quot;, &quot;coords&quot;, &quot;start&quot;, &quot;true&quot;, &quot;false&quot;, &quot;bool&quot;);</b>
+<b class="nc"><i>29</i>&nbsp;    List&lt;Integer&gt; caratteri = Arrays.asList(48,49,50,51,52,53,54,55,56,57,56);</b>
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    private Socket socket;
+<i>32</i>&nbsp;
+<b class="nc"><i>33</i>&nbsp;    public ClientHandlerOutput(Socket socket) {</b>
+<b class="nc"><i>34</i>&nbsp;        this.socket = socket;</b>
+<b class="nc"><i>35</i>&nbsp;    }</b>
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    /**
+<i>38</i>&nbsp;     *reads from user input and create the correct ClientEvent to send to the server, creates a string in xml formats and than flush.
+<i>39</i>&nbsp;     * if the parser return null as new ClientEvent that means that something was wrong with the input
+<i>40</i>&nbsp;     */
+<i>41</i>&nbsp;    public void run() {
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;        /* System.out.println(&quot;[ClientHandlerOutput] Connection established&quot;); */
+<b class="nc"><i>44</i>&nbsp;        PrintWriter printWriter = null;</b>
+<i>45</i>&nbsp;        try {
+<b class="nc"><i>46</i>&nbsp;            printWriter = new PrintWriter(this.socket.getOutputStream());</b>
+<b class="nc"><i>47</i>&nbsp;        } catch (IOException e) {</b>
+<b class="nc"><i>48</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i>49</i>&nbsp;        }</b>
+<i>50</i>&nbsp;
+<i>51</i>&nbsp;
+<b class="nc"><i>52</i>&nbsp;        ProxyModel proxyModel = ProxyModel.instance();</b>
+<b class="nc"><i>53</i>&nbsp;        Scanner stdin = new Scanner(System.in);</b>
+<b class="nc"><i>54</i>&nbsp;        BufferedReader brd = new BufferedReader(new InputStreamReader(System.in));</b>
+<b class="nc"><i>55</i>&nbsp;        int clientPhase = ProxyModel.instance().getPhase();</b>
+<b class="nc"><i>56</i>&nbsp;        XmlMapper xmlMapper = (new XmlMapper());</b>
+<b class="nc"><i>57</i>&nbsp;        String toSend = &quot;&quot;;</b>
+<b class="nc"><i>58</i>&nbsp;        ClientEvent eventToSend = new ClientEvent();</b>
+<b class="nc"><i>59</i>&nbsp;        xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);</b>
+<b class="nc"><i>60</i>&nbsp;        ProxyModel.instance().setPrintWriter(printWriter);</b>
+<b class="nc"><i>61</i>&nbsp;        System.out.println(ANSI_PURPLE + &quot;SANTORINI BOARD GAME CLI SIMULATION&quot; + ANSI_RESET + &quot; (AM46)&quot;);</b>
+<b class="nc"><i>62</i>&nbsp;        System.out.println(&quot;Type &quot; + ANSI_YELLOW + &quot;login&quot; + ANSI_RESET + &quot; followed by your nickname to create a room or join an existing one.&quot;);</b>
+<b class="nc"><i>63</i>&nbsp;        String inputLine = null;</b>
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;        while (true) {
+<i>66</i>&nbsp;            try{
+<b class="nc"><i>67</i>&nbsp;                inputLine= brd.readLine();</b>
+<b class="nc"><i>68</i>&nbsp;            } catch (IOException | NullPointerException r) {</b>
+<b class="nc"><i>69</i>&nbsp;                System.out.println(&quot;error during reading of client input&quot;);</b>
+<b class="nc"><i>70</i>&nbsp;                r.printStackTrace();</b>
+<b class="nc"><i>71</i>&nbsp;            }</b>
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;            //String inputLine = stdin.nextLine();
+<i>74</i>&nbsp;
+<b class="nc"><i>75</i>&nbsp;                List&lt;String&gt; userInput = spaceStripper(inputLine);</b>
+<b class="nc"><i>76</i>&nbsp;                if (commands.contains(userInput.get(0)) &amp;&amp; userInput.size() &gt; 1) {</b>
+<b class="nc"><i>77</i>&nbsp;                    eventToSend = createUserEventToSend(userInput, proxyModel);</b>
+<b class="nc"><i>78</i>&nbsp;                    if (eventToSend == null)</b>
+<b class="nc"><i>79</i>&nbsp;                        System.out.println(&quot;formato dell&#39;ultima azione inserita non corretto,reinserire&quot;);</b>
+<i>80</i>&nbsp;                    else {
+<i>81</i>&nbsp;                        try {
+<b class="nc"><i>82</i>&nbsp;                            toSend = xmlMapper.writeValueAsString(eventToSend);</b>
+<b class="nc"><i>83</i>&nbsp;                            toSend += &quot;\n&quot;;</b>
+<b class="nc"><i>84</i>&nbsp;                        } catch (JsonProcessingException e) {</b>
+<b class="nc"><i>85</i>&nbsp;                            e.printStackTrace();</b>
+<b class="nc"><i>86</i>&nbsp;                        }</b>
+<b class="nc"><i>87</i>&nbsp;                        if (printWriter != null) {</b>
+<b class="nc"><i>88</i>&nbsp;                            printWriter.print(toSend);</b>
+<b class="nc"><i>89</i>&nbsp;                            printWriter.flush();</b>
+<i>90</i>&nbsp;                        } else
+<b class="nc"><i>91</i>&nbsp;                            System.out.println(&quot;errore con il printWriter&quot;);</b>
+<i>92</i>&nbsp;                        /*reset lista per eveitare problemi sovrascrittura*/
+<b class="nc"><i>93</i>&nbsp;                        userInput.clear();</b>
+<i>94</i>&nbsp;                    }
+<i>95</i>&nbsp;                } else
+<b class="nc"><i>96</i>&nbsp;                    System.out.println(ANSI_RED + &quot;[Unknown/incorrect command \&quot;&quot; + inputLine + &quot;\&quot;]&quot; + ANSI_RESET);</b>
+<b class="nc"><i>97</i>&nbsp;        }</b>
+<i>98</i>&nbsp;    }
+<i>99</i>&nbsp;
+<i>100</i>&nbsp;    /**
+<i>101</i>&nbsp;     * take the keyboard Input of a player and remove all whitespaces and add every atomic word into a list.
+<i>102</i>&nbsp;     * @param toSend list containing all words in user Input
+<i>103</i>&nbsp;     * @return
+<i>104</i>&nbsp;     */
+<i>105</i>&nbsp;    public List&lt;String&gt; spaceStripper(String toSend){
+<b class="nc"><i>106</i>&nbsp;            List&lt;String&gt; parsedString = new ArrayList&lt;&gt;();</b>
+<b class="nc"><i>107</i>&nbsp;            for(String atomicWord: toSend.split(&quot;\\s+&quot;)){</b>
+<i>108</i>&nbsp;                //atomicWord.replaceAll(&quot;\\s+&quot;,&quot;&quot;);
+<b class="nc"><i>109</i>&nbsp;                if(!atomicWord.equals(&quot;&quot;))</b>
+<b class="nc"><i>110</i>&nbsp;                    parsedString.add(atomicWord);</b>
+<i>111</i>&nbsp;            }
+<b class="nc"><i>112</i>&nbsp;            return parsedString;</b>
+<i>113</i>&nbsp;        }
+<i>114</i>&nbsp;
+<i>115</i>&nbsp;    /**
+<i>116</i>&nbsp;     * Take the list of strings that represent the keyboard input and create the correct ClientEvent.
+<i>117</i>&nbsp;     * if an element of the list is not compliance with a specific ClientEvent return null;
+<i>118</i>&nbsp;     *
+<i>119</i>&nbsp;     * @param userInput
+<i>120</i>&nbsp;     * @param proxyModel
+<i>121</i>&nbsp;     * @return
+<i>122</i>&nbsp;     */
+<i>123</i>&nbsp;        public ClientEvent createUserEventToSend(List&lt;String&gt; userInput,ProxyModel proxyModel) {
+<b class="nc"><i>124</i>&nbsp;            if (userInput.get(0).equals(&quot;login&quot;) &amp;&amp; proxyModel.getPhase() == 0) {</b>
+<b class="nc"><i>125</i>&nbsp;                if (userInput.get(1).equals(&quot;&quot;)) {</b>
+<b class="nc"><i>126</i>&nbsp;                    System.out.println(&quot;nome non valido&quot;);</b>
+<b class="nc"><i>127</i>&nbsp;                    return null;</b>
+<i>128</i>&nbsp;                }
+<b class="nc"><i>129</i>&nbsp;                for (Player players : proxyModel.getPlayers())</b>
+<b class="nc"><i>130</i>&nbsp;                    if(players.getName().equals(userInput.get(1))){</b>
+<b class="nc"><i>131</i>&nbsp;                        System.out.println(&quot;nick name gia preso , reinserire un nickname valido&quot;);</b>
+<b class="nc"><i>132</i>&nbsp;                        return new LoginEvent(userInput.get(1));</b>
+<i>133</i>&nbsp;                    }
+<b class="nc"><i>134</i>&nbsp;                if(proxyModel.getThisClientNickname().equals(&quot;&quot;)) {</b>
+<b class="nc"><i>135</i>&nbsp;                    proxyModel.setThisClientNickname(userInput.get(1));</b>
+<b class="nc"><i>136</i>&nbsp;                    return new LoginEvent(userInput.get(1));</b>
+<i>137</i>&nbsp;                }
+<i>138</i>&nbsp;            }
+<b class="nc"><i>139</i>&nbsp;            if (userInput.get(0).equals(&quot;bool&quot;) &amp;&amp; proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) &amp;&amp; proxyModel.getPhase() == 3) {</b>
+<b class="nc"><i>140</i>&nbsp;                if (userInput.get(1).equals(&quot;true&quot;) || userInput.get(1).equals(&quot;false&quot;))</b>
+<b class="nc"><i>141</i>&nbsp;                    return new BooleanEvent(Boolean.parseBoolean(userInput.get(1)));</b>
+<i>142</i>&nbsp;                else
+<b class="nc"><i>143</i>&nbsp;                    return null;</b>
+<i>144</i>&nbsp;            }
+<b class="nc"><i>145</i>&nbsp;            if (userInput.get(0).equals(&quot;coords&quot;) &amp;&amp; proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) &amp;&amp; proxyModel.getPhase() == 2) {</b>
+<i>146</i>&nbsp;                /**/
+<b class="nc"><i>147</i>&nbsp;                userInput.remove(0);</b>
+<b class="nc"><i>148</i>&nbsp;                userInput = refactorCoordinatesInput(userInput);</b>
+<b class="nc"><i>149</i>&nbsp;                if(userInput.size()&lt;4){</b>
+<b class="nc"><i>150</i>&nbsp;                    return null;</b>
+<i>151</i>&nbsp;                }
+<b class="nc"><i>152</i>&nbsp;                if(caratteri.contains((int)(userInput.get(0).charAt(0))) &amp;&amp; caratteri.contains((int)(userInput.get(1).charAt(0))) &amp;&amp; caratteri.contains((int)(userInput.get(2).charAt(0)))&amp;&amp; caratteri.contains((int)(userInput.get(3).charAt(0)))) {</b>
+<b class="nc"><i>153</i>&nbsp;                    int x = Integer.parseInt(userInput.get(0));</b>
+<b class="nc"><i>154</i>&nbsp;                    int y = Integer.parseInt(userInput.get(1));</b>
+<b class="nc"><i>155</i>&nbsp;                    int z = Integer.parseInt(userInput.get(2));</b>
+<b class="nc"><i>156</i>&nbsp;                    int g = Integer.parseInt(userInput.get(3));</b>
+<b class="nc"><i>157</i>&nbsp;                    return new SetupCoordsEvent(x, y, z, g);</b>
+<i>158</i>&nbsp;                }
+<i>159</i>&nbsp;            }
+<b class="nc"><i>160</i>&nbsp;            if (userInput.get(0).equals(&quot;coords&quot;) &amp;&amp; proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) &amp;&amp; proxyModel.getPhase() == 3) {</b>
+<b class="nc"><i>161</i>&nbsp;                userInput.remove(0);</b>
+<b class="nc"><i>162</i>&nbsp;                userInput = refactorCoordinatesInput(userInput);</b>
+<i>163</i>&nbsp;                /*
+<i>164</i>&nbsp;                controllo formato coordinate
+<i>165</i>&nbsp;                 */
+<b class="nc"><i>166</i>&nbsp;                if(userInput.size()&lt;2)</b>
+<b class="nc"><i>167</i>&nbsp;                    return null;</b>
+<i>168</i>&nbsp;
+<b class="nc"><i>169</i>&nbsp;                if(caratteri.contains((int)(userInput.get(0).charAt(0))) &amp;&amp; caratteri.contains((int)(userInput.get(1).charAt(0)))) {</b>
+<b class="nc"><i>170</i>&nbsp;                    int x = Integer.parseInt(userInput.get(0));</b>
+<b class="nc"><i>171</i>&nbsp;                    int y = Integer.parseInt(userInput.get(1));</b>
+<b class="nc"><i>172</i>&nbsp;                    return new GameCoordsEvent(x, y);</b>
+<i>173</i>&nbsp;                }else
+<b class="nc"><i>174</i>&nbsp;                    return null;</b>
+<i>175</i>&nbsp;            }
+<b class="nc"><i>176</i>&nbsp;            if (userInput.get(0).equals(&quot;start&quot;) &amp;&amp; proxyModel.getThisClientNickname().equals(proxyModel.getPartyOwner()) &amp;&amp; proxyModel.getPlayers().size() &gt; 1 &amp;&amp; proxyModel.getPhase() == 0) {</b>
+<b class="nc"><i>177</i>&nbsp;                if (proxyModel.getPlayers().size() == 2 || proxyModel.getPlayers().size() == 3)</b>
+<b class="nc"><i>178</i>&nbsp;                    return new StartUpEvent(proxyModel.getThisClientNickname(),userInput.get(1));</b>
+<i>179</i>&nbsp;                else
+<b class="nc"><i>180</i>&nbsp;                    return null;</b>
+<i>181</i>&nbsp;            }
+<b class="nc"><i>182</i>&nbsp;            if ((userInput.get(0).equals(&quot;god&quot;) &amp;&amp; proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) &amp;&amp; proxyModel.getTurn().getPlayerByName(proxyModel.getThisClientNickname()).getGodCard() == null &amp;&amp; proxyModel.getPhase() == 1)) {</b>
+<b class="nc"><i>183</i>&nbsp;                if(userInput.size()&gt;1)</b>
+<b class="nc"><i>184</i>&nbsp;                    return new GodChoiceEvent(userInput.get(1), proxyModel.getThisClientNickname());</b>
+<i>185</i>&nbsp;            }
+<b class="nc"><i>186</i>&nbsp;            if (userInput.get(0).equals(&quot;gods&quot;) &amp;&amp; proxyModel.getPartyOwner().equals(proxyModel.getThisClientNickname()) &amp;&amp; proxyModel.getPhase() == 4) {</b>
+<b class="nc"><i>187</i>&nbsp;                if (proxyModel.getPlayers().size() == 2 &amp;&amp; userInput.size()&gt;=3) {</b>
+<b class="nc"><i>188</i>&nbsp;                    return new GodListEvent(userInput.get(1).toLowerCase(),userInput.get(2).toLowerCase(),null);</b>
+<i>189</i>&nbsp;
+<i>190</i>&nbsp;                }else {
+<b class="nc"><i>191</i>&nbsp;                    if (proxyModel.getPlayers().size() == 3 &amp;&amp; userInput.size() &gt;= 4)</b>
+<b class="nc"><i>192</i>&nbsp;                        return new GodListEvent(userInput.get(1).toLowerCase(), userInput.get(2).toLowerCase(), userInput.get(3).toLowerCase());</b>
+<i>193</i>&nbsp;                }
+<b class="nc"><i>194</i>&nbsp;                return null;</b>
+<i>195</i>&nbsp;            }
+<b class="nc"><i>196</i>&nbsp;            return  null;</b>
+<i>197</i>&nbsp;        }
+<i>198</i>&nbsp;
+<i>199</i>&nbsp;    /**
+<i>200</i>&nbsp;     * parse correctly the coordinates by returning only the first character of every word int he list of the input.
+<i>201</i>&nbsp;     * @param userInput coordinates input in List of strings format
+<i>202</i>&nbsp;     * @return list with only the first character of every word.
+<i>203</i>&nbsp;     */
+<i>204</i>&nbsp;    public List&lt;String&gt; refactorCoordinatesInput(List&lt;String&gt; userInput) {
+<b class="nc"><i>205</i>&nbsp;        for (int i = 1; i != userInput.size(); i++) {</b>
+<b class="nc"><i>206</i>&nbsp;            String s = Character.toString(userInput.get(i).charAt(0));</b>
+<b class="nc"><i>207</i>&nbsp;            userInput.set(i, s);</b>
+<i>208</i>&nbsp;        }
+<b class="nc"><i>209</i>&nbsp;        return userInput;</b>
+<i>210</i>&nbsp;    }
+<i>211</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,145 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: WorkerClient</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.client.proxymodel</a> ]
+</div>
+
+<h1>Coverage Summary for Class: WorkerClient (it.polimi.ingsw.client.proxymodel)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">WorkerClient</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (8/ 10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83,3%
+  </span>
+  <span class="absValue">
+    (20/ 24)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.client.proxymodel;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;/**
+<i>4</i>&nbsp; *
+<i>5</i>&nbsp; * it contains all the worker information including the position, the owner and if it is selected,
+<i>6</i>&nbsp; * useful information for the cli,
+<i>7</i>&nbsp; *  which colors differently according to the owner and does operations based on the position
+<i>8</i>&nbsp; */
+<i>9</i>&nbsp;public class WorkerClient {
+<i>10</i>&nbsp;    private String color;
+<i>11</i>&nbsp;    private Coords position;
+<i>12</i>&nbsp;    private Player owner;
+<i>13</i>&nbsp;    private int isSelected;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    public int getIsSelected() {
+<b class="fc"><i>16</i>&nbsp;        return isSelected;</b>
+<i>17</i>&nbsp;    }
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    public void select() {
+<b class="fc"><i>20</i>&nbsp;        this.isSelected = 1;</b>
+<b class="fc"><i>21</i>&nbsp;    }</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public void unselect() {
+<b class="nc"><i>24</i>&nbsp;        this.isSelected = 0;</b>
+<b class="nc"><i>25</i>&nbsp;    }</b>
+<i>26</i>&nbsp;
+<b class="fc"><i>27</i>&nbsp;    public WorkerClient(Player owner,Coords coords,int index){</b>
+<b class="fc"><i>28</i>&nbsp;        this.owner=owner;</b>
+<b class="fc"><i>29</i>&nbsp;        this.position=coords;</b>
+<b class="fc"><i>30</i>&nbsp;        if(index == 0)</b>
+<b class="fc"><i>31</i>&nbsp;            this.setColor(&quot;\033[1;34m&quot;);</b>
+<b class="fc"><i>32</i>&nbsp;        else if(index == 1)</b>
+<b class="fc"><i>33</i>&nbsp;            this.setColor(&quot;\033[1;35m&quot;);</b>
+<b class="fc"><i>34</i>&nbsp;        else if(index == 2)</b>
+<b class="fc"><i>35</i>&nbsp;            this.setColor(&quot;\033[1;33m&quot;);</b>
+<i>36</i>&nbsp;
+<b class="fc"><i>37</i>&nbsp;    }</b>
+<i>38</i>&nbsp;    public Player getOwner() {
+<b class="fc"><i>39</i>&nbsp;        return owner;</b>
+<i>40</i>&nbsp;    }
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    public void setOwner(Player owner) {
+<b class="nc"><i>43</i>&nbsp;        this.owner = owner;</b>
+<b class="nc"><i>44</i>&nbsp;    }</b>
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    public void setColor(String color) {
+<b class="fc"><i>47</i>&nbsp;        this.color = color;</b>
+<b class="fc"><i>48</i>&nbsp;    }</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    public String getColor() {
+<b class="fc"><i>51</i>&nbsp;        return color;</b>
+<i>52</i>&nbsp;    }
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    public Coords getPosition() {
+<b class="fc"><i>55</i>&nbsp;        return position;</b>
+<i>56</i>&nbsp;    }
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    public void setPosition(Coords position) {
+<b class="fc"><i>59</i>&nbsp;        this.position = position;</b>
+<b class="fc"><i>60</i>&nbsp;    }</b>
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

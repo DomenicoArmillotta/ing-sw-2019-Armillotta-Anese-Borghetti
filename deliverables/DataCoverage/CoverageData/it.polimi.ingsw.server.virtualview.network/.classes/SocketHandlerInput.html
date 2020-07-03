@@ -1,0 +1,241 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SocketHandlerInput</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw.server.virtualview.network</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SocketHandlerInput (it.polimi.ingsw.server.virtualview.network)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SocketHandlerInput</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 84)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw.server.virtualview.network;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.server.controller.Controller;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.model.mvevents.eventbeans.ConnectionInterruptEventBean;
+<i>5</i>&nbsp;import it.polimi.ingsw.server.virtualview.serverevents.*;
+<i>6</i>&nbsp;import org.w3c.dom.Document;
+<i>7</i>&nbsp;import org.xml.sax.InputSource;
+<i>8</i>&nbsp;import org.xml.sax.SAXException;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;import javax.xml.parsers.DocumentBuilder;
+<i>11</i>&nbsp;import javax.xml.parsers.DocumentBuilderFactory;
+<i>12</i>&nbsp;import javax.xml.parsers.ParserConfigurationException;
+<i>13</i>&nbsp;import java.io.*;
+<i>14</i>&nbsp;import java.net.Socket;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;/**
+<i>17</i>&nbsp; * manage all input of a single client towards the server and parse the input creating a ServerEvent
+<i>18</i>&nbsp; */
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;public class SocketHandlerInput implements Runnable {
+<i>21</i>&nbsp;    private Socket socket;
+<i>22</i>&nbsp;    private Controller  controller;
+<i>23</i>&nbsp;    private EventsBuffer eventsBuffer;
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    /**
+<i>26</i>&nbsp;     * create a new SocketHandlerOutput
+<i>27</i>&nbsp;     * @param socket client socket
+<i>28</i>&nbsp;     * @param controller server controller
+<i>29</i>&nbsp;     */
+<b class="nc"><i>30</i>&nbsp;    public SocketHandlerInput(Socket socket, Controller controller) {</b>
+<b class="nc"><i>31</i>&nbsp;        this.socket = socket;</b>
+<b class="nc"><i>32</i>&nbsp;        this.controller = controller;</b>
+<b class="nc"><i>33</i>&nbsp;        this.eventsBuffer = EventsBuffer.instance();</b>
+<b class="nc"><i>34</i>&nbsp;        eventsBuffer.flushBuffer();</b>
+<b class="nc"><i>35</i>&nbsp;    }</b>
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    /**
+<i>38</i>&nbsp;     * keeps reading from the input until bufferedReader read a connection Interrupt or end of stream.
+<i>39</i>&nbsp;     * when a client disconnects anomalously or decidec to quit the game the socketHandlerInput signals to the game is going to be ended
+<i>40</i>&nbsp;     * and start the procedure for rebooting @see socketHandlerOutpu
+<i>41</i>&nbsp;     * @throws IOException if cannot create the parser
+<i>42</i>&nbsp;     * @throws SAXException if parser crash
+<i>43</i>&nbsp;     */
+<i>44</i>&nbsp;    public void run() {
+<b class="nc"><i>45</i>&nbsp;        BufferedReader brd = null;</b>
+<b class="nc"><i>46</i>&nbsp;        synchronized (eventsBuffer.brdLock) {</b>
+<i>47</i>&nbsp;            try {
+<b class="nc"><i>48</i>&nbsp;                brd = new BufferedReader(new InputStreamReader(socket.getInputStream()));</b>
+<b class="nc"><i>49</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>50</i>&nbsp;                System.out.println(&quot;errore a creare lo stream di input&quot;);</b>
+<b class="nc"><i>51</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i>52</i>&nbsp;            }</b>
+<b class="nc"><i>53</i>&nbsp;        }</b>
+<i>54</i>&nbsp;
+<b class="nc"><i>55</i>&nbsp;        controller.addScannerInToList(new LineClientSocketsAndPort(socket,socket.getPort()));</b>
+<i>56</i>&nbsp;
+<i>57</i>&nbsp;        try{
+<b class="nc"><i>58</i>&nbsp;            String userInput = &quot;&quot;;</b>
+<b class="nc"><i>59</i>&nbsp;            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();</b>
+<b class="nc"><i>60</i>&nbsp;            DocumentBuilder db = dbf.newDocumentBuilder();</b>
+<b class="nc"><i>61</i>&nbsp;            System.out.println(userInput);</b>
+<i>62</i>&nbsp;            //tolto dal while le righe qui sopra.
+<i>63</i>&nbsp;
+<b class="nc"><i>64</i>&nbsp;            while((userInput = brd.readLine()) != null){</b>
+<b class="nc"><i>65</i>&nbsp;                System.out.println(&quot;Ready to read&quot;);</b>
+<b class="nc"><i>66</i>&nbsp;                StringReader sr = new StringReader(userInput);</b>
+<b class="nc"><i>67</i>&nbsp;                InputSource is = new InputSource(sr);</b>
+<b class="nc"><i>68</i>&nbsp;                Document document = null;</b>
+<i>69</i>&nbsp;                try {
+<b class="nc"><i>70</i>&nbsp;                    document = db.parse(is);</b>
+<b class="nc"><i>71</i>&nbsp;                } catch (SAXException e) {</b>
+<b class="nc"><i>72</i>&nbsp;                    e.printStackTrace();</b>
+<b class="nc"><i>73</i>&nbsp;                } catch (IOException e) {</b>
+<b class="nc"><i>74</i>&nbsp;                    e.printStackTrace();</b>
+<b class="nc"><i>75</i>&nbsp;                }</b>
+<b class="nc"><i>76</i>&nbsp;                ServerEvent serverEvent = returnCorrectServerEvent(document);</b>
+<b class="nc"><i>77</i>&nbsp;                System.out.println(serverEvent);</b>
+<b class="nc"><i>78</i>&nbsp;                serverEvent.serverEventMethod(controller);</b>
+<b class="nc"><i>79</i>&nbsp;                System.out.println(&quot;Done&quot;);</b>
+<b class="nc"><i>80</i>&nbsp;            }</b>
+<i>81</i>&nbsp;            /*/
+<i>82</i>&nbsp;            solo quando il client crasha in game oppure viene chiuso o non è ancora partito;
+<i>83</i>&nbsp;             */
+<i>84</i>&nbsp;
+<b class="nc"><i>85</i>&nbsp;        } catch (IOException | ParserConfigurationException t) {</b>
+<b class="nc"><i>86</i>&nbsp;            System.out.println(&quot;exceptional disconnection&quot;);</b>
+<b class="nc"><i>87</i>&nbsp;            System.err.println(t.getMessage());</b>
+<i>88</i>&nbsp;        } finally {
+<b class="nc"><i>89</i>&nbsp;            if(!EventsBuffer.instance().getEndGame()) {</b>
+<b class="nc"><i>90</i>&nbsp;                eventsBuffer.setLastEventBean(new ConnectionInterruptEventBean(&quot;payload&quot;));</b>
+<b class="nc"><i>91</i>&nbsp;                controller.deleteElementInScannerInList(Integer.toString(socket.getPort()));</b>
+<b class="nc"><i>92</i>&nbsp;                eventsBuffer.setEndGame();</b>
+<b class="nc"><i>93</i>&nbsp;                while (EventsBuffer.instance().isSendEventBeanLock())</b>
+<b class="nc"><i>94</i>&nbsp;                    ;</b>
+<b class="nc"><i>95</i>&nbsp;                System.out.println(&quot;chiusura inaspettata&quot;);</b>
+<i>96</i>&nbsp;            }else
+<b class="nc"><i>97</i>&nbsp;                controller.deleteElementInScannerInList(Integer.toString(socket.getPort()));</b>
+<i>98</i>&nbsp;            try {
+<b class="nc"><i>99</i>&nbsp;                brd.close();//sia socket che input stream;</b>
+<b class="nc"><i>100</i>&nbsp;            } catch (IOException e) {</b>
+<b class="nc"><i>101</i>&nbsp;                e.printStackTrace();</b>
+<b class="nc"><i>102</i>&nbsp;            }</b>
+<b class="nc"><i>103</i>&nbsp;        }</b>
+<b class="nc"><i>104</i>&nbsp;    }</b>
+<i>105</i>&nbsp;
+<i>106</i>&nbsp;    /**
+<i>107</i>&nbsp;     * create a ServerEvent from the input that the server received form a client by using the doc document passed by the SocketHandlerInput.
+<i>108</i>&nbsp;     *
+<i>109</i>&nbsp;     * @param doc document containing the xml version of the original String Message
+<i>110</i>&nbsp;     * @return ServerEvent or null if there are no such event in the server.
+<i>111</i>&nbsp;     */
+<i>112</i>&nbsp;    protected ServerEvent returnCorrectServerEvent(Document doc){
+<b class="nc"><i>113</i>&nbsp;        if(doc.getDocumentElement().getTagName().equals(&quot;GameCoordsEvent&quot;)) {</b>
+<i>114</i>&nbsp;            int x,y;
+<b class="nc"><i>115</i>&nbsp;            x = Integer.parseInt(doc.getElementsByTagName(&quot;x&quot;).item(0).getTextContent());</b>
+<b class="nc"><i>116</i>&nbsp;            y = Integer.parseInt(doc.getElementsByTagName(&quot;y&quot;).item(0).getTextContent());</b>
+<b class="nc"><i>117</i>&nbsp;            return new it.polimi.ingsw.server.virtualview.serverevents.GameCoordsEvent(x,y);</b>
+<i>118</i>&nbsp;        }
+<i>119</i>&nbsp;
+<b class="nc"><i>120</i>&nbsp;        if(doc.getDocumentElement().getTagName().equals(&quot;SetupCoordsEvent&quot;)) {</b>
+<i>121</i>&nbsp;            int x,y,z,w;
+<b class="nc"><i>122</i>&nbsp;            x = Integer.parseInt(doc.getElementsByTagName(&quot;x&quot;).item(0).getTextContent());</b>
+<b class="nc"><i>123</i>&nbsp;            y = Integer.parseInt(doc.getElementsByTagName(&quot;y&quot;).item(0).getTextContent());</b>
+<b class="nc"><i>124</i>&nbsp;            z = Integer.parseInt(doc.getElementsByTagName(&quot;z&quot;).item(0).getTextContent());</b>
+<b class="nc"><i>125</i>&nbsp;            w = Integer.parseInt(doc.getElementsByTagName(&quot;w&quot;).item(0).getTextContent());</b>
+<b class="nc"><i>126</i>&nbsp;            return new it.polimi.ingsw.server.virtualview.serverevents.SetupCoordsEvent(x,y,z,w);</b>
+<i>127</i>&nbsp;        }
+<i>128</i>&nbsp;
+<b class="nc"><i>129</i>&nbsp;        if(doc.getDocumentElement().getTagName().equals(&quot;LoginEvent&quot;)){</b>
+<b class="nc"><i>130</i>&nbsp;            String payload = doc.getElementsByTagName(&quot;payload&quot;).item(0).getTextContent();</b>
+<b class="nc"><i>131</i>&nbsp;            return new LoginEvent(payload);</b>
+<i>132</i>&nbsp;        }
+<b class="nc"><i>133</i>&nbsp;        if(doc.getDocumentElement().getTagName().equals(&quot;StartUpEvent&quot;)){</b>
+<b class="nc"><i>134</i>&nbsp;            String playerComm = doc.getElementsByTagName(&quot;playerComm&quot;).item(0).getTextContent();</b>
+<b class="nc"><i>135</i>&nbsp;            String numberOfPlayers = doc.getElementsByTagName(&quot;numberOfPlayers&quot;).item(0).getTextContent();</b>
+<b class="nc"><i>136</i>&nbsp;            return new StartUpEvent(playerComm,numberOfPlayers);</b>
+<i>137</i>&nbsp;        }
+<b class="nc"><i>138</i>&nbsp;        if(doc.getDocumentElement().getTagName().equals(&quot;GodChoiceEvent&quot;)){</b>
+<b class="nc"><i>139</i>&nbsp;            String chosenGod = doc.getElementsByTagName(&quot;chosenGod&quot;).item(0).getTextContent();</b>
+<b class="nc"><i>140</i>&nbsp;            String player = doc.getElementsByTagName(&quot;player&quot;).item(0).getTextContent();</b>
+<b class="nc"><i>141</i>&nbsp;            return new GodChoiceEvent(chosenGod, player);</b>
+<i>142</i>&nbsp;        }
+<b class="nc"><i>143</i>&nbsp;        if(doc.getDocumentElement().getTagName().equals(&quot;BooleanEvent&quot;))</b>
+<b class="nc"><i>144</i>&nbsp;            return new BooleanEvent(Boolean.parseBoolean(doc.getElementsByTagName(&quot;answer&quot;).item(0).getTextContent()));</b>
+<i>145</i>&nbsp;
+<b class="nc"><i>146</i>&nbsp;        if(doc.getDocumentElement().getTagName().equals(&quot;GodListEvent&quot;)) {</b>
+<b class="nc"><i>147</i>&nbsp;            String god1 = doc.getElementsByTagName(&quot;god1&quot;).item(0).getTextContent();</b>
+<b class="nc"><i>148</i>&nbsp;            String god2 = doc.getElementsByTagName(&quot;god2&quot;).item(0).getTextContent();</b>
+<b class="nc"><i>149</i>&nbsp;            String god3 = doc.getElementsByTagName(&quot;god3&quot;).item(0).getTextContent();</b>
+<b class="nc"><i>150</i>&nbsp;            return new PartyOwnerGodListEvent(god1,god2,god3);</b>
+<i>151</i>&nbsp;        }
+<b class="nc"><i>152</i>&nbsp;        if(doc.getDocumentElement().getTagName().equals(&quot;ClientAckDisconnectionEvent&quot;)){</b>
+<b class="nc"><i>153</i>&nbsp;            String socket = doc.getElementsByTagName(&quot;socketToDisconnect&quot;).item(0).getTextContent();</b>
+<b class="nc"><i>154</i>&nbsp;            return new ClientDisconnectRequestEvent(socket);</b>
+<i>155</i>&nbsp;        }
+<b class="nc"><i>156</i>&nbsp;        return null;</b>
+<i>157</i>&nbsp;    }
+<i>158</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

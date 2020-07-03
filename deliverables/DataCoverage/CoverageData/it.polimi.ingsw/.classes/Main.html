@@ -1,0 +1,129 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Main</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">it.polimi.ingsw</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Main (it.polimi.ingsw)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Main</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 28)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package it.polimi.ingsw;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import it.polimi.ingsw.client.ClientHandler;
+<i>4</i>&nbsp;import it.polimi.ingsw.server.virtualview.network.NetworkHandler;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;
+<b class="nc"><i>7</i>&nbsp;public class Main {</b>
+<b class="nc"><i>8</i>&nbsp;    static private int portNumber =1234;</b>
+<i>9</i>&nbsp;    public static void main(String[] Args) {
+<b class="nc"><i>10</i>&nbsp;        System.out.println(&quot;Stampa di prova&quot;);</b>
+<i>11</i>&nbsp;
+<b class="nc"><i>12</i>&nbsp;        int paramnsCount = Args.length;</b>
+<i>13</i>&nbsp;
+<b class="nc"><i>14</i>&nbsp;        if(paramnsCount==2){</b>
+<b class="nc"><i>15</i>&nbsp;            portNumber = Integer.parseInt(Args[1]);</b>
+<i>16</i>&nbsp;        }
+<i>17</i>&nbsp;
+<b class="nc"><i>18</i>&nbsp;        if (paramnsCount == 0) {</b>
+<b class="nc"><i>19</i>&nbsp;            startGui(portNumber);</b>
+<b class="nc"><i>20</i>&nbsp;        } else if (Args[0].equals(&quot;server&quot;)) {</b>
+<b class="nc"><i>21</i>&nbsp;            startServer(portNumber);</b>
+<b class="nc"><i>22</i>&nbsp;        } else if (Args[0].equals(&quot;cli&quot;)) {</b>
+<b class="nc"><i>23</i>&nbsp;            startCli(portNumber);</b>
+<b class="nc"><i>24</i>&nbsp;        } else if (Args[0].equals(&quot;gui&quot;)) {</b>
+<b class="nc"><i>25</i>&nbsp;            startGui(portNumber);</b>
+<i>26</i>&nbsp;        } else
+<b class="nc"><i>27</i>&nbsp;            System.out.println(&quot;errore&quot;);</b>
+<b class="nc"><i>28</i>&nbsp;    }</b>
+<i>29</i>&nbsp;
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    public static void startGui(int portNumber){
+<b class="nc"><i>32</i>&nbsp;        System.out.println(&quot;gui&quot;);</b>
+<b class="nc"><i>33</i>&nbsp;        ClientHandler clientHandler = new ClientHandler(&quot;gui&quot;,portNumber);</b>
+<b class="nc"><i>34</i>&nbsp;        clientHandler.startClient();</b>
+<b class="nc"><i>35</i>&nbsp;    }</b>
+<i>36</i>&nbsp;    public static void startCli(int portNumber){
+<b class="nc"><i>37</i>&nbsp;        System.out.println(&quot;cli&quot;);</b>
+<b class="nc"><i>38</i>&nbsp;        ClientHandler clientHandler = new ClientHandler(&quot;cli&quot;,portNumber);</b>
+<b class="nc"><i>39</i>&nbsp;        clientHandler.startClient();</b>
+<b class="nc"><i>40</i>&nbsp;    }</b>
+<i>41</i>&nbsp;    public static void startServer(int portNumber){
+<b class="nc"><i>42</i>&nbsp;        NetworkHandler networkHandler = new NetworkHandler(portNumber);</b>
+<b class="nc"><i>43</i>&nbsp;        networkHandler.startServer();</b>
+<b class="nc"><i>44</i>&nbsp;        System.out.println(&quot;server&quot;);</b>
+<b class="nc"><i>45</i>&nbsp;    }</b>
+<i>46</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-07-03 21:45</div>
+</div>
+</body>
+</html>

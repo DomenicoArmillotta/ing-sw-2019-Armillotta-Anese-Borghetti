@@ -15,7 +15,7 @@ import java.io.InputStream;
 public class LoginPanel extends JPanel {
     /**
      * used for print image
-     * @param g
+     * @param g is used for paint component and derive by override
      */
     public void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -25,7 +25,7 @@ public class LoginPanel extends JPanel {
     /**
      * draw the login screen, with the background image and set the font and the color of the displayed text
      * also set the name of the jframe
-     * @param g
+     * @param g is used for paint component and derive by override
      */
     private void drawImage(Graphics g) {
             ProxyModel proxyModel = ProxyModel.instance();

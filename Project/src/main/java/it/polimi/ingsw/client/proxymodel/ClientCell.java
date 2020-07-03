@@ -24,9 +24,8 @@ public class ClientCell {
 
     /**
      * getUnderWorker place a worker on this cell, under another worker
-     * @param underWorker
+     * @param underWorker the worker that is under
      */
-
     public void setUnderWorker(WorkerClient underWorker) {
         this.underWorker = underWorker;
     }
@@ -38,7 +37,7 @@ public class ClientCell {
 
     /**
      * setSelectable sets if this cell is selectable by the user (for a selection, movement or build) or not
-     * @param selectable
+     * @param selectable the selectable
      */
     public void setSelectable(int selectable) {
         this.selectable = selectable;
@@ -46,7 +45,7 @@ public class ClientCell {
 
     /**
      * getworkerSelectable specifies if the worker that is on this cell is selectable or not during the selection phase
-     * @return
+     * @return workerSelectable the selectable worker
      */
     public int getworkerSelectable() {
         return workerSelectable;
@@ -61,7 +60,7 @@ public class ClientCell {
 
     /**
      * setLevel sets this cell's building level
-     * @param level
+     * @param level the level
      */
     public void setLevel(int level) {
         this.level = level;
@@ -101,7 +100,7 @@ public class ClientCell {
 
     /**
      * setWorker is used to place a worker on this cell
-     * @param worker
+     * @param worker the worker
      */
 
     public void setWorker(WorkerClient worker) {
@@ -110,7 +109,7 @@ public class ClientCell {
 
     /**
      * getLevel gets this cell's building level
-     * @return
+     * @return level the level
      */
 
     public int getLevel() {

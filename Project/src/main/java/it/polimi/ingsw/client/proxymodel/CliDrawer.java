@@ -36,7 +36,7 @@ public class CliDrawer extends Drawer{
 
     /**
      *print all the gods available and chosen by the party owner
-     * @param godList
+     * @param godList god list
      */
     public void drawPartyOwnerGodChoices(List<String> godList) {
         System.out.println("divinità disponibili: ");
@@ -45,7 +45,7 @@ public class CliDrawer extends Drawer{
 
     /**
      *print the text of the prompts to make the player choose
-     * @param promptText
+     * @param promptText prompt text
      */
     public void promptChoice(String promptText) {
         System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m"+", "+promptText);
@@ -339,7 +339,7 @@ public class CliDrawer extends Drawer{
 
     /**
      * print the loser's name
-     * @param loser
+     * @param loser the loser
      */
     public void drawLooseGame(String loser){
         System.out.println("Ha perso "+loser);

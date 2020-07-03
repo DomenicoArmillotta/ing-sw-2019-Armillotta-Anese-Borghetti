@@ -18,7 +18,7 @@ public class MouseListenerChoice implements MouseListener {
      *
      if you are in the right phase, you choose whether to use the power of god if the click takes place in the position
      *where the word yes or no is positioned
-     * @param e
+     * @param e is used for mouseClickListeners and derive by override
      */
     private Display display;
     private final static int threshX = 300;

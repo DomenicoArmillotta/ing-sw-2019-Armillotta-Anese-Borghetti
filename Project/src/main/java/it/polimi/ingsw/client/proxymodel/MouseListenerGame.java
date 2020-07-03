@@ -28,7 +28,7 @@ public class MouseListenerGame implements MouseListener {
     /**
      * if the game is in the right phase,based on the click the workers of the player are positioned if you are in the setup phase,
      * after which it is used to select the worker on which to carry out the operations and select the cells on which to build, select, move
-     * @param e
+     * @param e is used for mouseClickListeners and derive by override
      */
     @Override
     public void mouseClicked(MouseEvent e) {

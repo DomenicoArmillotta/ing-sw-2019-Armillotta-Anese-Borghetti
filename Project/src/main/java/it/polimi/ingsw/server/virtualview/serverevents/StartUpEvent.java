@@ -21,7 +21,7 @@ public class StartUpEvent extends ServerEvent {
 
     /**
      * if you are the party owner you can start the game else you can't
-     * @param controller
+     * @param controller the controller
      */
     @Override
     public void serverEventMethod(Controller controller){

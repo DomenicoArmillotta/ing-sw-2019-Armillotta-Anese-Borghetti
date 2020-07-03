@@ -2,13 +2,19 @@ package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
 import java.io.Serializable;
 
+/**
+ *create WorkerMovementEventBean that will be sent to the client by the server
+ */
 public class WorkerMovementEventBean extends EventBean implements Serializable {
     String eventType;
     int prevX;
     int prevY;
     int currX;
     int currY;
-
+    /**
+     *create WorkerMovementEventBean that will be sent to the client by the server to communicate the movement made by the worker,
+     *  then send the previous and current coordinates of the server
+     */
     public WorkerMovementEventBean(int prevX, int prevY, int currX, int currY){
         eventType = "WorkerMovementEvent";
         this.prevX = prevX;

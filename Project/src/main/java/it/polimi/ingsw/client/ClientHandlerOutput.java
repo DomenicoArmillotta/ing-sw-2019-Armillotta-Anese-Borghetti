@@ -36,7 +36,8 @@ public class ClientHandlerOutput implements Runnable {
     }
 
     /**
-     *
+     *reads from user input and create the correct ClientEvent to send to the server, creates a string in xml formats and than flush.
+     * if the parser return null as new ClientEvent that means that something was wrong with the input
      */
     public void run() {
 
@@ -97,8 +98,12 @@ public class ClientHandlerOutput implements Runnable {
         }
     }
 
-
-        public List<String> spaceStripper(String toSend){
+    /**
+     * take the keyboard Input of a player and remove all whitespaces and add every atomic word into a list.
+     * @param toSend list containing all words in user Input
+     * @return
+     */
+    public List<String> spaceStripper(String toSend){
             List<String> parsedString = new ArrayList<>();
             for(String atomicWord: toSend.split("\\s+")){
                 //atomicWord.replaceAll("\\s+","");
@@ -108,6 +113,14 @@ public class ClientHandlerOutput implements Runnable {
             return parsedString;
         }
 
+    /**
+     * Take the list of strings that represent the keyboard input and create the correct ClientEvent.
+     * if an element of the list is not compliance with a specific ClientEvent return null;
+     *
+     * @param userInput
+     * @param proxyModel
+     * @return
+     */
         public ClientEvent createUserEventToSend(List<String> userInput,ProxyModel proxyModel) {
             if (userInput.get(0).equals("login") && proxyModel.getPhase().ordinal() == Phase.LOGIN.ordinal()) {
                 if (userInput.get(1).equals("")) {
@@ -185,7 +198,11 @@ public class ClientHandlerOutput implements Runnable {
             return  null;
         }
 
-
+    /**
+     * parse correctly the coordinates by returning only the first character of every word int he list of the input.
+     * @param userInput coordinates input in List of strings format
+     * @return list with only the first character of every word.
+     */
     public List<String> refactorCoordinatesInput(List<String> userInput) {
         for (int i = 1; i != userInput.size(); i++) {
             String s = Character.toString(userInput.get(i).charAt(0));

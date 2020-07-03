@@ -17,7 +17,6 @@ public class GameMaster {
     public GameMaster(List<Player> playerQueue, int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
         this.playerQueue = playerQueue;
-        //createGodList();
         createActionExecutor();
         getActionExecutor().cleanActionExecutor();
     }

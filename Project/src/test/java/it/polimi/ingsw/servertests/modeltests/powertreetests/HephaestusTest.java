@@ -27,7 +27,7 @@ public class HephaestusTest {
         playerQueue.add(player2);
         playerQueue.add(player3);
         GameMaster gameMaster = new GameMaster(playerQueue, 3);
-        GodCard godCard1 = godCardsDeck.createGodCard("Hepaestus");
+        GodCard godCard1 = godCardsDeck.createGodCard("Hephaestus");
         GodCard godCard2 = godCardsDeck.createGodCard("Apollo ");
         GodCard godCard3 = godCardsDeck.createGodCard("Pan");
         player1.setPlayerGod(godCard1);

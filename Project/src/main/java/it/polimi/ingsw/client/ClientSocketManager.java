@@ -4,6 +4,9 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
+/**
+ * collection of socket and socket port for the client to access them easily
+ */
 public class ClientSocketManager {
 
     private PrintWriter printWriter;

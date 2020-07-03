@@ -29,7 +29,7 @@ public class Controller {
 
     /**
      * set last user input coordinates
-     * @param userInput
+     * @param userInput array of integer containing user input
      */
     public void setUserInput(int[] userInput) {
         this.userInput = userInput;

@@ -101,7 +101,7 @@ public class ClientHandlerOutput implements Runnable {
     /**
      * take the keyboard Input of a player and remove all whitespaces and add every atomic word into a list.
      * @param toSend list containing all words in user Input
-     * @return
+     * @return List of strings that is the collection of all atomic word in the keyboard input
      */
     public List<String> spaceStripper(String toSend){
             List<String> parsedString = new ArrayList<>();
@@ -117,9 +117,9 @@ public class ClientHandlerOutput implements Runnable {
      * Take the list of strings that represent the keyboard input and create the correct ClientEvent.
      * if an element of the list is not compliance with a specific ClientEvent return null;
      *
-     * @param userInput
-     * @param proxyModel
-     * @return
+     * @param userInput keyboard input of the client
+     * @param proxyModel current proxymodel
+     * @return null if there is no such event of the type contained in user input else the correct ClientEvent
      */
         public ClientEvent createUserEventToSend(List<String> userInput,ProxyModel proxyModel) {
             if (userInput.get(0).equals("login") && proxyModel.getPhase().ordinal() == Phase.LOGIN.ordinal()) {

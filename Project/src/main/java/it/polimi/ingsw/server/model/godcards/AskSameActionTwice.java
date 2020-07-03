@@ -12,7 +12,7 @@ public class AskSameActionTwice implements BooleanRequestAction {
      * goes on to the next one.
      * else move the powerPointer to the next action and signals the players of the choice made.
      * @param controller use controller to execute a particular power
-     * @param promptChoice
+     * @param promptChoice boolean choice for this particular prompt
      */
     @Override
     public void BooleanRequestStrategy(Controller controller,Boolean promptChoice) {

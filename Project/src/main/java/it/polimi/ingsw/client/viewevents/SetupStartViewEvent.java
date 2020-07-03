@@ -1,18 +1,32 @@
 package it.polimi.ingsw.client.viewevents;
 import it.polimi.ingsw.client.proxymodel.*;
 
+/**
+ * is setup start for the view event
+ */
 public class SetupStartViewEvent extends ViewEvent {
     String firstPlayer;
     String secondPlayer;
     String thirdPlayer;
     ProxyModel proxyModel = ProxyModel.instance();
 
+    /**
+     * the constructor
+     * @param firstPlayer
+     * @param secondPlayer
+     * @param thirdPlayer
+     */
     public SetupStartViewEvent(String firstPlayer, String secondPlayer, String thirdPlayer) {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
         this.thirdPlayer = thirdPlayer;
     }
 
+    /**
+     * set the prev, next, turn player based on the number of players in the game.
+     * show instructions for choosing the gods at the cli partyOwner,
+     * also show when a game starts
+     */
     public void viewEventMethod() {
         proxyModel.createTurn();
         Player player1 = null;

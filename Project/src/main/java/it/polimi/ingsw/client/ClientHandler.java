@@ -11,6 +11,9 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ *it is the main thread for communication and starts the other two handlers, that is, the input and output handlers
+ */
 public class ClientHandler {
     private String drawerType;
     private int portNumber;
@@ -21,7 +24,12 @@ public class ClientHandler {
             this.portNumber = portNumber;
         }
 
-        public void startClient() {
+    /**
+     * it is chosen whether to start the gui or the cli, the port for the communication is chosen and the socket is created
+     * the login is started
+     *
+     */
+    public void startClient() {
             int drawerType; /* 0 for CLI, 1 for GUI */
             ExecutorService executor = Executors.newCachedThreadPool();
             /* System.out.println("Client ready"); */

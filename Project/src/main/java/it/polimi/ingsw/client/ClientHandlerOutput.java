@@ -10,7 +10,9 @@ import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
 import java.io.*;
 import java.net.Socket;
 import java.util.*;
-
+/**
+ * ClientHandlerInput it's used for send event to server
+ */
 public class ClientHandlerOutput implements Runnable {
 
     public static final String ANSI_RESET = "\u001B[0m";
@@ -32,6 +34,9 @@ public class ClientHandlerOutput implements Runnable {
         this.socket = socket;
     }
 
+    /**
+     *
+     */
     public void run() {
 
         /* System.out.println("[ClientHandlerOutput] Connection established"); */
@@ -60,7 +65,7 @@ public class ClientHandlerOutput implements Runnable {
             try{
                 inputLine= brd.readLine();
             } catch (IOException | NullPointerException r) {
-                System.out.println("coordinate inserite non valide per favore reiserirle");
+                System.out.println("error during reading of client input");
                 r.printStackTrace();
             }
 

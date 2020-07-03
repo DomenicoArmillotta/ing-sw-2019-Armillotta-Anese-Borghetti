@@ -39,7 +39,7 @@ public class Controller {
         this.userInput = userInput;
     }
 
-    public void control() {
+    public synchronized void control() {
         System.out.println("In controller");
         ActionExecutor executorPointer = ActionExecutor.instance();
         int returnValue = executorPointer.getNextPower().doAction(this.userInput);
@@ -50,7 +50,7 @@ public class Controller {
         }
     }
 
-    public int loginControl(String nickName){
+    public synchronized int loginControl(String nickName){
         VvLobby vvLobby = VvLobby.instance();
         if(vvLobby.getPlayers().isEmpty()) {
             vvLobby.setPartyOwner(nickName);
@@ -61,7 +61,7 @@ public class Controller {
         return 1;
     }
 
-    public boolean setPlayerGod(String godName, String playerName){
+    public synchronized boolean setPlayerGod(String godName, String playerName){
         ActionExecutor actionExecutor = ActionExecutor.instance();
         GodCardsDeck godCardsDeck = new GodCardsDeck();
         if(!currentGodList.contains(godName.toLowerCase())){
@@ -93,7 +93,7 @@ public class Controller {
         return true;
     }
 
-    public void startGameControl(int numOfPlayer) {
+    public synchronized void startGameControl(int numOfPlayer) {
         List<Player> toQueuePlayerList = new ArrayList<>();
         VvLobby vvLobby = VvLobby.instance();
         /*caso in cui si volgia giocare con tutti*/
@@ -121,7 +121,7 @@ public class Controller {
         eventsBuffer.setLastEventBean(new CommandFailureEventBean("num of player out of bound"));
     }
 
-    public boolean setCurrentGodList(String god1,String god2,String god3){
+    public synchronized boolean setCurrentGodList(String god1,String god2,String god3){
         List<String> godList = new GodCardParser().returnGodList();
         if (gameMaster.getNumOfPlayers() == 2) {
             if (godList.contains(god1) && godList.contains(god2)) {

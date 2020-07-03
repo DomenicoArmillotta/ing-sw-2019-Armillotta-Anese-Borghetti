@@ -3,11 +3,12 @@ package it.polimi.ingsw.server.virtualview.serverevents;
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.CorrectGodListEventBean;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-
+/**
+ * this PartyOwnerGodListEvent was generated after the parser decoded the message received from the client and ActionExecutor
+ * call the controller
+ * this BooleanEvent is used for gods chosen by the party owner
+ */
 public class PartyOwnerGodListEvent  extends ServerEvent{
     private String god1;
     private String god2;

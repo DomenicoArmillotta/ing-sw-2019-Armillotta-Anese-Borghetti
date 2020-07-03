@@ -7,7 +7,11 @@ import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.TakenNickNameEvent;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 import it.polimi.ingsw.server.virtualview.network.VvLobby;
-
+/**
+ * this LoginEvent was generated after the parser decoded the message received from the client and ActionExecutor
+ * call the controller
+ * this BooleanEvent is used for the login event
+ */
 public class LoginEvent extends ServerEvent {
     private String payload;
 

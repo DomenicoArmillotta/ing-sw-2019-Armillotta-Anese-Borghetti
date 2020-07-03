@@ -7,7 +7,11 @@ import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
-
+/**
+ * this GodChoiceEvent was generated after the parser decoded the message received from the client and ActionExecutor
+ * call the controller
+ * this BooleanEvent is used for the god chose by the player
+ */
 public class GodChoiceEvent extends ServerEvent {
     String chosenGod;
     String player;

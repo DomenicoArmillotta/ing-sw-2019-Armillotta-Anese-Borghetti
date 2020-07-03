@@ -1,13 +1,10 @@
 package it.polimi.ingsw.server.virtualview.serverevents;
-
-import it.polimi.ingsw.client.ClientEvent;
 import it.polimi.ingsw.server.controller.Controller;
-import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
-
+/**
+ * this ClientDisconnectRequestEvent was generated after the parser decoded the message received from the client and ActionExecutor
+ * call the controller
+ * this BooleanEvent is used for client disconnection
+ */
 public class ClientDisconnectRequestEvent extends ServerEvent{
     private String socketToDisconnect;
 
@@ -17,6 +14,6 @@ public class ClientDisconnectRequestEvent extends ServerEvent{
 
     @Override
     public void serverEventMethod(Controller controller) {
-        System.out.println("sssss");
+        System.out.println("Client Disconnected");
     }
 }

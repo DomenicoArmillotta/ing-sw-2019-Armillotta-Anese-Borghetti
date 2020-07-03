@@ -5,6 +5,7 @@ import it.polimi.ingsw.server.model.mvevents.eventbeans.CommandFailureEventBean;
 import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 import it.polimi.ingsw.server.virtualview.network.VvLobby;
 
+
 /**
  * used to start up the game
  */

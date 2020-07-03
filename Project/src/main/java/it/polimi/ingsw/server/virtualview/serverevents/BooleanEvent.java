@@ -1,10 +1,11 @@
 package it.polimi.ingsw.server.virtualview.serverevents;
-
-
 import it.polimi.ingsw.server.controller.Controller;
 import it.polimi.ingsw.server.model.ActionExecutor;
-import it.polimi.ingsw.server.model.godcards.BooleanRequestAction;
-
+/**
+ * this BooleanEvent was generated after the parser decoded the message received from the client and ActionExecutor
+ * call the controller.
+ * this BooleanEvent is used for the boolean choice
+ */
 public class BooleanEvent extends ServerEvent {
     private Boolean booleanRequest;
 

@@ -28,7 +28,7 @@ public class ClientHandlerInput implements Runnable {
 
     /**
      * thanks to the parser it decodes the information it reads from the server and creates the viewEvent
-     * clode the socket when the server is not connected
+     * close the socket when the server is not connected
      */
     public void run() {
 

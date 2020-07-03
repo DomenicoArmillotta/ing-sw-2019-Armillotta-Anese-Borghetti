@@ -12,9 +12,9 @@ public class SetupStartViewEvent extends ViewEvent {
 
     /**
      * the constructor
-     * @param firstPlayer
-     * @param secondPlayer
-     * @param thirdPlayer
+     * @param firstPlayer first player
+     * @param secondPlayer second player
+     * @param thirdPlayer third player
      */
     public SetupStartViewEvent(String firstPlayer, String secondPlayer, String thirdPlayer) {
         this.firstPlayer = firstPlayer;

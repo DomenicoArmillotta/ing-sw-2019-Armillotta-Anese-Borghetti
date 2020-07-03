@@ -12,9 +12,9 @@ public class BuildBlockViewEvent extends ViewEvent {
 
     /**
      * is the constructor
-     * @param blockX
-     * @param blockY
-     * @param levelToBuild
+     * @param blockX block coord x
+     * @param blockY block coord y
+     * @param levelToBuild level to build
      */
     public BuildBlockViewEvent(int blockX, int blockY, int levelToBuild) {
         this.blockX = blockX;

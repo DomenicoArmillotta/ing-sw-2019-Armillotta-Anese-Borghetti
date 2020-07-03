@@ -9,8 +9,8 @@ public class PartyLoginViewEvent extends ViewEvent {
 
     /**
      * is the constructor
-     * @param partyOwner
-     * @param loggedPlayer
+     * @param partyOwner the party owner
+     * @param loggedPlayer the logged player
      */
     public PartyLoginViewEvent(String partyOwner, String loggedPlayer) {
         this.partyOwner = partyOwner;

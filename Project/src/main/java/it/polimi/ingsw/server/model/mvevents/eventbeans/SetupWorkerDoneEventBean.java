@@ -1,5 +1,8 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
+/**
+ * create the SetupWorkerDoneEventBean
+ */
 public class SetupWorkerDoneEventBean extends EventBean {
 
     int x;
@@ -8,6 +11,15 @@ public class SetupWorkerDoneEventBean extends EventBean {
     int w;
     String ownerName;
 
+    /**
+     *is the constructor of SetupWorkerDoneEventBean witch is created and sent from the server to the client to communicate
+     * the setup done of the worker
+     * @param x
+     * @param y
+     * @param z
+     * @param w
+     * @param ownerName
+     */
     public SetupWorkerDoneEventBean(int x, int y, int z, int w, String ownerName) {
         this.x = x;
         this.y = y;

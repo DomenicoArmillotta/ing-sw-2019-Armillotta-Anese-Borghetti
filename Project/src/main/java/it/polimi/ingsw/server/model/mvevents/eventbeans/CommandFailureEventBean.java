@@ -1,5 +1,8 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
+/**
+ * create the CommandFailureEventBean bean that will be sent from the server to the client when a command fail
+ */
 public class CommandFailureEventBean extends EventBean{
     private String whatFailed;
 

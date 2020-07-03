@@ -1,7 +1,10 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
-import it.polimi.ingsw.server.virtualview.network.EventsBuffer;
 
+/**
+ *create the ConnectionInterruptEventBean bean that will be sent from the server to the client
+ * when a player's connection is lost, and notifies everyone with the player's name
+ */
 public class ConnectionInterruptEventBean extends EventBean {
     public String faultyClient;
 

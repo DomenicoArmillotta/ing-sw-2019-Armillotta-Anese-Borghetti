@@ -1,9 +1,18 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
+/**
+ * create CorrectLoginPartyOwnerEvent
+ */
 public class CorrectLoginPartyOwnerEvent extends EventBean{
     private String partyOwner;
     private String loggedPlayer;
 
+    /**
+     * is the constructor of  CorrectLoginPartyOwnerEvent which will be sent to the client
+     *  by the server to communicate the correct party owner after checking it on the server
+     * @param partyOwner
+     * @param loggedPlayer
+     */
     public CorrectLoginPartyOwnerEvent(String partyOwner,String loggedPlayer) {
         this.loggedPlayer = loggedPlayer;
         this.partyOwner = partyOwner;

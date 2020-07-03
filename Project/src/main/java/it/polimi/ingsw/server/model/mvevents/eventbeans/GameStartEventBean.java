@@ -1,10 +1,20 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
+/**
+ * create GameStartEventBean which will be sent to the client by the server to start the game
+ */
 public class GameStartEventBean extends EventBean{
     private String firstPlayer;
     private String secondPlayer;
     private String thirdPlayer;
 
+    /**
+     * is the constructor of  GameStartEventBean which will be sent to the client by the server to start the game,
+     * setting the position of the players in order in the turn
+     * @param firstPlayer
+     * @param secondPlayer
+     * @param thirdPlayer
+     */
     public GameStartEventBean(String firstPlayer, String secondPlayer, String thirdPlayer) {
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;

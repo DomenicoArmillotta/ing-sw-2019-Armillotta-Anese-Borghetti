@@ -10,6 +10,9 @@ public class FailedActionViewEvent extends ViewEvent {
 
     ProxyModel proxyModel = ProxyModel.instance();
 
+    /**
+     * used for draw the text when the action fail
+     */
     public void viewEventMethod() {
         proxyModel.getDrawerStrategy().drawFailedAction();
     }

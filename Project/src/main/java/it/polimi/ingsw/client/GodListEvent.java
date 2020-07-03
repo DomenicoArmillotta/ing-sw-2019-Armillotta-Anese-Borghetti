@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client;
-
+/**
+ * the event is sent to the server by the client,with the information of the list of gods chose by partyOwner
+ */
 public class GodListEvent extends ClientEvent{
     private String god1;
     private String god2;

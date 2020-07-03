@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * shows on screen who loses the game
+ */
 public class PlayerLostViewEvent extends ViewEvent {
     String loserName;
     ProxyModel proxyModel = ProxyModel.instance();
@@ -13,6 +16,9 @@ public class PlayerLostViewEvent extends ViewEvent {
         this.loserName = loserName;
     }
 
+    /**
+     * shows on screen who loses the game
+     */
     public void viewEventMethod() {
         proxyModel.getDrawerStrategy().drawLooseGame(loserName);
     }

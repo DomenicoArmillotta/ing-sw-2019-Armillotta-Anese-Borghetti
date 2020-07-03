@@ -1,10 +1,8 @@
 package it.polimi.ingsw.client.viewevents;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
-
-import java.net.UnknownHostException;
-
+/**
+ * shows on screen the answer given by the player at a choice prompt
+ */
 public class CorrectPromptAnswerView extends ViewEvent {
     @Override
     public void viewEventMethod() {

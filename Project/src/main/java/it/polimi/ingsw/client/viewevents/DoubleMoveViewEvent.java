@@ -2,6 +2,9 @@ package it.polimi.ingsw.client.viewevents;
 
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
+/**
+ * to show the prompt to make the choice
+ */
 public class DoubleMoveViewEvent extends ViewEvent {
     String promptText;
     ProxyModel proxyModel = ProxyModel.instance();
@@ -10,7 +13,9 @@ public class DoubleMoveViewEvent extends ViewEvent {
     public DoubleMoveViewEvent(String promptText) {
         this.promptText = promptText;
     }
-
+    /**
+     * used for show the prompt to choose if move twice
+     */
     public void viewEventMethod() {
         proxyModel.getDrawerStrategy().promptChoice(promptText);
         //System.out.println("\u001B[36m" + ProxyModel.instance().getTurn().getCurrentPlayer().getName() + "\u001B[0m"+", "+promptText);

@@ -1,14 +1,11 @@
 package it.polimi.ingsw.client.viewevents;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import it.polimi.ingsw.client.ClientAckDisconnectionEvent;
 import it.polimi.ingsw.client.proxymodel.*;
 
-import java.net.Inet4Address;
-
 import java.net.Socket;
-import java.net.UnknownHostException;
 
+/**
+ * shows the player who loses the game on the screen
+ */
 public class PlayerWonViewEvent extends ViewEvent {
     String winnerName;
     ProxyModel proxyModel = ProxyModel.instance();
@@ -18,6 +15,9 @@ public class PlayerWonViewEvent extends ViewEvent {
         this.winnerName = winnerName;
     }
 
+    /**
+     * shows the text of the player who loses the game on the screen
+     */
     public void viewEventMethod(){
         //System.out.println("hai vinto");
         proxyModel.getDrawerStrategy().drawWinGame();

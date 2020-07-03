@@ -3,6 +3,9 @@ package it.polimi.ingsw.client.viewevents;
 import it.polimi.ingsw.client.proxymodel.GodCards;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
+/**
+ * used to show the gods chosen by the players
+ */
 public class GodChosenViewEvent extends ViewEvent {
     String chosenGod;
     String player;
@@ -12,6 +15,9 @@ public class GodChosenViewEvent extends ViewEvent {
         this.player = player;
     }
 
+    /**
+     * used to show on the screen which player has chosen which god
+     */
     @Override
     public void viewEventMethod() {
         //ProxyModel.instance().getDrawerStrategy().title();

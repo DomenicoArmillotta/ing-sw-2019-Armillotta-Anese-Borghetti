@@ -1,7 +1,10 @@
 package it.polimi.ingsw.client;
 
 import java.io.Serializable;
-
+/**
+ * the event is sent to the server by the client,with the information of the coordinates of the two workers
+ * who must be positioned on the map
+ */
 public class SetupCoordsEvent extends ClientEvent implements Serializable {
     int x;
     int y;

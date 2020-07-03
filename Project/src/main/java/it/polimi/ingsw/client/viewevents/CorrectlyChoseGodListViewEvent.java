@@ -1,9 +1,10 @@
 package it.polimi.ingsw.client.viewevents;
-
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
-
 import java.util.Arrays;
 
+/**
+ * used for show the gods chosen by party owner
+ */
 public class CorrectlyChoseGodListViewEvent extends ViewEvent{
     private String god1;
     private String god2;
@@ -15,6 +16,9 @@ public class CorrectlyChoseGodListViewEvent extends ViewEvent{
         this.god3 = god3;
     }
 
+    /**
+     * when the party owner chooses the gods this works on the screen shows the gods that can be used in the game
+     */
     @Override
     public void viewEventMethod() {
         ProxyModel.instance().setPhase(1);

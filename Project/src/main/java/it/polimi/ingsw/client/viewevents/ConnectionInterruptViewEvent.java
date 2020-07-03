@@ -1,16 +1,10 @@
 package it.polimi.ingsw.client.viewevents;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import it.polimi.ingsw.client.ClientAckDisconnectionEvent;
-import it.polimi.ingsw.client.ClientSocketManager;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
-
-
-import java.net.Inet4Address;
-import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
+/**
+ * used for display a message when a connection is lost
+ */
 public class ConnectionInterruptViewEvent extends ViewEvent{
     private String faultyClient;
     ProxyModel proxyModel = ProxyModel.instance();
@@ -22,6 +16,9 @@ public class ConnectionInterruptViewEvent extends ViewEvent{
         this.proxyModel = ProxyModel.instance();
     }
 
+    /**
+     * draw a text when the connection has a interrupt
+     */
     @Override
     public void viewEventMethod(){
         proxyModel.getDrawerStrategy().drawConnectionInterrupt();

@@ -14,6 +14,9 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
 
+/**
+ * ClientHandlerInput it's used for reading the input stream of the server
+ */
 public class ClientHandlerInput implements Runnable {
 
     private Socket socket;
@@ -23,6 +26,10 @@ public class ClientHandlerInput implements Runnable {
         this.socket = socket;
     }
 
+    /**
+     * thanks to the parser it decodes the information it reads from the server and creates the viewEvent
+     * clode the socket when the server is not connected
+     */
     public void run() {
 
         /* System.out.println("[ClientHandlerInput] Connection established"); */

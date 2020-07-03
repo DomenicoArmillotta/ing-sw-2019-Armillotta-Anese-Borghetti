@@ -1,6 +1,9 @@
 package it.polimi.ingsw.client;
 
-
+/**
+ * the event is sent to the server by the client,
+ * with the information of who made the communications and the number of players of the game
+ */
 public class StartUpEvent extends ClientEvent {
     String playerComm;
     String numberOfPlayers;

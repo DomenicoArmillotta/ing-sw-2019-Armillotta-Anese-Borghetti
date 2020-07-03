@@ -7,7 +7,7 @@ import it.polimi.ingsw.server.virtualview.network.NetworkHandler;
 public class Main {
     static private int portNumber =1234;
     public static void main(String[] Args) {
-        System.out.println("Nuova stampa di prova");
+        System.out.println("Stampa di prova");
 
         int paramnsCount = Args.length;
 

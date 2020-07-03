@@ -1,5 +1,9 @@
 package it.polimi.ingsw.server.model.mvevents.actionevents;
 
+/**
+ * instead of using cells for describing a position on the board Coordinates  call is more useful and easy to parse
+ */
+
 public class Coordinates {
     private int x;
     private int y;

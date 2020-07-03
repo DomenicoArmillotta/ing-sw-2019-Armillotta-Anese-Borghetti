@@ -3,6 +3,9 @@ package it.polimi.ingsw.server.model.mvevents.actionevents;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.NoUpdatesEventBean;
 
+/**
+ * nothing more than no update
+ */
 public class NoUpdatesEvent extends ActionEvent {
 
     public NoUpdatesEvent() {

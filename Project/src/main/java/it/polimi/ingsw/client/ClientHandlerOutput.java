@@ -3,6 +3,7 @@ package it.polimi.ingsw.client;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.fasterxml.jackson.dataformat.xml.ser.ToXmlGenerator;
+import it.polimi.ingsw.client.proxymodel.Phase;
 import it.polimi.ingsw.client.proxymodel.Player;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.GameStartEventBean;
@@ -51,7 +52,7 @@ public class ClientHandlerOutput implements Runnable {
         ProxyModel proxyModel = ProxyModel.instance();
         Scanner stdin = new Scanner(System.in);
         BufferedReader brd = new BufferedReader(new InputStreamReader(System.in));
-        int clientPhase = ProxyModel.instance().getPhase();
+        Phase clientPhase = ProxyModel.instance().getPhase();
         XmlMapper xmlMapper = (new XmlMapper());
         String toSend = "";
         ClientEvent eventToSend = new ClientEvent();
@@ -108,7 +109,7 @@ public class ClientHandlerOutput implements Runnable {
         }
 
         public ClientEvent createUserEventToSend(List<String> userInput,ProxyModel proxyModel) {
-            if (userInput.get(0).equals("login") && proxyModel.getPhase() == 0) {
+            if (userInput.get(0).equals("login") && proxyModel.getPhase().ordinal() == Phase.LOGIN.ordinal()) {
                 if (userInput.get(1).equals("")) {
                     System.out.println("nome non valido");
                     return null;
@@ -118,18 +119,19 @@ public class ClientHandlerOutput implements Runnable {
                         System.out.println("nick name gia preso , reinserire un nickname valido");
                         return new LoginEvent(userInput.get(1));
                     }
-                if(proxyModel.getThisClientNickname().equals("")) {
+                if(proxyModel.getThisClientNickname().equals("") && proxyModel.getPlayers().size()<3) {
+                    /* System.out.println("numero attuale players: "+proxyModel.getPlayers().size()); */
                     proxyModel.setThisClientNickname(userInput.get(1));
                     return new LoginEvent(userInput.get(1));
                 }
             }
-            if (userInput.get(0).equals("bool") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 3) {
+            if (userInput.get(0).equals("bool") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase().ordinal() == Phase.GAME.ordinal()) {
                 if (userInput.get(1).equals("true") || userInput.get(1).equals("false"))
                     return new BooleanEvent(Boolean.parseBoolean(userInput.get(1)));
                 else
                     return null;
             }
-            if (userInput.get(0).equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 2) {
+            if (userInput.get(0).equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase().ordinal() == Phase.SETUP.ordinal()) {
                 /**/
                 userInput.remove(0);
                 userInput = refactorCoordinatesInput(userInput);
@@ -144,7 +146,7 @@ public class ClientHandlerOutput implements Runnable {
                     return new SetupCoordsEvent(x, y, z, g);
                 }
             }
-            if (userInput.get(0).equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 3) {
+            if (userInput.get(0).equals("coords") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase().ordinal() == Phase.GAME.ordinal()) {
                 userInput.remove(0);
                 userInput = refactorCoordinatesInput(userInput);
                 /*
@@ -160,17 +162,17 @@ public class ClientHandlerOutput implements Runnable {
                 }else
                     return null;
             }
-            if (userInput.get(0).equals("start") && proxyModel.getThisClientNickname().equals(proxyModel.getPartyOwner()) && proxyModel.getPlayers().size() > 1 && proxyModel.getPhase() == 0) {
+            if (userInput.get(0).equals("start") && proxyModel.getThisClientNickname().equals(proxyModel.getPartyOwner()) && proxyModel.getPlayers().size() > 1 && proxyModel.getPhase().ordinal() == Phase.LOGIN.ordinal()) {
                 if (proxyModel.getPlayers().size() == 2 || proxyModel.getPlayers().size() == 3)
                     return new StartUpEvent(proxyModel.getThisClientNickname(),userInput.get(1));
                 else
                     return null;
             }
-            if ((userInput.get(0).equals("god") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getTurn().getPlayerByName(proxyModel.getThisClientNickname()).getGodCard() == null && proxyModel.getPhase() == 1)) {
+            if ((userInput.get(0).equals("god") && proxyModel.getTurn().getCurrentPlayer().getName().equals(proxyModel.getThisClientNickname()) && proxyModel.getTurn().getPlayerByName(proxyModel.getThisClientNickname()).getGodCard() == null && proxyModel.getPhase().ordinal() == Phase.PLAYER_GOD_CHOICE.ordinal())) {
                 if(userInput.size()>1)
                     return new GodChoiceEvent(userInput.get(1), proxyModel.getThisClientNickname());
             }
-            if (userInput.get(0).equals("gods") && proxyModel.getPartyOwner().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase() == 4) {
+            if (userInput.get(0).equals("gods") && proxyModel.getPartyOwner().equals(proxyModel.getThisClientNickname()) && proxyModel.getPhase().ordinal() == Phase.OWNER_GOD_CHOICE.ordinal()) {
                 if (proxyModel.getPlayers().size() == 2 && userInput.size()>=3) {
                     return new GodListEvent(userInput.get(1).toLowerCase(),userInput.get(2).toLowerCase(),null);
 

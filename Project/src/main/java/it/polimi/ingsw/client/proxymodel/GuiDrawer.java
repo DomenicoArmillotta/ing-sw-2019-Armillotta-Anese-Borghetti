@@ -149,7 +149,8 @@ public class GuiDrawer extends Drawer {
      * it is used to display the text indicating the command failure in the panel
      */
     public void drawCommandFailure(String whatFailed) {
-        Display display = Display.instance();
+        System.out.println(whatFailed);
+        /* Display display = Display.instance();
         display.setButtonAnswer(0);
         JFrame myFrame = display.getFrame();
         myFrame.revalidate();
@@ -160,7 +161,7 @@ public class GuiDrawer extends Drawer {
         mapPanel.setGraphicsFlag(8);
         mapPanel.addMouseListener(display.getMouseListenerGame());
         c.add(mapPanel);
-        myFrame.setVisible(true);
+        myFrame.setVisible(true); */
 
     }
 

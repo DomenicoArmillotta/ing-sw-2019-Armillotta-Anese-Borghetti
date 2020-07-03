@@ -46,7 +46,7 @@ public class MouseListenerGame implements MouseListener {
             for (int j = 0; j < 5; j++) {
                 if (x > (firstCellX + (shift * i) - (firstCellX)) && x < (firstCellX + (shift * i) + (firstCellX)))
                     if (y > (firstCellY + (shift * j) - (firstCellY)) && y < (firstCellY + (shift * j) + (firstCellY))) {
-                        if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() != 2) {
+                        if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase().ordinal() != Phase.SETUP.ordinal()) {
                             XmlMapper xmlMapper = (new XmlMapper());
                             xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                             String toSend = null;
@@ -59,7 +59,7 @@ public class MouseListenerGame implements MouseListener {
                             printWriter.print(toSend);
                             printWriter.flush();
 
-                        } else if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() == 2) {
+                        } else if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase().ordinal() == Phase.SETUP.ordinal()) {
                             if (this.prevCellClickX == -1 && this.prevCellClickY== -1) {
                                 XmlMapper xmlMapper = (new XmlMapper());
                                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);

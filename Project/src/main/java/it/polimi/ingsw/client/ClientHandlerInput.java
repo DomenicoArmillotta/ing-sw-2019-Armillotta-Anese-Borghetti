@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.clientinputparser.InputParser;
+import it.polimi.ingsw.client.proxymodel.Phase;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 import it.polimi.ingsw.client.viewevents.ViewEvent;
 import org.w3c.dom.Document;
@@ -40,7 +41,7 @@ public class ClientHandlerInput implements Runnable {
             e.printStackTrace();
         }
         try {
-            while (ProxyModel.instance().getPhase()!=-1) {
+            while (ProxyModel.instance().getPhase().ordinal() != Phase.DISCONNECTED.ordinal()) {
                 /* System.out.println("Login phase reading"); */
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                 DocumentBuilder db = dbf.newDocumentBuilder();

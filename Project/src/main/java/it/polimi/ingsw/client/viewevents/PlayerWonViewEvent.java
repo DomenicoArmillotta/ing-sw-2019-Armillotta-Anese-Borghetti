@@ -21,6 +21,6 @@ public class PlayerWonViewEvent extends ViewEvent {
     public void viewEventMethod(){
         //System.out.println("hai vinto");
         proxyModel.getDrawerStrategy().drawWinGame();
-        proxyModel.setPhase(-1);
+        proxyModel.setPhase(Phase.DISCONNECTED);
     }
 }

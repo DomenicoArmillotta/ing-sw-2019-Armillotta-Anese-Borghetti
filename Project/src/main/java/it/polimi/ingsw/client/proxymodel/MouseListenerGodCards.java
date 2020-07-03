@@ -134,7 +134,7 @@ public class MouseListenerGodCards implements MouseListener {
                                     break;
                             }
                             //System.out.println(ProxyModel.instance().getPhase()+" "+godName);
-                            if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() == 4 && !selectableGods.contains(godName)) { /* fase di selezione delle carte del party owner */
+                            if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase().ordinal() == Phase.OWNER_GOD_CHOICE.ordinal() && !selectableGods.contains(godName)) { /* fase di selezione delle carte del party owner */
                                 //System.out.println(".-.-.-.");
                                 selectableGods.add(godName);
                                 if (selectableGods.size() == ProxyModel.instance().getPlayers().size()) {
@@ -159,7 +159,7 @@ public class MouseListenerGodCards implements MouseListener {
                                     printWriter.flush();
                                     //System.out.println("FLUSHED GODS PARTY OWNER: "+toSend);
                                 }
-                            } else if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() != 4) {
+                            } else if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase().ordinal() != Phase.OWNER_GOD_CHOICE.ordinal()) {
                                 //Display.instance().setClicked(0);
                                 //System.out.println("EUREKA");
                                 XmlMapper xmlMapper = (new XmlMapper());

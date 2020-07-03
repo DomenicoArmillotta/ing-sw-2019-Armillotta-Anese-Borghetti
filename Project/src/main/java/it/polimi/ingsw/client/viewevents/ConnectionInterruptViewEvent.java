@@ -1,4 +1,5 @@
 package it.polimi.ingsw.client.viewevents;
+import it.polimi.ingsw.client.proxymodel.Phase;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 import java.net.Socket;
 
@@ -22,6 +23,6 @@ public class ConnectionInterruptViewEvent extends ViewEvent{
     @Override
     public void viewEventMethod(){
         proxyModel.getDrawerStrategy().drawConnectionInterrupt();
-        proxyModel.setPhase(-1);
+        proxyModel.setPhase(Phase.DISCONNECTED);
     }
 }

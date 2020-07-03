@@ -2,6 +2,7 @@ package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.proxymodel.CliDrawer;
 import it.polimi.ingsw.client.proxymodel.GuiDrawer;
+import it.polimi.ingsw.client.proxymodel.Phase;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class ClientHandler {
                     return;
                 }
 
-            proxyModel.setPhase(0);
+            proxyModel.setPhase(Phase.LOGIN);
 
                 try {
                     Socket socket = new Socket(Inet4Address.getLocalHost(), this.portNumber);

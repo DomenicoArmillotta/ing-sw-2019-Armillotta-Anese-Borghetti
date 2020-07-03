@@ -23,15 +23,15 @@ public class ProxyModel {
     String partyOwner;
     private ClientCell[][] map;
     private Drawer drawerStrategy;
-    int phase;
+    Phase phase;
     private PrintWriter printWriter;
     public Socket thisScoket;
 
-    public int getPhase() {
+    public Phase getPhase() {
         return phase;
     }
 
-    public void setPhase(int phase) {
+    public void setPhase(Phase phase) {
         this.phase = phase;
     }
 

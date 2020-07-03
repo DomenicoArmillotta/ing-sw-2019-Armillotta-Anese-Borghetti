@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client.viewevents;
 
 import it.polimi.ingsw.client.proxymodel.Coords;
+import it.polimi.ingsw.client.proxymodel.Phase;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 
 public class WorkersSetupViewEvent extends ViewEvent {
@@ -43,17 +44,17 @@ public class WorkersSetupViewEvent extends ViewEvent {
             if (proxyModel.getPlayers().get(0).getWorker1() != null && proxyModel.getPlayers().get(1).getWorker1() != null) {
                 System.out.println("setup case 4");
                 proxyModel.getDrawerStrategy().promptSelectionText();
-                proxyModel.setPhase(3);
+                proxyModel.setPhase(Phase.GAME);
             }
         } else if(proxyModel.getPlayers().get(0).getWorker1() != null && proxyModel.getPlayers().get(1).getWorker1() != null && proxyModel.getPlayers().get(2).getWorker1() != null) {
             System.out.println("setup case 2");
             proxyModel.getDrawerStrategy().promptSelectionText();
-            proxyModel.setPhase(3);
+            proxyModel.setPhase(Phase.GAME);
         } else {
             System.out.println("setup case 3, size: "+proxyModel.getPlayers().size());
         }
 
-        if(proxyModel.getPhase() == 2)
+        if(proxyModel.getPhase().ordinal() == Phase.SETUP.ordinal())
             proxyModel.getDrawerStrategy().promptPlaceWorkersTest();
 
         /* proxyModel.getDrawerStrategy().promptMovementText(); */

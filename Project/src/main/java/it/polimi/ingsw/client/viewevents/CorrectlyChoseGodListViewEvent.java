@@ -1,4 +1,5 @@
 package it.polimi.ingsw.client.viewevents;
+import it.polimi.ingsw.client.proxymodel.Phase;
 import it.polimi.ingsw.client.proxymodel.ProxyModel;
 import java.util.Arrays;
 
@@ -21,7 +22,7 @@ public class CorrectlyChoseGodListViewEvent extends ViewEvent{
      */
     @Override
     public void viewEventMethod() {
-        ProxyModel.instance().setPhase(1);
+        ProxyModel.instance().setPhase(Phase.PLAYER_GOD_CHOICE);
         ProxyModel.instance().getDrawerStrategy().drawPartyOwnerGodChoices(Arrays.asList(god1,god2,god3));
         ProxyModel.instance().getDrawerStrategy().title();
     }

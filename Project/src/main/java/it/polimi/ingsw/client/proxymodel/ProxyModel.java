@@ -41,7 +41,7 @@ public class ProxyModel {
 
     /**
      * add a player to the list of players string, used by the cli
-     * @param playerName
+     * @param playerName the player name
      */
     public void addPlayer(String playerName){
         Player playerToAdd = new Player(playerName);
@@ -128,7 +128,7 @@ public class ProxyModel {
      * create worker 1 of the player
      * @param player player of the worker
      * @param startCoords initial coordinates of the first worker
-     * @param index
+     * @param index the index
      */
     public void createWorker1(Player player,Coords startCoords, int index){
         ClientCell[][] map = getMap();
@@ -140,7 +140,7 @@ public class ProxyModel {
      * create worker 2 of the player
      * @param player player of the worker
      * @param startCoords initial coordinates of the second worker
-     * @param index
+     * @param index the index
      */
     public void createWorker2(Player player,Coords startCoords, int index){
         ClientCell[][] map = getMap();
@@ -191,8 +191,8 @@ public class ProxyModel {
 
     /**
      * makes the movement of the worker,set the worker in the cell where he moves, and delete it from the previous one
-     * @param selectedWorker
-     * @param moveCell
+     * @param selectedWorker the selected worker
+     * @param moveCell the movement cell
      */
     public void setMoveWorker(WorkerClient selectedWorker,Coords moveCell){
         ClientCell[][] map=getMap();
@@ -214,8 +214,8 @@ public class ProxyModel {
 
     /**
      * I set the level of the cell on which I want to build the level passed as a parameter
-     * @param buildCell
-     * @param levelToBuild
+     * @param buildCell the build cell
+     * @param levelToBuild level to build
      */
     public void setBuild(Coords buildCell,int levelToBuild){
         ClientCell[][] map=getMap();

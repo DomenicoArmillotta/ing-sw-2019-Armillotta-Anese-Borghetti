@@ -13,7 +13,7 @@ import java.io.InputStream;
 public class GodsPanel extends JPanel {
     /**
      * GUI function for drawing images
-     * @param g
+     * @param g is used for paint component and derive by override
      */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -24,7 +24,7 @@ public class GodsPanel extends JPanel {
      * the cards of the gods are drawn, based on their position.
      * this screen is shown before the game starts in the god selection phase.
      * also when players select their god with a clic on image, it lights up
-     * @param g
+     * @param g is used for paint component and derive by override
      */
     private void drawImage(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();

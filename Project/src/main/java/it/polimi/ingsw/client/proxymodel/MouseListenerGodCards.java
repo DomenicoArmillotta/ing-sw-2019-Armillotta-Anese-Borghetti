@@ -72,7 +72,7 @@ public class MouseListenerGodCards implements MouseListener {
      * after  he and the other players can select their god to associate with their workers.
      * Based on the position of the mouse click you understand that god has been selected
      * once selected the gods send everything to the server
-     * @param e
+     * @param e is used for mouseClickListeners and derive by override
      */
     @Override
     public void mouseClicked(MouseEvent e) {

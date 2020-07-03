@@ -38,7 +38,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * setPrompt passes a String as a parameter to the setPrompt method of the Display class
-     * @param promptText
+     * @param promptText the prompt text
      */
 
     public void setPrompt(String promptText) {
@@ -58,7 +58,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * setPrompt passes a String as a parameter to the setCommandFailure method of the Display class
-     * @param promptText
+     * @param promptText the prompt text
      */
 
     public void setCommandFailure(String promptText) {
@@ -79,7 +79,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * setGraphicsFlag assigns an integer value to the graphicsFlag attribute of the Display class
-     * @param graphicsFlag
+     * @param graphicsFlag graphic flag
      */
 
     public void setGraphicsFlag(int graphicsFlag) {
@@ -90,7 +90,7 @@ public class BoardPanel extends JPanel {
     /**
      * This methods overrides the paintComponent method of Java Swing's JPanel
      * for each graphicsFlag a different method is called to show a different text
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     public void paintComponent(Graphics g) {
@@ -121,7 +121,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * drawImage shows every graphic aspect of the Client's GUI, such as pawns, blocks and the map
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     private void drawImage(Graphics g) {
@@ -231,7 +231,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * writeTextSelect shows the textual prompt for the selection phase
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     private void writeTextSelect(Graphics g) {
@@ -244,7 +244,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * writeTextMove shows the textual prompt for the move phase
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     private void writeTextMove(Graphics g) {
@@ -257,7 +257,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * writeTextBuild shows the textual prompt for the build phase
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     private void writeTextBuild(Graphics g) {
@@ -270,7 +270,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * writeTextPlaceWorkers shows the textual prompt for the workers' setup phase
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     private void writeTextPlaceWorkers(Graphics g) {
@@ -283,7 +283,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * writeTextButtons show the textual prompt for the prompt's answer phase
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     public void writeTextFailure(Graphics g) {
@@ -339,7 +339,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * writeTextButtons show the textual prompt for the win phase
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     private void writeTextWin(Graphics g) {
@@ -353,7 +353,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * writeTextButtons show the textual prompt for the lose phase
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     private void writeTextLose(Graphics g) {
@@ -367,7 +367,7 @@ public class BoardPanel extends JPanel {
 
     /**
      * writeTextTurn show the textual prompt for any other phase
-     * @param g
+     * @param g is used for paint component and derive by override
      */
 
     private void writeTextTurn(Graphics g) {

@@ -17,6 +17,7 @@ public class MouseListenerGame implements MouseListener {
     PrintWriter printWriter;
     int prevCellClickX;
     int prevCellClickY;
+    int clickCounter = 0;
 
     public MouseListenerGame(PrintWriter printWriter) {
         this.printWriter = printWriter;
@@ -30,7 +31,11 @@ public class MouseListenerGame implements MouseListener {
      * @param e
      */
     @Override
-    public synchronized void mouseClicked(MouseEvent e) {
+    public void mouseClicked(MouseEvent e) {
+        synchronized(Display.instance().lock) {
+        clickCounter++;
+        /* System.out.println("####### game click counter: "+clickCounter); */
+
         int x = e.getX();
         int y = e.getY();
 
@@ -86,6 +91,7 @@ public class MouseListenerGame implements MouseListener {
                         }
                     }
             }
+        }
     }
 
     private int abs(int i) {

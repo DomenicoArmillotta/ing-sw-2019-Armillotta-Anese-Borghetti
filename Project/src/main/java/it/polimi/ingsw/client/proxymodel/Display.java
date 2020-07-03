@@ -3,7 +3,6 @@ package it.polimi.ingsw.client.proxymodel;
 import it.polimi.ingsw.client.ClientSocketManager;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +11,7 @@ import java.util.List;
  * mouse listeners are created
  */
 public class Display {
+    public final Object lock = new Object();
     private JFrame frame;
     private static final int dimensionX = 615;
     private static final int dimensionY = 800;
@@ -22,6 +22,7 @@ public class Display {
     MouseListenerGodCards mouseListenerGodCards;
     MouseListenerChoice mouseListenerChoice;
     String promptText;
+    String commandFailure;
     int buttonAnswer = 0; /* 0 both 1 yes 2 no */
 
     public int getButtonAnswer() {
@@ -40,7 +41,6 @@ public class Display {
         this.mouseListenerChoice = mouseListenerChoice;
     }
 
-
     public MouseListenerGodCards getMouseListenerGodCards() {
         return mouseListenerGodCards;
     }
@@ -48,14 +48,6 @@ public class Display {
     public void setMouseListenerGodCards(MouseListenerGodCards mouseListenerGodCards) {
         this.mouseListenerGodCards = mouseListenerGodCards;
     }
-    /*
-    public int[] getSelectableGods() {
-        return selectableGods;
-    }
-
-    public void setSelectableGods(int[] selectableGods) {
-        this.selectableGods = selectableGods;
-    }*///*refactoring
 
     public MouseListenerGame getMouseListenerGame() {
         return mouseListenerGame;
@@ -81,12 +73,21 @@ public class Display {
         return promptText;
     }
 
+    public String getCommandFailure() {
+        return commandFailure;
+    }
+
+    public void setCommandFailure(String commandFailure) {
+        this.commandFailure = commandFailure;
+    }
+
     /**
      * is the constructor of the display,so
      *  sets the size of the frame and creates the Mouselisteners, which will be used in the gui
      */
     private Display(){
         this.promptText = "";
+        this.commandFailure = "";
         JFrame frame = new JFrame("Santorini Board Game GUI [AM46]");
         frame.setSize(dimensionX, dimensionY);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -19,6 +19,7 @@ import java.util.List;
  */
 public class MouseListenerGodCards implements MouseListener {
     List<String> selectableGods = new ArrayList<>();
+    int clickCounter = 0;
 
     public void setSelectableGods(List<String> selectableGods) {
         this.selectableGods = selectableGods;
@@ -74,98 +75,111 @@ public class MouseListenerGodCards implements MouseListener {
      * @param e
      */
     @Override
-    public synchronized void mouseClicked(MouseEvent e) {
-
-        int x = e.getX();
-        int y = e.getY();
-        PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();
-        String godName = null;
-        int firstCellX = 80+840/12; // 150
-        int firstCellY = 5+1410/12; // 122.5
-        int shiftX = 840/6;
-        int shiftY = 1410/6;
-        for (int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
-                if (x > (firstCellX + (shiftX * i) - (shiftX/2)) && x < (firstCellX + (shiftX * i) + (shiftX/2))) {
-                    if (y > (firstCellY + (shiftY * j) - (shiftY / 2)) && y < (firstCellY + (shiftY * j) + (shiftY / 2))) {
-                        //System.out.println("clicked on card: " + i + " " + j + " (" + x + " " + y + ")");
-                        switch (i) {
-                            case 0: switch (j) {
-                                        case 0: godName = "apollo";
-                                                break;
-                                        case 1: godName = "atlas";
-                                                break;
-                                        case 2: godName = "minotaur";
-                                                break;
+    public void mouseClicked(MouseEvent e) {
+        synchronized(Display.instance().lock) {
+            clickCounter++;
+            /* System.out.println("####### cards click counter: "+clickCounter); */
+            int x = e.getX();
+            int y = e.getY();
+            PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();
+            String godName = null;
+            int firstCellX = 80 + 840 / 12; // 150
+            int firstCellY = 5 + 1410 / 12; // 122.5
+            int shiftX = 840 / 6;
+            int shiftY = 1410 / 6;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (x > (firstCellX + (shiftX * i) - (shiftX / 2)) && x < (firstCellX + (shiftX * i) + (shiftX / 2))) {
+                        if (y > (firstCellY + (shiftY * j) - (shiftY / 2)) && y < (firstCellY + (shiftY * j) + (shiftY / 2))) {
+                            //System.out.println("clicked on card: " + i + " " + j + " (" + x + " " + y + ")");
+                            switch (i) {
+                                case 0:
+                                    switch (j) {
+                                        case 0:
+                                            godName = "apollo";
+                                            break;
+                                        case 1:
+                                            godName = "atlas";
+                                            break;
+                                        case 2:
+                                            godName = "minotaur";
+                                            break;
                                     }
                                     break;
-                            case 1: switch (j) {
-                                        case 0: godName = "artemis";
-                                                break;
-                                        case 1: godName = "demeter";
-                                                break;
-                                        case 2: godName = "pan";
-                                                break;
-                            }
+                                case 1:
+                                    switch (j) {
+                                        case 0:
+                                            godName = "artemis";
+                                            break;
+                                        case 1:
+                                            godName = "demeter";
+                                            break;
+                                        case 2:
+                                            godName = "pan";
+                                            break;
+                                    }
                                     break;
-                            case 2: switch (j) {
-                                        case 0: godName = "athena";
-                                                break;
-                                        case 1: godName = "hephaestus";
-                                                break;
-                                        case 2: godName = "prometheus";
-                                                break;
-                            }
+                                case 2:
+                                    switch (j) {
+                                        case 0:
+                                            godName = "athena";
+                                            break;
+                                        case 1:
+                                            godName = "hephaestus";
+                                            break;
+                                        case 2:
+                                            godName = "prometheus";
+                                            break;
+                                    }
                                     break;
-                        }
-                        //System.out.println(ProxyModel.instance().getPhase()+" "+godName);
-                        if(ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() == 4 && !selectableGods.contains(godName)) { /* fase di selezione delle carte del party owner */
-                            //System.out.println(".-.-.-.");
-                            selectableGods.add(godName);
-                            if(selectableGods.size() == ProxyModel.instance().getPlayers().size()) {
+                            }
+                            //System.out.println(ProxyModel.instance().getPhase()+" "+godName);
+                            if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() == 4 && !selectableGods.contains(godName)) { /* fase di selezione delle carte del party owner */
+                                //System.out.println(".-.-.-.");
+                                selectableGods.add(godName);
+                                if (selectableGods.size() == ProxyModel.instance().getPlayers().size()) {
+                                    XmlMapper xmlMapper = (new XmlMapper());
+                                    xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+                                    String toSend = null;
+                                    if (ProxyModel.instance().getPlayers().size() == 2) {
+                                        try {
+                                            toSend = xmlMapper.writeValueAsString(new GodListEvent(selectableGods.get(0), selectableGods.get(1), ""));
+                                        } catch (JsonProcessingException jsonProcessingException) {
+                                            jsonProcessingException.printStackTrace();
+                                        }
+                                    } else {
+                                        try {
+                                            toSend = xmlMapper.writeValueAsString(new GodListEvent(selectableGods.get(0), selectableGods.get(1), selectableGods.get(2)));
+                                        } catch (JsonProcessingException jsonProcessingException) {
+                                            jsonProcessingException.printStackTrace();
+                                        }
+                                    }
+                                    toSend += "\n";
+                                    printWriter.print(toSend);
+                                    printWriter.flush();
+                                    //System.out.println("FLUSHED GODS PARTY OWNER: "+toSend);
+                                }
+                            } else if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() != 4) {
+                                //Display.instance().setClicked(0);
+                                //System.out.println("EUREKA");
                                 XmlMapper xmlMapper = (new XmlMapper());
                                 xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
                                 String toSend = null;
-                                if(ProxyModel.instance().getPlayers().size() == 2) {
-                                    try {
-                                        toSend = xmlMapper.writeValueAsString(new GodListEvent(selectableGods.get(0),selectableGods.get(1),""));
-                                    } catch (JsonProcessingException jsonProcessingException) {
-                                        jsonProcessingException.printStackTrace();
-                                    }
-                                }
-                                else {
-                                    try {
-                                        toSend = xmlMapper.writeValueAsString(new GodListEvent(selectableGods.get(0),selectableGods.get(1),selectableGods.get(2)));
-                                    } catch (JsonProcessingException jsonProcessingException) {
-                                        jsonProcessingException.printStackTrace();
-                                    }
+                                try {
+                                    toSend = xmlMapper.writeValueAsString(new GodChoiceEvent(godName, ProxyModel.instance().getThisClientNickname()));
+                                } catch (JsonProcessingException jsonProcessingException) {
+                                    jsonProcessingException.printStackTrace();
                                 }
                                 toSend += "\n";
                                 printWriter.print(toSend);
                                 printWriter.flush();
-                                //System.out.println("FLUSHED GODS PARTY OWNER: "+toSend);
+                                //System.out.println("FLUSHED GOD CHOICE EVENT");
                             }
-                        } else if (ProxyModel.instance().getThisClientNickname().equals(ProxyModel.instance().getTurn().getCurrentPlayer().getName()) && ProxyModel.instance().getPhase() != 4) {
-                            //Display.instance().setClicked(0);
-                            //System.out.println("EUREKA");
-                            XmlMapper xmlMapper = (new XmlMapper());
-                            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-                            String toSend = null;
-                            try {
-                                toSend = xmlMapper.writeValueAsString(new GodChoiceEvent(godName, ProxyModel.instance().getThisClientNickname()));
-                            } catch (JsonProcessingException jsonProcessingException) {
-                                jsonProcessingException.printStackTrace();
-                            }
-                            toSend += "\n";
-                            printWriter.print(toSend);
-                            printWriter.flush();
-                            //System.out.println("FLUSHED GOD CHOICE EVENT");
-                        }
 
+                        }
                     }
                 }
             }
-        }
 
 
         /*
@@ -183,9 +197,7 @@ public class MouseListenerGodCards implements MouseListener {
          */
 
 
-
-
-
+        }
 
     }
 

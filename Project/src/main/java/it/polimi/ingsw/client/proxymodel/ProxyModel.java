@@ -48,6 +48,16 @@ public class ProxyModel {
         this.players.add(playerToAdd);
     }
 
+    /* public void removePlayer(String playerName) {
+        boolean removed = false;
+        for(int i = players.size()-1; !removed && i >= 0; i--) {
+            if(players.get(i).getName().equals(playerName)) {
+                this.players.remove(players.get(i));
+                removed = true;
+            }
+        }
+    } */
+
     public static ProxyModel instance() {
         if (instance == null) {
             instance = new ProxyModel();

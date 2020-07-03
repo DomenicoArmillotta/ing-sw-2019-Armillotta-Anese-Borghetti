@@ -1,11 +1,9 @@
 package it.polimi.ingsw.server.model.mvevents.actionevents;
 
-import it.polimi.ingsw.client.CoordsEvent;
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.Cell;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.EventBean;
 import it.polimi.ingsw.server.model.mvevents.eventbeans.WaitingForActionEventBean;
-import it.polimi.ingsw.server.model.powertree.Power;
 
 import java.util.ArrayList;
 import java.util.List;

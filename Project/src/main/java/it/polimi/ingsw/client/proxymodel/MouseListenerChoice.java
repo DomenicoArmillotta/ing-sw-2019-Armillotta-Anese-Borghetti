@@ -21,8 +21,9 @@ public class MouseListenerChoice implements MouseListener {
      * @param e
      */
     private Display display;
-    private static int threshX = 300;
-    private static int threshY = 600;
+    private final static int threshX = 300;
+    private final static int threshY = 600;
+    int clickCounter = 0;
 
     public MouseListenerChoice(Display display) {
         this.display = display;
@@ -30,33 +31,37 @@ public class MouseListenerChoice implements MouseListener {
 
     @Override
     public synchronized void mouseClicked(MouseEvent e) {
+        synchronized(Display.instance().lock) {
+            clickCounter++;
+            /* System.out.println("####### choice click counter: "+clickCounter); */
 
-        int x = e.getX();
-        int y = e.getY();
+            int x = e.getX();
+            int y = e.getY();
 
-        PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();
-        XmlMapper xmlMapper = (new XmlMapper());
-        xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
-        String toSend = null;
-        if(display.getButtonAnswer() == 0 && (display.getGraphicsFlag() == 5) && x < threshX && y > threshY) {
-            display.setButtonAnswer(1);
-            try {
-                toSend = xmlMapper.writeValueAsString(new BooleanEvent(true));
-            } catch (JsonProcessingException jsonProcessingException) {
-                jsonProcessingException.printStackTrace();
+            PrintWriter printWriter = ClientSocketManager.getInstance().getPrintWriter();
+            XmlMapper xmlMapper = (new XmlMapper());
+            xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
+            String toSend = null;
+            if (display.getButtonAnswer() == 0 && (display.getGraphicsFlag() == 5) && x < threshX && y > threshY) {
+                display.setButtonAnswer(1);
+                try {
+                    toSend = xmlMapper.writeValueAsString(new BooleanEvent(true));
+                } catch (JsonProcessingException jsonProcessingException) {
+                    jsonProcessingException.printStackTrace();
+                }
+            } else if (display.getButtonAnswer() == 0 && (display.getGraphicsFlag() == 5) && y > threshY) {
+                display.setButtonAnswer(2);
+                try {
+                    toSend = xmlMapper.writeValueAsString(new BooleanEvent(false));
+                } catch (JsonProcessingException jsonProcessingException) {
+                    jsonProcessingException.printStackTrace();
+                }
             }
-        } else if(display.getButtonAnswer() == 0 && (display.getGraphicsFlag() == 5) && y > threshY) {
-            display.setButtonAnswer(2);
-            try {
-                toSend = xmlMapper.writeValueAsString(new BooleanEvent(false));
-            } catch (JsonProcessingException jsonProcessingException) {
-                jsonProcessingException.printStackTrace();
+            if (toSend != null) {
+                toSend += "\n";
+                printWriter.print(toSend);
+                printWriter.flush();
             }
-        }
-        if(toSend != null) {
-            toSend += "\n";
-            printWriter.print(toSend);
-            printWriter.flush();
         }
     }
 

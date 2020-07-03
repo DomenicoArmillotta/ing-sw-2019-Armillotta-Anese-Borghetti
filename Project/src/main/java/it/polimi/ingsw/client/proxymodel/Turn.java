@@ -26,7 +26,7 @@ public class Turn {
             prevPlayer = tempPlayer;
         }
         turns_num++;
-        System.out.println("Numero di turni: "+turns_num);
+        /* System.out.println("Numero di turni: "+turns_num); */
         /* System.out.println("Turno di "+currentPlayer.getName()); */
     }
 

@@ -39,13 +39,18 @@ public class WorkersSetupViewEvent extends ViewEvent {
 
 /* attenzione: i player del turn sono diversi dai player del proxy model */
         if(proxyModel.getPlayers().size() == 2) {
+            System.out.println("setup case 1");
             if (proxyModel.getPlayers().get(0).getWorker1() != null && proxyModel.getPlayers().get(1).getWorker1() != null) {
+                System.out.println("setup case 4");
                 proxyModel.getDrawerStrategy().promptSelectionText();
                 proxyModel.setPhase(3);
             }
         } else if(proxyModel.getPlayers().get(0).getWorker1() != null && proxyModel.getPlayers().get(1).getWorker1() != null && proxyModel.getPlayers().get(2).getWorker1() != null) {
+            System.out.println("setup case 2");
             proxyModel.getDrawerStrategy().promptSelectionText();
             proxyModel.setPhase(3);
+        } else {
+            System.out.println("setup case 3, size: "+proxyModel.getPlayers().size());
         }
 
         if(proxyModel.getPhase() == 2)

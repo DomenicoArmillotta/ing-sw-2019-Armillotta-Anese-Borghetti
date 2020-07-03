@@ -47,6 +47,26 @@ public class BoardPanel extends JPanel {
     }
 
     /**
+     * getPrompt calls the getCommandFailure method of the Display class
+     * @return a String that contains the textual prompt to display in the current game phase
+     */
+
+    public String getCommandFailure() {
+        Display display = Display.instance();
+        return display.getCommandFailure();
+    }
+
+    /**
+     * setPrompt passes a String as a parameter to the setCommandFailure method of the Display class
+     * @param promptText
+     */
+
+    public void setCommandFailure(String promptText) {
+        Display display = Display.instance();
+        display.setCommandFailure(promptText);
+    }
+
+    /**
      * getGraphicsFlag returns an integer number which is associated with the textual prompt to display,
      * it is found in the Display class
      * @return an integer graphicsFlag
@@ -91,6 +111,8 @@ public class BoardPanel extends JPanel {
             case 6: writeTextWin(g);
                 break;
             case 7: writeTextLose(g);
+                break;
+            case 8: writeTextFailure(g);
                 break;
             case 0: writeTextTurn(g);
                 break;
@@ -263,6 +285,16 @@ public class BoardPanel extends JPanel {
      * writeTextButtons show the textual prompt for the prompt's answer phase
      * @param g
      */
+
+    public void writeTextFailure(Graphics g) {
+        Graphics2D g2d = (Graphics2D) g;
+        Font font = new Font("Serif", Font.PLAIN, 24);
+        g2d.setColor(new Color(20, 20, 20));
+        g2d.setFont(font);
+        g2d.drawString(Display.instance().getCommandFailure(), 15, 640);
+
+
+    }
 
     public void writeTextButtons(Graphics g) {
         ClassLoader cl = this.getClass().getClassLoader();

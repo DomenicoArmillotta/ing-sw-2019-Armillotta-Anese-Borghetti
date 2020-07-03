@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class InputOutputClientTest {
     public static void main(String[] args) throws IOException {
-        ClientHandler clientHandler = new ClientHandler("cli",1234);
+        ClientHandler clientHandler = new ClientHandler("gui",1234);
         clientHandler.startClient();
     }
 }

@@ -10,7 +10,19 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * InputParser is used to parse the EventBeans that are sent from Server to Clients
+ * For each Bean, it returns the correct ViewEvent
+ */
+
 public class InputParser {
+
+    /**
+     * returnCorrectClientEvent is used to parse the Document given as a parameter into the correct ViewEvent
+     * @param document
+     * @return This methods returns a ViewEvent. For each EventBean sent by server, returnCorrectClientEvent returns the correct ViewEvent
+     * @throws ParserConfigurationException
+     */
 
     public ViewEvent retrunCorrectClientEvent(Document document) throws ParserConfigurationException {
 

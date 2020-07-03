@@ -2,6 +2,10 @@ package it.polimi.ingsw.client.proxymodel;
 
 import java.util.List;
 
+/**
+ * This is the abstract strategy of the client's drawers, that can concretely be CLI or GUI Drawer
+ */
+
 public abstract class Drawer {
 
     public void drawMap(){};

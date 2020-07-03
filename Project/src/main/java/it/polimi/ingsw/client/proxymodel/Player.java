@@ -1,5 +1,10 @@
 package it.polimi.ingsw.client.proxymodel;
 
+/**
+ * This class represents the game's Player in the client, with its name, color, godCard and workers
+ * It is similar to the server's Player class, but without the model's logic
+ */
+
 public class Player {
     private String name;
     private String color;

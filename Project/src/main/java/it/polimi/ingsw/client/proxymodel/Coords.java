@@ -1,5 +1,9 @@
 package it.polimi.ingsw.client.proxymodel;
 
+/**
+ * This Coords represent the couple of integer coordinates that identifies a cell in the game's grid
+ */
+
 public class Coords {
     private int x;
     private int y;

@@ -7,7 +7,12 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * BoardPanel is an extension of Java Swing's JPanel used to draw the game's board and prompts in the graphic client
+ */
+
 public class BoardPanel extends JPanel {
+
 
     ProxyModel proxyModel = ProxyModel.instance();
     private static final String mapFileName = "grid";
@@ -21,25 +26,52 @@ public class BoardPanel extends JPanel {
     private static final int shift = 118;
     /* First cell center: 322 114 */
 
+    /**
+     * getPrompt calls the getPromptText method of the Display class
+     * @return a String that contains the textual prompt to display in the current game phase
+     */
+
     public String getPrompt() {
         Display display = Display.instance();
         return display.getPromptText();
     }
+
+    /**
+     * setPrompt passes a String as a parameter to the setPrompt method of the Display class
+     * @param promptText
+     */
 
     public void setPrompt(String promptText) {
         Display display = Display.instance();
         display.setPrompt(promptText);
     }
 
+    /**
+     * getGraphicsFlag returns an integer number which is associated with the textual prompt to display,
+     * it is found in the Display class
+     * @return an integer graphicsFlag
+     */
+
     public int getGraphicsFlag() {
         Display display = Display.instance();
         return display.getGraphicsFlag();
     }
 
+    /**
+     * setGraphicsFlag assigns an integer value to the graphicsFlag attribute of the Display class
+     * @param graphicsFlag
+     */
+
     public void setGraphicsFlag(int graphicsFlag) {
         Display display = Display.instance();
         display.setGraphicsFlag(graphicsFlag);
     }
+
+    /**
+     * This methods overrides the paintComponent method of Java Swing's JPanel
+     * for each graphicsFlag a different method is called to show a different text
+     * @param g
+     */
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -64,6 +96,11 @@ public class BoardPanel extends JPanel {
                 break;
         }
     }
+
+    /**
+     * drawImage shows every graphic aspect of the Client's GUI, such as pawns, blocks and the map
+     * @param g
+     */
 
     private void drawImage(Graphics g) {
         ClassLoader cl = this.getClass().getClassLoader();
@@ -170,6 +207,11 @@ public class BoardPanel extends JPanel {
         g2d.drawString(proxyModel.getThisClientNickname(), 15, 700);
     }
 
+    /**
+     * writeTextSelect shows the textual prompt for the selection phase
+     * @param g
+     */
+
     private void writeTextSelect(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         Font font = new Font("Serif", Font.PLAIN, 24);
@@ -177,6 +219,11 @@ public class BoardPanel extends JPanel {
         g2d.setFont(font);
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should select a worker.", 15, 640);
     }
+
+    /**
+     * writeTextMove shows the textual prompt for the move phase
+     * @param g
+     */
 
     private void writeTextMove(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
@@ -186,6 +233,11 @@ public class BoardPanel extends JPanel {
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should move the selected worker.", 15, 640);
     }
 
+    /**
+     * writeTextBuild shows the textual prompt for the build phase
+     * @param g
+     */
+
     private void writeTextBuild(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         Font font = new Font("Serif", Font.PLAIN, 24);
@@ -194,6 +246,11 @@ public class BoardPanel extends JPanel {
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should build a block.", 15, 640);
     }
 
+    /**
+     * writeTextPlaceWorkers shows the textual prompt for the workers' setup phase
+     * @param g
+     */
+
     private void writeTextPlaceWorkers(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
         Font font = new Font("Serif", Font.PLAIN, 24);
@@ -201,6 +258,11 @@ public class BoardPanel extends JPanel {
         g2d.setFont(font);
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " should place his Workers.", 15, 640);
     }
+
+    /**
+     * writeTextButtons show the textual prompt for the prompt's answer phase
+     * @param g
+     */
 
     public void writeTextButtons(Graphics g) {
         ClassLoader cl = this.getClass().getClassLoader();
@@ -243,6 +305,11 @@ public class BoardPanel extends JPanel {
 
     }
 
+    /**
+     * writeTextButtons show the textual prompt for the win phase
+     * @param g
+     */
+
     private void writeTextWin(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         Graphics2D g2d = (Graphics2D) g;
@@ -252,6 +319,11 @@ public class BoardPanel extends JPanel {
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " won the game!", 15, 640);
     }
 
+    /**
+     * writeTextButtons show the textual prompt for the lose phase
+     * @param g
+     */
+
     private void writeTextLose(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();
         Graphics2D g2d = (Graphics2D) g;
@@ -260,6 +332,11 @@ public class BoardPanel extends JPanel {
         g2d.setFont(font);
         g2d.drawString(proxyModel.getTurn().getCurrentPlayer().getName() + " lost the game...", 15, 640);
     }
+
+    /**
+     * writeTextTurn show the textual prompt for any other phase
+     * @param g
+     */
 
     private void writeTextTurn(Graphics g) {
         ProxyModel proxyModel = ProxyModel.instance();

@@ -144,9 +144,9 @@ public class Controller {
      * Check if every passed gods is contained in currentGodList.
      * currentList is created by parsing GodCardList.xml.
      * if oine of the gods doesn't exists signals to the client with a commandFailureEventBean
-     * @param god1
-     * @param god2
-     * @param god3
+     * @param god1 partyOwner god choice
+     * @param god2 partyOwner god choice
+     * @param god3 partyOwner god choice
      * @return true if the list is correctly created else false;
      */
     public synchronized boolean setCurrentGodList(String god1,String god2,String god3){
@@ -176,7 +176,7 @@ public class Controller {
 
     /**
      * add the tuple of socket,socket port.
-     * @param lineClientSocketsAndPort
+     * @param lineClientSocketsAndPort lineSocketAndPort of a newly connected client
      */
     public void addScannerInToList(LineClientSocketsAndPort lineClientSocketsAndPort){
         this.lineClientSocketsAndPortList.add(lineClientSocketsAndPort);

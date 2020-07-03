@@ -56,6 +56,7 @@ public class EventsBuffer {
     }
     /**
      * return true if EventBeans is empty
+     * @return true if is empty else false
      */
     public boolean emptyBuffer() {
         if(eventBeans.size() == 0)

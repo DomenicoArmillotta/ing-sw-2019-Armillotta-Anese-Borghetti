@@ -12,6 +12,8 @@ public class WorkerSelectionEventBean extends EventBean implements Serializable 
     /**
      *is the constructor of  WorkerMovementEventBean that will be sent to the client by the server
      *  to communicate the worker that has been selected
+     * @param workerX selected worker's x coordinate
+     * @param workerY selected worker's y coordinate
      */
     public WorkerSelectionEventBean(int workerX, int workerY){
         eventType = "WorkerSelectionEvent"; /* non qui ma nel parser */

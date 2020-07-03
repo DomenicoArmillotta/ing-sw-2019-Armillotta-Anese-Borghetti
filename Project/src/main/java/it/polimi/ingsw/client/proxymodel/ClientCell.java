@@ -53,6 +53,7 @@ public class ClientCell {
 
     /**
      * getworkerSelectable sets if the worker that is on this cell is selectable or not during the selection phase
+     * @param workerSelectable  worker selected
      */
     public void setworkerSelectable(int workerSelectable) {
         this.workerSelectable = workerSelectable;

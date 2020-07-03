@@ -3,6 +3,9 @@ import it.polimi.ingsw.server.model.mvevents.actionevents.Coordinates;
 
 import java.util.List;
 
+/**
+ * display all the available cells for a particular power
+ */
 public class WaitingForActionEventBean extends EventBean {
     private List<Coordinates> coordinates;
     private String currTurn;

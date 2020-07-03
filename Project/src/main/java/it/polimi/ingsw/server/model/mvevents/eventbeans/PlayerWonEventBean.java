@@ -7,7 +7,7 @@ public class PlayerWonEventBean extends EventBean {
     String winnerName;
     /**
      *is the constructor of PlayerWonEventBean which will be sent to the client by the server to communicate the player that has won
-     * @param winnerName
+     * @param winnerName NickName of the player who won
      */
     public PlayerWonEventBean(String winnerName) {
         eventType = "PlayerWonEvent";

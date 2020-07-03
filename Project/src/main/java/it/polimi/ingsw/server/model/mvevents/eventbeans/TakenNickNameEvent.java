@@ -1,5 +1,8 @@
 package it.polimi.ingsw.server.model.mvevents.eventbeans;
 
+/**
+ * event that contains the NickName picked but already taken in the server
+ */
 public class TakenNickNameEvent extends EventBean{
     private String takenNickNamePlayer;
 

@@ -9,7 +9,7 @@ public class CorrectPromptAnswer extends EventBean{
     /**
      *is the constructor of CorrectPromptAnswer is created and sent from the server to the client
      * to communicate the correct answer after checking it on the server
-     * @param answer
+     * @param answer a boolean answer to a boolean event
      */
     public CorrectPromptAnswer(boolean answer) {
         this.answer = answer;

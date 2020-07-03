@@ -36,7 +36,7 @@ public class BuildBlockEventBean extends EventBean {
      * is the constructor of the BuildBlockEventBean used to communicate  the coords of block to build and the level
      * @param blockX coord X when i want build
      * @param blockY coord Y when i want build
-     * @param levelToBuild
+     * @param levelToBuild level to build
      */
     public BuildBlockEventBean(int blockX, int blockY,int levelToBuild){
        this.blockX = blockX;

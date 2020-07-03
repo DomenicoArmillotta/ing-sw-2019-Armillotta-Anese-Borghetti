@@ -8,7 +8,7 @@ public class PlayerLostEventBean extends EventBean {
 
     /**
      *is the constructor of PlayerLostEventBean which will be sent to the client by the server to communicate the player that has lost
-     * @param loserName
+     * @param loserName player who lost the game
      */
     public PlayerLostEventBean(String loserName) {
 

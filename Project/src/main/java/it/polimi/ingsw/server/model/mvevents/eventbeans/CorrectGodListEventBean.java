@@ -23,9 +23,9 @@ public class CorrectGodListEventBean extends EventBean{
     /**
      * is the constructor of CorrectGodListEventBean sent by the server to the client to communicate the gods that are available for the game,
      * that is, those chosen by the party owner
-     * @param god1
-     * @param god2
-     * @param god3
+     * @param god1 first god chosen by partyOwner
+     * @param god2 second god chosen by partyOwner
+     * @param god3 third god chosen by partyOwner
      */
     public CorrectGodListEventBean(String god1, String god2, String god3) {
         this.god1 = god1;

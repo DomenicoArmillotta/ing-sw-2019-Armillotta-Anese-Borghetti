@@ -14,11 +14,11 @@ public class SetupWorkerDoneEventBean extends EventBean {
     /**
      *is the constructor of SetupWorkerDoneEventBean witch is created and sent from the server to the client to communicate
      * the setup done of the worker
-     * @param x
-     * @param y
-     * @param z
-     * @param w
-     * @param ownerName
+     * @param x x coordinate
+     * @param y y coordinate
+     * @param z z coordinate
+     * @param w w coordinate
+     * @param ownerName player who send these coordinates
      */
     public SetupWorkerDoneEventBean(int x, int y, int z, int w, String ownerName) {
         this.x = x;

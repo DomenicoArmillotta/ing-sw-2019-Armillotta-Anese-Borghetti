@@ -10,7 +10,7 @@ public class BuildOnDifferentCell extends Build {
 
     /**
      * Calls the superclass' doAction if userInput correctly represents a different cell to build on
-     * @param userInput
+     * @param userInput array of integer representing user input to where to build
      * @return 1 if userInput correctly represents a different cell to build on, -1 if the action fails
      * The BuildBlockListener is called in the superclass
      */

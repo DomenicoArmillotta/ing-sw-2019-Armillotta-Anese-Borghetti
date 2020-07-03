@@ -3,6 +3,10 @@ package it.polimi.ingsw.server.model.powertree;
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.mvevents.actionevents.BuildOrMoveEvent;
 
+/**
+ * manage user reply if he wants to build before moving
+ *
+ */
 public class BuildOrMovePrompt extends Power{
     @Override
     public int doAction(int[] userInput) {

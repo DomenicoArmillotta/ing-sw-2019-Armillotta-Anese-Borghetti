@@ -29,7 +29,7 @@ public class Build extends LimitedPower {
 
     /**
      * Sets cellAfterBuild attribute
-     * @param cellAfterBuild
+     * @param cellAfterBuild cell of the previous build
      */
     public void setCellAfterBuild(Cell cellAfterBuild) {
         this.cellAfterBuild = cellAfterBuild;
@@ -38,7 +38,7 @@ public class Build extends LimitedPower {
 
     /**
      * d
-     * @param userInput
+     * @param userInput user input for building
      * @return 1 if there is no userInput (fake build), or if userInput correctly represents one of the availableCells
      *         -1 if userInput is not correct
      *         Notifies the BuildBlockListener in case of success, the FailedActionListener otherwise

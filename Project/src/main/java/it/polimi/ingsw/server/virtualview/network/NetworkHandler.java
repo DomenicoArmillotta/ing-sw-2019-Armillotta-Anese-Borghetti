@@ -22,7 +22,7 @@ public class NetworkHandler {
 
     /**
      * start the server by creating SocketHandlerOutput and a threasd for every SocketHandlerInput.
-     * @throws IOException if the desired port is unavailable
+
      */
     public void startServer(){
         Controller controller = new Controller();

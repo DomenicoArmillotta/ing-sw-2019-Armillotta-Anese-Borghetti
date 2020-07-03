@@ -38,8 +38,6 @@ public class SocketHandlerInput implements Runnable {
      * keeps reading from the input until bufferedReader read a connection Interrupt or end of stream.
      * when a client disconnects anomalously or decidec to quit the game the socketHandlerInput signals to the game is going to be ended
      * and start the procedure for rebooting @see socketHandlerOutpu
-     * @throws IOException if cannot create the parser
-     * @throws SAXException if parser crash
      */
     public void run() {
         BufferedReader brd = null;

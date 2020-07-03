@@ -14,8 +14,8 @@ public class FindAvailableCellsDontMoveBack extends FindAvailableCellsMove {
     /**
      *  performs the same function as FindAvailableCellsMove,but delete the cell where it was previously,
      *  if the list has no cells then there are no updates
-     * @param userInput
-     * @return
+     * @param userInput array of integer that represent user's coordinates for movement
+     * @return  1 always
      */
     @Override
     public int doAction(int[] userInput) {

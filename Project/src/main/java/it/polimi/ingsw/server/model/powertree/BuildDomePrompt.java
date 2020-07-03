@@ -3,7 +3,9 @@ package it.polimi.ingsw.server.model.powertree;
 import it.polimi.ingsw.server.model.ActionExecutor;
 import it.polimi.ingsw.server.model.mvevents.actionevents.BuildDomePromptEvent;
 
-
+/**
+ * manage boolean requests for building a dome
+ */
 public class BuildDomePrompt extends Power{
     @Override
     public int doAction(int[] userInput) {

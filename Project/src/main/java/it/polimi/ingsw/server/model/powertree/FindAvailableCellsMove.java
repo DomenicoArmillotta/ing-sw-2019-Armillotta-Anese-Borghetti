@@ -13,8 +13,8 @@ public class FindAvailableCellsMove extends FindAvailableCells {
      * it is used to create a list with the cells in which the selected worker can move,
      * all adjacent cells are checked and checking if there is another worker on the cell,
      * if there is a dome, if the difference is greater than one
-     * @param userInput
-     * @return
+     * @param userInput array of integer that represent user's coordinates for movement
+     * @return 1 if player lose else 0
      */
     @Override
     public int doAction(int[] userInput) {

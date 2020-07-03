@@ -15,7 +15,7 @@ public class FindAvailableCellsBuildSameCell extends FindAvailableCellsBuild {
     /**
      * call super.doAction() and excludes for BuildableCells the cell where the worker was previously.
      * @param userInput this method doesn't require a particular userInput;
-     * @return
+     * @return 1 notify all new cell to the players
      */
     @Override
     public int doAction(int[] userInput) {

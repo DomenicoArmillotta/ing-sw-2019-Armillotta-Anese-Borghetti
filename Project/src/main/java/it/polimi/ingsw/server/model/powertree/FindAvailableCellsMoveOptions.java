@@ -8,8 +8,8 @@ import it.polimi.ingsw.server.model.mvevents.actionevents.WaitingForActionEvent;
 public class FindAvailableCellsMoveOptions extends FindAvailableCellsMove {
     /**
      * return 0 if teh action was successful else -1
-     * @param userInput
-     * @return
+     * @param userInput user input from the cli or gui
+     * @return -1 if action fail else 0
      */
     @Override
     public int doAction(int[] userInput) {

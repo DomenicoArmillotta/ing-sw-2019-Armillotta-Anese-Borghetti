@@ -18,7 +18,7 @@ public class Worker {
 
     /**
      * constructor setting the position
-     * @param currentPosition
+     * @param currentPosition current position
      */
     public Worker(Cell currentPosition) {
         this.currentPosition = currentPosition;

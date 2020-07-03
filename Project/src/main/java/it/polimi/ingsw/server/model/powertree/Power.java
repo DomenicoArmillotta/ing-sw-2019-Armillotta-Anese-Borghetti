@@ -63,8 +63,8 @@ public abstract class Power {
     /**
      * function that take @param as input and return 3 different values 0, 1 , -1; the action is succesfully executed and the model
      * need
-     * @param userInput
-     * @return
+     * @param userInput userInput from the cli or gui
+     * @return -1 action failed 0 if was successful
      */
     /*
     set abstract;

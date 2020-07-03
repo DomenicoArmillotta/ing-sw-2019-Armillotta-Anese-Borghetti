@@ -11,8 +11,8 @@ public class GameMaster {
     /**
      *  is the constructor and set the number of players and the queue of players, which is used to manage the turn
      *  create the ActionExecutor
-     * @param playerQueue
-     * @param numOfPlayers
+     * @param playerQueue player Queue
+     * @param numOfPlayers number of player
      */
     public GameMaster(List<Player> playerQueue, int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;

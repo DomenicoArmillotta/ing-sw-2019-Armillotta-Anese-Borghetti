@@ -12,7 +12,7 @@ import java.util.List;
 public class FindAvailableCellsMoveButDontMoveUp extends FindAvailableCellsMove {
     /**
      * from the list of find I delete the cells that have a difference in level greater than or equal to 1 from the list
-     * @param userInput
+     * @param userInput user input from the cli or gui
      * @return 0 if FindAvailableCellsMovePush its ok,-1 if FindAvailableCellsMovePush failed
      */
     @Override

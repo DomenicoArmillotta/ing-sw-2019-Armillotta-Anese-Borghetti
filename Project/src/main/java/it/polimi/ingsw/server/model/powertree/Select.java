@@ -29,7 +29,7 @@ public class Select extends LimitedPower {
      * in other cases none of the workers have been selected
      * it also checks whether the selected worker can move
      * @param userInput the integer coordinates of the Worker to be selected
-     * @return
+     * @return 1 if was successful else -1 for a failedAction
      */
     @Override
     public int doAction(int[] userInput) {

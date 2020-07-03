@@ -55,7 +55,7 @@ public class ActionExecutor {
 
     /**
      * used to move to the next power
-     * @return
+     * @return the power pinter
      */
     public Power getNextPower() {
         if (powerPtr == finalState)

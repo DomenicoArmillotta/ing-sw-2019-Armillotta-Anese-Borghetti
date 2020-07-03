@@ -14,8 +14,8 @@ public class FindAvailableCellsMoveSwitch extends FindAvailableCellsMove {
     /**
      * adds to the list of cells found by FindAvailableCellsMove the cells in which it is possible to switch,
      * thus checking that the worker is the opponent
-     * @param userInput
-     * @return
+     * @param userInput user input from the cli or gui
+     * @return 0 success,-1 if action is failed
      */
     public int doAction(int[] userInput) {
         super.doAction(userInput);

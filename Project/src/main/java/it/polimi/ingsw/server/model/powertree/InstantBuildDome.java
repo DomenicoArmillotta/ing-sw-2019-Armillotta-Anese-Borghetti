@@ -18,9 +18,8 @@ public class InstantBuildDome extends Build {
     /**
      * Check if the userInput represents the same cell where the active worker is on: in that case this method is skipped
      * otherwise, a dome is instantly built on one of the available cells, regardless of the cell's current level
-     * @param userInput
-     * @return 0 if the userInput represents a fake build (build on the same cell where the active worker is)
-     *         1 if the build has been successful
+     * @param userInput user input from the cli or gui
+     * @return 0 if the userInput represents a fake build (build on the same cell where the active worker is) 1 if the build has been successful
      */
     @Override
     public int doAction(int[] userInput) {

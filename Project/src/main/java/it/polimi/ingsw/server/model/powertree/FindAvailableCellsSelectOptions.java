@@ -9,8 +9,11 @@ import java.util.List;
  * controls which workers are selectable
  */
 public class FindAvailableCellsSelectOptions extends FindAvailableCellsMove {
+
     /**
      *if the worker AvailableCells (the cells in which they can move) are different from 0 we give the possibility to select it
+     * @param userInput user input from the cli or gui
+     * @return -1 failed else 0
      */
     @Override
     public int doAction(int[] userInput) {

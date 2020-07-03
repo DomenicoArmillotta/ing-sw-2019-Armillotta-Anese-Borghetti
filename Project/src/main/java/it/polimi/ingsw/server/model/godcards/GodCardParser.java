@@ -21,7 +21,7 @@ public class GodCardParser {
      * add in the correct position of the GodCard the power contained in the String atomicPower
      * @param atomicPower String that contains the power to create;
      * @param selectedGodCard the requested godCard;
-     * @return a power or null if atomicPower is non containend in this list
+     * @return a power or null if atomicPower is non contained in this list
      */
     private Power returnCorrectAtomicPower(String atomicPower,GodCard selectedGodCard) {
 

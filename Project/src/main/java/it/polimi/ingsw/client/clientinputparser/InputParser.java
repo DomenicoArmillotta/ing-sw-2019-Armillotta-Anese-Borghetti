@@ -19,7 +19,7 @@ public class InputParser {
 
     /**
      * returnCorrectClientEvent is used to parse the Document given as a parameter into the correct ViewEvent
-     * @param document
+     * @param document document that contained the parsed for of user input
      * @return This methods returns a ViewEvent. For each EventBean sent by server, returnCorrectClientEvent returns the correct ViewEvent
      */
 

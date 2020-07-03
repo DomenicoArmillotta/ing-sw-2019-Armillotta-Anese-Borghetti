@@ -130,7 +130,7 @@ public class GodCard {
 
     /**
      * set a particular booleanRequestActionStrategy
-     * @param booleanRequestActionStrategy
+     * @param booleanRequestActionStrategy boolean request strategy for this particular GodCard
      */
     public void setBooleanRequestActionStrategy(BooleanRequestAction booleanRequestActionStrategy){
         this.booleanRequestActionStrategy = booleanRequestActionStrategy;
